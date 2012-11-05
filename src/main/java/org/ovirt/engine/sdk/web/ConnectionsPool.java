@@ -17,27 +17,78 @@
 package org.ovirt.engine.sdk.web;
 
 import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.net.ConnectException;
+import java.net.UnknownHostException;
 
+import javax.net.ssl.SSLException;
+
+import org.apache.http.HttpEntityEnclosingRequest;
+import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.ExecutionContext;
+import org.apache.http.protocol.HttpContext;
 
 public class ConnectionsPool {
     DefaultHttpClient client = null;
 
     public ConnectionsPool(DefaultHttpClient client) {
-        this.client=client;
+        this.client = client;
+        injectHttpRequestRetryHandler(this.client);
     }
 
-    public HttpResponse execute(HttpUriRequest request)
+    public HttpResponse execute(HttpUriRequest request, HttpContext context)
             throws IOException, ClientProtocolException {
-        return this.client.execute(request, new BasicHttpContext());
+        return this.client.execute(request, context);
     }
 
     public ClientConnectionManager getConnectionManager() {
         return this.client.getConnectionManager();
+    }
+
+    private void injectHttpRequestRetryHandler(DefaultHttpClient httpclient) {
+        HttpRequestRetryHandler myRetryHandler = new HttpRequestRetryHandler() {
+
+            public boolean retryRequest(
+                    IOException exception,
+                    int executionCount,
+                    HttpContext context) {
+                if (executionCount >= 5) {
+                    // Do not retry if over max retry count
+                    return false;
+                }
+                if (exception instanceof InterruptedIOException) {
+                    // Timeout
+                    return false;
+                }
+                if (exception instanceof UnknownHostException) {
+                    // Unknown host
+                    return false;
+                }
+                if (exception instanceof ConnectException) {
+                    // Connection refused
+                    return false;
+                }
+                if (exception instanceof SSLException) {
+                    // SSL handshake exception
+                    return false;
+                }
+                HttpRequest request = (HttpRequest) context.getAttribute(
+                        ExecutionContext.HTTP_REQUEST);
+                boolean idempotent = !(request instanceof HttpEntityEnclosingRequest);
+                if (idempotent) {
+                    // Retry if the request is considered idempotent
+                    return true;
+                }
+                return false;
+            }
+        };
+
+        httpclient.setHttpRequestRetryHandler(myRetryHandler);
     }
 }
