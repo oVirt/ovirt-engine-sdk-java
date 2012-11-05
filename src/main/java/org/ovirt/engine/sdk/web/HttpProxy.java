@@ -65,6 +65,11 @@ public class HttpProxy {
         throw new RequestException(response.getStatusLine().getReasonPhrase());
     }
 
+    public String update(String url, String entity)
+            throws IOException, ClientProtocolException, RequestException {
+        return update(url, null);
+    }
+
     public String update(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, RequestException {
 
@@ -74,9 +79,19 @@ public class HttpProxy {
         return execute(httpput, headers, null);
     }
 
+    public String action(String url, String entity)
+            throws IOException, ClientProtocolException, RequestException {
+        return action(url, entity);
+    }
+
     public String action(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, RequestException {
         return add(url, entity, headers);
+    }
+
+    public String add(String url, String entity)
+            throws IOException, ClientProtocolException, RequestException {
+        return add(url, entity, null);
     }
 
     public String add(String url, String entity, List<Header> headers)
@@ -88,6 +103,11 @@ public class HttpProxy {
         return execute(httpost, headers, null);
     }
 
+    public String delete(String url, String entity)
+            throws IOException, ClientProtocolException, RequestException {
+        return delete(url, entity, null);
+    }
+
     public String delete(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, RequestException {
 
@@ -97,11 +117,15 @@ public class HttpProxy {
         return execute(httpost, headers, null);
     }
 
+    public String get(String url)
+            throws IOException, ClientProtocolException, RequestException {
+        return get(url, null);
+    }
+
     public String get(String url, List<Header> headers)
             throws IOException, ClientProtocolException, RequestException {
 
         HttpGet httpget = new HttpGet(url);
         return execute(httpget, headers, null);
     }
-
 }
