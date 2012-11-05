@@ -17,7 +17,9 @@
 package org.ovirt.engine.sdk.web;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -34,22 +36,39 @@ import org.ovirt.engine.sdk.exceptions.RequestException;
 
 public class HttpProxy {
 
-    private ConnectionsPool pool;
     private static int BAD_REQUEST = 400;
 
-    public HttpProxy(ConnectionsPool pool) {
+    private ConnectionsPool pool;
+    private Map<String, String> staticHeaders;
+    private boolean persistent_auth = true;
+    private boolean insecure = false;
+    private boolean filter = false;
+    private boolean debug = false;
+
+    public HttpProxy(ConnectionsPool pool, boolean persistent_auth, boolean insecure,
+            boolean filter, boolean debug) {
+        super();
         this.pool = pool;
+        this.staticHeaders = createStaticHeaders();
+        this.persistent_auth = persistent_auth;
+        this.insecure = insecure;
+        this.filter = filter;
+        this.debug = debug;
+    }
+
+    private Map<String, String> createStaticHeaders() {
+        return new HashMap<String, String>() {
+            private static final long serialVersionUID = -3309952775559222863L;
+            {
+                put("Content-type", "application/xml");
+            }
+        };
     }
 
     private String execute(HttpUriRequest request, List<Header> headers, Boolean last)
             throws IOException, ClientProtocolException, RequestException {
 
-        if (headers != null && !headers.isEmpty()) {
-            request.setHeaders(headers.toArray(new Header[headers.size()]));
-        }
-
-        // TODO: fetch + inject cookie
-
+        injectHeaders(request, headers);
         HttpResponse response = this.pool.execute(request, new BasicHttpContext());
 
         // TODO: save cookie
@@ -63,6 +82,21 @@ public class HttpProxy {
             }
         }
         throw new RequestException(response.getStatusLine().getReasonPhrase());
+    }
+
+    private void injectHeaders(HttpUriRequest request, List<Header> headers) {
+        if (headers != null && !headers.isEmpty()) {
+            request.setHeaders(headers.toArray(new Header[headers.size()]));
+        }
+
+        for (String key : this.staticHeaders.keySet()) {
+            request.addHeader(key, this.staticHeaders.get(key));
+        }
+
+        request.addHeader("Filter", Boolean.toString(isFilter()));
+
+        // TODO: fetch + inject cookie in to headers
+        // TODO: inject dynamic headers
     }
 
     public String update(String url, String entity)
@@ -103,6 +137,11 @@ public class HttpProxy {
         return execute(httpost, headers, null);
     }
 
+    public String delete(String url)
+            throws IOException, ClientProtocolException, RequestException {
+        return delete(url, null, null);
+    }
+
     public String delete(String url, String entity)
             throws IOException, ClientProtocolException, RequestException {
         return delete(url, entity, null);
@@ -112,8 +151,10 @@ public class HttpProxy {
             throws IOException, ClientProtocolException, RequestException {
 
         HttpPost httpost = new HttpPost(url);
-        HttpEntity httpentity = new StringEntity(entity);
-        httpost.setEntity(httpentity);
+        if (!entity.equals(null)) {
+            HttpEntity httpentity = new StringEntity(entity);
+            httpost.setEntity(httpentity);
+        }
         return execute(httpost, headers, null);
     }
 
@@ -127,5 +168,37 @@ public class HttpProxy {
 
         HttpGet httpget = new HttpGet(url);
         return execute(httpget, headers, null);
+    }
+
+    public boolean isPersistent_auth() {
+        return persistent_auth;
+    }
+
+    public void setPersistent_auth(boolean persistent_auth) {
+        this.persistent_auth = persistent_auth;
+    }
+
+    public boolean isInsecure() {
+        return insecure;
+    }
+
+    public void setInsecure(boolean insecure) {
+        this.insecure = insecure;
+    }
+
+    public boolean isFilter() {
+        return filter;
+    }
+
+    public void setFilter(boolean filter) {
+        this.filter = filter;
+    }
+
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
     }
 }

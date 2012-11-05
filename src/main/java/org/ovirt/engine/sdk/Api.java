@@ -20,6 +20,7 @@ import java.net.MalformedURLException;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.HttpProxy;
 import org.ovirt.engine.sdk.utils.ConnectionsPoolBuilder;
+import org.ovirt.engine.sdk.utils.HttpProxyBuilder;
 
 public class Api {
 
@@ -28,25 +29,29 @@ public class Api {
     public Api(String url, String username, String password) throws MalformedURLException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-            .build();
-        this.proxy = new HttpProxy(pool);
+                .build();
+        this.proxy = new HttpProxyBuilder(pool)
+                .build();
     }
 
     public Api(String url, String username, String password, boolean insecure) throws MalformedURLException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-            .insecure(insecure)
-            .build();
-        this.proxy = new HttpProxy(pool);
+                .build();
+        this.proxy = new HttpProxyBuilder(pool)
+                .insecure(insecure)
+                .build();
     }
 
-    public Api(String url, String username, String password, String ca_file, boolean filter) throws MalformedURLException {
+    public Api(String url, String username, String password, String ca_file, boolean filter)
+            throws MalformedURLException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-            .ca_file(ca_file)
-            .filter(filter)
-            .build();
-        this.proxy = new HttpProxy(pool);
+                .ca_file(ca_file)
+                .build();
+        this.proxy = new HttpProxyBuilder(pool)
+                .filter(filter)
+                .build();
     }
 
     public Api(String url, String username, String password, String key_file,
@@ -54,16 +59,22 @@ public class Api {
               Boolean persistent_auth, Boolean insecure, Boolean filter, Boolean debug) throws MalformedURLException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-            .key_file(key_file)
-            .cert_file(cert_file)
-            .ca_file(ca_file)
-            .port(port)
-            .timeout(timeout)
-            .persistent_auth(persistent_auth)
-            .insecure(insecure)
-            .filter(filter).debug(debug)
-            .build();
-        this.proxy = new HttpProxy(pool);
+                .key_file(key_file)
+                .cert_file(cert_file)
+                .ca_file(ca_file)
+                .port(port)
+                .timeout(timeout)
+                .build();
+        this.proxy = new HttpProxyBuilder(pool)
+                .persistent_auth(persistent_auth)
+                .insecure(insecure)
+                .filter(filter)
+                .debug(debug)
+                .build();
+    }
+
+    public void setFilter(boolean filter) {
+        this.proxy.setFilter(filter);
     }
 
     public HttpProxy getProxy() {

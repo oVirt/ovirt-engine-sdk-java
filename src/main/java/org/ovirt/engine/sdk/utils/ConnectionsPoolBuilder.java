@@ -53,10 +53,6 @@ public class ConnectionsPoolBuilder {
     private String ca_file;
     private int port = -1;
     private int timeout = -1;
-    private boolean persistent_auth = true;
-    private boolean insecure = false;
-    private boolean filter = false;
-    private boolean debug = false;
 
     private URL urlobj = null;
 
@@ -107,29 +103,8 @@ public class ConnectionsPoolBuilder {
         return this;
     }
 
-    public ConnectionsPoolBuilder persistent_auth(boolean persistent_auth) {
-        this.persistent_auth = persistent_auth;
-        return this;
-    }
-
-    public ConnectionsPoolBuilder insecure(boolean insecure) {
-        this.insecure = insecure;
-        return this;
-    }
-
-    public ConnectionsPoolBuilder filter(boolean filter) {
-        this.filter = filter;
-        return this;
-    }
-
-    public ConnectionsPoolBuilder debug(boolean debug) {
-        this.debug = debug;
-        return this;
-    }
-
     private DefaultHttpClient createDefaultHttpClient(String url, String username, String password, String key_file,
-            String cert_file, String ca_file, Integer port, Integer timeout,
-            Boolean persistent_auth, Boolean insecure, Boolean filter, Boolean debug) {
+            String cert_file, String ca_file, Integer port, Integer timeout) {
 
         DefaultHttpClient client =
                 new DefaultHttpClient(createPoolingClientConnectionManager(url, port));
@@ -199,7 +174,6 @@ public class ConnectionsPoolBuilder {
 
     public ConnectionsPool build() {
         return new ConnectionsPool(createDefaultHttpClient(url, username, password, key_file,
-                cert_file, ca_file, port, timeout,
-                persistent_auth, insecure, filter, debug));
+                cert_file, ca_file, port, timeout));
     }
 }
