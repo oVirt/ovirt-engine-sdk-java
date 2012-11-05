@@ -31,12 +31,16 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
+import org.ovirt.engine.sdk.web.IdleConnectionMonitorThread;
 
 public class ConnectionsPoolBuilder {
 
     private static int MAX_CONNECTIONS = 20;
     private static int MAX_CONNECTIONS_PER_HOST = 50;
     private static int MAX_CONNECTIONS_PER_ROUTE = 5;
+
+    private static long WAIT_IDLE_CHECK_TTL = 5000;
+    private static long WAIT_IDLE_CLOSE_TTL = 30;
 
     private static String HTTP_PROTOCOL = "http";
     private static String HTTPS_PROTOCOL = "https";
@@ -149,6 +153,8 @@ public class ConnectionsPoolBuilder {
         cm.setMaxPerRoute(new HttpRoute(new HttpHost(getHost(url),
                                                      getPort(url, port))),
                          MAX_CONNECTIONS_PER_HOST);
+
+        new IdleConnectionMonitorThread(cm, WAIT_IDLE_CHECK_TTL, WAIT_IDLE_CLOSE_TTL).start();
 
         return cm;
     }
