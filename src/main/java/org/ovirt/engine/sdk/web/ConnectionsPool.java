@@ -36,6 +36,7 @@ import org.apache.http.protocol.HttpContext;
 
 public class ConnectionsPool {
     DefaultHttpClient client = null;
+    private static int MAX_RETRY_REQUEST = 5;
 
     public ConnectionsPool(DefaultHttpClient client) {
         this.client = client;
@@ -58,7 +59,7 @@ public class ConnectionsPool {
                     IOException exception,
                     int executionCount,
                     HttpContext context) {
-                if (executionCount >= 5) {
+                if (executionCount >= MAX_RETRY_REQUEST) {
                     // Do not retry if over max retry count
                     return false;
                 }

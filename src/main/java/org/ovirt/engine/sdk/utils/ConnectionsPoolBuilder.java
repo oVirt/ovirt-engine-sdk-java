@@ -138,7 +138,7 @@ public class ConnectionsPoolBuilder {
                 new AuthScope(getHost(url), getPort(url, port)),
                 new UsernamePasswordCredentials(username, password));
 
-        // FIXME: use all params
+        // FIXME: use all .ctr params
 
         return client;
     }
