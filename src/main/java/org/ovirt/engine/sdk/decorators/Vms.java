@@ -39,5 +39,4 @@ public class Vms {
         String url = "/vms/" + id;
         return this.proxy.get(url);
     }
-
 }

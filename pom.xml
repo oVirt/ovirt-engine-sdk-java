@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ovirt.engine.sdk</groupId>
-	<artifactId>java-sdk</artifactId>
+	<artifactId>ovirt-java-sdk</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>java-sdk</name>
-	<description>This is Java SDK for RHEVM</description>
+	<version>1.0.0.1-SNAPSHOT</version>
+	<name>ovirt-java-sdk</name>
+	<description>This is Java SDK for oVirt virtualization</description>
 	<organization>
 		<name>oVirt</name>
 		<url>www.ovirt.org</url>
@@ -18,7 +18,6 @@
 		<junit.version>4.8.1</junit.version>
 		<findbugs.version>2.5.1</findbugs.version>
 		<test-jar.plugin.version>2.2</test-jar.plugin.version>
-		<mockito.version>1.8.5</mockito.version>
 		<javassist.version>3.12.0.GA</javassist.version>
 		<log4j.version>1.2.16</log4j.version>
 		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>

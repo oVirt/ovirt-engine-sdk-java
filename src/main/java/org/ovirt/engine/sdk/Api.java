@@ -41,8 +41,7 @@ public class Api {
                 .build();
         this.proxy = new HttpProxyBuilder(pool)
                 .build();
-        this.entryPoint = getEntryPoint();
-        initResources();
+        this.initResources();
     }
 
     public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
@@ -53,7 +52,6 @@ public class Api {
         this.proxy = new HttpProxyBuilder(pool)
                 .insecure(insecure)
                 .build();
-        this.entryPoint = getEntryPoint();
         initResources();
     }
 
@@ -66,7 +64,6 @@ public class Api {
         this.proxy = new HttpProxyBuilder(pool)
                 .filter(filter)
                 .build();
-        this.entryPoint = getEntryPoint();
         initResources();
     }
 
@@ -88,13 +85,12 @@ public class Api {
                 .filter(filter)
                 .debug(debug)
                 .build();
-        this.entryPoint = getEntryPoint();
         initResources();
     }
 
     private String getEntryPoint() throws ClientProtocolException, RequestException, IOException,
             UnsecuredConnectionAttemptError {
-        String entryPoint = this.proxy.get("/api");
+        String entryPoint = this.proxy.getRootResource();
         // TODO: return type should be API
         if (!entryPoint.equals("")) {
             return entryPoint;
@@ -106,7 +102,9 @@ public class Api {
         this.proxy.setFilter(filter);
     }
 
-    private void initResources() {
+    private void initResources() throws ClientProtocolException, RequestException, UnsecuredConnectionAttemptError,
+            IOException {
+        this.entryPoint = getEntryPoint();
         this.vms = new Vms(this.proxy);
     }
 

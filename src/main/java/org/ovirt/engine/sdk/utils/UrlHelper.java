@@ -42,4 +42,8 @@ public class UrlHelper {
     public URL getUrl() {
         return url;
     }
+
+    public String getRoot() {
+        return root;
+    }
 }

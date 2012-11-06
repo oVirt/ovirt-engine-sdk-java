@@ -171,6 +171,11 @@ public class HttpProxy {
         return execute(httpost, headers, null);
     }
 
+    public String getRootResource()
+            throws IOException, ClientProtocolException, RequestException {
+        return get(this.urlHelper.getRoot(), null);
+    }
+
     public String get(String url)
             throws IOException, ClientProtocolException, RequestException {
         return get(url, null);
@@ -213,5 +218,13 @@ public class HttpProxy {
 
     public void setDebug(boolean debug) {
         this.debug = debug;
+    }
+
+    /*
+     * When HttpClient instance is no longer needed, shut down the connection manager to ensure immediate deallocation
+     * of all system resources.
+     */
+    public void shutdown() {
+        this.pool.getConnectionManager().shutdown();
     }
 }
