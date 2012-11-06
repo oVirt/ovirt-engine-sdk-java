@@ -174,6 +174,7 @@ public class ConnectionsPoolBuilder {
 
     public ConnectionsPool build() {
         return new ConnectionsPool(createDefaultHttpClient(url, username, password, key_file,
-                cert_file, ca_file, port, timeout));
+                                        cert_file, ca_file, port, timeout),
+                                   this.urlobj);
     }
 }

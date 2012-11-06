@@ -22,7 +22,7 @@ import org.ovirt.engine.sdk.web.HttpProxy;
 public class HttpProxyBuilder {
 
     private ConnectionsPool pool;
-    private boolean persistent_auth = true;
+    private boolean persistentAuth = true;
     private boolean insecure = false;
     private boolean filter = false;
     private boolean debug = false;
@@ -32,8 +32,8 @@ public class HttpProxyBuilder {
         this.pool = pool;
     }
 
-    public HttpProxyBuilder persistent_auth(boolean persistent_auth) {
-        this.persistent_auth = persistent_auth;
+    public HttpProxyBuilder persistentAuth(boolean persistentAuth) {
+        this.persistentAuth = persistentAuth;
         return this;
     }
 
@@ -53,6 +53,6 @@ public class HttpProxyBuilder {
     }
 
     public HttpProxy build() {
-        return new HttpProxy(pool, persistent_auth, insecure, filter, debug);
+        return new HttpProxy(pool, persistentAuth, insecure, filter, debug);
     }
 }

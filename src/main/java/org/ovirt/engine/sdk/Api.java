@@ -16,35 +16,49 @@
 
 package org.ovirt.engine.sdk;
 
-import java.net.MalformedURLException;
+import java.io.IOException;
+
+import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.decorators.Vms;
+import org.ovirt.engine.sdk.exceptions.RequestException;
+import org.ovirt.engine.sdk.exceptions.UnsecuredConnectionAttemptError;
 import org.ovirt.engine.sdk.utils.ConnectionsPoolBuilder;
 import org.ovirt.engine.sdk.utils.HttpProxyBuilder;
 
 public class Api {
 
     private HttpProxy proxy = null;
+    private Object entryPoint = null;
 
-    public Api(String url, String username, String password) throws MalformedURLException {
+    private Vms vms;
+
+    public Api(String url, String username, String password) throws ClientProtocolException, RequestException,
+            IOException, UnsecuredConnectionAttemptError {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .build();
         this.proxy = new HttpProxyBuilder(pool)
                 .build();
+        this.entryPoint = getEntryPoint();
+        initResources();
     }
 
-    public Api(String url, String username, String password, boolean insecure) throws MalformedURLException {
+    public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
+            RequestException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .build();
         this.proxy = new HttpProxyBuilder(pool)
                 .insecure(insecure)
                 .build();
+        this.entryPoint = getEntryPoint();
+        initResources();
     }
 
     public Api(String url, String username, String password, String ca_file, boolean filter)
-            throws MalformedURLException {
+            throws ClientProtocolException, RequestException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .ca_file(ca_file)
@@ -52,11 +66,14 @@ public class Api {
         this.proxy = new HttpProxyBuilder(pool)
                 .filter(filter)
                 .build();
+        this.entryPoint = getEntryPoint();
+        initResources();
     }
 
     public Api(String url, String username, String password, String key_file,
               String cert_file, String ca_file, Integer port, Integer timeout,
-              Boolean persistent_auth, Boolean insecure, Boolean filter, Boolean debug) throws MalformedURLException {
+              Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
+            RequestException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .key_file(key_file)
@@ -66,18 +83,34 @@ public class Api {
                 .timeout(timeout)
                 .build();
         this.proxy = new HttpProxyBuilder(pool)
-                .persistent_auth(persistent_auth)
+                .persistentAuth(persistentAuth)
                 .insecure(insecure)
                 .filter(filter)
                 .debug(debug)
                 .build();
+        this.entryPoint = getEntryPoint();
+        initResources();
+    }
+
+    private String getEntryPoint() throws ClientProtocolException, RequestException, IOException,
+            UnsecuredConnectionAttemptError {
+        String entryPoint = this.proxy.get("/api");
+        // TODO: return type should be API
+        if (!entryPoint.equals("")) {
+            return entryPoint;
+        }
+        throw new UnsecuredConnectionAttemptError();
     }
 
     public void setFilter(boolean filter) {
         this.proxy.setFilter(filter);
     }
 
-    public HttpProxy getProxy() {
-        return this.proxy;
+    private void initResources() {
+        this.vms = new Vms(this.proxy);
+    }
+
+    public Vms getVms() {
+        return vms;
     }
 }

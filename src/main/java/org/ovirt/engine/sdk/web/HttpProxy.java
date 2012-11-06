@@ -33,34 +33,44 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.util.EntityUtils;
 import org.ovirt.engine.sdk.exceptions.RequestException;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 
 public class HttpProxy {
 
     private static int BAD_REQUEST = 400;
+    private static String STATIC_HEADERS = "Content-type:application/xml";
+    private static String PERSISTENT_AUTH_HEADER = "Prefer:persistent-auth";
 
     private ConnectionsPool pool;
     private Map<String, String> staticHeaders;
-    private boolean persistent_auth = true;
+    private boolean persistentAuth = true;
     private boolean insecure = false;
     private boolean filter = false;
     private boolean debug = false;
+    private UrlHelper urlHelper;
 
     public HttpProxy(ConnectionsPool pool, boolean persistent_auth, boolean insecure,
             boolean filter, boolean debug) {
         super();
         this.pool = pool;
         this.staticHeaders = createStaticHeaders();
-        this.persistent_auth = persistent_auth;
+        this.persistentAuth = persistent_auth;
         this.insecure = insecure;
         this.filter = filter;
         this.debug = debug;
+        this.urlHelper = new UrlHelper(pool.getUrl());
     }
 
     private Map<String, String> createStaticHeaders() {
         return new HashMap<String, String>() {
             private static final long serialVersionUID = -3309952775559222863L;
             {
-                put("Content-type", "application/xml");
+                for (String header : STATIC_HEADERS.split(";")) {
+                    String[] kv = header.split(":");
+                    if (kv.length == 2) {
+                        put(kv[0], kv[1]);
+                    }
+                }
             }
         };
     }
@@ -81,6 +91,9 @@ public class HttpProxy {
                 return null;
             }
         }
+
+        // TODO: format exception to include BE error and http status
+
         throw new RequestException(response.getStatusLine().getReasonPhrase());
     }
 
@@ -107,7 +120,7 @@ public class HttpProxy {
     public String update(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, RequestException {
 
-        HttpPut httpput = new HttpPut(url);
+        HttpPut httpput = new HttpPut(this.urlHelper.combine(url));
         HttpEntity httpentity = new StringEntity(entity);
         httpput.setEntity(httpentity);
         return execute(httpput, headers, null);
@@ -131,7 +144,7 @@ public class HttpProxy {
     public String add(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, RequestException {
 
-        HttpPost httpost = new HttpPost(url);
+        HttpPost httpost = new HttpPost(this.urlHelper.combine(url));
         HttpEntity httpentity = new StringEntity(entity);
         httpost.setEntity(httpentity);
         return execute(httpost, headers, null);
@@ -150,7 +163,7 @@ public class HttpProxy {
     public String delete(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, RequestException {
 
-        HttpPost httpost = new HttpPost(url);
+        HttpPost httpost = new HttpPost(this.urlHelper.combine(url));
         if (!entity.equals(null)) {
             HttpEntity httpentity = new StringEntity(entity);
             httpost.setEntity(httpentity);
@@ -166,16 +179,16 @@ public class HttpProxy {
     public String get(String url, List<Header> headers)
             throws IOException, ClientProtocolException, RequestException {
 
-        HttpGet httpget = new HttpGet(url);
+        HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
         return execute(httpget, headers, null);
     }
 
-    public boolean isPersistent_auth() {
-        return persistent_auth;
+    public boolean isPersistentAuth() {
+        return persistentAuth;
     }
 
-    public void setPersistent_auth(boolean persistent_auth) {
-        this.persistent_auth = persistent_auth;
+    public void setPersistentAuth(boolean persistent_auth) {
+        this.persistentAuth = persistent_auth;
     }
 
     public boolean isInsecure() {

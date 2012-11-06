@@ -19,6 +19,7 @@ package org.ovirt.engine.sdk.web;
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.ConnectException;
+import java.net.URL;
 import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLException;
@@ -35,11 +36,15 @@ import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
 
 public class ConnectionsPool {
-    DefaultHttpClient client = null;
+
     private static int MAX_RETRY_REQUEST = 5;
 
-    public ConnectionsPool(DefaultHttpClient client) {
+    DefaultHttpClient client = null;
+    URL url = null;
+
+    public ConnectionsPool(DefaultHttpClient client, URL url) {
         this.client = client;
+        this.url = url;
         injectHttpRequestRetryHandler(this.client);
     }
 
@@ -91,5 +96,9 @@ public class ConnectionsPool {
         };
 
         httpclient.setHttpRequestRetryHandler(myRetryHandler);
+    }
+
+    public URL getUrl() {
+        return url;
     }
 }

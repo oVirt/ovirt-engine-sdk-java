@@ -14,9 +14,30 @@
 // limitations under the License.
 //
 
-
 package org.ovirt.engine.sdk.decorators;
 
+import java.io.IOException;
+
+import org.apache.http.client.ClientProtocolException;
+import org.ovirt.engine.sdk.exceptions.RequestException;
+import org.ovirt.engine.sdk.web.HttpProxy;
+
 public class Vms {
+
+    private HttpProxy proxy;
+
+    public Vms(HttpProxy proxy) {
+        this.proxy = proxy;
+    }
+
+    public Object list() throws ClientProtocolException, RequestException, IOException {
+        String url = "/vms";
+        return this.proxy.get(url);
+    }
+
+    public Object get(String id) throws ClientProtocolException, RequestException, IOException {
+        String url = "/vms/" + id;
+        return this.proxy.get(url);
+    }
 
 }
