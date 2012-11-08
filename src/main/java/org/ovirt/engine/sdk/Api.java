@@ -18,7 +18,11 @@ package org.ovirt.engine.sdk;
 
 import java.io.IOException;
 
+import javax.xml.bind.JAXBException;
+
 import org.apache.http.client.ClientProtocolException;
+import org.ovirt.engine.api.model.API;
+import org.ovirt.engine.api.model.ProductInfo;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.HttpProxy;
 import org.ovirt.engine.sdk.decorators.Vms;
@@ -26,16 +30,17 @@ import org.ovirt.engine.sdk.exceptions.RequestException;
 import org.ovirt.engine.sdk.exceptions.UnsecuredConnectionAttemptError;
 import org.ovirt.engine.sdk.utils.ConnectionsPoolBuilder;
 import org.ovirt.engine.sdk.utils.HttpProxyBuilder;
+import org.ovirt.engine.sdk.utils.SerializationHelper;
 
 public class Api {
 
     private HttpProxy proxy = null;
-    private Object entryPoint = null;
+    private API entryPoint = null;
 
     private Vms vms;
 
     public Api(String url, String username, String password) throws ClientProtocolException, RequestException,
-            IOException, UnsecuredConnectionAttemptError {
+            IOException, UnsecuredConnectionAttemptError, JAXBException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .build();
@@ -45,7 +50,7 @@ public class Api {
     }
 
     public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
-            RequestException, UnsecuredConnectionAttemptError, IOException {
+            RequestException, UnsecuredConnectionAttemptError, IOException, JAXBException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .build();
@@ -56,7 +61,8 @@ public class Api {
     }
 
     public Api(String url, String username, String password, String ca_file, boolean filter)
-            throws ClientProtocolException, RequestException, UnsecuredConnectionAttemptError, IOException {
+            throws ClientProtocolException, RequestException, UnsecuredConnectionAttemptError, IOException,
+            JAXBException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .ca_file(ca_file)
@@ -70,7 +76,7 @@ public class Api {
     public Api(String url, String username, String password, String key_file,
               String cert_file, String ca_file, Integer port, Integer timeout,
               Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
-            RequestException, UnsecuredConnectionAttemptError, IOException {
+            RequestException, UnsecuredConnectionAttemptError, IOException, JAXBException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .key_file(key_file)
@@ -88,12 +94,11 @@ public class Api {
         initResources();
     }
 
-    private String getEntryPoint() throws ClientProtocolException, RequestException, IOException,
-            UnsecuredConnectionAttemptError {
-        String entryPoint = this.proxy.getRootResource();
-        // TODO: return type should be API
-        if (!entryPoint.equals("")) {
-            return entryPoint;
+    private API getEntryPoint() throws ClientProtocolException, RequestException, IOException,
+            UnsecuredConnectionAttemptError, JAXBException {
+        String entryPointXML = this.proxy.getRootResource();
+        if (!entryPointXML.equals("")) {
+            return SerializationHelper.unmarshall(API.class, entryPointXML);
         }
         throw new UnsecuredConnectionAttemptError();
     }
@@ -103,12 +108,19 @@ public class Api {
     }
 
     private void initResources() throws ClientProtocolException, RequestException, UnsecuredConnectionAttemptError,
-            IOException {
+            IOException, JAXBException {
         this.entryPoint = getEntryPoint();
         this.vms = new Vms(this.proxy);
     }
 
     public Vms getVms() {
         return vms;
+    }
+
+    public ProductInfo getProductInfo() {
+        if (!entryPoint.equals(null)) {
+            return this.entryPoint.getProductInfo();
+        }
+        return null;
     }
 }

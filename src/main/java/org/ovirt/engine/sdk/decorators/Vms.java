@@ -17,12 +17,18 @@
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
+import org.ovirt.engine.api.model.VM;
+import org.ovirt.engine.api.model.VMs;
+import org.ovirt.engine.sdk.common.AbstractBackendCollection;
 import org.ovirt.engine.sdk.exceptions.RequestException;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
-public class Vms {
+public class Vms extends AbstractBackendCollection<VM, VMs> {
 
     private HttpProxy proxy;
 
@@ -30,13 +36,17 @@ public class Vms {
         this.proxy = proxy;
     }
 
-    public Object list() throws ClientProtocolException, RequestException, IOException {
+    @Override
+    public List<VM> list() throws ClientProtocolException, RequestException, IOException, JAXBException {
         String url = "/vms";
-        return this.proxy.get(url);
+        String xml = this.proxy.get(url);
+        return unmarshallCollection(VMs.class, xml);
     }
 
-    public Object get(String id) throws ClientProtocolException, RequestException, IOException {
+    @Override
+    public VM get(String id) throws ClientProtocolException, RequestException, IOException, JAXBException {
         String url = "/vms/" + id;
-        return this.proxy.get(url);
+        String xml = this.proxy.get(url);
+        return unmarshallResource(VM.class, xml);
     }
 }
