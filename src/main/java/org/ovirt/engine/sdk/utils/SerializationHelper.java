@@ -71,18 +71,24 @@ public class SerializationHelper {
     private static class JAXBContextHolder {
         Unmarshaller unmarshaller;
         Marshaller marshaller;
+        JAXBContext context;
 
-        public JAXBContextHolder(JAXBContext context) throws JAXBException {
-            marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            unmarshaller = context.createUnmarshaller();
+        public JAXBContextHolder(JAXBContext context) {
+            this.context = context;
         }
 
-        public Unmarshaller getUnmarshaller() {
+        public synchronized Unmarshaller getUnmarshaller() throws JAXBException {
+            if (unmarshaller == null) {
+                unmarshaller = this.context.createUnmarshaller();
+            }
             return unmarshaller;
         }
 
-        public Marshaller getMarshaller() {
+        public synchronized Marshaller getMarshaller() throws JAXBException {
+            if (marshaller == null) {
+                marshaller = context.createMarshaller();
+                marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            }
             return marshaller;
         }
     }

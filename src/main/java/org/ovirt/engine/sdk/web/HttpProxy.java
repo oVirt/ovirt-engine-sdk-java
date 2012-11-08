@@ -128,7 +128,7 @@ public class HttpProxy {
 
     public String action(String url, String entity)
             throws IOException, ClientProtocolException, RequestException {
-        return action(url, entity);
+        return add(url, entity);
     }
 
     public String action(String url, String entity, List<Header> headers)

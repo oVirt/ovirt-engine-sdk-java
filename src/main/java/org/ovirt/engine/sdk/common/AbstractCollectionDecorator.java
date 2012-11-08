@@ -18,27 +18,48 @@ package org.ovirt.engine.sdk.common;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
 import org.ovirt.engine.api.model.BaseResource;
 import org.ovirt.engine.api.model.BaseResources;
+import org.ovirt.engine.sdk.utils.Mapper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
+import org.ovirt.engine.sdk.web.HttpProxy;
 
-public abstract class AbstractBackendCollection<R extends BaseResource, Q extends BaseResources> {
+public abstract class AbstractCollectionDecorator<R extends BaseResource, Q extends BaseResources, Z extends R>
+        extends AbstractDecorator {
 
-    abstract public List<R> list() throws Exception;
+    private HttpProxy proxy;
 
-    abstract public R get(String id) throws Exception;
-
-    protected List<R> unmarshallCollection(Class<Q> clz, String xml) throws JAXBException {
-        Q collection = SerializationHelper.unmarshall(clz, xml);
-        return fetchCollection(collection);
+    public AbstractCollectionDecorator(HttpProxy proxy) {
+        super();
+        this.proxy = proxy;
     }
 
-    protected R unmarshallResource(Class<R> clz, String xml) throws JAXBException {
-        return SerializationHelper.unmarshall(clz, xml);
+    abstract public List<Z> list() throws Exception;
+
+    abstract public Z get(String id) throws Exception;
+
+    protected List<Z> unmarshallCollection(Class<Q> from, Class<Z> to, String xml) throws JAXBException {
+        List<Z> toColl = new ArrayList<Z>();
+        Q collection = SerializationHelper.unmarshall(from, xml);
+        List<R> fromColl = fetchCollection(collection);
+        if (fromColl != null && !fromColl.isEmpty()) {
+            for (R res : fromColl) {
+                toColl.add(Mapper.map(res, to, getProxy()));
+            }
+        }
+
+        return toColl;
+    }
+
+    protected Z unmarshallResource(Class<R> from, Class<Z> to, String xml) throws JAXBException {
+        R res = SerializationHelper.unmarshall(from, xml);
+        return Mapper.map(res, to, getProxy());
+        // return Mapper.map(from, to, xml, getProxy());
     }
 
     @SuppressWarnings("unchecked")
@@ -61,5 +82,9 @@ public abstract class AbstractBackendCollection<R extends BaseResource, Q extend
             }
         }
         return null;
+    }
+
+    public HttpProxy getProxy() {
+        return proxy;
     }
 }

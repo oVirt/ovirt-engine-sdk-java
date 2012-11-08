@@ -17,32 +17,29 @@
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.common.AbstractCollectionDecorator;
+import org.ovirt.engine.api.model.VM;
 import org.ovirt.engine.sdk.exceptions.RequestException;
+import org.ovirt.engine.sdk.utils.Mapper;
+import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
-public class Vms extends AbstractCollectionDecorator<org.ovirt.engine.api.model.VM, org.ovirt.engine.api.model.VMs, Vm> {
+public class Vm extends VM {
 
-    public Vms(HttpProxy proxy) {
-        super(proxy);
+    HttpProxy proxy;
+
+    public Vm(HttpProxy proxy) {
+        this.proxy = proxy;
     }
 
-    @Override
-    public List<Vm> list() throws ClientProtocolException, RequestException, IOException, JAXBException {
-        String url = "/vms";
-        String xml = getProxy().get(url);
-        return unmarshallCollection(org.ovirt.engine.api.model.VMs.class, Vm.class, xml);
-    }
+    public Vm start(VM holder) throws ClientProtocolException, RequestException, IOException, JAXBException {
+        String url = this.getHref() + "/start";
+        String xmlReq = SerializationHelper.marshall(VM.class, holder);
+        String xmlRes = this.proxy.action(url, xmlReq);
 
-    @Override
-    public Vm get(String id) throws ClientProtocolException, RequestException, IOException, JAXBException {
-        String url = "/vms/" + id;
-        String xml = getProxy().get(url);
-        return unmarshallResource(org.ovirt.engine.api.model.VM.class, Vm.class, xml);
+        return Mapper.map(org.ovirt.engine.api.model.VM.class, Vm.class, xmlRes, this.proxy);
     }
 }
