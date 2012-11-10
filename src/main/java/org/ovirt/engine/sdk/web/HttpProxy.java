@@ -350,8 +350,8 @@ public class HttpProxy {
         return persistentAuth;
     }
 
-    public void setPersistentAuth(boolean persistent_auth) {
-        this.persistentAuth = persistent_auth;
+    public void setPersistentAuth(boolean persistentAuth) {
+        this.persistentAuth = persistentAuth;
     }
 
     public boolean isInsecure() {

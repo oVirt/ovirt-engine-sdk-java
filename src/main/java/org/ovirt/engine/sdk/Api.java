@@ -186,8 +186,14 @@ public class Api {
         throw new UnsecuredConnectionAttemptError();
     }
 
+    private void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
+            IOException, JAXBException {
+        this.entryPoint = getEntryPoint();
+        this.vms = new Vms(this.proxy);
+    }
+
     /**
-     * Sets filter property
+     * Enable/Disable client permissions based filtering (default is False)
      * 
      * @param filter
      */
@@ -195,10 +201,31 @@ public class Api {
         this.proxy.setFilter(filter);
     }
 
-    private void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
-            IOException, JAXBException {
-        this.entryPoint = getEntryPoint();
-        this.vms = new Vms(this.proxy);
+    /**
+     * Enable/Disable debug mode (default is False)
+     * 
+     * @param debug
+     */
+    public void setDebug(boolean debug) {
+        this.proxy.setDebug(debug);
+    }
+
+    /**
+     * Enable/Disable accessing SSL sites without validating host identity (default is False)
+     * 
+     * @param insecure
+     */
+    public void setInsecure(boolean insecure) {
+        this.proxy.setInsecure(insecure);
+    }
+
+    /**
+     * Enable/Disable persistent authentication (default is True)
+     * 
+     * @param persistentAuth
+     */
+    public void setPersistentAuth(boolean persistentAuth) {
+        this.proxy.setPersistentAuth(persistentAuth);
     }
 
     /**
@@ -209,6 +236,8 @@ public class Api {
     public Vms getVms() {
         return vms;
     }
+
+    // TODO: add all root collections
 
     /**
      * Returns oVirt API product info
@@ -221,4 +250,6 @@ public class Api {
         }
         return null;
     }
+
+    // TODO: add all getX() root resources properties
 }
