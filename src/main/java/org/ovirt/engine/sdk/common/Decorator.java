@@ -16,6 +16,22 @@
 
 package org.ovirt.engine.sdk.common;
 
-public abstract class AbstractDecorator {
+import org.ovirt.engine.sdk.web.HttpProxy;
 
+public abstract class Decorator {
+    private HttpProxy proxy;
+
+    public Decorator(HttpProxy proxy) {
+        super();
+        this.proxy = proxy;
+    }
+
+    /**
+     * Returns HttpProxy in to oVirt API
+     * 
+     * @return HttpProxy
+     */
+    protected HttpProxy getProxy() {
+        return proxy;
+    }
 }

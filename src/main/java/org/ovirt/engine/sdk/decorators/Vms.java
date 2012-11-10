@@ -22,11 +22,11 @@ import java.util.List;
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.common.AbstractCollectionDecorator;
+import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
-public class Vms extends AbstractCollectionDecorator<org.ovirt.engine.api.model.VM, org.ovirt.engine.api.model.VMs, Vm> {
+public class Vms extends CollectionDecorator<org.ovirt.engine.api.model.VM, org.ovirt.engine.api.model.VMs, Vm> {
 
     public Vms(HttpProxy proxy) {
         super(proxy);

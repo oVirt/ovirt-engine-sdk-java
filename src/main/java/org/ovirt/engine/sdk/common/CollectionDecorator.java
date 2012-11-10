@@ -31,19 +31,17 @@ import org.ovirt.engine.sdk.utils.Mapper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
-public abstract class AbstractCollectionDecorator<R extends BaseResource, Q extends BaseResources, Z extends R>
-        extends AbstractDecorator {
-
-    private HttpProxy proxy;
+public abstract class CollectionDecorator<R extends BaseResource, Q extends BaseResources, Z extends R>
+        extends Decorator {
 
     /**
+     * CollectionDecorator
      * 
      * @param proxy
      *            HttpProxy proxy
      */
-    public AbstractCollectionDecorator(HttpProxy proxy) {
-        super();
-        this.proxy = proxy;
+    public CollectionDecorator(HttpProxy proxy) {
+        super(proxy);
     }
 
     /**
@@ -144,14 +142,5 @@ public abstract class AbstractCollectionDecorator<R extends BaseResource, Q exte
             }
         }
         return null;
-    }
-
-    /**
-     * Returns HttpProxy
-     * 
-     * @return HttpProxy
-     */
-    public HttpProxy getProxy() {
-        return proxy;
     }
 }

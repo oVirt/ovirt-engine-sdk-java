@@ -18,16 +18,15 @@ package org.ovirt.engine.sdk.common;
 
 import org.ovirt.engine.sdk.web.HttpProxy;
 
-public abstract class AbstractResourceDecorator<Q> extends AbstractDecorator {
+public abstract class ResourceDecorator<Q> extends Decorator {
 
-    private HttpProxy proxy;
-
-    public AbstractResourceDecorator(HttpProxy proxy) {
-        super();
-        this.proxy = proxy;
-    }
-
-    public HttpProxy getProxy() {
-        return proxy;
+    /**
+     * ResourceDecorator
+     * 
+     * @param proxy
+     *            HttpProxy proxy
+     */
+    public ResourceDecorator(HttpProxy proxy) {
+        super(proxy);
     }
 }
