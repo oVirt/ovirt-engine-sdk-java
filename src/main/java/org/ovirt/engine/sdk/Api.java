@@ -179,7 +179,7 @@ public class Api {
 
     private API getEntryPoint() throws ClientProtocolException, ServerException, IOException,
             UnsecuredConnectionAttemptError, JAXBException {
-        String entryPointXML = this.proxy.getRootResource();
+        String entryPointXML = this.proxy.get(this.proxy.getRoot());
         if (entryPointXML != null && !entryPointXML.equals("")) {
             return SerializationHelper.unmarshall(API.class, entryPointXML);
         }

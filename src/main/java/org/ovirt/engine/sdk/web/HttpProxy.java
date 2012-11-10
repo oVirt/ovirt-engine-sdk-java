@@ -302,15 +302,10 @@ public class HttpProxy {
     }
 
     /**
-     * @return oVirt API root resource
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
+     * @return oVirt API root resource URL
      */
-    public String getRootResource()
-            throws IOException, ClientProtocolException, ServerException {
-        return get(this.urlHelper.getRoot(), null);
+    public String getRoot() {
+        return this.urlHelper.getRoot();
     }
 
     /**
