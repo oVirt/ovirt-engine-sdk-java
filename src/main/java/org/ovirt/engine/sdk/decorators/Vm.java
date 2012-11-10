@@ -39,7 +39,7 @@ public class Vm extends VM {
     public Vm start(Action holder) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
         String xmlReq = SerializationHelper.marshall(Action.class, holder);
-        String xmlRes = this.proxy.action(url, xmlReq.toLowerCase());
+        String xmlRes = this.proxy.action(url, xmlReq);
 
         return Mapper.map(org.ovirt.engine.api.model.VM.class, Vm.class, xmlRes, this.proxy);
     }

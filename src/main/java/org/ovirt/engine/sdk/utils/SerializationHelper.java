@@ -59,7 +59,7 @@ public class SerializationHelper {
      * @throws JAXBException
      */
     public static <S> String marshall(Class<S> clz, S obj) throws JAXBException {
-        return marshall(new JAXBElement<S>(new QName("", clz.getSimpleName()), clz, null, obj));
+        return marshall(new JAXBElement<S>(new QName("", clz.getSimpleName().toLowerCase()), clz, null, obj));
     }
 
     private static <S> void marshall(OutputStream os, JAXBElement<S> element) throws JAXBException {
