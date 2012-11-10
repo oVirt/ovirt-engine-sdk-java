@@ -17,7 +17,6 @@
 package org.ovirt.engine.sdk.web;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,21 +24,23 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.util.EntityUtils;
-import org.ovirt.engine.sdk.exceptions.RequestException;
+import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.ConversionHelper;
+import org.ovirt.engine.sdk.utils.HttpResponseHelper;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 
 public class HttpProxy {
 
     private static int BAD_REQUEST = 400;
     private static String STATIC_HEADERS = "Content-type:application/xml";
-    private static String PERSISTENT_AUTH_HEADER = "Prefer:persistent-auth";
+    // private static String PERSISTENT_AUTH_HEADER = "Prefer:persistent-auth";
 
     private ConnectionsPool pool;
     private Map<String, String> staticHeaders;
@@ -53,7 +54,7 @@ public class HttpProxy {
             boolean filter, boolean debug) {
         super();
         this.pool = pool;
-        this.staticHeaders = createStaticHeaders();
+        this.staticHeaders = ConversionHelper.toMap(STATIC_HEADERS);
         this.persistentAuth = persistent_auth;
         this.insecure = insecure;
         this.filter = filter;
@@ -61,22 +62,8 @@ public class HttpProxy {
         this.urlHelper = new UrlHelper(pool.getUrl());
     }
 
-    private Map<String, String> createStaticHeaders() {
-        return new HashMap<String, String>() {
-            private static final long serialVersionUID = -3309952775559222863L;
-            {
-                for (String header : STATIC_HEADERS.split(";")) {
-                    String[] kv = header.split(":");
-                    if (kv.length == 2) {
-                        put(kv[0], kv[1]);
-                    }
-                }
-            }
-        };
-    }
-
     private String execute(HttpUriRequest request, List<Header> headers, Boolean last)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
 
         injectHeaders(request, headers);
         HttpResponse response = this.pool.execute(request, new BasicHttpContext());
@@ -84,17 +71,10 @@ public class HttpProxy {
         // TODO: save cookie
 
         if (response.getStatusLine().getStatusCode() < BAD_REQUEST) {
-            HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                return EntityUtils.toString(entity);
-            } else {
-                return null;
-            }
+            return HttpResponseHelper.getEntity(response.getEntity());
         }
 
-        // TODO: format exception to include BE error and http status
-
-        throw new RequestException(response.getStatusLine().getReasonPhrase());
+        throw new ServerException(response);
     }
 
     private void injectHeaders(HttpUriRequest request, List<Header> headers) {
@@ -108,17 +88,17 @@ public class HttpProxy {
 
         request.addHeader("Filter", Boolean.toString(isFilter()));
 
-        // TODO: fetch + inject cookie in to headers
+        // TODO: fetch + inject JSESSIONID cookie in to headers
         // TODO: inject dynamic headers
     }
 
     public String update(String url, String entity)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
         return update(url, null);
     }
 
     public String update(String url, String entity, List<Header> headers)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
 
         HttpPut httpput = new HttpPut(this.urlHelper.combine(url));
         HttpEntity httpentity = new StringEntity(entity);
@@ -127,22 +107,22 @@ public class HttpProxy {
     }
 
     public String action(String url, String entity)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
         return add(url, entity);
     }
 
     public String action(String url, String entity, List<Header> headers)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
         return add(url, entity, headers);
     }
 
     public String add(String url, String entity)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
         return add(url, entity, null);
     }
 
     public String add(String url, String entity, List<Header> headers)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
 
         HttpPost httpost = new HttpPost(this.urlHelper.combine(url));
         HttpEntity httpentity = new StringEntity(entity);
@@ -151,38 +131,39 @@ public class HttpProxy {
     }
 
     public String delete(String url)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
         return delete(url, null, null);
     }
 
     public String delete(String url, String entity)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
         return delete(url, entity, null);
     }
 
     public String delete(String url, String entity, List<Header> headers)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
 
-        HttpPost httpost = new HttpPost(this.urlHelper.combine(url));
-        if (!entity.equals(null)) {
-            HttpEntity httpentity = new StringEntity(entity);
-            httpost.setEntity(httpentity);
+        HttpDelete httdelete = new HttpDelete(this.urlHelper.combine(url));
+        if (entity != null) {
+            // HttpEntity httpentity = new StringEntity(entity);
+            // TODO: inject entity to DELETE request
+            // httdelete.setEntity(httpentity);
         }
-        return execute(httpost, headers, null);
+        return execute(httdelete, headers, null);
     }
 
     public String getRootResource()
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
         return get(this.urlHelper.getRoot(), null);
     }
 
     public String get(String url)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
         return get(url, null);
     }
 
     public String get(String url, List<Header> headers)
-            throws IOException, ClientProtocolException, RequestException {
+            throws IOException, ClientProtocolException, ServerException {
 
         HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
         return execute(httpget, headers, null);

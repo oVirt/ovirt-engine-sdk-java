@@ -14,12 +14,13 @@
 // limitations under the License.
 //
 
-package org.ovirt.engine.sdk.exceptions;
+package org.ovirt.engine.sdk.utils;
 
-public class OvirtSdkException extends Exception {
-    private static final long serialVersionUID = -5983358219123325129L;
-
-    public OvirtSdkException(String message) {
-        super(message);
+public class StringUtils {
+    public static String removeBrackets(String txt) {
+        if (txt != null & txt.startsWith("[") && txt.endsWith("]")) {
+            return txt.substring(1, txt.length() - 2);
+        }
+        return txt;
     }
 }

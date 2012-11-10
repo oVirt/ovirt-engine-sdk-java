@@ -33,15 +33,27 @@ public class Mapper {
     public static synchronized <F, T> T map(F from, Class<T> to, HttpProxy proxy) {
         T dstobj = null;
         try {
-            dstobj = (T) getConstracor(to).newInstance(proxy);
+            if (proxy != null) {
+                dstobj = (T) getConstracor(to).newInstance(proxy);
+            } else {
+                dstobj = to.newInstance();
+            }
+
             for (Field f : ArrayUtils.concat(from.getClass().getSuperclass().getDeclaredFields(),
                                              from.getClass().getDeclaredFields())) {
                 if (!Arrays.asList(MAPPING_EXCEPTIONS).contains(f.getName())) {
-                    Field dstField;
+                    Field dstField = null;
                     try {
                         dstField = dstobj.getClass().getSuperclass().getDeclaredField(f.getName());
                     } catch (NoSuchFieldException e) {
-                        dstField = dstobj.getClass().getSuperclass().getSuperclass().getDeclaredField(f.getName());
+                        Class<?> superclass = dstobj.getClass().getSuperclass().getSuperclass();
+                        if (superclass != null) {
+                            try {
+                                dstField = superclass.getDeclaredField(f.getName());
+                            } catch (NoSuchFieldException e1) {
+                                continue;
+                            }
+                        }
                     }
                     if (dstField != null) {
                         setFieldContent(dstField.getName(),
@@ -69,12 +81,13 @@ public class Mapper {
         } catch (NoSuchMethodException e) {
             // TODO: log error
             e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            // TODO: log error
-            e.printStackTrace();
         }
 
         return dstobj;
+    }
+
+    public static synchronized <F, T> T map(F from, Class<T> to) {
+        return Mapper.map(from, to, null);
     }
 
     private static <T> Object setFieldContent(String name, T to, Object content, Class<?> typ) {

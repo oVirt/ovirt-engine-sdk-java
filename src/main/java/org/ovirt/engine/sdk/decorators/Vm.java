@@ -21,8 +21,9 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
+import org.ovirt.engine.api.model.Action;
 import org.ovirt.engine.api.model.VM;
-import org.ovirt.engine.sdk.exceptions.RequestException;
+import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.Mapper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxy;
@@ -35,10 +36,17 @@ public class Vm extends VM {
         this.proxy = proxy;
     }
 
-    public Vm start(VM holder) throws ClientProtocolException, RequestException, IOException, JAXBException {
+    public Vm start(Action holder) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
-        String xmlReq = SerializationHelper.marshall(VM.class, holder);
-        String xmlRes = this.proxy.action(url, xmlReq);
+        String xmlReq = SerializationHelper.marshall(Action.class, holder);
+        String xmlRes = this.proxy.action(url, xmlReq.toLowerCase());
+
+        return Mapper.map(org.ovirt.engine.api.model.VM.class, Vm.class, xmlRes, this.proxy);
+    }
+
+    public Vm delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        String xmlRes = this.proxy.delete(url);
 
         return Mapper.map(org.ovirt.engine.api.model.VM.class, Vm.class, xmlRes, this.proxy);
     }

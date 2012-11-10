@@ -16,7 +16,6 @@
 
 package org.ovirt.engine.sdk.common;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,13 +68,7 @@ public abstract class AbstractCollectionDecorator<R extends BaseResource, Q exte
             if (m.getName().startsWith("get") && m.getReturnType().equals(List.class)) {
                 try {
                     return (List<R>) m.invoke(collection);
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                    // TODO: log exception
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    // TODO: log exception
-                } catch (InvocationTargetException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     // TODO: log exception
                 }

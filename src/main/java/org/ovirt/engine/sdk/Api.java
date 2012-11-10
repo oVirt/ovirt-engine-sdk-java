@@ -26,7 +26,7 @@ import org.ovirt.engine.api.model.ProductInfo;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.HttpProxy;
 import org.ovirt.engine.sdk.decorators.Vms;
-import org.ovirt.engine.sdk.exceptions.RequestException;
+import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.exceptions.UnsecuredConnectionAttemptError;
 import org.ovirt.engine.sdk.utils.ConnectionsPoolBuilder;
 import org.ovirt.engine.sdk.utils.HttpProxyBuilder;
@@ -39,7 +39,7 @@ public class Api {
 
     private Vms vms;
 
-    public Api(String url, String username, String password) throws ClientProtocolException, RequestException,
+    public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError, JAXBException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
@@ -50,7 +50,7 @@ public class Api {
     }
 
     public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
-            RequestException, UnsecuredConnectionAttemptError, IOException, JAXBException {
+            ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .build();
@@ -61,7 +61,7 @@ public class Api {
     }
 
     public Api(String url, String username, String password, String ca_file, boolean filter)
-            throws ClientProtocolException, RequestException, UnsecuredConnectionAttemptError, IOException,
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException,
             JAXBException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
@@ -76,7 +76,7 @@ public class Api {
     public Api(String url, String username, String password, String key_file,
               String cert_file, String ca_file, Integer port, Integer timeout,
               Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
-            RequestException, UnsecuredConnectionAttemptError, IOException, JAXBException {
+            ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .key_file(key_file)
@@ -94,10 +94,10 @@ public class Api {
         initResources();
     }
 
-    private API getEntryPoint() throws ClientProtocolException, RequestException, IOException,
+    private API getEntryPoint() throws ClientProtocolException, ServerException, IOException,
             UnsecuredConnectionAttemptError, JAXBException {
         String entryPointXML = this.proxy.getRootResource();
-        if (!entryPointXML.equals("")) {
+        if (entryPointXML != null && !entryPointXML.equals("")) {
             return SerializationHelper.unmarshall(API.class, entryPointXML);
         }
         throw new UnsecuredConnectionAttemptError();
@@ -107,7 +107,7 @@ public class Api {
         this.proxy.setFilter(filter);
     }
 
-    private void initResources() throws ClientProtocolException, RequestException, UnsecuredConnectionAttemptError,
+    private void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
             IOException, JAXBException {
         this.entryPoint = getEntryPoint();
         this.vms = new Vms(this.proxy);

@@ -23,7 +23,7 @@ import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.AbstractCollectionDecorator;
-import org.ovirt.engine.sdk.exceptions.RequestException;
+import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
 public class Vms extends AbstractCollectionDecorator<org.ovirt.engine.api.model.VM, org.ovirt.engine.api.model.VMs, Vm> {
@@ -33,14 +33,14 @@ public class Vms extends AbstractCollectionDecorator<org.ovirt.engine.api.model.
     }
 
     @Override
-    public List<Vm> list() throws ClientProtocolException, RequestException, IOException, JAXBException {
+    public List<Vm> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = "/vms";
         String xml = getProxy().get(url);
         return unmarshallCollection(org.ovirt.engine.api.model.VMs.class, Vm.class, xml);
     }
 
     @Override
-    public Vm get(String id) throws ClientProtocolException, RequestException, IOException, JAXBException {
+    public Vm get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = "/vms/" + id;
         String xml = getProxy().get(url);
         return unmarshallResource(org.ovirt.engine.api.model.VM.class, Vm.class, xml);
