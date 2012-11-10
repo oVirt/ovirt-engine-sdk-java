@@ -30,6 +30,10 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
 
+/**
+ * Provides serialization services.
+ * 
+ */
 public class SerializationHelper {
     private final static Map<Class<?>, JAXBContextHolder> contexts = new HashMap<Class<?>, JAXBContextHolder>();
 
@@ -42,6 +46,18 @@ public class SerializationHelper {
         return new String(baos.toByteArray());
     }
 
+    /**
+     * Marshalls object to XML
+     * 
+     * @param clz
+     *            Actual object class
+     * @param obj
+     *            Resource to marshall
+     * 
+     * @return XML string
+     * 
+     * @throws JAXBException
+     */
     public static <S> String marshall(Class<S> clz, S obj) throws JAXBException {
         return marshall(new JAXBElement<S>(new QName("", clz.getSimpleName()), clz, null, obj));
     }
@@ -53,6 +69,18 @@ public class SerializationHelper {
         }
     }
 
+    /**
+     * Unmarshall object from the XML string
+     * 
+     * @param clz
+     *            class to unmarshall to
+     * @param xml
+     *            string to unmarshall from
+     * 
+     * @return S
+     * 
+     * @throws JAXBException
+     */
     public static <S> S unmarshall(Class<S> clz, String xml) throws JAXBException {
         Unmarshaller unmarshaller = getContext(clz).getUnmarshaller();
         synchronized (unmarshaller) {

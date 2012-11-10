@@ -33,6 +33,9 @@ import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.IdleConnectionMonitorThread;
 
+/**
+ * Provides ConnectionsPool building services
+ */
 public class ConnectionsPoolBuilder {
 
     private static int MAX_CONNECTIONS = 20;
@@ -56,48 +59,93 @@ public class ConnectionsPoolBuilder {
 
     private URL urlobj = null;
 
+    /**
+     * @param url
+     *            oVirt API url
+     * @param username
+     *            oVirt API user name
+     * @param password
+     *            oVirt API password
+     * 
+     * @throws MalformedURLException
+     */
     public ConnectionsPoolBuilder(String url, String username, String password) throws MalformedURLException {
         url(url);
         username(username);
         password(password);
     }
 
+    /**
+     * 
+     * @param url
+     *            oVirt API url
+     * 
+     * @throws MalformedURLException
+     */
     private ConnectionsPoolBuilder url(String url) throws MalformedURLException {
         this.url = url;
         this.urlobj = createURL(url);
         return this;
     }
 
+    /**
+     * @param username
+     *            oVirt API user name
+     */
     private ConnectionsPoolBuilder username(String username) {
         this.username = username;
         return this;
     }
 
+    /**
+     * @param password
+     *            oVirt API password
+     */
     private ConnectionsPoolBuilder password(String password) {
         this.password = password;
         return this;
     }
 
+    /**
+     * @param key_file
+     *            client key
+     */
     public ConnectionsPoolBuilder key_file(String key_file) {
         this.key_file = key_file;
         return this;
     }
 
+    /**
+     * @param cert_file
+     *            client cert file
+     */
     public ConnectionsPoolBuilder cert_file(String cert_file) {
         this.cert_file = cert_file;
         return this;
     }
 
+    /**
+     * @param ca_file
+     *            server CA cert.
+     */
     public ConnectionsPoolBuilder ca_file(String ca_file) {
         this.ca_file = ca_file;
         return this;
     }
 
+    /**
+     * @param port
+     *            oVirt API port
+     */
     public ConnectionsPoolBuilder port(int port) {
         this.port = port;
         return this;
     }
 
+    /**
+     * @param timeout
+     *            request timeout
+     */
     public ConnectionsPoolBuilder timeout(int timeout) {
         this.timeout = timeout;
         return this;
@@ -164,6 +212,9 @@ public class ConnectionsPoolBuilder {
         return this.urlobj.getProtocol();
     }
 
+    /**
+     * @return entry point URI
+     */
     public String getUrl() {
         return this.url.toString();
     }
@@ -172,6 +223,11 @@ public class ConnectionsPoolBuilder {
         return new URL(url);
     }
 
+    /**
+     * Builds ConnectionPool
+     * 
+     * @return ConnectionsPool
+     */
     public ConnectionsPool build() {
         return new ConnectionsPool(createDefaultHttpClient(url, username, password, key_file,
                                         cert_file, ca_file, port, timeout),

@@ -18,7 +18,20 @@ package org.ovirt.engine.sdk.utils;
 
 import java.util.Arrays;
 
+/**
+ * Provides array services
+ */
 public class ArrayUtils {
+    /**
+     * Concats two arrays in to one
+     * 
+     * @param first
+     *            array
+     * @param second
+     *            array
+     * 
+     * @return unified array
+     */
     public static <T> T[] concat(T[] first, T[] second) {
         T[] result = Arrays.copyOf(first, first.length + second.length);
         System.arraycopy(second, 0, result, first.length, second.length);

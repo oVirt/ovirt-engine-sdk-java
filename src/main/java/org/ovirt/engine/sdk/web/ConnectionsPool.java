@@ -35,6 +35,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
 
+/**
+ * HTTP Connections Pool manager
+ */
 public class ConnectionsPool {
 
     private static int MAX_RETRY_REQUEST = 5;
@@ -42,17 +45,40 @@ public class ConnectionsPool {
     DefaultHttpClient client = null;
     URL url = null;
 
+    /**
+     * 
+     * @param client
+     *            DefaultHttpClient
+     * @param url
+     *            oVirt API url
+     */
     public ConnectionsPool(DefaultHttpClient client, URL url) {
         this.client = client;
         this.url = url;
         injectHttpRequestRetryHandler(this.client);
     }
 
+    /**
+     * Executes HTTP request
+     * 
+     * @param request
+     *            HttpUriRequest
+     * @param context
+     *            HttpContext
+     * 
+     * @return HTTP request response
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     */
     public HttpResponse execute(HttpUriRequest request, HttpContext context)
             throws IOException, ClientProtocolException {
         return this.client.execute(request, context);
     }
 
+    /**
+     * @return ConnectionManager
+     */
     public ClientConnectionManager getConnectionManager() {
         return this.client.getConnectionManager();
     }
@@ -98,6 +124,9 @@ public class ConnectionsPool {
         httpclient.setHttpRequestRetryHandler(myRetryHandler);
     }
 
+    /**
+     * @return oVirt API url
+     */
     public URL getUrl() {
         return url;
     }

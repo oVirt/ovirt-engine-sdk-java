@@ -17,6 +17,14 @@
 package org.ovirt.engine.sdk.utils;
 
 public class StringUtils {
+    /**
+     * Removes trailing and leading brackets from the string
+     * 
+     * @param txt
+     *            input string
+     * 
+     * @return string
+     */
     public static String removeBrackets(String txt) {
         if (txt != null & txt.startsWith("[") && txt.endsWith("]")) {
             return txt.substring(1, txt.length() - 2);

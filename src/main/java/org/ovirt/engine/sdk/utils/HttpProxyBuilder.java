@@ -19,6 +19,9 @@ package org.ovirt.engine.sdk.utils;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
+/**
+ * Provides HttpProxy building services
+ */
 public class HttpProxyBuilder {
 
     private ConnectionsPool pool;
@@ -27,31 +30,54 @@ public class HttpProxyBuilder {
     private boolean filter = false;
     private boolean debug = false;
 
+    /**
+     * @param pool
+     *            ConnectionsPool pool
+     */
     public HttpProxyBuilder(ConnectionsPool pool) {
         super();
         this.pool = pool;
     }
 
+    /**
+     * @param persistentAuth
+     *            persistent authentication flag
+     */
     public HttpProxyBuilder persistentAuth(boolean persistentAuth) {
         this.persistentAuth = persistentAuth;
         return this;
     }
 
+    /**
+     * @param insecure
+     *            flag
+     */
     public HttpProxyBuilder insecure(boolean insecure) {
         this.insecure = insecure;
         return this;
     }
 
+    /**
+     * @param filter
+     *            flag
+     */
     public HttpProxyBuilder filter(boolean filter) {
         this.filter = filter;
         return this;
     }
 
+    /**
+     * @param debug
+     *            flag
+     */
     public HttpProxyBuilder debug(boolean debug) {
         this.debug = debug;
         return this;
     }
 
+    /**
+     * builds the proxy
+     */
     public HttpProxy build() {
         return new HttpProxy(pool, persistentAuth, insecure, filter, debug);
     }

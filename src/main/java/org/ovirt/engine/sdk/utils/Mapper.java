@@ -26,9 +26,24 @@ import javax.xml.bind.JAXBException;
 
 import org.ovirt.engine.sdk.web.HttpProxy;
 
+/**
+ * Provides model2decorator mapping services
+ */
 public class Mapper {
     private static String[] MAPPING_EXCEPTIONS = new String[] { "links", "actions" };
 
+    /**
+     * Maps model object to defined decorator
+     * 
+     * @param from
+     *            model object
+     * @param to
+     *            decorator object
+     * @param proxy
+     *            HttpProxy to inject
+     * 
+     * @return Decorator instance
+     */
     @SuppressWarnings("unchecked")
     public static synchronized <F, T> T map(F from, Class<T> to, HttpProxy proxy) {
         T dstobj = null;
@@ -86,6 +101,16 @@ public class Mapper {
         return dstobj;
     }
 
+    /**
+     * Maps model object to defined decorator
+     * 
+     * @param from
+     *            model object
+     * @param to
+     *            decorator object
+     * 
+     * @return Decorator instance
+     */
     public static synchronized <F, T> T map(F from, Class<T> to) {
         return Mapper.map(from, to, null);
     }
@@ -160,6 +185,20 @@ public class Mapper {
         throw new NoSuchMethodException("HttpProxy");
     }
 
+    /**
+     * Maps model object to defined decorator
+     * 
+     * @param from
+     *            model object
+     * @param to
+     *            decorator object
+     * @param xml
+     *            string to unmarshall
+     * @param proxy
+     *            HttpProxy to inject
+     * 
+     * @return Decorator instance
+     */
     public static <R, Z> Z map(Class<R> from, Class<Z> to, String xml, HttpProxy proxy) throws JAXBException {
         R res = SerializationHelper.unmarshall(from, xml);
         return Mapper.map(res, to, proxy);

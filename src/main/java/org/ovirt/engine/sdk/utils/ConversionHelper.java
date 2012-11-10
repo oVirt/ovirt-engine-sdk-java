@@ -19,6 +19,9 @@ package org.ovirt.engine.sdk.utils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Provides entity2entity conversion services
+ */
 public class ConversionHelper {
 
     /**

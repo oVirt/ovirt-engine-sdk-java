@@ -32,6 +32,14 @@ public class UrlHelper {
         this.effectiveUri = url.toString().replace(this.root, "");
     }
 
+    /**
+     * Combines offset path in to FQ resource identifier
+     * 
+     * @param path
+     *            offset patch
+     * 
+     * @return FQ resource identifier
+     */
     public String combine(String path) {
         if (path.startsWith(this.root)) {
             return this.effectiveUri + path;
@@ -39,10 +47,20 @@ public class UrlHelper {
         return this.effectiveUri + SLASH + this.root + path;
     }
 
+    /**
+     * Returns FQ URL
+     * 
+     * @return URL
+     */
     public URL getUrl() {
         return url;
     }
 
+    /**
+     * Returns server root resource
+     * 
+     * @return String
+     */
     public String getRoot() {
         return root;
     }

@@ -19,6 +19,9 @@ package org.ovirt.engine.sdk.web;
 import java.util.concurrent.TimeUnit;
 import org.apache.http.conn.ClientConnectionManager;
 
+/**
+ * Connections watch dog, used to closes idle connections
+ */
 public class IdleConnectionMonitorThread extends Thread {
 
     private final ClientConnectionManager connMgr;
@@ -26,6 +29,15 @@ public class IdleConnectionMonitorThread extends Thread {
     long wait_ttl;
     long close_ttl;
 
+    /**
+     * 
+     * @param connMgr
+     *            ClientConnectionManager to watch at
+     * @param wait_ttl
+     *            work cycle
+     * @param close_ttl
+     *            close ttl
+     */
     public IdleConnectionMonitorThread(ClientConnectionManager connMgr, long wait_ttl, long close_ttl) {
         super();
         this.connMgr = connMgr;

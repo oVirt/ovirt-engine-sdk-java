@@ -33,12 +33,29 @@ import org.ovirt.engine.sdk.utils.HttpProxyBuilder;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 
 public class Api {
+    /**
+     * oVirt SDK proxy
+     */
 
     private HttpProxy proxy = null;
     private API entryPoint = null;
 
     private Vms vms;
 
+    /**
+     * @param url
+     *            oVirt api url
+     * @param username
+     *            oVirt api username
+     * @param password
+     *            oVirt api password
+     * @throws ClientProtocolException
+     * @throws ServerException
+     *             oVirt api error
+     * @throws IOException
+     * @throws UnsecuredConnectionAttemptError
+     * @throws JAXBException
+     */
     public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError, JAXBException {
 
@@ -49,6 +66,22 @@ public class Api {
         this.initResources();
     }
 
+    /**
+     * @param url
+     *            oVirt api url
+     * @param username
+     *            oVirt api username
+     * @param password
+     *            oVirt api password
+     * @param insecure
+     *            do not throw error when accessing SSL sites without certificate
+     * @throws ClientProtocolException
+     * @throws ServerException
+     *             oVirt api error
+     * @throws UnsecuredConnectionAttemptError
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
 
@@ -60,6 +93,24 @@ public class Api {
         initResources();
     }
 
+    /**
+     * @param url
+     *            oVirt api url
+     * @param username
+     *            oVirt api username
+     * @param password
+     *            oVirt api password
+     * @param ca_file
+     *            CA certificate to validate the server identity
+     * @param filter
+     *            enables filtering based on user's permissions
+     * @throws ClientProtocolException
+     * @throws ServerException
+     *             oVirt api error
+     * @throws UnsecuredConnectionAttemptError
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Api(String url, String username, String password, String ca_file, boolean filter)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException,
             JAXBException {
@@ -73,6 +124,38 @@ public class Api {
         initResources();
     }
 
+    /**
+     * @param url
+     *            oVirt api url
+     * @param username
+     *            oVirt api username
+     * @param password
+     *            oVirt api password
+     * @param key_file
+     *            user key file to validate client identity
+     * @param cert_file
+     *            user certificate file to validate client identity
+     * @param ca_file
+     *            CA certificate to validate the server identity
+     * @param port
+     *            oVirt api port
+     * @param timeout
+     *            request timeout
+     * @param persistentAuth
+     *            disable persistent authetication (will be used auth. per request)
+     * @param insecure
+     *            do not throw error when accessing SSL sites without certificate
+     * @param filter
+     *            enables filtering based on user's permissions
+     * @param debug
+     *            enables debug mode
+     * @throws ClientProtocolException
+     * @throws ServerException
+     *             oVirt api error
+     * @throws UnsecuredConnectionAttemptError
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Api(String url, String username, String password, String key_file,
               String cert_file, String ca_file, Integer port, Integer timeout,
               Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
@@ -103,6 +186,11 @@ public class Api {
         throw new UnsecuredConnectionAttemptError();
     }
 
+    /**
+     * Sets filter property
+     * 
+     * @param filter
+     */
     public void setFilter(boolean filter) {
         this.proxy.setFilter(filter);
     }
@@ -113,10 +201,20 @@ public class Api {
         this.vms = new Vms(this.proxy);
     }
 
+    /**
+     * Returns collection of vms
+     * 
+     * @return Vms
+     */
     public Vms getVms() {
         return vms;
     }
 
+    /**
+     * Returns oVirt API product info
+     * 
+     * @return ProductInfo
+     */
     public ProductInfo getProductInfo() {
         if (!entryPoint.equals(null)) {
             return this.entryPoint.getProductInfo();

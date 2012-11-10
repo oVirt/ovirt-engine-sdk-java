@@ -27,6 +27,9 @@ import org.ovirt.engine.sdk.utils.HttpResponseHelper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.utils.StringUtils;
 
+/**
+ * Thrown when server reports error
+ */
 public class ServerException extends OvirtSdkException {
     private static final long serialVersionUID = 3286777099419639787L;
 
@@ -37,6 +40,10 @@ public class ServerException extends OvirtSdkException {
     private String reason;
     private String detail;
 
+    /**
+     * @param response
+     *            HttpResponse response
+     */
     public ServerException(HttpResponse response) {
         super(response.getStatusLine().getReasonPhrase());
 
@@ -94,14 +101,29 @@ public class ServerException extends OvirtSdkException {
         return detail;
     }
 
+    /**
+     * HTTP response code
+     * 
+     * @return int
+     */
     public int getCode() {
         return this.code;
     }
 
+    /**
+     * Returns HTTP failure reason
+     * 
+     * @return String
+     */
     public String getReason() {
         return this.reason;
     }
 
+    /**
+     * Returns HTTP failure detail
+     * 
+     * @return String
+     */
     public String getDetail() {
         return this.detail;
     }

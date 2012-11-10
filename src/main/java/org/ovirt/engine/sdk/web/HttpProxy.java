@@ -36,6 +36,9 @@ import org.ovirt.engine.sdk.utils.ConversionHelper;
 import org.ovirt.engine.sdk.utils.HttpResponseHelper;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 
+/**
+ * HttpProxy
+ */
 public class HttpProxy {
 
     private static int BAD_REQUEST = 400;
@@ -50,6 +53,19 @@ public class HttpProxy {
     private boolean debug = false;
     private UrlHelper urlHelper;
 
+    /**
+     * 
+     * @param pool
+     *            ConnectionsPool
+     * @param persistent_auth
+     *            persistent authetication
+     * @param insecure
+     *            flag
+     * @param filter
+     *            flag
+     * @param debug
+     *            flag
+     */
     public HttpProxy(ConnectionsPool pool, boolean persistent_auth, boolean insecure,
             boolean filter, boolean debug) {
         super();
@@ -92,11 +108,41 @@ public class HttpProxy {
         // TODO: inject dynamic headers
     }
 
+    /**
+     * updates resource
+     * 
+     * @param url
+     *            resource url
+     * @param entity
+     *            resource
+     * 
+     * @return updated resource
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String update(String url, String entity)
             throws IOException, ClientProtocolException, ServerException {
         return update(url, null);
     }
 
+    /**
+     * updates resource
+     * 
+     * @param url
+     *            resource url
+     * @param entity
+     *            resource
+     * @param headers
+     *            HttpHeaders to use
+     * 
+     * @return updated resource
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String update(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, ServerException {
 
@@ -106,21 +152,81 @@ public class HttpProxy {
         return execute(httpput, headers, null);
     }
 
+    /**
+     * Performs action on a resource
+     * 
+     * @param url
+     *            resource url
+     * @param entity
+     *            resource
+     * 
+     * @return action response
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String action(String url, String entity)
             throws IOException, ClientProtocolException, ServerException {
         return add(url, entity);
     }
 
+    /**
+     * Performs action on a resource
+     * 
+     * @param url
+     *            resource url
+     * @param entity
+     *            resource
+     * @param headers
+     *            HttpHeaders to use
+     * 
+     * @return action response
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String action(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, ServerException {
         return add(url, entity, headers);
     }
 
+    /**
+     * Adds new resource
+     * 
+     * @param url
+     *            collection url
+     * @param entity
+     *            resource to add
+     * 
+     * @return added resource
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String add(String url, String entity)
             throws IOException, ClientProtocolException, ServerException {
         return add(url, entity, null);
     }
 
+    /**
+     * Adds new resource
+     * 
+     * @param url
+     *            collection url
+     * @param entity
+     *            resource to add
+     * @param headers
+     *            HttpHeaders to use
+     * 
+     * @return added resource
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String add(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, ServerException {
 
@@ -130,15 +236,58 @@ public class HttpProxy {
         return execute(httpost, headers, null);
     }
 
+    /**
+     * Deletes resource
+     * 
+     * @param url
+     *            resource url
+     * 
+     * @return
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String delete(String url)
             throws IOException, ClientProtocolException, ServerException {
         return delete(url, null, null);
     }
 
+    /**
+     * Deletes resource
+     * 
+     * @param url
+     *            resource url
+     * @param entity
+     *            to use
+     * 
+     * @return
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String delete(String url, String entity)
             throws IOException, ClientProtocolException, ServerException {
         return delete(url, entity, null);
     }
+
+    /**
+     * Deletes resource
+     * 
+     * @param url
+     *            resource url
+     * @param entity
+     *            to use
+     * @param headers
+     *            HttpHeaders to use
+     * 
+     * @return
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
 
     public String delete(String url, String entity, List<Header> headers)
             throws IOException, ClientProtocolException, ServerException {
@@ -152,21 +301,54 @@ public class HttpProxy {
         return execute(httdelete, headers, null);
     }
 
+    /**
+     * @return oVirt API root resource
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String getRootResource()
             throws IOException, ClientProtocolException, ServerException {
         return get(this.urlHelper.getRoot(), null);
     }
 
-    public String get(String url)
-            throws IOException, ClientProtocolException, ServerException {
-        return get(url, null);
-    }
-
+    /**
+     * Fetches resource
+     * 
+     * @param url
+     *            resource url
+     * @param headers
+     *            HttpHeaders to use
+     * 
+     * @return resource
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
     public String get(String url, List<Header> headers)
             throws IOException, ClientProtocolException, ServerException {
 
         HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
         return execute(httpget, headers, null);
+    }
+
+    /**
+     * Fetches resource
+     * 
+     * @param url
+     *            resource url
+     * 
+     * @return resource
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
+    public String get(String url)
+            throws IOException, ClientProtocolException, ServerException {
+        return get(url, null);
     }
 
     public boolean isPersistentAuth() {
@@ -201,7 +383,7 @@ public class HttpProxy {
         this.debug = debug;
     }
 
-    /*
+    /**
      * When HttpClient instance is no longer needed, shut down the connection manager to ensure immediate deallocation
      * of all system resources.
      */
