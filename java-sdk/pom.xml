@@ -131,15 +131,6 @@
 	</build>
 	<repositories>
 		<repository>
-			<id>central</id>
-			<name>maven repo1</name>
-			<layout>default</layout>
-			<url>http://repo1.maven.org/maven2</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>jboss-public-repository-group</id>
 			<name>JBoss Public Maven Repository Group</name>
 			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>

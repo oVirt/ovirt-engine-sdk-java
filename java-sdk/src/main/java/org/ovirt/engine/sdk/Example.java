@@ -36,7 +36,8 @@ public class Example {
         Vm vm = api.getVms().get("f409c734-65f2-4d7c-b25b-3e285d8d5a76");
 
         // #3
-        vm.setDescription(vm.getDescription() + "_12345");
+        vm.setDescription("java_sdk_test");
+        @SuppressWarnings("unused")
         Vm newVM = vm.update();
 
         // #4
