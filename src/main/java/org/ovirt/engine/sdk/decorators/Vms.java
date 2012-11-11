@@ -35,14 +35,13 @@ public class Vms extends CollectionDecorator<org.ovirt.engine.api.model.VM, org.
     @Override
     public List<Vm> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = "/vms";
-        String xml = getProxy().get(url);
-        return unmarshallCollection(org.ovirt.engine.api.model.VMs.class, Vm.class, xml);
+        return list(url, org.ovirt.engine.api.model.VMs.class, Vm.class);
     }
 
     @Override
     public Vm get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = "/vms/" + id;
-        String xml = getProxy().get(url);
-        return unmarshallResource(org.ovirt.engine.api.model.VM.class, Vm.class, xml);
+
+        return getProxy().get(url, org.ovirt.engine.api.model.VM.class, Vm.class);
     }
 }

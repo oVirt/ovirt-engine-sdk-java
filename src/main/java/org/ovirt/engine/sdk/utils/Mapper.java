@@ -40,7 +40,7 @@ public class Mapper {
      * @param to
      *            decorator object
      * @param proxy
-     *            HttpProxy to inject
+     *            HttpProxyDecorator to inject
      * 
      * @return Decorator instance
      */
@@ -195,7 +195,7 @@ public class Mapper {
      * @param xml
      *            string to unmarshall
      * @param proxy
-     *            HttpProxy to inject
+     *            HttpProxyDecorator to inject
      * 
      * @return Decorator instance
      */

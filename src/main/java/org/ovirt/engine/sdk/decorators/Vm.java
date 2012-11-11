@@ -25,29 +25,35 @@ import org.ovirt.engine.api.model.Action;
 import org.ovirt.engine.api.model.Response;
 import org.ovirt.engine.api.model.VM;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
 public class Vm extends VM {
 
-    HttpProxy proxy;
+    private HttpProxy proxy;
 
     public Vm(HttpProxy proxy) {
         this.proxy = proxy;
     }
 
+    private HttpProxy getProxy() {
+        return proxy;
+    }
+
     public Action start(Action holder) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
-        String xmlReq = SerializationHelper.marshall(Action.class, holder);
-        String xmlRes = this.proxy.action(url, xmlReq);
 
-        return SerializationHelper.unmarshall(Action.class, xmlRes);
+        return getProxy().action(url, holder, Action.class, Action.class);
     }
 
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
-        String xmlRes = this.proxy.delete(url);
 
-        return SerializationHelper.unmarshall(Response.class, xmlRes);
+        return getProxy().delete(url, Response.class);
+    }
+
+    public Vm update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+
+        return getProxy().update(url, this, VM.class, Vm.class);
     }
 }

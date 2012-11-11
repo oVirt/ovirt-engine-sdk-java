@@ -18,6 +18,12 @@ package org.ovirt.engine.sdk.common;
 
 import org.ovirt.engine.sdk.web.HttpProxy;
 
+/**
+ * ResourceDecorator
+ * 
+ * @param <Q>
+ *            entity type
+ */
 public abstract class ResourceDecorator<Q> extends Decorator {
 
     /**

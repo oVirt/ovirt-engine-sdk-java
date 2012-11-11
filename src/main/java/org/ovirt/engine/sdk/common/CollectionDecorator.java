@@ -23,6 +23,7 @@ import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
+import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.api.model.BaseResource;
 import org.ovirt.engine.api.model.BaseResources;
@@ -31,6 +32,16 @@ import org.ovirt.engine.sdk.utils.Mapper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
+/**
+ * CollectionDecorator
+ * 
+ * @param <R>
+ *            entity type
+ * @param <Q>
+ *            entity collection type
+ * @param <Z>
+ *            decorator type
+ */
 public abstract class CollectionDecorator<R extends BaseResource, Q extends BaseResources, Z extends R>
         extends Decorator {
 
@@ -73,11 +84,23 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      */
     abstract public Z get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException;
 
+    protected List<Z> list(String url, Class<Q> from, Class<Z> to) throws JAXBException,
+            ClientProtocolException, ServerException, IOException {
+        return this.list(url, from, to, null);
+    }
+
+    protected List<Z> list(String url, Class<Q> from, Class<Z> to, List<Header> headers) throws JAXBException,
+            ClientProtocolException, ServerException, IOException {
+        String resXml = getProxy().get(url, headers);
+
+        return unmarshall(from, to, resXml);
+    }
+
     /**
      * Unmarshales collection of items from xml
      * 
      * @param from
-     *            public entity
+     *            model type
      * @param to
      *            decorator type
      * @param xml
@@ -87,10 +110,10 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * 
      * @throws JAXBException
      */
-    protected List<Z> unmarshallCollection(Class<Q> from, Class<Z> to, String xml) throws JAXBException {
+    private List<Z> unmarshall(Class<Q> from, Class<Z> to, String xml) throws JAXBException {
         List<Z> toColl = new ArrayList<Z>();
-        Q collection = SerializationHelper.unmarshall(from, xml);
-        List<R> fromColl = fetchCollection(collection);
+        Q collObj = SerializationHelper.unmarshall(from, xml);
+        List<R> fromColl = fetchCollection(collObj);
         if (fromColl != null && !fromColl.isEmpty()) {
             for (R res : fromColl) {
                 toColl.add(Mapper.map(res, to, getProxy()));
@@ -98,26 +121,6 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
         }
 
         return toColl;
-    }
-
-    /**
-     * Unmarshales a item from xml
-     * 
-     * @param from
-     *            public entity
-     * @param to
-     *            decorator type
-     * @param xml
-     *            string
-     * 
-     * @return Z where Z is a decorator type
-     * 
-     * @throws JAXBException
-     */
-    protected Z unmarshallResource(Class<R> from, Class<Z> to, String xml) throws JAXBException {
-        R res = SerializationHelper.unmarshall(from, xml);
-        return Mapper.map(res, to, getProxy());
-        // return Mapper.map(from, to, xml, getProxy());
     }
 
     /**

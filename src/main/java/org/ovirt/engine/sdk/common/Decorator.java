@@ -18,9 +18,18 @@ package org.ovirt.engine.sdk.common;
 
 import org.ovirt.engine.sdk.web.HttpProxy;
 
+/**
+ * Base Decorator
+ */
 public abstract class Decorator {
     private HttpProxy proxy;
 
+    /**
+     * Base Decorator
+     * 
+     * @param proxy
+     *            HttpProxy proxy
+     */
     public Decorator(HttpProxy proxy) {
         super();
         this.proxy = proxy;
