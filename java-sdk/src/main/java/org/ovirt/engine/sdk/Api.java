@@ -21,11 +21,11 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.api.model.API;
-import org.ovirt.engine.api.model.ProductInfo;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.HttpProxy;
 import org.ovirt.engine.sdk.decorators.Vms;
+import org.ovirt.engine.sdk.entities.API;
+import org.ovirt.engine.sdk.entities.ProductInfo;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.exceptions.UnsecuredConnectionAttemptError;
 import org.ovirt.engine.sdk.utils.ConnectionsPoolBuilder;

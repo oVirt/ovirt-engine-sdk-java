@@ -25,8 +25,8 @@ import javax.xml.bind.JAXBException;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.api.model.BaseResource;
-import org.ovirt.engine.api.model.BaseResources;
+import org.ovirt.engine.sdk.entities.BaseResource;
+import org.ovirt.engine.sdk.entities.BaseResources;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.Mapper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;

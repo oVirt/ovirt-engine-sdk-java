@@ -21,13 +21,12 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.api.model.Action;
-import org.ovirt.engine.api.model.Response;
-import org.ovirt.engine.api.model.VM;
+import org.ovirt.engine.sdk.entities.Action;
+import org.ovirt.engine.sdk.entities.Response;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
-public class Vm extends VM {
+public class Vm extends org.ovirt.engine.sdk.entities.VM {
 
     private HttpProxy proxy;
 
@@ -54,6 +53,6 @@ public class Vm extends VM {
     public Vm update() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
 
-        return getProxy().update(url, this, VM.class, Vm.class);
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, Vm.class);
     }
 }

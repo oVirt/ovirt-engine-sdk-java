@@ -18,9 +18,9 @@ package org.ovirt.engine.sdk;
 
 import java.util.List;
 
-import org.ovirt.engine.api.model.Action;
-import org.ovirt.engine.api.model.VM;
 import org.ovirt.engine.sdk.decorators.Vm;
+import org.ovirt.engine.sdk.entities.Action;
+import org.ovirt.engine.sdk.entities.VM;
 
 public class Example {
     private static final String URL = "http://localhost:8080/api";

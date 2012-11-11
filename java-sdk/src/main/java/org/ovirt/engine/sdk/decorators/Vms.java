@@ -26,7 +26,7 @@ import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
-public class Vms extends CollectionDecorator<org.ovirt.engine.api.model.VM, org.ovirt.engine.api.model.VMs, Vm> {
+public class Vms extends CollectionDecorator<org.ovirt.engine.sdk.entities.VM, org.ovirt.engine.sdk.entities.VMs, Vm> {
 
     public Vms(HttpProxy proxy) {
         super(proxy);
@@ -35,13 +35,13 @@ public class Vms extends CollectionDecorator<org.ovirt.engine.api.model.VM, org.
     @Override
     public List<Vm> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = "/vms";
-        return list(url, org.ovirt.engine.api.model.VMs.class, Vm.class);
+        return list(url, org.ovirt.engine.sdk.entities.VMs.class, Vm.class);
     }
 
     @Override
     public Vm get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = "/vms/" + id;
 
-        return getProxy().get(url, org.ovirt.engine.api.model.VM.class, Vm.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, Vm.class);
     }
 }
