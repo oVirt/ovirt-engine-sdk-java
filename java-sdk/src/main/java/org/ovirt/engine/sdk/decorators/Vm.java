@@ -29,6 +29,7 @@ import org.ovirt.engine.sdk.web.HttpProxy;
 public class Vm extends org.ovirt.engine.sdk.entities.VM {
 
     private HttpProxy proxy;
+    private VmStatistics vmStatistics;
 
     public Vm(HttpProxy proxy) {
         this.proxy = proxy;
@@ -38,21 +39,25 @@ public class Vm extends org.ovirt.engine.sdk.entities.VM {
         return proxy;
     }
 
+    public synchronized VmStatistics getVmStatistics() {
+        if (this.vmStatistics == null) {
+            this.vmStatistics = new VmStatistics(proxy, this.getId());
+        }
+        return vmStatistics;
+    }
+
     public Action start(Action holder) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
-
         return getProxy().action(url, holder, Action.class, Action.class);
     }
 
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
-
         return getProxy().delete(url, Response.class);
     }
 
     public Vm update() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
-
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, Vm.class);
     }
 }

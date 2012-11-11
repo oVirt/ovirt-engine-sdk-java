@@ -26,21 +26,28 @@ import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.web.HttpProxy;
 
-public class Vms extends CollectionDecorator<org.ovirt.engine.sdk.entities.VM, org.ovirt.engine.sdk.entities.VMs, Vm> {
+public class VmStatistics extends CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic, org.ovirt.engine.sdk.entities.Statistics, VmStatistic> {
 
-    public Vms(HttpProxy proxy) {
+    private String parentId;
+
+    public VmStatistics(HttpProxy proxy, String parentId) {
         super(proxy);
+        this.parentId = parentId;
+    }
+
+    private String getParentId() {
+        return parentId;
     }
 
     @Override
-    public List<Vm> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/vms";
-        return list(url, org.ovirt.engine.sdk.entities.VMs.class, Vm.class);
+    public List<VmStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/vms/" + this.getParentId() + "/statistics";
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VmStatistic.class);
     }
 
     @Override
-    public Vm get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/vms/" + id;
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, Vm.class);
+    public VmStatistic get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/vms/" + this.getParentId() + "/statistics/" + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VmStatistic.class);
     }
 }

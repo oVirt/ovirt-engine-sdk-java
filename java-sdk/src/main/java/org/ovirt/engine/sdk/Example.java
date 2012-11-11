@@ -19,6 +19,7 @@ package org.ovirt.engine.sdk;
 import java.util.List;
 
 import org.ovirt.engine.sdk.decorators.Vm;
+import org.ovirt.engine.sdk.decorators.VmStatistic;
 import org.ovirt.engine.sdk.entities.Action;
 import org.ovirt.engine.sdk.entities.VM;
 
@@ -49,6 +50,14 @@ public class Example {
         });
 
         // #5
+        @SuppressWarnings("unused")
+        List<VmStatistic> vmstatistics = vm.getVmStatistics().list();
+
+        // #6
+        @SuppressWarnings("unused")
+        VmStatistic vmstatistic = vm.getVmStatistics().get("5a89a1d2-32be-33f7-a0d1-f8b5bc974ff6");
+
+        // #7
         vm.delete();
     }
 }
