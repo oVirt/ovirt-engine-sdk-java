@@ -36,6 +36,8 @@ import javax.xml.transform.stream.StreamSource;
  */
 public class SerializationHelper {
     private final static Map<Class<?>, JAXBContextHolder> contexts = new HashMap<Class<?>, JAXBContextHolder>();
+    private static String PACKAGE_CONTEXT = "org.ovirt.engine.sdk.entities";
+    private static JAXBContext JAXB_CONTEXT = null;
 
     private SerializationHelper() {
     }
@@ -90,8 +92,11 @@ public class SerializationHelper {
     }
 
     private synchronized static JAXBContextHolder getContext(Class<?> clz) throws JAXBException {
+        if (JAXB_CONTEXT == null) {
+            JAXB_CONTEXT = JAXBContext.newInstance(PACKAGE_CONTEXT);
+        }
         if (!contexts.containsKey(clz)) {
-            contexts.put(clz, new JAXBContextHolder(JAXBContext.newInstance(clz)));
+            contexts.put(clz, new JAXBContextHolder(JAXB_CONTEXT));
         }
         return contexts.get(clz);
     }
@@ -105,14 +110,14 @@ public class SerializationHelper {
             this.context = context;
         }
 
-        public synchronized Unmarshaller getUnmarshaller() throws JAXBException {
+        public Unmarshaller getUnmarshaller() throws JAXBException {
             if (unmarshaller == null) {
                 unmarshaller = this.context.createUnmarshaller();
             }
             return unmarshaller;
         }
 
-        public synchronized Marshaller getMarshaller() throws JAXBException {
+        public Marshaller getMarshaller() throws JAXBException {
             if (marshaller == null) {
                 marshaller = context.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

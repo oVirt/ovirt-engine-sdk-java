@@ -58,7 +58,7 @@ public class Api {
      */
     public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError, JAXBException {
-
+        // FIXME: do not throw ClientProtocolException/JAXBException
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .build();
         this.proxy = new HttpProxyBuilder(pool)
@@ -84,7 +84,7 @@ public class Api {
      */
     public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
-
+        // FIXME: do not throw ClientProtocolException/JAXBException
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .build();
         this.proxy = new HttpProxyBuilder(pool)
@@ -114,7 +114,7 @@ public class Api {
     public Api(String url, String username, String password, String ca_file, boolean filter)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException,
             JAXBException {
-
+        // FIXME: do not throw ClientProtocolException/JAXBException
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .ca_file(ca_file)
                 .build();
@@ -160,7 +160,7 @@ public class Api {
               String cert_file, String ca_file, Integer port, Integer timeout,
               Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
-
+        // FIXME: do not throw ClientProtocolException/JAXBException
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .key_file(key_file)
                 .cert_file(cert_file)
