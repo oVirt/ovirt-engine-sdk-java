@@ -26,6 +26,7 @@ public class VmStatistic extends org.ovirt.engine.sdk.entities.Statistic {
         this.proxy = proxy;
     }
 
+    @SuppressWarnings("unused")
     private HttpProxy getProxy() {
         return proxy;
     }

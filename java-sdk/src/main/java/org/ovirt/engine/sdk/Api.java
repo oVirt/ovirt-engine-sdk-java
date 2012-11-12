@@ -32,10 +32,10 @@ import org.ovirt.engine.sdk.utils.ConnectionsPoolBuilder;
 import org.ovirt.engine.sdk.utils.HttpProxyBuilder;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 
+/**
+ * oVirt virtualization Java SDK
+ */
 public class Api {
-    /**
-     * oVirt SDK proxy
-     */
 
     private HttpProxy proxy = null;
     private API entryPoint = null;
