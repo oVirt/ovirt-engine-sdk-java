@@ -1,6 +1,7 @@
 package org.ovirt.engine.sdk.codegen;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -33,7 +34,7 @@ public class Main {
 
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
 
-    private static final String XSD_NAME = "api.xsd";
+    private static final String SCHEMA_FILE_NAME = "api.xsd";
 
     public static void main(String[] args) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -45,7 +46,13 @@ public class Main {
         // #1 - generate java classes from the schema
         generateEntities(httpProxy);
 
-        // exit
+        // #2 - generate API e.p
+
+        // #3 - generate entities decorators
+
+        // #$ - compile java-sdk
+
+        // #5 - exit
         System.exit(0);
     }
 
@@ -58,10 +65,10 @@ public class Main {
 
         if (isWindows()) {
             xjcOutput = runCommand(WINDOWS_XJC_PATH + " -d " + WINDOWS_ENTITIES_PACKAGE +
-                    " -p " + ENTITIES_PACKAGE + " -extension " + XSD_NAME);
+                    " -p " + ENTITIES_PACKAGE + " -extension -no-header " + SCHEMA_FILE_NAME);
         } else if (isMac() || isUnix() || isSolaris()) {
             xjcOutput = runCommand(NX_XJC_PATH + " -d " + NX_ENTITIES_PACKAGE +
-                    " -p " + ENTITIES_PACKAGE + " -extension " + XSD_NAME);
+                    " -p " + ENTITIES_PACKAGE + " -extension -no-header " + SCHEMA_FILE_NAME);
         } else {
             throw new RuntimeException("unsupported OS.");
         }
@@ -71,13 +78,19 @@ public class Main {
         }
     }
 
-    private static void fetchScema(HttpProxy httpProxy) throws ClientProtocolException, ServerException, IOException,
-            JAXBException {
+    private static void fetchScema(HttpProxy httpProxy) throws ServerException,
+            JAXBException, IOException {
+        PrintWriter out = null;
         String schema = httpProxy.get(SCHEMA_URL);
         if (schema != null && !schema.equals("")) {
-            PrintWriter out = new PrintWriter(XSD_NAME);
-            out.println(schema);
-            out.close();
+            try {
+                out = new PrintWriter(SCHEMA_FILE_NAME);
+                out.println(schema);
+            } finally {
+                if (out != null) {
+                    out.close();
+                }
+            }
         } else {
             throw new RuntimeException("xsd schema download failed.");
         }
@@ -133,5 +146,4 @@ public class Main {
         return (OS.indexOf("sunos") >= 0);
 
     }
-
 }
