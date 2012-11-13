@@ -24,18 +24,18 @@ import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
 import org.ovirt.engine.sdk.entities.Response;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 public class Vm extends org.ovirt.engine.sdk.entities.VM {
 
-    private HttpProxy proxy;
+    private HttpProxyBroker proxy;
     private VmStatistics vmStatistics;
 
-    public Vm(HttpProxy proxy) {
+    public Vm(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
-    private HttpProxy getProxy() {
+    private HttpProxyBroker getProxy() {
         return proxy;
     }
 

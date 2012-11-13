@@ -24,13 +24,13 @@ import javax.xml.bind.JAXBException;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 public class VmStatistics extends CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic, org.ovirt.engine.sdk.entities.Statistics, VmStatistic> {
 
     private String parentId;
 
-    public VmStatistics(HttpProxy proxy, String parentId) {
+    public VmStatistics(HttpProxyBroker proxy, String parentId) {
         super(proxy);
         this.parentId = parentId;
     }

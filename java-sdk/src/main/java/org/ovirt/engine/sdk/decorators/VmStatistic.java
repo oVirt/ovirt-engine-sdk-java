@@ -16,18 +16,18 @@
 
 package org.ovirt.engine.sdk.decorators;
 
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 public class VmStatistic extends org.ovirt.engine.sdk.entities.Statistic {
 
-    private HttpProxy proxy;
+    private HttpProxyBroker proxy;
 
-    public VmStatistic(HttpProxy proxy) {
+    public VmStatistic(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
     @SuppressWarnings("unused")
-    private HttpProxy getProxy() {
+    private HttpProxyBroker getProxy() {
         return proxy;
     }
 }

@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 import javax.xml.bind.JAXBException;
 
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * Provides model2decorator mapping services
@@ -45,7 +45,7 @@ public class Mapper {
      * @return Decorator instance
      */
     @SuppressWarnings("unchecked")
-    public static synchronized <F, T> T map(F from, Class<T> to, HttpProxy proxy) {
+    public static synchronized <F, T> T map(F from, Class<T> to, HttpProxyBroker proxy) {
         T dstobj = null;
         try {
             if (proxy != null) {
@@ -178,11 +178,11 @@ public class Mapper {
     private static <T> Constructor<?> getConstracor(Class<T> to) throws NoSuchMethodException {
         for (Constructor<?> ctr : to.getConstructors()) {
             if (ctr.getParameterTypes().length > 0 &&
-                    ctr.getParameterTypes()[0].equals(HttpProxy.class)) {
+                    ctr.getParameterTypes()[0].equals(HttpProxyBroker.class)) {
                 return ctr;
             }
         }
-        throw new NoSuchMethodException("HttpProxy");
+        throw new NoSuchMethodException("HttpProxyBroker");
     }
 
     /**
@@ -199,7 +199,7 @@ public class Mapper {
      * 
      * @return Decorator instance
      */
-    public static <R, Z> Z map(Class<R> from, Class<Z> to, String xml, HttpProxy proxy) throws JAXBException {
+    public static <R, Z> Z map(Class<R> from, Class<Z> to, String xml, HttpProxyBroker proxy) throws JAXBException {
         R res = SerializationHelper.unmarshall(from, xml);
         return Mapper.map(res, to, proxy);
     }

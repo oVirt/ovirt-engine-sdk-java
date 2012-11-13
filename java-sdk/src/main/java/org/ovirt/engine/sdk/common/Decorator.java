@@ -16,31 +16,31 @@
 
 package org.ovirt.engine.sdk.common;
 
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * Base Decorator
  */
 public abstract class Decorator {
-    private HttpProxy proxy;
+    private HttpProxyBroker proxy;
 
     /**
      * Base Decorator
      * 
      * @param proxy
-     *            HttpProxy proxy
+     *            HttpProxyBroker proxy
      */
-    public Decorator(HttpProxy proxy) {
+    public Decorator(HttpProxyBroker proxy) {
         super();
         this.proxy = proxy;
     }
 
     /**
-     * Returns HttpProxy in to oVirt API
+     * Returns HttpProxyBroker in to oVirt API
      * 
-     * @return HttpProxy
+     * @return HttpProxyBroker
      */
-    protected HttpProxy getProxy() {
+    protected HttpProxyBroker getProxy() {
         return proxy;
     }
 }

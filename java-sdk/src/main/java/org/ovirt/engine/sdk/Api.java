@@ -23,6 +23,7 @@ import javax.xml.bind.JAXBException;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.decorators.Vms;
 import org.ovirt.engine.sdk.entities.API;
 import org.ovirt.engine.sdk.entities.ProductInfo;
@@ -37,7 +38,7 @@ import org.ovirt.engine.sdk.utils.SerializationHelper;
  */
 public class Api {
 
-    private HttpProxy proxy = null;
+    private HttpProxyBroker proxy = null;
     private API entryPoint = null;
 
     private Vms vms;
@@ -58,11 +59,12 @@ public class Api {
      */
     public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError, JAXBException {
+
         // FIXME: do not throw ClientProtocolException/JAXBException
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .build();
-        this.proxy = new HttpProxyBuilder(pool)
-                .build();
+
+        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password).build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool).build();
+        this.proxy = new HttpProxyBroker(httpProxy);
         this.initResources();
     }
 
@@ -84,12 +86,15 @@ public class Api {
      */
     public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
+
         // FIXME: do not throw ClientProtocolException/JAXBException
+
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .build();
-        this.proxy = new HttpProxyBuilder(pool)
-                .insecure(insecure)
-                .build();
+                                 .build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                                 .insecure(insecure)
+                                 .build();
+        this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
     }
 
@@ -114,13 +119,16 @@ public class Api {
     public Api(String url, String username, String password, String ca_file, boolean filter)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException,
             JAXBException {
+
         // FIXME: do not throw ClientProtocolException/JAXBException
+
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .ca_file(ca_file)
-                .build();
-        this.proxy = new HttpProxyBuilder(pool)
-                .filter(filter)
-                .build();
+                                   .ca_file(ca_file)
+                                   .build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                                   .filter(filter)
+                                   .build();
+        this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
     }
 
@@ -160,20 +168,23 @@ public class Api {
               String cert_file, String ca_file, Integer port, Integer timeout,
               Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
+
         // FIXME: do not throw ClientProtocolException/JAXBException
+
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .key_file(key_file)
-                .cert_file(cert_file)
-                .ca_file(ca_file)
-                .port(port)
-                .timeout(timeout)
-                .build();
-        this.proxy = new HttpProxyBuilder(pool)
-                .persistentAuth(persistentAuth)
-                .insecure(insecure)
-                .filter(filter)
-                .debug(debug)
-                .build();
+                                .key_file(key_file)
+                                .cert_file(cert_file)
+                                .ca_file(ca_file)
+                                .port(port)
+                                .timeout(timeout)
+                                .build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                                .persistentAuth(persistentAuth)
+                                .insecure(insecure)
+                                .filter(filter)
+                                .debug(debug)
+                                .build();
+        this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
     }
 
@@ -226,6 +237,34 @@ public class Api {
      */
     public void setPersistentAuth(boolean persistentAuth) {
         this.proxy.setPersistentAuth(persistentAuth);
+    }
+
+    /**
+     * @return persistent authentication flag
+     */
+    public boolean isPersistentAuth() {
+        return this.proxy.isPersistentAuth();
+    }
+
+    /**
+     * @return Insecure flag
+     */
+    public boolean isInsecure() {
+        return this.proxy.isInsecure();
+    }
+
+    /**
+     * @return Filter flag
+     */
+    public boolean isFilter() {
+        return this.proxy.isFilter();
+    }
+
+    /**
+     * @return Debug flag
+     */
+    public boolean isDebug() {
+        return this.proxy.isDebug();
     }
 
     /**

@@ -30,7 +30,7 @@ import org.ovirt.engine.sdk.entities.BaseResources;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.Mapper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * CollectionDecorator
@@ -51,7 +51,7 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @param proxy
      *            HttpProxy proxy
      */
-    public CollectionDecorator(HttpProxy proxy) {
+    public CollectionDecorator(HttpProxyBroker proxy) {
         super(proxy);
     }
 

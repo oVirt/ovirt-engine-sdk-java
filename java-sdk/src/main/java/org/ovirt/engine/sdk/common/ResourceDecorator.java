@@ -16,7 +16,7 @@
 
 package org.ovirt.engine.sdk.common;
 
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * ResourceDecorator
@@ -32,7 +32,7 @@ public abstract class ResourceDecorator<Q> extends Decorator {
      * @param proxy
      *            HttpProxy proxy
      */
-    public ResourceDecorator(HttpProxy proxy) {
+    public ResourceDecorator(HttpProxyBroker proxy) {
         super(proxy);
     }
 }

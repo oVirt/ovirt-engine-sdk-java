@@ -17,28 +17,19 @@
 package org.ovirt.engine.sdk.web;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.protocol.BasicHttpContext;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.ConversionHelper;
 import org.ovirt.engine.sdk.utils.HttpResponseHelper;
-import org.ovirt.engine.sdk.utils.Mapper;
-import org.ovirt.engine.sdk.utils.SerializationHelper;
-import org.ovirt.engine.sdk.utils.UrlHelper;
 
 /**
  * Proxy in to transport layer
@@ -55,7 +46,6 @@ public class HttpProxy {
     private boolean insecure = false;
     private boolean filter = false;
     private boolean debug = false;
-    private UrlHelper urlHelper;
 
     /**
      * 
@@ -79,7 +69,13 @@ public class HttpProxy {
         this.insecure = insecure;
         this.filter = filter;
         this.debug = debug;
-        this.urlHelper = new UrlHelper(pool.getUrl());
+    }
+
+    /**
+     * @return oVirt API url
+     */
+    public URL getUrl() {
+        return pool.getUrl();
     }
 
     /**
@@ -98,7 +94,7 @@ public class HttpProxy {
      * @throws ClientProtocolException
      * @throws ServerException
      */
-    private String execute(HttpUriRequest request, List<Header> headers, Boolean last)
+    public String execute(HttpUriRequest request, List<Header> headers, Boolean last)
             throws IOException, ClientProtocolException, ServerException {
 
         injectHeaders(request, headers);
@@ -125,6 +121,9 @@ public class HttpProxy {
         }
 
         for (String key : this.staticHeaders.keySet()) {
+            if (key.equals("Content-type") && (request instanceof HttpDelete)) {
+                continue;
+            }
             request.addHeader(key, this.staticHeaders.get(key));
         }
 
@@ -132,370 +131,6 @@ public class HttpProxy {
 
         // TODO: fetch + inject JSESSIONID cookie in to headers
         // TODO: inject dynamic headers
-    }
-
-    /**
-     * Unmarshales item from the xml
-     * 
-     * @param from
-     *            entity type
-     * @param to
-     *            decorator type
-     * @param xml
-     *            xml object representation
-     * 
-     * @return decorator
-     * 
-     * @throws JAXBException
-     */
-    private <F, T> T unmarshall(Class<F> from, Class<T> to, String xml) throws JAXBException {
-        F res = SerializationHelper.unmarshall(from, xml);
-        return Mapper.map(res, to, this);
-    }
-
-    /**
-     * updates resource
-     * 
-     * @param url
-     *            resource url
-     * @param entity
-     *            resource
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * 
-     * @return updated resource
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T update(String url, F entity, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return update(url, entity, from, to, null);
-    }
-
-    /**
-     * updates resource
-     * 
-     * @param url
-     *            resource url
-     * @param entity
-     *            resource
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * @param headers
-     *            HTTP headers
-     * 
-     * @return updated resource
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T update(String url, F entity, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-
-        HttpPut httpput = new HttpPut(this.urlHelper.combine(url));
-
-        String xmlReq = SerializationHelper.marshall(from, entity);
-        HttpEntity httpentity = new StringEntity(xmlReq);
-        httpput.setEntity(httpentity);
-
-        String xmlRes = execute(httpput, headers, null);
-        F res = SerializationHelper.unmarshall(from, xmlRes);
-
-        return Mapper.map(res, to, this);
-    }
-
-    /**
-     * Performs action on a resource
-     * 
-     * @param url
-     *            resource url
-     * @param entity
-     *            resource
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * 
-     * @return action response
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T action(String url, F entity, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return add(url, entity, from, to, null);
-    }
-
-    /**
-     * Performs action on a resource
-     * 
-     * @param url
-     *            resource url
-     * @param entity
-     *            resource
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * @param headers
-     *            HTTP headers
-     * 
-     * @return action response
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T action(String url, F entity, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return add(url, entity, from, to, headers);
-    }
-
-    /**
-     * Adds new resource
-     * 
-     * @param url
-     *            collection url
-     * @param entity
-     *            entity to add
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * 
-     * @return added resource
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T add(String url, F entity, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return add(url, entity, from, to, null);
-    }
-
-    /**
-     * Adds new resource
-     * 
-     * @param url
-     *            collection url
-     * @param entity
-     *            entity to add
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * 
-     * @param headers
-     *            HTTP headers
-     * 
-     * @return added resource
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T add(String url, F entity, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-
-        HttpPost httpost = new HttpPost(this.urlHelper.combine(url));
-
-        String xmlReq = SerializationHelper.marshall(from, entity);
-        HttpEntity httpentity = new StringEntity(xmlReq);
-        httpost.setEntity(httpentity);
-
-        String xmlRes = execute(httpost, headers, null);
-        return SerializationHelper.unmarshall(to, xmlRes);
-    }
-
-    /**
-     * Deletes resource
-     * 
-     * @param url
-     *            resource url
-     * @param to
-     *            to typr
-     * 
-     * @return response
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T delete(String url, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return delete(url, null, null, to, null);
-    }
-
-    /**
-     * Deletes resource
-     * 
-     * @param url
-     *            resource url
-     * @param entity
-     *            entity to pass
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * 
-     * @return response
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T delete(String url, F entity, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return delete(url, entity, from, to, null);
-    }
-
-    /**
-     * Deletes resource
-     * 
-     * @param url
-     *            resource url
-     * @param entity
-     *            entity to pass
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * @param headers
-     *            HTTP headers
-     * 
-     * @return response
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T delete(String url, F entity, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-
-        HttpDelete httdelete = new HttpDelete(this.urlHelper.combine(url));
-        if (entity != null && from != null) {
-            // TODO: inject entity to DELETE request
-            // String xmlReq = SerializationHelper.marshall(from, entity);
-            // HttpEntity httpentity = new StringEntity(xmlReq);
-            // httdelete.setEntity(httpentity);
-        }
-        String xmlRes = execute(httdelete, headers, null);
-        return SerializationHelper.unmarshall(to, xmlRes);
-    }
-
-    /**
-     * @return oVirt API root resource URL
-     */
-    public String getRoot() {
-        return this.urlHelper.getRoot();
-    }
-
-    /**
-     * Fetches resource
-     * 
-     * @param url
-     *            entity url
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * @param headers
-     *            HTTP headers
-     * 
-     * @return entity
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T get(String url, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-
-        HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
-        String xmlRes = execute(httpget, headers, null);
-
-        return unmarshall(from, to, xmlRes);
-    }
-
-    /**
-     * Fetches resource
-     * 
-     * @param url
-     *            entity url
-     * @param from
-     *            from type
-     * @param to
-     *            to type
-     * 
-     * @return entity
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public <F, T> T get(String url, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return get(url, from, to, null);
-    }
-
-    /**
-     * Fetches resource
-     * 
-     * @param url
-     *            entity url
-     * 
-     * @return entity XML representation
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public String get(String url)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return get(url, null);
-    }
-
-    /**
-     * Fetches resource
-     * 
-     * @param url
-     *            entity url
-     * @param headers
-     *            HTTP headers
-     * 
-     * @return entity
-     * 
-     * @throws IOException
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws JAXBException
-     */
-    public String get(String url, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-
-        HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
-        return execute(httpget, headers, null);
     }
 
     /**
