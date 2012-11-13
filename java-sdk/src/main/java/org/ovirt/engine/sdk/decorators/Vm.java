@@ -17,13 +17,17 @@
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
+import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
+import org.ovirt.engine.sdk.entities.KeyValuePair;
 import org.ovirt.engine.sdk.entities.Response;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 public class Vm extends org.ovirt.engine.sdk.entities.VM {
@@ -59,5 +63,13 @@ public class Vm extends org.ovirt.engine.sdk.entities.VM {
     public Vm update() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, Vm.class);
+    }
+
+    public Vm update(final String correlationId) throws ClientProtocolException, ServerException, IOException,
+            JAXBException {
+        String url = this.getHref();
+        List<Header> headers = HttpHeaderUtils.toHeaders("Correlation-Id", correlationId);
+
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, Vm.class, headers);
     }
 }
