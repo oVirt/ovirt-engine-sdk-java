@@ -68,7 +68,7 @@ public class Vm extends org.ovirt.engine.sdk.entities.VM {
     public Vm update(final String correlationId) throws ClientProtocolException, ServerException, IOException,
             JAXBException {
         String url = this.getHref();
-        List<Header> headers = HttpHeaderUtils.toHeaders("Correlation-Id", correlationId);
+        List<Header> headers = HttpHeaderUtils.toHeaders("Correlation-Id:" + correlationId);
 
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, Vm.class, headers);
     }

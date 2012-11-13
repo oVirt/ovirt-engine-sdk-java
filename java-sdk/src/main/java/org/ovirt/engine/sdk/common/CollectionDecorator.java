@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 
@@ -69,7 +70,7 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
     abstract public List<Z> list() throws ClientProtocolException, ServerException, IOException, JAXBException;
 
     /**
-     * Fetches entity from collection
+     * Fetches entity from the collection
      * 
      * @param id
      *            entity id
@@ -82,7 +83,23 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @throws IOException
      * @throws JAXBException
      */
-    abstract public Z get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException;
+    abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException;
+
+    /**
+     * Fetches entity from the collection
+     * 
+     * @param id
+     *            entity name
+     * 
+     * @return Z
+     * 
+     * @throws ClientProtocolException
+     * @throws ServerException
+     *             oVirt API error
+     * @throws IOException
+     * @throws JAXBException
+     */
+    abstract public Z get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException;
 
     protected List<Z> list(String url, Class<Q> from, Class<Z> to) throws JAXBException,
             ClientProtocolException, ServerException, IOException {

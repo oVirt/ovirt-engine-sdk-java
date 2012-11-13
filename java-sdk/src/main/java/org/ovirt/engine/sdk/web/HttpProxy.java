@@ -19,7 +19,6 @@ package org.ovirt.engine.sdk.web;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -28,7 +27,7 @@ import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.protocol.BasicHttpContext;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.utils.ConversionHelper;
+import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.HttpResponseHelper;
 
 /**
@@ -37,11 +36,11 @@ import org.ovirt.engine.sdk.utils.HttpResponseHelper;
 public class HttpProxy {
 
     private static int BAD_REQUEST = 400;
-    private static String STATIC_HEADERS = "Content-type:application/xml";
+    private static String STATIC_HEADERS[] = new String[] { "Content-type:application/xml" };
     // private static String PERSISTENT_AUTH_HEADER = "Prefer:persistent-auth";
 
     private ConnectionsPool pool;
-    private Map<String, String> staticHeaders;
+    private List<Header> staticHeaders;
     private boolean persistentAuth = true;
     private boolean insecure = false;
     private boolean filter = false;
@@ -64,7 +63,7 @@ public class HttpProxy {
             boolean filter, boolean debug) {
         super();
         this.pool = pool;
-        this.staticHeaders = ConversionHelper.toMap(STATIC_HEADERS);
+        this.staticHeaders = HttpHeaderUtils.toHeaders(STATIC_HEADERS);
         this.persistentAuth = persistent_auth;
         this.insecure = insecure;
         this.filter = filter;
@@ -120,12 +119,12 @@ public class HttpProxy {
             request.setHeaders(headers.toArray(new Header[headers.size()]));
         }
 
-        for (String key : this.staticHeaders.keySet()) {
+        for (Header header : this.staticHeaders) {
             // TODO: support DELETE with body
-            if (key.equals("Content-type") && (request instanceof HttpDelete)) {
+            if (header.getName().equals("Content-type") && (request instanceof HttpDelete)) {
                 continue;
             }
-            request.addHeader(key, this.staticHeaders.get(key));
+            request.addHeader(header);
         }
 
         request.addHeader("Filter", Boolean.toString(isFilter()));

@@ -16,17 +16,24 @@
 
 package org.ovirt.engine.sdk;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.xml.bind.JAXBException;
+
+import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.decorators.Vm;
 import org.ovirt.engine.sdk.decorators.VmStatistic;
 import org.ovirt.engine.sdk.entities.Action;
 import org.ovirt.engine.sdk.entities.VM;
+import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.exceptions.UnsecuredConnectionAttemptError;
 
 public class Example {
     private static final String URL = "http://localhost:8080/api";
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException, JAXBException {
         Api api = new Api(URL, "admin@internal", "123456");
 
         // #1
@@ -34,7 +41,7 @@ public class Example {
         List<Vm> vms = api.getVms().list();
 
         // #2
-        Vm vm = api.getVms().get("f409c734-65f2-4d7c-b25b-3e285d8d5a76");
+        Vm vm = api.getVms().get("test");
 
         // #3
         vm.setDescription("java_sdk_test");

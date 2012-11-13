@@ -46,9 +46,9 @@ public class HttpHeaderUtils {
     }
 
     /**
-     * Converts string pairs to HttpHeaders (note: amount of strings should N%2 = 0)
+     * Converts string pairs to HttpHeaders
      * 
-     * pattern is k1,v1,k2,v2, ...,kN, vN ...
+     * pattern is k1:v1,k2:v2, ...,kN:vN, ...
      * 
      * @param keyValuePairs
      * @return
@@ -56,8 +56,11 @@ public class HttpHeaderUtils {
     public static List<Header> toHeaders(String... keyValuePairs) {
         List<Header> headers = new ArrayList<Header>();
 
-        for (int i = 0; (i + 1) < keyValuePairs.length; i += 2) {
-            headers.add(new BasicHeader(keyValuePairs[i], keyValuePairs[i + 1]));
+        for (int i = 0; i < keyValuePairs.length; i++) {
+            String[] kv = keyValuePairs[i].split(":");
+            if (kv.length == 2) {
+                headers.add(new BasicHeader(kv[0], kv[1]));
+            }
         }
 
         return headers;

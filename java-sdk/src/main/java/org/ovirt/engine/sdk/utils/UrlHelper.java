@@ -16,10 +16,15 @@
 
 package org.ovirt.engine.sdk.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
+
+import org.ovirt.engine.sdk.web.UrlParameterType;
 
 public class UrlHelper {
 
+    private static final String DEFAULT_ENCODING = "UTF-8";
     private static String SLASH = "/";
 
     private URL url;
@@ -63,5 +68,63 @@ public class UrlHelper {
      */
     public String getRoot() {
         return root;
+    }
+
+    /**
+     * Encodes url using UTF-8
+     * 
+     * @param url
+     *            to encode
+     * 
+     * @return encoded url
+     */
+    public static String encode(String url) {
+        try {
+            return URLEncoder.encode(url, DEFAULT_ENCODING);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return url;
+        }
+    }
+
+    /**
+     * Appends url parameters according to UrlParameterType
+     * 
+     * @param url
+     *            url to append to
+     * @param type
+     *            parameter's type
+     * @param params
+     *            parameters to append
+     * 
+     * @return encoded url
+     */
+    public static String append(String url, UrlParameterType type, String... params) {
+        for (String param : params) {
+            switch (type) {
+            case SEARCH:
+                url += "?search=" + UrlHelper.encode(param);
+                return url;
+            case MATRIX:
+                url += ";" + param;
+            case QUERY:
+                url += "?" + param;
+            }
+        }
+        return UrlHelper.encode(url);
+    }
+
+    /**
+     * Appends url parameters according to UrlParameterType
+     * 
+     * @param type
+     *            parameter's type
+     * @param params
+     *            parameters to append
+     * 
+     * @return encoded url
+     */
+    public static String append(UrlParameterType type, String... params) {
+        return UrlHelper.append("", type, params);
     }
 }

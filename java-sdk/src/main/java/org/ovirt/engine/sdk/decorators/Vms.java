@@ -18,13 +18,17 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
+import org.ovirt.engine.sdk.web.UrlParameterType;
 
 public class Vms extends CollectionDecorator<org.ovirt.engine.sdk.entities.VM, org.ovirt.engine.sdk.entities.VMs, Vm> {
 
@@ -38,9 +42,20 @@ public class Vms extends CollectionDecorator<org.ovirt.engine.sdk.entities.VM, o
         return list(url, org.ovirt.engine.sdk.entities.VMs.class, Vm.class);
     }
 
+    public List<Vm> list(String query) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/vms" + UrlHelper.append(UrlParameterType.SEARCH, query);
+        return list(url, org.ovirt.engine.sdk.entities.VMs.class, Vm.class);
+    }
+
     @Override
-    public Vm get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/vms/" + id;
+    public Vm get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/vms/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, Vm.class);
+    }
+
+    @Override
+    public Vm get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        List<Vm> collection = list("name=" + name);
+        return CollectionUtils.getFirstItem(collection);
     }
 }
