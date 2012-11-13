@@ -28,26 +28,22 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 public class VmStatistics extends CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic, org.ovirt.engine.sdk.entities.Statistics, VmStatistic> {
 
-    private String parentId;
+    private Vm parent;
 
-    public VmStatistics(HttpProxyBroker proxy, String parentId) {
+    public VmStatistics(HttpProxyBroker proxy, Vm parent) {
         super(proxy);
-        this.parentId = parentId;
-    }
-
-    private String getParentId() {
-        return parentId;
+        this.parent = parent;
     }
 
     @Override
     public List<VmStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/vms/" + this.getParentId() + "/statistics";
+        String url = "/vms/" + this.parent.getId() + "/statistics";
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VmStatistic.class);
     }
 
     @Override
     public VmStatistic get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/vms/" + this.getParentId() + "/statistics/" + id;
+        String url = "/vms/" + this.parent.getId() + "/statistics/" + id;
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VmStatistic.class);
     }
 }

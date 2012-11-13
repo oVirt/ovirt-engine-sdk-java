@@ -121,6 +121,7 @@ public class HttpProxy {
         }
 
         for (String key : this.staticHeaders.keySet()) {
+            // TODO: support DELETE with body
             if (key.equals("Content-type") && (request instanceof HttpDelete)) {
                 continue;
             }

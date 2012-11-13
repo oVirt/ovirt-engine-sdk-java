@@ -41,7 +41,7 @@ public class Vm extends org.ovirt.engine.sdk.entities.VM {
 
     public synchronized VmStatistics getVmStatistics() {
         if (this.vmStatistics == null) {
-            this.vmStatistics = new VmStatistics(proxy, this.getId());
+            this.vmStatistics = new VmStatistics(proxy, this);
         }
         return vmStatistics;
     }

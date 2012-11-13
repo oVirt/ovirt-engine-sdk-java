@@ -390,25 +390,6 @@ public class HttpProxyBroker {
     }
 
     /**
-     * Unmarshales item from the xml
-     * 
-     * @param from
-     *            entity type
-     * @param to
-     *            decorator type
-     * @param xml
-     *            xml object representation
-     * 
-     * @return decorator
-     * 
-     * @throws JAXBException
-     */
-    private <F, T> T unmarshall(Class<F> from, Class<T> to, String xml) throws JAXBException {
-        F res = SerializationHelper.unmarshall(from, xml);
-        return Mapper.map(res, to, this);
-    }
-
-    /**
      * Enable/Disable client permissions based filtering (default is False)
      * 
      * @param filter
@@ -477,5 +458,24 @@ public class HttpProxyBroker {
      */
     public String getRoot() {
         return this.urlHelper.getRoot();
+    }
+
+    /**
+     * Unmarshales item from the xml
+     * 
+     * @param from
+     *            entity type
+     * @param to
+     *            decorator type
+     * @param xml
+     *            xml object representation
+     * 
+     * @return decorator
+     * 
+     * @throws JAXBException
+     */
+    private <F, T> T unmarshall(Class<F> from, Class<T> to, String xml) throws JAXBException {
+        F res = SerializationHelper.unmarshall(from, xml);
+        return Mapper.map(res, to, this);
     }
 }
