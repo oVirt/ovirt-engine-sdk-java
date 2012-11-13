@@ -95,7 +95,8 @@ public class UrlHelper {
      * @param type
      *            parameter's type
      * @param params
-     *            parameters to append
+     *            parameters to append, format is x=y where x is key and y is value for non SEARCH params, and for
+     *            SEARCH params is 'query'
      * 
      * @return encoded url
      */

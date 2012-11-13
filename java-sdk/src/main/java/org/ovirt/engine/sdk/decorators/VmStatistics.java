@@ -18,13 +18,17 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
+import org.ovirt.engine.sdk.web.UrlParameterType;
 
 public class VmStatistics extends CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic, org.ovirt.engine.sdk.entities.Statistics, VmStatistic> {
 
@@ -41,9 +45,21 @@ public class VmStatistics extends CollectionDecorator<org.ovirt.engine.sdk.entit
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VmStatistic.class);
     }
 
+    public List<VmStatistic> list(int max) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url =
+                "/vms/" + this.parent.getId() + "/statistics"
+                        + UrlHelper.append(UrlParameterType.MATRIX, "max=" + String.valueOf(max));
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VmStatistic.class);
+    }
+
     @Override
-    public VmStatistic get(String id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/vms/" + this.parent.getId() + "/statistics/" + id;
+    public VmStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/vms/" + this.parent.getId() + "/statistics/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VmStatistic.class);
+    }
+
+    @Override
+    public VmStatistic get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        return CollectionUtils.getItemByName(name, list());
     }
 }
