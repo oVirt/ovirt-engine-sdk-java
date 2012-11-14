@@ -14,7 +14,7 @@
 // limitations under the License.
 //
 
-package org.ovirt.engine.sdk.utils;
+package org.ovirt.engine.sdk.mapping;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -24,6 +24,8 @@ import java.util.Arrays;
 
 import javax.xml.bind.JAXBException;
 
+import org.ovirt.engine.sdk.utils.ArrayUtils;
+import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**

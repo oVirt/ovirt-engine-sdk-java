@@ -14,10 +14,8 @@
 // limitations under the License.
 //
 
-package org.ovirt.engine.sdk.utils;
+package org.ovirt.engine.sdk.web;
 
-import org.ovirt.engine.sdk.web.ConnectionsPool;
-import org.ovirt.engine.sdk.web.HttpProxy;
 
 /**
  * Provides HttpProxy building services

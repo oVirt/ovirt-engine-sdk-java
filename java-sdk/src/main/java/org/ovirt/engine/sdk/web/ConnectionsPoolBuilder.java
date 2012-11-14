@@ -14,7 +14,7 @@
 // limitations under the License.
 //
 
-package org.ovirt.engine.sdk.utils;
+package org.ovirt.engine.sdk.web;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,8 +30,6 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
-import org.ovirt.engine.sdk.web.ConnectionsPool;
-import org.ovirt.engine.sdk.web.IdleConnectionMonitorThread;
 
 /**
  * Provides ConnectionsPool building services

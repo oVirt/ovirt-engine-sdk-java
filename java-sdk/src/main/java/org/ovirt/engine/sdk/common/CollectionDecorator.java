@@ -29,7 +29,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.BaseResource;
 import org.ovirt.engine.sdk.entities.BaseResources;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.utils.Mapper;
+import org.ovirt.engine.sdk.mapping.Mapper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 

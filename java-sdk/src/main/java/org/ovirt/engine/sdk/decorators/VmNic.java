@@ -29,13 +29,11 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
-public class Vm extends org.ovirt.engine.sdk.entities.VM {
+public class VmNic extends org.ovirt.engine.sdk.entities.NIC {
 
     private HttpProxyBroker proxy;
-    private VmStatistics vmStatistics;
-    private VmNics vmNics;
 
-    public Vm(HttpProxyBroker proxy) {
+    public VmNic(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -43,22 +41,13 @@ public class Vm extends org.ovirt.engine.sdk.entities.VM {
         return proxy;
     }
 
-    public synchronized VmStatistics getVmStatistics() {
-        if (this.vmStatistics == null) {
-            this.vmStatistics = new VmStatistics(proxy, this);
-        }
-        return vmStatistics;
+    public Action activate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/activate";
+        return getProxy().action(url, action, Action.class, Action.class);
     }
 
-    public synchronized VmNics getVmNics() {
-        if (this.vmNics == null) {
-            this.vmNics = new VmNics(proxy, this);
-        }
-        return vmNics;
-    }
-
-    public Action start(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.getHref() + "/start";
+    public Action deactivate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/deactivate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
 
@@ -67,15 +56,15 @@ public class Vm extends org.ovirt.engine.sdk.entities.VM {
         return getProxy().delete(url, Response.class);
     }
 
-    public Vm update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VmNic update() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, Vm.class);
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, VmNic.class);
     }
 
-    public Vm update(final String correlationId) throws ClientProtocolException, ServerException, IOException,
+    public VmNic update(final String correlationId) throws ClientProtocolException, ServerException, IOException,
             JAXBException {
         String url = this.getHref();
         List<Header> headers = HttpHeaderUtils.toHeaders("Correlation-Id:" + correlationId);
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, Vm.class, headers);
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, VmNic.class, headers);
     }
 }

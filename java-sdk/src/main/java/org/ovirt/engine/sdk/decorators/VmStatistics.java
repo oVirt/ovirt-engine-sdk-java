@@ -60,6 +60,7 @@ public class VmStatistics extends CollectionDecorator<org.ovirt.engine.sdk.entit
 
     @Override
     public VmStatistic get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        return CollectionUtils.getItemByName(name, list());
+        List<VmStatistic> collection = list();
+        return CollectionUtils.getItemByName(name, collection);
     }
 }

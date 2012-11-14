@@ -25,7 +25,7 @@ import org.ovirt.engine.sdk.entities.BaseResource;
  */
 public class CollectionUtils {
     /**
-     * Fetches item from collection by name
+     * Fetches item from the collection by name
      * 
      * @param name
      *            item name
@@ -44,7 +44,7 @@ public class CollectionUtils {
     }
 
     /**
-     * Fetches first item from collection
+     * Fetches first item from the collection
      * 
      * @param collection
      *            collection to look at

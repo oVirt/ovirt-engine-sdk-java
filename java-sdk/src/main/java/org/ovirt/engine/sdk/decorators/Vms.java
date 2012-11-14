@@ -22,10 +22,13 @@ import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 
+import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
+import org.ovirt.engine.sdk.entities.VM;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.CollectionUtils;
+import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
@@ -57,5 +60,19 @@ public class Vms extends CollectionDecorator<org.ovirt.engine.sdk.entities.VM, o
     public Vm get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException {
         List<Vm> collection = list("name=" + name);
         return CollectionUtils.getFirstItem(collection);
+    }
+
+    public Vm add(VM vm) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/vms";
+        return getProxy().add(url, vm, VM.class, Vm.class);
+    }
+
+    public Vm add(VM vm, String correlationId, String expect) throws ClientProtocolException, ServerException,
+            IOException,
+            JAXBException {
+        String url = "/vms";
+        List<Header> headers = HttpHeaderUtils.toHeaders("Correlation-Id:" + correlationId,
+                "Expect:" + expect);
+        return getProxy().add(url, vm, VM.class, Vm.class, headers);
     }
 }
