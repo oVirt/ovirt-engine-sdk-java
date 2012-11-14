@@ -18,10 +18,10 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class $collectionName$ extends CollectionDecorator<org.ovirt.engine.sdk.entities.$publicEntity$, 
-        org.ovirt.engine.sdk.entities.$publicCollection$, $decoratorEntity$> {
+public class $decoratorCollectionName$ extends CollectionDecorator<org.ovirt.engine.sdk.entities.$publicEntityName$, 
+        org.ovirt.engine.sdk.entities.$publicCollectionName$, $decoratorEntityName$> {
 
-    public $collectionName$(HttpProxyBroker proxy) {
+    public $decoratorCollectionName$(HttpProxyBroker proxy) {
         super(proxy);
     }
     

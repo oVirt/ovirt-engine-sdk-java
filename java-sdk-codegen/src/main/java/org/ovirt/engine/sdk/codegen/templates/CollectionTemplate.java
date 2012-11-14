@@ -20,29 +20,27 @@ import org.ovirt.engine.sdk.codegen.utils.StringTemplate;
 
 public class CollectionTemplate extends Template {
 
-    private static String NAME = "Collection";
+    private static String NAME = "CollectionTemplate";
 
-    public CollectionTemplate(String name) {
+    public CollectionTemplate() {
         super(NAME);
     }
 
-    public String getTemplate(String collectionName,
-            String publicEntity,
-            String publicCollection,
-            String decoratorEntity,
+    public String getTemplate(String decoratorCollectionName,
+            String publicEntityName,
+            String publicCollectionName,
+            String decoratorEntityName,
             String methods) {
 
         StringTemplate template =
-                new StringTemplate(
-                        getCopyrightTemplate()
-                                +
-                                loadTemplate()
-                );
+                new StringTemplate(getCopyrightTemplate()
+                                   +
+                                   loadTemplate());
 
-        template.set("collectionName", collectionName);
-        template.set("publicEntity", publicEntity);
-        template.set("publicCollection", publicCollection);
-        template.set("decoratorEntity", decoratorEntity);
+        template.set("decoratorCollectionName", decoratorCollectionName);
+        template.set("publicEntityName", publicEntityName);
+        template.set("publicCollectionName", publicCollectionName);
+        template.set("decoratorEntityName", decoratorEntityName);
         template.set("methods", methods);
 
         return template.toString();
