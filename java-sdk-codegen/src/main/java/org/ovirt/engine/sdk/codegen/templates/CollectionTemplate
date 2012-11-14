@@ -1,4 +1,3 @@
-
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -24,6 +23,6 @@ public class $decoratorCollectionName$ extends CollectionDecorator<org.ovirt.eng
     public $decoratorCollectionName$(HttpProxyBroker proxy) {
         super(proxy);
     }
-    
+
     $methods$
 }

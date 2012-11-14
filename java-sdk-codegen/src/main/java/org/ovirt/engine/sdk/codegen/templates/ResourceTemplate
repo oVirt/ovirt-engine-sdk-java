@@ -1,4 +1,3 @@
-
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -28,6 +27,6 @@ public class $decoratorResourceName$ extends org.ovirt.engine.sdk.entities.$publ
     }
 
     $subCollectionsGetters$
-    
+
     $methods$
 }

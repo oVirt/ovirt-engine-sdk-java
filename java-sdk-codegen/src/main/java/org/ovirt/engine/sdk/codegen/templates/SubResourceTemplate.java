@@ -18,6 +18,9 @@ package org.ovirt.engine.sdk.codegen.templates;
 
 import org.ovirt.engine.sdk.codegen.utils.StringTemplate;
 
+/**
+ * Provides SubResource templating services
+ */
 public class SubResourceTemplate extends Template {
 
     private static String NAME = "SubResourceTemplate";
@@ -26,6 +29,17 @@ public class SubResourceTemplate extends Template {
         super(NAME);
     }
 
+    /**
+     * Formats template in to the decorator class
+     * 
+     * @param subResourceDecoratorName
+     * @param publicEntityName
+     * @param subCollectionsVariables
+     * @param subCollectionsGetters
+     * @param methods
+     * 
+     * @return java class txt
+     */
     public String getTemplate(String subResourceDecoratorName,
             String publicEntityName,
             String subCollectionsVariables,
