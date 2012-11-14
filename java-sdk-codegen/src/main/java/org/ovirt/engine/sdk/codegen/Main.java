@@ -21,11 +21,12 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
+import org.ovirt.engine.sdk.codegen.rsdl.RsdlCodegen;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.utils.ConnectionsPoolBuilder;
-import org.ovirt.engine.sdk.utils.HttpProxyBuilder;
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.ConnectionsPoolBuilder;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
+import org.ovirt.engine.sdk.web.HttpProxyBuilder;
 
 /**
  * oVirt java-sdk codegen suite
@@ -38,17 +39,19 @@ public class Main {
 
     public static void main(String[] args) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
-        HttpProxy httpProxy =
+
+        HttpProxyBroker httpProxy = new HttpProxyBroker(
                 new HttpProxyBuilder(
                         new ConnectionsPoolBuilder(API_URL, USER, PASSWORD).build()
-                        ).build();
+                        ).build());
 
         // #1 - download xsd schema from api & generate java entities classes from it
-        XsdCodegen.generate(httpProxy);
+        new XsdCodegen(httpProxy).generate();
 
         // #2 - generate API e.p
 
         // #3 - generate entities decorators
+        new RsdlCodegen(httpProxy).generate();
 
         // #$ - compile java-sdk
 

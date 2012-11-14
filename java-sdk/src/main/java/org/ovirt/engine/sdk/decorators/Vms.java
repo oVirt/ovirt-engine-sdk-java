@@ -33,7 +33,8 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class Vms extends CollectionDecorator<org.ovirt.engine.sdk.entities.VM, org.ovirt.engine.sdk.entities.VMs, Vm> {
+public class Vms extends CollectionDecorator<org.ovirt.engine.sdk.entities.VM,
+        org.ovirt.engine.sdk.entities.VMs, Vm> {
 
     public Vms(HttpProxyBroker proxy) {
         super(proxy);

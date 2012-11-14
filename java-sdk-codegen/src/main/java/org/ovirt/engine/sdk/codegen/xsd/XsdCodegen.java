@@ -24,13 +24,15 @@ import java.io.PrintWriter;
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
+import org.ovirt.engine.sdk.codegen.common.ICodegen;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.web.HttpProxy;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * Provides XSD schema related services
  */
-public class XsdCodegen {
+public class XsdCodegen implements ICodegen {
+
     private static final String SCHEMA_URL = "?schema";
     private static final String OS = System.getProperty("os.name").toLowerCase();
 
@@ -44,6 +46,12 @@ public class XsdCodegen {
     private static final String SCHEMA_FILE_NAME = "api.xsd";
     private static final String XJC_FLAGS = " -extension -no-header ";
 
+    private HttpProxyBroker httpProxy;
+
+    public XsdCodegen(HttpProxyBroker httpProxy) {
+        this.httpProxy = httpProxy;
+    }
+
     /**
      * Generates Java classes from the schema
      * 
@@ -55,12 +63,12 @@ public class XsdCodegen {
      * @throws IOException
      * @throws JAXBException
      */
-    public static void generate(HttpProxy httpProxy) throws ClientProtocolException,
+    public void generate() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
 
         String xjcOutput = null;
 
-        fetchScema(httpProxy);
+        fetchScema(this.httpProxy);
 
         if (isWindows()) {
             xjcOutput = runCommand(WINDOWS_XJC_PATH + " -d " + WINDOWS_ENTITIES_PACKAGE +
@@ -77,7 +85,7 @@ public class XsdCodegen {
         }
     }
 
-    private static void fetchScema(HttpProxy httpProxy) throws ServerException,
+    private void fetchScema(HttpProxyBroker httpProxy) throws ServerException,
             JAXBException, IOException {
         PrintWriter out = null;
         String schema = httpProxy.get(SCHEMA_URL);
@@ -95,7 +103,7 @@ public class XsdCodegen {
         }
     }
 
-    private static String runCommand(String command) throws IOException {
+    private String runCommand(String command) throws IOException {
         String stdout = "";
         String stderr = "";
         String s = null;
@@ -122,25 +130,25 @@ public class XsdCodegen {
         return stdout;
     }
 
-    public static boolean isWindows() {
+    private boolean isWindows() {
 
         return (OS.indexOf("win") >= 0);
 
     }
 
-    public static boolean isMac() {
+    private boolean isMac() {
 
         return (OS.indexOf("mac") >= 0);
 
     }
 
-    public static boolean isUnix() {
+    private boolean isUnix() {
 
         return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
 
     }
 
-    public static boolean isSolaris() {
+    private boolean isSolaris() {
 
         return (OS.indexOf("sunos") >= 0);
 
