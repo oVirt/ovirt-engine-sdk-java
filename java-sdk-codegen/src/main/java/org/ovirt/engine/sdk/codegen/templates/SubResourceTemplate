@@ -1,0 +1,33 @@
+
+package org.ovirt.engine.sdk.decorators;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+
+import org.apache.http.Header;
+import org.apache.http.client.ClientProtocolException;
+import org.ovirt.engine.sdk.entities.Action;
+import org.ovirt.engine.sdk.entities.Response;
+import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
+import org.ovirt.engine.sdk.web.HttpProxyBroker;
+
+public class $subResourceDecoratorName$ extends org.ovirt.engine.sdk.entities.$publicEntityName$ {
+
+    private HttpProxyBroker proxy;
+    $subCollectionsVariables$
+
+    public $subResourceDecoratorName$(HttpProxyBroker proxy) {
+        this.proxy = proxy;
+    }
+
+    private HttpProxyBroker getProxy() {
+        return proxy;
+    }
+
+    $subCollectionsGetters$
+
+    $methods$
+}
