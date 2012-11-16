@@ -31,4 +31,15 @@ public class StringUtils {
         }
         return txt;
     }
+
+    /**
+     * Wraps to UpperCase first char in candidate
+     * 
+     * @param candidate
+     * 
+     * @return candidate
+     */
+    public static String toUpperCase(String candidate) {
+        return Character.toUpperCase(candidate.charAt(0)) + candidate.substring(1);
+    }
 }

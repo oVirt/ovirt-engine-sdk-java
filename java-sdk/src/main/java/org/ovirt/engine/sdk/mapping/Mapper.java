@@ -26,6 +26,7 @@ import javax.xml.bind.JAXBException;
 
 import org.ovirt.engine.sdk.utils.ArrayUtils;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
+import org.ovirt.engine.sdk.utils.StringUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
@@ -146,8 +147,8 @@ public class Mapper {
     }
 
     private static <F> Object getFieldContent(String name, F from) throws SecurityException {
-        String getMethodName = "get" + Character.toUpperCase(name.charAt(0)) + name.substring(1);
-        String isMethodName = "is" + Character.toUpperCase(name.charAt(0)) + name.substring(1);
+        String getMethodName = "get" + StringUtils.toUpperCase(name);
+        String isMethodName = "is" + StringUtils.toUpperCase(name);
 
         Method m = null;
         try {
