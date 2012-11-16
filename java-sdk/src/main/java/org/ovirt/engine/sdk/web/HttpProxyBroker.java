@@ -17,6 +17,7 @@
 package org.ovirt.engine.sdk.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
@@ -311,7 +312,7 @@ public class HttpProxyBroker {
      * @param headers
      *            HTTP headers
      * 
-     * @return entity
+     * @return T entity
      * 
      * @throws IOException
      * @throws ClientProtocolException
@@ -337,7 +338,7 @@ public class HttpProxyBroker {
      * @param to
      *            to type
      * 
-     * @return entity
+     * @return T entity
      * 
      * @throws IOException
      * @throws ClientProtocolException
@@ -347,6 +348,28 @@ public class HttpProxyBroker {
     public <F, T> T get(String url, Class<F> from, Class<T> to)
             throws IOException, ClientProtocolException, ServerException, JAXBException {
         return get(url, from, to, null);
+    }
+
+    /**
+     * Fetches resource
+     * 
+     * @param url
+     *            entity url
+     * @param from
+     *            from type
+     * 
+     * @return F entity
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws JAXBException
+     */
+    public <F> F get(String url, Class<F> from)
+            throws IOException, ClientProtocolException, ServerException, JAXBException {
+        HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
+        String xmlRes = this.proxy.execute(httpget, null, null);
+        return SerializationHelper.unmarshall(from, xmlRes);
     }
 
     /**
@@ -364,7 +387,7 @@ public class HttpProxyBroker {
      */
     public String get(String url)
             throws IOException, ClientProtocolException, ServerException, JAXBException {
-        return get(url, null);
+        return get(url, new ArrayList<Header>());
     }
 
     /**
