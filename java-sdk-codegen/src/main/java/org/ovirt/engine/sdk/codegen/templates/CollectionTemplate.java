@@ -16,12 +16,13 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplate;
+import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+
 
 /**
  * Provides Collection templating services
  */
-public class CollectionTemplate extends Template {
+public class CollectionTemplate extends AbstractTemplate {
 
     private static String NAME = "CollectionTemplate";
 
@@ -46,17 +47,17 @@ public class CollectionTemplate extends Template {
             String decoratorEntityName,
             String methods) {
 
-        StringTemplate template =
-                new StringTemplate(getCopyrightTemplate()
+        StringTemplateWrapper templateWrapper =
+                new StringTemplateWrapper(getCopyrightTemplate()
                                    +
-                                   loadTemplate());
+                                   getTemplate());
 
-        template.set("decoratorCollectionName", decoratorCollectionName);
-        template.set("publicEntityName", publicEntityName);
-        template.set("publicCollectionName", publicCollectionName);
-        template.set("decoratorEntityName", decoratorEntityName);
-        template.set("methods", methods);
+        templateWrapper.set("decoratorCollectionName", decoratorCollectionName);
+        templateWrapper.set("publicEntityName", publicEntityName);
+        templateWrapper.set("publicCollectionName", publicCollectionName);
+        templateWrapper.set("decoratorEntityName", decoratorEntityName);
+        templateWrapper.set("methods", methods);
 
-        return template.toString();
+        return templateWrapper.toString();
     }
 }

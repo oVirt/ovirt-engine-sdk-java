@@ -26,7 +26,8 @@ import org.ovirt.engine.sdk.web.ConnectionsPoolBuilder;
 import org.ovirt.engine.sdk.web.HttpProxy;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.HttpProxyBuilder;
-import org.ovirt.engine.sdk.decorators.Vms;
+// TODO: import root-collections here
+//import org.ovirt.engine.sdk.decorators.Vms;
 import org.ovirt.engine.sdk.entities.API;
 import org.ovirt.engine.sdk.entities.ProductInfo;
 import org.ovirt.engine.sdk.exceptions.ServerException;
@@ -41,7 +42,8 @@ public class Api {
     private HttpProxyBroker proxy = null;
     private API entryPoint = null;
 
-    private Vms vms;
+    // TODO: create root-collection variables herer
+    // private Vms vms;
 
     /**
      * @param url
@@ -200,7 +202,8 @@ public class Api {
     private void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
             IOException, JAXBException {
         this.entryPoint = getEntryPoint();
-        this.vms = new Vms(this.proxy);
+        // TODO: init root-collections here
+        // this.vms = new Vms(this.proxy);
     }
 
     /**
@@ -267,14 +270,15 @@ public class Api {
         return this.proxy.isDebug();
     }
 
-    /**
-     * Returns collection of vms
-     * 
-     * @return Vms
-     */
-    public Vms getVms() {
-        return vms;
-    }
+    // TODO: create root-collection getters here
+    // /**
+    // * Returns collection of vms
+    // *
+    // * @return Vms
+    // */
+    // public Vms getVms() {
+    // return vms;
+    // }
 
     // TODO: add all root collections
 

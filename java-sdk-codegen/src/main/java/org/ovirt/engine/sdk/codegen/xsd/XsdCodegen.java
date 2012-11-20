@@ -24,23 +24,23 @@ import java.io.PrintWriter;
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.codegen.common.ICodegen;
+import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
+import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * Provides XSD schema related services
  */
-public class XsdCodegen implements ICodegen {
+public class XsdCodegen extends AbstractCodegen {
 
     private static final String SCHEMA_URL = "?schema";
-    private static final String OS = System.getProperty("os.name").toLowerCase();
 
     private static final String WINDOWS_XJC_PATH = "%java_home%\\bin\\xjc";
     private static final String NX_XJC_PATH = "xjc";
 
-    private static final String WINDOWS_ENTITIES_PACKAGE = "..\\java-sdk\\src\\main\\java\\";
-    private static final String NX_ENTITIES_PACKAGE = "../java-sdk/src/main/java/";
+    private static final String WINDOWS_ENTITIES_PATH = "..\\java-sdk\\src\\main\\java\\";
+    private static final String NX_ENTITIES_PATH = "../java-sdk/src/main/java/";
 
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
     private static final String SCHEMA_FILE_NAME = "api.xsd";
@@ -49,38 +49,42 @@ public class XsdCodegen implements ICodegen {
     private HttpProxyBroker httpProxy;
 
     public XsdCodegen(HttpProxyBroker httpProxy) {
+        super(getEntitiesPath());
+
         this.httpProxy = httpProxy;
     }
 
     /**
-     * Generates Java classes from the schema
+     * Generates entities classes
      * 
-     * @param httpProxy
-     *            HttpProxy to use for schema download
+     * @param distPath
+     *            directory to generates the code at
      * 
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
-    public void generate() throws ClientProtocolException,
+    @Override
+    public void doGenerate(String distPath) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
 
         String xjcOutput = null;
 
         fetchScema(this.httpProxy);
 
-        if (isWindows()) {
-            xjcOutput = runCommand(WINDOWS_XJC_PATH + " -d " + WINDOWS_ENTITIES_PACKAGE +
+        if (OsUtil.isWindows()) {
+            xjcOutput = runCommand(WINDOWS_XJC_PATH + " -d " + distPath +
                     " -p " + ENTITIES_PACKAGE + XJC_FLAGS + SCHEMA_FILE_NAME);
-        } else if (isMac() || isUnix() || isSolaris()) {
-            xjcOutput = runCommand(NX_XJC_PATH + " -d " + NX_ENTITIES_PACKAGE +
+        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
+            xjcOutput = runCommand(NX_XJC_PATH + " -d " + distPath +
                     " -p " + ENTITIES_PACKAGE + XJC_FLAGS + SCHEMA_FILE_NAME);
         } else {
             throw new RuntimeException("unsupported OS.");
         }
 
-        if (!xjcOutput.startsWith("parsing a schema...compiling a schema...")) {
+        if (xjcOutput == null ||
+                !xjcOutput.startsWith("parsing a schema...compiling a schema...")) {
             throw new RuntimeException("xjc codegen failed: " + xjcOutput);
         }
     }
@@ -130,27 +134,30 @@ public class XsdCodegen implements ICodegen {
         return stdout;
     }
 
-    private boolean isWindows() {
-
-        return (OS.indexOf("win") >= 0);
-
+    /**
+     * Deletes all entities files
+     * 
+     * @param dir
+     *            directory to clean
+     */
+    @Override
+    public void doCleanPackage(String dir) {
+        ;
+        // delete of the /entities conten will
+        // break compilation of this project as
+        // it has refernces to this package
     }
 
-    private boolean isMac() {
-
-        return (OS.indexOf("mac") >= 0);
-
-    }
-
-    private boolean isUnix() {
-
-        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
-
-    }
-
-    private boolean isSolaris() {
-
-        return (OS.indexOf("sunos") >= 0);
-
+    /**
+     * @return Entities path according to OS
+     */
+    private static String getEntitiesPath() {
+        if (OsUtil.isWindows()) {
+            return WINDOWS_ENTITIES_PATH;
+        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
+            return NX_ENTITIES_PATH;
+        } else {
+            throw new RuntimeException("unsupported OS.");
+        }
     }
 }

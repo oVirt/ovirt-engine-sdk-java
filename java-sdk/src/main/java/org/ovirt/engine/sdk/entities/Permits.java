@@ -17,11 +17,11 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Permits">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element name="permit" type="{}Permit" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -32,7 +32,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Permits", propOrder = {
     "permits"
 })
-public class Permits {
+public class Permits
+    extends BaseResources
+{
 
     @XmlElement(name = "permit", required = true)
     protected List<Permit> permits;

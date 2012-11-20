@@ -18,13 +18,13 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="GlusterBricks">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element name="replica_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="stripe_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element ref="{}brick" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -37,7 +37,9 @@ import javax.xml.bind.annotation.XmlType;
     "stripeCount",
     "glusterBricks"
 })
-public class GlusterBricks {
+public class GlusterBricks
+    extends BaseResources
+{
 
     @XmlElement(name = "replica_count")
     @XmlSchemaType(name = "unsignedShort")

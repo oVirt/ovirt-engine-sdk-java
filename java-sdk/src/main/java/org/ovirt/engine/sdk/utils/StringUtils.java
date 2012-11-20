@@ -42,4 +42,32 @@ public class StringUtils {
     public static String toUpperCase(String candidate) {
         return Character.toUpperCase(candidate.charAt(0)) + candidate.substring(1);
     }
+
+    /**
+     * Converts string to singular form
+     * 
+     * @param candidate
+     * 
+     * @return singular string
+     */
+    public static String toSingular(String candidate) {
+        if (candidate.endsWith("s")) {
+            return candidate.substring(0, candidate.length() - 1);
+        }
+        return candidate;
+    }
+
+    /**
+     * Converts string to plural form
+     * 
+     * @param candidate
+     * 
+     * @return plural string
+     */
+    public static String toPlural(String candidate) {
+        if (!candidate.endsWith("s")) {
+            return candidate + "s";
+        }
+        return candidate;
+    }
 }

@@ -48,14 +48,16 @@ public class Main {
         // #1 - download xsd schema from api & generate java entities classes from it
         new XsdCodegen(httpProxy).generate();
 
-        // #2 - generate API e.p
+        // #2 - compile java-sdk
 
-        // #3 - generate entities decorators
+        // #3 - generate API e.p
+
+        // #4 - generate entities decorators
         new RsdlCodegen(httpProxy).generate();
 
-        // #$ - compile java-sdk
+        // #5 - compile java-sdk
 
-        // #5 - exit
+        // #6 - exit
         System.exit(0);
     }
 }

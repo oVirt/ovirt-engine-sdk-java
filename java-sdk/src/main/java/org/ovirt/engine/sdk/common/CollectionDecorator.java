@@ -67,7 +67,7 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @throws IOException
      * @throws JAXBException
      */
-    abstract public List<Z> list() throws ClientProtocolException, ServerException, IOException, JAXBException;
+    // abstract public List<Z> list() throws ClientProtocolException, ServerException, IOException, JAXBException;
 
     /**
      * Fetches entity from the collection
@@ -83,7 +83,7 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @throws IOException
      * @throws JAXBException
      */
-    abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException;
+    // abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException;
 
     /**
      * Fetches entity from the collection
@@ -99,7 +99,7 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @throws IOException
      * @throws JAXBException
      */
-    abstract public Z get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException;
+    // abstract public Z get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException;
 
     protected List<Z> list(String url, Class<Q> from, Class<Z> to) throws JAXBException,
             ClientProtocolException, ServerException, IOException {

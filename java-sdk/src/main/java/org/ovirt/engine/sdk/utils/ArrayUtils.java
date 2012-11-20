@@ -37,4 +37,23 @@ public class ArrayUtils {
         System.arraycopy(second, 0, result, first.length, second.length);
         return result;
     }
+
+    /**
+     * Checkes if candidate in arr
+     * 
+     * @param arr
+     *            array to look at
+     * @param candidate
+     *            candidate to check
+     * 
+     * @return True if candidate in array
+     */
+    public static <T> boolean contains(T[] arr, T candidate) {
+        for (T item : arr) {
+            if (item.equals(candidate)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -13,7 +13,8 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
-public class $subResourceDecoratorName$ extends org.ovirt.engine.sdk.entities.$publicEntityName$ {
+public class $subResourceDecoratorName$ extends
+        org.ovirt.engine.sdk.entities.$publicEntityName$ {
 
     private HttpProxyBroker proxy;
     $subCollectionsVariables$

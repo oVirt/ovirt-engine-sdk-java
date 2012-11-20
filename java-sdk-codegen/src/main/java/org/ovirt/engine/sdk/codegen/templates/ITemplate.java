@@ -26,5 +26,5 @@ public interface ITemplate {
      * 
      * @return resource template
      */
-    String loadTemplate();
+    abstract String loadTemplate();
 }

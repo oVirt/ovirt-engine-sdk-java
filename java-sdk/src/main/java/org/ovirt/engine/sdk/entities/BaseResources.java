@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     StorageDomains.class,
     Roles.class,
     Events.class,
+    GlusterBricks.class,
     Snapshots.class,
     Tags.class,
     Files.class,
@@ -56,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
     PreviewVMs.class,
     Templates.class,
     Clusters.class,
+    Permits.class,
     Statistics.class,
     VmPools.class,
     BaseDevices.class

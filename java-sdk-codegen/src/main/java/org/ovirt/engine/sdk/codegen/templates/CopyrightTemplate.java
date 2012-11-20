@@ -19,7 +19,7 @@ package org.ovirt.engine.sdk.codegen.templates;
 /**
  * Provides Copyright templating services
  */
-public class CopyrightTemplate extends Template {
+public class CopyrightTemplate extends AbstractTemplate {
 
     private static String NAME = "CopyrightTemplate";
 
@@ -27,10 +27,7 @@ public class CopyrightTemplate extends Template {
         super(NAME);
     }
 
-    /**
-     * @return Copyright notice
-     */
-    public String getCopyright() {
-        return loadTemplate();
+    public CopyrightTemplate(boolean noInit) {
+        super(NAME, noInit);
     }
 }

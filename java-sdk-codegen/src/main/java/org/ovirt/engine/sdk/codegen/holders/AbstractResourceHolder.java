@@ -19,15 +19,60 @@ package org.ovirt.engine.sdk.codegen.holders;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
+import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
+
 /**
  * Holds resources
  */
 public abstract class AbstractResourceHolder extends AbstractCollectionHolder {
 
-    private Map<String, SubCollectionHolder> subcollections;
+    private Map<String, CollectionHolder> subcollections;
 
-    public AbstractResourceHolder() {
-        this.subcollections = new HashMap<String, SubCollectionHolder>();
+    private SubResourceTemplate subResourceTemplate;
+    private ResourceTemplate resourceTemplate;
+    private String decoratorResourceName;
+    private String publicEntityName;
+
+    /**
+     * @param decoratorResourceName
+     * @param publicEntityName
+     * @param subResourceTemplate
+     */
+    public AbstractResourceHolder(
+            String decoratorResourceName,
+            String publicEntityName,
+            SubResourceTemplate subResourceTemplate) {
+
+        this.subcollections = new HashMap<String, CollectionHolder>();
+
+        this.subResourceTemplate = subResourceTemplate;
+        this.decoratorResourceName = decoratorResourceName;
+        this.publicEntityName = publicEntityName;
+    }
+
+    /**
+     * @param decoratorResourceName
+     * @param publicEntityName
+     * @param resourceTemplate
+     */
+    public AbstractResourceHolder(
+            String decoratorResourceName,
+            String publicEntityName,
+            ResourceTemplate resourceTemplate) {
+
+        this.subcollections = new HashMap<String, CollectionHolder>();
+
+        this.resourceTemplate = resourceTemplate;
+        this.decoratorResourceName = decoratorResourceName;
+        this.publicEntityName = publicEntityName;
+    }
+
+    /**
+     * @return Subcollections
+     */
+    public Map<String, CollectionHolder> getSubcollections() {
+        return subcollections;
     }
 
     /**
@@ -38,8 +83,16 @@ public abstract class AbstractResourceHolder extends AbstractCollectionHolder {
      * @param subcollection
      *            sub-collection holder
      */
-    public void addSubCollection(String name, SubCollectionHolder subcollection) {
+    public void addSubCollection(String name, CollectionHolder subcollection) {
         this.subcollections.put(name, subcollection);
+    }
+
+    /**
+     * Produces this holder content
+     */
+    @Override
+    public String produce() {
+        return toString();
     }
 
     /**
@@ -51,4 +104,30 @@ public abstract class AbstractResourceHolder extends AbstractCollectionHolder {
      * Returns variables
      */
     abstract String getSubCollectionsVariables();
+
+    /**
+     * toString() override
+     */
+    @Override
+    public String toString() {
+        if (resourceTemplate == null)
+            return subResourceTemplate.getTemplate(decoratorResourceName,
+                    publicEntityName,
+                    getSubCollectionsVariables(),
+                    getSubCollectionsGetters(),
+                    getMethods());
+        return resourceTemplate.getTemplate(decoratorResourceName,
+                publicEntityName,
+                getSubCollectionsVariables(),
+                getSubCollectionsGetters(),
+                getMethods());
+    }
+
+    /**
+     * @return Resource name
+     */
+    @Override
+    public String getName() {
+        return this.decoratorResourceName;
+    }
 }

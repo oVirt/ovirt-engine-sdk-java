@@ -25,13 +25,13 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 
 public interface ICodegen {
     /**
-     * Generates the code
+     * Cleans the package and generates the code
      * 
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
-    public void generate() throws ClientProtocolException,
+    abstract void generate() throws ClientProtocolException,
             ServerException, IOException, JAXBException;
 }
