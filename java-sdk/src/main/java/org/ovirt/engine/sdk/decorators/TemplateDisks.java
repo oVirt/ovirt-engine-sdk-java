@@ -47,13 +47,13 @@ public class TemplateDisks extends
 
     @Override
     public List<TemplateDisk> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName();
+        String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, TemplateDisk.class);
     }
 
     @Override
     public TemplateDisk get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, TemplateDisk.class);
     }
 

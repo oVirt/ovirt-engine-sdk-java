@@ -47,13 +47,13 @@ public class GroupPermits extends
 
     @Override
     public List<GroupPermit> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName();
+        String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Permits.class, GroupPermit.class);
     }
 
     @Override
     public GroupPermit get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, GroupPermit.class);
     }
 

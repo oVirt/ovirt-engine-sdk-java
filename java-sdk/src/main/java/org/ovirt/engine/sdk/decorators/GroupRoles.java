@@ -47,13 +47,13 @@ public class GroupRoles extends
 
     @Override
     public List<GroupRole> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName();
+        String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Roles.class, GroupRole.class);
     }
 
     @Override
     public GroupRole get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, GroupRole.class);
     }
 

@@ -47,13 +47,13 @@ public class GroupTags extends
 
     @Override
     public List<GroupTag> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName();
+        String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Tags.class, GroupTag.class);
     }
 
     @Override
     public GroupTag get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, GroupTag.class);
     }
 

@@ -47,13 +47,13 @@ public class DomainUsers extends
 
     @Override
     public List<DomainUser> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName();
+        String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Users.class, DomainUser.class);
     }
 
     @Override
     public DomainUser get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, DomainUser.class);
     }
 

@@ -47,13 +47,13 @@ public class VMStatistics extends
 
     @Override
     public List<VMStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName();
+        String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VMStatistic.class);
     }
 
     @Override
     public VMStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VMStatistic.class);
     }
 

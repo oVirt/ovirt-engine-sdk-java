@@ -47,13 +47,13 @@ public class TemplateCdRoms extends
 
     @Override
     public List<TemplateCdRom> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName();
+        String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, TemplateCdRom.class);
     }
 
     @Override
     public TemplateCdRom get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.CdRom.class, TemplateCdRom.class);
     }
 

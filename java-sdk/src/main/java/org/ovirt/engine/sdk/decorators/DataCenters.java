@@ -44,13 +44,13 @@ public class DataCenters extends
 
     @Override
     public List<DataCenter> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/" + getName();
+        String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.DataCenters.class, DataCenter.class);
     }
 
     @Override
     public DataCenter get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/" + getName() + "/" + id.toString();
+        String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.DataCenter.class, DataCenter.class);
     }
 

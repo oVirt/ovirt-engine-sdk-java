@@ -44,13 +44,13 @@ public class Templates extends
 
     @Override
     public List<Template> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/" + getName();
+        String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Templates.class, Template.class);
     }
 
     @Override
     public Template get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/" + getName() + "/" + id.toString();
+        String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Template.class, Template.class);
     }
 

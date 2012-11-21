@@ -44,13 +44,13 @@ public class Roles extends
 
     @Override
     public List<Role> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/" + getName();
+        String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Roles.class, Role.class);
     }
 
     @Override
     public Role get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/" + getName() + "/" + id.toString();
+        String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, Role.class);
     }
 

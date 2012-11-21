@@ -44,13 +44,13 @@ public class Events extends
 
     @Override
     public List<Event> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/" + getName();
+        String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Events.class, Event.class);
     }
 
     @Override
     public Event get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/" + getName() + "/" + id.toString();
+        String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Event.class, Event.class);
     }
 

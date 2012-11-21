@@ -47,13 +47,13 @@ public class DataCenterQuotas extends
 
     @Override
     public List<DataCenterQuota> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName();
+        String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Quotas.class, DataCenterQuota.class);
     }
 
     @Override
     public DataCenterQuota get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Quota.class, DataCenterQuota.class);
     }
 

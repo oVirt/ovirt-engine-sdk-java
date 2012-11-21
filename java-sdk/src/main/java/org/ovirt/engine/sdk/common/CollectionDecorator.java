@@ -48,6 +48,8 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
 
     private String NAME;
 
+    protected static final String SLASH = "/";
+
     /**
      * CollectionDecorator
      * 
