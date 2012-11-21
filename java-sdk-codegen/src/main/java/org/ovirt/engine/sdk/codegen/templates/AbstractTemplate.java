@@ -38,14 +38,23 @@ public abstract class AbstractTemplate implements ITemplate {
     private static final String WINDOWS_TEMPLATES_PATH =
             "\\src\\main\\java\\org\\ovirt\\engine\\sdk\\codegen\\templates\\";
 
-    public AbstractTemplate(String name) {
-        this.name = name;
+    /**
+     * Generic .ctr
+     */
+    public AbstractTemplate() {
+        this.name = getClass().getSimpleName();
         this.template = loadTemplate();
         this.copyrightTemplate = new CopyrightTemplate(true).getTemplate();
     }
 
-    public AbstractTemplate(String name, boolean noCopyrightTemplate) {
-        this.name = name;
+    /**
+     * Invoke this .ctr when no need to fetch CopyrightTemplate
+     * 
+     * @param noCopyrightTemplate
+     *            true/false
+     */
+    public AbstractTemplate(boolean noCopyrightTemplate) {
+        this.name = getClass().getSimpleName();
         this.template = loadTemplate();
         if (!noCopyrightTemplate) {
             this.copyrightTemplate = new CopyrightTemplate(true).getTemplate();
@@ -102,20 +111,20 @@ public abstract class AbstractTemplate implements ITemplate {
      * @return template name
      */
     protected String getName() {
-        return name;
+        return this.name;
     }
 
     /**
      * @return CopyrightTemplate
      */
     protected String getCopyrightTemplate() {
-        return copyrightTemplate;
+        return this.copyrightTemplate;
     }
 
     /**
      * @return Template
      */
     protected String getTemplate() {
-        return template;
+        return this.template;
     }
 }

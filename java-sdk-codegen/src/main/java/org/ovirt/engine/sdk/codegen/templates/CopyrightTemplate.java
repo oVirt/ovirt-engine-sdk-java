@@ -21,13 +21,11 @@ package org.ovirt.engine.sdk.codegen.templates;
  */
 public class CopyrightTemplate extends AbstractTemplate {
 
-    private static String NAME = "CopyrightTemplate";
-
     public CopyrightTemplate() {
-        super(NAME);
+        super();
     }
 
     public CopyrightTemplate(boolean noInit) {
-        super(NAME, noInit);
+        super(noInit);
     }
 }

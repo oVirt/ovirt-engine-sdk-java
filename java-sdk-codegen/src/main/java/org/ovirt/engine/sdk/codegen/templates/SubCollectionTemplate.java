@@ -18,16 +18,13 @@ package org.ovirt.engine.sdk.codegen.templates;
 
 import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
 
-
 /**
  * Provides SubCollection templating services
  */
 public class SubCollectionTemplate extends AbstractTemplate {
 
-    private static String NAME = "SubCollectionTemplate";
-
     public SubCollectionTemplate() {
-        super(NAME);
+        super();
     }
 
     /**

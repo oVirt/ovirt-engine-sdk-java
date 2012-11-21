@@ -18,16 +18,13 @@ package org.ovirt.engine.sdk.codegen.templates;
 
 import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
 
-
 /**
  * Provides Resource templating services
  */
 public class ResourceTemplate extends AbstractTemplate {
 
-    private static String NAME = "ResourceTemplate";
-
     public ResourceTemplate() {
-        super(NAME);
+        super();
     }
 
     /**
