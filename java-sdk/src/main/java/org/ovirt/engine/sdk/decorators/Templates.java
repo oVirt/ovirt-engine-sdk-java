@@ -42,6 +42,18 @@ public class Templates extends
         super(proxy);
     }
 
+    @Override
+    public List<Template> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/templates";
+        return list(url, org.ovirt.engine.sdk.entities.Templates.class, Template.class);
+    }
+
+    @Override
+    public Template get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/templates/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Template.class, Template.class);
+    }
+
     
 }
 

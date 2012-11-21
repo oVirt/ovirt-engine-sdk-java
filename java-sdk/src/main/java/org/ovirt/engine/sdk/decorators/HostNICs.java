@@ -45,6 +45,18 @@ public class HostNICs extends
         this.parent = parent;
     }
 
+    @Override
+    public List<HostNIC> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/nics";
+        return list(url, org.ovirt.engine.sdk.entities.HostNics.class, HostNIC.class);
+    }
+
+    @Override
+    public HostNIC get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/nics/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
+    }
+
     
 }
 

@@ -45,6 +45,18 @@ public class UserTags extends
         this.parent = parent;
     }
 
+    @Override
+    public List<UserTag> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/tags";
+        return list(url, org.ovirt.engine.sdk.entities.Tags.class, UserTag.class);
+    }
+
+    @Override
+    public UserTag get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/tags/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, UserTag.class);
+    }
+
     
 }
 

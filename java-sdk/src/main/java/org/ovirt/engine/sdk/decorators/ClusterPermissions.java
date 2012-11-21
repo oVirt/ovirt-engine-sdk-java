@@ -45,6 +45,18 @@ public class ClusterPermissions extends
         this.parent = parent;
     }
 
+    @Override
+    public List<ClusterPermission> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/permissions";
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, ClusterPermission.class);
+    }
+
+    @Override
+    public ClusterPermission get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/permissions/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, ClusterPermission.class);
+    }
+
     
 }
 

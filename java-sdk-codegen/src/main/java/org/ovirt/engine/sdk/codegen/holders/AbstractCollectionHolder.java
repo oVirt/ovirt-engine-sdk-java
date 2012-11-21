@@ -36,6 +36,7 @@ public abstract class AbstractCollectionHolder implements IHolder {
     private String publicEntityName;
     private String publicCollectionName;
     private String decoratorEntityName;
+    private String url;
 
     private String parentDecoratorName;
 
@@ -54,6 +55,7 @@ public abstract class AbstractCollectionHolder implements IHolder {
      * @param publicCollectionName
      * @param parentDecoratorName
      * @param decoratorEntityName
+     * @param url
      * @param subCollectionTemplate
      */
     public AbstractCollectionHolder(
@@ -62,6 +64,7 @@ public abstract class AbstractCollectionHolder implements IHolder {
             String publicCollectionName,
             String parentDecoratorName,
             String decoratorEntityName,
+            String url,
             SubCollectionTemplate subCollectionTemplate) {
 
         this.methods = new HashMap<String, String>();
@@ -72,6 +75,7 @@ public abstract class AbstractCollectionHolder implements IHolder {
         this.publicCollectionName = publicCollectionName;
         this.parentDecoratorName = parentDecoratorName;
         this.decoratorEntityName = decoratorEntityName;
+        this.url = url;
     }
 
     /**
@@ -89,6 +93,7 @@ public abstract class AbstractCollectionHolder implements IHolder {
             String publicEntityName,
             String publicCollectionName,
             String decoratorEntityName,
+            String url,
             CollectionTemplate collectionTemplate) {
 
         this.methods = new HashMap<String, String>();
@@ -98,6 +103,7 @@ public abstract class AbstractCollectionHolder implements IHolder {
         this.publicEntityName = publicEntityName;
         this.publicCollectionName = publicCollectionName;
         this.decoratorEntityName = decoratorEntityName;
+        this.url = url;
     }
 
     /**
@@ -138,7 +144,8 @@ public abstract class AbstractCollectionHolder implements IHolder {
                     publicEntityName,
                     publicCollectionName,
                     decoratorEntityName,
-                    getMethods());
+                    getMethods(),
+                    url);
         }
         return subCollectionTemplate.getTemplate(
                 decoratorCollectionName,
@@ -146,7 +153,8 @@ public abstract class AbstractCollectionHolder implements IHolder {
                 publicCollectionName,
                 parentDecoratorName,
                 decoratorEntityName,
-                getMethods());
+                getMethods(),
+                url);
     }
 
     /**

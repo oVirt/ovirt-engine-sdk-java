@@ -45,6 +45,18 @@ public class StorageDomainFiles extends
         this.parent = parent;
     }
 
+    @Override
+    public List<StorageDomainFile> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/files";
+        return list(url, org.ovirt.engine.sdk.entities.Files.class, StorageDomainFile.class);
+    }
+
+    @Override
+    public StorageDomainFile get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/files/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.File.class, StorageDomainFile.class);
+    }
+
     
 }
 

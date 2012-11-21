@@ -45,6 +45,18 @@ public class ClusterGlusterVolumes extends
         this.parent = parent;
     }
 
+    @Override
+    public List<ClusterGlusterVolume> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/glustervolumes";
+        return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class, ClusterGlusterVolume.class);
+    }
+
+    @Override
+    public ClusterGlusterVolume get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/glustervolumes/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterVolume.class, ClusterGlusterVolume.class);
+    }
+
     
 }
 

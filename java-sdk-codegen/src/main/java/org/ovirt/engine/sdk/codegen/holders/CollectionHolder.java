@@ -32,6 +32,7 @@ public class CollectionHolder extends AbstractCollectionHolder {
      * @param publicCollectionName
      * @param parentDecoratorName
      * @param decoratorEntityName
+     * @param url
      * @param subCollectionTemplate
      */
     public CollectionHolder(
@@ -40,12 +41,14 @@ public class CollectionHolder extends AbstractCollectionHolder {
             String publicCollectionName,
             String parentDecoratorName,
             String decoratorEntityName,
+            String url,
             SubCollectionTemplate subCollectionTemplate) {
         super(decoratorSubCollectionName,
                 publicEntityName,
                 publicCollectionName,
                 parentDecoratorName,
                 decoratorEntityName,
+                url,
                 subCollectionTemplate);
     }
 
@@ -57,6 +60,7 @@ public class CollectionHolder extends AbstractCollectionHolder {
      * @param publicCollectionName
      * @param parentDecoratorName
      * @param decoratorEntityName
+     * @param url
      * @param collectionTemplate
      */
     public CollectionHolder(
@@ -64,11 +68,13 @@ public class CollectionHolder extends AbstractCollectionHolder {
             String publicEntityName,
             String publicCollectionName,
             String decoratorEntityName,
+            String url,
             CollectionTemplate collectionTemplate) {
         super(decoratorSubCollectionName,
                 publicEntityName,
                 publicCollectionName,
                 decoratorEntityName,
+                url,
                 collectionTemplate);
     }
 }

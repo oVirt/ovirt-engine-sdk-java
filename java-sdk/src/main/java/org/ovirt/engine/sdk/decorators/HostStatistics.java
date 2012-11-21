@@ -45,6 +45,18 @@ public class HostStatistics extends
         this.parent = parent;
     }
 
+    @Override
+    public List<HostStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/nics";
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, HostStatistic.class);
+    }
+
+    @Override
+    public HostStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/nics/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, HostStatistic.class);
+    }
+
     
 }
 

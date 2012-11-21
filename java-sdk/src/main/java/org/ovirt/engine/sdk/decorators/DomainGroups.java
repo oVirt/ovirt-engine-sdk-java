@@ -45,6 +45,18 @@ public class DomainGroups extends
         this.parent = parent;
     }
 
+    @Override
+    public List<DomainGroup> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/groups";
+        return list(url, org.ovirt.engine.sdk.entities.Groups.class, DomainGroup.class);
+    }
+
+    @Override
+    public DomainGroup get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/groups/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Group.class, DomainGroup.class);
+    }
+
     
 }
 

@@ -45,6 +45,18 @@ public class VMCdRoms extends
         this.parent = parent;
     }
 
+    @Override
+    public List<VMCdRom> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/cdroms";
+        return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, VMCdRom.class);
+    }
+
+    @Override
+    public VMCdRom get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/cdroms/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
+    }
+
     
 }
 

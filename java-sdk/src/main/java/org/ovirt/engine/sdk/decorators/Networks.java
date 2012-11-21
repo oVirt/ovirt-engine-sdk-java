@@ -42,6 +42,18 @@ public class Networks extends
         super(proxy);
     }
 
+    @Override
+    public List<Network> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/networks";
+        return list(url, org.ovirt.engine.sdk.entities.Networks.class, Network.class);
+    }
+
+    @Override
+    public Network get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/networks/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, Network.class);
+    }
+
     
 }
 

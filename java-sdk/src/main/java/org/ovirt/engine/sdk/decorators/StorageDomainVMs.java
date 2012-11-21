@@ -45,6 +45,18 @@ public class StorageDomainVMs extends
         this.parent = parent;
     }
 
+    @Override
+    public List<StorageDomainVM> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/vms";
+        return list(url, org.ovirt.engine.sdk.entities.VMs.class, StorageDomainVM.class);
+    }
+
+    @Override
+    public StorageDomainVM get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/vms/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, StorageDomainVM.class);
+    }
+
     
 }
 

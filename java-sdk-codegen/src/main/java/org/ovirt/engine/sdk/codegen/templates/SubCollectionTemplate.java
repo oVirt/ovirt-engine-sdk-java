@@ -35,6 +35,7 @@ public class SubCollectionTemplate extends AbstractTemplate {
      * @param publicCollectionName
      * @param parentDecoratorName
      * @param decoratorEntityName
+     * 
      * @param methods
      * 
      * @return
@@ -44,7 +45,8 @@ public class SubCollectionTemplate extends AbstractTemplate {
             String publicCollectionName,
             String parentDecoratorName,
             String decoratorEntityName,
-            String methods) {
+            String methods,
+            String url) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getCopyrightTemplate()
@@ -57,6 +59,7 @@ public class SubCollectionTemplate extends AbstractTemplate {
         templateWrapper.set("parentDecoratorName", parentDecoratorName);
         templateWrapper.set("decoratorEntityName", decoratorEntityName);
         templateWrapper.set("methods", methods);
+        templateWrapper.set("url", url);
 
         return templateWrapper.toString();
     }

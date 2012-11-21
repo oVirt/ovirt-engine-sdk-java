@@ -42,6 +42,18 @@ public class Users extends
         super(proxy);
     }
 
+    @Override
+    public List<User> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/users";
+        return list(url, org.ovirt.engine.sdk.entities.Users.class, User.class);
+    }
+
+    @Override
+    public User get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/users/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, User.class);
+    }
+
     
 }
 

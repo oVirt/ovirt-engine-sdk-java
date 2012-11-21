@@ -42,6 +42,18 @@ public class Domains extends
         super(proxy);
     }
 
+    @Override
+    public List<Domain> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/domains";
+        return list(url, org.ovirt.engine.sdk.entities.Domains.class, Domain.class);
+    }
+
+    @Override
+    public Domain get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/domains/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Domain.class, Domain.class);
+    }
+
     
 }
 

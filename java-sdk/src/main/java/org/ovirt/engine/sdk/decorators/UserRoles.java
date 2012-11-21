@@ -45,6 +45,18 @@ public class UserRoles extends
         this.parent = parent;
     }
 
+    @Override
+    public List<UserRole> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/roles";
+        return list(url, org.ovirt.engine.sdk.entities.Roles.class, UserRole.class);
+    }
+
+    @Override
+    public UserRole get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/roles/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, UserRole.class);
+    }
+
     
 }
 

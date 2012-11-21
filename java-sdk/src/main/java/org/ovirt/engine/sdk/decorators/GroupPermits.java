@@ -45,6 +45,18 @@ public class GroupPermits extends
         this.parent = parent;
     }
 
+    @Override
+    public List<GroupPermit> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/roles";
+        return list(url, org.ovirt.engine.sdk.entities.Permits.class, GroupPermit.class);
+    }
+
+    @Override
+    public GroupPermit get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/roles/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, GroupPermit.class);
+    }
+
     
 }
 

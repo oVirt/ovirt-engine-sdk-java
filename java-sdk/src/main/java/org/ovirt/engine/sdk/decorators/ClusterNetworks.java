@@ -45,6 +45,18 @@ public class ClusterNetworks extends
         this.parent = parent;
     }
 
+    @Override
+    public List<ClusterNetwork> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/networks";
+        return list(url, org.ovirt.engine.sdk.entities.Networks.class, ClusterNetwork.class);
+    }
+
+    @Override
+    public ClusterNetwork get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/networks/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
+    }
+
     
 }
 

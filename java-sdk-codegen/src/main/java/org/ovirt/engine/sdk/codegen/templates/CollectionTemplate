@@ -26,5 +26,17 @@ public class $decoratorCollectionName$ extends
         super(proxy);
     }
 
+    @Override
+    public List<$decoratorEntityName$> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "$url$";
+        return list(url, org.ovirt.engine.sdk.entities.$publicCollectionName$.class, $decoratorEntityName$.class);
+    }
+
+    @Override
+    public $decoratorEntityName$ get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "$url$/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorEntityName$.class);
+    }
+
     $methods$
 }

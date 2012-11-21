@@ -42,6 +42,18 @@ public class VmPools extends
         super(proxy);
     }
 
+    @Override
+    public List<VmPool> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/vmpools";
+        return list(url, org.ovirt.engine.sdk.entities.VmPools.class, VmPool.class);
+    }
+
+    @Override
+    public VmPool get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/vmpools/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
+    }
+
     
 }
 

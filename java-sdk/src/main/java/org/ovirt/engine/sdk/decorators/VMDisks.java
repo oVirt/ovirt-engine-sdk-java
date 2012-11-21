@@ -45,6 +45,18 @@ public class VMDisks extends
         this.parent = parent;
     }
 
+    @Override
+    public List<VMDisk> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/disks";
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class, VMDisk.class);
+    }
+
+    @Override
+    public VMDisk get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/disks/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
+    }
+
     
 }
 

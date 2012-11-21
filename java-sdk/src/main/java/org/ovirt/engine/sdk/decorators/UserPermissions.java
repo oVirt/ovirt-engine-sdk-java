@@ -45,6 +45,18 @@ public class UserPermissions extends
         this.parent = parent;
     }
 
+    @Override
+    public List<UserPermission> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/permissions";
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, UserPermission.class);
+    }
+
+    @Override
+    public UserPermission get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/permissions/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, UserPermission.class);
+    }
+
     
 }
 

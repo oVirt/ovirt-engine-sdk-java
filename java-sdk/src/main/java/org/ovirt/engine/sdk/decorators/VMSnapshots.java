@@ -45,6 +45,18 @@ public class VMSnapshots extends
         this.parent = parent;
     }
 
+    @Override
+    public List<VMSnapshot> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/snapshots";
+        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class, VMSnapshot.class);
+    }
+
+    @Override
+    public VMSnapshot get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/snapshots/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
+    }
+
     
 }
 

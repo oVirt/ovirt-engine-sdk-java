@@ -45,6 +45,18 @@ public class VmPoolPermissions extends
         this.parent = parent;
     }
 
+    @Override
+    public List<VmPoolPermission> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/permissions";
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, VmPoolPermission.class);
+    }
+
+    @Override
+    public VmPoolPermission get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + "/permissions/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, VmPoolPermission.class);
+    }
+
     
 }
 

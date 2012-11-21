@@ -42,6 +42,18 @@ public class DataCenters extends
         super(proxy);
     }
 
+    @Override
+    public List<DataCenter> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/datacenters";
+        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class, DataCenter.class);
+    }
+
+    @Override
+    public DataCenter get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = "/datacenters/" + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.DataCenter.class, DataCenter.class);
+    }
+
     
 }
 

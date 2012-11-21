@@ -184,6 +184,8 @@ public class RsdlCodegen extends AbstractCodegen {
                             collectionName = collection;
                             parent = StringUtils.toUpperCase(StringUtils.toSingular(collection));
                             String decoratorCollectionName = StringUtils.toUpperCase(collection);
+                            String urlTemplate = produceCollectionUrl(period);
+                            ;
 
                             if (!this.collectionsHolder.containsKey(decoratorCollectionName.toLowerCase())) {
                                 String publicEntityName = getPublicEntity(StringUtils.toSingular(collection));
@@ -196,6 +198,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                     publicEntityName,
                                                                     publicCollectionName,
                                                                     decoratorEntityName,
+                                                                    urlTemplate,
                                                                     collectionTemplate));
                             }
                         } else if (i == 2) { // root-resource
@@ -225,6 +228,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                         getPublicCollection(StringUtils.toPlural(actualReturnType));
                                 String parentDecoratorName = parent;
                                 String decoratorEntityName = StringUtils.toSingular(collection);
+                                String urlTemplate = produceCollectionUrl(period);
 
                                 resourceHolder.addSubCollection(collection.toLowerCase(),
                                         new CollectionHolder(decoratorSubCollectionName,
@@ -232,6 +236,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                 publicCollectionName,
                                                                 parentDecoratorName,
                                                                 decoratorEntityName,
+                                                                urlTemplate,
                                                                 subCollectionTemplate));
                             }
                         } else { // sub-resource
@@ -260,6 +265,15 @@ public class RsdlCodegen extends AbstractCodegen {
 
         // #3- Persist content
         persistContent(distPath);
+    }
+
+    /**
+     * @param period
+     * 
+     * @return collection url
+     */
+    private String produceCollectionUrl(String period) {
+        return SLASH + StringUtils.toPlural(period);
     }
 
     /**
