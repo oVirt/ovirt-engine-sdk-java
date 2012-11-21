@@ -73,15 +73,15 @@ public class ResourceHolder extends AbstractResourceHolder {
      */
     @Override
     String getSubCollectionsGetters() {
-        String subCollectionGetters = "";
+        StringBuffer subCollectionGetters = new StringBuffer();
 
         for (CollectionHolder ch : this.getSubcollections().values()) {
-            subCollectionGetters +=
+            subCollectionGetters.append(
                     this.getterTemplate.getTemplate(ch.getName(),
-                            StringUtils.toLowerCase(ch.getName()));
+                            StringUtils.toLowerCase(ch.getName())));
         }
 
-        return subCollectionGetters;
+        return subCollectionGetters.toString();
     }
 
     /**
@@ -89,14 +89,14 @@ public class ResourceHolder extends AbstractResourceHolder {
      */
     @Override
     String getSubCollectionsVariables() {
-        String subCollectionVariables = "";
+        StringBuffer subCollectionVariables = new StringBuffer();
 
         for (CollectionHolder ch : this.getSubcollections().values()) {
-            subCollectionVariables +=
+            subCollectionVariables.append(
                     this.variableTemplate.getTemplate(ch.getName(),
-                            StringUtils.toLowerCase(ch.getName()));
+                            StringUtils.toLowerCase(ch.getName())));
         }
 
-        return subCollectionVariables;
+        return subCollectionVariables.toString();
     }
 }
