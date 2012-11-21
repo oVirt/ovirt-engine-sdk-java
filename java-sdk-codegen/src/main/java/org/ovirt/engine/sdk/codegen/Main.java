@@ -40,20 +40,20 @@ public class Main {
     public static void main(String[] args) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
 
-        HttpProxyBroker httpProxy = new HttpProxyBroker(
+        HttpProxyBroker httpProxyBroker = new HttpProxyBroker(
                 new HttpProxyBuilder(
                         new ConnectionsPoolBuilder(API_URL, USER, PASSWORD).build()
                         ).build());
 
-        // #1 - download xsd schema from api & generate java entities classes from it
-        new XsdCodegen(httpProxy).generate();
+        // #1 - generate api entities from the XSD schema
+        new XsdCodegen(httpProxyBroker).generate();
 
         // #2 - compile java-sdk
 
-        // #3 - generate API e.p
+        // #3 - generate SDK entry point
 
-        // #4 - generate entities decorators
-        new RsdlCodegen(httpProxy).generate();
+        // #4 - generate api entities decorators by RSDL
+        new RsdlCodegen(httpProxyBroker).generate();
 
         // #5 - compile java-sdk
 

@@ -28,6 +28,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.HttpProxyBuilder;
 // TODO: import root-collections here
 //import org.ovirt.engine.sdk.decorators.Vms;
+import org.ovirt.engine.sdk.decorators.VMs;
 import org.ovirt.engine.sdk.entities.API;
 import org.ovirt.engine.sdk.entities.ProductInfo;
 import org.ovirt.engine.sdk.exceptions.ServerException;
@@ -42,8 +43,8 @@ public class Api {
     private HttpProxyBroker proxy = null;
     private API entryPoint = null;
 
-    // TODO: create root-collection variables herer
-    // private Vms vms;
+    // TODO: create root-collection variables here
+    private VMs vms;
 
     /**
      * @param url
@@ -203,7 +204,7 @@ public class Api {
             IOException, JAXBException {
         this.entryPoint = getEntryPoint();
         // TODO: init root-collections here
-        // this.vms = new Vms(this.proxy);
+        this.vms = new VMs(this.proxy);
     }
 
     /**
@@ -271,16 +272,14 @@ public class Api {
     }
 
     // TODO: create root-collection getters here
-    // /**
-    // * Returns collection of vms
-    // *
-    // * @return Vms
-    // */
-    // public Vms getVms() {
-    // return vms;
-    // }
-
-    // TODO: add all root collections
+    /**
+     * Returns collection of vms
+     * 
+     * @return Vms
+     */
+    public VMs getVMs() {
+        return vms;
+    }
 
     /**
      * Returns oVirt API product info
