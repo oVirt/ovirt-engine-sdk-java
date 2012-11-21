@@ -33,7 +33,15 @@ public class VM extends
         org.ovirt.engine.sdk.entities.VM {
 
     private HttpProxyBroker proxy;
-    
+
+    private VMPermissions vMPermissions;
+    private VMTags vMTags;
+    private VMSnapshots vMSnapshots;
+    private VMStatistics vMStatistics;
+    private VMDisks vMDisks;
+    private VMNICs vMNICs;
+    private VMCdRoms vMCdRoms;
+
 
     public VM(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +51,56 @@ public class VM extends
         return proxy;
     }
 
-    
+    public synchronized VMPermissions getVMPermissions() {
+        if (this.vMPermissions == null) {
+            this.vMPermissions = new VMPermissions(proxy, this);
+        }
+        return vMPermissions;
+    }
+
+    public synchronized VMTags getVMTags() {
+        if (this.vMTags == null) {
+            this.vMTags = new VMTags(proxy, this);
+        }
+        return vMTags;
+    }
+
+    public synchronized VMSnapshots getVMSnapshots() {
+        if (this.vMSnapshots == null) {
+            this.vMSnapshots = new VMSnapshots(proxy, this);
+        }
+        return vMSnapshots;
+    }
+
+    public synchronized VMStatistics getVMStatistics() {
+        if (this.vMStatistics == null) {
+            this.vMStatistics = new VMStatistics(proxy, this);
+        }
+        return vMStatistics;
+    }
+
+    public synchronized VMDisks getVMDisks() {
+        if (this.vMDisks == null) {
+            this.vMDisks = new VMDisks(proxy, this);
+        }
+        return vMDisks;
+    }
+
+    public synchronized VMNICs getVMNICs() {
+        if (this.vMNICs == null) {
+            this.vMNICs = new VMNICs(proxy, this);
+        }
+        return vMNICs;
+    }
+
+    public synchronized VMCdRoms getVMCdRoms() {
+        if (this.vMCdRoms == null) {
+            this.vMCdRoms = new VMCdRoms(proxy, this);
+        }
+        return vMCdRoms;
+    }
+
+
 
     
 }

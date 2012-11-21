@@ -33,7 +33,8 @@ public class Event extends
         org.ovirt.engine.sdk.entities.Event {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public Event(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +44,7 @@ public class Event extends
         return proxy;
     }
 
-    
+
 
     
 }

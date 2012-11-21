@@ -33,7 +33,12 @@ public class User extends
         org.ovirt.engine.sdk.entities.User {
 
     private HttpProxyBroker proxy;
-    
+
+    private UserPermits userPermits;
+    private UserRoles userRoles;
+    private UserTags userTags;
+    private UserPermissions userPermissions;
+
 
     public User(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +48,35 @@ public class User extends
         return proxy;
     }
 
-    
+    public synchronized UserPermits getUserPermits() {
+        if (this.userPermits == null) {
+            this.userPermits = new UserPermits(proxy, this);
+        }
+        return userPermits;
+    }
+
+    public synchronized UserRoles getUserRoles() {
+        if (this.userRoles == null) {
+            this.userRoles = new UserRoles(proxy, this);
+        }
+        return userRoles;
+    }
+
+    public synchronized UserTags getUserTags() {
+        if (this.userTags == null) {
+            this.userTags = new UserTags(proxy, this);
+        }
+        return userTags;
+    }
+
+    public synchronized UserPermissions getUserPermissions() {
+        if (this.userPermissions == null) {
+            this.userPermissions = new UserPermissions(proxy, this);
+        }
+        return userPermissions;
+    }
+
+
 
     
 }

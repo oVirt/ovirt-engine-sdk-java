@@ -33,7 +33,11 @@ public class DataCenter extends
         org.ovirt.engine.sdk.entities.DataCenter {
 
     private HttpProxyBroker proxy;
-    
+
+    private DataCenterPermissions dataCenterPermissions;
+    private DataCenterStorageDomains dataCenterStorageDomains;
+    private DataCenterQuotas dataCenterQuotas;
+
 
     public DataCenter(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +47,28 @@ public class DataCenter extends
         return proxy;
     }
 
-    
+    public synchronized DataCenterPermissions getDataCenterPermissions() {
+        if (this.dataCenterPermissions == null) {
+            this.dataCenterPermissions = new DataCenterPermissions(proxy, this);
+        }
+        return dataCenterPermissions;
+    }
+
+    public synchronized DataCenterStorageDomains getDataCenterStorageDomains() {
+        if (this.dataCenterStorageDomains == null) {
+            this.dataCenterStorageDomains = new DataCenterStorageDomains(proxy, this);
+        }
+        return dataCenterStorageDomains;
+    }
+
+    public synchronized DataCenterQuotas getDataCenterQuotas() {
+        if (this.dataCenterQuotas == null) {
+            this.dataCenterQuotas = new DataCenterQuotas(proxy, this);
+        }
+        return dataCenterQuotas;
+    }
+
+
 
     
 }

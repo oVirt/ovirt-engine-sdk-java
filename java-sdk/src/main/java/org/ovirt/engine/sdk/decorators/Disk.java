@@ -33,7 +33,9 @@ public class Disk extends
         org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
-    
+
+    private DiskStatistics diskStatistics;
+
 
     public Disk(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +45,14 @@ public class Disk extends
         return proxy;
     }
 
-    
+    public synchronized DiskStatistics getDiskStatistics() {
+        if (this.diskStatistics == null) {
+            this.diskStatistics = new DiskStatistics(proxy, this);
+        }
+        return diskStatistics;
+    }
+
+
 
     
 }

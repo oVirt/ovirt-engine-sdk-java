@@ -33,7 +33,12 @@ public class Host extends
         org.ovirt.engine.sdk.entities.Host {
 
     private HttpProxyBroker proxy;
-    
+
+    private HostNICs hostNICs;
+    private HostTags hostTags;
+    private HostPermissions hostPermissions;
+    private HostStatistics hostStatistics;
+
 
     public Host(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +48,35 @@ public class Host extends
         return proxy;
     }
 
-    
+    public synchronized HostNICs getHostNICs() {
+        if (this.hostNICs == null) {
+            this.hostNICs = new HostNICs(proxy, this);
+        }
+        return hostNICs;
+    }
+
+    public synchronized HostTags getHostTags() {
+        if (this.hostTags == null) {
+            this.hostTags = new HostTags(proxy, this);
+        }
+        return hostTags;
+    }
+
+    public synchronized HostPermissions getHostPermissions() {
+        if (this.hostPermissions == null) {
+            this.hostPermissions = new HostPermissions(proxy, this);
+        }
+        return hostPermissions;
+    }
+
+    public synchronized HostStatistics getHostStatistics() {
+        if (this.hostStatistics == null) {
+            this.hostStatistics = new HostStatistics(proxy, this);
+        }
+        return hostStatistics;
+    }
+
+
 
     
 }

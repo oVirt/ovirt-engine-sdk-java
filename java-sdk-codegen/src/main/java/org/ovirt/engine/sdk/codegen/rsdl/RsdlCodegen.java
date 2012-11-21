@@ -31,9 +31,11 @@ import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
 import org.ovirt.engine.sdk.codegen.templates.CollectionTemplate;
+import org.ovirt.engine.sdk.codegen.templates.GetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
+import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.codegen.utils.ReflectionHelper;
 import org.ovirt.engine.sdk.entities.DetailedLink;
@@ -61,6 +63,9 @@ public class RsdlCodegen extends AbstractCodegen {
     private SubCollectionTemplate subCollectionTemplate;
     private SubResourceTemplate subResourceTemplate;
 
+    private VariableTemplate variableTemplate;
+    private GetterTemplate getterTemplate;
+
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
 
@@ -86,6 +91,9 @@ public class RsdlCodegen extends AbstractCodegen {
         this.subCollectionTemplate = new SubCollectionTemplate();
         this.subResourceTemplate = new SubResourceTemplate();
         this.entitiesMap = getEntitiesMap();
+
+        this.variableTemplate = new VariableTemplate();
+        this.getterTemplate = new GetterTemplate();
 
         this.collectionsHolder = new HashMap<String, CollectionHolder>();
         this.resourcesHolder = new HashMap<String, ResourceHolder>();
@@ -209,7 +217,9 @@ public class RsdlCodegen extends AbstractCodegen {
                                                             new ResourceHolder(
                                                                     decoratorResourceName,
                                                                     publicEntityName,
-                                                                    resourceTemplate));
+                                                                    resourceTemplate,
+                                                                    variableTemplate,
+                                                                    getterTemplate));
                             }
                         } else if (i % 2 != 0) { // sub-collection
                             String collection = getSubCollectionName(actualReturnType, parent);
@@ -246,7 +256,9 @@ public class RsdlCodegen extends AbstractCodegen {
                                 this.resourcesHolder.put(resource.toLowerCase(),
                                         new ResourceHolder(subResourceDecoratorName,
                                                 publicEntityName,
-                                                subResourceTemplate));
+                                                subResourceTemplate,
+                                                variableTemplate,
+                                                getterTemplate));
                             }
                         }
                     } else {

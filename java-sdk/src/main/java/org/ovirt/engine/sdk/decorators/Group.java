@@ -33,7 +33,12 @@ public class Group extends
         org.ovirt.engine.sdk.entities.Group {
 
     private HttpProxyBroker proxy;
-    
+
+    private GroupPermits groupPermits;
+    private GroupRoles groupRoles;
+    private GroupPermissions groupPermissions;
+    private GroupTags groupTags;
+
 
     public Group(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +48,35 @@ public class Group extends
         return proxy;
     }
 
-    
+    public synchronized GroupPermits getGroupPermits() {
+        if (this.groupPermits == null) {
+            this.groupPermits = new GroupPermits(proxy, this);
+        }
+        return groupPermits;
+    }
+
+    public synchronized GroupRoles getGroupRoles() {
+        if (this.groupRoles == null) {
+            this.groupRoles = new GroupRoles(proxy, this);
+        }
+        return groupRoles;
+    }
+
+    public synchronized GroupPermissions getGroupPermissions() {
+        if (this.groupPermissions == null) {
+            this.groupPermissions = new GroupPermissions(proxy, this);
+        }
+        return groupPermissions;
+    }
+
+    public synchronized GroupTags getGroupTags() {
+        if (this.groupTags == null) {
+            this.groupTags = new GroupTags(proxy, this);
+        }
+        return groupTags;
+    }
+
+
 
     
 }

@@ -33,7 +33,8 @@ public class Tag extends
         org.ovirt.engine.sdk.entities.Tag {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public Tag(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +44,7 @@ public class Tag extends
         return proxy;
     }
 
-    
+
 
     
 }

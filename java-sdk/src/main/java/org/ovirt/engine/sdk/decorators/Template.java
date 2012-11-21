@@ -33,7 +33,12 @@ public class Template extends
         org.ovirt.engine.sdk.entities.Template {
 
     private HttpProxyBroker proxy;
-    
+
+    private TemplateCdRoms templateCdRoms;
+    private TemplateNICs templateNICs;
+    private TemplatePermissions templatePermissions;
+    private TemplateDisks templateDisks;
+
 
     public Template(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +48,35 @@ public class Template extends
         return proxy;
     }
 
-    
+    public synchronized TemplateCdRoms getTemplateCdRoms() {
+        if (this.templateCdRoms == null) {
+            this.templateCdRoms = new TemplateCdRoms(proxy, this);
+        }
+        return templateCdRoms;
+    }
+
+    public synchronized TemplateNICs getTemplateNICs() {
+        if (this.templateNICs == null) {
+            this.templateNICs = new TemplateNICs(proxy, this);
+        }
+        return templateNICs;
+    }
+
+    public synchronized TemplatePermissions getTemplatePermissions() {
+        if (this.templatePermissions == null) {
+            this.templatePermissions = new TemplatePermissions(proxy, this);
+        }
+        return templatePermissions;
+    }
+
+    public synchronized TemplateDisks getTemplateDisks() {
+        if (this.templateDisks == null) {
+            this.templateDisks = new TemplateDisks(proxy, this);
+        }
+        return templateDisks;
+    }
+
+
 
     
 }

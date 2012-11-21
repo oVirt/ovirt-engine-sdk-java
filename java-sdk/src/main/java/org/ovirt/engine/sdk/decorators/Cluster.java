@@ -33,7 +33,12 @@ public class Cluster extends
         org.ovirt.engine.sdk.entities.Cluster {
 
     private HttpProxyBroker proxy;
-    
+
+    private ClusterGlusterVolumes clusterGlusterVolumes;
+    private ClusterNetworks clusterNetworks;
+    private ClusterGlusterBricks clusterGlusterBricks;
+    private ClusterPermissions clusterPermissions;
+
 
     public Cluster(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +48,35 @@ public class Cluster extends
         return proxy;
     }
 
-    
+    public synchronized ClusterGlusterVolumes getClusterGlusterVolumes() {
+        if (this.clusterGlusterVolumes == null) {
+            this.clusterGlusterVolumes = new ClusterGlusterVolumes(proxy, this);
+        }
+        return clusterGlusterVolumes;
+    }
+
+    public synchronized ClusterNetworks getClusterNetworks() {
+        if (this.clusterNetworks == null) {
+            this.clusterNetworks = new ClusterNetworks(proxy, this);
+        }
+        return clusterNetworks;
+    }
+
+    public synchronized ClusterGlusterBricks getClusterGlusterBricks() {
+        if (this.clusterGlusterBricks == null) {
+            this.clusterGlusterBricks = new ClusterGlusterBricks(proxy, this);
+        }
+        return clusterGlusterBricks;
+    }
+
+    public synchronized ClusterPermissions getClusterPermissions() {
+        if (this.clusterPermissions == null) {
+            this.clusterPermissions = new ClusterPermissions(proxy, this);
+        }
+        return clusterPermissions;
+    }
+
+
 
     
 }

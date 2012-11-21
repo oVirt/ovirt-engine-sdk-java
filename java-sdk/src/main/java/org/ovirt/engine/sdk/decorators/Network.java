@@ -33,7 +33,8 @@ public class Network extends
         org.ovirt.engine.sdk.entities.Network {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public Network(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +44,7 @@ public class Network extends
         return proxy;
     }
 
-    
+
 
     
 }

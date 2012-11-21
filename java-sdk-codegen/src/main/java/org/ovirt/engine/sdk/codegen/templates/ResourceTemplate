@@ -17,7 +17,8 @@ public class $decoratorResourceName$ extends
         org.ovirt.engine.sdk.entities.$publicEntityName$ {
 
     private HttpProxyBroker proxy;
-    $subCollectionsVariables$
+
+$subCollectionsVariables$
 
     public $decoratorResourceName$(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -27,7 +28,7 @@ public class $decoratorResourceName$ extends
         return proxy;
     }
 
-    $subCollectionsGetters$
+$subCollectionsGetters$
 
     $methods$
 }

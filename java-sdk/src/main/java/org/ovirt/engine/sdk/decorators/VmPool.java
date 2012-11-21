@@ -33,7 +33,9 @@ public class VmPool extends
         org.ovirt.engine.sdk.entities.VmPool {
 
     private HttpProxyBroker proxy;
-    
+
+    private VmPoolPermissions vmPoolPermissions;
+
 
     public VmPool(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +45,14 @@ public class VmPool extends
         return proxy;
     }
 
-    
+    public synchronized VmPoolPermissions getVmPoolPermissions() {
+        if (this.vmPoolPermissions == null) {
+            this.vmPoolPermissions = new VmPoolPermissions(proxy, this);
+        }
+        return vmPoolPermissions;
+    }
+
+
 
     
 }

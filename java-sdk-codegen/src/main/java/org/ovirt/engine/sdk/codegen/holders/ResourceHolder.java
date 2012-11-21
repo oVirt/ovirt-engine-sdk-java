@@ -16,36 +16,56 @@
 
 package org.ovirt.engine.sdk.codegen.holders;
 
+import org.ovirt.engine.sdk.codegen.templates.GetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
+import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
+import org.ovirt.engine.sdk.utils.StringUtils;
 
 /**
  * Holds sub-resources
  */
 public class ResourceHolder extends AbstractResourceHolder {
 
+    private VariableTemplate variableTemplate;
+    private GetterTemplate getterTemplate;
+
     /**
      * @param decoratorResourceName
      * @param publicEntityName
      * @param subResourceTemplate
+     * @param variableTemplate
+     * @param getterTemplate
      */
     public ResourceHolder(
             String decoratorResourceName,
             String publicEntityName,
-            SubResourceTemplate subResourceTemplate) {
+            SubResourceTemplate subResourceTemplate,
+            VariableTemplate variableTemplate,
+            GetterTemplate getterTemplate) {
         super(decoratorResourceName, publicEntityName, subResourceTemplate);
+
+        this.variableTemplate = variableTemplate;
+        this.getterTemplate = getterTemplate;
     }
 
     /**
      * @param decoratorResourceName
      * @param publicEntityName
      * @param resourceTemplate
+     * @param variableTemplate
+     * @param getterTemplate
      */
     public ResourceHolder(
             String decoratorResourceName,
             String publicEntityName,
-            ResourceTemplate resourceTemplate) {
+            ResourceTemplate resourceTemplate,
+            VariableTemplate variableTemplate,
+            GetterTemplate getterTemplate) {
         super(decoratorResourceName, publicEntityName, resourceTemplate);
+
+        this.variableTemplate = variableTemplate;
+        this.getterTemplate = getterTemplate;
     }
 
     /**
@@ -53,8 +73,15 @@ public class ResourceHolder extends AbstractResourceHolder {
      */
     @Override
     String getSubCollectionsGetters() {
-        // TODO: implement this when templates are ready.
-        return "\r";
+        String subCollectionGetters = "";
+
+        for (CollectionHolder ch : this.getSubcollections().values()) {
+            subCollectionGetters +=
+                    this.getterTemplate.getTemplate(ch.getName(),
+                            StringUtils.toLowerCase(ch.getName()));
+        }
+
+        return subCollectionGetters;
     }
 
     /**
@@ -62,7 +89,14 @@ public class ResourceHolder extends AbstractResourceHolder {
      */
     @Override
     String getSubCollectionsVariables() {
-        // TODO: implement this when templates are ready.
-        return "\r";
+        String subCollectionVariables = "";
+
+        for (CollectionHolder ch : this.getSubcollections().values()) {
+            subCollectionVariables +=
+                    this.variableTemplate.getTemplate(ch.getName(),
+                            StringUtils.toLowerCase(ch.getName()));
+        }
+
+        return subCollectionVariables;
     }
 }

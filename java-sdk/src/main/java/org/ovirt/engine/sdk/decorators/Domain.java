@@ -33,7 +33,10 @@ public class Domain extends
         org.ovirt.engine.sdk.entities.Domain {
 
     private HttpProxyBroker proxy;
-    
+
+    private DomainGroups domainGroups;
+    private DomainUsers domainUsers;
+
 
     public Domain(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -43,7 +46,21 @@ public class Domain extends
         return proxy;
     }
 
-    
+    public synchronized DomainGroups getDomainGroups() {
+        if (this.domainGroups == null) {
+            this.domainGroups = new DomainGroups(proxy, this);
+        }
+        return domainGroups;
+    }
+
+    public synchronized DomainUsers getDomainUsers() {
+        if (this.domainUsers == null) {
+            this.domainUsers = new DomainUsers(proxy, this);
+        }
+        return domainUsers;
+    }
+
+
 
     
 }

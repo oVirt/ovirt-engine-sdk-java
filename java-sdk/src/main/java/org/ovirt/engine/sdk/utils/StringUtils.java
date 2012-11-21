@@ -44,6 +44,17 @@ public class StringUtils {
     }
 
     /**
+     * Wraps to LowerCase first char in candidate
+     * 
+     * @param candidate
+     * 
+     * @return candidate
+     */
+    public static String toLowerCase(String candidate) {
+        return Character.toLowerCase(candidate.charAt(0)) + candidate.substring(1);
+    }
+
+    /**
      * Converts string to singular form
      * 
      * @param candidate
