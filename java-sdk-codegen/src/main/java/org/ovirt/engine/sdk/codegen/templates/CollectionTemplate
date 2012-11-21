@@ -23,18 +23,18 @@ public class $decoratorCollectionName$ extends
                             $decoratorEntityName$> {
 
     public $decoratorCollectionName$(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "$urlCollectionName$");
     }
 
     @Override
     public List<$decoratorEntityName$> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "$url$";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.$publicCollectionName$.class, $decoratorEntityName$.class);
     }
 
     @Override
     public $decoratorEntityName$ get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "$url$/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorEntityName$.class);
     }
 

@@ -41,19 +41,19 @@ public class ClusterGlusterVolumes extends
     private Cluster parent;
 
     public ClusterGlusterVolumes(HttpProxyBroker proxy, Cluster parent) {
-        super(proxy);
+        super(proxy, "glustervolumes");
         this.parent = parent;
     }
 
     @Override
     public List<ClusterGlusterVolume> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/glustervolumes";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class, ClusterGlusterVolume.class);
     }
 
     @Override
     public ClusterGlusterVolume get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/glustervolumes/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterVolume.class, ClusterGlusterVolume.class);
     }
 

@@ -41,19 +41,19 @@ public class HostTags extends
     private Host parent;
 
     public HostTags(HttpProxyBroker proxy, Host parent) {
-        super(proxy);
+        super(proxy, "tags");
         this.parent = parent;
     }
 
     @Override
     public List<HostTag> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/tags";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Tags.class, HostTag.class);
     }
 
     @Override
     public HostTag get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/tags/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, HostTag.class);
     }
 

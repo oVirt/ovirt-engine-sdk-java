@@ -39,18 +39,18 @@ public class Tags extends
                             Tag> {
 
     public Tags(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "tags");
     }
 
     @Override
     public List<Tag> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/tags";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Tags.class, Tag.class);
     }
 
     @Override
     public Tag get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/tags/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, Tag.class);
     }
 

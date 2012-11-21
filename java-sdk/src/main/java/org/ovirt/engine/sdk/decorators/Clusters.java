@@ -39,18 +39,18 @@ public class Clusters extends
                             Cluster> {
 
     public Clusters(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "clusters");
     }
 
     @Override
     public List<Cluster> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/clusters";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Clusters.class, Cluster.class);
     }
 
     @Override
     public Cluster get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/clusters/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
     }
 

@@ -41,19 +41,19 @@ public class VmPoolPermissions extends
     private VmPool parent;
 
     public VmPoolPermissions(HttpProxyBroker proxy, VmPool parent) {
-        super(proxy);
+        super(proxy, "permissions");
         this.parent = parent;
     }
 
     @Override
     public List<VmPoolPermission> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/permissions";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, VmPoolPermission.class);
     }
 
     @Override
     public VmPoolPermission get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/permissions/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, VmPoolPermission.class);
     }
 

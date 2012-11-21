@@ -39,18 +39,18 @@ public class StorageDomains extends
                             StorageDomain> {
 
     public StorageDomains(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "storagedomains");
     }
 
     @Override
     public List<StorageDomain> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/storagedomains";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.StorageDomains.class, StorageDomain.class);
     }
 
     @Override
     public StorageDomain get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/storagedomains/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
     }
 

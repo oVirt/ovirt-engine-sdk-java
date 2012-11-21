@@ -41,19 +41,19 @@ public class VMTags extends
     private VM parent;
 
     public VMTags(HttpProxyBroker proxy, VM parent) {
-        super(proxy);
+        super(proxy, "tags");
         this.parent = parent;
     }
 
     @Override
     public List<VMTag> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/tags";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Tags.class, VMTag.class);
     }
 
     @Override
     public VMTag get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/tags/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, VMTag.class);
     }
 

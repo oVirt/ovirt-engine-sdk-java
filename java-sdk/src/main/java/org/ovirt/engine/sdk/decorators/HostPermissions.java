@@ -41,19 +41,19 @@ public class HostPermissions extends
     private Host parent;
 
     public HostPermissions(HttpProxyBroker proxy, Host parent) {
-        super(proxy);
+        super(proxy, "permissions");
         this.parent = parent;
     }
 
     @Override
     public List<HostPermission> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/permissions";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, HostPermission.class);
     }
 
     @Override
     public HostPermission get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/permissions/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, HostPermission.class);
     }
 

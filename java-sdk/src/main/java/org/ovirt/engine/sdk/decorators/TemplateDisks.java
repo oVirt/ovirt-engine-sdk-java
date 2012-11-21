@@ -41,19 +41,19 @@ public class TemplateDisks extends
     private Template parent;
 
     public TemplateDisks(HttpProxyBroker proxy, Template parent) {
-        super(proxy);
+        super(proxy, "disks");
         this.parent = parent;
     }
 
     @Override
     public List<TemplateDisk> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/disks";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, TemplateDisk.class);
     }
 
     @Override
     public TemplateDisk get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/disks/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, TemplateDisk.class);
     }
 

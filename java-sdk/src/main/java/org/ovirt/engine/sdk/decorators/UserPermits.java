@@ -41,19 +41,19 @@ public class UserPermits extends
     private User parent;
 
     public UserPermits(HttpProxyBroker proxy, User parent) {
-        super(proxy);
+        super(proxy, "roles");
         this.parent = parent;
     }
 
     @Override
     public List<UserPermit> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/roles";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Permits.class, UserPermit.class);
     }
 
     @Override
     public UserPermit get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/roles/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, UserPermit.class);
     }
 

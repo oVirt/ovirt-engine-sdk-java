@@ -41,19 +41,19 @@ public class DataCenterStorageDomains extends
     private DataCenter parent;
 
     public DataCenterStorageDomains(HttpProxyBroker proxy, DataCenter parent) {
-        super(proxy);
+        super(proxy, "storagedomains");
         this.parent = parent;
     }
 
     @Override
     public List<DataCenterStorageDomain> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/storagedomains";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.StorageDomains.class, DataCenterStorageDomain.class);
     }
 
     @Override
     public DataCenterStorageDomain get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/storagedomains/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, DataCenterStorageDomain.class);
     }
 

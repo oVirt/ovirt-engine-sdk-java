@@ -41,19 +41,19 @@ public class VMNICs extends
     private VM parent;
 
     public VMNICs(HttpProxyBroker proxy, VM parent) {
-        super(proxy);
+        super(proxy, "nics");
         this.parent = parent;
     }
 
     @Override
     public List<VMNIC> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/nics";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Nics.class, VMNIC.class);
     }
 
     @Override
     public VMNIC get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/nics/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
     }
 

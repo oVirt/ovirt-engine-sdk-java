@@ -39,18 +39,18 @@ public class Hosts extends
                             Host> {
 
     public Hosts(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "hosts");
     }
 
     @Override
     public List<Host> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/hosts";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Hosts.class, Host.class);
     }
 
     @Override
     public Host get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/hosts/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Host.class, Host.class);
     }
 

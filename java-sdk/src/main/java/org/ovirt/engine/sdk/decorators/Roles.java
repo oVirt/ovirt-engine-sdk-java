@@ -39,18 +39,18 @@ public class Roles extends
                             Role> {
 
     public Roles(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "roles");
     }
 
     @Override
     public List<Role> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/roles";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Roles.class, Role.class);
     }
 
     @Override
     public Role get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/roles/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, Role.class);
     }
 

@@ -35,7 +35,7 @@ public class CollectionTemplate extends AbstractTemplate {
      * @param publicCollectionName
      * @param decoratorEntityName
      * @param methods
-     * @param url
+     * @param urlCollectionName
      * 
      * @return
      */
@@ -44,7 +44,7 @@ public class CollectionTemplate extends AbstractTemplate {
             String publicCollectionName,
             String decoratorEntityName,
             String methods,
-            String url) {
+            String urlCollectionName) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getCopyrightTemplate()
@@ -56,7 +56,7 @@ public class CollectionTemplate extends AbstractTemplate {
         templateWrapper.set("publicCollectionName", publicCollectionName);
         templateWrapper.set("decoratorEntityName", decoratorEntityName);
         templateWrapper.set("methods", methods);
-        templateWrapper.set("url", url);
+        templateWrapper.set("urlCollectionName", urlCollectionName);
 
         return templateWrapper.toString();
     }

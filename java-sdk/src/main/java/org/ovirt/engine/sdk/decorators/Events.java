@@ -39,18 +39,18 @@ public class Events extends
                             Event> {
 
     public Events(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "events");
     }
 
     @Override
     public List<Event> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/events";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Events.class, Event.class);
     }
 
     @Override
     public Event get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/events/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Event.class, Event.class);
     }
 

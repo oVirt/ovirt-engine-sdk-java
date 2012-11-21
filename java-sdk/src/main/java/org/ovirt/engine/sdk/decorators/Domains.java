@@ -39,18 +39,18 @@ public class Domains extends
                             Domain> {
 
     public Domains(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "domains");
     }
 
     @Override
     public List<Domain> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/domains";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Domains.class, Domain.class);
     }
 
     @Override
     public Domain get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/domains/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Domain.class, Domain.class);
     }
 

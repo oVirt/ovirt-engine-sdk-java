@@ -41,19 +41,19 @@ public class VMStatistics extends
     private VM parent;
 
     public VMStatistics(HttpProxyBroker proxy, VM parent) {
-        super(proxy);
+        super(proxy, "disks");
         this.parent = parent;
     }
 
     @Override
     public List<VMStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/disks";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VMStatistic.class);
     }
 
     @Override
     public VMStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/disks/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VMStatistic.class);
     }
 

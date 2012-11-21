@@ -41,19 +41,19 @@ public class VMCdRoms extends
     private VM parent;
 
     public VMCdRoms(HttpProxyBroker proxy, VM parent) {
-        super(proxy);
+        super(proxy, "cdroms");
         this.parent = parent;
     }
 
     @Override
     public List<VMCdRom> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/cdroms";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, VMCdRom.class);
     }
 
     @Override
     public VMCdRom get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/cdroms/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
     }
 

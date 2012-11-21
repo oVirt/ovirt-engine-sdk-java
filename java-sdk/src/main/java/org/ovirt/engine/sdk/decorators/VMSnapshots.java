@@ -41,19 +41,19 @@ public class VMSnapshots extends
     private VM parent;
 
     public VMSnapshots(HttpProxyBroker proxy, VM parent) {
-        super(proxy);
+        super(proxy, "snapshots");
         this.parent = parent;
     }
 
     @Override
     public List<VMSnapshot> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/snapshots";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Snapshots.class, VMSnapshot.class);
     }
 
     @Override
     public VMSnapshot get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/snapshots/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
     }
 

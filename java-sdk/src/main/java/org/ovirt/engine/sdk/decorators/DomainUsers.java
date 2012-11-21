@@ -41,19 +41,19 @@ public class DomainUsers extends
     private Domain parent;
 
     public DomainUsers(HttpProxyBroker proxy, Domain parent) {
-        super(proxy);
+        super(proxy, "users");
         this.parent = parent;
     }
 
     @Override
     public List<DomainUser> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/users";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Users.class, DomainUser.class);
     }
 
     @Override
     public DomainUser get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/users/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, DomainUser.class);
     }
 

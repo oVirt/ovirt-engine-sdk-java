@@ -41,19 +41,19 @@ public class StorageDomainFiles extends
     private StorageDomain parent;
 
     public StorageDomainFiles(HttpProxyBroker proxy, StorageDomain parent) {
-        super(proxy);
+        super(proxy, "files");
         this.parent = parent;
     }
 
     @Override
     public List<StorageDomainFile> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/files";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Files.class, StorageDomainFile.class);
     }
 
     @Override
     public StorageDomainFile get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/files/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.File.class, StorageDomainFile.class);
     }
 

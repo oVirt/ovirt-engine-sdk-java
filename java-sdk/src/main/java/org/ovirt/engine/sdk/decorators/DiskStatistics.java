@@ -41,19 +41,19 @@ public class DiskStatistics extends
     private Disk parent;
 
     public DiskStatistics(HttpProxyBroker proxy, Disk parent) {
-        super(proxy);
+        super(proxy, "statistics");
         this.parent = parent;
     }
 
     @Override
     public List<DiskStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/statistics";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, DiskStatistic.class);
     }
 
     @Override
     public DiskStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/statistics/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, DiskStatistic.class);
     }
 

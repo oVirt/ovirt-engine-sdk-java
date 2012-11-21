@@ -39,18 +39,18 @@ public class Users extends
                             User> {
 
     public Users(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "users");
     }
 
     @Override
     public List<User> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/users";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Users.class, User.class);
     }
 
     @Override
     public User get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/users/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, User.class);
     }
 

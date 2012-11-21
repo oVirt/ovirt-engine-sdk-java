@@ -41,19 +41,19 @@ public class UserTags extends
     private User parent;
 
     public UserTags(HttpProxyBroker proxy, User parent) {
-        super(proxy);
+        super(proxy, "tags");
         this.parent = parent;
     }
 
     @Override
     public List<UserTag> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/tags";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Tags.class, UserTag.class);
     }
 
     @Override
     public UserTag get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/tags/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, UserTag.class);
     }
 

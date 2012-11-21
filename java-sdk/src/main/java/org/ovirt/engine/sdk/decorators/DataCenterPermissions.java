@@ -41,19 +41,19 @@ public class DataCenterPermissions extends
     private DataCenter parent;
 
     public DataCenterPermissions(HttpProxyBroker proxy, DataCenter parent) {
-        super(proxy);
+        super(proxy, "permissions");
         this.parent = parent;
     }
 
     @Override
     public List<DataCenterPermission> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/permissions";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, DataCenterPermission.class);
     }
 
     @Override
     public DataCenterPermission get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/permissions/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, DataCenterPermission.class);
     }
 

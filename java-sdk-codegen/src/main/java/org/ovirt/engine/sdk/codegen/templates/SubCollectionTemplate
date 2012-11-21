@@ -25,19 +25,19 @@ public class $decoratorSubCollectionName$ extends
     private $parentDecoratorName$ parent;
 
     public $decoratorSubCollectionName$(HttpProxyBroker proxy, $parentDecoratorName$ parent) {
-        super(proxy);
+        super(proxy, "$urlCollectionName$");
         this.parent = parent;
     }
 
     @Override
     public List<$decoratorEntityName$> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "$url$";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.$publicCollectionName$.class, $decoratorEntityName$.class);
     }
 
     @Override
     public $decoratorEntityName$ get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "$url$/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorEntityName$.class);
     }
 

@@ -39,18 +39,18 @@ public class Groups extends
                             Group> {
 
     public Groups(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "groups");
     }
 
     @Override
     public List<Group> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/groups";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Groups.class, Group.class);
     }
 
     @Override
     public Group get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/groups/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Group.class, Group.class);
     }
 

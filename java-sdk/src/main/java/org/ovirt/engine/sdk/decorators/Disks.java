@@ -39,18 +39,18 @@ public class Disks extends
                             Disk> {
 
     public Disks(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "disks");
     }
 
     @Override
     public List<Disk> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/disks";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, Disk.class);
     }
 
     @Override
     public Disk get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/disks/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, Disk.class);
     }
 

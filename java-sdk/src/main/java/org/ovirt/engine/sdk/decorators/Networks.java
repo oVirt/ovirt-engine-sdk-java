@@ -39,18 +39,18 @@ public class Networks extends
                             Network> {
 
     public Networks(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "networks");
     }
 
     @Override
     public List<Network> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/networks";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Networks.class, Network.class);
     }
 
     @Override
     public Network get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/networks/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, Network.class);
     }
 

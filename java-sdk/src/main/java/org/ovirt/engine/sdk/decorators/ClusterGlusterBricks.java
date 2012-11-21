@@ -41,19 +41,19 @@ public class ClusterGlusterBricks extends
     private Cluster parent;
 
     public ClusterGlusterBricks(HttpProxyBroker proxy, Cluster parent) {
-        super(proxy);
+        super(proxy, "glustervolumes");
         this.parent = parent;
     }
 
     @Override
     public List<ClusterGlusterBrick> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/glustervolumes";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class, ClusterGlusterBrick.class);
     }
 
     @Override
     public ClusterGlusterBrick get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/glustervolumes/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterBrick.class, ClusterGlusterBrick.class);
     }
 

@@ -41,19 +41,19 @@ public class DataCenterQuotas extends
     private DataCenter parent;
 
     public DataCenterQuotas(HttpProxyBroker proxy, DataCenter parent) {
-        super(proxy);
+        super(proxy, "quotas");
         this.parent = parent;
     }
 
     @Override
     public List<DataCenterQuota> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/quotas";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Quotas.class, DataCenterQuota.class);
     }
 
     @Override
     public DataCenterQuota get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/quotas/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Quota.class, DataCenterQuota.class);
     }
 

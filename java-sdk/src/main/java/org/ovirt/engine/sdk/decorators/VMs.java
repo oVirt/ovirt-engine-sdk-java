@@ -39,18 +39,18 @@ public class VMs extends
                             VM> {
 
     public VMs(HttpProxyBroker proxy) {
-        super(proxy);
+        super(proxy, "vms");
     }
 
     @Override
     public List<VM> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/vms";
+        String url = "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.VMs.class, VM.class);
     }
 
     @Override
     public VM get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = "/vms/" + id.toString();
+        String url = "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, VM.class);
     }
 

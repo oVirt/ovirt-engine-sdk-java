@@ -46,14 +46,19 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 public abstract class CollectionDecorator<R extends BaseResource, Q extends BaseResources, Z extends R>
         extends Decorator {
 
+    private String NAME;
+
     /**
      * CollectionDecorator
      * 
      * @param proxy
      *            HttpProxy proxy
+     * @param urlCollectionName
+     *            collection name in URI context
      */
-    public CollectionDecorator(HttpProxyBroker proxy) {
+    public CollectionDecorator(HttpProxyBroker proxy, String urlCollectionName) {
         super(proxy);
+        this.NAME = urlCollectionName;
     }
 
     /**
@@ -162,5 +167,12 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
             }
         }
         return null;
+    }
+
+    /**
+     * @return collection name in URI context
+     */
+    protected String getName() {
+        return this.NAME;
     }
 }

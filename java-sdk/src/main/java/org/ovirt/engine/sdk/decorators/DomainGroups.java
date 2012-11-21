@@ -41,19 +41,19 @@ public class DomainGroups extends
     private Domain parent;
 
     public DomainGroups(HttpProxyBroker proxy, Domain parent) {
-        super(proxy);
+        super(proxy, "groups");
         this.parent = parent;
     }
 
     @Override
     public List<DomainGroup> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/groups";
+        String url = this.parent.getHref() + "/" + getName();
         return list(url, org.ovirt.engine.sdk.entities.Groups.class, DomainGroup.class);
     }
 
     @Override
     public DomainGroup get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
-        String url = this.parent.getHref() + "/groups/" + id.toString();
+        String url = this.parent.getHref() + "/" + getName() + "/" + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Group.class, DomainGroup.class);
     }
 
