@@ -56,6 +56,6 @@ public class DataCenterQuotas extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Quota.class, DataCenterQuota.class);
     }
 
-    
+
 }
 

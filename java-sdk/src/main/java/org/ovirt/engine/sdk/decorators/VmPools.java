@@ -53,6 +53,6 @@ public class VmPools extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
     }
 
-    
+
 }
 

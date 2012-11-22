@@ -56,6 +56,6 @@ public class HostPermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, HostPermission.class);
     }
 
-    
+
 }
 

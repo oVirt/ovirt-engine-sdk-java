@@ -56,6 +56,6 @@ public class TemplateNICs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.NIC.class, TemplateNIC.class);
     }
 
-    
+
 }
 

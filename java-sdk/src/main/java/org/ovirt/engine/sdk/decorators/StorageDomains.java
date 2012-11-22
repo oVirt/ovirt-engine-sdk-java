@@ -53,6 +53,6 @@ public class StorageDomains extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
     }
 
-    
+
 }
 

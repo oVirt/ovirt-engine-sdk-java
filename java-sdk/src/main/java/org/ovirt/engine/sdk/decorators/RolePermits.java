@@ -56,6 +56,6 @@ public class RolePermits extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, RolePermit.class);
     }
 
-    
+
 }
 

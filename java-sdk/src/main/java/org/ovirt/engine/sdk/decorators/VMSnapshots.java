@@ -56,6 +56,6 @@ public class VMSnapshots extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
     }
 
-    
+
 }
 

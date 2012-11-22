@@ -56,6 +56,6 @@ public class VMDisks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
     }
 
-    
+
 }
 

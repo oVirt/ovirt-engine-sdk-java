@@ -43,8 +43,8 @@ public class UserPermit extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

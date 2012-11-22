@@ -43,8 +43,8 @@ public class RolePermit extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

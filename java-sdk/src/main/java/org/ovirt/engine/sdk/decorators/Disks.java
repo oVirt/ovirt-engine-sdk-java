@@ -53,6 +53,6 @@ public class Disks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, Disk.class);
     }
 
-    
+
 }
 

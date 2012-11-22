@@ -53,6 +53,6 @@ public class Groups extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Group.class, Group.class);
     }
 
-    
+
 }
 

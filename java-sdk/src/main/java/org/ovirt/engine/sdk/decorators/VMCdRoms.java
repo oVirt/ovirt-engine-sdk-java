@@ -56,6 +56,6 @@ public class VMCdRoms extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
     }
 
-    
+
 }
 

@@ -56,6 +56,6 @@ public class UserPermits extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, UserPermit.class);
     }
 
-    
+
 }
 

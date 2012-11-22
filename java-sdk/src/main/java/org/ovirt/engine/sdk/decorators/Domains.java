@@ -53,6 +53,6 @@ public class Domains extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Domain.class, Domain.class);
     }
 
-    
+
 }
 

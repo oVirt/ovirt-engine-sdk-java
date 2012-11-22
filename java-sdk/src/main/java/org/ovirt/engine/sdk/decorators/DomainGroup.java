@@ -43,8 +43,8 @@ public class DomainGroup extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

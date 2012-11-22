@@ -56,6 +56,6 @@ public class UserTags extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, UserTag.class);
     }
 
-    
+
 }
 

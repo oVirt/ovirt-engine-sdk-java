@@ -56,6 +56,6 @@ public class TemplateDisks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, TemplateDisk.class);
     }
 
-    
+
 }
 

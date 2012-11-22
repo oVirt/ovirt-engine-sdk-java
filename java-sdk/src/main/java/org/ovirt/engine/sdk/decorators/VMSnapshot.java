@@ -43,8 +43,8 @@ public class VMSnapshot extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

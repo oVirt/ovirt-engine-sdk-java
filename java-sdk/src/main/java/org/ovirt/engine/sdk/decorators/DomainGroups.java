@@ -56,6 +56,6 @@ public class DomainGroups extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Group.class, DomainGroup.class);
     }
 
-    
+
 }
 

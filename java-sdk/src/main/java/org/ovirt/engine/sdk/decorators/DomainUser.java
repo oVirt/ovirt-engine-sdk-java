@@ -43,8 +43,8 @@ public class DomainUser extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

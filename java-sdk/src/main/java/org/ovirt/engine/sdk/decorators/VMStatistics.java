@@ -56,6 +56,6 @@ public class VMStatistics extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VMStatistic.class);
     }
 
-    
+
 }
 

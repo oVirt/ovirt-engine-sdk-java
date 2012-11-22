@@ -53,6 +53,6 @@ public class Events extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Event.class, Event.class);
     }
 
-    
+
 }
 

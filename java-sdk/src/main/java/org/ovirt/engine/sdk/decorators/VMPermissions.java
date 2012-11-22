@@ -56,6 +56,6 @@ public class VMPermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, VMPermission.class);
     }
 
-    
+
 }
 

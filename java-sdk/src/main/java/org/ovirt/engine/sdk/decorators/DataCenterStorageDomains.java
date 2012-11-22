@@ -56,6 +56,6 @@ public class DataCenterStorageDomains extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, DataCenterStorageDomain.class);
     }
 
-    
+
 }
 

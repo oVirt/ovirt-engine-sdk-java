@@ -56,6 +56,6 @@ public class DataCenterPermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, DataCenterPermission.class);
     }
 
-    
+
 }
 

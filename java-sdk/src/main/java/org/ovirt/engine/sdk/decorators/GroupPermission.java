@@ -43,8 +43,8 @@ public class GroupPermission extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

@@ -43,8 +43,8 @@ public class GroupRole extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

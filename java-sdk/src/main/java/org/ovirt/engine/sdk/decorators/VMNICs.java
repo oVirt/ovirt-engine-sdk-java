@@ -56,6 +56,6 @@ public class VMNICs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
     }
 
-    
+
 }
 

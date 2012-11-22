@@ -53,6 +53,6 @@ public class Users extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, User.class);
     }
 
-    
+
 }
 

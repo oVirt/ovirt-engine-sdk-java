@@ -56,6 +56,6 @@ public class DomainUsers extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, DomainUser.class);
     }
 
-    
+
 }
 

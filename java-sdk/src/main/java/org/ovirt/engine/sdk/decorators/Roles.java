@@ -53,6 +53,6 @@ public class Roles extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, Role.class);
     }
 
-    
+
 }
 

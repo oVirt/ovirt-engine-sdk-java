@@ -56,6 +56,6 @@ public class TemplateCdRoms extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.CdRom.class, TemplateCdRom.class);
     }
 
-    
+
 }
 

@@ -56,6 +56,6 @@ public class StorageDomainFiles extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.File.class, StorageDomainFile.class);
     }
 
-    
+
 }
 

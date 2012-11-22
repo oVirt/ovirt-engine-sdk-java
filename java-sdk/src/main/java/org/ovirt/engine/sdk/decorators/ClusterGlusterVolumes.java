@@ -56,6 +56,6 @@ public class ClusterGlusterVolumes extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterVolume.class, ClusterGlusterVolume.class);
     }
 
-    
+
 }
 

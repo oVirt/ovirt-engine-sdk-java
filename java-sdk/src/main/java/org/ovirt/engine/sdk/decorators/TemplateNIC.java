@@ -43,8 +43,8 @@ public class TemplateNIC extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

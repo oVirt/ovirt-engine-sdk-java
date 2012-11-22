@@ -43,8 +43,8 @@ public class HostStatistic extends
         return proxy;
     }
 
-    
 
-    
+
+
 }
 

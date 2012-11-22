@@ -56,6 +56,6 @@ public class ClusterGlusterBricks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterBrick.class, ClusterGlusterBrick.class);
     }
 
-    
+
 }
 

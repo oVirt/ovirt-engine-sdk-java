@@ -56,6 +56,6 @@ public class StorageDomainTemplates extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Template.class, StorageDomainTemplate.class);
     }
 
-    
+
 }
 

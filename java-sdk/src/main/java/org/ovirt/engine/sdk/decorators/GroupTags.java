@@ -56,6 +56,6 @@ public class GroupTags extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, GroupTag.class);
     }
 
-    
+
 }
 

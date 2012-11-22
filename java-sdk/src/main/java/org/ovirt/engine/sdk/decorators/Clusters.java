@@ -53,6 +53,6 @@ public class Clusters extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
     }
 
-    
+
 }
 

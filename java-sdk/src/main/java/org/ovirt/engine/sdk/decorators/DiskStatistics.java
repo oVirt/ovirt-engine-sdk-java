@@ -56,6 +56,6 @@ public class DiskStatistics extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, DiskStatistic.class);
     }
 
-    
+
 }
 

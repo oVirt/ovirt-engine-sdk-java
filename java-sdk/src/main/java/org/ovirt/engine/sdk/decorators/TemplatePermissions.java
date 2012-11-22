@@ -56,6 +56,6 @@ public class TemplatePermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, TemplatePermission.class);
     }
 
-    
+
 }
 

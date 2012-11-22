@@ -56,6 +56,6 @@ public class ClusterNetworks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
     }
 
-    
+
 }
 

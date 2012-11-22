@@ -53,6 +53,6 @@ public class VMs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, VM.class);
     }
 
-    
+
 }
 
