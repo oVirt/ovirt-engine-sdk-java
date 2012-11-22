@@ -40,7 +40,7 @@ public class VMStatistics extends
     private VM parent;
 
     public VMStatistics(HttpProxyBroker proxy, VM parent) {
-        super(proxy, "disks");
+        super(proxy, "statistics");
         this.parent = parent;
     }
 

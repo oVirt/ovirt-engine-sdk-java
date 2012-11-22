@@ -40,7 +40,7 @@ public class GroupPermits extends
     private Group parent;
 
     public GroupPermits(HttpProxyBroker proxy, Group parent) {
-        super(proxy, "roles");
+        super(proxy, "permits");
         this.parent = parent;
     }
 

@@ -185,7 +185,7 @@ public class RsdlCodegen extends AbstractCodegen {
 
                 int i = 1;
                 for (String period : periods) {
-                    actualReturnType = getActualReturnType(responseBodyType, period);
+                    actualReturnType = getActualReturnType(responseBodyType, period, i, periods);
 
                     if (!ArrayUtils.contains(COLLECTION2ENTITY_EXCEPTIONS, period)) {
                         if (i == 1) { // root-collection
@@ -223,29 +223,31 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                     subCollectionGetterTemplate));
                             }
                         } else if (i % 2 != 0) { // sub-collection
-                            String collection = getSubCollectionName(actualReturnType, parent);
-                            collectionName = collection;
-                            ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
+                            if (!isAction(period, rel, requestMethod)) {
+                                String collection = getSubCollectionName(actualReturnType, parent);
+                                collectionName = collection;
+                                ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
 
-                            if (!resourceHolder.getSubcollections().containsKey(collection.toLowerCase())
-                                    && !isAction(period, rel, requestMethod)) {
+                                if (!resourceHolder.getSubcollections().containsKey(collection.toLowerCase())) {
 
-                                String decoratorSubCollectionName = collection;
-                                String publicEntityName =
-                                        getPublicEntity(StringUtils.toSingular(StringUtils.toPlural(actualReturnType)));
-                                String publicCollectionName =
-                                        getPublicCollection(StringUtils.toPlural(actualReturnType));
-                                String parentDecoratorName = parent;
-                                String decoratorEntityName = StringUtils.toSingular(collection);
+                                    String decoratorSubCollectionName = collection;
+                                    String publicEntityName =
+                                            getPublicEntity(StringUtils.toSingular(StringUtils.toPlural(actualReturnType)));
+                                    String publicCollectionName =
+                                            getPublicCollection(StringUtils.toPlural(actualReturnType));
+                                    String parentDecoratorName = parent;
+                                    String decoratorEntityName = StringUtils.toSingular(collection);
 
-                                resourceHolder.addSubCollection(collection.toLowerCase(),
-                                        new CollectionHolder(decoratorSubCollectionName,
-                                                                publicEntityName,
-                                                                publicCollectionName,
-                                                                parentDecoratorName,
-                                                                decoratorEntityName,
-                                                                StringUtils.toPlural(period),
-                                                                subCollectionTemplate));
+                                    resourceHolder.addSubCollection(collection.toLowerCase(),
+                                            new CollectionHolder(decoratorSubCollectionName,
+                                                                    publicEntityName,
+                                                                    publicCollectionName,
+                                                                    parentDecoratorName,
+                                                                    decoratorEntityName,
+                                                                    StringUtils.toPlural(period),
+                                                                    subCollectionTemplate));
+                                }
+
                             }
                         } else { // sub-resource
                             String resource = getSubResourceName(collectionName, parent);
@@ -367,19 +369,23 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param period
      * @return
      */
-    private String getActualReturnType(String responseBodyType, String period) {
+    private String getActualReturnType(String responseBodyType, String period, int i, String[] periods) {
         String actualReturnType;
-        if (responseBodyType == null || ArrayUtils.contains(RETURN_BODY_EXCEPTIONS, responseBodyType)) {
-            String collectionCandidate = getPublicCollection(period.toLowerCase(), false);
-            if (collectionCandidate != null) {
-                actualReturnType = collectionCandidate;
+        if (i + 1 == period.length()) {
+            if (responseBodyType == null || ArrayUtils.contains(RETURN_BODY_EXCEPTIONS, responseBodyType)) {
+                String collectionCandidate = getPublicCollection(period.toLowerCase(), false);
+                if (collectionCandidate != null) {
+                    actualReturnType = collectionCandidate;
+                } else {
+                    actualReturnType = period;
+                }
             } else {
-                actualReturnType = period;
+                actualReturnType = responseBodyType;
             }
-        } else {
-            actualReturnType = responseBodyType;
-        }
 
+        } else {
+            actualReturnType = getPublicCollection(period.toLowerCase(), false);
+        }
         return actualReturnType;
     }
 

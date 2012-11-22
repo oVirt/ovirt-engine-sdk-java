@@ -40,7 +40,7 @@ public class ClusterGlusterBricks extends
     private Cluster parent;
 
     public ClusterGlusterBricks(HttpProxyBroker proxy, Cluster parent) {
-        super(proxy, "glustervolumes");
+        super(proxy, "bricks");
         this.parent = parent;
     }
 

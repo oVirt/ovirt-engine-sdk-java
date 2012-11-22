@@ -40,7 +40,7 @@ public class UserPermits extends
     private User parent;
 
     public UserPermits(HttpProxyBroker proxy, User parent) {
-        super(proxy, "roles");
+        super(proxy, "permits");
         this.parent = parent;
     }
 
