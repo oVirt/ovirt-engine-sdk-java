@@ -27,7 +27,7 @@ public class $subResourceDecoratorName$ extends
         return proxy;
     }
 
-    $subCollectionsGetters$
+$subCollectionsGetters$
 
-    $methods$
+$methods$
 }

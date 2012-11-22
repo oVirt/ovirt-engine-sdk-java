@@ -252,7 +252,11 @@ public class RsdlCodegen extends AbstractCodegen {
                             if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
                                 String subResourceDecoratorName = resource;
                                 String publicEntityName =
-                                        getPublicEntity(StringUtils.toSingular(collectionName.replace(parent, "")));
+                                        getPublicEntity(StringUtils.toSingular(collectionName), false);
+                                if (publicEntityName == null) {
+                                    publicEntityName =
+                                            getPublicEntity(StringUtils.toSingular(collectionName.replace(parent, "")));
+                                }
 
                                 this.resourcesHolder.put(resource.toLowerCase(),
                                         new ResourceHolder(subResourceDecoratorName,

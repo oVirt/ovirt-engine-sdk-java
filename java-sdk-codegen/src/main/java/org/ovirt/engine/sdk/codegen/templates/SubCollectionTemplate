@@ -40,5 +40,5 @@ public class $decoratorSubCollectionName$ extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorEntityName$.class);
     }
 
-    $methods$
+$methods$
 }
