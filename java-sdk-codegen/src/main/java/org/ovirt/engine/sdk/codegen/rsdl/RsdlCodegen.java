@@ -16,9 +16,7 @@
 
 package org.ovirt.engine.sdk.codegen.rsdl;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,8 +28,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
+import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionTemplate;
-import org.ovirt.engine.sdk.codegen.templates.GetterTemplate;
+import org.ovirt.engine.sdk.codegen.templates.SubCollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
@@ -64,7 +63,8 @@ public class RsdlCodegen extends AbstractCodegen {
     private SubResourceTemplate subResourceTemplate;
 
     private VariableTemplate variableTemplate;
-    private GetterTemplate getterTemplate;
+    private SubCollectionGetterTemplate subCollectionGetterTemplate;
+    private CollectionGetterTemplate collectionGetterTemplate;
 
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
@@ -93,7 +93,8 @@ public class RsdlCodegen extends AbstractCodegen {
         this.entitiesMap = getEntitiesMap();
 
         this.variableTemplate = new VariableTemplate();
-        this.getterTemplate = new GetterTemplate();
+        this.subCollectionGetterTemplate = new SubCollectionGetterTemplate();
+        this.collectionGetterTemplate = new CollectionGetterTemplate();
 
         this.collectionsHolder = new HashMap<String, CollectionHolder>();
         this.resourcesHolder = new HashMap<String, ResourceHolder>();
@@ -155,7 +156,7 @@ public class RsdlCodegen extends AbstractCodegen {
      * @throws JAXBException
      */
     @Override
-    public void doGenerate(String distPath) throws ClientProtocolException,
+    protected void doGenerate(String distPath) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
 
         String url, rel, requestBodyType, responseBodyType, parent, collectionName, actualReturnType;
@@ -219,7 +220,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                     publicEntityName,
                                                                     resourceTemplate,
                                                                     variableTemplate,
-                                                                    getterTemplate));
+                                                                    subCollectionGetterTemplate));
                             }
                         } else if (i % 2 != 0) { // sub-collection
                             String collection = getSubCollectionName(actualReturnType, parent);
@@ -258,7 +259,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                                 publicEntityName,
                                                 subResourceTemplate,
                                                 variableTemplate,
-                                                getterTemplate));
+                                                subCollectionGetterTemplate));
                             }
                         }
                     } else {
@@ -272,8 +273,11 @@ public class RsdlCodegen extends AbstractCodegen {
             throw new RuntimeException("RSDL download failed.");
         }
 
-        // #3- Persist content
+        // #3 - Persist content
         persistContent(distPath);
+
+        // #4 - generate SDK entry point
+        new ApiCodegen(collectionsHolder, variableTemplate, collectionGetterTemplate).generate();
     }
 
     /**
@@ -446,37 +450,6 @@ public class RsdlCodegen extends AbstractCodegen {
             if (!throwError)
                 return null;
             throw rte;
-        }
-    }
-
-    /**
-     * Writes Java class
-     * 
-     * @param name
-     *            class name
-     * @param content
-     *            class content
-     * 
-     * @param outDir
-     *            directory to write the files to
-     */
-    private void persistClass(String name, String content, String outDir) {
-        PrintWriter out = null;
-        String fileName = outDir + name + ".java";
-
-        if (fileName != null && content != null) {
-            try {
-                out = new PrintWriter(fileName);
-                out.println(content);
-            } catch (FileNotFoundException e) {
-                // TODO: Log error
-                e.printStackTrace();
-                throw new RuntimeException("File \"" + fileName + "\" write failed.");
-            } finally {
-                if (out != null) {
-                    out.close();
-                }
-            }
         }
     }
 

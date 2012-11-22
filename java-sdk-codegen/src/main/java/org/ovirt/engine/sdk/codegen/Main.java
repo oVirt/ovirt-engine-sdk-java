@@ -50,14 +50,12 @@ public class Main {
 
         // #2 - compile java-sdk
 
-        // #3 - generate SDK entry point
-
-        // #4 - generate api entities decorators by RSDL
+        // #3 - generate api entities decorators by RSDL and SDK entry point
         new RsdlCodegen(httpProxyBroker).generate();
 
-        // #5 - compile java-sdk
+        // #4 - compile java-sdk
 
-        // #6 - exit
+        // #5 - exit
         System.exit(0);
     }
 }

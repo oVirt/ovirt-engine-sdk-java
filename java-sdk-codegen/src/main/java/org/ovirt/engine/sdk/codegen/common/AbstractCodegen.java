@@ -16,7 +16,9 @@
 
 package org.ovirt.engine.sdk.codegen.common;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.xml.bind.JAXBException;
 
@@ -83,5 +85,36 @@ public abstract class AbstractCodegen implements ICodegen {
      */
     protected String getDistinationPath() {
         return distPath;
+    }
+
+    /**
+     * Persist Java class
+     * 
+     * @param name
+     *            class name (without suffix/extention)
+     * @param content
+     *            class content
+     * 
+     * @param outDir
+     *            directory to write the file to
+     */
+    protected void persistClass(String name, String content, String outDir) {
+        PrintWriter out = null;
+        String fileName = outDir + name + ".java";
+
+        if (fileName != null && content != null) {
+            try {
+                out = new PrintWriter(fileName);
+                out.println(content);
+            } catch (FileNotFoundException e) {
+                // TODO: Log error
+                e.printStackTrace();
+                throw new RuntimeException("File \"" + fileName + "\" write failed.");
+            } finally {
+                if (out != null) {
+                    out.close();
+                }
+            }
+        }
     }
 }

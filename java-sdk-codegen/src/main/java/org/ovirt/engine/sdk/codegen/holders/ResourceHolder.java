@@ -16,7 +16,7 @@
 
 package org.ovirt.engine.sdk.codegen.holders;
 
-import org.ovirt.engine.sdk.codegen.templates.GetterTemplate;
+import org.ovirt.engine.sdk.codegen.templates.SubCollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
@@ -28,7 +28,7 @@ import org.ovirt.engine.sdk.utils.StringUtils;
 public class ResourceHolder extends AbstractResourceHolder {
 
     private VariableTemplate variableTemplate;
-    private GetterTemplate getterTemplate;
+    private SubCollectionGetterTemplate subCollectionGetterTemplate;
 
     /**
      * @param decoratorResourceName
@@ -42,11 +42,11 @@ public class ResourceHolder extends AbstractResourceHolder {
             String publicEntityName,
             SubResourceTemplate subResourceTemplate,
             VariableTemplate variableTemplate,
-            GetterTemplate getterTemplate) {
+            SubCollectionGetterTemplate getterTemplate) {
         super(decoratorResourceName, publicEntityName, subResourceTemplate);
 
         this.variableTemplate = variableTemplate;
-        this.getterTemplate = getterTemplate;
+        this.subCollectionGetterTemplate = getterTemplate;
     }
 
     /**
@@ -61,11 +61,11 @@ public class ResourceHolder extends AbstractResourceHolder {
             String publicEntityName,
             ResourceTemplate resourceTemplate,
             VariableTemplate variableTemplate,
-            GetterTemplate getterTemplate) {
+            SubCollectionGetterTemplate getterTemplate) {
         super(decoratorResourceName, publicEntityName, resourceTemplate);
 
         this.variableTemplate = variableTemplate;
-        this.getterTemplate = getterTemplate;
+        this.subCollectionGetterTemplate = getterTemplate;
     }
 
     /**
@@ -77,7 +77,7 @@ public class ResourceHolder extends AbstractResourceHolder {
 
         for (CollectionHolder ch : this.getSubcollections().values()) {
             subCollectionGetters.append(
-                    this.getterTemplate.getTemplate(ch.getName(),
+                    this.subCollectionGetterTemplate.getTemplate(ch.getName(),
                             StringUtils.toLowerCase(ch.getName())));
         }
 

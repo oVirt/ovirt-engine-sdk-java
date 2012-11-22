@@ -21,9 +21,9 @@ import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
 /**
  * Provides class variable getter templating services
  */
-public class GetterTemplate extends AbstractTemplate {
+public class SubCollectionGetterTemplate extends AbstractTemplate {
 
-    public GetterTemplate() {
+    public SubCollectionGetterTemplate() {
         super();
     }
 
