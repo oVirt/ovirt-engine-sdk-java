@@ -33,7 +33,8 @@ public class StorageDomainTemplate extends
         org.ovirt.engine.sdk.entities.Template {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public StorageDomainTemplate(HttpProxyBroker proxy) {
         this.proxy = proxy;

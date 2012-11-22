@@ -29,13 +29,14 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
-public class UserPermit extends
+public class UserRolePermit extends
         org.ovirt.engine.sdk.entities.Permit {
 
     private HttpProxyBroker proxy;
-    
 
-    public UserPermit(HttpProxyBroker proxy) {
+
+
+    public UserRolePermit(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 

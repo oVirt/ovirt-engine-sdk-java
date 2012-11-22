@@ -33,7 +33,8 @@ public class UserPermission extends
         org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public UserPermission(HttpProxyBroker proxy) {
         this.proxy = proxy;

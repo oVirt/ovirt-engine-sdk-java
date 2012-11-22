@@ -32,28 +32,28 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class HostStatistics extends
+public class VMDiskStatistics extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
                             org.ovirt.engine.sdk.entities.Statistics,
-                            HostStatistic> {
+                            VMDiskStatistic> {
 
-    private Host parent;
+    private VMDisk parent;
 
-    public HostStatistics(HttpProxyBroker proxy, Host parent) {
+    public VMDiskStatistics(HttpProxyBroker proxy, VMDisk parent) {
         super(proxy, "statistics");
         this.parent = parent;
     }
 
     @Override
-    public List<HostStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<VMDiskStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, HostStatistic.class);
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VMDiskStatistic.class);
     }
 
     @Override
-    public HostStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VMDiskStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, HostStatistic.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VMDiskStatistic.class);
     }
 
 

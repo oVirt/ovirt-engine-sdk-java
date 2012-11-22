@@ -33,7 +33,11 @@ public class VMSnapshot extends
         org.ovirt.engine.sdk.entities.Snapshot {
 
     private HttpProxyBroker proxy;
-    
+
+    private VMSnapshotNics vMSnapshotNics;
+    private VMSnapshotDisks vMSnapshotDisks;
+    private VMSnapshotCdRoms vMSnapshotCdRoms;
+
 
     public VMSnapshot(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -41,6 +45,27 @@ public class VMSnapshot extends
 
     private HttpProxyBroker getProxy() {
         return proxy;
+    }
+
+    public synchronized VMSnapshotNics getVMSnapshotNics() {
+        if (this.vMSnapshotNics == null) {
+            this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
+        }
+        return vMSnapshotNics;
+    }
+
+    public synchronized VMSnapshotDisks getVMSnapshotDisks() {
+        if (this.vMSnapshotDisks == null) {
+            this.vMSnapshotDisks = new VMSnapshotDisks(proxy, this);
+        }
+        return vMSnapshotDisks;
+    }
+
+    public synchronized VMSnapshotCdRoms getVMSnapshotCdRoms() {
+        if (this.vMSnapshotCdRoms == null) {
+            this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
+        }
+        return vMSnapshotCdRoms;
     }
 
 

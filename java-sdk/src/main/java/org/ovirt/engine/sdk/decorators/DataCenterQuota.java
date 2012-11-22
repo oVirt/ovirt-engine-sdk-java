@@ -33,7 +33,8 @@ public class DataCenterQuota extends
         org.ovirt.engine.sdk.entities.Quota {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public DataCenterQuota(HttpProxyBroker proxy) {
         this.proxy = proxy;

@@ -33,7 +33,9 @@ public class VMDisk extends
         org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
-    
+
+    private VMDiskStatistics vMDiskStatistics;
+
 
     public VMDisk(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -41,6 +43,13 @@ public class VMDisk extends
 
     private HttpProxyBroker getProxy() {
         return proxy;
+    }
+
+    public synchronized VMDiskStatistics getVMDiskStatistics() {
+        if (this.vMDiskStatistics == null) {
+            this.vMDiskStatistics = new VMDiskStatistics(proxy, this);
+        }
+        return vMDiskStatistics;
     }
 
 

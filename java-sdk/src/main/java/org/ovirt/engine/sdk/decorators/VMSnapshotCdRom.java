@@ -29,13 +29,14 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
-public class ClusterGlusterBrick extends
-        org.ovirt.engine.sdk.entities.GlusterBrick {
+public class VMSnapshotCdRom extends
+        org.ovirt.engine.sdk.entities.CdRom {
 
     private HttpProxyBroker proxy;
-    
 
-    public ClusterGlusterBrick(HttpProxyBroker proxy) {
+
+
+    public VMSnapshotCdRom(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 

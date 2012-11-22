@@ -33,7 +33,8 @@ public class TemplateDisk extends
         org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public TemplateDisk(HttpProxyBroker proxy) {
         this.proxy = proxy;

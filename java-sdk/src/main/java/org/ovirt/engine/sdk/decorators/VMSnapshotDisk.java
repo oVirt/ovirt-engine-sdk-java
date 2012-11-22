@@ -29,13 +29,14 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
-public class GroupPermit extends
-        org.ovirt.engine.sdk.entities.Permit {
+public class VMSnapshotDisk extends
+        org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
-    
 
-    public GroupPermit(HttpProxyBroker proxy) {
+
+
+    public VMSnapshotDisk(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 

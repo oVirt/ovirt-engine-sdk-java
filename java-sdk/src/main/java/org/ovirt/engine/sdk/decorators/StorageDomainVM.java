@@ -33,7 +33,8 @@ public class StorageDomainVM extends
         org.ovirt.engine.sdk.entities.VM {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public StorageDomainVM(HttpProxyBroker proxy) {
         this.proxy = proxy;

@@ -32,28 +32,28 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class ClusterGlusterBricks extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.GlusterBrick,
-                            org.ovirt.engine.sdk.entities.GlusterBricks,
-                            ClusterGlusterBrick> {
+public class VMSnapshotCdRoms extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.CdRom,
+                            org.ovirt.engine.sdk.entities.CdRoms,
+                            VMSnapshotCdRom> {
 
-    private Cluster parent;
+    private VMSnapshot parent;
 
-    public ClusterGlusterBricks(HttpProxyBroker proxy, Cluster parent) {
-        super(proxy, "bricks");
+    public VMSnapshotCdRoms(HttpProxyBroker proxy, VMSnapshot parent) {
+        super(proxy, "cdroms");
         this.parent = parent;
     }
 
     @Override
-    public List<ClusterGlusterBrick> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<VMSnapshotCdRom> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class, ClusterGlusterBrick.class);
+        return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, VMSnapshotCdRom.class);
     }
 
     @Override
-    public ClusterGlusterBrick get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VMSnapshotCdRom get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterBrick.class, ClusterGlusterBrick.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.CdRom.class, VMSnapshotCdRom.class);
     }
 
 

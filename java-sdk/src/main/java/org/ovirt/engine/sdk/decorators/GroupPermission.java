@@ -33,7 +33,8 @@ public class GroupPermission extends
         org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public GroupPermission(HttpProxyBroker proxy) {
         this.proxy = proxy;

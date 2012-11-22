@@ -33,7 +33,8 @@ public class HostStatistic extends
         org.ovirt.engine.sdk.entities.Statistic {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public HostStatistic(HttpProxyBroker proxy) {
         this.proxy = proxy;

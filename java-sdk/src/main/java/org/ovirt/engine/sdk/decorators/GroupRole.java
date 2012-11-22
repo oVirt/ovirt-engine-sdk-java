@@ -33,7 +33,9 @@ public class GroupRole extends
         org.ovirt.engine.sdk.entities.Role {
 
     private HttpProxyBroker proxy;
-    
+
+    private GroupRolePermits groupRolePermits;
+
 
     public GroupRole(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -41,6 +43,13 @@ public class GroupRole extends
 
     private HttpProxyBroker getProxy() {
         return proxy;
+    }
+
+    public synchronized GroupRolePermits getGroupRolePermits() {
+        if (this.groupRolePermits == null) {
+            this.groupRolePermits = new GroupRolePermits(proxy, this);
+        }
+        return groupRolePermits;
     }
 
 

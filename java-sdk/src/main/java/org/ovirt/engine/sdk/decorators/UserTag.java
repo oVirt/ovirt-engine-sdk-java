@@ -33,7 +33,8 @@ public class UserTag extends
         org.ovirt.engine.sdk.entities.Tag {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public UserTag(HttpProxyBroker proxy) {
         this.proxy = proxy;

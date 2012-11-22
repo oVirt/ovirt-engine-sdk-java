@@ -33,7 +33,8 @@ public class HostTag extends
         org.ovirt.engine.sdk.entities.Tag {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public HostTag(HttpProxyBroker proxy) {
         this.proxy = proxy;

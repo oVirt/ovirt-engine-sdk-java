@@ -33,7 +33,8 @@ public class VMCdRom extends
         org.ovirt.engine.sdk.entities.CdRom {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public VMCdRom(HttpProxyBroker proxy) {
         this.proxy = proxy;

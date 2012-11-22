@@ -33,7 +33,8 @@ public class DomainGroup extends
         org.ovirt.engine.sdk.entities.Group {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public DomainGroup(HttpProxyBroker proxy) {
         this.proxy = proxy;

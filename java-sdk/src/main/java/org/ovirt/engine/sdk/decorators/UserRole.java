@@ -33,7 +33,9 @@ public class UserRole extends
         org.ovirt.engine.sdk.entities.Role {
 
     private HttpProxyBroker proxy;
-    
+
+    private UserRolePermits userRolePermits;
+
 
     public UserRole(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -41,6 +43,13 @@ public class UserRole extends
 
     private HttpProxyBroker getProxy() {
         return proxy;
+    }
+
+    public synchronized UserRolePermits getUserRolePermits() {
+        if (this.userRolePermits == null) {
+            this.userRolePermits = new UserRolePermits(proxy, this);
+        }
+        return userRolePermits;
     }
 
 

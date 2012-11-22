@@ -33,7 +33,8 @@ public class VMStatistic extends
         org.ovirt.engine.sdk.entities.Statistic {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public VMStatistic(HttpProxyBroker proxy) {
         this.proxy = proxy;

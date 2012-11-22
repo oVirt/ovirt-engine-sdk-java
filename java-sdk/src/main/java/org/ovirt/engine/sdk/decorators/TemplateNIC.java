@@ -33,7 +33,8 @@ public class TemplateNIC extends
         org.ovirt.engine.sdk.entities.NIC {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public TemplateNIC(HttpProxyBroker proxy) {
         this.proxy = proxy;

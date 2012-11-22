@@ -33,7 +33,8 @@ public class TemplatePermission extends
         org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public TemplatePermission(HttpProxyBroker proxy) {
         this.proxy = proxy;

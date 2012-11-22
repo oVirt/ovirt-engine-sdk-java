@@ -33,7 +33,8 @@ public class DiskStatistic extends
         org.ovirt.engine.sdk.entities.Statistic {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public DiskStatistic(HttpProxyBroker proxy) {
         this.proxy = proxy;

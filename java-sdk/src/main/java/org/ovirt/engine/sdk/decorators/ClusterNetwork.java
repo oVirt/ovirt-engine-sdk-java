@@ -33,7 +33,8 @@ public class ClusterNetwork extends
         org.ovirt.engine.sdk.entities.Network {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public ClusterNetwork(HttpProxyBroker proxy) {
         this.proxy = proxy;

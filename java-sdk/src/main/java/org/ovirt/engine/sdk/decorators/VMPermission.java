@@ -33,7 +33,8 @@ public class VMPermission extends
         org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public VMPermission(HttpProxyBroker proxy) {
         this.proxy = proxy;

@@ -33,7 +33,9 @@ public class VMNIC extends
         org.ovirt.engine.sdk.entities.NIC {
 
     private HttpProxyBroker proxy;
-    
+
+    private VMNICStatistics vMNICStatistics;
+
 
     public VMNIC(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -41,6 +43,13 @@ public class VMNIC extends
 
     private HttpProxyBroker getProxy() {
         return proxy;
+    }
+
+    public synchronized VMNICStatistics getVMNICStatistics() {
+        if (this.vMNICStatistics == null) {
+            this.vMNICStatistics = new VMNICStatistics(proxy, this);
+        }
+        return vMNICStatistics;
     }
 
 

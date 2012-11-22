@@ -32,28 +32,28 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class HostStatistics extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
-                            org.ovirt.engine.sdk.entities.Statistics,
-                            HostStatistic> {
+public class VMSnapshotNics extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.NIC,
+                            org.ovirt.engine.sdk.entities.Nics,
+                            VMSnapshotNIC> {
 
-    private Host parent;
+    private VMSnapshot parent;
 
-    public HostStatistics(HttpProxyBroker proxy, Host parent) {
-        super(proxy, "statistics");
+    public VMSnapshotNics(HttpProxyBroker proxy, VMSnapshot parent) {
+        super(proxy, "nics");
         this.parent = parent;
     }
 
     @Override
-    public List<HostStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<VMSnapshotNIC> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, HostStatistic.class);
+        return list(url, org.ovirt.engine.sdk.entities.Nics.class, VMSnapshotNIC.class);
     }
 
     @Override
-    public HostStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VMSnapshotNIC get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, HostStatistic.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.NIC.class, VMSnapshotNIC.class);
     }
 
 

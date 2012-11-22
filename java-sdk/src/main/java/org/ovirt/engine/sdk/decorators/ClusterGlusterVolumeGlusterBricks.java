@@ -32,28 +32,28 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class HostStatistics extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
-                            org.ovirt.engine.sdk.entities.Statistics,
-                            HostStatistic> {
+public class ClusterGlusterVolumeGlusterBricks extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.GlusterBrick,
+                            org.ovirt.engine.sdk.entities.GlusterBricks,
+                            ClusterGlusterVolumeGlusterBrick> {
 
-    private Host parent;
+    private ClusterGlusterVolume parent;
 
-    public HostStatistics(HttpProxyBroker proxy, Host parent) {
-        super(proxy, "statistics");
+    public ClusterGlusterVolumeGlusterBricks(HttpProxyBroker proxy, ClusterGlusterVolume parent) {
+        super(proxy, "bricks");
         this.parent = parent;
     }
 
     @Override
-    public List<HostStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<ClusterGlusterVolumeGlusterBrick> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, HostStatistic.class);
+        return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class, ClusterGlusterVolumeGlusterBrick.class);
     }
 
     @Override
-    public HostStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public ClusterGlusterVolumeGlusterBrick get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, HostStatistic.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterBrick.class, ClusterGlusterVolumeGlusterBrick.class);
     }
 
 

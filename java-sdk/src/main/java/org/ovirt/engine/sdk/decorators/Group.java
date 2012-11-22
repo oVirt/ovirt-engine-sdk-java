@@ -34,7 +34,6 @@ public class Group extends
 
     private HttpProxyBroker proxy;
 
-    private GroupPermits groupPermits;
     private GroupRoles groupRoles;
     private GroupPermissions groupPermissions;
     private GroupTags groupTags;
@@ -46,13 +45,6 @@ public class Group extends
 
     private HttpProxyBroker getProxy() {
         return proxy;
-    }
-
-    public synchronized GroupPermits getGroupPermits() {
-        if (this.groupPermits == null) {
-            this.groupPermits = new GroupPermits(proxy, this);
-        }
-        return groupPermits;
     }
 
     public synchronized GroupRoles getGroupRoles() {

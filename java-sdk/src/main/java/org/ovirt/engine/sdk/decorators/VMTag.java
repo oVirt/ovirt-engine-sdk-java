@@ -33,7 +33,8 @@ public class VMTag extends
         org.ovirt.engine.sdk.entities.Tag {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public VMTag(HttpProxyBroker proxy) {
         this.proxy = proxy;

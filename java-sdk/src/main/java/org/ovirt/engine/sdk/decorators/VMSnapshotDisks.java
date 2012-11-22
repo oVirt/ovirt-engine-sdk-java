@@ -32,28 +32,28 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class GroupPermits extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Permit,
-                            org.ovirt.engine.sdk.entities.Permits,
-                            GroupPermit> {
+public class VMSnapshotDisks extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Disk,
+                            org.ovirt.engine.sdk.entities.Disks,
+                            VMSnapshotDisk> {
 
-    private Group parent;
+    private VMSnapshot parent;
 
-    public GroupPermits(HttpProxyBroker proxy, Group parent) {
-        super(proxy, "permits");
+    public VMSnapshotDisks(HttpProxyBroker proxy, VMSnapshot parent) {
+        super(proxy, "disks");
         this.parent = parent;
     }
 
     @Override
-    public List<GroupPermit> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<VMSnapshotDisk> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Permits.class, GroupPermit.class);
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class, VMSnapshotDisk.class);
     }
 
     @Override
-    public GroupPermit get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VMSnapshotDisk get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, GroupPermit.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, VMSnapshotDisk.class);
     }
 
 

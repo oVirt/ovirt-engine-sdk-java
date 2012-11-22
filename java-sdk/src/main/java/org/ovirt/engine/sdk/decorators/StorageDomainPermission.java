@@ -33,7 +33,8 @@ public class StorageDomainPermission extends
         org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public StorageDomainPermission(HttpProxyBroker proxy) {
         this.proxy = proxy;

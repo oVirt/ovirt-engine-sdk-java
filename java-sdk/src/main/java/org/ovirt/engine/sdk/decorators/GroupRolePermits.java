@@ -32,28 +32,28 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class HostStatistics extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
-                            org.ovirt.engine.sdk.entities.Statistics,
-                            HostStatistic> {
+public class GroupRolePermits extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Permit,
+                            org.ovirt.engine.sdk.entities.Permits,
+                            GroupRolePermit> {
 
-    private Host parent;
+    private GroupRole parent;
 
-    public HostStatistics(HttpProxyBroker proxy, Host parent) {
-        super(proxy, "statistics");
+    public GroupRolePermits(HttpProxyBroker proxy, GroupRole parent) {
+        super(proxy, "permits");
         this.parent = parent;
     }
 
     @Override
-    public List<HostStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<GroupRolePermit> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, HostStatistic.class);
+        return list(url, org.ovirt.engine.sdk.entities.Permits.class, GroupRolePermit.class);
     }
 
     @Override
-    public HostStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public GroupRolePermit get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, HostStatistic.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, GroupRolePermit.class);
     }
 
 

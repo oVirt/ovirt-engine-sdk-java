@@ -32,28 +32,28 @@ import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
-public class UserPermits extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Permit,
-                            org.ovirt.engine.sdk.entities.Permits,
-                            UserPermit> {
+public class HostNICStatistics extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
+                            org.ovirt.engine.sdk.entities.Statistics,
+                            HostNICStatistic> {
 
-    private User parent;
+    private HostNIC parent;
 
-    public UserPermits(HttpProxyBroker proxy, User parent) {
-        super(proxy, "permits");
+    public HostNICStatistics(HttpProxyBroker proxy, HostNIC parent) {
+        super(proxy, "statistics");
         this.parent = parent;
     }
 
     @Override
-    public List<UserPermit> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<HostNICStatistic> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Permits.class, UserPermit.class);
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, HostNICStatistic.class);
     }
 
     @Override
-    public UserPermit get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public HostNICStatistic get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, UserPermit.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, HostNICStatistic.class);
     }
 
 

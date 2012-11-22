@@ -33,7 +33,9 @@ public class HostNIC extends
         org.ovirt.engine.sdk.entities.HostNIC {
 
     private HttpProxyBroker proxy;
-    
+
+    private HostNICStatistics hostNICStatistics;
+
 
     public HostNIC(HttpProxyBroker proxy) {
         this.proxy = proxy;
@@ -41,6 +43,13 @@ public class HostNIC extends
 
     private HttpProxyBroker getProxy() {
         return proxy;
+    }
+
+    public synchronized HostNICStatistics getHostNICStatistics() {
+        if (this.hostNICStatistics == null) {
+            this.hostNICStatistics = new HostNICStatistics(proxy, this);
+        }
+        return hostNICStatistics;
     }
 
 

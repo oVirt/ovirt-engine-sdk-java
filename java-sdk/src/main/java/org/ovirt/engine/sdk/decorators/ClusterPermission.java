@@ -33,7 +33,8 @@ public class ClusterPermission extends
         org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public ClusterPermission(HttpProxyBroker proxy) {
         this.proxy = proxy;

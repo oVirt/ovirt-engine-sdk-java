@@ -33,7 +33,8 @@ public class StorageDomainFile extends
         org.ovirt.engine.sdk.entities.File {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public StorageDomainFile(HttpProxyBroker proxy) {
         this.proxy = proxy;

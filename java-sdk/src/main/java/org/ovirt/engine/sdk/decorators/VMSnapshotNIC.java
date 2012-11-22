@@ -29,14 +29,14 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
-public class DomainUser extends
-        org.ovirt.engine.sdk.entities.User {
+public class VMSnapshotNIC extends
+        org.ovirt.engine.sdk.entities.NIC {
 
     private HttpProxyBroker proxy;
 
 
 
-    public DomainUser(HttpProxyBroker proxy) {
+    public VMSnapshotNIC(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 

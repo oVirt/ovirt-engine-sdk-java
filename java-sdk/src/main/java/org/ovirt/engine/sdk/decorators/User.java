@@ -34,7 +34,6 @@ public class User extends
 
     private HttpProxyBroker proxy;
 
-    private UserPermits userPermits;
     private UserRoles userRoles;
     private UserTags userTags;
     private UserPermissions userPermissions;
@@ -46,13 +45,6 @@ public class User extends
 
     private HttpProxyBroker getProxy() {
         return proxy;
-    }
-
-    public synchronized UserPermits getUserPermits() {
-        if (this.userPermits == null) {
-            this.userPermits = new UserPermits(proxy, this);
-        }
-        return userPermits;
     }
 
     public synchronized UserRoles getUserRoles() {

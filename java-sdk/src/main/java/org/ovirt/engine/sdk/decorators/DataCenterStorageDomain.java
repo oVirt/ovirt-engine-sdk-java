@@ -33,7 +33,8 @@ public class DataCenterStorageDomain extends
         org.ovirt.engine.sdk.entities.StorageDomain {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public DataCenterStorageDomain(HttpProxyBroker proxy) {
         this.proxy = proxy;

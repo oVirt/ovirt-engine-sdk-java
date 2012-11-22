@@ -224,7 +224,7 @@ public class RsdlCodegen extends AbstractCodegen {
                             }
                         } else if (i % 2 != 0) { // sub-collection
                             if (!isAction(period, rel, requestMethod)) {
-                                String collection = getSubCollectionName(actualReturnType, parent);
+                                String collection = getSubCollectionName(actualReturnType, parent, i, periods);
                                 collectionName = collection;
                                 ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
 
@@ -236,7 +236,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                     String publicCollectionName =
                                             getPublicCollection(StringUtils.toPlural(actualReturnType));
                                     String parentDecoratorName = parent;
-                                    String decoratorEntityName = StringUtils.toSingular(collection);
+                                    String decoratorEntityName = getSubResourceName(collectionName, parent);
 
                                     resourceHolder.addSubCollection(collection.toLowerCase(),
                                             new CollectionHolder(decoratorSubCollectionName,
@@ -267,6 +267,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                                 variableTemplate,
                                                 subCollectionGetterTemplate));
                             }
+                            parent = resource;
                         }
                     } else {
                         // TODO: implement unique treatment for COLLECTION2ENTITY_EXCEPTIONS
@@ -309,12 +310,27 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return sub-collection name
      */
-    private String getSubCollectionName(String actualReturnType, String parent) {
-        String collection = StringUtils.toPlural(StringUtils.toUpperCase(actualReturnType));
-        if (!actualReturnType.toLowerCase().startsWith(parent.toLowerCase())) {
-            collection = StringUtils.toPlural(parent
-                         +
-                         StringUtils.toUpperCase(actualReturnType));
+    private String getSubCollectionName(String actualReturnType, String parent, int i, String[] periods) {
+        String collection;
+        // here
+        if (i == periods.length) {
+            collection = StringUtils.toPlural(StringUtils.toUpperCase(actualReturnType));
+            if (!actualReturnType.toLowerCase().startsWith(parent.toLowerCase())) {
+                collection = StringUtils.toPlural(parent
+                             +
+                             StringUtils.toUpperCase(actualReturnType));
+            }
+        } else {
+            collection = getPublicCollection(periods[i - 1].toLowerCase(), false);
+            if (collection != null) {
+                collection = StringUtils.toPlural(parent
+                        +
+                        StringUtils.toUpperCase(collection));
+            } else {
+                collection = StringUtils.toPlural(parent
+                        +
+                        StringUtils.toUpperCase(periods[i]));
+            }
         }
         return collection;
     }
@@ -371,7 +387,7 @@ public class RsdlCodegen extends AbstractCodegen {
      */
     private String getActualReturnType(String responseBodyType, String period, int i, String[] periods) {
         String actualReturnType;
-        if (i + 1 == period.length()) {
+        if (i == periods.length) {
             if (responseBodyType == null || ArrayUtils.contains(RETURN_BODY_EXCEPTIONS, responseBodyType)) {
                 String collectionCandidate = getPublicCollection(period.toLowerCase(), false);
                 if (collectionCandidate != null) {

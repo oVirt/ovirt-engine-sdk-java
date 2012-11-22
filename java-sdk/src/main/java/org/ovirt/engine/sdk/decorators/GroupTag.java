@@ -33,7 +33,8 @@ public class GroupTag extends
         org.ovirt.engine.sdk.entities.Tag {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public GroupTag(HttpProxyBroker proxy) {
         this.proxy = proxy;

@@ -36,7 +36,6 @@ public class Cluster extends
 
     private ClusterGlusterVolumes clusterGlusterVolumes;
     private ClusterNetworks clusterNetworks;
-    private ClusterGlusterBricks clusterGlusterBricks;
     private ClusterPermissions clusterPermissions;
 
 
@@ -60,13 +59,6 @@ public class Cluster extends
             this.clusterNetworks = new ClusterNetworks(proxy, this);
         }
         return clusterNetworks;
-    }
-
-    public synchronized ClusterGlusterBricks getClusterGlusterBricks() {
-        if (this.clusterGlusterBricks == null) {
-            this.clusterGlusterBricks = new ClusterGlusterBricks(proxy, this);
-        }
-        return clusterGlusterBricks;
     }
 
     public synchronized ClusterPermissions getClusterPermissions() {

@@ -33,7 +33,8 @@ public class RolePermit extends
         org.ovirt.engine.sdk.entities.Permit {
 
     private HttpProxyBroker proxy;
-    
+
+
 
     public RolePermit(HttpProxyBroker proxy) {
         this.proxy = proxy;
