@@ -30,6 +30,7 @@ import org.ovirt.engine.sdk.entities.BaseResource;
 import org.ovirt.engine.sdk.entities.BaseResources;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.mapping.Mapper;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
@@ -77,7 +78,7 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
     abstract public List<Z> list() throws ClientProtocolException, ServerException, IOException, JAXBException;
 
     /**
-     * Fetches entity from the collection
+     * Fetches entity from the collection by id
      * 
      * @param id
      *            entity id
@@ -93,20 +94,22 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
     abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException;
 
     /**
-     * Fetches entity from the collection
+     * Fetches entity from collection by name
      * 
-     * @param id
+     * @param name
      *            entity name
      * 
-     * @return Z
+     * @return entity
      * 
      * @throws ClientProtocolException
      * @throws ServerException
-     *             oVirt API error
      * @throws IOException
      * @throws JAXBException
      */
-    // abstract public Z get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException;
+    public Z get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        List<Z> collection = list();
+        return CollectionUtils.getItemByName(name, collection);
+    }
 
     protected List<Z> list(String url, Class<Q> from, Class<Z> to) throws JAXBException,
             ClientProtocolException, ServerException, IOException {
