@@ -46,7 +46,7 @@ public class StorageDomainVM extends
 
 
 
-   public Action import(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action importVm(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/import";
         return getProxy().action(url, action, Action.class, Action.class);
     }

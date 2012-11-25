@@ -84,6 +84,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String[] COLLECTION2ENTITY_EXCEPTIONS = new String[] { "capabilities", "storage",
             "versioncaps" };
     private static final String[] RETURN_BODY_EXCEPTIONS = new String[] { "Response", "Responses" };
+    private static final String[] ACTION_NAME_EXCEPTIONS = new String[] { "import" };
 
     public RsdlCodegen(HttpProxyBroker httpProxy) {
         super(getDecoratorsPath());
@@ -256,9 +257,11 @@ public class RsdlCodegen extends AbstractCodegen {
 
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
+                                String methodName = getActionMethodName(period, periods[i - 3]);
                                 ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
                                 resourceHolder.addMethod(period,
-                                                         this.resourceActionMethodTemplate.getTemplate(period));
+                                                         this.resourceActionMethodTemplate.getTemplate(methodName,
+                                                                                                       rel));
                             }
                         } else { // sub-resource
                             if (!isAction(period, rel, requestMethod)) {
@@ -283,11 +286,13 @@ public class RsdlCodegen extends AbstractCodegen {
                                 parent = resource;
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
+                                String methodName = getActionMethodName(period, parent);
                                 ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
                                 CollectionHolder collectionHolder =
                                         resourceHolder.getSubcollections().get(collectionName.toLowerCase());
                                 collectionHolder.addMethod(period,
-                                                           this.collectionActionMethodTemplate.getTemplate(period));
+                                                           this.collectionActionMethodTemplate.getTemplate(methodName,
+                                                                                                           rel));
                             }
                         }
                     } else {
@@ -306,6 +311,22 @@ public class RsdlCodegen extends AbstractCodegen {
 
         // #4 - generate SDK entry point
         new ApiCodegen(collectionsHolder, variableTemplate, collectionGetterTemplate).generate();
+    }
+
+    /**
+     * Converts rel to actual java method name
+     * 
+     * @param rel
+     *            api URI rel
+     * @param parent
+     *            resource the action is invoked on
+     * 
+     * @return actual Java method name
+     */
+    private String getActionMethodName(String rel, String parent) {
+        if (ArrayUtils.contains(ACTION_NAME_EXCEPTIONS, rel))
+            return rel + StringUtils.toUpperCase(StringUtils.toSingular(parent));
+        return rel;
     }
 
     /**
