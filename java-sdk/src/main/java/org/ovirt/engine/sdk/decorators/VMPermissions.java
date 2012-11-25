@@ -57,6 +57,11 @@ public class VMPermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, VMPermission.class);
     }
 
+    public VMPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, permission, org.ovirt.engine.sdk.entities.Permission.class, VMPermission.class);
+    }
 
 }
 

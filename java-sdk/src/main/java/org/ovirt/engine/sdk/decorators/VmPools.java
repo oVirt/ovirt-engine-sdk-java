@@ -31,6 +31,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 public class VmPools extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.VmPool, 
@@ -53,6 +54,11 @@ public class VmPools extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
     }
 
+    public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = SLASH + getName();
+        return getProxy().add(url, vmpool, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
+    }
 
 }
 

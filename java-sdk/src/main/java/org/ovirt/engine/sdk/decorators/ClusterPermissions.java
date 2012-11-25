@@ -57,6 +57,11 @@ public class ClusterPermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, ClusterPermission.class);
     }
 
+    public ClusterPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, permission, org.ovirt.engine.sdk.entities.Permission.class, ClusterPermission.class);
+    }
 
 }
 

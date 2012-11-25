@@ -57,6 +57,11 @@ public class DataCenterStorageDomains extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, DataCenterStorageDomain.class);
     }
 
+    public DataCenterStorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, storagedomain, org.ovirt.engine.sdk.entities.StorageDomain.class, DataCenterStorageDomain.class);
+    }
 
 }
 

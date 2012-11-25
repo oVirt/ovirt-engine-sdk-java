@@ -57,6 +57,11 @@ public class ClusterGlusterVolumes extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterVolume.class, ClusterGlusterVolume.class);
     }
 
+    public ClusterGlusterVolume add(org.ovirt.engine.sdk.entities.GlusterVolume glustervolume) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, glustervolume, org.ovirt.engine.sdk.entities.GlusterVolume.class, ClusterGlusterVolume.class);
+    }
 
 }
 

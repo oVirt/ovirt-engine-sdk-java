@@ -57,6 +57,11 @@ public class ClusterNetworks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
     }
 
+    public ClusterNetwork add(org.ovirt.engine.sdk.entities.Network network) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, network, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
+    }
 
 }
 

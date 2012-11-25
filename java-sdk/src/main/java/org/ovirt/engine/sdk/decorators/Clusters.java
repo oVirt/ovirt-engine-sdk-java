@@ -31,6 +31,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 public class Clusters extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Cluster, 
@@ -53,6 +54,11 @@ public class Clusters extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
     }
 
+    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = SLASH + getName();
+        return getProxy().add(url, cluster, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
+    }
 
 }
 

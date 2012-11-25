@@ -31,6 +31,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 public class Networks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Network, 
@@ -53,6 +54,11 @@ public class Networks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, Network.class);
     }
 
+    public Network add(org.ovirt.engine.sdk.entities.Network network) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = SLASH + getName();
+        return getProxy().add(url, network, org.ovirt.engine.sdk.entities.Network.class, Network.class);
+    }
 
 }
 

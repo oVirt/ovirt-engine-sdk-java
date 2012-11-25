@@ -57,6 +57,11 @@ public class VMNICs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
     }
 
+    public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, nic, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
+    }
 
 }
 

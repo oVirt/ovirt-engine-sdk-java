@@ -57,6 +57,11 @@ public class VMSnapshots extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
     }
 
+    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, snapshot, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
+    }
 
 }
 

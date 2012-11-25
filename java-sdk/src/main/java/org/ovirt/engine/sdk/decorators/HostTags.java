@@ -57,6 +57,11 @@ public class HostTags extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, HostTag.class);
     }
 
+    public HostTag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, tag, org.ovirt.engine.sdk.entities.Tag.class, HostTag.class);
+    }
 
 }
 

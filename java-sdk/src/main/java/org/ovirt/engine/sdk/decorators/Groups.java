@@ -31,6 +31,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 public class Groups extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Group, 
@@ -53,6 +54,11 @@ public class Groups extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Group.class, Group.class);
     }
 
+    public Group add(org.ovirt.engine.sdk.entities.Group group) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = SLASH + getName();
+        return getProxy().add(url, group, org.ovirt.engine.sdk.entities.Group.class, Group.class);
+    }
 
 }
 

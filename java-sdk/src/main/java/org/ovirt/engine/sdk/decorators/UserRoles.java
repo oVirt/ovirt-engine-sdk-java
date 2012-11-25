@@ -57,6 +57,11 @@ public class UserRoles extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, UserRole.class);
     }
 
+    public UserRole add(org.ovirt.engine.sdk.entities.Role role) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, role, org.ovirt.engine.sdk.entities.Role.class, UserRole.class);
+    }
 
 }
 

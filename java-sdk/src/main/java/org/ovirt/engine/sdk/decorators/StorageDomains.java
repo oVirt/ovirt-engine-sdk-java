@@ -31,6 +31,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 public class StorageDomains extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.StorageDomain, 
@@ -53,6 +54,11 @@ public class StorageDomains extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
     }
 
+    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = SLASH + getName();
+        return getProxy().add(url, storagedomain, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
+    }
 
 }
 

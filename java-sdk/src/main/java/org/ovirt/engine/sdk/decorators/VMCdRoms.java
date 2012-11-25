@@ -57,6 +57,11 @@ public class VMCdRoms extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
     }
 
+    public VMCdRom add(org.ovirt.engine.sdk.entities.CdRom cdrom) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, cdrom, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
+    }
 
 }
 

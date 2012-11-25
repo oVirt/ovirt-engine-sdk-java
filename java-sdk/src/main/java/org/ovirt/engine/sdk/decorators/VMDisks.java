@@ -57,6 +57,11 @@ public class VMDisks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
     }
 
+    public VMDisk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, disk, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
+    }
 
 }
 

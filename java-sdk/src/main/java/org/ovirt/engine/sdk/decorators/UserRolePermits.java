@@ -57,6 +57,11 @@ public class UserRolePermits extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, UserRolePermit.class);
     }
 
+    public UserRolePermit add(org.ovirt.engine.sdk.entities.Permit permit) throws 
+            ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, permit, org.ovirt.engine.sdk.entities.Permit.class, UserRolePermit.class);
+    }
 
 }
 
