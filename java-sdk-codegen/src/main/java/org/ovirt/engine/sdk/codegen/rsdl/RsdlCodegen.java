@@ -179,6 +179,7 @@ public class RsdlCodegen extends AbstractCodegen {
      * @throws IOException
      * @throws JAXBException
      */
+    @SuppressWarnings("unused")
     @Override
     protected void doGenerate(String distPath) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

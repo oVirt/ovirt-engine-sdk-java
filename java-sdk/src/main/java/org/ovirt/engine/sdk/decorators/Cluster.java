@@ -54,21 +54,18 @@ public class Cluster extends
         }
         return clusterGlusterVolumes;
     }
-
     public synchronized ClusterNetworks getClusterNetworks() {
         if (this.clusterNetworks == null) {
             this.clusterNetworks = new ClusterNetworks(proxy, this);
         }
         return clusterNetworks;
     }
-
     public synchronized ClusterPermissions getClusterPermissions() {
         if (this.clusterPermissions == null) {
             this.clusterPermissions = new ClusterPermissions(proxy, this);
         }
         return clusterPermissions;
     }
-
 
 
     public Cluster update() throws ClientProtocolException, ServerException, IOException, JAXBException {

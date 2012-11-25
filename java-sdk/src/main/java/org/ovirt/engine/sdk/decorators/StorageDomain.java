@@ -55,28 +55,24 @@ public class StorageDomain extends
         }
         return storageDomainPermissions;
     }
-
     public synchronized StorageDomainVMs getStorageDomainVMs() {
         if (this.storageDomainVMs == null) {
             this.storageDomainVMs = new StorageDomainVMs(proxy, this);
         }
         return storageDomainVMs;
     }
-
     public synchronized StorageDomainTemplates getStorageDomainTemplates() {
         if (this.storageDomainTemplates == null) {
             this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
         }
         return storageDomainTemplates;
     }
-
     public synchronized StorageDomainFiles getStorageDomainFiles() {
         if (this.storageDomainFiles == null) {
             this.storageDomainFiles = new StorageDomainFiles(proxy, this);
         }
         return storageDomainFiles;
     }
-
 
 
     public StorageDomain update() throws ClientProtocolException, ServerException, IOException, JAXBException {

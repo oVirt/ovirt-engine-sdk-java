@@ -54,21 +54,18 @@ public class Group extends
         }
         return groupRoles;
     }
-
     public synchronized GroupPermissions getGroupPermissions() {
         if (this.groupPermissions == null) {
             this.groupPermissions = new GroupPermissions(proxy, this);
         }
         return groupPermissions;
     }
-
     public synchronized GroupTags getGroupTags() {
         if (this.groupTags == null) {
             this.groupTags = new GroupTags(proxy, this);
         }
         return groupTags;
     }
-
 
 
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {

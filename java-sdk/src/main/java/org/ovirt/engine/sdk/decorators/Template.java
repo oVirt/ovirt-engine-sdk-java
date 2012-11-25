@@ -55,28 +55,24 @@ public class Template extends
         }
         return templateCdRoms;
     }
-
     public synchronized TemplateNICs getTemplateNICs() {
         if (this.templateNICs == null) {
             this.templateNICs = new TemplateNICs(proxy, this);
         }
         return templateNICs;
     }
-
     public synchronized TemplatePermissions getTemplatePermissions() {
         if (this.templatePermissions == null) {
             this.templatePermissions = new TemplatePermissions(proxy, this);
         }
         return templatePermissions;
     }
-
     public synchronized TemplateDisks getTemplateDisks() {
         if (this.templateDisks == null) {
             this.templateDisks = new TemplateDisks(proxy, this);
         }
         return templateDisks;
     }
-
 
 
     public Template update() throws ClientProtocolException, ServerException, IOException, JAXBException {
@@ -87,7 +83,6 @@ public class Template extends
         String url = this.getHref() + "/export";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);

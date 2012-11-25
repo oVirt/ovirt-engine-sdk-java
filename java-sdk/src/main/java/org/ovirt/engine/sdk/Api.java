@@ -287,105 +287,90 @@ public class Api {
         }
         return networks;
     }
-
     public synchronized Tags getTags() {
         if (this.tags == null) {
             this.tags = new Tags(proxy);
         }
         return tags;
     }
-
     public synchronized Users getUsers() {
         if (this.users == null) {
             this.users = new Users(proxy);
         }
         return users;
     }
-
     public synchronized Templates getTemplates() {
         if (this.templates == null) {
             this.templates = new Templates(proxy);
         }
         return templates;
     }
-
     public synchronized Events getEvents() {
         if (this.events == null) {
             this.events = new Events(proxy);
         }
         return events;
     }
-
     public synchronized Domains getDomains() {
         if (this.domains == null) {
             this.domains = new Domains(proxy);
         }
         return domains;
     }
-
     public synchronized Disks getDisks() {
         if (this.disks == null) {
             this.disks = new Disks(proxy);
         }
         return disks;
     }
-
     public synchronized Clusters getClusters() {
         if (this.clusters == null) {
             this.clusters = new Clusters(proxy);
         }
         return clusters;
     }
-
     public synchronized DataCenters getDataCenters() {
         if (this.dataCenters == null) {
             this.dataCenters = new DataCenters(proxy);
         }
         return dataCenters;
     }
-
     public synchronized Roles getRoles() {
         if (this.roles == null) {
             this.roles = new Roles(proxy);
         }
         return roles;
     }
-
     public synchronized Hosts getHosts() {
         if (this.hosts == null) {
             this.hosts = new Hosts(proxy);
         }
         return hosts;
     }
-
     public synchronized VMs getVMs() {
         if (this.vMs == null) {
             this.vMs = new VMs(proxy);
         }
         return vMs;
     }
-
     public synchronized VmPools getVmPools() {
         if (this.vmPools == null) {
             this.vmPools = new VmPools(proxy);
         }
         return vmPools;
     }
-
     public synchronized StorageDomains getStorageDomains() {
         if (this.storageDomains == null) {
             this.storageDomains = new StorageDomains(proxy);
         }
         return storageDomains;
     }
-
     public synchronized Groups getGroups() {
         if (this.groups == null) {
             this.groups = new Groups(proxy);
         }
         return groups;
     }
-
 
 
 

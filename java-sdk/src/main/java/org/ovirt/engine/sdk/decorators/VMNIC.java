@@ -54,12 +54,10 @@ public class VMNIC extends
     }
 
 
-
    public Action activate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
     public VMNIC update() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
@@ -72,7 +70,6 @@ public class VMNIC extends
         String url = this.getHref() + "/deactivate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
 
 }
 

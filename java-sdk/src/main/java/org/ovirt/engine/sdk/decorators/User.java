@@ -54,21 +54,18 @@ public class User extends
         }
         return userRoles;
     }
-
     public synchronized UserTags getUserTags() {
         if (this.userTags == null) {
             this.userTags = new UserTags(proxy, this);
         }
         return userTags;
     }
-
     public synchronized UserPermissions getUserPermissions() {
         if (this.userPermissions == null) {
             this.userPermissions = new UserPermissions(proxy, this);
         }
         return userPermissions;
     }
-
 
 
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {

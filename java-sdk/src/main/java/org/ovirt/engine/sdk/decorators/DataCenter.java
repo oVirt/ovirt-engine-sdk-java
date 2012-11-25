@@ -54,21 +54,18 @@ public class DataCenter extends
         }
         return dataCenterPermissions;
     }
-
     public synchronized DataCenterStorageDomains getDataCenterStorageDomains() {
         if (this.dataCenterStorageDomains == null) {
             this.dataCenterStorageDomains = new DataCenterStorageDomains(proxy, this);
         }
         return dataCenterStorageDomains;
     }
-
     public synchronized DataCenterQuotas getDataCenterQuotas() {
         if (this.dataCenterQuotas == null) {
             this.dataCenterQuotas = new DataCenterQuotas(proxy, this);
         }
         return dataCenterQuotas;
     }
-
 
 
     public DataCenter update() throws ClientProtocolException, ServerException, IOException, JAXBException {

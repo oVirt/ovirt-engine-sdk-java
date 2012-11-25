@@ -58,42 +58,36 @@ public class VM extends
         }
         return vMPermissions;
     }
-
     public synchronized VMTags getVMTags() {
         if (this.vMTags == null) {
             this.vMTags = new VMTags(proxy, this);
         }
         return vMTags;
     }
-
     public synchronized VMSnapshots getVMSnapshots() {
         if (this.vMSnapshots == null) {
             this.vMSnapshots = new VMSnapshots(proxy, this);
         }
         return vMSnapshots;
     }
-
     public synchronized VMStatistics getVMStatistics() {
         if (this.vMStatistics == null) {
             this.vMStatistics = new VMStatistics(proxy, this);
         }
         return vMStatistics;
     }
-
     public synchronized VMDisks getVMDisks() {
         if (this.vMDisks == null) {
             this.vMDisks = new VMDisks(proxy, this);
         }
         return vMDisks;
     }
-
     public synchronized VMNICs getVMNICs() {
         if (this.vMNICs == null) {
             this.vMNICs = new VMNICs(proxy, this);
         }
         return vMNICs;
     }
-
     public synchronized VMCdRoms getVMCdRoms() {
         if (this.vMCdRoms == null) {
             this.vMCdRoms = new VMCdRoms(proxy, this);
@@ -102,12 +96,10 @@ public class VM extends
     }
 
 
-
    public Action suspend(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/suspend";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
     public VM update() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, VM.class);
@@ -116,37 +108,30 @@ public class VM extends
         String url = this.getHref() + "/stop";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action cancelmigration(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/cancelmigration";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action export(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/export";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action detach(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action ticket(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/ticket";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action start(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action migrate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/migrate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
@@ -155,12 +140,10 @@ public class VM extends
         String url = this.getHref() + "/move";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action shutdown(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/shutdown";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
 
 }
 

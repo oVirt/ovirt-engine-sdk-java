@@ -2,4 +2,3 @@
         String url = this.parent.getHref() + SLASH + "$actionName$";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-

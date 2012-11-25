@@ -55,21 +55,18 @@ public class Host extends
         }
         return hostNICs;
     }
-
     public synchronized HostTags getHostTags() {
         if (this.hostTags == null) {
             this.hostTags = new HostTags(proxy, this);
         }
         return hostTags;
     }
-
     public synchronized HostPermissions getHostPermissions() {
         if (this.hostPermissions == null) {
             this.hostPermissions = new HostPermissions(proxy, this);
         }
         return hostPermissions;
     }
-
     public synchronized HostStatistics getHostStatistics() {
         if (this.hostStatistics == null) {
             this.hostStatistics = new HostStatistics(proxy, this);
@@ -78,17 +75,14 @@ public class Host extends
     }
 
 
-
    public Action install(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/install";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action activate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
     public Host update() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Host.class, Host.class);
@@ -97,22 +91,18 @@ public class Host extends
         String url = this.getHref() + "/fence";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action iscsidiscover(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/iscsidiscover";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action approve(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/approve";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action iscsilogin(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/iscsilogin";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
@@ -121,12 +111,10 @@ public class Host extends
         String url = this.getHref() + "/deactivate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
    public Action commitnetconfig(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/commitnetconfig";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
 
 }
 

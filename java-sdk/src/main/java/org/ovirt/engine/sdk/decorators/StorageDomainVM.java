@@ -56,6 +56,5 @@ public class StorageDomainVM extends
         return getProxy().action(url, action, Action.class, Action.class);
     }
 
-
 }
 

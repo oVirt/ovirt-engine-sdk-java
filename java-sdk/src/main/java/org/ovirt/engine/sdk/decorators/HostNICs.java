@@ -62,7 +62,6 @@ public class HostNICs extends
         String url = this.parent.getHref() + SLASH + "setupnetworks";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
     public HostNIC add(org.ovirt.engine.sdk.entities.HostNIC hostnic) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

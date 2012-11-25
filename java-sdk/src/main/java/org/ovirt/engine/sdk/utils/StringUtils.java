@@ -81,4 +81,32 @@ public class StringUtils {
         }
         return candidate;
     }
+
+    /**
+     * Right trim
+     * 
+     * @param str
+     * 
+     * @return trimmed string
+     */
+    public static String trimRight(String str) {
+        if (str == null)
+            return null;
+
+        char[] originalArray = str.toCharArray();
+        char[] newArray = new char[1];
+        int pos = 0;
+
+        for (int i = 0; i < originalArray.length; i++) {
+            pos = (originalArray.length - 1) - i;
+            if (originalArray[pos] != ' ') {
+                newArray = new char[pos + 1];
+                System.arraycopy(originalArray, 0, newArray, 0, pos + 1);
+                break;
+            }
+
+        }
+
+        return new String(newArray);
+    }
 }

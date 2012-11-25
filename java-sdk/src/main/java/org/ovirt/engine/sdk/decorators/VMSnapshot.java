@@ -54,14 +54,12 @@ public class VMSnapshot extends
         }
         return vMSnapshotNics;
     }
-
     public synchronized VMSnapshotDisks getVMSnapshotDisks() {
         if (this.vMSnapshotDisks == null) {
             this.vMSnapshotDisks = new VMSnapshotDisks(proxy, this);
         }
         return vMSnapshotDisks;
     }
-
     public synchronized VMSnapshotCdRoms getVMSnapshotCdRoms() {
         if (this.vMSnapshotCdRoms == null) {
             this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
@@ -70,12 +68,10 @@ public class VMSnapshot extends
     }
 
 
-
    public Action restore(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/restore";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);

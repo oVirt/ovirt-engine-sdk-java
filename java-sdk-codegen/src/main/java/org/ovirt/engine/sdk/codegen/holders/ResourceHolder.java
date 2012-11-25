@@ -77,8 +77,8 @@ public class ResourceHolder extends AbstractResourceHolder {
 
         for (CollectionHolder ch : this.getSubcollections().values()) {
             subCollectionGetters.append(
-                    this.subCollectionGetterTemplate.getTemplate(ch.getName(),
-                            StringUtils.toLowerCase(ch.getName())));
+                            this.subCollectionGetterTemplate.getTemplate(ch.getName(),
+                                    StringUtils.toLowerCase(ch.getName())));
         }
 
         return subCollectionGetters.toString();
@@ -93,8 +93,8 @@ public class ResourceHolder extends AbstractResourceHolder {
 
         for (CollectionHolder ch : this.getSubcollections().values()) {
             subCollectionVariables.append(
-                    this.variableTemplate.getTemplate(ch.getName(),
-                            StringUtils.toLowerCase(ch.getName())));
+                            this.variableTemplate.getTemplate(ch.getName(),
+                                    StringUtils.toLowerCase(ch.getName())));
         }
 
         return subCollectionVariables.toString();

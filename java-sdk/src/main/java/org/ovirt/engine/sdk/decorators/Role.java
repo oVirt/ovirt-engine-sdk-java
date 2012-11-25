@@ -54,7 +54,6 @@ public class Role extends
     }
 
 
-
     public Role update() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Role.class, Role.class);

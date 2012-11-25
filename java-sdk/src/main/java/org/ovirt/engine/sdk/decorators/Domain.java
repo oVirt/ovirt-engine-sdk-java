@@ -53,14 +53,12 @@ public class Domain extends
         }
         return domainGroups;
     }
-
     public synchronized DomainUsers getDomainUsers() {
         if (this.domainUsers == null) {
             this.domainUsers = new DomainUsers(proxy, this);
         }
         return domainUsers;
     }
-
 
 
 
