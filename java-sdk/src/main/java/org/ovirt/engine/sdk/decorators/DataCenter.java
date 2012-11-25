@@ -48,19 +48,19 @@ public class DataCenter extends
         return proxy;
     }
 
-    public synchronized DataCenterPermissions getDataCenterPermissions() {
+    public synchronized DataCenterPermissions getPermissions() {
         if (this.dataCenterPermissions == null) {
             this.dataCenterPermissions = new DataCenterPermissions(proxy, this);
         }
         return dataCenterPermissions;
     }
-    public synchronized DataCenterStorageDomains getDataCenterStorageDomains() {
+    public synchronized DataCenterStorageDomains getStorageDomains() {
         if (this.dataCenterStorageDomains == null) {
             this.dataCenterStorageDomains = new DataCenterStorageDomains(proxy, this);
         }
         return dataCenterStorageDomains;
     }
-    public synchronized DataCenterQuotas getDataCenterQuotas() {
+    public synchronized DataCenterQuotas getQuotas() {
         if (this.dataCenterQuotas == null) {
             this.dataCenterQuotas = new DataCenterQuotas(proxy, this);
         }

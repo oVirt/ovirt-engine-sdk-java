@@ -78,7 +78,8 @@ public class ResourceHolder extends AbstractResourceHolder {
         for (CollectionHolder ch : this.getSubcollections().values()) {
             subCollectionGetters.append(
                             this.subCollectionGetterTemplate.getTemplate(ch.getName(),
-                                    StringUtils.toLowerCase(ch.getName())));
+                                    StringUtils.toLowerCase(ch.getName()),
+                                    ch.getPublicCollectionName()));
         }
 
         return subCollectionGetters.toString();

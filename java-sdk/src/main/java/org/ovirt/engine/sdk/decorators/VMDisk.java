@@ -46,7 +46,7 @@ public class VMDisk extends
         return proxy;
     }
 
-    public synchronized VMDiskStatistics getVMDiskStatistics() {
+    public synchronized VMDiskStatistics getStatistics() {
         if (this.vMDiskStatistics == null) {
             this.vMDiskStatistics = new VMDiskStatistics(proxy, this);
         }

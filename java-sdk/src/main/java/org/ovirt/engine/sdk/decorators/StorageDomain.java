@@ -49,25 +49,25 @@ public class StorageDomain extends
         return proxy;
     }
 
-    public synchronized StorageDomainPermissions getStorageDomainPermissions() {
+    public synchronized StorageDomainPermissions getPermissions() {
         if (this.storageDomainPermissions == null) {
             this.storageDomainPermissions = new StorageDomainPermissions(proxy, this);
         }
         return storageDomainPermissions;
     }
-    public synchronized StorageDomainVMs getStorageDomainVMs() {
+    public synchronized StorageDomainVMs getVMs() {
         if (this.storageDomainVMs == null) {
             this.storageDomainVMs = new StorageDomainVMs(proxy, this);
         }
         return storageDomainVMs;
     }
-    public synchronized StorageDomainTemplates getStorageDomainTemplates() {
+    public synchronized StorageDomainTemplates getTemplates() {
         if (this.storageDomainTemplates == null) {
             this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
         }
         return storageDomainTemplates;
     }
-    public synchronized StorageDomainFiles getStorageDomainFiles() {
+    public synchronized StorageDomainFiles getFiles() {
         if (this.storageDomainFiles == null) {
             this.storageDomainFiles = new StorageDomainFiles(proxy, this);
         }

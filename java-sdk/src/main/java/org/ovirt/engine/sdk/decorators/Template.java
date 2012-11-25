@@ -49,25 +49,25 @@ public class Template extends
         return proxy;
     }
 
-    public synchronized TemplateCdRoms getTemplateCdRoms() {
+    public synchronized TemplateCdRoms getCdRoms() {
         if (this.templateCdRoms == null) {
             this.templateCdRoms = new TemplateCdRoms(proxy, this);
         }
         return templateCdRoms;
     }
-    public synchronized TemplateNICs getTemplateNICs() {
+    public synchronized TemplateNICs getNics() {
         if (this.templateNICs == null) {
             this.templateNICs = new TemplateNICs(proxy, this);
         }
         return templateNICs;
     }
-    public synchronized TemplatePermissions getTemplatePermissions() {
+    public synchronized TemplatePermissions getPermissions() {
         if (this.templatePermissions == null) {
             this.templatePermissions = new TemplatePermissions(proxy, this);
         }
         return templatePermissions;
     }
-    public synchronized TemplateDisks getTemplateDisks() {
+    public synchronized TemplateDisks getDisks() {
         if (this.templateDisks == null) {
             this.templateDisks = new TemplateDisks(proxy, this);
         }

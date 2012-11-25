@@ -48,19 +48,19 @@ public class Cluster extends
         return proxy;
     }
 
-    public synchronized ClusterGlusterVolumes getClusterGlusterVolumes() {
+    public synchronized ClusterGlusterVolumes getGlusterVolumes() {
         if (this.clusterGlusterVolumes == null) {
             this.clusterGlusterVolumes = new ClusterGlusterVolumes(proxy, this);
         }
         return clusterGlusterVolumes;
     }
-    public synchronized ClusterNetworks getClusterNetworks() {
+    public synchronized ClusterNetworks getNetworks() {
         if (this.clusterNetworks == null) {
             this.clusterNetworks = new ClusterNetworks(proxy, this);
         }
         return clusterNetworks;
     }
-    public synchronized ClusterPermissions getClusterPermissions() {
+    public synchronized ClusterPermissions getPermissions() {
         if (this.clusterPermissions == null) {
             this.clusterPermissions = new ClusterPermissions(proxy, this);
         }

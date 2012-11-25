@@ -46,7 +46,7 @@ public class GroupRole extends
         return proxy;
     }
 
-    public synchronized GroupRolePermits getGroupRolePermits() {
+    public synchronized GroupRolePermits getPermits() {
         if (this.groupRolePermits == null) {
             this.groupRolePermits = new GroupRolePermits(proxy, this);
         }

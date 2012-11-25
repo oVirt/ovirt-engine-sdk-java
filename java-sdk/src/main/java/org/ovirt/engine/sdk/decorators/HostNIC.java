@@ -46,7 +46,7 @@ public class HostNIC extends
         return proxy;
     }
 
-    public synchronized HostNICStatistics getHostNICStatistics() {
+    public synchronized HostNICStatistics getStatistics() {
         if (this.hostNICStatistics == null) {
             this.hostNICStatistics = new HostNICStatistics(proxy, this);
         }

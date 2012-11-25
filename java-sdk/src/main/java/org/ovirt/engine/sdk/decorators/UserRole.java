@@ -46,7 +46,7 @@ public class UserRole extends
         return proxy;
     }
 
-    public synchronized UserRolePermits getUserRolePermits() {
+    public synchronized UserRolePermits getPermits() {
         if (this.userRolePermits == null) {
             this.userRolePermits = new UserRolePermits(proxy, this);
         }

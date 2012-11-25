@@ -47,13 +47,13 @@ public class Domain extends
         return proxy;
     }
 
-    public synchronized DomainGroups getDomainGroups() {
+    public synchronized DomainGroups getGroups() {
         if (this.domainGroups == null) {
             this.domainGroups = new DomainGroups(proxy, this);
         }
         return domainGroups;
     }
-    public synchronized DomainUsers getDomainUsers() {
+    public synchronized DomainUsers getUsers() {
         if (this.domainUsers == null) {
             this.domainUsers = new DomainUsers(proxy, this);
         }

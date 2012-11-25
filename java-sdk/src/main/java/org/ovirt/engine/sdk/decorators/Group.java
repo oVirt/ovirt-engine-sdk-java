@@ -48,19 +48,19 @@ public class Group extends
         return proxy;
     }
 
-    public synchronized GroupRoles getGroupRoles() {
+    public synchronized GroupRoles getRoles() {
         if (this.groupRoles == null) {
             this.groupRoles = new GroupRoles(proxy, this);
         }
         return groupRoles;
     }
-    public synchronized GroupPermissions getGroupPermissions() {
+    public synchronized GroupPermissions getPermissions() {
         if (this.groupPermissions == null) {
             this.groupPermissions = new GroupPermissions(proxy, this);
         }
         return groupPermissions;
     }
-    public synchronized GroupTags getGroupTags() {
+    public synchronized GroupTags getTags() {
         if (this.groupTags == null) {
             this.groupTags = new GroupTags(proxy, this);
         }

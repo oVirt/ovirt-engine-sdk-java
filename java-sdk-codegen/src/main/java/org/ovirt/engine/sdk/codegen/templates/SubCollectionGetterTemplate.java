@@ -35,13 +35,15 @@ public class SubCollectionGetterTemplate extends AbstractTemplate {
      * 
      * @return formated string
      */
-    public String getTemplate(String decoratorCollectionName, String decoratorCollectionVariableName) {
+    public String getTemplate(String decoratorCollectionName,
+            String decoratorCollectionVariableName, String publicCollecionName) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getTemplate());
 
         templateWrapper.set("decoratorCollectionName", decoratorCollectionName);
         templateWrapper.set("decoratorCollectionVariableName", decoratorCollectionVariableName);
+        templateWrapper.set("publicCollecionName", publicCollecionName);
 
         return templateWrapper.toString();
     }

@@ -24,6 +24,8 @@ import org.ovirt.engine.sdk.codegen.templates.SubCollectionTemplate;
  */
 public class CollectionHolder extends AbstractCollectionHolder {
 
+    private String publicCollectionName;
+
     /**
      * Sub-Collection
      * 
@@ -50,6 +52,7 @@ public class CollectionHolder extends AbstractCollectionHolder {
                 decoratorEntityName,
                 url,
                 subCollectionTemplate);
+        this.publicCollectionName = publicCollectionName;
     }
 
     /**
@@ -76,5 +79,13 @@ public class CollectionHolder extends AbstractCollectionHolder {
                 decoratorEntityName,
                 url,
                 collectionTemplate);
+        this.publicCollectionName = publicCollectionName;
+    }
+
+    /**
+     * @return PublicCollectionName
+     */
+    public String getPublicCollectionName() {
+        return publicCollectionName;
     }
 }

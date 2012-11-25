@@ -52,43 +52,43 @@ public class VM extends
         return proxy;
     }
 
-    public synchronized VMPermissions getVMPermissions() {
+    public synchronized VMPermissions getPermissions() {
         if (this.vMPermissions == null) {
             this.vMPermissions = new VMPermissions(proxy, this);
         }
         return vMPermissions;
     }
-    public synchronized VMTags getVMTags() {
+    public synchronized VMTags getTags() {
         if (this.vMTags == null) {
             this.vMTags = new VMTags(proxy, this);
         }
         return vMTags;
     }
-    public synchronized VMSnapshots getVMSnapshots() {
+    public synchronized VMSnapshots getSnapshots() {
         if (this.vMSnapshots == null) {
             this.vMSnapshots = new VMSnapshots(proxy, this);
         }
         return vMSnapshots;
     }
-    public synchronized VMStatistics getVMStatistics() {
+    public synchronized VMStatistics getStatistics() {
         if (this.vMStatistics == null) {
             this.vMStatistics = new VMStatistics(proxy, this);
         }
         return vMStatistics;
     }
-    public synchronized VMDisks getVMDisks() {
+    public synchronized VMDisks getDisks() {
         if (this.vMDisks == null) {
             this.vMDisks = new VMDisks(proxy, this);
         }
         return vMDisks;
     }
-    public synchronized VMNICs getVMNICs() {
+    public synchronized VMNICs getNics() {
         if (this.vMNICs == null) {
             this.vMNICs = new VMNICs(proxy, this);
         }
         return vMNICs;
     }
-    public synchronized VMCdRoms getVMCdRoms() {
+    public synchronized VMCdRoms getCdRoms() {
         if (this.vMCdRoms == null) {
             this.vMCdRoms = new VMCdRoms(proxy, this);
         }

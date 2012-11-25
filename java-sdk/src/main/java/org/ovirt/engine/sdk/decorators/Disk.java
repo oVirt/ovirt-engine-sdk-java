@@ -46,7 +46,7 @@ public class Disk extends
         return proxy;
     }
 
-    public synchronized DiskStatistics getDiskStatistics() {
+    public synchronized DiskStatistics getStatistics() {
         if (this.diskStatistics == null) {
             this.diskStatistics = new DiskStatistics(proxy, this);
         }

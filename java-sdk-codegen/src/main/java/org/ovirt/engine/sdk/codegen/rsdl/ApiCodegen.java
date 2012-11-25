@@ -111,7 +111,8 @@ public class ApiCodegen extends AbstractCodegen {
         for (CollectionHolder ch : this.collectionsHolder.values()) {
             subCollectionGetters.append(
                     this.collectionGetterTemplate.getTemplate(ch.getName(),
-                            StringUtils.toLowerCase(ch.getName())));
+                            StringUtils.toLowerCase(ch.getName()),
+                            ch.getPublicCollectionName()));
         }
 
         return subCollectionGetters.toString();

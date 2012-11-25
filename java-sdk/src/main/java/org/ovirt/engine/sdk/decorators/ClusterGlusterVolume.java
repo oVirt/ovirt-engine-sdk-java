@@ -46,7 +46,7 @@ public class ClusterGlusterVolume extends
         return proxy;
     }
 
-    public synchronized ClusterGlusterVolumeGlusterBricks getClusterGlusterVolumeGlusterBricks() {
+    public synchronized ClusterGlusterVolumeGlusterBricks getGlusterBricks() {
         if (this.clusterGlusterVolumeGlusterBricks == null) {
             this.clusterGlusterVolumeGlusterBricks = new ClusterGlusterVolumeGlusterBricks(proxy, this);
         }

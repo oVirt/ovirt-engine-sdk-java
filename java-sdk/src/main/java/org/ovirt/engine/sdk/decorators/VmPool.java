@@ -46,7 +46,7 @@ public class VmPool extends
         return proxy;
     }
 
-    public synchronized VmPoolPermissions getVmPoolPermissions() {
+    public synchronized VmPoolPermissions getPermissions() {
         if (this.vmPoolPermissions == null) {
             this.vmPoolPermissions = new VmPoolPermissions(proxy, this);
         }

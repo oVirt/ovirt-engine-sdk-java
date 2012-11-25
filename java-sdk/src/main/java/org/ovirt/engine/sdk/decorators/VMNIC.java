@@ -46,7 +46,7 @@ public class VMNIC extends
         return proxy;
     }
 
-    public synchronized VMNICStatistics getVMNICStatistics() {
+    public synchronized VMNICStatistics getStatistics() {
         if (this.vMNICStatistics == null) {
             this.vMNICStatistics = new VMNICStatistics(proxy, this);
         }

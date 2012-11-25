@@ -1,4 +1,4 @@
-    public synchronized $decoratorCollectionName$ get$decoratorCollectionName$() {
+    public synchronized $decoratorCollectionName$ get$publicCollecionName$() {
         if (this.$decoratorCollectionVariableName$ == null) {
             this.$decoratorCollectionVariableName$ = new $decoratorCollectionName$(proxy, this);
         }

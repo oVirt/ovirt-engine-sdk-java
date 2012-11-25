@@ -49,25 +49,25 @@ public class Host extends
         return proxy;
     }
 
-    public synchronized HostNICs getHostNICs() {
+    public synchronized HostNICs getHostNics() {
         if (this.hostNICs == null) {
             this.hostNICs = new HostNICs(proxy, this);
         }
         return hostNICs;
     }
-    public synchronized HostTags getHostTags() {
+    public synchronized HostTags getTags() {
         if (this.hostTags == null) {
             this.hostTags = new HostTags(proxy, this);
         }
         return hostTags;
     }
-    public synchronized HostPermissions getHostPermissions() {
+    public synchronized HostPermissions getPermissions() {
         if (this.hostPermissions == null) {
             this.hostPermissions = new HostPermissions(proxy, this);
         }
         return hostPermissions;
     }
-    public synchronized HostStatistics getHostStatistics() {
+    public synchronized HostStatistics getStatistics() {
         if (this.hostStatistics == null) {
             this.hostStatistics = new HostStatistics(proxy, this);
         }

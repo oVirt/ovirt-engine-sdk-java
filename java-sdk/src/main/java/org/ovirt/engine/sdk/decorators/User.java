@@ -48,19 +48,19 @@ public class User extends
         return proxy;
     }
 
-    public synchronized UserRoles getUserRoles() {
+    public synchronized UserRoles getRoles() {
         if (this.userRoles == null) {
             this.userRoles = new UserRoles(proxy, this);
         }
         return userRoles;
     }
-    public synchronized UserTags getUserTags() {
+    public synchronized UserTags getTags() {
         if (this.userTags == null) {
             this.userTags = new UserTags(proxy, this);
         }
         return userTags;
     }
-    public synchronized UserPermissions getUserPermissions() {
+    public synchronized UserPermissions getPermissions() {
         if (this.userPermissions == null) {
             this.userPermissions = new UserPermissions(proxy, this);
         }

@@ -48,19 +48,19 @@ public class VMSnapshot extends
         return proxy;
     }
 
-    public synchronized VMSnapshotNics getVMSnapshotNics() {
+    public synchronized VMSnapshotNics getNics() {
         if (this.vMSnapshotNics == null) {
             this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
         }
         return vMSnapshotNics;
     }
-    public synchronized VMSnapshotDisks getVMSnapshotDisks() {
+    public synchronized VMSnapshotDisks getDisks() {
         if (this.vMSnapshotDisks == null) {
             this.vMSnapshotDisks = new VMSnapshotDisks(proxy, this);
         }
         return vMSnapshotDisks;
     }
-    public synchronized VMSnapshotCdRoms getVMSnapshotCdRoms() {
+    public synchronized VMSnapshotCdRoms getCdRoms() {
         if (this.vMSnapshotCdRoms == null) {
             this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
         }
