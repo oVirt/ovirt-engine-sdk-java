@@ -30,6 +30,7 @@ import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
 import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionTemplate;
+import org.ovirt.engine.sdk.codegen.templates.ResourceActionMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionTemplate;
@@ -65,6 +66,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private VariableTemplate variableTemplate;
     private SubCollectionGetterTemplate subCollectionGetterTemplate;
     private CollectionGetterTemplate collectionGetterTemplate;
+    private ResourceActionMethodTemplate resourceActionMethodTemplate;
 
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
@@ -95,6 +97,7 @@ public class RsdlCodegen extends AbstractCodegen {
         this.variableTemplate = new VariableTemplate();
         this.subCollectionGetterTemplate = new SubCollectionGetterTemplate();
         this.collectionGetterTemplate = new CollectionGetterTemplate();
+        this.resourceActionMethodTemplate = new ResourceActionMethodTemplate();
 
         this.collectionsHolder = new HashMap<String, CollectionHolder>();
         this.resourcesHolder = new HashMap<String, ResourceHolder>();
@@ -248,6 +251,11 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                     subCollectionTemplate));
                                 }
 
+                            } else {
+                                // TODO: use extra params defined by RSDL
+                                ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
+                                resourceHolder.addMethod(period,
+                                                         this.resourceActionMethodTemplate.getTemplate(period));
                             }
                         } else { // sub-resource
                             String resource = getSubResourceName(collectionName, parent);

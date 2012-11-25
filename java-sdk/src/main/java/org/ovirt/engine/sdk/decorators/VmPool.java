@@ -54,6 +54,11 @@ public class VmPool extends
 
 
 
+   public Action allocatevm(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/allocatevm";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
 
 }
 

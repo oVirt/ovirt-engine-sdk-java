@@ -1,0 +1,5 @@
+   public Action $actionName$(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/$actionName$";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+

@@ -70,6 +70,11 @@ public class VMSnapshot extends
 
 
 
+   public Action restore(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/restore";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
 
 }
 

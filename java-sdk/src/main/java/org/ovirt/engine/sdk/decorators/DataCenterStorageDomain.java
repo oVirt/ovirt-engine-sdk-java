@@ -46,6 +46,16 @@ public class DataCenterStorageDomain extends
 
 
 
+   public Action activate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/activate";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action deactivate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/deactivate";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
 
 }
 

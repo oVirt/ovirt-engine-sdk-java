@@ -78,6 +78,11 @@ public class Template extends
 
 
 
+   public Action export(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/export";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
 
 }
 

@@ -78,6 +78,46 @@ public class Host extends
 
 
 
+   public Action install(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/install";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action activate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/activate";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action fence(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/fence";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action iscsidiscover(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/iscsidiscover";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action approve(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/approve";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action iscsilogin(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/iscsilogin";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action deactivate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/deactivate";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action commitnetconfig(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/commitnetconfig";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
 
 }
 

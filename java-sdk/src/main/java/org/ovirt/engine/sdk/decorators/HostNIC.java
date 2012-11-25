@@ -54,6 +54,16 @@ public class HostNIC extends
 
 
 
+   public Action detach(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/detach";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
+   public Action attach(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/attach";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
 
 }
 

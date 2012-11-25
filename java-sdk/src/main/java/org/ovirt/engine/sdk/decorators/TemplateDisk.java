@@ -46,6 +46,11 @@ public class TemplateDisk extends
 
 
 
+   public Action copy(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/copy";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
 
 }
 

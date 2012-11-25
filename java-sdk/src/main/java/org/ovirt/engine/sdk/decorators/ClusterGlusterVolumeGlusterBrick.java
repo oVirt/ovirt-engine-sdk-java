@@ -46,6 +46,11 @@ public class ClusterGlusterVolumeGlusterBrick extends
 
 
 
+   public Action replace(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref() + "/replace";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+
 
 }
 
