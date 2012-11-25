@@ -46,6 +46,10 @@ public class VMCdRom extends
 
 
 
+    public VMCdRom update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
+    }
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);

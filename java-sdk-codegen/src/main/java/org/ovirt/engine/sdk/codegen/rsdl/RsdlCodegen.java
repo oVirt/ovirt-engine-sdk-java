@@ -37,6 +37,7 @@ import org.ovirt.engine.sdk.codegen.templates.SubCollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
+import org.ovirt.engine.sdk.codegen.templates.UpdateMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.codegen.utils.ReflectionHelper;
@@ -71,6 +72,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private ResourceActionMethodTemplate resourceActionMethodTemplate;
     private CollectionActionMethodTemplate collectionActionMethodTemplate;
     private DeleteMethodTemplate deleteMethodTemplate;
+    private UpdateMethodTemplate updateMethodTemplate;
 
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
@@ -84,6 +86,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String ROOT_URL = "/api/";
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
     private static final String DELETE_REL = "delete";
+    private static final String UPDATE_REL = "update";
 
     private static final String[] COLLECTION2ENTITY_EXCEPTIONS = new String[] { "capabilities", "storage",
             "versioncaps" };
@@ -107,6 +110,7 @@ public class RsdlCodegen extends AbstractCodegen {
         this.resourceActionMethodTemplate = new ResourceActionMethodTemplate();
         this.collectionActionMethodTemplate = new CollectionActionMethodTemplate();
         this.deleteMethodTemplate = new DeleteMethodTemplate();
+        this.updateMethodTemplate = new UpdateMethodTemplate();
 
         this.collectionsHolder = new HashMap<String, CollectionHolder>();
         this.resourcesHolder = new HashMap<String, ResourceHolder>();
@@ -222,10 +226,10 @@ public class RsdlCodegen extends AbstractCodegen {
                             }
                         } else if (i == 2) { // root-resource
                             String resource = getRootResourceName(collectionName);
-                            if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
-                                String decoratorResourceName = StringUtils.toUpperCase(resource);
-                                String publicEntityName = getPublicEntity(StringUtils.toSingular(collectionName));
+                            String decoratorResourceName = StringUtils.toUpperCase(resource);
+                            String publicEntityName = getPublicEntity(StringUtils.toSingular(collectionName));
 
+                            if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
                                 this.resourcesHolder.put(resource.toLowerCase(),
                                                             new ResourceHolder(
                                                                     decoratorResourceName,
@@ -233,9 +237,10 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                     resourceTemplate,
                                                                     variableTemplate,
                                                                     subCollectionGetterTemplate));
-
-                                addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel);
                             }
+                            addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()),
+                                    url, rel, decoratorResourceName, publicEntityName);
+
                         } else if (i % 2 != 0) { // sub-collection
                             if (!isAction(period, rel, requestMethod)) {
                                 String collection = getSubCollectionName(actualReturnType, parent, i, periods);
@@ -273,16 +278,15 @@ public class RsdlCodegen extends AbstractCodegen {
                         } else { // sub-resource
                             if (!isAction(period, rel, requestMethod)) {
                                 String resource = getSubResourceName(collectionName, parent);
+                                String subResourceDecoratorName = resource;
+                                String publicEntityName =
+                                        getPublicEntity(StringUtils.toSingular(collectionName), false);
+                                if (publicEntityName == null) {
+                                    publicEntityName =
+                                            getPublicEntity(StringUtils.toSingular(collectionName.replace(parent,
+                                                    "")));
+                                }
                                 if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
-                                    String subResourceDecoratorName = resource;
-                                    String publicEntityName =
-                                            getPublicEntity(StringUtils.toSingular(collectionName), false);
-                                    if (publicEntityName == null) {
-                                        publicEntityName =
-                                                getPublicEntity(StringUtils.toSingular(collectionName.replace(parent,
-                                                        "")));
-                                    }
-
                                     this.resourcesHolder.put(resource.toLowerCase(),
                                             new ResourceHolder(subResourceDecoratorName,
                                                     publicEntityName,
@@ -290,7 +294,8 @@ public class RsdlCodegen extends AbstractCodegen {
                                                     variableTemplate,
                                                     subCollectionGetterTemplate));
                                 }
-                                addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel);
+                                addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel,
+                                        subResourceDecoratorName, publicEntityName);
                                 parent = resource;
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
@@ -327,10 +332,16 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param resourceHolder
      * @param url
      * @param rel
+     * @param decoratorName
+     * @param publicEntityName
      */
-    private void addResourceMethod(ResourceHolder resourceHolder, String url, String rel) {
+    private void addResourceMethod(ResourceHolder resourceHolder,
+            String url, String rel, String decoratorName, String publicEntityName) {
         if (rel.equals(DELETE_REL)) {
             resourceHolder.addMethod(DELETE_REL, this.deleteMethodTemplate.getTemplate());
+        } else if (rel.equals(UPDATE_REL)) {
+            resourceHolder.addMethod(UPDATE_REL,
+                    this.updateMethodTemplate.getTemplate(decoratorName, publicEntityName));
         }
     }
 

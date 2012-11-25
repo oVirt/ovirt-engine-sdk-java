@@ -46,6 +46,10 @@ public class Network extends
 
 
 
+    public Network update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Network.class, Network.class);
+    }
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);

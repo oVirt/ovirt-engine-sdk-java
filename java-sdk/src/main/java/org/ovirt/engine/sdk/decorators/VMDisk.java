@@ -59,6 +59,10 @@ public class VMDisk extends
         return getProxy().action(url, action, Action.class, Action.class);
     }
 
+    public VMDisk update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
+    }
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);

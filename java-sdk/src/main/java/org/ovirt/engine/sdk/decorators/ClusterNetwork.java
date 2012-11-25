@@ -46,6 +46,10 @@ public class ClusterNetwork extends
 
 
 
+    public ClusterNetwork update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
+    }
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);

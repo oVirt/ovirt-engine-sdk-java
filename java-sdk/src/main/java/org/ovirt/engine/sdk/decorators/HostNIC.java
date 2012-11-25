@@ -54,6 +54,10 @@ public class HostNIC extends
 
 
 
+    public HostNIC update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
+    }
    public Action detach(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);

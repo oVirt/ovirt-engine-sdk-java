@@ -54,6 +54,10 @@ public class VmPool extends
 
 
 
+    public VmPool update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
+    }
    public Action allocatevm(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/allocatevm";
         return getProxy().action(url, action, Action.class, Action.class);

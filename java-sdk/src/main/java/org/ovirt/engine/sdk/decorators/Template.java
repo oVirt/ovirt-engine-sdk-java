@@ -78,6 +78,10 @@ public class Template extends
 
 
 
+    public Template update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Template.class, Template.class);
+    }
    public Action export(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/export";
         return getProxy().action(url, action, Action.class, Action.class);

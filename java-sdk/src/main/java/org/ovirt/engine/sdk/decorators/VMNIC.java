@@ -59,6 +59,10 @@ public class VMNIC extends
         return getProxy().action(url, action, Action.class, Action.class);
     }
 
+    public VMNIC update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
+    }
     public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);

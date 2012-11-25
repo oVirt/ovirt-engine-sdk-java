@@ -107,6 +107,10 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class);
     }
 
+    public VM update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, VM.class);
+    }
    public Action stop(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/stop";
         return getProxy().action(url, action, Action.class, Action.class);

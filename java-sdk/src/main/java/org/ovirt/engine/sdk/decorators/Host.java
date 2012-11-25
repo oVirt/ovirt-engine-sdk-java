@@ -88,6 +88,10 @@ public class Host extends
         return getProxy().action(url, action, Action.class, Action.class);
     }
 
+    public Host update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Host.class, Host.class);
+    }
    public Action fence(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/fence";
         return getProxy().action(url, action, Action.class, Action.class);
