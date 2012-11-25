@@ -33,6 +33,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+@SuppressWarnings("unused")
 public class Events extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Event, 
                             org.ovirt.engine.sdk.entities.Events, 

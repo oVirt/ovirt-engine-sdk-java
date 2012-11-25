@@ -29,6 +29,7 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+@SuppressWarnings("unused")
 public class VMSnapshotNIC extends
         org.ovirt.engine.sdk.entities.NIC {
 

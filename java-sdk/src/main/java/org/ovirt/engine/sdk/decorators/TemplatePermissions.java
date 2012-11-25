@@ -33,6 +33,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+@SuppressWarnings("unused")
 public class TemplatePermissions extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
                             org.ovirt.engine.sdk.entities.Permissions,

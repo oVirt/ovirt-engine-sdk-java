@@ -35,6 +35,7 @@ import org.ovirt.engine.sdk.utils.SerializationHelper;
 /**
  * oVirt virtualization Java SDK
  */
+@SuppressWarnings("unused")
 public class Api {
 
     private HttpProxyBroker proxy = null;

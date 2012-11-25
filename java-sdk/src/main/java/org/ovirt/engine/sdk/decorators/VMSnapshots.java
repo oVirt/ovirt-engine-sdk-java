@@ -33,6 +33,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+@SuppressWarnings("unused")
 public class VMSnapshots extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Snapshot,
                             org.ovirt.engine.sdk.entities.Snapshots,

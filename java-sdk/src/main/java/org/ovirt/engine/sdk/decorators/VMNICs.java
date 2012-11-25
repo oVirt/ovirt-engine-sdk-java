@@ -33,6 +33,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+@SuppressWarnings("unused")
 public class VMNICs extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.NIC,
                             org.ovirt.engine.sdk.entities.Nics,

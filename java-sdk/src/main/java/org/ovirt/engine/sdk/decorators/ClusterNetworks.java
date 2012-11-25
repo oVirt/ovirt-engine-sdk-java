@@ -33,6 +33,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+@SuppressWarnings("unused")
 public class ClusterNetworks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Network,
                             org.ovirt.engine.sdk.entities.Networks,

@@ -29,6 +29,7 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+@SuppressWarnings("unused")
 public class DomainUser extends
         org.ovirt.engine.sdk.entities.User {
 
