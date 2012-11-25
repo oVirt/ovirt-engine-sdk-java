@@ -46,6 +46,10 @@ public class TemplatePermission extends
 
 
 
+    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().delete(url, Response.class);
+    }
 
 }
 

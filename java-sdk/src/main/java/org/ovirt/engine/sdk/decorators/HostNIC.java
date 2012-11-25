@@ -64,6 +64,10 @@ public class HostNIC extends
         return getProxy().action(url, action, Action.class, Action.class);
     }
 
+    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().delete(url, Response.class);
+    }
 
 }
 

@@ -46,6 +46,10 @@ public class StorageDomainVM extends
 
 
 
+    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.getHref();
+        return getProxy().delete(url, Response.class);
+    }
    public Action importVm(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.getHref() + "/import";
         return getProxy().action(url, action, Action.class, Action.class);

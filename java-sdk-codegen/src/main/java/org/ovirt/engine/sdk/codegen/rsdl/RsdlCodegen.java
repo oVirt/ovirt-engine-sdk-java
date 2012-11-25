@@ -31,6 +31,7 @@ import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
 import org.ovirt.engine.sdk.codegen.templates.CollectionActionMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionTemplate;
+import org.ovirt.engine.sdk.codegen.templates.DeleteMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceActionMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
@@ -69,6 +70,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private CollectionGetterTemplate collectionGetterTemplate;
     private ResourceActionMethodTemplate resourceActionMethodTemplate;
     private CollectionActionMethodTemplate collectionActionMethodTemplate;
+    private DeleteMethodTemplate deleteMethodTemplate;
 
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
@@ -81,6 +83,8 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String SLASH = "/";
     private static final String ROOT_URL = "/api/";
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
+    private static final String DELETE_REL = "delete";
+
     private static final String[] COLLECTION2ENTITY_EXCEPTIONS = new String[] { "capabilities", "storage",
             "versioncaps" };
     private static final String[] RETURN_BODY_EXCEPTIONS = new String[] { "Response", "Responses" };
@@ -102,6 +106,7 @@ public class RsdlCodegen extends AbstractCodegen {
         this.collectionGetterTemplate = new CollectionGetterTemplate();
         this.resourceActionMethodTemplate = new ResourceActionMethodTemplate();
         this.collectionActionMethodTemplate = new CollectionActionMethodTemplate();
+        this.deleteMethodTemplate = new DeleteMethodTemplate();
 
         this.collectionsHolder = new HashMap<String, CollectionHolder>();
         this.resourcesHolder = new HashMap<String, ResourceHolder>();
@@ -228,6 +233,8 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                     resourceTemplate,
                                                                     variableTemplate,
                                                                     subCollectionGetterTemplate));
+
+                                addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel);
                             }
                         } else if (i % 2 != 0) { // sub-collection
                             if (!isAction(period, rel, requestMethod)) {
@@ -283,6 +290,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                                     variableTemplate,
                                                     subCollectionGetterTemplate));
                                 }
+                                addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel);
                                 parent = resource;
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
@@ -311,6 +319,19 @@ public class RsdlCodegen extends AbstractCodegen {
 
         // #4 - generate SDK entry point
         new ApiCodegen(collectionsHolder, variableTemplate, collectionGetterTemplate).generate();
+    }
+
+    /**
+     * Injects method to the resource
+     * 
+     * @param resourceHolder
+     * @param url
+     * @param rel
+     */
+    private void addResourceMethod(ResourceHolder resourceHolder, String url, String rel) {
+        if (rel.equals(DELETE_REL)) {
+            resourceHolder.addMethod(DELETE_REL, this.deleteMethodTemplate.getTemplate());
+        }
     }
 
     /**
