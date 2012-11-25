@@ -28,6 +28,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
+import org.ovirt.engine.sdk.codegen.templates.CollectionActionMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceActionMethodTemplate;
@@ -67,6 +68,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private SubCollectionGetterTemplate subCollectionGetterTemplate;
     private CollectionGetterTemplate collectionGetterTemplate;
     private ResourceActionMethodTemplate resourceActionMethodTemplate;
+    private CollectionActionMethodTemplate collectionActionMethodTemplate;
 
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
@@ -98,6 +100,7 @@ public class RsdlCodegen extends AbstractCodegen {
         this.subCollectionGetterTemplate = new SubCollectionGetterTemplate();
         this.collectionGetterTemplate = new CollectionGetterTemplate();
         this.resourceActionMethodTemplate = new ResourceActionMethodTemplate();
+        this.collectionActionMethodTemplate = new CollectionActionMethodTemplate();
 
         this.collectionsHolder = new HashMap<String, CollectionHolder>();
         this.resourcesHolder = new HashMap<String, ResourceHolder>();
@@ -252,30 +255,40 @@ public class RsdlCodegen extends AbstractCodegen {
                                 }
 
                             } else {
-                                // TODO: use extra params defined by RSDL
+                                // TODO: use extra params (besides action) defined by RSDL
                                 ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
                                 resourceHolder.addMethod(period,
                                                          this.resourceActionMethodTemplate.getTemplate(period));
                             }
                         } else { // sub-resource
-                            String resource = getSubResourceName(collectionName, parent);
-                            if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
-                                String subResourceDecoratorName = resource;
-                                String publicEntityName =
-                                        getPublicEntity(StringUtils.toSingular(collectionName), false);
-                                if (publicEntityName == null) {
-                                    publicEntityName =
-                                            getPublicEntity(StringUtils.toSingular(collectionName.replace(parent, "")));
-                                }
+                            if (!isAction(period, rel, requestMethod)) {
+                                String resource = getSubResourceName(collectionName, parent);
+                                if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
+                                    String subResourceDecoratorName = resource;
+                                    String publicEntityName =
+                                            getPublicEntity(StringUtils.toSingular(collectionName), false);
+                                    if (publicEntityName == null) {
+                                        publicEntityName =
+                                                getPublicEntity(StringUtils.toSingular(collectionName.replace(parent,
+                                                        "")));
+                                    }
 
-                                this.resourcesHolder.put(resource.toLowerCase(),
-                                        new ResourceHolder(subResourceDecoratorName,
-                                                publicEntityName,
-                                                subResourceTemplate,
-                                                variableTemplate,
-                                                subCollectionGetterTemplate));
+                                    this.resourcesHolder.put(resource.toLowerCase(),
+                                            new ResourceHolder(subResourceDecoratorName,
+                                                    publicEntityName,
+                                                    subResourceTemplate,
+                                                    variableTemplate,
+                                                    subCollectionGetterTemplate));
+                                }
+                                parent = resource;
+                            } else {
+                                // TODO: use extra params (besides action) defined by RSDL
+                                ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
+                                CollectionHolder collectionHolder =
+                                        resourceHolder.getSubcollections().get(collectionName.toLowerCase());
+                                collectionHolder.addMethod(period,
+                                                           this.collectionActionMethodTemplate.getTemplate(period));
                             }
-                            parent = resource;
                         }
                     } else {
                         // TODO: implement unique treatment for COLLECTION2ENTITY_EXCEPTIONS

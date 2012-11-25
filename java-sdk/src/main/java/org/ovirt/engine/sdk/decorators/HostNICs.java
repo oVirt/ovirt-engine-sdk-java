@@ -31,6 +31,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 public class HostNICs extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.HostNIC,
@@ -54,6 +55,11 @@ public class HostNICs extends
     public HostNIC get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
+    }
+
+   public Action setupnetworks(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+        String url = this.parent.getHref() + SLASH + "setupnetworks";
+        return getProxy().action(url, action, Action.class, Action.class);
     }
 
 
