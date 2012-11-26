@@ -43,6 +43,7 @@ import org.ovirt.engine.sdk.codegen.templates.UpdateMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.codegen.utils.ReflectionHelper;
+import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.GlusterBrick;
 import org.ovirt.engine.sdk.entities.GlusterBricks;
@@ -313,6 +314,33 @@ public class RsdlCodegen extends AbstractCodegen {
 
         // #4 - generate SDK entry point
         new ApiCodegen(collectionsHolder, variableTemplate, collectionGetterTemplate).generate();
+
+        // #5 - remove collection getters/setters from the public entities
+        // (as they being shadowed by the decorators getters)
+        XsdCodegen.removePublicAccessors(getPublicAccessors());
+    }
+
+    /**
+     * @return list of public collection names
+     */
+    private Map<String, List<String>> getPublicAccessors() {
+        Map<String, List<String>> publicAccessors = new HashMap<String, List<String>>();
+        for (CollectionHolder collection : this.collectionsHolder.values()) {
+            if (!publicAccessors.containsKey("API")) {
+                publicAccessors.put("API", new ArrayList<String>());
+            }
+            publicAccessors.get("API").add(collection.getPublicCollectionName());
+        }
+        for (ResourceHolder resource : this.resourcesHolder.values()) {
+            if (!publicAccessors.containsKey(resource.getPublicEntityName())) {
+                publicAccessors.put(resource.getPublicEntityName(), new ArrayList<String>());
+            }
+            for (CollectionHolder subCollection : resource.getSubcollections().values()) {
+                publicAccessors.get(resource.getPublicEntityName())
+                                    .add(subCollection.getPublicCollectionName());
+            }
+        }
+        return publicAccessors;
     }
 
     /**

@@ -66,32 +66,7 @@ public class Group
         return (this.domain!= null);
     }
 
-    /**
-     * Gets the value of the roles property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Roles }
-     *     
-     */
-    public Roles getRoles() {
-        return roles;
-    }
 
-    /**
-     * Sets the value of the roles property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Roles }
-     *     
-     */
-    public void setRoles(Roles value) {
-        this.roles = value;
-    }
 
-    public boolean isSetRoles() {
-        return (this.roles!= null);
-    }
 
 }

@@ -17,16 +17,23 @@
 package org.ovirt.engine.sdk.codegen.xsd;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
+import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.ArrayUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
@@ -34,6 +41,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
  */
 public class XsdCodegen extends AbstractCodegen {
 
+    private static final String TMP_EXT = ".tmp";
     private static final String SCHEMA_URL = "?schema";
 
     private static final String WINDOWS_XJC_PATH = "%java_home%\\bin\\xjc";
@@ -48,6 +56,9 @@ public class XsdCodegen extends AbstractCodegen {
 
     private HttpProxyBroker httpProxy;
 
+    /**
+     * @param httpProxy
+     */
     public XsdCodegen(HttpProxyBroker httpProxy) {
         super(getEntitiesPath());
 
@@ -107,6 +118,16 @@ public class XsdCodegen extends AbstractCodegen {
         }
     }
 
+    /**
+     * Runs system command
+     * 
+     * @param command
+     *            command to run
+     * 
+     * @return command output
+     * 
+     * @throws IOException
+     */
     private String runCommand(String command) throws IOException {
         String stdout = "";
         String stderr = "";
@@ -143,7 +164,7 @@ public class XsdCodegen extends AbstractCodegen {
     @Override
     public void doCleanPackage(String dir) {
         ;
-        // delete of the /entities conten will
+        // delete of the /entities content will
         // break compilation of this project as
         // it has refernces to this package
     }
@@ -159,5 +180,148 @@ public class XsdCodegen extends AbstractCodegen {
         } else {
             throw new RuntimeException("unsupported OS.");
         }
+    }
+
+    /**
+     * @return Entities absolete path according to OS
+     */
+    private static String getAbsoleteEntitiesPath() {
+        if (OsUtil.isWindows()) {
+            return WINDOWS_ENTITIES_PATH + "org\\ovirt\\engine\\sdk\\entities\\";
+        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
+            return NX_ENTITIES_PATH + "org/ovirt/engine/sdk/entities/";
+        } else {
+            throw new RuntimeException("unsupported OS.");
+        }
+    }
+
+    /**
+     * Removes PublicAccessors from the api entities
+     * 
+     * @param accessors
+     *            a list of accessors to remove
+     */
+    public static void removePublicAccessors(Map<String, List<String>> accessors) {
+        String path = getAbsoleteEntitiesPath();
+        String[] exceptions = new String[] {};
+
+        // #1 - process all files defined removing accessors
+        processFiles(accessors, path, exceptions);
+
+        // #2 - remove tmp files
+        removeTmpFiles(path);
+    }
+
+    /**
+     * Removes temporary files
+     * 
+     * @param path
+     *            directory to loook at
+     */
+    private static void removeTmpFiles(String path) {
+        for (File file : FileUtils.list(path)) {
+            if (file.getName().endsWith(TMP_EXT)) {
+                FileUtils.delete(file);
+            }
+        }
+    }
+
+    /**
+     * Removes shadowed accessors (decorators shadows public getters with own ones)
+     * 
+     * @param accessors
+     *            accessors to be removed (get/set/is)
+     * @param path
+     *            directory to loook at
+     */
+    private static void processFiles(Map<String, List<String>> accessors, String path, String[] exceptions) {
+        StringBuffer finalContent, tempContent = new StringBuffer();
+        List<String> accessorsToCheck;
+        String template1 = "    public $accessor$ get$accessor$() {" + "\n";
+        String template2 = "    public void set$accessor$($accessor$ value) {" + "\n";
+        String template3 = "    public boolean isSet$accessor$() {" + "\n";
+        String placeHolder = "$accessor$";
+        boolean isInAccessor = false;
+
+        // remove accessor/s
+        for (File file : FileUtils.list(path)) {
+            finalContent = new StringBuffer();
+            tempContent = new StringBuffer();
+            accessorsToCheck = new ArrayList<String>();
+
+            if (ArrayUtils.contains(exceptions, file.getName()))
+                continue;
+
+            List<String> accessorsContent = accessors.get(file.getName().replace(".java", ""));
+            if (accessorsContent != null) {
+                accessorsToCheck.addAll(accessorsContent);
+            } else {
+                continue;
+            }
+
+            // #1 - rename all files to x.tmp
+            renameFile(file.getAbsolutePath(), exceptions);
+
+            try {
+                List<String> strings = FileUtils.getFileContentAsList(file.getAbsolutePath() + TMP_EXT);
+                for (int i = 1; i < strings.size(); i++) {
+                    String str = strings.get(i);
+                    if (str.equals("\n")) {
+                        isInAccessor = false;
+                        finalContent.append("\n");
+                        finalContent.append(tempContent.toString());
+                        tempContent = new StringBuffer();
+                    } else if (str.equals("}\n")) {
+                        isInAccessor = false;
+                        finalContent.append("\n}");
+                    } else {
+                        if (!isInAccessor) {
+                            for (String accessor : accessorsToCheck) {
+                                if (str.toLowerCase().equals(template1.replace(placeHolder, accessor)
+                                                .toLowerCase())) {
+                                    tempContent = new StringBuffer();
+                                    isInAccessor = true;
+                                    break;
+                                } else if (!isInAccessor
+                                        && str.toLowerCase().equals(template2.replace(placeHolder, accessor)
+                                                .toLowerCase())) {
+                                    tempContent = new StringBuffer();
+                                    isInAccessor = true;
+                                    break;
+                                } else if (!isInAccessor
+                                        && str.toLowerCase().equals(template3.replace(placeHolder, accessor)
+                                                .toLowerCase())) {
+                                    tempContent = new StringBuffer();
+                                    isInAccessor = true;
+                                    break;
+                                }
+                            }
+                            if (!isInAccessor) {
+                                tempContent.append(str);
+                            }
+                        }
+                    }
+                }
+
+            } catch (FileNotFoundException e) {
+                // TODO: Log error
+                e.printStackTrace();
+                continue;
+            }
+            // save new content
+            FileUtils.saveFile(file.getAbsolutePath().replace(TMP_EXT, ""),
+                               finalContent.toString());
+        }
+    }
+
+    /**
+     * Renames file to the x.temp
+     * 
+     * @param path
+     *            file to rename
+     */
+    private static void renameFile(String path, String[] exceptions) {
+        File file = new File(path);
+        FileUtils.rename(file, file.getAbsolutePath() + TMP_EXT);
     }
 }

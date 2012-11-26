@@ -130,4 +130,11 @@ public abstract class AbstractResourceHolder extends AbstractCollectionHolder {
     public String getName() {
         return this.decoratorResourceName;
     }
+
+    /**
+     * @return PublicEntityName
+     */
+    public String getPublicEntityName() {
+        return publicEntityName;
+    }
 }

@@ -678,145 +678,20 @@ public class VM
         return (this.payloads!= null);
     }
 
-    /**
-     * Gets the value of the statistics property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Statistics }
-     *     
-     */
-    public Statistics getStatistics() {
-        return statistics;
-    }
 
-    /**
-     * Sets the value of the statistics property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Statistics }
-     *     
-     */
-    public void setStatistics(Statistics value) {
-        this.statistics = value;
-    }
 
-    public boolean isSetStatistics() {
-        return (this.statistics!= null);
-    }
 
-    /**
-     * Gets the value of the disks property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Disks }
-     *     
-     */
-    public Disks getDisks() {
-        return disks;
-    }
 
-    /**
-     * Sets the value of the disks property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Disks }
-     *     
-     */
-    public void setDisks(Disks value) {
-        this.disks = value;
-    }
 
-    public boolean isSetDisks() {
-        return (this.disks!= null);
-    }
 
-    /**
-     * Gets the value of the nics property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Nics }
-     *     
-     */
-    public Nics getNics() {
-        return nics;
-    }
 
-    /**
-     * Sets the value of the nics property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Nics }
-     *     
-     */
-    public void setNics(Nics value) {
-        this.nics = value;
-    }
 
-    public boolean isSetNics() {
-        return (this.nics!= null);
-    }
 
-    /**
-     * Gets the value of the tags property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Tags }
-     *     
-     */
-    public Tags getTags() {
-        return tags;
-    }
 
-    /**
-     * Sets the value of the tags property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Tags }
-     *     
-     */
-    public void setTags(Tags value) {
-        this.tags = value;
-    }
 
-    public boolean isSetTags() {
-        return (this.tags!= null);
-    }
 
-    /**
-     * Gets the value of the snapshots property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Snapshots }
-     *     
-     */
-    public Snapshots getSnapshots() {
-        return snapshots;
-    }
 
-    /**
-     * Sets the value of the snapshots property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Snapshots }
-     *     
-     */
-    public void setSnapshots(Snapshots value) {
-        this.snapshots = value;
-    }
 
-    public boolean isSetSnapshots() {
-        return (this.snapshots!= null);
-    }
 
     /**
      * Gets the value of the placementPolicy property.
@@ -986,33 +861,8 @@ public class VM
         return (this.vmPool!= null);
     }
 
-    /**
-     * Gets the value of the cdroms property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CdRoms }
-     *     
-     */
-    public CdRoms getCdroms() {
-        return cdroms;
-    }
 
-    /**
-     * Sets the value of the cdroms property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CdRoms }
-     *     
-     */
-    public void setCdroms(CdRoms value) {
-        this.cdroms = value;
-    }
 
-    public boolean isSetCdroms() {
-        return (this.cdroms!= null);
-    }
 
     /**
      * Gets the value of the floppies property.

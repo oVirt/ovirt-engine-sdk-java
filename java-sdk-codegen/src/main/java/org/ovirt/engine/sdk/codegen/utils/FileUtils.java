@@ -17,24 +17,157 @@
 package org.ovirt.engine.sdk.codegen.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Provides File/Directory related services
  */
 public class FileUtils {
+
+    public static final String LINE_SEPARATOR = "line.separator";
+    public static final String ENCODING = "UTF-8";
+
     /**
      * Deletes all files in given directory
      * 
-     * @param dir
+     * @param directory
      *            directory to clean
      * 
      * @return sucess/failure
      */
-    public static boolean delete(String dir) {
+    public static boolean deleteAllFiles(String directory) {
         boolean res = true;
-        for (File f : new File(dir).listFiles()) {
+        for (File f : list(directory)) {
             res = res & f.delete();
         }
         return res;
+    }
+
+    /**
+     * Deletes given file
+     * 
+     * @param fileName
+     *            file to delete
+     * 
+     * @return boolean
+     */
+    public static boolean delete(String fileName) {
+        return new File(fileName).delete();
+    }
+
+    /**
+     * Deletes given file
+     * 
+     * @param file
+     *            file to delete
+     * 
+     * @return boolean
+     */
+    public static boolean delete(File file) {
+        return file.delete();
+    }
+
+    /**
+     * Renames file
+     * 
+     * @param file
+     *            File to rename
+     * @param name
+     *            new file name
+     * 
+     * @return boolean
+     */
+    public static boolean rename(File file, String name) {
+        return file.renameTo(new File(name));
+    }
+
+    /**
+     * List all files in given directory
+     * 
+     * @param directory
+     * 
+     * @return File[]
+     */
+    public static File[] list(String directory) {
+        return new File(directory).listFiles();
+    }
+
+    /**
+     * Reads file content
+     * 
+     * @return file content
+     * 
+     * @throws FileNotFoundException
+     */
+    public static String getFileContent(String path) throws FileNotFoundException {
+        StringBuilder text = new StringBuilder();
+        String NL = System.getProperty(LINE_SEPARATOR);
+        Scanner scanner = new Scanner(new FileInputStream(path), ENCODING);
+
+        try {
+            while (scanner.hasNextLine()) {
+                text.append(scanner.nextLine() + NL);
+            }
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+        return text.toString();
+    }
+
+    /**
+     * Reads file content
+     * 
+     * @return file content as list of strings
+     * 
+     * @throws FileNotFoundException
+     */
+    public static List<String> getFileContentAsList(String path) throws FileNotFoundException {
+        List<String> strings = new ArrayList<String>();
+        String NL = System.getProperty(LINE_SEPARATOR);
+        Scanner scanner = new Scanner(new FileInputStream(path), ENCODING);
+
+        try {
+            while (scanner.hasNextLine()) {
+                strings.add(scanner.nextLine() + NL);
+            }
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+        return strings;
+    }
+
+    /**
+     * Stores file
+     * 
+     * @param filePath
+     *            file path
+     * @param content
+     *            file content
+     */
+    public static void saveFile(String filePath, String content) {
+        PrintWriter out = null;
+        if (filePath != null && content != null) {
+            try {
+                out = new PrintWriter(filePath);
+                out.println(content);
+            } catch (FileNotFoundException e) {
+                // TODO: Log error
+                e.printStackTrace();
+                throw new RuntimeException("File \"" + filePath + "\" write failed.");
+            } finally {
+                if (out != null) {
+                    out.close();
+                }
+            }
+        }
     }
 }

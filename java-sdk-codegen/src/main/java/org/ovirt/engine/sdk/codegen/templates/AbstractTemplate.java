@@ -16,10 +16,9 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
+import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 
 /**
@@ -31,8 +30,6 @@ public abstract class AbstractTemplate implements ITemplate {
     private String template;
     private String copyrightTemplate;
 
-    private static final String ENCODING = "UTF-8";
-    private static final String LINE_SEPARATOR = "line.separator";
     private static final String NX_TEMPLATES_PATH =
             "/src/main/java/org/ovirt/engine/sdk/codegen/templates/";
     private static final String WINDOWS_TEMPLATES_PATH =
@@ -82,8 +79,13 @@ public abstract class AbstractTemplate implements ITemplate {
      * @throws FileNotFoundException
      */
     private String readFileTemplate() throws FileNotFoundException {
-        StringBuilder text = new StringBuilder();
-        String NL = System.getProperty(LINE_SEPARATOR);
+        return FileUtils.getFileContent(getTemplatePath() + this.name);
+    }
+
+    /**
+     * @return this template path
+     */
+    private String getTemplatePath() {
         String path;
 
         if (OsUtil.isWindows()) {
@@ -93,18 +95,7 @@ public abstract class AbstractTemplate implements ITemplate {
         } else {
             throw new RuntimeException("unsupported OS.");
         }
-        Scanner scanner = new Scanner(new FileInputStream(path + this.name), ENCODING);
-
-        try {
-            while (scanner.hasNextLine()) {
-                text.append(scanner.nextLine() + NL);
-            }
-        } finally {
-            if (scanner != null) {
-                scanner.close();
-            }
-        }
-        return text.toString();
+        return path;
     }
 
     /**

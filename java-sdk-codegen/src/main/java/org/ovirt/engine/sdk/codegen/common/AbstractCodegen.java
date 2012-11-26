@@ -16,9 +16,7 @@
 
 package org.ovirt.engine.sdk.codegen.common;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.xml.bind.JAXBException;
 
@@ -77,7 +75,7 @@ public abstract class AbstractCodegen implements ICodegen {
      *            directory to clean
      */
     protected void doCleanPackage(String dir) {
-        FileUtils.delete(dir);
+        FileUtils.deleteAllFiles(dir);
     }
 
     /***
@@ -99,22 +97,7 @@ public abstract class AbstractCodegen implements ICodegen {
      *            directory to write the file to
      */
     protected void persistClass(String name, String content, String outDir) {
-        PrintWriter out = null;
         String fileName = outDir + name + ".java";
-
-        if (fileName != null && content != null) {
-            try {
-                out = new PrintWriter(fileName);
-                out.println(content);
-            } catch (FileNotFoundException e) {
-                // TODO: Log error
-                e.printStackTrace();
-                throw new RuntimeException("File \"" + fileName + "\" write failed.");
-            } finally {
-                if (out != null) {
-                    out.close();
-                }
-            }
-        }
+        FileUtils.saveFile(fileName, content);
     }
 }

@@ -128,32 +128,7 @@ public class Role
         return (this.user!= null);
     }
 
-    /**
-     * Gets the value of the permits property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Permits }
-     *     
-     */
-    public Permits getPermits() {
-        return permits;
-    }
 
-    /**
-     * Sets the value of the permits property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Permits }
-     *     
-     */
-    public void setPermits(Permits value) {
-        this.permits = value;
-    }
 
-    public boolean isSetPermits() {
-        return (this.permits!= null);
-    }
 
 }
