@@ -30,10 +30,10 @@ import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
+import org.ovirt.engine.sdk.codegen.templates.CopyrightTemplate;
 import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.utils.ArrayUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
@@ -53,6 +53,8 @@ public class XsdCodegen extends AbstractCodegen {
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
     private static final String SCHEMA_FILE_NAME = "api.xsd";
     private static final String XJC_FLAGS = " -extension -no-header ";
+
+    private static final String copyrightTemplate = new CopyrightTemplate().getTemplate();
 
     private HttpProxyBroker httpProxy;
 
@@ -203,10 +205,9 @@ public class XsdCodegen extends AbstractCodegen {
      */
     public static void removePublicAccessors(Map<String, List<String>> accessors) {
         String path = getAbsoleteEntitiesPath();
-        String[] exceptions = new String[] {};
 
         // #1 - process all files defined removing accessors
-        processFiles(accessors, path, exceptions);
+        processFiles(accessors, path);
 
         // #2 - remove tmp files
         removeTmpFiles(path);
@@ -234,7 +235,7 @@ public class XsdCodegen extends AbstractCodegen {
      * @param path
      *            directory to loook at
      */
-    private static void processFiles(Map<String, List<String>> accessors, String path, String[] exceptions) {
+    private static void processFiles(Map<String, List<String>> accessors, String path) {
         StringBuffer finalContent, tempContent = new StringBuffer();
         List<String> accessorsToCheck;
         String template1 = "    public $accessor$ get$accessor$() {" + "\n";
@@ -246,21 +247,20 @@ public class XsdCodegen extends AbstractCodegen {
         // remove accessor/s
         for (File file : FileUtils.list(path)) {
             finalContent = new StringBuffer();
+            finalContent.append(copyrightTemplate);
             tempContent = new StringBuffer();
             accessorsToCheck = new ArrayList<String>();
-
-            if (ArrayUtils.contains(exceptions, file.getName()))
-                continue;
 
             List<String> accessorsContent = accessors.get(file.getName().replace(".java", ""));
             if (accessorsContent != null) {
                 accessorsToCheck.addAll(accessorsContent);
             } else {
+                injectCopyrightHeader(file);
                 continue;
             }
 
             // #1 - rename all files to x.tmp
-            renameFile(file.getAbsolutePath(), exceptions);
+            renameFile(file.getAbsolutePath());
 
             try {
                 List<String> strings = FileUtils.getFileContentAsList(file.getAbsolutePath() + TMP_EXT);
@@ -315,12 +315,30 @@ public class XsdCodegen extends AbstractCodegen {
     }
 
     /**
+     * Inject CopyrightHeader in to file
+     * 
+     * @param file
+     *            file to inject to
+     */
+    private static void injectCopyrightHeader(File file) {
+        StringBuffer content = new StringBuffer();
+        try {
+            content.append(copyrightTemplate);
+            content.append(FileUtils.getFileContent(file.getAbsolutePath()));
+            FileUtils.saveFile(file.getAbsolutePath(), content.toString());
+        } catch (FileNotFoundException e) {
+            // TODO: Log error
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Renames file to the x.temp
      * 
      * @param path
      *            file to rename
      */
-    private static void renameFile(String path, String[] exceptions) {
+    private static void renameFile(String path) {
         File file = new File(path);
         FileUtils.rename(file, file.getAbsolutePath() + TMP_EXT);
     }

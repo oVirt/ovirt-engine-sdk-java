@@ -115,7 +115,7 @@ public abstract class AbstractTemplate implements ITemplate {
     /**
      * @return Template
      */
-    protected String getTemplate() {
+    public String getTemplate() {
         return this.template;
     }
 }
