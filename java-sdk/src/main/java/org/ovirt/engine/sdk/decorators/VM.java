@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -96,51 +100,63 @@ public class VM extends
     }
 
 
-   public Action suspend(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action suspend(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/suspend";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-    public VM update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VM update() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, VM.class);
     }
-   public Action stop(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action stop(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/stop";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   public Action cancelmigration(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action cancelmigration(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/cancelmigration";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   public Action export(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action export(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/export";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   public Action detach(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action detach(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   public Action ticket(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action ticket(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/ticket";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   public Action start(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action start(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   public Action migrate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action migrate(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/migrate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
-   public Action move(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action move(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/move";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   public Action shutdown(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action shutdown(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/shutdown";
         return getProxy().action(url, action, Action.class, Action.class);
     }

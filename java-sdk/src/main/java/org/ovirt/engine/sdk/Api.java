@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk;
 
 import java.io.IOException;

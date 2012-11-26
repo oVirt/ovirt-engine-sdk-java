@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -44,13 +48,15 @@ public class Events extends
     }
 
     @Override
-    public List<Event> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<Event> list() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Events.class, Event.class);
     }
 
     @Override
-    public Event get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Event get(UUID id) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Event.class, Event.class);
     }

@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -47,13 +51,15 @@ public class ClusterGlusterVolumes extends
     }
 
     @Override
-    public List<ClusterGlusterVolume> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<ClusterGlusterVolume> list() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class, ClusterGlusterVolume.class);
     }
 
     @Override
-    public ClusterGlusterVolume get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public ClusterGlusterVolume get(UUID id) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterVolume.class, ClusterGlusterVolume.class);
     }

@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -47,13 +51,15 @@ public class UserPermissions extends
     }
 
     @Override
-    public List<UserPermission> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<UserPermission> list() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, UserPermission.class);
     }
 
     @Override
-    public UserPermission get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public UserPermission get(UUID id) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, UserPermission.class);
     }

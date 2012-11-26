@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -54,19 +58,23 @@ public class HostNIC extends
     }
 
 
-    public HostNIC update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public HostNIC update() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
     }
-   public Action detach(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action detach(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   public Action attach(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action attach(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/attach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }

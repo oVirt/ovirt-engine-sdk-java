@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -47,11 +51,13 @@ public class ClusterNetwork extends
 
 
 
-    public ClusterNetwork update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public ClusterNetwork update() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
     }
-    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }

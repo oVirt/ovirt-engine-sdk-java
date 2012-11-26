@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -54,15 +58,18 @@ public class VmPool extends
     }
 
 
-    public VmPool update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VmPool update() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
     }
-   public Action allocatevm(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action allocatevm(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/allocatevm";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }

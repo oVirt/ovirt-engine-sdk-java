@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -68,7 +72,8 @@ public class User extends
     }
 
 
-    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }

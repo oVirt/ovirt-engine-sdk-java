@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -47,13 +51,15 @@ public class VMDisks extends
     }
 
     @Override
-    public List<VMDisk> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<VMDisk> list() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, VMDisk.class);
     }
 
     @Override
-    public VMDisk get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VMDisk get(UUID id) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
     }

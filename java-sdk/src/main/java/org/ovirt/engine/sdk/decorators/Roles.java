@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -44,13 +48,15 @@ public class Roles extends
     }
 
     @Override
-    public List<Role> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<Role> list() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Roles.class, Role.class);
     }
 
     @Override
-    public Role get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Role get(UUID id) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, Role.class);
     }

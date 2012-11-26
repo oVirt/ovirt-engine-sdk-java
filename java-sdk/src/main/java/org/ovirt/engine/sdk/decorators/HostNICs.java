@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -47,18 +51,21 @@ public class HostNICs extends
     }
 
     @Override
-    public List<HostNIC> list() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public List<HostNIC> list() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.HostNics.class, HostNIC.class);
     }
 
     @Override
-    public HostNIC get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public HostNIC get(UUID id) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
     }
 
-   public Action setupnetworks(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action setupnetworks(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + "setupnetworks";
         return getProxy().action(url, action, Action.class, Action.class);
     }

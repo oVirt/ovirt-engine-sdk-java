@@ -14,6 +14,10 @@
 // limitations under the License.
 //
 
+// *********************************************************************
+// ********************* GENERATED CODE - DO NOT MODIFY ****************
+// *********************************************************************
+
 package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
@@ -54,19 +58,23 @@ public class VMNIC extends
     }
 
 
-   public Action activate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action activate(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-    public VMNIC update() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public VMNIC update() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
     }
-    public Response delete() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
-   public Action deactivate(Action action) throws ClientProtocolException, ServerException, IOException, JAXBException {
+   public Action deactivate(Action action) throws ClientProtocolException,
+            ServerException, IOException, JAXBException {
         String url = this.getHref() + "/deactivate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
