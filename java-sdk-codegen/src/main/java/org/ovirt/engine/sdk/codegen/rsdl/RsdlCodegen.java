@@ -317,7 +317,7 @@ public class RsdlCodegen extends AbstractCodegen {
 
         // #5 - remove collection getters/setters from the public entities
         // (as they being shadowed by the decorators getters)
-        XsdCodegen.removePublicAccessors(getPublicAccessors());
+        XsdCodegen.modifyGetters(getPublicAccessors());
     }
 
     /**

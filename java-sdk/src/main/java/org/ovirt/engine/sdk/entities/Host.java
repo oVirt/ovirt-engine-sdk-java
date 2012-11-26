@@ -486,8 +486,33 @@ public class Host
         return (this.rootPassword!= null);
     }
 
+    /**
+     * Gets the value of the statistics property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Statistics }
+     *     
+     */
+    public Object getStatistics() {
+        return statistics;
+    }
 
+    /**
+     * Sets the value of the statistics property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Statistics }
+     *     
+     */
+    public void setStatistics(Statistics value) {
+        this.statistics = value;
+    }
 
+    public boolean isSetStatistics() {
+        return (this.statistics!= null);
+    }
 
     /**
      * Gets the value of the cpu property.

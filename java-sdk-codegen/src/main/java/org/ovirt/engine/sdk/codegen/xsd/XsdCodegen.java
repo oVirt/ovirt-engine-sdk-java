@@ -41,7 +41,6 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
  */
 public class XsdCodegen extends AbstractCodegen {
 
-    private static final String TMP_EXT = ".tmp";
     private static final String SCHEMA_URL = "?schema";
 
     private static final String WINDOWS_XJC_PATH = "%java_home%\\bin\\xjc";
@@ -198,33 +197,14 @@ public class XsdCodegen extends AbstractCodegen {
     }
 
     /**
-     * Removes PublicAccessors from the api entities
+     * Modifies public getters to return Object so inheriting classes could override them with different signature
      * 
      * @param accessors
-     *            a list of accessors to remove
+     *            a list of possible getter types
      */
-    public static void removePublicAccessors(Map<String, List<String>> accessors) {
+    public static void modifyGetters(Map<String, List<String>> accessors) {
         String path = getAbsoleteEntitiesPath();
-
-        // #1 - process all files defined removing accessors
         processFiles(accessors, path);
-
-        // #2 - remove tmp files
-        removeTmpFiles(path);
-    }
-
-    /**
-     * Removes temporary files
-     * 
-     * @param path
-     *            directory to loook at
-     */
-    private static void removeTmpFiles(String path) {
-        for (File file : FileUtils.list(path)) {
-            if (file.getName().endsWith(TMP_EXT)) {
-                FileUtils.delete(file);
-            }
-        }
     }
 
     /**
@@ -238,13 +218,12 @@ public class XsdCodegen extends AbstractCodegen {
     private static void processFiles(Map<String, List<String>> accessors, String path) {
         StringBuffer finalContent, tempContent = new StringBuffer();
         List<String> accessorsToCheck;
-        String template1 = "    public $accessor$ get$accessor$() {" + "\n";
-        String template2 = "    public void set$accessor$($accessor$ value) {" + "\n";
-        String template3 = "    public boolean isSet$accessor$() {" + "\n";
+        String templateOriginal = "    public $accessor$ get$accessor$() {" + "\n";
+        String templateReplace = "    public Object get$accessor$() {" + "\n";
         String placeHolder = "$accessor$";
         boolean isInAccessor = false;
 
-        // remove accessor/s
+        // change shadowed getters
         for (File file : FileUtils.list(path)) {
             finalContent = new StringBuffer();
             finalContent.append(copyrightTemplate);
@@ -259,11 +238,8 @@ public class XsdCodegen extends AbstractCodegen {
                 continue;
             }
 
-            // #1 - rename all files to x.tmp
-            renameFile(file.getAbsolutePath());
-
             try {
-                List<String> strings = FileUtils.getFileContentAsList(file.getAbsolutePath() + TMP_EXT);
+                List<String> strings = FileUtils.getFileContentAsList(file.getAbsolutePath());
                 for (int i = 1; i < strings.size(); i++) {
                     String str = strings.get(i);
                     if (str.equals("\n")) {
@@ -277,27 +253,17 @@ public class XsdCodegen extends AbstractCodegen {
                     } else {
                         if (!isInAccessor) {
                             for (String accessor : accessorsToCheck) {
-                                if (str.toLowerCase().equals(template1.replace(placeHolder, accessor)
+                                if (str.toLowerCase().equals(templateOriginal.replace(placeHolder, accessor)
                                                 .toLowerCase())) {
-                                    tempContent = new StringBuffer();
                                     isInAccessor = true;
-                                    break;
-                                } else if (!isInAccessor
-                                        && str.toLowerCase().equals(template2.replace(placeHolder, accessor)
-                                                .toLowerCase())) {
-                                    tempContent = new StringBuffer();
-                                    isInAccessor = true;
-                                    break;
-                                } else if (!isInAccessor
-                                        && str.toLowerCase().equals(template3.replace(placeHolder, accessor)
-                                                .toLowerCase())) {
-                                    tempContent = new StringBuffer();
-                                    isInAccessor = true;
+                                    tempContent.append(templateReplace.replace(placeHolder, accessor));
                                     break;
                                 }
                             }
                             if (!isInAccessor) {
                                 tempContent.append(str);
+                            } else {
+                                isInAccessor = false;
                             }
                         }
                     }
@@ -309,7 +275,7 @@ public class XsdCodegen extends AbstractCodegen {
                 continue;
             }
             // save new content
-            FileUtils.saveFile(file.getAbsolutePath().replace(TMP_EXT, ""),
+            FileUtils.saveFile(file.getAbsolutePath(),
                                finalContent.toString());
         }
     }
@@ -330,16 +296,5 @@ public class XsdCodegen extends AbstractCodegen {
             // TODO: Log error
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Renames file to the x.temp
-     * 
-     * @param path
-     *            file to rename
-     */
-    private static void renameFile(String path) {
-        File file = new File(path);
-        FileUtils.rename(file, file.getAbsolutePath() + TMP_EXT);
     }
 }
