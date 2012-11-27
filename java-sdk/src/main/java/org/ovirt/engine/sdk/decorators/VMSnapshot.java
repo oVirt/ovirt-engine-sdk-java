@@ -105,26 +105,26 @@ public class VMSnapshot extends
     }
 
 
-   /**
-    * Performs restore action.
-    *  
-    * @param action Action
+    /**
+     * Performs restore action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action restore(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action restore(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/restore";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

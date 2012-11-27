@@ -61,7 +61,7 @@ public class UserTags extends
      * Lists UserTag objects.
      * 
      * @return
-     *     List<UserTag>
+     *     List of UserTags
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,10 @@ public class UserTags extends
 
     /**
      * Adds Tag object.
-     * 
+     *
      * @param Tag
+     *
+     * tag.id|name
      *
      * @return
      *     {@link UserTag }

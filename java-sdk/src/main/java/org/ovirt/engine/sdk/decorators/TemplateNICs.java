@@ -61,7 +61,7 @@ public class TemplateNICs extends
      * Lists TemplateNIC objects.
      * 
      * @return
-     *     List<TemplateNIC>
+     *     List of TemplateNICs
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,14 @@ public class TemplateNICs extends
 
     /**
      * Adds NIC object.
-     * 
+     *
      * @param NIC
+     *
+     * nic.network.id|name
+     * nic.name
+     * nic.mac.address
+     * nic.interface
+     * nic.port_mirroring.networks.network
      *
      * @return
      *     {@link TemplateNIC }

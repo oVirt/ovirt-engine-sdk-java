@@ -123,6 +123,10 @@ public class StorageDomain extends
     /**
      * Updates StorageDomain object.
      *
+     * @param StorageDomain
+     *
+     * storagedomain.name
+     *
      * @return
      *     possible object is
      *     {@link StorageDomain }
@@ -138,7 +142,7 @@ public class StorageDomain extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

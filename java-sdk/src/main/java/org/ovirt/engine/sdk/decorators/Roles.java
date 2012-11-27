@@ -57,7 +57,7 @@ public class Roles extends
      * Lists Role objects.
      *
      * @return
-     *     List<Role>
+     *     List of Roles
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -90,6 +90,13 @@ public class Roles extends
 
     /**
      * Adds Role object.
+     *
+     * @param Role
+     *
+     * role.name
+     * role.permits.permit
+     * role.description
+     * role.administrative
      *
      * @return
      *     {@link Role }

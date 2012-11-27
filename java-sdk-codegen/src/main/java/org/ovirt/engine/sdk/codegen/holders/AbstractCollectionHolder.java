@@ -118,6 +118,16 @@ public abstract class AbstractCollectionHolder implements IHolder {
     }
 
     /**
+     * Checks if method alredy defined
+     * 
+     * @param name
+     *            method name
+     */
+    public boolean hasMethod(String name) {
+        return this.methods.containsKey(name);
+    }
+
+    /**
      * Adds method string
      * 
      * @param name
@@ -132,6 +142,7 @@ public abstract class AbstractCollectionHolder implements IHolder {
     /**
      * Produces this holder content
      */
+    @Override
     public String produce() {
         return toString();
     }
@@ -160,6 +171,7 @@ public abstract class AbstractCollectionHolder implements IHolder {
     /**
      * @return Collection name
      */
+    @Override
     public String getName() {
         return this.decoratorCollectionName;
     }

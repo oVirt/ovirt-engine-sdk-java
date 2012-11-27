@@ -63,6 +63,14 @@ public class TemplateNIC extends
     /**
      * Updates TemplateNIC object.
      *
+     * @param NIC
+     *
+     * nic.network.id|name
+     * nic.name
+     * nic.mac.address
+     * nic.interface
+     * nic.port_mirroring.networks.network
+     *
      * @return
      *     possible object is
      *     {@link TemplateNIC }
@@ -78,7 +86,7 @@ public class TemplateNIC extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, TemplateNIC.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

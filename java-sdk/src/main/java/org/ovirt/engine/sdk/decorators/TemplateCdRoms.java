@@ -61,7 +61,7 @@ public class TemplateCdRoms extends
      * Lists TemplateCdRom objects.
      * 
      * @return
-     *     List<TemplateCdRom>
+     *     List of TemplateCdRoms
      *
      * @throws ClientProtocolException
      * @throws ServerException

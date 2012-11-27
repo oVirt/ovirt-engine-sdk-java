@@ -61,7 +61,7 @@ public class VmPoolPermissions extends
      * Lists VmPoolPermission objects.
      * 
      * @return
-     *     List<VmPoolPermission>
+     *     List of VmPoolPermissions
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,16 @@ public class VmPoolPermissions extends
 
     /**
      * Adds Permission object.
-     * 
+     *
      * @param Permission
+     *
+     * Overload 1: 
+     *   permission.user.id
+     *   permission.role.id
+     *
+     * Overload 2: 
+     *   permission.role.id
+     *   permission.group.id
      *
      * @return
      *     {@link VmPoolPermission }

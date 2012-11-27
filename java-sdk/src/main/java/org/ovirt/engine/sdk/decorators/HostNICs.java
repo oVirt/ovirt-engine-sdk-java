@@ -61,7 +61,7 @@ public class HostNICs extends
      * Lists HostNIC objects.
      * 
      * @return
-     *     List<HostNIC>
+     *     List of HostNICs
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -93,19 +93,24 @@ public class HostNICs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
     }
 
-    /**
-     * Performs setupnetworks action.
+   /**
+    * Performs setupnetworks action.
      *
-     * @param action Action
+     * @param Action
      *
-     * @return
-     *     {@link Action }
+     * action.host_nics.host_nic
+     * action.checkConnectivity
+     * action.connectivityTimeout
+     * action.force
      *
-     * @throws ClientProtocolException
-     * @throws ServerException
-     * @throws IOException
-     * @throws JAXBException
-     */
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action setupnetworks(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + "setupnetworks";
@@ -113,8 +118,13 @@ public class HostNICs extends
     }
     /**
      * Adds HostNIC object.
-     * 
+     *
      * @param HostNIC
+     *
+     * hostnic.network.id|name
+     * hostnic.name
+     * hostnic.bonding.slaves.host_nic
+     * hostnic.bonding.options.option
      *
      * @return
      *     {@link HostNIC }

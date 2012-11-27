@@ -61,7 +61,7 @@ public class ClusterPermission extends
 
 
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

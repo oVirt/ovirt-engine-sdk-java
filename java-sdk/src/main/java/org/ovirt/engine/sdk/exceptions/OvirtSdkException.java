@@ -22,7 +22,19 @@ package org.ovirt.engine.sdk.exceptions;
 public abstract class OvirtSdkException extends Exception {
     private static final long serialVersionUID = -5983358219123325129L;
 
+    /**
+     * @param message
+     *            exception message
+     */
     public OvirtSdkException(String message) {
         super(message);
+    }
+
+    /**
+     * @param throwable
+     *            exception cause
+     */
+    public OvirtSdkException(Throwable throwable) {
+        super(throwable);
     }
 }

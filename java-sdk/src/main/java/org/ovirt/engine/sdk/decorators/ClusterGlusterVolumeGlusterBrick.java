@@ -60,26 +60,30 @@ public class ClusterGlusterVolumeGlusterBrick extends
 
 
 
-   /**
-    * Performs replace action.
-    *  
-    * @param action Action
+    /**
+     * Performs replace action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action replace(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.brick.server_id
+     * action.brick.brick_dir
+     * action.force
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action replace(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/replace";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

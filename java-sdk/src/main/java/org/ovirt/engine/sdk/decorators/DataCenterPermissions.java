@@ -61,7 +61,7 @@ public class DataCenterPermissions extends
      * Lists DataCenterPermission objects.
      * 
      * @return
-     *     List<DataCenterPermission>
+     *     List of DataCenterPermissions
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,16 @@ public class DataCenterPermissions extends
 
     /**
      * Adds Permission object.
-     * 
+     *
      * @param Permission
+     *
+     * Overload 1: 
+     *   permission.user.id
+     *   permission.role.id
+     *
+     * Overload 2: 
+     *   permission.role.id
+     *   permission.group.id
      *
      * @return
      *     {@link DataCenterPermission }

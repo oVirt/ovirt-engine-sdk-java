@@ -75,26 +75,34 @@ public class VMNIC extends
     }
 
 
-   /**
-    * Performs activate action.
-    *  
-    * @param action Action
+    /**
+     * Performs activate action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action activate(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action activate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
      * Updates VMNIC object.
+     *
+     * @param NIC
+     *
+     * nic.network.id|name
+     * nic.name
+     * nic.mac.address
+     * nic.interface
+     * nic.port_mirroring.networks.network
      *
      * @return
      *     possible object is
@@ -111,7 +119,7 @@ public class VMNIC extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }
@@ -126,20 +134,20 @@ public class VMNIC extends
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
-   /**
-    * Performs deactivate action.
-    *  
-    * @param action Action
+    /**
+     * Performs deactivate action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action deactivate(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action deactivate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/deactivate";
         return getProxy().action(url, action, Action.class, Action.class);

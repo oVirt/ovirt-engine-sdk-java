@@ -61,7 +61,7 @@ public class GroupTags extends
      * Lists GroupTag objects.
      * 
      * @return
-     *     List<GroupTag>
+     *     List of GroupTags
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,10 @@ public class GroupTags extends
 
     /**
      * Adds Tag object.
-     * 
+     *
      * @param Tag
+     *
+     * tag.id|name
      *
      * @return
      *     {@link GroupTag }

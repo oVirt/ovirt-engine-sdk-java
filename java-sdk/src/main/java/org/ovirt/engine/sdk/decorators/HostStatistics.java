@@ -61,7 +61,7 @@ public class HostStatistics extends
      * Lists HostStatistic objects.
      * 
      * @return
-     *     List<HostStatistic>
+     *     List of HostStatistics
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -61,7 +61,7 @@ public class TemplatePermission extends
 
 
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

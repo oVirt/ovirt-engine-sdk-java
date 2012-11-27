@@ -37,7 +37,7 @@ public class $decoratorCollectionName$ extends
      * Lists $decoratorEntityName$ objects.
      *
      * @return
-     *     List<$decoratorEntityName$>
+     *     List of $decoratorEntityName$s
      *
      * @throws ClientProtocolException
      * @throws ServerException

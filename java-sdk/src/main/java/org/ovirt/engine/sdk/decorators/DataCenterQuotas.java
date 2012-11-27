@@ -61,7 +61,7 @@ public class DataCenterQuotas extends
      * Lists DataCenterQuota objects.
      * 
      * @return
-     *     List<DataCenterQuota>
+     *     List of DataCenterQuotas
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,7 +95,7 @@ public class DataCenterQuotas extends
 
     /**
      * Adds Quota object.
-     * 
+     *
      * @param Quota
      *
      * @return

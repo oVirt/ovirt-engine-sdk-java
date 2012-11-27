@@ -61,7 +61,7 @@ public class GroupTag extends
 
 
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

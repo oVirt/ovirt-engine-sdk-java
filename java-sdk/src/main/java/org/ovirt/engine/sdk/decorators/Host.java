@@ -120,44 +120,61 @@ public class Host extends
     }
 
 
-   /**
-    * Performs install action.
-    *  
-    * @param action Action
+    /**
+     * Performs install action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action install(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.root_password
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action install(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/install";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs activate action.
-    *  
-    * @param action Action
+    /**
+     * Performs activate action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action activate(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action activate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
      * Updates Host object.
+     *
+     * @param Host
+     *
+     * host.name
+     * host.address
+     * host.root_password
+     * host.cluster.id
+     * host.port
+     * host.storage_manager.priority
+     * host.power_management.type
+     * host.power_management.enabled
+     * host.power_management.address
+     * host.power_management.user_name
+     * host.power_management.password
+     * host.power_management.options.option
      *
      * @return
      *     possible object is
@@ -173,80 +190,89 @@ public class Host extends
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Host.class, Host.class);
     }
-   /**
-    * Performs fence action.
-    *  
-    * @param action Action
+    /**
+     * Performs fence action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action fence(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action fence(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/fence";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs iscsidiscover action.
-    *  
-    * @param action Action
+    /**
+     * Performs iscsidiscover action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action iscsidiscover(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.iscsi.address
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action iscsidiscover(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/iscsidiscover";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs approve action.
-    *  
-    * @param action Action
+    /**
+     * Performs approve action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action approve(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.cluster.id|name
+     * action.async
+     * action.grace_period.expiry
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action approve(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/approve";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs iscsilogin action.
-    *  
-    * @param action Action
+    /**
+     * Performs iscsilogin action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action iscsilogin(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.iscsi.address
+     * action.iscsi.target
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action iscsilogin(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/iscsilogin";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }
@@ -261,38 +287,38 @@ public class Host extends
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
-   /**
-    * Performs deactivate action.
-    *  
-    * @param action Action
+    /**
+     * Performs deactivate action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action deactivate(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action deactivate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/deactivate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs commitnetconfig action.
-    *  
-    * @param action Action
+    /**
+     * Performs commitnetconfig action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action commitnetconfig(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action commitnetconfig(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/commitnetconfig";
         return getProxy().action(url, action, Action.class, Action.class);

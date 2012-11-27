@@ -63,6 +63,11 @@ public class ClusterNetwork extends
     /**
      * Updates ClusterNetwork object.
      *
+     * @param Network
+     *
+     * network.display
+     * network.usages.usage
+     *
      * @return
      *     possible object is
      *     {@link ClusterNetwork }
@@ -78,7 +83,7 @@ public class ClusterNetwork extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

@@ -61,7 +61,7 @@ public class StorageDomainVMs extends
      * Lists StorageDomainVM objects.
      * 
      * @return
-     *     List<StorageDomainVM>
+     *     List of StorageDomainVMs
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -57,7 +57,7 @@ public class Networks extends
      * Lists Network objects.
      *
      * @return
-     *     List<Network>
+     *     List of Networks
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -90,6 +90,19 @@ public class Networks extends
 
     /**
      * Adds Network object.
+     *
+     * @param Network
+     *
+     * network.data_center.id|name
+     * network.name
+     * network.description
+     * network.vlan.id
+     * network.ip.address
+     * network.ip.gateway
+     * network.ip.netmask
+     * network.display
+     * network.stp
+     * network.mtu
      *
      * @return
      *     {@link Network }

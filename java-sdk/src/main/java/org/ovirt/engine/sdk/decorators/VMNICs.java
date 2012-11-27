@@ -61,7 +61,7 @@ public class VMNICs extends
      * Lists VMNIC objects.
      * 
      * @return
-     *     List<VMNIC>
+     *     List of VMNICs
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,14 @@ public class VMNICs extends
 
     /**
      * Adds NIC object.
-     * 
+     *
      * @param NIC
+     *
+     * nic.network.id|name
+     * nic.name
+     * nic.mac.address
+     * nic.interface
+     * nic.port_mirroring.networks.network
      *
      * @return
      *     {@link VMNIC }

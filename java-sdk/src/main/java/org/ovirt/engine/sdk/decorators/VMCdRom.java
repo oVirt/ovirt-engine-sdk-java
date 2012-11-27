@@ -63,6 +63,10 @@ public class VMCdRom extends
     /**
      * Updates VMCdRom object.
      *
+     * @param CdRom
+     *
+     * cdrom.file.id
+     *
      * @return
      *     possible object is
      *     {@link VMCdRom }
@@ -78,7 +82,7 @@ public class VMCdRom extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

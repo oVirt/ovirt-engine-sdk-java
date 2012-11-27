@@ -57,7 +57,7 @@ public class Groups extends
      * Lists Group objects.
      *
      * @return
-     *     List<Group>
+     *     List of Groups
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -90,6 +90,10 @@ public class Groups extends
 
     /**
      * Adds Group object.
+     *
+     * @param Group
+     *
+     * group.name
      *
      * @return
      *     {@link Group }

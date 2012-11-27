@@ -61,7 +61,7 @@ public class TemplatePermissions extends
      * Lists TemplatePermission objects.
      * 
      * @return
-     *     List<TemplatePermission>
+     *     List of TemplatePermissions
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,16 @@ public class TemplatePermissions extends
 
     /**
      * Adds Permission object.
-     * 
+     *
      * @param Permission
+     *
+     * Overload 1: 
+     *   permission.user.id
+     *   permission.role.id
+     *
+     * Overload 2: 
+     *   permission.role.id
+     *   permission.group.id
      *
      * @return
      *     {@link TemplatePermission }

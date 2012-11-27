@@ -61,7 +61,7 @@ public class StorageDomainTemplate extends
 
 
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }
@@ -76,20 +76,27 @@ public class StorageDomainTemplate extends
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
-   /**
-    * Performs importTemplate action.
-    *  
-    * @param action Action
+    /**
+     * Performs importTemplate action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action importTemplate(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.cluster.id|name
+     * action.storage_domain.id|name
+     * action.clone
+     * action.exclusive
+     * action.template.name
+     * action.vm.disks.disk
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action importTemplate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/import";
         return getProxy().action(url, action, Action.class, Action.class);

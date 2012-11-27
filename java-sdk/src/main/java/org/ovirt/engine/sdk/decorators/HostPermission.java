@@ -61,7 +61,7 @@ public class HostPermission extends
 
 
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

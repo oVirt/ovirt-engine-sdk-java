@@ -78,6 +78,19 @@ public class HostNIC extends
     /**
      * Updates HostNIC object.
      *
+     * @param HostNIC
+     *
+     * hostnic.bonding.slaves.host_nic
+     * hostnic.network.id|name
+     * hostnic.name
+     * hostnic.bonding.options.option
+     * hostnic.ip.gateway
+     * hostnic.boot_protocol
+     * hostnic.mac
+     * hostnic.ip.address
+     * hostnic.ip.netmask
+     * hostnic.ip.mtu
+     *
      * @return
      *     possible object is
      *     {@link HostNIC }
@@ -92,44 +105,50 @@ public class HostNIC extends
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
     }
-   /**
-    * Performs detach action.
-    *  
-    * @param action Action
+    /**
+     * Performs detach action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action detach(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.async
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action detach(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs attach action.
-    *  
-    * @param action Action
+    /**
+     * Performs attach action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action attach(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.network.id|name
+     * action.async
+     * action.grace_period.expiry
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action attach(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/attach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

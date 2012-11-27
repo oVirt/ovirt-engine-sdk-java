@@ -61,7 +61,7 @@ public class DataCenterPermission extends
 
 
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

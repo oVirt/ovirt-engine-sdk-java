@@ -78,6 +78,13 @@ public class VmPool extends
     /**
      * Updates VmPool object.
      *
+     * @param VmPool
+     *
+     * vmpool.cluster.id|name
+     * vmpool.template.id|name
+     * vmpool.name
+     * vmpool.size
+     *
      * @return
      *     possible object is
      *     {@link VmPool }
@@ -92,26 +99,28 @@ public class VmPool extends
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
     }
-   /**
-    * Performs allocatevm action.
-    *  
-    * @param action Action
+    /**
+     * Performs allocatevm action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action allocatevm(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.async
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action allocatevm(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/allocatevm";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

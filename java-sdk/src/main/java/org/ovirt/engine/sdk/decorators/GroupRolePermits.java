@@ -61,7 +61,7 @@ public class GroupRolePermits extends
      * Lists GroupRolePermit objects.
      * 
      * @return
-     *     List<GroupRolePermit>
+     *     List of GroupRolePermits
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,10 @@ public class GroupRolePermits extends
 
     /**
      * Adds Permit object.
-     * 
+     *
      * @param Permit
+     *
+     * permit.id|name
      *
      * @return
      *     {@link GroupRolePermit }

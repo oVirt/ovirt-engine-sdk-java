@@ -1,7 +1,5 @@
     /**
      * Adds $publicEntityName$ object.
-     * 
-     * @param $publicEntityName$
 $docParams$
      * @return
      *     {@link $decoratorName$ }

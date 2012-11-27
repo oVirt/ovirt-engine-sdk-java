@@ -63,6 +63,12 @@ public class Tag extends
     /**
      * Updates Tag object.
      *
+     * @param Tag
+     *
+     * tag.name
+     * tag.description
+     * tag.parent.name
+     *
      * @return
      *     possible object is
      *     {@link Tag }
@@ -78,7 +84,7 @@ public class Tag extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Tag.class, Tag.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

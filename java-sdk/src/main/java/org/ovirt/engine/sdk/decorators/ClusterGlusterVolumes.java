@@ -61,7 +61,7 @@ public class ClusterGlusterVolumes extends
      * Lists ClusterGlusterVolume objects.
      * 
      * @return
-     *     List<ClusterGlusterVolume>
+     *     List of ClusterGlusterVolumes
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,16 @@ public class ClusterGlusterVolumes extends
 
     /**
      * Adds GlusterVolume object.
-     * 
+     *
      * @param GlusterVolume
+     *
+     * gluster_volume.name
+     * gluster_volume.volume_type
+     * gluster_volume.bricks.brick
+     * gluster_volume.transport_types
+     * gluster_volume.replica_count
+     * gluster_volume.stripe_count
+     * gluster_volume.options.option
      *
      * @return
      *     {@link ClusterGlusterVolume }

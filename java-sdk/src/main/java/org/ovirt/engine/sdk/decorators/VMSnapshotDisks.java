@@ -61,7 +61,7 @@ public class VMSnapshotDisks extends
      * Lists VMSnapshotDisk objects.
      * 
      * @return
-     *     List<VMSnapshotDisk>
+     *     List of VMSnapshotDisks
      *
      * @throws ClientProtocolException
      * @throws ServerException

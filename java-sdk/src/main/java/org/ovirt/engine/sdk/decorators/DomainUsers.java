@@ -61,7 +61,7 @@ public class DomainUsers extends
      * Lists DomainUser objects.
      * 
      * @return
-     *     List<DomainUser>
+     *     List of DomainUsers
      *
      * @throws ClientProtocolException
      * @throws ServerException

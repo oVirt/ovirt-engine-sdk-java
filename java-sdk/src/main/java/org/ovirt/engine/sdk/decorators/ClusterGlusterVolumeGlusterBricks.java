@@ -61,7 +61,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * Lists ClusterGlusterVolumeGlusterBrick objects.
      * 
      * @return
-     *     List<ClusterGlusterVolumeGlusterBrick>
+     *     List of ClusterGlusterVolumeGlusterBricks
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,11 @@ public class ClusterGlusterVolumeGlusterBricks extends
 
     /**
      * Adds GlusterBrick object.
-     * 
-     * @param GlusterBrick
+     *
+     * @param GlusterBricks
+     *
+     * bricks.brick
+     * bricks.brick
      *
      * @return
      *     {@link ClusterGlusterVolumeGlusterBrick }

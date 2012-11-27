@@ -57,7 +57,7 @@ public class StorageDomains extends
      * Lists StorageDomain objects.
      *
      * @return
-     *     List<StorageDomain>
+     *     List of StorageDomains
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -90,6 +90,46 @@ public class StorageDomains extends
 
     /**
      * Adds StorageDomain object.
+     *
+     * @param StorageDomain
+     *
+     * Overload 1: 
+     *   storagedomain.host.id|name
+     *   storagedomain.type
+     *   storagedomain.storage.type
+     *   storagedomain.format
+     *   storagedomain.storage.address
+     *   storagedomain.storage.logical_unit
+     *   storagedomain.name
+     *   storagedomain.storage.override_luns
+     *
+     * Overload 2: 
+     *   storagedomain.host.id|name
+     *   storagedomain.type
+     *   storagedomain.storage.type
+     *   storagedomain.format
+     *   storagedomain.storage.address
+     *   storagedomain.storage.path
+     *   storagedomain.name
+     *
+     * Overload 3: 
+     *   storagedomain.host.id|name
+     *   storagedomain.type
+     *   storagedomain.storage.type
+     *   storagedomain.format
+     *   storagedomain.storage.path
+     *   storagedomain.name
+     *
+     * Overload 4: 
+     *   storagedomain.host.id|name
+     *   storagedomain.type
+     *   storagedomain.storage.type
+     *   storagedomain.format
+     *   storagedomain.storage.path
+     *   storagedomain.storage.vfs_type
+     *   storagedomain.name
+     *   storagedomain.storage.address
+     *   storagedomain.storage.mount_options
      *
      * @return
      *     {@link StorageDomain }

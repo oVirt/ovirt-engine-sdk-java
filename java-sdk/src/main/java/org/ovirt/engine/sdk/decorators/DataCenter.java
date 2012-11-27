@@ -108,6 +108,15 @@ public class DataCenter extends
     /**
      * Updates DataCenter object.
      *
+     * @param DataCenter
+     *
+     * datacenter.name
+     * datacenter.storage_type
+     * datacenter.version.major
+     * datacenter.version.minor
+     * datacenter.description
+     * datacenter.storage_format
+     *
      * @return
      *     possible object is
      *     {@link DataCenter }
@@ -123,7 +132,7 @@ public class DataCenter extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.DataCenter.class, DataCenter.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

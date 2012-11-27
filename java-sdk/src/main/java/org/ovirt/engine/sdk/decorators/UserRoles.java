@@ -61,7 +61,7 @@ public class UserRoles extends
      * Lists UserRole objects.
      * 
      * @return
-     *     List<UserRole>
+     *     List of UserRoles
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,10 @@ public class UserRoles extends
 
     /**
      * Adds Role object.
-     * 
+     *
      * @param Role
+     *
+     * role.id
      *
      * @return
      *     {@link UserRole }

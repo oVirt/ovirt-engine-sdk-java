@@ -61,7 +61,7 @@ public class GroupRoles extends
      * Lists GroupRole objects.
      * 
      * @return
-     *     List<GroupRole>
+     *     List of GroupRoles
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,10 @@ public class GroupRoles extends
 
     /**
      * Adds Role object.
-     * 
+     *
      * @param Role
+     *
+     * role.id
      *
      * @return
      *     {@link GroupRole }

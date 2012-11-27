@@ -123,6 +123,34 @@ public class Template extends
     /**
      * Updates Template object.
      *
+     * @param Template
+     *
+     * template.name
+     * template.memory
+     * template.cpu.topology.cores
+     * template.high_availability.enabled
+     * template.os.cmdline
+     * template.origin
+     * template.high_availability.priority
+     * template.timezone
+     * template.domain.name
+     * template.type
+     * template.stateless
+     * template.placement_policy.affinity
+     * template.description
+     * template.custom_properties.custom_property
+     * template.os.type
+     * template.os.boot
+     * template.cpu.topology.sockets
+     * template.os.kernel
+     * template.display.type
+     * template.display.monitors
+     * template.display.allow_override
+     * template.display.smartcard_enabled
+     * template.os.initRd
+     * template.usb.enabled
+     * template.usb.type
+     *
      * @return
      *     possible object is
      *     {@link Template }
@@ -137,26 +165,31 @@ public class Template extends
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Template.class, Template.class);
     }
-   /**
-    * Performs export action.
-    *  
-    * @param action Action
+    /**
+     * Performs export action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action export(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.storage_domain.id|name
+     * action.async
+     * action.exclusive
+     * action.grace_period.expiry
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action export(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/export";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

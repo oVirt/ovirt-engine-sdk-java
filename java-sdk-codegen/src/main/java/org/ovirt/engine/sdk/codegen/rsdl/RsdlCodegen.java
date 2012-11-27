@@ -26,6 +26,7 @@ import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
+import org.ovirt.engine.sdk.codegen.documentation.DocsCodegen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
 import org.ovirt.engine.sdk.codegen.templates.CollectionActionMethodTemplate;
@@ -229,9 +230,8 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                     StringUtils.toPlural(period),
                                                                     collectionTemplate));
                             }
-                            String docParams = "     *";
                             addCollectionMethod(this.collectionsHolder.get(decoratorCollectionName.toLowerCase()),
-                                              url, rel, decoratorEntityName, publicEntityName, i, docParams);
+                                              url, rel, decoratorEntityName, publicEntityName, i, dl);
                         } else if (i == 2) { // root-resource
                             String resource = getRootResourceName(collectionName);
                             String decoratorResourceName = StringUtils.toUpperCase(resource);
@@ -246,9 +246,8 @@ public class RsdlCodegen extends AbstractCodegen {
                                                                     variableTemplate,
                                                                     subCollectionGetterTemplate));
                             }
-                            String docParams = "     *";
                             addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()),
-                                    url, rel, decoratorResourceName, publicEntityName, docParams);
+                                    url, rel, decoratorResourceName, publicEntityName, dl);
                         } else if (i % 2 != 0) { // sub-collection
                             String collection = getSubCollectionName(actualReturnType, parent, i, periods);
                             collectionName = collection;
@@ -275,12 +274,10 @@ public class RsdlCodegen extends AbstractCodegen {
                                 }
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
-                                String docParams = "     *";
-                                addCollectionAction(rel, periods, i, period, resourceHolder, docParams);
+                                addCollectionAction(rel, periods, i, period, resourceHolder, dl);
                             }
-                            String docParams = "     *";
                             addCollectionMethod(resourceHolder.getSubcollections().get(collection.toLowerCase()),
-                                              url, rel, decoratorEntityName, publicEntityName, i, docParams);
+                                              url, rel, decoratorEntityName, publicEntityName, i, dl);
                         } else { // sub-resource
                             if (!isAction(period, rel, requestMethod)) {
                                 String resource = getSubResourceName(collectionName, parent);
@@ -294,14 +291,12 @@ public class RsdlCodegen extends AbstractCodegen {
                                                     variableTemplate,
                                                     subCollectionGetterTemplate));
                                 }
-                                String docParams = "     *";
                                 addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel,
-                                                  subResourceDecoratorName, publicEntityName, docParams);
+                                                  subResourceDecoratorName, publicEntityName, dl);
                                 parent = resource;
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
-                                String docParams = "     *";
-                                addResourceAction(rel, parent, collectionName, period, docParams);
+                                addResourceAction(rel, parent, collectionName, period, dl);
                             }
                         }
                     } else {
@@ -415,15 +410,20 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param i
      * @param period
      * @param resourceHolder
-     * @param docParams
+     * @param detailedLink
      */
     private void addCollectionAction(String rel, String[] periods, int i, String period,
-                                     ResourceHolder resourceHolder, String docParams) {
+                                     ResourceHolder resourceHolder, DetailedLink detailedLink) {
+
         String methodName = getActionMethodName(period, periods[i - 3]);
-        resourceHolder.addMethod(period,
-                                 this.resourceActionMethodTemplate.getTemplate(methodName,
-                                                                               rel,
-                                                                               docParams));
+        if (!resourceHolder.hasMethod(period)) {
+            String docParams = DocsCodegen.generate(detailedLink);
+
+            resourceHolder.addMethod(period,
+                    this.resourceActionMethodTemplate.getTemplate(methodName,
+                                                                  rel,
+                                                                  docParams));
+        }
     }
 
     /**
@@ -433,17 +433,24 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param parent
      * @param collectionName
      * @param period
-     * @param docParams
+     * @param detailedLink
      */
-    private void addResourceAction(String rel, String parent, String collectionName, String period, String docParams) {
+    private void addResourceAction(String rel, String parent, String collectionName,
+                                   String period, DetailedLink detailedLink) {
+
         String methodName = getActionMethodName(period, parent);
         ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
         CollectionHolder collectionHolder =
                 resourceHolder.getSubcollections().get(collectionName.toLowerCase());
-        collectionHolder.addMethod(period,
-                                   this.collectionActionMethodTemplate.getTemplate(methodName,
-                                                                                   rel,
-                                                                                   docParams));
+
+        if (!collectionHolder.hasMethod(period)) {
+            String docParams = DocsCodegen.generate(detailedLink);
+
+            collectionHolder.addMethod(period,
+                    this.collectionActionMethodTemplate.getTemplate(methodName,
+                                                                    rel,
+                                                                    docParams));
+        }
     }
 
     /**
@@ -455,23 +462,30 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param decoratorCollectionName
      * @param publicEntityName
      * @param indx
-     * @param docParams
+     * @param detailedLink
      */
     private void addCollectionMethod(CollectionHolder collectionHolder,
             String url, String rel, String decoratorCollectionName, String publicEntityName,
-            int indx, String docParams) {
+            int indx, DetailedLink detailedLink) {
+
         if (rel.equals(ADD_REL)) {
             if (indx == 1) {
-                collectionHolder.addMethod(rel,
-                        this.collectionAddMethodTemplate.getTemplate(decoratorCollectionName,
-                                                                     publicEntityName,
-                                                                     docParams));
+                if (!collectionHolder.hasMethod(rel)) {
+                    String docParams = DocsCodegen.generate(detailedLink);
+                    collectionHolder.addMethod(rel,
+                            this.collectionAddMethodTemplate.getTemplate(decoratorCollectionName,
+                                                                         publicEntityName,
+                                                                         docParams));
+                }
             } else {
-                collectionHolder.addMethod(rel,
-                        this.subCollectionAddMethodTemplate.getTemplate(decoratorCollectionName,
-                                                                        publicEntityName,
-                                                                        docParams));
+                if (!collectionHolder.hasMethod(rel)) {
+                    String docParams = DocsCodegen.generate(detailedLink);
+                    collectionHolder.addMethod(rel,
+                            this.subCollectionAddMethodTemplate.getTemplate(decoratorCollectionName,
+                                                                            publicEntityName,
+                                                                            docParams));
 
+                }
             }
         } else if (rel.equals(GET_REL)) {
             // TODO: implement parameterised GET
@@ -486,17 +500,24 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param rel
      * @param decoratorName
      * @param publicEntityName
-     * @param docParams
+     * @param detailedLink
      */
     private void addResourceMethod(ResourceHolder resourceHolder,
-            String url, String rel, String decoratorName, String publicEntityName, String docParams) {
+            String url, String rel, String decoratorName, String publicEntityName, DetailedLink detailedLink) {
+
         if (rel.equals(DELETE_REL)) {
-            resourceHolder.addMethod(DELETE_REL, this.deleteMethodTemplate.getTemplate());
+            if (!resourceHolder.hasMethod(DELETE_REL)) {
+                resourceHolder.addMethod(DELETE_REL, this.deleteMethodTemplate.getTemplate());
+            }
         } else if (rel.equals(UPDATE_REL)) {
-            resourceHolder.addMethod(UPDATE_REL,
-                    this.updateMethodTemplate.getTemplate(decoratorName,
-                                                          publicEntityName,
-                                                          docParams));
+            if (!resourceHolder.hasMethod(UPDATE_REL)) {
+                String docParams = DocsCodegen.generate(detailedLink);
+
+                resourceHolder.addMethod(UPDATE_REL,
+                        this.updateMethodTemplate.getTemplate(decoratorName,
+                                                              publicEntityName,
+                                                              docParams));
+            }
         }
     }
 

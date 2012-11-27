@@ -1,17 +1,15 @@
-   /**
-    * Performs $methodName$ action.
-    *  
-    * @param action Action
+    /**
+     * Performs $methodName$ action.
 $docParams$
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action $methodName$(Action action) throws ClientProtocolException,
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action $methodName$(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/$actionName$";
         return getProxy().action(url, action, Action.class, Action.class);

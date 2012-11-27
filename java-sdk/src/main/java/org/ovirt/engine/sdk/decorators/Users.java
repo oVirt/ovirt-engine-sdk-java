@@ -57,7 +57,7 @@ public class Users extends
      * Lists User objects.
      *
      * @return
-     *     List<User>
+     *     List of Users
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -90,6 +90,11 @@ public class Users extends
 
     /**
      * Adds User object.
+     *
+     * @param User
+     *
+     * user.user_name
+     * user.domain.id|name
      *
      * @return
      *     {@link User }

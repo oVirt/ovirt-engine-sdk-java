@@ -57,7 +57,7 @@ public class Hosts extends
      * Lists Host objects.
      *
      * @return
-     *     List<Host>
+     *     List of Hosts
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -90,6 +90,22 @@ public class Hosts extends
 
     /**
      * Adds Host object.
+     *
+     * @param Host
+     *
+     * host.name
+     * host.address
+     * host.root_password
+     * host.cluster.id
+     * host.port
+     * host.storage_manager.priority
+     * host.power_management.type
+     * host.power_management.enabled
+     * host.power_management.address
+     * host.power_management.user_name
+     * host.power_management.password
+     * host.power_management.options.option
+     * host.reboot_after_installation
      *
      * @return
      *     {@link Host }

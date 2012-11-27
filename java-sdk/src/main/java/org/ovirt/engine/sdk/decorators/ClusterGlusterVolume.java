@@ -75,62 +75,67 @@ public class ClusterGlusterVolume extends
     }
 
 
-   /**
-    * Performs stop action.
-    *  
-    * @param action Action
+    /**
+     * Performs stop action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action stop(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.force
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action stop(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/stop";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs start action.
-    *  
-    * @param action Action
+    /**
+     * Performs start action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action start(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.force
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action start(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs resetalloptions action.
-    *  
-    * @param action Action
+    /**
+     * Performs resetalloptions action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action resetalloptions(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action resetalloptions(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/resetalloptions";
         return getProxy().action(url, action, Action.class, Action.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }
@@ -145,56 +150,65 @@ public class ClusterGlusterVolume extends
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
-   /**
-    * Performs resetoption action.
-    *  
-    * @param action Action
+    /**
+     * Performs resetoption action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action resetoption(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.option.name
+     * action.force
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action resetoption(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/resetoption";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs setoption action.
-    *  
-    * @param action Action
+    /**
+     * Performs setoption action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action setoption(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.option.name
+     * action.option.value
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action setoption(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/setoption";
         return getProxy().action(url, action, Action.class, Action.class);
     }
-   /**
-    * Performs rebalance action.
-    *  
-    * @param action Action
+    /**
+     * Performs rebalance action.
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    * @throws JAXBException
-    */
-   public Action rebalance(Action action) throws ClientProtocolException,
+     * @param Action
+     *
+     * action.fix_layout
+     * action.force
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
+    public Action rebalance(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/rebalance";
         return getProxy().action(url, action, Action.class, Action.class);

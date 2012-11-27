@@ -61,7 +61,7 @@ public class UserPermissions extends
      * Lists UserPermission objects.
      * 
      * @return
-     *     List<UserPermission>
+     *     List of UserPermissions
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,36 @@ public class UserPermissions extends
 
     /**
      * Adds Permission object.
-     * 
+     *
      * @param Permission
+     *
+     * Overload 1: 
+     *   permission.role.id
+     *   permission.data_center.id
+     *
+     * Overload 2: 
+     *   permission.role.id
+     *   permission.cluster.id
+     *
+     * Overload 3: 
+     *   permission.role.id
+     *   permission.host.id
+     *
+     * Overload 4: 
+     *   permission.role.id
+     *   permission.storage_domain.id
+     *
+     * Overload 5: 
+     *   permission.role.id
+     *   permission.vm.id
+     *
+     * Overload 6: 
+     *   permission.role.id
+     *   permission.vmpool.id
+     *
+     * Overload 7: 
+     *   permission.role.id
+     *   permission.template.id
      *
      * @return
      *     {@link UserPermission }

@@ -61,7 +61,7 @@ public class VMPermissions extends
      * Lists VMPermission objects.
      * 
      * @return
-     *     List<VMPermission>
+     *     List of VMPermissions
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -95,8 +95,16 @@ public class VMPermissions extends
 
     /**
      * Adds Permission object.
-     * 
+     *
      * @param Permission
+     *
+     * Overload 1: 
+     *   permission.user.id
+     *   permission.role.id
+     *
+     * Overload 2: 
+     *   permission.role.id
+     *   permission.group.id
      *
      * @return
      *     {@link VMPermission }

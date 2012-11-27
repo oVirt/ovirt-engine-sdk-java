@@ -61,7 +61,7 @@ public class UserRolePermit extends
 
 
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

@@ -78,6 +78,11 @@ public class Role extends
     /**
      * Updates Role object.
      *
+     * @param Role
+     *
+     * role.permits.permit
+     * role.description
+     *
      * @return
      *     possible object is
      *     {@link Role }
@@ -93,7 +98,7 @@ public class Role extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Role.class, Role.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

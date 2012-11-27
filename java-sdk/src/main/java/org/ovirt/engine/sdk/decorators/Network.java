@@ -63,6 +63,18 @@ public class Network extends
     /**
      * Updates Network object.
      *
+     * @param Network
+     *
+     * network.name
+     * network.description
+     * network.vlan.id
+     * network.ip.address
+     * network.ip.gateway
+     * network.ip.netmask
+     * network.display
+     * network.stp
+     * network.mtu
+     *
      * @return
      *     possible object is
      *     {@link Network }
@@ -78,7 +90,7 @@ public class Network extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Network.class, Network.class);
     }
     /**
-     * Deletes resource.
+     * Deletes object.
      *
      * @return
      *     {@link Response }

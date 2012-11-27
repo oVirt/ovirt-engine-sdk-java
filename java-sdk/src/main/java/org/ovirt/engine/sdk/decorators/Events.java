@@ -57,7 +57,7 @@ public class Events extends
      * Lists Event objects.
      *
      * @return
-     *     List<Event>
+     *     List of Events
      *
      * @throws ClientProtocolException
      * @throws ServerException

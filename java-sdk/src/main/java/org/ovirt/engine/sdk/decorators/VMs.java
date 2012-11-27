@@ -57,7 +57,7 @@ public class VMs extends
      * Lists VM objects.
      *
      * @return
-     *     List<VM>
+     *     List of VMs
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -90,6 +90,41 @@ public class VMs extends
 
     /**
      * Adds VM object.
+     *
+     * @param VM
+     *
+     * vm.name
+     * vm.template.id|name
+     * vm.cluster.id|name
+     * vm.quota.id
+     * vm.timezone
+     * vm.os.boot
+     * vm.custom_properties.custom_property
+     * vm.os.type
+     * vm.usb.enabled
+     * vm.usb.type
+     * vm.type
+     * vm.os.initRd
+     * vm.display.monitors
+     * vm.display.type
+     * vm.display.allow_override
+     * vm.display.smartcard_enabled
+     * vm.os.cmdline
+     * vm.cpu.topology.cores
+     * vm.memory
+     * vm.high_availability.priority
+     * vm.high_availability.enabled
+     * vm.domain.name
+     * vm.description
+     * vm.stateless
+     * vm.cpu.topology.sockets
+     * vm.placement_policy.affinity
+     * vm.placement_policy.host.id|name
+     * vm.origin
+     * vm.os.kernel
+     * vm.disks.clone
+     * vm.payloads.payload
+     * vm.cpu.cpu_tune.vcpu_pin
      *
      * @return
      *     {@link VM }

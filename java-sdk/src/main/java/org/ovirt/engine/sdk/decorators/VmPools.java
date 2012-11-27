@@ -57,7 +57,7 @@ public class VmPools extends
      * Lists VmPool objects.
      *
      * @return
-     *     List<VmPool>
+     *     List of VmPools
      *
      * @throws ClientProtocolException
      * @throws ServerException
@@ -90,6 +90,13 @@ public class VmPools extends
 
     /**
      * Adds VmPool object.
+     *
+     * @param VmPool
+     *
+     * vmpool.cluster.id|name
+     * vmpool.template.id|name
+     * vmpool.name
+     * vmpool.size
      *
      * @return
      *     {@link VmPool }
