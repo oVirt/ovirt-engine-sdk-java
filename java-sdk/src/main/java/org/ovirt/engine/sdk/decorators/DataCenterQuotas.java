@@ -96,7 +96,7 @@ public class DataCenterQuotas extends
     /**
      * Adds Quota object.
      *
-     * @param Quota
+     * @param quota
      *
      * @return
      *     {@link DataCenterQuota }

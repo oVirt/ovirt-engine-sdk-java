@@ -96,35 +96,37 @@ public class GroupPermissions extends
     /**
      * Adds Permission object.
      *
-     * @param Permission
+     * @param permission
      *
+     * <pre>
      * Overload 1: 
-     *   permission.role.id
-     *   permission.data_center.id
+     *    permission.role.id
+     *    permission.data_center.id
      *
      * Overload 2: 
-     *   permission.role.id
-     *   permission.cluster.id
+     *    permission.role.id
+     *    permission.cluster.id
      *
      * Overload 3: 
-     *   permission.role.id
-     *   permission.host.id
+     *    permission.role.id
+     *    permission.host.id
      *
      * Overload 4: 
-     *   permission.role.id
-     *   permission.storage_domain.id
+     *    permission.role.id
+     *    permission.storage_domain.id
      *
      * Overload 5: 
-     *   permission.role.id
-     *   permission.vm.id
+     *    permission.role.id
+     *    permission.vm.id
      *
      * Overload 6: 
-     *   permission.role.id
-     *   permission.vmpool.id
+     *    permission.role.id
+     *    permission.vmpool.id
      *
      * Overload 7: 
-     *   permission.role.id
-     *   permission.template.id
+     *    permission.role.id
+     *    permission.template.id
+     * </pre>
      *
      * @return
      *     {@link GroupPermission }

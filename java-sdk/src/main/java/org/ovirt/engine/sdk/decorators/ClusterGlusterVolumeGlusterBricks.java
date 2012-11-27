@@ -96,10 +96,12 @@ public class ClusterGlusterVolumeGlusterBricks extends
     /**
      * Adds GlusterBrick object.
      *
-     * @param GlusterBricks
+     * @param glusterbricks
      *
+     * <pre>
      * bricks.brick
-     * bricks.brick
+     * [bricks.brick]
+     * </pre>
      *
      * @return
      *     {@link ClusterGlusterVolumeGlusterBrick }

@@ -79,14 +79,16 @@ public class StorageDomainTemplate extends
     /**
      * Performs importTemplate action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.cluster.id|name
-     * action.storage_domain.id|name
-     * action.clone
-     * action.exclusive
-     * action.template.name
-     * action.vm.disks.disk
+     * [action.storage_domain.id|name]
+     * [action.clone]
+     * [action.exclusive]
+     * [action.template.name]
+     * [action.vm.disks.disk]
+     * </pre>
      *
      * @return
      *     {@link Action }

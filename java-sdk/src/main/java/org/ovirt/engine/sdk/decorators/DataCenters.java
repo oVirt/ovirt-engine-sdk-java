@@ -91,14 +91,16 @@ public class DataCenters extends
     /**
      * Adds DataCenter object.
      *
-     * @param DataCenter
+     * @param datacenter
      *
+     * <pre>
      * datacenter.name
      * datacenter.storage_type
      * datacenter.version.major
      * datacenter.version.minor
-     * datacenter.description
-     * datacenter.storage_format
+     * [datacenter.description]
+     * [datacenter.storage_format]
+     * </pre>
      *
      * @return
      *     {@link DataCenter }

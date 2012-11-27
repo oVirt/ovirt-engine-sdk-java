@@ -63,7 +63,7 @@ public class DataCenterStorageDomain extends
     /**
      * Performs activate action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -97,7 +97,7 @@ public class DataCenterStorageDomain extends
     /**
      * Performs deactivate action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }

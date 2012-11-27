@@ -96,9 +96,11 @@ public class UserRoles extends
     /**
      * Adds Role object.
      *
-     * @param Role
+     * @param role
      *
+     * <pre>
      * role.id
+     * </pre>
      *
      * @return
      *     {@link UserRole }

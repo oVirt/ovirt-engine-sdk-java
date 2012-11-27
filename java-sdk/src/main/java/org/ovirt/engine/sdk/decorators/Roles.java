@@ -91,12 +91,14 @@ public class Roles extends
     /**
      * Adds Role object.
      *
-     * @param Role
+     * @param role
      *
+     * <pre>
      * role.name
      * role.permits.permit
-     * role.description
-     * role.administrative
+     * [role.description]
+     * [role.administrative]
+     * </pre>
      *
      * @return
      *     {@link Role }

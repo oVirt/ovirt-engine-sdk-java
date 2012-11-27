@@ -96,9 +96,11 @@ public class RolePermits extends
     /**
      * Adds Permit object.
      *
-     * @param Permit
+     * @param permit
      *
+     * <pre>
      * permit.id|name
+     * </pre>
      *
      * @return
      *     {@link RolePermit }

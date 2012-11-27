@@ -91,9 +91,11 @@ public class Groups extends
     /**
      * Adds Group object.
      *
-     * @param Group
+     * @param group
      *
+     * <pre>
      * group.name
+     * </pre>
      *
      * @return
      *     {@link Group }

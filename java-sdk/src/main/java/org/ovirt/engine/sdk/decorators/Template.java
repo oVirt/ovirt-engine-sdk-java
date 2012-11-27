@@ -123,33 +123,35 @@ public class Template extends
     /**
      * Updates Template object.
      *
-     * @param Template
+     * @param template
      *
-     * template.name
-     * template.memory
-     * template.cpu.topology.cores
-     * template.high_availability.enabled
-     * template.os.cmdline
-     * template.origin
-     * template.high_availability.priority
-     * template.timezone
-     * template.domain.name
-     * template.type
-     * template.stateless
-     * template.placement_policy.affinity
-     * template.description
-     * template.custom_properties.custom_property
-     * template.os.type
-     * template.os.boot
-     * template.cpu.topology.sockets
-     * template.os.kernel
-     * template.display.type
-     * template.display.monitors
-     * template.display.allow_override
-     * template.display.smartcard_enabled
-     * template.os.initRd
-     * template.usb.enabled
-     * template.usb.type
+     * <pre>
+     * [template.name]
+     * [template.memory]
+     * [template.cpu.topology.cores]
+     * [template.high_availability.enabled]
+     * [template.os.cmdline]
+     * [template.origin]
+     * [template.high_availability.priority]
+     * [template.timezone]
+     * [template.domain.name]
+     * [template.type]
+     * [template.stateless]
+     * [template.placement_policy.affinity]
+     * [template.description]
+     * [template.custom_properties.custom_property]
+     * [template.os.type]
+     * [template.os.boot]
+     * [template.cpu.topology.sockets]
+     * [template.os.kernel]
+     * [template.display.type]
+     * [template.display.monitors]
+     * [template.display.allow_override]
+     * [template.display.smartcard_enabled]
+     * [template.os.initRd]
+     * [template.usb.enabled]
+     * [template.usb.type]
+     * </pre>
      *
      * @return
      *     possible object is
@@ -168,12 +170,14 @@ public class Template extends
     /**
      * Performs export action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.storage_domain.id|name
-     * action.async
-     * action.exclusive
-     * action.grace_period.expiry
+     * [action.async]
+     * [action.exclusive]
+     * [action.grace_period.expiry]
+     * </pre>
      *
      * @return
      *     {@link Action }

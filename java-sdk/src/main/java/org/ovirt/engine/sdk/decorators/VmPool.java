@@ -78,12 +78,14 @@ public class VmPool extends
     /**
      * Updates VmPool object.
      *
-     * @param VmPool
+     * @param vmpool
      *
-     * vmpool.cluster.id|name
-     * vmpool.template.id|name
-     * vmpool.name
-     * vmpool.size
+     * <pre>
+     * [vmpool.cluster.id|name]
+     * [vmpool.template.id|name]
+     * [vmpool.name]
+     * [vmpool.size]
+     * </pre>
      *
      * @return
      *     possible object is
@@ -102,9 +104,11 @@ public class VmPool extends
     /**
      * Performs allocatevm action.
      *
-     * @param Action
+     * @param action
      *
-     * action.async
+     * <pre>
+     * [action.async]
+     * </pre>
      *
      * @return
      *     {@link Action }

@@ -91,10 +91,12 @@ public class Users extends
     /**
      * Adds User object.
      *
-     * @param User
+     * @param user
      *
+     * <pre>
      * user.user_name
      * user.domain.id|name
+     * </pre>
      *
      * @return
      *     {@link User }

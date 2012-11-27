@@ -63,10 +63,12 @@ public class ClusterNetwork extends
     /**
      * Updates ClusterNetwork object.
      *
-     * @param Network
+     * @param network
      *
-     * network.display
-     * network.usages.usage
+     * <pre>
+     * [network.display]
+     * [network.usages.usage]
+     * </pre>
      *
      * @return
      *     possible object is

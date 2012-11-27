@@ -91,12 +91,14 @@ public class VmPools extends
     /**
      * Adds VmPool object.
      *
-     * @param VmPool
+     * @param vmpool
      *
+     * <pre>
      * vmpool.cluster.id|name
      * vmpool.template.id|name
      * vmpool.name
-     * vmpool.size
+     * [vmpool.size]
+     * </pre>
      *
      * @return
      *     {@link VmPool }

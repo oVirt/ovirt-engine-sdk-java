@@ -96,9 +96,11 @@ public class VMTags extends
     /**
      * Adds Tag object.
      *
-     * @param Tag
+     * @param tag
      *
+     * <pre>
      * tag.id|name
+     * </pre>
      *
      * @return
      *     {@link VMTag }

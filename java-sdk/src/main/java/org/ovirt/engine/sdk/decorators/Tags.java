@@ -91,11 +91,13 @@ public class Tags extends
     /**
      * Adds Tag object.
      *
-     * @param Tag
+     * @param tag
      *
+     * <pre>
      * tag.name
-     * tag.description
-     * tag.parent.name
+     * [tag.description]
+     * [tag.parent.name]
+     * </pre>
      *
      * @return
      *     {@link Tag }

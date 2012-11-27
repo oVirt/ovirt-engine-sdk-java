@@ -63,9 +63,11 @@ public class VMCdRom extends
     /**
      * Updates VMCdRom object.
      *
-     * @param CdRom
+     * @param cdrom
      *
-     * cdrom.file.id
+     * <pre>
+     * [cdrom.file.id]
+     * </pre>
      *
      * @return
      *     possible object is

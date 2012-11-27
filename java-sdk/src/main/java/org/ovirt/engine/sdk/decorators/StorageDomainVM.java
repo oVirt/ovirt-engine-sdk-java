@@ -79,15 +79,17 @@ public class StorageDomainVM extends
     /**
      * Performs importVm action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.cluster.id|name
-     * action.storage_domain.id|name
-     * action.vm.snapshots.collapse_snapshots
-     * action.clone
-     * action.exclusive
-     * action.vm.name
-     * action.vm.disks.disk
+     * [action.storage_domain.id|name]
+     * [action.vm.snapshots.collapse_snapshots]
+     * [action.clone]
+     * [action.exclusive]
+     * [action.vm.name]
+     * [action.vm.disks.disk]
+     * </pre>
      *
      * @return
      *     {@link Action }

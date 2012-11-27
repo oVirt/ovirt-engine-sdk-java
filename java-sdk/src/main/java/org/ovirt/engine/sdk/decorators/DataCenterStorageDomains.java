@@ -96,9 +96,11 @@ public class DataCenterStorageDomains extends
     /**
      * Adds StorageDomain object.
      *
-     * @param StorageDomain
+     * @param storagedomain
      *
+     * <pre>
      * storagedomain.id|name
+     * </pre>
      *
      * @return
      *     {@link DataCenterStorageDomain }

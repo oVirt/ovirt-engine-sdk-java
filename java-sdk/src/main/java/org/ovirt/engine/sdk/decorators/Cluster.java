@@ -108,22 +108,24 @@ public class Cluster extends
     /**
      * Updates Cluster object.
      *
-     * @param Cluster
+     * @param cluster
      *
-     * cluster.name
-     * cluster.description
-     * cluster.cpu.id
-     * cluster.version.major
-     * cluster.version.minor
-     * cluster.memory_policy.overcommit.percent
-     * cluster.memory_policy.transparent_hugepages.enabled
-     * cluster.scheduling_policy.policy
-     * cluster.scheduling_policy.thresholds.low
-     * cluster.scheduling_policy.thresholds.high
-     * cluster.scheduling_policy.thresholds.duration
-     * cluster.error_handling.on_error
-     * cluster.virt_service
-     * cluster.gluster_service
+     * <pre>
+     * [cluster.name]
+     * [cluster.description]
+     * [cluster.cpu.id]
+     * [cluster.version.major]
+     * [cluster.version.minor]
+     * [cluster.memory_policy.overcommit.percent]
+     * [cluster.memory_policy.transparent_hugepages.enabled]
+     * [cluster.scheduling_policy.policy]
+     * [cluster.scheduling_policy.thresholds.low]
+     * [cluster.scheduling_policy.thresholds.high]
+     * [cluster.scheduling_policy.thresholds.duration]
+     * [cluster.error_handling.on_error]
+     * [cluster.virt_service]
+     * [cluster.gluster_service]
+     * </pre>
      *
      * @return
      *     possible object is

@@ -96,9 +96,11 @@ public class VMCdRoms extends
     /**
      * Adds CdRom object.
      *
-     * @param CdRom
+     * @param cdrom
      *
+     * <pre>
      * cdrom.file.id
+     * </pre>
      *
      * @return
      *     {@link VMCdRom }

@@ -123,9 +123,11 @@ public class Host extends
     /**
      * Performs install action.
      *
-     * @param Action
+     * @param action
      *
-     * action.root_password
+     * <pre>
+     * [action.root_password]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -143,7 +145,7 @@ public class Host extends
     /**
      * Performs activate action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -161,20 +163,22 @@ public class Host extends
     /**
      * Updates Host object.
      *
-     * @param Host
+     * @param host
      *
-     * host.name
-     * host.address
-     * host.root_password
-     * host.cluster.id
-     * host.port
-     * host.storage_manager.priority
-     * host.power_management.type
-     * host.power_management.enabled
-     * host.power_management.address
-     * host.power_management.user_name
-     * host.power_management.password
-     * host.power_management.options.option
+     * <pre>
+     * [host.name]
+     * [host.address]
+     * [host.root_password]
+     * [host.cluster.id]
+     * [host.port]
+     * [host.storage_manager.priority]
+     * [host.power_management.type]
+     * [host.power_management.enabled]
+     * [host.power_management.address]
+     * [host.power_management.user_name]
+     * [host.power_management.password]
+     * [host.power_management.options.option]
+     * </pre>
      *
      * @return
      *     possible object is
@@ -193,7 +197,7 @@ public class Host extends
     /**
      * Performs fence action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -211,9 +215,11 @@ public class Host extends
     /**
      * Performs iscsidiscover action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.iscsi.address
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -231,11 +237,13 @@ public class Host extends
     /**
      * Performs approve action.
      *
-     * @param Action
+     * @param action
      *
-     * action.cluster.id|name
-     * action.async
-     * action.grace_period.expiry
+     * <pre>
+     * [action.cluster.id|name]
+     * [action.async]
+     * [action.grace_period.expiry]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -253,10 +261,12 @@ public class Host extends
     /**
      * Performs iscsilogin action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.iscsi.address
      * action.iscsi.target
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -290,7 +300,7 @@ public class Host extends
     /**
      * Performs deactivate action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -308,7 +318,7 @@ public class Host extends
     /**
      * Performs commitnetconfig action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }

@@ -63,17 +63,19 @@ public class Network extends
     /**
      * Updates Network object.
      *
-     * @param Network
+     * @param network
      *
-     * network.name
-     * network.description
-     * network.vlan.id
-     * network.ip.address
-     * network.ip.gateway
-     * network.ip.netmask
-     * network.display
-     * network.stp
-     * network.mtu
+     * <pre>
+     * [network.name]
+     * [network.description]
+     * [network.vlan.id]
+     * [network.ip.address]
+     * [network.ip.gateway]
+     * [network.ip.netmask]
+     * [network.display]
+     * [network.stp]
+     * [network.mtu]
+     * </pre>
      *
      * @return
      *     possible object is

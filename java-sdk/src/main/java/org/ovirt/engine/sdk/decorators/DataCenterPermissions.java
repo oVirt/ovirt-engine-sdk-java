@@ -96,15 +96,17 @@ public class DataCenterPermissions extends
     /**
      * Adds Permission object.
      *
-     * @param Permission
+     * @param permission
      *
+     * <pre>
      * Overload 1: 
-     *   permission.user.id
-     *   permission.role.id
+     *    permission.user.id
+     *    permission.role.id
      *
      * Overload 2: 
-     *   permission.role.id
-     *   permission.group.id
+     *    permission.role.id
+     *    permission.group.id
+     * </pre>
      *
      * @return
      *     {@link DataCenterPermission }

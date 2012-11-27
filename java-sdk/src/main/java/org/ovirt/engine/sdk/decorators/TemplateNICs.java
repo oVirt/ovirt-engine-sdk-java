@@ -96,13 +96,15 @@ public class TemplateNICs extends
     /**
      * Adds NIC object.
      *
-     * @param NIC
+     * @param nic
      *
+     * <pre>
      * nic.network.id|name
      * nic.name
-     * nic.mac.address
-     * nic.interface
-     * nic.port_mirroring.networks.network
+     * [nic.mac.address]
+     * [nic.interface]
+     * [nic.port_mirroring.networks.network]
+     * </pre>
      *
      * @return
      *     {@link TemplateNIC }

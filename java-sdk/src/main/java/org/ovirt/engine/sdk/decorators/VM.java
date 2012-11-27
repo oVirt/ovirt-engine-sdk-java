@@ -168,7 +168,7 @@ public class VM extends
     /**
      * Performs suspend action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -186,37 +186,39 @@ public class VM extends
     /**
      * Updates VM object.
      *
-     * @param VM
+     * @param vm
      *
-     * vm.name
-     * vm.cluster.id|name
-     * vm.timezone
-     * vm.os.boot
-     * vm.custom_properties.custom_property
-     * vm.os.type
-     * vm.usb.enabled
-     * vm.usb.type
-     * vm.type
-     * vm.os.initRd
-     * vm.display.monitors
-     * vm.display.type
-     * vm.display.allow_override
-     * vm.display.smartcard_enabled
-     * vm.os.cmdline
-     * vm.cpu.topology.cores
-     * vm.memory
-     * vm.high_availability.priority
-     * vm.high_availability.enabled
-     * vm.domain.name
-     * vm.description
-     * vm.stateless
-     * vm.cpu.topology.sockets
-     * vm.placement_policy.affinity
-     * vm.placement_policy.host.id|name
-     * vm.origin
-     * vm.os.kernel
-     * vm.payloads.payload
-     * vm.cpu.cpu_tune.vcpu_pin
+     * <pre>
+     * [vm.name]
+     * [vm.cluster.id|name]
+     * [vm.timezone]
+     * [vm.os.boot]
+     * [vm.custom_properties.custom_property]
+     * [vm.os.type]
+     * [vm.usb.enabled]
+     * [vm.usb.type]
+     * [vm.type]
+     * [vm.os.initRd]
+     * [vm.display.monitors]
+     * [vm.display.type]
+     * [vm.display.allow_override]
+     * [vm.display.smartcard_enabled]
+     * [vm.os.cmdline]
+     * [vm.cpu.topology.cores]
+     * [vm.memory]
+     * [vm.high_availability.priority]
+     * [vm.high_availability.enabled]
+     * [vm.domain.name]
+     * [vm.description]
+     * [vm.stateless]
+     * [vm.cpu.topology.sockets]
+     * [vm.placement_policy.affinity]
+     * [vm.placement_policy.host.id|name]
+     * [vm.origin]
+     * [vm.os.kernel]
+     * [vm.payloads.payload]
+     * [vm.cpu.cpu_tune.vcpu_pin]
+     * </pre>
      *
      * @return
      *     possible object is
@@ -235,7 +237,7 @@ public class VM extends
     /**
      * Performs stop action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -253,7 +255,7 @@ public class VM extends
     /**
      * Performs cancelmigration action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -271,13 +273,15 @@ public class VM extends
     /**
      * Performs export action.
      *
-     * @param Action
+     * @param action
      *
-     * action.async
-     * action.exclusive
-     * action.discard_snapshots
-     * action.storage_domain.id|name
-     * action.grace_period.expiry
+     * <pre>
+     * [action.async]
+     * [action.exclusive]
+     * [action.discard_snapshots]
+     * [action.storage_domain.id|name]
+     * [action.grace_period.expiry]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -295,7 +299,7 @@ public class VM extends
     /**
      * Performs detach action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -313,7 +317,7 @@ public class VM extends
     /**
      * Performs ticket action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -331,22 +335,24 @@ public class VM extends
     /**
      * Performs start action.
      *
-     * @param Action
+     * @param action
      *
-     * action.vm.os.initRd
-     * action.vm.domain.name
-     * action.vm.placement_policy.host.id|name
-     * action.vm.placement_policy.affinity
-     * action.async
-     * action.vm.os.kernel
-     * action.grace_period.expiry
-     * action.vm.display.type
-     * action.vm.stateless
-     * action.vm.os.cmdline
-     * action.vm.domain.user.username
-     * action.pause
-     * action.vm.os.boot
-     * action.vm.domain.user.password
+     * <pre>
+     * [action.vm.os.initRd]
+     * [action.vm.domain.name]
+     * [action.vm.placement_policy.host.id|name]
+     * [action.vm.placement_policy.affinity]
+     * [action.async]
+     * [action.vm.os.kernel]
+     * [action.grace_period.expiry]
+     * [action.vm.display.type]
+     * [action.vm.stateless]
+     * [action.vm.os.cmdline]
+     * [action.vm.domain.user.username]
+     * [action.pause]
+     * [action.vm.os.boot]
+     * [action.vm.domain.user.password]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -364,12 +370,14 @@ public class VM extends
     /**
      * Performs migrate action.
      *
-     * @param Action
+     * @param action
      *
-     * action.host.id|name
-     * action.async
-     * action.force
-     * action.grace_period.expiry
+     * <pre>
+     * [action.host.id|name]
+     * [action.async]
+     * [action.force]
+     * [action.grace_period.expiry]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -403,11 +411,13 @@ public class VM extends
     /**
      * Performs move action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.storage_domain.id|name
-     * action.async
-     * action.grace_period.expiry
+     * [action.async]
+     * [action.grace_period.expiry]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -425,7 +435,7 @@ public class VM extends
     /**
      * Performs shutdown action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }

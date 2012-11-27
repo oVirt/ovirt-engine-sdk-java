@@ -108,7 +108,7 @@ public class VMSnapshot extends
     /**
      * Performs restore action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }

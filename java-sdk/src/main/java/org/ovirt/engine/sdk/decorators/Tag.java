@@ -63,11 +63,13 @@ public class Tag extends
     /**
      * Updates Tag object.
      *
-     * @param Tag
+     * @param tag
      *
-     * tag.name
-     * tag.description
-     * tag.parent.name
+     * <pre>
+     * [tag.name]
+     * [tag.description]
+     * [tag.parent.name]
+     * </pre>
      *
      * @return
      *     possible object is

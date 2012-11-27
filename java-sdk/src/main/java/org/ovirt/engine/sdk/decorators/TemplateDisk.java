@@ -79,10 +79,12 @@ public class TemplateDisk extends
     /**
      * Performs copy action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * storagedomain.host.id|name
-     * action.async
+     * [action.async]
+     * </pre>
      *
      * @return
      *     {@link Action }

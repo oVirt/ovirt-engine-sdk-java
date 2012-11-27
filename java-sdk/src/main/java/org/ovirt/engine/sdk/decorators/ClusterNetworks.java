@@ -96,9 +96,11 @@ public class ClusterNetworks extends
     /**
      * Adds Network object.
      *
-     * @param Network
+     * @param network
      *
+     * <pre>
      * network.id|name
+     * </pre>
      *
      * @return
      *     {@link ClusterNetwork }

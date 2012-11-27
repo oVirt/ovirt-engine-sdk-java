@@ -96,12 +96,14 @@ public class HostNICs extends
    /**
     * Performs setupnetworks action.
      *
-     * @param Action
+     * @param action
      *
-     * action.host_nics.host_nic
-     * action.checkConnectivity
-     * action.connectivityTimeout
-     * action.force
+     * <pre>
+     * [action.host_nics.host_nic]
+     * [action.checkConnectivity]
+     * [action.connectivityTimeout]
+     * [action.force]
+     * </pre>
      *
     * @return
     *     {@link Action }
@@ -119,12 +121,14 @@ public class HostNICs extends
     /**
      * Adds HostNIC object.
      *
-     * @param HostNIC
+     * @param hostnic
      *
+     * <pre>
      * hostnic.network.id|name
      * hostnic.name
      * hostnic.bonding.slaves.host_nic
-     * hostnic.bonding.options.option
+     * [hostnic.bonding.options.option]
+     * </pre>
      *
      * @return
      *     {@link HostNIC }

@@ -78,10 +78,12 @@ public class Role extends
     /**
      * Updates Role object.
      *
-     * @param Role
+     * @param role
      *
-     * role.permits.permit
-     * role.description
+     * <pre>
+     * [role.permits.permit]
+     * [role.description]
+     * </pre>
      *
      * @return
      *     possible object is

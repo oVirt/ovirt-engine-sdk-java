@@ -78,7 +78,7 @@ public class VMNIC extends
     /**
      * Performs activate action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -96,13 +96,15 @@ public class VMNIC extends
     /**
      * Updates VMNIC object.
      *
-     * @param NIC
+     * @param nic
      *
-     * nic.network.id|name
-     * nic.name
-     * nic.mac.address
-     * nic.interface
-     * nic.port_mirroring.networks.network
+     * <pre>
+     * [nic.network.id|name]
+     * [nic.name]
+     * [nic.mac.address]
+     * [nic.interface]
+     * [nic.port_mirroring.networks.network]
+     * </pre>
      *
      * @return
      *     possible object is
@@ -137,7 +139,7 @@ public class VMNIC extends
     /**
      * Performs deactivate action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }

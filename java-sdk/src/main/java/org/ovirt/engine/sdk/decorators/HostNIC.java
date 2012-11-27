@@ -78,18 +78,20 @@ public class HostNIC extends
     /**
      * Updates HostNIC object.
      *
-     * @param HostNIC
+     * @param hostnic
      *
-     * hostnic.bonding.slaves.host_nic
-     * hostnic.network.id|name
-     * hostnic.name
-     * hostnic.bonding.options.option
-     * hostnic.ip.gateway
-     * hostnic.boot_protocol
-     * hostnic.mac
-     * hostnic.ip.address
-     * hostnic.ip.netmask
-     * hostnic.ip.mtu
+     * <pre>
+     * [hostnic.bonding.slaves.host_nic]
+     * [hostnic.network.id|name]
+     * [hostnic.name]
+     * [hostnic.bonding.options.option]
+     * [hostnic.ip.gateway]
+     * [hostnic.boot_protocol]
+     * [hostnic.mac]
+     * [hostnic.ip.address]
+     * [hostnic.ip.netmask]
+     * [hostnic.ip.mtu]
+     * </pre>
      *
      * @return
      *     possible object is
@@ -108,9 +110,11 @@ public class HostNIC extends
     /**
      * Performs detach action.
      *
-     * @param Action
+     * @param action
      *
-     * action.async
+     * <pre>
+     * [action.async]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -128,11 +132,13 @@ public class HostNIC extends
     /**
      * Performs attach action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.network.id|name
-     * action.async
-     * action.grace_period.expiry
+     * [action.async]
+     * [action.grace_period.expiry]
+     * </pre>
      *
      * @return
      *     {@link Action }

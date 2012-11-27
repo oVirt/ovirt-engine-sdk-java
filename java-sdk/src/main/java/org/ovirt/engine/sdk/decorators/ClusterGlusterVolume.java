@@ -78,9 +78,11 @@ public class ClusterGlusterVolume extends
     /**
      * Performs stop action.
      *
-     * @param Action
+     * @param action
      *
-     * action.force
+     * <pre>
+     * [action.force]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -98,9 +100,11 @@ public class ClusterGlusterVolume extends
     /**
      * Performs start action.
      *
-     * @param Action
+     * @param action
      *
-     * action.force
+     * <pre>
+     * [action.force]
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -118,8 +122,10 @@ public class ClusterGlusterVolume extends
     /**
      * Performs resetalloptions action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -153,10 +159,12 @@ public class ClusterGlusterVolume extends
     /**
      * Performs resetoption action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.option.name
      * action.force
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -174,10 +182,12 @@ public class ClusterGlusterVolume extends
     /**
      * Performs setoption action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.option.name
      * action.option.value
+     * </pre>
      *
      * @return
      *     {@link Action }
@@ -195,10 +205,12 @@ public class ClusterGlusterVolume extends
     /**
      * Performs rebalance action.
      *
-     * @param Action
+     * @param action
      *
-     * action.fix_layout
-     * action.force
+     * <pre>
+     * [action.fix_layout]
+     * [action.force]
+     * </pre>
      *
      * @return
      *     {@link Action }

@@ -123,9 +123,11 @@ public class StorageDomain extends
     /**
      * Updates StorageDomain object.
      *
-     * @param StorageDomain
+     * @param storagedomain
      *
-     * storagedomain.name
+     * <pre>
+     * [storagedomain.name]
+     * </pre>
      *
      * @return
      *     possible object is

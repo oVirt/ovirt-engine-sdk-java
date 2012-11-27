@@ -108,14 +108,16 @@ public class DataCenter extends
     /**
      * Updates DataCenter object.
      *
-     * @param DataCenter
+     * @param datacenter
      *
-     * datacenter.name
-     * datacenter.storage_type
-     * datacenter.version.major
-     * datacenter.version.minor
-     * datacenter.description
-     * datacenter.storage_format
+     * <pre>
+     * [datacenter.name]
+     * [datacenter.storage_type]
+     * [datacenter.version.major]
+     * [datacenter.version.minor]
+     * [datacenter.description]
+     * [datacenter.storage_format]
+     * </pre>
      *
      * @return
      *     possible object is

@@ -63,11 +63,13 @@ public class ClusterGlusterVolumeGlusterBrick extends
     /**
      * Performs replace action.
      *
-     * @param Action
+     * @param action
      *
+     * <pre>
      * action.brick.server_id
      * action.brick.brick_dir
-     * action.force
+     * [action.force]
+     * </pre>
      *
      * @return
      *     {@link Action }

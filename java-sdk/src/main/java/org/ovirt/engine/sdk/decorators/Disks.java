@@ -91,34 +91,36 @@ public class Disks extends
     /**
      * Adds Disk object.
      *
-     * @param Disk
+     * @param disk
      *
+     * <pre>
      * Overload 1: 
-     *   provisioned_size
-     *   disk.interface
-     *   disk.format
-     *   disk.alias
-     *   disk.name
-     *   disk.size
-     *   disk.sparse
-     *   disk.bootable
-     *   disk.shareable
-     *   disk.propagate_errors
-     *   disk.wipe_after_delete
-     *   disk.storage_domains.storage_domain
+     *    provisioned_size
+     *    disk.interface
+     *    disk.format
+     *    [disk.alias]
+     *    [disk.name]
+     *    [disk.size]
+     *    [disk.sparse]
+     *    [disk.bootable]
+     *    [disk.shareable]
+     *    [disk.propagate_errors]
+     *    [disk.wipe_after_delete]
+     *    [disk.storage_domains.storage_domain]
      *
      * Overload 2: 
-     *   disk.interface
-     *   disk.format
-     *   disk.lun_storage.type
-     *   disk.lun_storage.logical_unit
-     *   disk.alias
-     *   disk.sparse
-     *   disk.bootable
-     *   disk.shareable
-     *   disk.propagate_errors
-     *   disk.wipe_after_delete
-     *   disk.storage_domains.storage_domain
+     *    disk.interface
+     *    disk.format
+     *    disk.lun_storage.type
+     *    disk.lun_storage.logical_unit
+     *    [disk.alias]
+     *    [disk.sparse]
+     *    [disk.bootable]
+     *    [disk.shareable]
+     *    [disk.propagate_errors]
+     *    [disk.wipe_after_delete]
+     *    [disk.storage_domains.storage_domain]
+     * </pre>
      *
      * @return
      *     {@link Disk }

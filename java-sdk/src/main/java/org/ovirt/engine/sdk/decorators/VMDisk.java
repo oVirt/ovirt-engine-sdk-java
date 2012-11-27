@@ -78,7 +78,7 @@ public class VMDisk extends
     /**
      * Performs activate action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }
@@ -96,17 +96,19 @@ public class VMDisk extends
     /**
      * Updates VMDisk object.
      *
-     * @param Disk
+     * @param disk
      *
-     * size
-     * provisioned_size
-     * disk.interface
-     * disk.format
-     * disk.sparse
-     * disk.bootable
-     * disk.shareable
-     * disk.propagate_errors
-     * disk.wipe_after_delete
+     * <pre>
+     * [size]
+     * [provisioned_size]
+     * [disk.interface]
+     * [disk.format]
+     * [disk.sparse]
+     * [disk.bootable]
+     * [disk.shareable]
+     * [disk.propagate_errors]
+     * [disk.wipe_after_delete]
+     * </pre>
      *
      * @return
      *     possible object is
@@ -141,7 +143,7 @@ public class VMDisk extends
     /**
      * Performs deactivate action.
      *
-     * @param Action
+     * @param action
      *
      * @return
      *     {@link Action }

@@ -96,15 +96,17 @@ public class ClusterGlusterVolumes extends
     /**
      * Adds GlusterVolume object.
      *
-     * @param GlusterVolume
+     * @param glustervolume
      *
+     * <pre>
      * gluster_volume.name
      * gluster_volume.volume_type
      * gluster_volume.bricks.brick
-     * gluster_volume.transport_types
-     * gluster_volume.replica_count
-     * gluster_volume.stripe_count
-     * gluster_volume.options.option
+     * [gluster_volume.transport_types]
+     * [gluster_volume.replica_count]
+     * [gluster_volume.stripe_count]
+     * [gluster_volume.options.option]
+     * </pre>
      *
      * @return
      *     {@link ClusterGlusterVolume }

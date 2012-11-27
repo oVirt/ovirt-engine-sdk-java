@@ -96,9 +96,11 @@ public class VMSnapshots extends
     /**
      * Adds Snapshot object.
      *
-     * @param Snapshot
+     * @param snapshot
      *
+     * <pre>
      * snapshot.description
+     * </pre>
      *
      * @return
      *     {@link VMSnapshot }
