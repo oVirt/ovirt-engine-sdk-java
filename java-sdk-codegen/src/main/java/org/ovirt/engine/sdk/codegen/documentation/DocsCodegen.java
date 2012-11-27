@@ -25,6 +25,7 @@ import org.ovirt.engine.sdk.entities.ParametersSet;
  */
 public class DocsCodegen {
 
+    private static final String NEW_LINE = "\n";
     private static final String PRE_CLOSE = " </pre>";
     private static final String PRE_OPEN = " <pre>";
     private static final String OVERLOAD = " Overload ";
@@ -44,40 +45,40 @@ public class DocsCodegen {
         docParams.append(PREFIX);
 
         if (detailedLink.getRequest() != null && detailedLink.getRequest().getBody() != null) {
-            docParams.append("\n" + PARAM + detailedLink.getRequest().getBody().getType().toLowerCase() + "\n" + PREFIX);
+            docParams.append(NEW_LINE + PARAM + detailedLink.getRequest().getBody()
+                                                    .getType().toLowerCase() + NEW_LINE + PREFIX);
             if (detailedLink.getRequest().getBody().getParametersSets().size() > 1) {
-                docParams.append("\n" + PREFIX + PRE_OPEN);
+                docParams.append(NEW_LINE + PREFIX + PRE_OPEN);
                 int i = 1;
                 for (ParametersSet ps : detailedLink.getRequest().getBody().getParametersSets()) {
-                    docParams.append("\n" + PREFIX + OVERLOAD + i + ": \n");
+                    docParams.append(NEW_LINE + PREFIX + OVERLOAD + i + ": \n");
                     for (Parameter param : ps.getParameters()) {
                         if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
-                            docParams.append(PREFIX + offset + param.getName() + "\n");
+                            docParams.append(PREFIX + offset + param.getName() + NEW_LINE);
                         } else {
-                            docParams.append(PREFIX + offset + "[" + param.getName() + "]" + "\n");
+                            docParams.append(PREFIX + offset + "[" + param.getName() + "]" + NEW_LINE);
                         }
                     }
                     docParams.append(PREFIX);
                     i++;
                 }
-                docParams.append(PRE_CLOSE + "\n" + PREFIX);
+                docParams.append(PRE_CLOSE + NEW_LINE + PREFIX);
             } else {
                 if (detailedLink.getRequest().getBody().getParametersSets().size() == 1) {
-                    docParams.append("\n" + PREFIX + PRE_OPEN);
+                    docParams.append(NEW_LINE + PREFIX + PRE_OPEN);
                     for (Parameter param : detailedLink.getRequest()
                             .getBody().getParametersSets().get(0).getParameters()) {
                         if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
-                            docParams.append("\n" + PREFIX + " " + param.getName());
+                            docParams.append(NEW_LINE + PREFIX + " " + param.getName());
                         } else {
-                            docParams.append("\n" + PREFIX + " [" + param.getName() + "]");
+                            docParams.append(NEW_LINE + PREFIX + " [" + param.getName() + "]");
                         }
                     }
-                    docParams.append("\n" + PREFIX + PRE_CLOSE);
-                    docParams.append("\n" + PREFIX);
+                    docParams.append(NEW_LINE + PREFIX + PRE_CLOSE);
+                    docParams.append(NEW_LINE + PREFIX);
                 }
             }
         }
-
         return docParams.toString();
     }
 }
