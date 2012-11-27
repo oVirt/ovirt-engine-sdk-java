@@ -18,6 +18,7 @@ package org.ovirt.engine.sdk;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 
@@ -61,7 +62,7 @@ public class Example {
 
         // #6
         @SuppressWarnings("unused")
-        VMStatistic vmstatistic = vm.getStatistics().get("5a89a1d2-32be-33f7-a0d1-f8b5bc974ff6");
+        VMStatistic vmstatistic = vm.getStatistics().get(UUID.fromString("5a89a1d2-32be-33f7-a0d1-f8b5bc974ff6"));
 
         // #7
         vm.delete();

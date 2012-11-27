@@ -17,22 +17,19 @@
 package org.ovirt.engine.sdk.mapping;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
 
 import javax.xml.bind.JAXBException;
 
-import org.ovirt.engine.sdk.utils.ArrayUtils;
+import org.apache.commons.beanutils.BeanUtils;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
-import org.ovirt.engine.sdk.utils.StringUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * Provides model2decorator mapping services
  */
 public class Mapper {
+
     private static String[] MAPPING_EXCEPTIONS = new String[] { "links", "actions" };
 
     /**
@@ -56,30 +53,9 @@ public class Mapper {
             } else {
                 dstobj = to.newInstance();
             }
-
-            for (Field f : ArrayUtils.concat(from.getClass().getSuperclass().getDeclaredFields(),
-                                             from.getClass().getDeclaredFields())) {
-                if (!Arrays.asList(MAPPING_EXCEPTIONS).contains(f.getName())) {
-                    Field dstField = null;
-                    try {
-                        dstField = dstobj.getClass().getSuperclass().getDeclaredField(f.getName());
-                    } catch (NoSuchFieldException e) {
-                        Class<?> superclass = dstobj.getClass().getSuperclass().getSuperclass();
-                        if (superclass != null) {
-                            try {
-                                dstField = superclass.getDeclaredField(f.getName());
-                            } catch (NoSuchFieldException e1) {
-                                continue;
-                            }
-                        }
-                    }
-                    if (dstField != null) {
-                        setFieldContent(dstField.getName(),
-                                dstobj,
-                                getFieldContent(dstField.getName(), from),
-                                dstField.getType());
-                    }
-                }
+            if (dstobj != null) {
+                BeanUtils.copyProperties(dstobj, from);
+                excludeExceptions(dstobj);
             }
         } catch (InstantiationException e) {
             // TODO: log error
@@ -88,9 +64,6 @@ public class Mapper {
             // TODO: log error
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            // TODO: log error
-            e.printStackTrace();
-        } catch (SecurityException e) {
             // TODO: log error
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -102,6 +75,20 @@ public class Mapper {
         }
 
         return dstobj;
+    }
+
+    /**
+     * Excludes mapping exceptions
+     * 
+     * @param dstobj
+     * 
+     * @throws IllegalAccessException
+     * @throws InvocationTargetException
+     */
+    private static <T> void excludeExceptions(T dstobj) throws IllegalAccessException, InvocationTargetException {
+        for (String field : MAPPING_EXCEPTIONS) {
+            BeanUtils.setProperty(dstobj, field, null);
+        }
     }
 
     /**
@@ -118,66 +105,16 @@ public class Mapper {
         return Mapper.map(from, to, null);
     }
 
-    private static <T> Object setFieldContent(String name, T to, Object content, Class<?> typ) {
-        String getMethodName = "set" + Character.toUpperCase(name.charAt(0)) + name.substring(1);
-
-        Method m;
-        try {
-            m = to.getClass().getMethod(getMethodName, new Class<?>[] { typ });
-            if (m != null) {
-                return m.invoke(to, content);
-            }
-        } catch (SecurityException e1) {
-            // TODO: Log error
-            e1.printStackTrace();
-        } catch (NoSuchMethodException e1) {
-            // TODO: Log error
-            e1.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            // TODO: Log error
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            // TODO: Log error
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            // TODO: Log error
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private static <F> Object getFieldContent(String name, F from) throws SecurityException {
-        String getMethodName = "get" + StringUtils.toUpperCase(name);
-        String isMethodName = "is" + StringUtils.toUpperCase(name);
-
-        Method m = null;
-        try {
-            m = from.getClass().getMethod(getMethodName);
-        } catch (NoSuchMethodException e1) {
-            try {
-                m = from.getClass().getMethod(isMethodName);
-            } catch (NoSuchMethodException e) {
-                // TODO: Log error
-                e.printStackTrace();
-            }
-        }
-        if (m != null) {
-            try {
-                return m.invoke(from);
-            } catch (IllegalArgumentException e) {
-                // TODO: Log error
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                // TODO: Log error
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                // TODO: Log error
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
-
+    /**
+     * Fetches class contractor for mapping context
+     * 
+     * @param to
+     *            class to look at
+     * 
+     * @return .ctr
+     * 
+     * @throws NoSuchMethodException
+     */
     private static <T> Constructor<?> getConstracor(Class<T> to) throws NoSuchMethodException {
         for (Constructor<?> ctr : to.getConstructors()) {
             if (ctr.getParameterTypes().length > 0 &&
