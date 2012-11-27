@@ -37,7 +37,7 @@ import org.ovirt.engine.sdk.exceptions.UnsecuredConnectionAttemptError;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 
 /**
- * oVirt virtualization Java SDK
+ * oVirt virtualization Java SDK.
  */
 @SuppressWarnings("unused")
 public class Api {
@@ -285,90 +285,210 @@ public class Api {
         return this.proxy.isDebug();
     }
 
+    /**
+     * Gets the value of the Networks property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Networks }
+     *     
+     */
     public synchronized Networks getNetworks() {
         if (this.networks == null) {
             this.networks = new Networks(proxy);
         }
         return networks;
     }
+    /**
+     * Gets the value of the Tags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Tags }
+     *     
+     */
     public synchronized Tags getTags() {
         if (this.tags == null) {
             this.tags = new Tags(proxy);
         }
         return tags;
     }
+    /**
+     * Gets the value of the Users property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Users }
+     *     
+     */
     public synchronized Users getUsers() {
         if (this.users == null) {
             this.users = new Users(proxy);
         }
         return users;
     }
+    /**
+     * Gets the value of the Templates property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Templates }
+     *     
+     */
     public synchronized Templates getTemplates() {
         if (this.templates == null) {
             this.templates = new Templates(proxy);
         }
         return templates;
     }
+    /**
+     * Gets the value of the Events property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Events }
+     *     
+     */
     public synchronized Events getEvents() {
         if (this.events == null) {
             this.events = new Events(proxy);
         }
         return events;
     }
+    /**
+     * Gets the value of the Domains property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Domains }
+     *     
+     */
     public synchronized Domains getDomains() {
         if (this.domains == null) {
             this.domains = new Domains(proxy);
         }
         return domains;
     }
+    /**
+     * Gets the value of the Disks property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Disks }
+     *     
+     */
     public synchronized Disks getDisks() {
         if (this.disks == null) {
             this.disks = new Disks(proxy);
         }
         return disks;
     }
+    /**
+     * Gets the value of the Clusters property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Clusters }
+     *     
+     */
     public synchronized Clusters getClusters() {
         if (this.clusters == null) {
             this.clusters = new Clusters(proxy);
         }
         return clusters;
     }
+    /**
+     * Gets the value of the DataCenters property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataCenters }
+     *     
+     */
     public synchronized DataCenters getDataCenters() {
         if (this.dataCenters == null) {
             this.dataCenters = new DataCenters(proxy);
         }
         return dataCenters;
     }
+    /**
+     * Gets the value of the Roles property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Roles }
+     *     
+     */
     public synchronized Roles getRoles() {
         if (this.roles == null) {
             this.roles = new Roles(proxy);
         }
         return roles;
     }
+    /**
+     * Gets the value of the Hosts property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Hosts }
+     *     
+     */
     public synchronized Hosts getHosts() {
         if (this.hosts == null) {
             this.hosts = new Hosts(proxy);
         }
         return hosts;
     }
+    /**
+     * Gets the value of the VMs property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMs }
+     *     
+     */
     public synchronized VMs getVMs() {
         if (this.vMs == null) {
             this.vMs = new VMs(proxy);
         }
         return vMs;
     }
+    /**
+     * Gets the value of the VmPools property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VmPools }
+     *     
+     */
     public synchronized VmPools getVmPools() {
         if (this.vmPools == null) {
             this.vmPools = new VmPools(proxy);
         }
         return vmPools;
     }
+    /**
+     * Gets the value of the StorageDomains property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link StorageDomains }
+     *     
+     */
     public synchronized StorageDomains getStorageDomains() {
         if (this.storageDomains == null) {
             this.storageDomains = new StorageDomains(proxy);
         }
         return storageDomains;
     }
+    /**
+     * Gets the value of the Groups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Groups }
+     *     
+     */
     public synchronized Groups getGroups() {
         if (this.groups == null) {
             this.groups = new Groups(proxy);

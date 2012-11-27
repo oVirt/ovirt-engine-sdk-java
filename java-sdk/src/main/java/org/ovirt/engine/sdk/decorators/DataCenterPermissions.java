@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Permissions decorator.
+ */
 @SuppressWarnings("unused")
 public class DataCenterPermissions extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
@@ -45,11 +48,26 @@ public class DataCenterPermissions extends
 
     private DataCenter parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent DataCenter
+     */
     public DataCenterPermissions(HttpProxyBroker proxy, DataCenter parent) {
         super(proxy, "permissions");
         this.parent = parent;
     }
 
+    /**
+     * Lists DataCenterPermission objects.
+     * 
+     * @return
+     *     List<DataCenterPermission>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<DataCenterPermission> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class DataCenterPermissions extends
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, DataCenterPermission.class);
     }
 
+    /**
+     * Fetches DataCenterPermission object by id.
+     * 
+     * @return 
+     *     {@link DataCenterPermission }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public DataCenterPermission get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class DataCenterPermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, DataCenterPermission.class);
     }
 
+    /**
+     * Adds Permission object.
+     * 
+     * @param Permission
+     *
+     * @return
+     *     {@link DataCenterPermission }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public DataCenterPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

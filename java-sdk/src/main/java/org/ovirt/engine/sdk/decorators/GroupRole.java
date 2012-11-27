@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Role decorator.
+ */
 @SuppressWarnings("unused")
 public class GroupRole extends
         org.ovirt.engine.sdk.entities.Role {
@@ -42,14 +45,28 @@ public class GroupRole extends
     private GroupRolePermits groupRolePermits;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public GroupRole(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the GroupRolePermits property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link GroupRolePermits }
+     *     
+     */
     public synchronized GroupRolePermits getPermits() {
         if (this.groupRolePermits == null) {
             this.groupRolePermits = new GroupRolePermits(proxy, this);
@@ -58,6 +75,17 @@ public class GroupRole extends
     }
 
 
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

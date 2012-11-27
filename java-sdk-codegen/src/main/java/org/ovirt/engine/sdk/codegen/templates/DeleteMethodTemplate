@@ -1,3 +1,14 @@
+    /**
+     * Deletes object.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

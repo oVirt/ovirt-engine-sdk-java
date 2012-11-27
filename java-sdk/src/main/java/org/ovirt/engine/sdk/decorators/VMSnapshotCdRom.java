@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * CdRom decorator.
+ */
 @SuppressWarnings("unused")
 public class VMSnapshotCdRom extends
         org.ovirt.engine.sdk.entities.CdRom {
@@ -41,10 +44,16 @@ public class VMSnapshotCdRom extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VMSnapshotCdRom(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }

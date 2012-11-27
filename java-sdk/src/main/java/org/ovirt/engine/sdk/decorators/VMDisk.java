@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Disk decorator.
+ */
 @SuppressWarnings("unused")
 public class VMDisk extends
         org.ovirt.engine.sdk.entities.Disk {
@@ -42,14 +45,28 @@ public class VMDisk extends
     private VMDiskStatistics vMDiskStatistics;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VMDisk(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the VMDiskStatistics property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMDiskStatistics }
+     *     
+     */
     public synchronized VMDiskStatistics getStatistics() {
         if (this.vMDiskStatistics == null) {
             this.vMDiskStatistics = new VMDiskStatistics(proxy, this);
@@ -58,21 +75,70 @@ public class VMDisk extends
     }
 
 
+   /**
+    * Performs activate action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action activate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Updates VMDisk object.
+     *
+     * @return
+     *     possible object is
+     *     {@link VMDisk }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VMDisk update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
+   /**
+    * Performs deactivate action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action deactivate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/deactivate";

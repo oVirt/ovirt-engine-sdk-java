@@ -13,6 +13,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * $publicEntityName$ decorator.
+ */
 @SuppressWarnings("unused")
 public class $decoratorResourceName$ extends
         org.ovirt.engine.sdk.entities.$publicEntityName$ {
@@ -21,10 +24,16 @@ public class $decoratorResourceName$ extends
 
 $subCollectionsVariables$
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public $decoratorResourceName$(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }

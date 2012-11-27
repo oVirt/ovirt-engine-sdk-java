@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * VmPool decorator.
+ */
 @SuppressWarnings("unused")
 public class VmPool extends
         org.ovirt.engine.sdk.entities.VmPool {
@@ -42,14 +45,28 @@ public class VmPool extends
     private VmPoolPermissions vmPoolPermissions;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VmPool(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the VmPoolPermissions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VmPoolPermissions }
+     *     
+     */
     public synchronized VmPoolPermissions getPermissions() {
         if (this.vmPoolPermissions == null) {
             this.vmPoolPermissions = new VmPoolPermissions(proxy, this);
@@ -58,16 +75,52 @@ public class VmPool extends
     }
 
 
+    /**
+     * Updates VmPool object.
+     *
+     * @return
+     *     possible object is
+     *     {@link VmPool }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VmPool update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
     }
+   /**
+    * Performs allocatevm action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action allocatevm(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/allocatevm";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

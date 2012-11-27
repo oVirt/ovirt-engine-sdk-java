@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Domain decorator.
+ */
 @SuppressWarnings("unused")
 public class Domain extends
         org.ovirt.engine.sdk.entities.Domain {
@@ -43,20 +46,42 @@ public class Domain extends
     private DomainUsers domainUsers;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Domain(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the DomainGroups property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DomainGroups }
+     *     
+     */
     public synchronized DomainGroups getGroups() {
         if (this.domainGroups == null) {
             this.domainGroups = new DomainGroups(proxy, this);
         }
         return domainGroups;
     }
+    /**
+     * Gets the value of the DomainUsers property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DomainUsers }
+     *     
+     */
     public synchronized DomainUsers getUsers() {
         if (this.domainUsers == null) {
             this.domainUsers = new DomainUsers(proxy, this);

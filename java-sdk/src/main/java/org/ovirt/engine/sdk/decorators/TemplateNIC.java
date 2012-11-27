@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * NIC decorator.
+ */
 @SuppressWarnings("unused")
 public class TemplateNIC extends
         org.ovirt.engine.sdk.entities.NIC {
@@ -41,21 +44,50 @@ public class TemplateNIC extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public TemplateNIC(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
 
 
+    /**
+     * Updates TemplateNIC object.
+     *
+     * @return
+     *     possible object is
+     *     {@link TemplateNIC }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public TemplateNIC update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, TemplateNIC.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Disks decorator.
+ */
 @SuppressWarnings("unused")
 public class Disks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Disk, 
                             org.ovirt.engine.sdk.entities.Disks, 
                             Disk> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Disks(HttpProxyBroker proxy) {
         super(proxy, "disks");
     }
 
+    /**
+     * Lists Disk objects.
+     *
+     * @return
+     *     List<Disk>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Disk> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Disks extends
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, Disk.class);
     }
 
+    /**
+     * Fetches Disk object by id.
+     *
+     * @return {@link Disk }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Disk get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Disks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, Disk.class);
     }
 
+    /**
+     * Adds Disk object.
+     *
+     * @return
+     *     {@link Disk }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Disk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

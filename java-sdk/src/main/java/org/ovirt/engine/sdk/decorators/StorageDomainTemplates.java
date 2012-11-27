@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Templates decorator.
+ */
 @SuppressWarnings("unused")
 public class StorageDomainTemplates extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Template,
@@ -45,11 +48,26 @@ public class StorageDomainTemplates extends
 
     private StorageDomain parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent StorageDomain
+     */
     public StorageDomainTemplates(HttpProxyBroker proxy, StorageDomain parent) {
         super(proxy, "templates");
         this.parent = parent;
     }
 
+    /**
+     * Lists StorageDomainTemplate objects.
+     * 
+     * @return
+     *     List<StorageDomainTemplate>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<StorageDomainTemplate> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class StorageDomainTemplates extends
         return list(url, org.ovirt.engine.sdk.entities.Templates.class, StorageDomainTemplate.class);
     }
 
+    /**
+     * Fetches StorageDomainTemplate object by id.
+     * 
+     * @return 
+     *     {@link StorageDomainTemplate }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public StorageDomainTemplate get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

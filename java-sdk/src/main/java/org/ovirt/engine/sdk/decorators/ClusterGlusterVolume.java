@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * GlusterVolume decorator.
+ */
 @SuppressWarnings("unused")
 public class ClusterGlusterVolume extends
         org.ovirt.engine.sdk.entities.GlusterVolume {
@@ -42,14 +45,28 @@ public class ClusterGlusterVolume extends
     private ClusterGlusterVolumeGlusterBricks clusterGlusterVolumeGlusterBricks;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public ClusterGlusterVolume(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the ClusterGlusterVolumeGlusterBricks property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ClusterGlusterVolumeGlusterBricks }
+     *     
+     */
     public synchronized ClusterGlusterVolumeGlusterBricks getGlusterBricks() {
         if (this.clusterGlusterVolumeGlusterBricks == null) {
             this.clusterGlusterVolumeGlusterBricks = new ClusterGlusterVolumeGlusterBricks(proxy, this);
@@ -58,36 +75,125 @@ public class ClusterGlusterVolume extends
     }
 
 
+   /**
+    * Performs stop action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action stop(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/stop";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs start action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action start(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs resetalloptions action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action resetalloptions(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/resetalloptions";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
+   /**
+    * Performs resetoption action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action resetoption(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/resetoption";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs setoption action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action setoption(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/setoption";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs rebalance action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action rebalance(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/rebalance";

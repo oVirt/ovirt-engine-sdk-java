@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * User decorator.
+ */
 @SuppressWarnings("unused")
 public class User extends
         org.ovirt.engine.sdk.entities.User {
@@ -44,26 +47,56 @@ public class User extends
     private UserPermissions userPermissions;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public User(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the UserRoles property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link UserRoles }
+     *     
+     */
     public synchronized UserRoles getRoles() {
         if (this.userRoles == null) {
             this.userRoles = new UserRoles(proxy, this);
         }
         return userRoles;
     }
+    /**
+     * Gets the value of the UserTags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link UserTags }
+     *     
+     */
     public synchronized UserTags getTags() {
         if (this.userTags == null) {
             this.userTags = new UserTags(proxy, this);
         }
         return userTags;
     }
+    /**
+     * Gets the value of the UserPermissions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link UserPermissions }
+     *     
+     */
     public synchronized UserPermissions getPermissions() {
         if (this.userPermissions == null) {
             this.userPermissions = new UserPermissions(proxy, this);
@@ -72,6 +105,17 @@ public class User extends
     }
 
 
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

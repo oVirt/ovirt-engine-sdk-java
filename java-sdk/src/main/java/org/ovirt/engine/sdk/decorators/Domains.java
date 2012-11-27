@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Domains decorator.
+ */
 @SuppressWarnings("unused")
 public class Domains extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Domain, 
                             org.ovirt.engine.sdk.entities.Domains, 
                             Domain> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Domains(HttpProxyBroker proxy) {
         super(proxy, "domains");
     }
 
+    /**
+     * Lists Domain objects.
+     *
+     * @return
+     *     List<Domain>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Domain> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Domains extends
         return list(url, org.ovirt.engine.sdk.entities.Domains.class, Domain.class);
     }
 
+    /**
+     * Fetches Domain object by id.
+     *
+     * @return {@link Domain }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Domain get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

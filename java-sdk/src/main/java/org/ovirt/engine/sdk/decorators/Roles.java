@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Roles decorator.
+ */
 @SuppressWarnings("unused")
 public class Roles extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Role, 
                             org.ovirt.engine.sdk.entities.Roles, 
                             Role> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Roles(HttpProxyBroker proxy) {
         super(proxy, "roles");
     }
 
+    /**
+     * Lists Role objects.
+     *
+     * @return
+     *     List<Role>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Role> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Roles extends
         return list(url, org.ovirt.engine.sdk.entities.Roles.class, Role.class);
     }
 
+    /**
+     * Fetches Role object by id.
+     *
+     * @return {@link Role }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Role get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Roles extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, Role.class);
     }
 
+    /**
+     * Adds Role object.
+     *
+     * @return
+     *     {@link Role }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Role add(org.ovirt.engine.sdk.entities.Role role) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

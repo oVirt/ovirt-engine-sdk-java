@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Files decorator.
+ */
 @SuppressWarnings("unused")
 public class StorageDomainFiles extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.File,
@@ -45,11 +48,26 @@ public class StorageDomainFiles extends
 
     private StorageDomain parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent StorageDomain
+     */
     public StorageDomainFiles(HttpProxyBroker proxy, StorageDomain parent) {
         super(proxy, "files");
         this.parent = parent;
     }
 
+    /**
+     * Lists StorageDomainFile objects.
+     * 
+     * @return
+     *     List<StorageDomainFile>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<StorageDomainFile> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class StorageDomainFiles extends
         return list(url, org.ovirt.engine.sdk.entities.Files.class, StorageDomainFile.class);
     }
 
+    /**
+     * Fetches StorageDomainFile object by id.
+     * 
+     * @return 
+     *     {@link StorageDomainFile }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public StorageDomainFile get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

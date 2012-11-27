@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Hosts decorator.
+ */
 @SuppressWarnings("unused")
 public class Hosts extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Host, 
                             org.ovirt.engine.sdk.entities.Hosts, 
                             Host> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Hosts(HttpProxyBroker proxy) {
         super(proxy, "hosts");
     }
 
+    /**
+     * Lists Host objects.
+     *
+     * @return
+     *     List<Host>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Host> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Hosts extends
         return list(url, org.ovirt.engine.sdk.entities.Hosts.class, Host.class);
     }
 
+    /**
+     * Fetches Host object by id.
+     *
+     * @return {@link Host }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Host get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Hosts extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Host.class, Host.class);
     }
 
+    /**
+     * Adds Host object.
+     *
+     * @return
+     *     {@link Host }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Host add(org.ovirt.engine.sdk.entities.Host host) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

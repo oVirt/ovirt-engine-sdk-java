@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Group decorator.
+ */
 @SuppressWarnings("unused")
 public class Group extends
         org.ovirt.engine.sdk.entities.Group {
@@ -44,26 +47,56 @@ public class Group extends
     private GroupTags groupTags;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Group(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the GroupRoles property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link GroupRoles }
+     *     
+     */
     public synchronized GroupRoles getRoles() {
         if (this.groupRoles == null) {
             this.groupRoles = new GroupRoles(proxy, this);
         }
         return groupRoles;
     }
+    /**
+     * Gets the value of the GroupPermissions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link GroupPermissions }
+     *     
+     */
     public synchronized GroupPermissions getPermissions() {
         if (this.groupPermissions == null) {
             this.groupPermissions = new GroupPermissions(proxy, this);
         }
         return groupPermissions;
     }
+    /**
+     * Gets the value of the GroupTags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link GroupTags }
+     *     
+     */
     public synchronized GroupTags getTags() {
         if (this.groupTags == null) {
             this.groupTags = new GroupTags(proxy, this);
@@ -72,6 +105,17 @@ public class Group extends
     }
 
 
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

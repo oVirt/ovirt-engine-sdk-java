@@ -1,3 +1,11 @@
+    /**
+     * Gets the value of the $decoratorCollectionName$ property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link $decoratorCollectionName$ }
+     *     
+     */
     public synchronized $decoratorCollectionName$ get$publicCollecionName$() {
         if (this.$decoratorCollectionVariableName$ == null) {
             this.$decoratorCollectionVariableName$ = new $decoratorCollectionName$(proxy);

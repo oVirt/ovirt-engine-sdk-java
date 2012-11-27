@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Statistics decorator.
+ */
 @SuppressWarnings("unused")
 public class VMDiskStatistics extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
@@ -45,11 +48,26 @@ public class VMDiskStatistics extends
 
     private VMDisk parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VMDisk
+     */
     public VMDiskStatistics(HttpProxyBroker proxy, VMDisk parent) {
         super(proxy, "statistics");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMDiskStatistic objects.
+     * 
+     * @return
+     *     List<VMDiskStatistic>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMDiskStatistic> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMDiskStatistics extends
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VMDiskStatistic.class);
     }
 
+    /**
+     * Fetches VMDiskStatistic object by id.
+     * 
+     * @return 
+     *     {@link VMDiskStatistic }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMDiskStatistic get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

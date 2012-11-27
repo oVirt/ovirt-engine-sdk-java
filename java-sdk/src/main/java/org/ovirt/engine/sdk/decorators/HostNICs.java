@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * HostNics decorator.
+ */
 @SuppressWarnings("unused")
 public class HostNICs extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.HostNIC,
@@ -45,11 +48,26 @@ public class HostNICs extends
 
     private Host parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Host
+     */
     public HostNICs(HttpProxyBroker proxy, Host parent) {
         super(proxy, "nics");
         this.parent = parent;
     }
 
+    /**
+     * Lists HostNIC objects.
+     * 
+     * @return
+     *     List<HostNIC>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<HostNIC> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class HostNICs extends
         return list(url, org.ovirt.engine.sdk.entities.HostNics.class, HostNIC.class);
     }
 
+    /**
+     * Fetches HostNIC object by id.
+     * 
+     * @return 
+     *     {@link HostNIC }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public HostNIC get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,11 +93,37 @@ public class HostNICs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
     }
 
+    /**
+     * Performs setupnetworks action.
+     *
+     * @param action Action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
    public Action setupnetworks(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + "setupnetworks";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Adds HostNIC object.
+     * 
+     * @param HostNIC
+     *
+     * @return
+     *     {@link HostNIC }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public HostNIC add(org.ovirt.engine.sdk.entities.HostNIC hostnic) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

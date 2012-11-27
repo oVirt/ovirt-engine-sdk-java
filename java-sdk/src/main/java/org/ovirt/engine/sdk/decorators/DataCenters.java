@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * DataCenters decorator.
+ */
 @SuppressWarnings("unused")
 public class DataCenters extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.DataCenter, 
                             org.ovirt.engine.sdk.entities.DataCenters, 
                             DataCenter> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public DataCenters(HttpProxyBroker proxy) {
         super(proxy, "datacenters");
     }
 
+    /**
+     * Lists DataCenter objects.
+     *
+     * @return
+     *     List<DataCenter>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<DataCenter> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class DataCenters extends
         return list(url, org.ovirt.engine.sdk.entities.DataCenters.class, DataCenter.class);
     }
 
+    /**
+     * Fetches DataCenter object by id.
+     *
+     * @return {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public DataCenter get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class DataCenters extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.DataCenter.class, DataCenter.class);
     }
 
+    /**
+     * Adds DataCenter object.
+     *
+     * @return
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

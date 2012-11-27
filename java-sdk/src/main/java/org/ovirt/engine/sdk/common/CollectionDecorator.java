@@ -94,7 +94,7 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
     abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException;
 
     /**
-     * Fetches entity from collection by name
+     * Fetches object by name.
      * 
      * @param name
      *            entity name

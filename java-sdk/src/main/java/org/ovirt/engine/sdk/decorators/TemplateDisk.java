@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Disk decorator.
+ */
 @SuppressWarnings("unused")
 public class TemplateDisk extends
         org.ovirt.engine.sdk.entities.Disk {
@@ -41,21 +44,51 @@ public class TemplateDisk extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public TemplateDisk(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
 
 
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
+   /**
+    * Performs copy action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action copy(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/copy";

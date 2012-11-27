@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Roles decorator.
+ */
 @SuppressWarnings("unused")
 public class UserRoles extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Role,
@@ -45,11 +48,26 @@ public class UserRoles extends
 
     private User parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent User
+     */
     public UserRoles(HttpProxyBroker proxy, User parent) {
         super(proxy, "roles");
         this.parent = parent;
     }
 
+    /**
+     * Lists UserRole objects.
+     * 
+     * @return
+     *     List<UserRole>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<UserRole> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class UserRoles extends
         return list(url, org.ovirt.engine.sdk.entities.Roles.class, UserRole.class);
     }
 
+    /**
+     * Fetches UserRole object by id.
+     * 
+     * @return 
+     *     {@link UserRole }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public UserRole get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class UserRoles extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, UserRole.class);
     }
 
+    /**
+     * Adds Role object.
+     * 
+     * @param Role
+     *
+     * @return
+     *     {@link UserRole }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public UserRole add(org.ovirt.engine.sdk.entities.Role role) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

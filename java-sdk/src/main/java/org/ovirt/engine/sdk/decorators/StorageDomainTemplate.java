@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Template decorator.
+ */
 @SuppressWarnings("unused")
 public class StorageDomainTemplate extends
         org.ovirt.engine.sdk.entities.Template {
@@ -41,21 +44,51 @@ public class StorageDomainTemplate extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public StorageDomainTemplate(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
 
 
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
+   /**
+    * Performs importTemplate action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action importTemplate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/import";

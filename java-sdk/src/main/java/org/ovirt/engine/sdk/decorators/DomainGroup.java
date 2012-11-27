@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Group decorator.
+ */
 @SuppressWarnings("unused")
 public class DomainGroup extends
         org.ovirt.engine.sdk.entities.Group {
@@ -41,10 +44,16 @@ public class DomainGroup extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public DomainGroup(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }

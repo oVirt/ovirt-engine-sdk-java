@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Nics decorator.
+ */
 @SuppressWarnings("unused")
 public class TemplateNICs extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.NIC,
@@ -45,11 +48,26 @@ public class TemplateNICs extends
 
     private Template parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Template
+     */
     public TemplateNICs(HttpProxyBroker proxy, Template parent) {
         super(proxy, "nics");
         this.parent = parent;
     }
 
+    /**
+     * Lists TemplateNIC objects.
+     * 
+     * @return
+     *     List<TemplateNIC>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<TemplateNIC> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class TemplateNICs extends
         return list(url, org.ovirt.engine.sdk.entities.Nics.class, TemplateNIC.class);
     }
 
+    /**
+     * Fetches TemplateNIC object by id.
+     * 
+     * @return 
+     *     {@link TemplateNIC }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public TemplateNIC get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class TemplateNICs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.NIC.class, TemplateNIC.class);
     }
 
+    /**
+     * Adds NIC object.
+     * 
+     * @param NIC
+     *
+     * @return
+     *     {@link TemplateNIC }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public TemplateNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

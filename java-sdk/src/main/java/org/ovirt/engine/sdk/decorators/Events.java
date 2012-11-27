@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Events decorator.
+ */
 @SuppressWarnings("unused")
 public class Events extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Event, 
                             org.ovirt.engine.sdk.entities.Events, 
                             Event> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Events(HttpProxyBroker proxy) {
         super(proxy, "events");
     }
 
+    /**
+     * Lists Event objects.
+     *
+     * @return
+     *     List<Event>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Event> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Events extends
         return list(url, org.ovirt.engine.sdk.entities.Events.class, Event.class);
     }
 
+    /**
+     * Fetches Event object by id.
+     *
+     * @return {@link Event }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Event get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

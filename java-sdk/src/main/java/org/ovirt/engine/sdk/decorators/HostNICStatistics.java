@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Statistics decorator.
+ */
 @SuppressWarnings("unused")
 public class HostNICStatistics extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
@@ -45,11 +48,26 @@ public class HostNICStatistics extends
 
     private HostNIC parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent HostNIC
+     */
     public HostNICStatistics(HttpProxyBroker proxy, HostNIC parent) {
         super(proxy, "statistics");
         this.parent = parent;
     }
 
+    /**
+     * Lists HostNICStatistic objects.
+     * 
+     * @return
+     *     List<HostNICStatistic>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<HostNICStatistic> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class HostNICStatistics extends
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, HostNICStatistic.class);
     }
 
+    /**
+     * Fetches HostNICStatistic object by id.
+     * 
+     * @return 
+     *     {@link HostNICStatistic }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public HostNICStatistic get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

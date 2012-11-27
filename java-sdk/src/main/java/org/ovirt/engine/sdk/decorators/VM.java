@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * VM decorator.
+ */
 @SuppressWarnings("unused")
 public class VM extends
         org.ovirt.engine.sdk.entities.VM {
@@ -48,50 +51,112 @@ public class VM extends
     private VMCdRoms vMCdRoms;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VM(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the VMPermissions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMPermissions }
+     *     
+     */
     public synchronized VMPermissions getPermissions() {
         if (this.vMPermissions == null) {
             this.vMPermissions = new VMPermissions(proxy, this);
         }
         return vMPermissions;
     }
+    /**
+     * Gets the value of the VMTags property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMTags }
+     *     
+     */
     public synchronized VMTags getTags() {
         if (this.vMTags == null) {
             this.vMTags = new VMTags(proxy, this);
         }
         return vMTags;
     }
+    /**
+     * Gets the value of the VMSnapshots property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMSnapshots }
+     *     
+     */
     public synchronized VMSnapshots getSnapshots() {
         if (this.vMSnapshots == null) {
             this.vMSnapshots = new VMSnapshots(proxy, this);
         }
         return vMSnapshots;
     }
+    /**
+     * Gets the value of the VMStatistics property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMStatistics }
+     *     
+     */
     public synchronized VMStatistics getStatistics() {
         if (this.vMStatistics == null) {
             this.vMStatistics = new VMStatistics(proxy, this);
         }
         return vMStatistics;
     }
+    /**
+     * Gets the value of the VMDisks property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMDisks }
+     *     
+     */
     public synchronized VMDisks getDisks() {
         if (this.vMDisks == null) {
             this.vMDisks = new VMDisks(proxy, this);
         }
         return vMDisks;
     }
+    /**
+     * Gets the value of the VMNICs property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMNICs }
+     *     
+     */
     public synchronized VMNICs getNics() {
         if (this.vMNICs == null) {
             this.vMNICs = new VMNICs(proxy, this);
         }
         return vMNICs;
     }
+    /**
+     * Gets the value of the VMCdRoms property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMCdRoms }
+     *     
+     */
     public synchronized VMCdRoms getCdRoms() {
         if (this.vMCdRoms == null) {
             this.vMCdRoms = new VMCdRoms(proxy, this);
@@ -100,61 +165,214 @@ public class VM extends
     }
 
 
+   /**
+    * Performs suspend action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action suspend(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/suspend";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Updates VM object.
+     *
+     * @return
+     *     possible object is
+     *     {@link VM }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VM update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, VM.class);
     }
+   /**
+    * Performs stop action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action stop(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/stop";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs cancelmigration action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action cancelmigration(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/cancelmigration";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs export action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action export(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/export";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs detach action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action detach(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs ticket action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action ticket(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/ticket";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs start action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action start(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/start";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs migrate action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action migrate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/migrate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
+   /**
+    * Performs move action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action move(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/move";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs shutdown action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action shutdown(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/shutdown";

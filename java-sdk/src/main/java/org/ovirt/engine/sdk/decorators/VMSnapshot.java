@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Snapshot decorator.
+ */
 @SuppressWarnings("unused")
 public class VMSnapshot extends
         org.ovirt.engine.sdk.entities.Snapshot {
@@ -44,26 +47,56 @@ public class VMSnapshot extends
     private VMSnapshotCdRoms vMSnapshotCdRoms;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VMSnapshot(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the VMSnapshotNics property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMSnapshotNics }
+     *     
+     */
     public synchronized VMSnapshotNics getNics() {
         if (this.vMSnapshotNics == null) {
             this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
         }
         return vMSnapshotNics;
     }
+    /**
+     * Gets the value of the VMSnapshotDisks property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMSnapshotDisks }
+     *     
+     */
     public synchronized VMSnapshotDisks getDisks() {
         if (this.vMSnapshotDisks == null) {
             this.vMSnapshotDisks = new VMSnapshotDisks(proxy, this);
         }
         return vMSnapshotDisks;
     }
+    /**
+     * Gets the value of the VMSnapshotCdRoms property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMSnapshotCdRoms }
+     *     
+     */
     public synchronized VMSnapshotCdRoms getCdRoms() {
         if (this.vMSnapshotCdRoms == null) {
             this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
@@ -72,11 +105,35 @@ public class VMSnapshot extends
     }
 
 
+   /**
+    * Performs restore action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action restore(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/restore";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

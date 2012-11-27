@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * NIC decorator.
+ */
 @SuppressWarnings("unused")
 public class VMNIC extends
         org.ovirt.engine.sdk.entities.NIC {
@@ -42,14 +45,28 @@ public class VMNIC extends
     private VMNICStatistics vMNICStatistics;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VMNIC(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the VMNICStatistics property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VMNICStatistics }
+     *     
+     */
     public synchronized VMNICStatistics getStatistics() {
         if (this.vMNICStatistics == null) {
             this.vMNICStatistics = new VMNICStatistics(proxy, this);
@@ -58,21 +75,70 @@ public class VMNIC extends
     }
 
 
+   /**
+    * Performs activate action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action activate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Updates VMNIC object.
+     *
+     * @return
+     *     possible object is
+     *     {@link VMNIC }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VMNIC update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
+   /**
+    * Performs deactivate action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action deactivate(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/deactivate";

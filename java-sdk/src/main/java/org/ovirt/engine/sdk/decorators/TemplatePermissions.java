@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Permissions decorator.
+ */
 @SuppressWarnings("unused")
 public class TemplatePermissions extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
@@ -45,11 +48,26 @@ public class TemplatePermissions extends
 
     private Template parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Template
+     */
     public TemplatePermissions(HttpProxyBroker proxy, Template parent) {
         super(proxy, "permissions");
         this.parent = parent;
     }
 
+    /**
+     * Lists TemplatePermission objects.
+     * 
+     * @return
+     *     List<TemplatePermission>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<TemplatePermission> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class TemplatePermissions extends
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, TemplatePermission.class);
     }
 
+    /**
+     * Fetches TemplatePermission object by id.
+     * 
+     * @return 
+     *     {@link TemplatePermission }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public TemplatePermission get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class TemplatePermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, TemplatePermission.class);
     }
 
+    /**
+     * Adds Permission object.
+     * 
+     * @param Permission
+     *
+     * @return
+     *     {@link TemplatePermission }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public TemplatePermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

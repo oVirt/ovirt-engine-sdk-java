@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Permissions decorator.
+ */
 @SuppressWarnings("unused")
 public class ClusterPermissions extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
@@ -45,11 +48,26 @@ public class ClusterPermissions extends
 
     private Cluster parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Cluster
+     */
     public ClusterPermissions(HttpProxyBroker proxy, Cluster parent) {
         super(proxy, "permissions");
         this.parent = parent;
     }
 
+    /**
+     * Lists ClusterPermission objects.
+     * 
+     * @return
+     *     List<ClusterPermission>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<ClusterPermission> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class ClusterPermissions extends
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, ClusterPermission.class);
     }
 
+    /**
+     * Fetches ClusterPermission object by id.
+     * 
+     * @return 
+     *     {@link ClusterPermission }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public ClusterPermission get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class ClusterPermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, ClusterPermission.class);
     }
 
+    /**
+     * Adds Permission object.
+     * 
+     * @param Permission
+     *
+     * @return
+     *     {@link ClusterPermission }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public ClusterPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Tags decorator.
+ */
 @SuppressWarnings("unused")
 public class Tags extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Tag, 
                             org.ovirt.engine.sdk.entities.Tags, 
                             Tag> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Tags(HttpProxyBroker proxy) {
         super(proxy, "tags");
     }
 
+    /**
+     * Lists Tag objects.
+     *
+     * @return
+     *     List<Tag>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Tag> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Tags extends
         return list(url, org.ovirt.engine.sdk.entities.Tags.class, Tag.class);
     }
 
+    /**
+     * Fetches Tag object by id.
+     *
+     * @return {@link Tag }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Tag get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Tags extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, Tag.class);
     }
 
+    /**
+     * Adds Tag object.
+     *
+     * @return
+     *     {@link Tag }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Tag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Statistic decorator.
+ */
 @SuppressWarnings("unused")
 public class VMStatistic extends
         org.ovirt.engine.sdk.entities.Statistic {
@@ -41,10 +44,16 @@ public class VMStatistic extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VMStatistic(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }

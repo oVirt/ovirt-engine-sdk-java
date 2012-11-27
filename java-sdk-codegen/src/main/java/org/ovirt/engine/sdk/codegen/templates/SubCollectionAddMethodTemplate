@@ -1,3 +1,16 @@
+    /**
+     * Adds $publicEntityName$ object.
+     * 
+     * @param $publicEntityName$
+$docParams$
+     * @return
+     *     {@link $decoratorName$ }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public $decoratorName$ add(org.ovirt.engine.sdk.entities.$publicEntityName$ $publicEntityNameLowerCase$) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

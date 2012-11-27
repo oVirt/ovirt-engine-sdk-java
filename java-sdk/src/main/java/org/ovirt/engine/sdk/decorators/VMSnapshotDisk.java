@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Disk decorator.
+ */
 @SuppressWarnings("unused")
 public class VMSnapshotDisk extends
         org.ovirt.engine.sdk.entities.Disk {
@@ -41,10 +44,16 @@ public class VMSnapshotDisk extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VMSnapshotDisk(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }

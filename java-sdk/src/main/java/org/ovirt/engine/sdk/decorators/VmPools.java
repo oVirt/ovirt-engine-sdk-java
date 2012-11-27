@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * VmPools decorator.
+ */
 @SuppressWarnings("unused")
 public class VmPools extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.VmPool, 
                             org.ovirt.engine.sdk.entities.VmPools, 
                             VmPool> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VmPools(HttpProxyBroker proxy) {
         super(proxy, "vmpools");
     }
 
+    /**
+     * Lists VmPool objects.
+     *
+     * @return
+     *     List<VmPool>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VmPool> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class VmPools extends
         return list(url, org.ovirt.engine.sdk.entities.VmPools.class, VmPool.class);
     }
 
+    /**
+     * Fetches VmPool object by id.
+     *
+     * @return {@link VmPool }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VmPool get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class VmPools extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
     }
 
+    /**
+     * Adds VmPool object.
+     *
+     * @return
+     *     {@link VmPool }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

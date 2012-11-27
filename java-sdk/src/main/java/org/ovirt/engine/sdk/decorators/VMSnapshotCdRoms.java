@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * CdRoms decorator.
+ */
 @SuppressWarnings("unused")
 public class VMSnapshotCdRoms extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.CdRom,
@@ -45,11 +48,26 @@ public class VMSnapshotCdRoms extends
 
     private VMSnapshot parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VMSnapshot
+     */
     public VMSnapshotCdRoms(HttpProxyBroker proxy, VMSnapshot parent) {
         super(proxy, "cdroms");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMSnapshotCdRom objects.
+     * 
+     * @return
+     *     List<VMSnapshotCdRom>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMSnapshotCdRom> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMSnapshotCdRoms extends
         return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, VMSnapshotCdRom.class);
     }
 
+    /**
+     * Fetches VMSnapshotCdRom object by id.
+     * 
+     * @return 
+     *     {@link VMSnapshotCdRom }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMSnapshotCdRom get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

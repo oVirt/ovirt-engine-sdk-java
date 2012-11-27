@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Disks decorator.
+ */
 @SuppressWarnings("unused")
 public class TemplateDisks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Disk,
@@ -45,11 +48,26 @@ public class TemplateDisks extends
 
     private Template parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Template
+     */
     public TemplateDisks(HttpProxyBroker proxy, Template parent) {
         super(proxy, "disks");
         this.parent = parent;
     }
 
+    /**
+     * Lists TemplateDisk objects.
+     * 
+     * @return
+     *     List<TemplateDisk>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<TemplateDisk> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class TemplateDisks extends
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, TemplateDisk.class);
     }
 
+    /**
+     * Fetches TemplateDisk object by id.
+     * 
+     * @return 
+     *     {@link TemplateDisk }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public TemplateDisk get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

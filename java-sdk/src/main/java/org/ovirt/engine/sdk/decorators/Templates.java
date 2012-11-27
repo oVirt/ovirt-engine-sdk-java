@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Templates decorator.
+ */
 @SuppressWarnings("unused")
 public class Templates extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Template, 
                             org.ovirt.engine.sdk.entities.Templates, 
                             Template> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Templates(HttpProxyBroker proxy) {
         super(proxy, "templates");
     }
 
+    /**
+     * Lists Template objects.
+     *
+     * @return
+     *     List<Template>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Template> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Templates extends
         return list(url, org.ovirt.engine.sdk.entities.Templates.class, Template.class);
     }
 
+    /**
+     * Fetches Template object by id.
+     *
+     * @return {@link Template }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Template get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Templates extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Template.class, Template.class);
     }
 
+    /**
+     * Adds Template object.
+     *
+     * @return
+     *     {@link Template }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Template add(org.ovirt.engine.sdk.entities.Template template) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

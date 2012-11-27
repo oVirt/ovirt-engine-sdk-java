@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * StorageDomain decorator.
+ */
 @SuppressWarnings("unused")
 public class StorageDomain extends
         org.ovirt.engine.sdk.entities.StorageDomain {
@@ -45,32 +48,70 @@ public class StorageDomain extends
     private StorageDomainFiles storageDomainFiles;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public StorageDomain(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the StorageDomainPermissions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link StorageDomainPermissions }
+     *     
+     */
     public synchronized StorageDomainPermissions getPermissions() {
         if (this.storageDomainPermissions == null) {
             this.storageDomainPermissions = new StorageDomainPermissions(proxy, this);
         }
         return storageDomainPermissions;
     }
+    /**
+     * Gets the value of the StorageDomainVMs property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link StorageDomainVMs }
+     *     
+     */
     public synchronized StorageDomainVMs getVMs() {
         if (this.storageDomainVMs == null) {
             this.storageDomainVMs = new StorageDomainVMs(proxy, this);
         }
         return storageDomainVMs;
     }
+    /**
+     * Gets the value of the StorageDomainTemplates property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link StorageDomainTemplates }
+     *     
+     */
     public synchronized StorageDomainTemplates getTemplates() {
         if (this.storageDomainTemplates == null) {
             this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
         }
         return storageDomainTemplates;
     }
+    /**
+     * Gets the value of the StorageDomainFiles property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link StorageDomainFiles }
+     *     
+     */
     public synchronized StorageDomainFiles getFiles() {
         if (this.storageDomainFiles == null) {
             this.storageDomainFiles = new StorageDomainFiles(proxy, this);
@@ -79,11 +120,34 @@ public class StorageDomain extends
     }
 
 
+    /**
+     * Updates StorageDomain object.
+     *
+     * @return
+     *     possible object is
+     *     {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public StorageDomain update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

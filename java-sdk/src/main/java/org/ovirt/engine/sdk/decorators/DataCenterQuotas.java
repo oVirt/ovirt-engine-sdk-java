@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Quotas decorator.
+ */
 @SuppressWarnings("unused")
 public class DataCenterQuotas extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Quota,
@@ -45,11 +48,26 @@ public class DataCenterQuotas extends
 
     private DataCenter parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent DataCenter
+     */
     public DataCenterQuotas(HttpProxyBroker proxy, DataCenter parent) {
         super(proxy, "quotas");
         this.parent = parent;
     }
 
+    /**
+     * Lists DataCenterQuota objects.
+     * 
+     * @return
+     *     List<DataCenterQuota>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<DataCenterQuota> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class DataCenterQuotas extends
         return list(url, org.ovirt.engine.sdk.entities.Quotas.class, DataCenterQuota.class);
     }
 
+    /**
+     * Fetches DataCenterQuota object by id.
+     * 
+     * @return 
+     *     {@link DataCenterQuota }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public DataCenterQuota get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class DataCenterQuotas extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Quota.class, DataCenterQuota.class);
     }
 
+    /**
+     * Adds Quota object.
+     * 
+     * @param Quota
+     *
+     * @return
+     *     {@link DataCenterQuota }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public DataCenterQuota add(org.ovirt.engine.sdk.entities.Quota quota) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

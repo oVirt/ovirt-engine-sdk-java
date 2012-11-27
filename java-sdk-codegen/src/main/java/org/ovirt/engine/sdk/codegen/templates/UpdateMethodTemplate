@@ -1,3 +1,15 @@
+    /**
+     * Updates $decoratorName$ object.
+$docParams$
+     * @return
+     *     possible object is
+     *     {@link $decoratorName$ }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public $decoratorName$ update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

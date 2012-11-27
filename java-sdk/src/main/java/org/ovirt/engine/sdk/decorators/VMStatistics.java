@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Statistics decorator.
+ */
 @SuppressWarnings("unused")
 public class VMStatistics extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
@@ -45,11 +48,26 @@ public class VMStatistics extends
 
     private VM parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VM
+     */
     public VMStatistics(HttpProxyBroker proxy, VM parent) {
         super(proxy, "statistics");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMStatistic objects.
+     * 
+     * @return
+     *     List<VMStatistic>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMStatistic> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMStatistics extends
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VMStatistic.class);
     }
 
+    /**
+     * Fetches VMStatistic object by id.
+     * 
+     * @return 
+     *     {@link VMStatistic }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMStatistic get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

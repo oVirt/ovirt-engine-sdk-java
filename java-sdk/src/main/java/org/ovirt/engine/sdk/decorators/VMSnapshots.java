@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Snapshots decorator.
+ */
 @SuppressWarnings("unused")
 public class VMSnapshots extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Snapshot,
@@ -45,11 +48,26 @@ public class VMSnapshots extends
 
     private VM parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VM
+     */
     public VMSnapshots(HttpProxyBroker proxy, VM parent) {
         super(proxy, "snapshots");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMSnapshot objects.
+     * 
+     * @return
+     *     List<VMSnapshot>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMSnapshot> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMSnapshots extends
         return list(url, org.ovirt.engine.sdk.entities.Snapshots.class, VMSnapshot.class);
     }
 
+    /**
+     * Fetches VMSnapshot object by id.
+     * 
+     * @return 
+     *     {@link VMSnapshot }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMSnapshot get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class VMSnapshots extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
     }
 
+    /**
+     * Adds Snapshot object.
+     * 
+     * @param Snapshot
+     *
+     * @return
+     *     {@link VMSnapshot }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

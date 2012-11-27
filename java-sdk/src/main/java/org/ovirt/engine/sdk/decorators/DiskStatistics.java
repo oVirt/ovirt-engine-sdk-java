@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Statistics decorator.
+ */
 @SuppressWarnings("unused")
 public class DiskStatistics extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
@@ -45,11 +48,26 @@ public class DiskStatistics extends
 
     private Disk parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Disk
+     */
     public DiskStatistics(HttpProxyBroker proxy, Disk parent) {
         super(proxy, "statistics");
         this.parent = parent;
     }
 
+    /**
+     * Lists DiskStatistic objects.
+     * 
+     * @return
+     *     List<DiskStatistic>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<DiskStatistic> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class DiskStatistics extends
         return list(url, org.ovirt.engine.sdk.entities.Statistics.class, DiskStatistic.class);
     }
 
+    /**
+     * Fetches DiskStatistic object by id.
+     * 
+     * @return 
+     *     {@link DiskStatistic }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public DiskStatistic get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

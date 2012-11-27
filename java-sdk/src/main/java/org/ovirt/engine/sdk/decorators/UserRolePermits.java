@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Permits decorator.
+ */
 @SuppressWarnings("unused")
 public class UserRolePermits extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Permit,
@@ -45,11 +48,26 @@ public class UserRolePermits extends
 
     private UserRole parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent UserRole
+     */
     public UserRolePermits(HttpProxyBroker proxy, UserRole parent) {
         super(proxy, "permits");
         this.parent = parent;
     }
 
+    /**
+     * Lists UserRolePermit objects.
+     * 
+     * @return
+     *     List<UserRolePermit>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<UserRolePermit> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class UserRolePermits extends
         return list(url, org.ovirt.engine.sdk.entities.Permits.class, UserRolePermit.class);
     }
 
+    /**
+     * Fetches UserRolePermit object by id.
+     * 
+     * @return 
+     *     {@link UserRolePermit }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public UserRolePermit get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class UserRolePermits extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, UserRolePermit.class);
     }
 
+    /**
+     * Adds Permit object.
+     * 
+     * @param Permit
+     *
+     * @return
+     *     {@link UserRolePermit }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public UserRolePermit add(org.ovirt.engine.sdk.entities.Permit permit) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

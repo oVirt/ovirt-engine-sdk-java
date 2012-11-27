@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Disks decorator.
+ */
 @SuppressWarnings("unused")
 public class VMDisks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Disk,
@@ -45,11 +48,26 @@ public class VMDisks extends
 
     private VM parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VM
+     */
     public VMDisks(HttpProxyBroker proxy, VM parent) {
         super(proxy, "disks");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMDisk objects.
+     * 
+     * @return
+     *     List<VMDisk>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMDisk> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMDisks extends
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, VMDisk.class);
     }
 
+    /**
+     * Fetches VMDisk object by id.
+     * 
+     * @return 
+     *     {@link VMDisk }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMDisk get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class VMDisks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
     }
 
+    /**
+     * Adds Disk object.
+     * 
+     * @param Disk
+     *
+     * @return
+     *     {@link VMDisk }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VMDisk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

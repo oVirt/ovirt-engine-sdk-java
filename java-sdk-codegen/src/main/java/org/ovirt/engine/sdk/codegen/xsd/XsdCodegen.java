@@ -208,7 +208,7 @@ public class XsdCodegen extends AbstractCodegen {
     }
 
     /**
-     * Removes shadowed accessors (decorators shadows public getters with own ones)
+     * Modifies public getters (decorators shadows public getters with own ones)
      * 
      * @param accessors
      *            accessors to be removed (get/set/is)

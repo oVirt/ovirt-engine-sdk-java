@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Users decorator.
+ */
 @SuppressWarnings("unused")
 public class Users extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.User, 
                             org.ovirt.engine.sdk.entities.Users, 
                             User> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Users(HttpProxyBroker proxy) {
         super(proxy, "users");
     }
 
+    /**
+     * Lists User objects.
+     *
+     * @return
+     *     List<User>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<User> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Users extends
         return list(url, org.ovirt.engine.sdk.entities.Users.class, User.class);
     }
 
+    /**
+     * Fetches User object by id.
+     *
+     * @return {@link User }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public User get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Users extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, User.class);
     }
 
+    /**
+     * Adds User object.
+     *
+     * @return
+     *     {@link User }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public User add(org.ovirt.engine.sdk.entities.User user) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

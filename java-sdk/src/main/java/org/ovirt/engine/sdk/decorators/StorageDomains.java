@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * StorageDomains decorator.
+ */
 @SuppressWarnings("unused")
 public class StorageDomains extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.StorageDomain, 
                             org.ovirt.engine.sdk.entities.StorageDomains, 
                             StorageDomain> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public StorageDomains(HttpProxyBroker proxy) {
         super(proxy, "storagedomains");
     }
 
+    /**
+     * Lists StorageDomain objects.
+     *
+     * @return
+     *     List<StorageDomain>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<StorageDomain> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class StorageDomains extends
         return list(url, org.ovirt.engine.sdk.entities.StorageDomains.class, StorageDomain.class);
     }
 
+    /**
+     * Fetches StorageDomain object by id.
+     *
+     * @return {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public StorageDomain get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class StorageDomains extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
     }
 
+    /**
+     * Adds StorageDomain object.
+     *
+     * @return
+     *     {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

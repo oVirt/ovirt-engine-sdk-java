@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * DataCenter decorator.
+ */
 @SuppressWarnings("unused")
 public class DataCenter extends
         org.ovirt.engine.sdk.entities.DataCenter {
@@ -44,26 +47,56 @@ public class DataCenter extends
     private DataCenterQuotas dataCenterQuotas;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public DataCenter(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the DataCenterPermissions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataCenterPermissions }
+     *     
+     */
     public synchronized DataCenterPermissions getPermissions() {
         if (this.dataCenterPermissions == null) {
             this.dataCenterPermissions = new DataCenterPermissions(proxy, this);
         }
         return dataCenterPermissions;
     }
+    /**
+     * Gets the value of the DataCenterStorageDomains property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataCenterStorageDomains }
+     *     
+     */
     public synchronized DataCenterStorageDomains getStorageDomains() {
         if (this.dataCenterStorageDomains == null) {
             this.dataCenterStorageDomains = new DataCenterStorageDomains(proxy, this);
         }
         return dataCenterStorageDomains;
     }
+    /**
+     * Gets the value of the DataCenterQuotas property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataCenterQuotas }
+     *     
+     */
     public synchronized DataCenterQuotas getQuotas() {
         if (this.dataCenterQuotas == null) {
             this.dataCenterQuotas = new DataCenterQuotas(proxy, this);
@@ -72,11 +105,34 @@ public class DataCenter extends
     }
 
 
+    /**
+     * Updates DataCenter object.
+     *
+     * @return
+     *     possible object is
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public DataCenter update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.DataCenter.class, DataCenter.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * HostNIC decorator.
+ */
 @SuppressWarnings("unused")
 public class HostNIC extends
         org.ovirt.engine.sdk.entities.HostNIC {
@@ -42,14 +45,28 @@ public class HostNIC extends
     private HostNICStatistics hostNICStatistics;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public HostNIC(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the HostNICStatistics property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link HostNICStatistics }
+     *     
+     */
     public synchronized HostNICStatistics getStatistics() {
         if (this.hostNICStatistics == null) {
             this.hostNICStatistics = new HostNICStatistics(proxy, this);
@@ -58,21 +75,70 @@ public class HostNIC extends
     }
 
 
+    /**
+     * Updates HostNIC object.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostNIC }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public HostNIC update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
     }
+   /**
+    * Performs detach action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action detach(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+   /**
+    * Performs attach action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action attach(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/attach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

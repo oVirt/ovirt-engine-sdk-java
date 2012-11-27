@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Permits decorator.
+ */
 @SuppressWarnings("unused")
 public class RolePermits extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Permit,
@@ -45,11 +48,26 @@ public class RolePermits extends
 
     private Role parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Role
+     */
     public RolePermits(HttpProxyBroker proxy, Role parent) {
         super(proxy, "permits");
         this.parent = parent;
     }
 
+    /**
+     * Lists RolePermit objects.
+     * 
+     * @return
+     *     List<RolePermit>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<RolePermit> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class RolePermits extends
         return list(url, org.ovirt.engine.sdk.entities.Permits.class, RolePermit.class);
     }
 
+    /**
+     * Fetches RolePermit object by id.
+     * 
+     * @return 
+     *     {@link RolePermit }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public RolePermit get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class RolePermits extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, RolePermit.class);
     }
 
+    /**
+     * Adds Permit object.
+     * 
+     * @param Permit
+     *
+     * @return
+     *     {@link RolePermit }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public RolePermit add(org.ovirt.engine.sdk.entities.Permit permit) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

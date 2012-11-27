@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * VMs decorator.
+ */
 @SuppressWarnings("unused")
 public class StorageDomainVMs extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.VM,
@@ -45,11 +48,26 @@ public class StorageDomainVMs extends
 
     private StorageDomain parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent StorageDomain
+     */
     public StorageDomainVMs(HttpProxyBroker proxy, StorageDomain parent) {
         super(proxy, "vms");
         this.parent = parent;
     }
 
+    /**
+     * Lists StorageDomainVM objects.
+     * 
+     * @return
+     *     List<StorageDomainVM>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<StorageDomainVM> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class StorageDomainVMs extends
         return list(url, org.ovirt.engine.sdk.entities.VMs.class, StorageDomainVM.class);
     }
 
+    /**
+     * Fetches StorageDomainVM object by id.
+     * 
+     * @return 
+     *     {@link StorageDomainVM }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public StorageDomainVM get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

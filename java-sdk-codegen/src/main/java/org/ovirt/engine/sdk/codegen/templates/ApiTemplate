@@ -17,7 +17,7 @@ import org.ovirt.engine.sdk.exceptions.UnsecuredConnectionAttemptError;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 
 /**
- * oVirt virtualization Java SDK
+ * oVirt virtualization Java SDK.
  */
 @SuppressWarnings("unused")
 public class Api {

@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Groups decorator.
+ */
 @SuppressWarnings("unused")
 public class Groups extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Group, 
                             org.ovirt.engine.sdk.entities.Groups, 
                             Group> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Groups(HttpProxyBroker proxy) {
         super(proxy, "groups");
     }
 
+    /**
+     * Lists Group objects.
+     *
+     * @return
+     *     List<Group>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Group> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Groups extends
         return list(url, org.ovirt.engine.sdk.entities.Groups.class, Group.class);
     }
 
+    /**
+     * Fetches Group object by id.
+     *
+     * @return {@link Group }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Group get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Groups extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Group.class, Group.class);
     }
 
+    /**
+     * Adds Group object.
+     *
+     * @return
+     *     {@link Group }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Group add(org.ovirt.engine.sdk.entities.Group group) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

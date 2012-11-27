@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Networks decorator.
+ */
 @SuppressWarnings("unused")
 public class ClusterNetworks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Network,
@@ -45,11 +48,26 @@ public class ClusterNetworks extends
 
     private Cluster parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Cluster
+     */
     public ClusterNetworks(HttpProxyBroker proxy, Cluster parent) {
         super(proxy, "networks");
         this.parent = parent;
     }
 
+    /**
+     * Lists ClusterNetwork objects.
+     * 
+     * @return
+     *     List<ClusterNetwork>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<ClusterNetwork> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class ClusterNetworks extends
         return list(url, org.ovirt.engine.sdk.entities.Networks.class, ClusterNetwork.class);
     }
 
+    /**
+     * Fetches ClusterNetwork object by id.
+     * 
+     * @return 
+     *     {@link ClusterNetwork }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public ClusterNetwork get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class ClusterNetworks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
     }
 
+    /**
+     * Adds Network object.
+     * 
+     * @param Network
+     *
+     * @return
+     *     {@link ClusterNetwork }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public ClusterNetwork add(org.ovirt.engine.sdk.entities.Network network) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

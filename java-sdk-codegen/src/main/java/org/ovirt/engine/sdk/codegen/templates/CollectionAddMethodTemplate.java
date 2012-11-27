@@ -31,11 +31,15 @@ public class CollectionAddMethodTemplate extends AbstractTemplate {
      * Formats template in to the resource add template
      * 
      * @param decoratorName
+     *            decorator entity name
      * @param publicEntityName
+     *            public entity name
+     * @param docParams
+     *            documentation params
      * 
      * @return formated add template
      */
-    public String getTemplate(String decoratorName, String publicEntityName) {
+    public String getTemplate(String decoratorName, String publicEntityName, String docParams) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getTemplate());
@@ -43,6 +47,7 @@ public class CollectionAddMethodTemplate extends AbstractTemplate {
         templateWrapper.set("decoratorName", decoratorName);
         templateWrapper.set("publicEntityName", publicEntityName);
         templateWrapper.set("publicEntityNameLowerCase", publicEntityName.toLowerCase());
+        templateWrapper.set("docParams", docParams);
 
         return templateWrapper.toString();
     }

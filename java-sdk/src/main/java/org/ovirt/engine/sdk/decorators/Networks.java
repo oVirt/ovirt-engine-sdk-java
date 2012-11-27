@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Networks decorator.
+ */
 @SuppressWarnings("unused")
 public class Networks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Network, 
                             org.ovirt.engine.sdk.entities.Networks, 
                             Network> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Networks(HttpProxyBroker proxy) {
         super(proxy, "networks");
     }
 
+    /**
+     * Lists Network objects.
+     *
+     * @return
+     *     List<Network>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Network> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Networks extends
         return list(url, org.ovirt.engine.sdk.entities.Networks.class, Network.class);
     }
 
+    /**
+     * Fetches Network object by id.
+     *
+     * @return {@link Network }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Network get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Networks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, Network.class);
     }
 
+    /**
+     * Adds Network object.
+     *
+     * @return
+     *     {@link Network }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Network add(org.ovirt.engine.sdk.entities.Network network) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

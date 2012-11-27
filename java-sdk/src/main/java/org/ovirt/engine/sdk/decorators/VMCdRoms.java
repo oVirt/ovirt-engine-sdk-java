@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * CdRoms decorator.
+ */
 @SuppressWarnings("unused")
 public class VMCdRoms extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.CdRom,
@@ -45,11 +48,26 @@ public class VMCdRoms extends
 
     private VM parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VM
+     */
     public VMCdRoms(HttpProxyBroker proxy, VM parent) {
         super(proxy, "cdroms");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMCdRom objects.
+     * 
+     * @return
+     *     List<VMCdRom>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMCdRom> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMCdRoms extends
         return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, VMCdRom.class);
     }
 
+    /**
+     * Fetches VMCdRom object by id.
+     * 
+     * @return 
+     *     {@link VMCdRom }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMCdRom get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class VMCdRoms extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
     }
 
+    /**
+     * Adds CdRom object.
+     * 
+     * @param CdRom
+     *
+     * @return
+     *     {@link VMCdRom }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VMCdRom add(org.ovirt.engine.sdk.entities.CdRom cdrom) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

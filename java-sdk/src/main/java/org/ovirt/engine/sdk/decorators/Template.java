@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Template decorator.
+ */
 @SuppressWarnings("unused")
 public class Template extends
         org.ovirt.engine.sdk.entities.Template {
@@ -45,32 +48,70 @@ public class Template extends
     private TemplateDisks templateDisks;
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Template(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }
 
+    /**
+     * Gets the value of the TemplateCdRoms property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TemplateCdRoms }
+     *     
+     */
     public synchronized TemplateCdRoms getCdRoms() {
         if (this.templateCdRoms == null) {
             this.templateCdRoms = new TemplateCdRoms(proxy, this);
         }
         return templateCdRoms;
     }
+    /**
+     * Gets the value of the TemplateNICs property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TemplateNICs }
+     *     
+     */
     public synchronized TemplateNICs getNics() {
         if (this.templateNICs == null) {
             this.templateNICs = new TemplateNICs(proxy, this);
         }
         return templateNICs;
     }
+    /**
+     * Gets the value of the TemplatePermissions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TemplatePermissions }
+     *     
+     */
     public synchronized TemplatePermissions getPermissions() {
         if (this.templatePermissions == null) {
             this.templatePermissions = new TemplatePermissions(proxy, this);
         }
         return templatePermissions;
     }
+    /**
+     * Gets the value of the TemplateDisks property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TemplateDisks }
+     *     
+     */
     public synchronized TemplateDisks getDisks() {
         if (this.templateDisks == null) {
             this.templateDisks = new TemplateDisks(proxy, this);
@@ -79,16 +120,52 @@ public class Template extends
     }
 
 
+    /**
+     * Updates Template object.
+     *
+     * @return
+     *     possible object is
+     *     {@link Template }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Template update() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Template.class, Template.class);
     }
+   /**
+    * Performs export action.
+    *  
+    * @param action Action
+     *
+    * @return
+    *     {@link Action }
+    *
+    * @throws ClientProtocolException
+    * @throws ServerException
+    * @throws IOException
+    * @throws JAXBException
+    */
    public Action export(Action action) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref() + "/export";
         return getProxy().action(url, action, Action.class, Action.class);
     }
+    /**
+     * Deletes resource.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         String url = this.getHref();

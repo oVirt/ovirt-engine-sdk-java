@@ -32,10 +32,11 @@ public class SubCollectionAddMethodTemplate extends AbstractTemplate {
      * 
      * @param decoratorName
      * @param publicEntityName
+     * @param docParams
      * 
      * @return formated add template
      */
-    public String getTemplate(String decoratorName, String publicEntityName) {
+    public String getTemplate(String decoratorName, String publicEntityName, String docParams) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getTemplate());
@@ -43,6 +44,7 @@ public class SubCollectionAddMethodTemplate extends AbstractTemplate {
         templateWrapper.set("decoratorName", decoratorName);
         templateWrapper.set("publicEntityName", publicEntityName);
         templateWrapper.set("publicEntityNameLowerCase", publicEntityName.toLowerCase());
+        templateWrapper.set("docParams", docParams);
 
         return templateWrapper.toString();
     }

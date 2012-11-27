@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * GlusterBricks decorator.
+ */
 @SuppressWarnings("unused")
 public class ClusterGlusterVolumeGlusterBricks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.GlusterBrick,
@@ -45,11 +48,26 @@ public class ClusterGlusterVolumeGlusterBricks extends
 
     private ClusterGlusterVolume parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent ClusterGlusterVolume
+     */
     public ClusterGlusterVolumeGlusterBricks(HttpProxyBroker proxy, ClusterGlusterVolume parent) {
         super(proxy, "bricks");
         this.parent = parent;
     }
 
+    /**
+     * Lists ClusterGlusterVolumeGlusterBrick objects.
+     * 
+     * @return
+     *     List<ClusterGlusterVolumeGlusterBrick>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<ClusterGlusterVolumeGlusterBrick> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class ClusterGlusterVolumeGlusterBricks extends
         return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class, ClusterGlusterVolumeGlusterBrick.class);
     }
 
+    /**
+     * Fetches ClusterGlusterVolumeGlusterBrick object by id.
+     * 
+     * @return 
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public ClusterGlusterVolumeGlusterBrick get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class ClusterGlusterVolumeGlusterBricks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterBrick.class, ClusterGlusterVolumeGlusterBrick.class);
     }
 
+    /**
+     * Adds GlusterBrick object.
+     * 
+     * @param GlusterBrick
+     *
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

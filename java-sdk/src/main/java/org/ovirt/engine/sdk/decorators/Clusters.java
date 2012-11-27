@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Clusters decorator.
+ */
 @SuppressWarnings("unused")
 public class Clusters extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Cluster, 
                             org.ovirt.engine.sdk.entities.Clusters, 
                             Cluster> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Clusters(HttpProxyBroker proxy) {
         super(proxy, "clusters");
     }
 
+    /**
+     * Lists Cluster objects.
+     *
+     * @return
+     *     List<Cluster>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<Cluster> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class Clusters extends
         return list(url, org.ovirt.engine.sdk.entities.Clusters.class, Cluster.class);
     }
 
+    /**
+     * Fetches Cluster object by id.
+     *
+     * @return {@link Cluster }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public Cluster get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class Clusters extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
     }
 
+    /**
+     * Adds Cluster object.
+     *
+     * @return
+     *     {@link Cluster }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

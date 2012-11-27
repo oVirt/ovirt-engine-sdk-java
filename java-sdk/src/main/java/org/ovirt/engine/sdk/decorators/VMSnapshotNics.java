@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Nics decorator.
+ */
 @SuppressWarnings("unused")
 public class VMSnapshotNics extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.NIC,
@@ -45,11 +48,26 @@ public class VMSnapshotNics extends
 
     private VMSnapshot parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VMSnapshot
+     */
     public VMSnapshotNics(HttpProxyBroker proxy, VMSnapshot parent) {
         super(proxy, "nics");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMSnapshotNIC objects.
+     * 
+     * @return
+     *     List<VMSnapshotNIC>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMSnapshotNIC> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMSnapshotNics extends
         return list(url, org.ovirt.engine.sdk.entities.Nics.class, VMSnapshotNIC.class);
     }
 
+    /**
+     * Fetches VMSnapshotNIC object by id.
+     * 
+     * @return 
+     *     {@link VMSnapshotNIC }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMSnapshotNIC get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

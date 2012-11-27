@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * File decorator.
+ */
 @SuppressWarnings("unused")
 public class StorageDomainFile extends
         org.ovirt.engine.sdk.entities.File {
@@ -41,10 +44,16 @@ public class StorageDomainFile extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public StorageDomainFile(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }

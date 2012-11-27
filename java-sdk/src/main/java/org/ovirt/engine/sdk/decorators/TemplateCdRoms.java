@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * CdRoms decorator.
+ */
 @SuppressWarnings("unused")
 public class TemplateCdRoms extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.CdRom,
@@ -45,11 +48,26 @@ public class TemplateCdRoms extends
 
     private Template parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Template
+     */
     public TemplateCdRoms(HttpProxyBroker proxy, Template parent) {
         super(proxy, "cdroms");
         this.parent = parent;
     }
 
+    /**
+     * Lists TemplateCdRom objects.
+     * 
+     * @return
+     *     List<TemplateCdRom>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<TemplateCdRom> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class TemplateCdRoms extends
         return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, TemplateCdRom.class);
     }
 
+    /**
+     * Fetches TemplateCdRom object by id.
+     * 
+     * @return 
+     *     {@link TemplateCdRom }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public TemplateCdRom get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * NIC decorator.
+ */
 @SuppressWarnings("unused")
 public class VMSnapshotNIC extends
         org.ovirt.engine.sdk.entities.NIC {
@@ -41,10 +44,16 @@ public class VMSnapshotNIC extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VMSnapshotNIC(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }

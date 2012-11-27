@@ -33,6 +33,9 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
+/**
+ * Event decorator.
+ */
 @SuppressWarnings("unused")
 public class Event extends
         org.ovirt.engine.sdk.entities.Event {
@@ -41,10 +44,16 @@ public class Event extends
 
 
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public Event(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
+    /**
+     * @return HttpProxyBroker
+     */
     private HttpProxyBroker getProxy() {
         return proxy;
     }

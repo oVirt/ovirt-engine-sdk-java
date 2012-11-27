@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Disks decorator.
+ */
 @SuppressWarnings("unused")
 public class VMSnapshotDisks extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Disk,
@@ -45,11 +48,26 @@ public class VMSnapshotDisks extends
 
     private VMSnapshot parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VMSnapshot
+     */
     public VMSnapshotDisks(HttpProxyBroker proxy, VMSnapshot parent) {
         super(proxy, "disks");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMSnapshotDisk objects.
+     * 
+     * @return
+     *     List<VMSnapshotDisk>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMSnapshotDisk> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMSnapshotDisks extends
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, VMSnapshotDisk.class);
     }
 
+    /**
+     * Fetches VMSnapshotDisk object by id.
+     * 
+     * @return 
+     *     {@link VMSnapshotDisk }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMSnapshotDisk get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

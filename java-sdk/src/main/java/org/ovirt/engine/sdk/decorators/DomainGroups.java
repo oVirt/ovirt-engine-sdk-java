@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Groups decorator.
+ */
 @SuppressWarnings("unused")
 public class DomainGroups extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Group,
@@ -45,11 +48,26 @@ public class DomainGroups extends
 
     private Domain parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Domain
+     */
     public DomainGroups(HttpProxyBroker proxy, Domain parent) {
         super(proxy, "groups");
         this.parent = parent;
     }
 
+    /**
+     * Lists DomainGroup objects.
+     * 
+     * @return
+     *     List<DomainGroup>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<DomainGroup> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class DomainGroups extends
         return list(url, org.ovirt.engine.sdk.entities.Groups.class, DomainGroup.class);
     }
 
+    /**
+     * Fetches DomainGroup object by id.
+     * 
+     * @return 
+     *     {@link DomainGroup }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public DomainGroup get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

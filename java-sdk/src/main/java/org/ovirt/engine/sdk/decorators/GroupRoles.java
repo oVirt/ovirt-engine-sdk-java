@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Roles decorator.
+ */
 @SuppressWarnings("unused")
 public class GroupRoles extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Role,
@@ -45,11 +48,26 @@ public class GroupRoles extends
 
     private Group parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent Group
+     */
     public GroupRoles(HttpProxyBroker proxy, Group parent) {
         super(proxy, "roles");
         this.parent = parent;
     }
 
+    /**
+     * Lists GroupRole objects.
+     * 
+     * @return
+     *     List<GroupRole>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<GroupRole> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class GroupRoles extends
         return list(url, org.ovirt.engine.sdk.entities.Roles.class, GroupRole.class);
     }
 
+    /**
+     * Fetches GroupRole object by id.
+     * 
+     * @return 
+     *     {@link GroupRole }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public GroupRole get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class GroupRoles extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, GroupRole.class);
     }
 
+    /**
+     * Adds Role object.
+     * 
+     * @param Role
+     *
+     * @return
+     *     {@link GroupRole }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public GroupRole add(org.ovirt.engine.sdk.entities.Role role) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

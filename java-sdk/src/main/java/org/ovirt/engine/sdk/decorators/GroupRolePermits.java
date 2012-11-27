@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Permits decorator.
+ */
 @SuppressWarnings("unused")
 public class GroupRolePermits extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Permit,
@@ -45,11 +48,26 @@ public class GroupRolePermits extends
 
     private GroupRole parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent GroupRole
+     */
     public GroupRolePermits(HttpProxyBroker proxy, GroupRole parent) {
         super(proxy, "permits");
         this.parent = parent;
     }
 
+    /**
+     * Lists GroupRolePermit objects.
+     * 
+     * @return
+     *     List<GroupRolePermit>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<GroupRolePermit> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class GroupRolePermits extends
         return list(url, org.ovirt.engine.sdk.entities.Permits.class, GroupRolePermit.class);
     }
 
+    /**
+     * Fetches GroupRolePermit object by id.
+     * 
+     * @return 
+     *     {@link GroupRolePermit }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public GroupRolePermit get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class GroupRolePermits extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, GroupRolePermit.class);
     }
 
+    /**
+     * Adds Permit object.
+     * 
+     * @param Permit
+     *
+     * @return
+     *     {@link GroupRolePermit }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public GroupRolePermit add(org.ovirt.engine.sdk.entities.Permit permit) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

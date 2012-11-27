@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Tags decorator.
+ */
 @SuppressWarnings("unused")
 public class VMTags extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Tag,
@@ -45,11 +48,26 @@ public class VMTags extends
 
     private VM parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent VM
+     */
     public VMTags(HttpProxyBroker proxy, VM parent) {
         super(proxy, "tags");
         this.parent = parent;
     }
 
+    /**
+     * Lists VMTag objects.
+     * 
+     * @return
+     *     List<VMTag>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VMTag> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class VMTags extends
         return list(url, org.ovirt.engine.sdk.entities.Tags.class, VMTag.class);
     }
 
+    /**
+     * Fetches VMTag object by id.
+     * 
+     * @return 
+     *     {@link VMTag }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VMTag get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class VMTags extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, VMTag.class);
     }
 
+    /**
+     * Adds Tag object.
+     * 
+     * @param Tag
+     *
+     * @return
+     *     {@link VMTag }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VMTag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

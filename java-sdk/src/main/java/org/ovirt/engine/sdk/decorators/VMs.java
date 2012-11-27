@@ -37,16 +37,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * VMs decorator.
+ */
 @SuppressWarnings("unused")
 public class VMs extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.VM, 
                             org.ovirt.engine.sdk.entities.VMs, 
                             VM> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public VMs(HttpProxyBroker proxy) {
         super(proxy, "vms");
     }
 
+    /**
+     * Lists VM objects.
+     *
+     * @return
+     *     List<VM>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<VM> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -54,6 +71,16 @@ public class VMs extends
         return list(url, org.ovirt.engine.sdk.entities.VMs.class, VM.class);
     }
 
+    /**
+     * Fetches VM object by id.
+     *
+     * @return {@link VM }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public VM get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -61,6 +88,17 @@ public class VMs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, VM.class);
     }
 
+    /**
+     * Adds VM object.
+     *
+     * @return
+     *     {@link VM }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public VM add(org.ovirt.engine.sdk.entities.VM vm) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = SLASH + getName();

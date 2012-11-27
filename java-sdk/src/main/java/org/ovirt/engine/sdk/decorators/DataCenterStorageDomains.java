@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * StorageDomains decorator.
+ */
 @SuppressWarnings("unused")
 public class DataCenterStorageDomains extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.StorageDomain,
@@ -45,11 +48,26 @@ public class DataCenterStorageDomains extends
 
     private DataCenter parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent DataCenter
+     */
     public DataCenterStorageDomains(HttpProxyBroker proxy, DataCenter parent) {
         super(proxy, "storagedomains");
         this.parent = parent;
     }
 
+    /**
+     * Lists DataCenterStorageDomain objects.
+     * 
+     * @return
+     *     List<DataCenterStorageDomain>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<DataCenterStorageDomain> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class DataCenterStorageDomains extends
         return list(url, org.ovirt.engine.sdk.entities.StorageDomains.class, DataCenterStorageDomain.class);
     }
 
+    /**
+     * Fetches DataCenterStorageDomain object by id.
+     * 
+     * @return 
+     *     {@link DataCenterStorageDomain }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public DataCenterStorageDomain get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class DataCenterStorageDomains extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, DataCenterStorageDomain.class);
     }
 
+    /**
+     * Adds StorageDomain object.
+     * 
+     * @param StorageDomain
+     *
+     * @return
+     *     {@link DataCenterStorageDomain }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public DataCenterStorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

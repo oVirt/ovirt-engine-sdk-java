@@ -17,16 +17,33 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * $publicCollectionName$ decorator.
+ */
 @SuppressWarnings("unused")
 public class $decoratorCollectionName$ extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.$publicEntityName$, 
                             org.ovirt.engine.sdk.entities.$publicCollectionName$, 
                             $decoratorEntityName$> {
 
+    /**
+     * @param proxy HttpProxyBroker
+     */
     public $decoratorCollectionName$(HttpProxyBroker proxy) {
         super(proxy, "$urlCollectionName$");
     }
 
+    /**
+     * Lists $decoratorEntityName$ objects.
+     *
+     * @return
+     *     List<$decoratorEntityName$>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<$decoratorEntityName$> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -34,6 +51,16 @@ public class $decoratorCollectionName$ extends
         return list(url, org.ovirt.engine.sdk.entities.$publicCollectionName$.class, $decoratorEntityName$.class);
     }
 
+    /**
+     * Fetches $decoratorEntityName$ object by id.
+     *
+     * @return {@link $decoratorEntityName$ }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public $decoratorEntityName$ get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {

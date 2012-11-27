@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Tags decorator.
+ */
 @SuppressWarnings("unused")
 public class UserTags extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Tag,
@@ -45,11 +48,26 @@ public class UserTags extends
 
     private User parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent User
+     */
     public UserTags(HttpProxyBroker proxy, User parent) {
         super(proxy, "tags");
         this.parent = parent;
     }
 
+    /**
+     * Lists UserTag objects.
+     * 
+     * @return
+     *     List<UserTag>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<UserTag> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class UserTags extends
         return list(url, org.ovirt.engine.sdk.entities.Tags.class, UserTag.class);
     }
 
+    /**
+     * Fetches UserTag object by id.
+     * 
+     * @return 
+     *     {@link UserTag }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public UserTag get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class UserTags extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, UserTag.class);
     }
 
+    /**
+     * Adds Tag object.
+     * 
+     * @param Tag
+     *
+     * @return
+     *     {@link UserTag }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public UserTag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

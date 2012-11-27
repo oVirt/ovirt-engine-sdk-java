@@ -37,6 +37,9 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
+/**
+ * Permissions decorator.
+ */
 @SuppressWarnings("unused")
 public class StorageDomainPermissions extends
         CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
@@ -45,11 +48,26 @@ public class StorageDomainPermissions extends
 
     private StorageDomain parent;
 
+    /**
+     * @param proxy HttpProxyBroker
+     * @param parent StorageDomain
+     */
     public StorageDomainPermissions(HttpProxyBroker proxy, StorageDomain parent) {
         super(proxy, "permissions");
         this.parent = parent;
     }
 
+    /**
+     * Lists StorageDomainPermission objects.
+     * 
+     * @return
+     *     List<StorageDomainPermission>
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public List<StorageDomainPermission> list() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -57,6 +75,17 @@ public class StorageDomainPermissions extends
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, StorageDomainPermission.class);
     }
 
+    /**
+     * Fetches StorageDomainPermission object by id.
+     * 
+     * @return 
+     *     {@link StorageDomainPermission }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     @Override
     public StorageDomainPermission get(UUID id) throws ClientProtocolException,
             ServerException, IOException, JAXBException {
@@ -64,6 +93,19 @@ public class StorageDomainPermissions extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, StorageDomainPermission.class);
     }
 
+    /**
+     * Adds Permission object.
+     * 
+     * @param Permission
+     *
+     * @return
+     *     {@link StorageDomainPermission }
+     *
+     * @throws ClientProtocolException
+     * @throws ServerException
+     * @throws IOException
+     * @throws JAXBException
+     */
     public StorageDomainPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException, JAXBException {
         String url = this.parent.getHref() + SLASH + getName();

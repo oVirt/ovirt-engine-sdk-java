@@ -34,16 +34,19 @@ public class ResourceActionMethodTemplate extends AbstractTemplate {
      *            name of java method
      * @param actionName
      *            name of api action
+     * @param docParams
+     *            documentation params
      * 
      * @return
      */
-    public String getTemplate(String methodName, String actionName) {
+    public String getTemplate(String methodName, String actionName, String docParams) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getTemplate());
 
         templateWrapper.set("methodName", methodName);
         templateWrapper.set("actionName", actionName);
+        templateWrapper.set("docParams", docParams);
 
         return templateWrapper.toString();
     }

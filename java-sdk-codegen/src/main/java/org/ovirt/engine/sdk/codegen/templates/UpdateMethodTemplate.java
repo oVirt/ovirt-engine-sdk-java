@@ -32,16 +32,18 @@ public class UpdateMethodTemplate extends AbstractTemplate {
      * 
      * @param decoratorName
      * @param publicEntityName
+     * @param docParams
      * 
      * @return
      */
-    public String getTemplate(String decoratorName, String publicEntityName) {
+    public String getTemplate(String decoratorName, String publicEntityName, String docParams) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getTemplate());
 
         templateWrapper.set("decoratorName", decoratorName);
         templateWrapper.set("publicEntityName", publicEntityName);
+        templateWrapper.set("docParams", docParams);
 
         return templateWrapper.toString();
     }
