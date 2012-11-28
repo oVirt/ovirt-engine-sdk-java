@@ -24,8 +24,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
@@ -62,11 +60,10 @@ public class Domains extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     @Override
     public List<Domain> list() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Domains.class, Domain.class);
     }
@@ -79,11 +76,10 @@ public class Domains extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     @Override
     public Domain get(UUID id) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Domain.class, Domain.class);
     }

@@ -22,8 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.BaseResource;
@@ -73,9 +71,8 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @throws ServerException
      *             oVirt API error
      * @throws IOException
-     * @throws JAXBException
      */
-    abstract public List<Z> list() throws ClientProtocolException, ServerException, IOException, JAXBException;
+    abstract public List<Z> list() throws ClientProtocolException, ServerException, IOException;
 
     /**
      * Fetches entity from the collection by id
@@ -89,9 +86,8 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @throws ServerException
      *             oVirt API error
      * @throws IOException
-     * @throws JAXBException
      */
-    abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException, JAXBException;
+    abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException;
 
     /**
      * Fetches object by name.
@@ -104,22 +100,20 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
-    public Z get(String name) throws ClientProtocolException, ServerException, IOException, JAXBException {
+    public Z get(String name) throws ClientProtocolException, ServerException, IOException {
         List<Z> collection = list();
         return CollectionUtils.getItemByName(name, collection);
     }
 
-    protected List<Z> list(String url, Class<Q> from, Class<Z> to) throws JAXBException,
-            ClientProtocolException, ServerException, IOException {
+    protected List<Z> list(String url, Class<Q> from, Class<Z> to) throws ClientProtocolException,
+            ServerException, IOException {
         return this.list(url, from, to, null);
     }
 
-    protected List<Z> list(String url, Class<Q> from, Class<Z> to, List<Header> headers) throws JAXBException,
-            ClientProtocolException, ServerException, IOException {
+    protected List<Z> list(String url, Class<Q> from, Class<Z> to, List<Header> headers)
+            throws ClientProtocolException, ServerException, IOException {
         String resXml = getProxy().get(url, headers);
-
         return unmarshall(from, to, resXml);
     }
 
@@ -134,10 +128,8 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      *            string
      * 
      * @return List<Z> where Z is a decorator type
-     * 
-     * @throws JAXBException
      */
-    private List<Z> unmarshall(Class<Q> from, Class<Z> to, String xml) throws JAXBException {
+    private List<Z> unmarshall(Class<Q> from, Class<Z> to, String xml) {
         List<Z> toColl = new ArrayList<Z>();
         Q collObj = SerializationHelper.unmarshall(from, xml);
         List<R> fromColl = fetchCollection(collObj);
@@ -146,7 +138,6 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
                 toColl.add(Mapper.map(res, to, getProxy()));
             }
         }
-
         return toColl;
     }
 

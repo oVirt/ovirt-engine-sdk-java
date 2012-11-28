@@ -23,8 +23,6 @@ package org.ovirt.engine.sdk.decorators;
 import java.io.IOException;
 import java.util.List;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
@@ -100,10 +98,9 @@ public class HostNIC extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public HostNIC update() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
     }
@@ -122,10 +119,9 @@ public class HostNIC extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action detach(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -146,10 +142,9 @@ public class HostNIC extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action attach(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/attach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -162,10 +157,9 @@ public class HostNIC extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Response delete() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }

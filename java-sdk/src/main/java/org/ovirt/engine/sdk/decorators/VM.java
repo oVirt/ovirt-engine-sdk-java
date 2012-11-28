@@ -23,8 +23,6 @@ package org.ovirt.engine.sdk.decorators;
 import java.io.IOException;
 import java.util.List;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
@@ -176,10 +174,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action suspend(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/suspend";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -227,10 +224,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public VM update() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, VM.class);
     }
@@ -245,10 +241,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action stop(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/stop";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -263,10 +258,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action cancelmigration(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/cancelmigration";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -289,10 +283,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action export(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/export";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -307,10 +300,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action detach(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/detach";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -325,10 +317,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action ticket(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/ticket";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -360,10 +351,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action start(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/start";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -385,10 +375,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action migrate(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/migrate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -401,10 +390,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Response delete() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
@@ -425,10 +413,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action move(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/move";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -443,10 +430,9 @@ public class VM extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action shutdown(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/shutdown";
         return getProxy().action(url, action, Action.class, Action.class);
     }

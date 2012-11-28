@@ -23,8 +23,6 @@ package org.ovirt.engine.sdk.decorators;
 import java.io.IOException;
 import java.util.List;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
@@ -71,10 +69,9 @@ public class DataCenterStorageDomain extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action activate(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -87,10 +84,9 @@ public class DataCenterStorageDomain extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Response delete() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
@@ -105,10 +101,9 @@ public class DataCenterStorageDomain extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action deactivate(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/deactivate";
         return getProxy().action(url, action, Action.class, Action.class);
     }

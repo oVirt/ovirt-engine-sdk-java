@@ -24,8 +24,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
@@ -62,11 +60,10 @@ public class Disks extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     @Override
     public List<Disk> list() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Disks.class, Disk.class);
     }
@@ -79,11 +76,10 @@ public class Disks extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     @Override
     public Disk get(UUID id) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, Disk.class);
     }
@@ -128,10 +124,9 @@ public class Disks extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Disk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
-            ClientProtocolException, ServerException, IOException, JAXBException {
+            ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
         return getProxy().add(url, disk, org.ovirt.engine.sdk.entities.Disk.class, Disk.class);
     }

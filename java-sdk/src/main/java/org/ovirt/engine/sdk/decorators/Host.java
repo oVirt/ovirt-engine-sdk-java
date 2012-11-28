@@ -23,8 +23,6 @@ package org.ovirt.engine.sdk.decorators;
 import java.io.IOException;
 import java.util.List;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
@@ -135,10 +133,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action install(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/install";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -153,10 +150,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action activate(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/activate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -187,10 +183,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Host update() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Host.class, Host.class);
     }
@@ -205,10 +200,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action fence(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/fence";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -227,10 +221,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action iscsidiscover(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/iscsidiscover";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -251,10 +244,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action approve(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/approve";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -274,10 +266,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action iscsilogin(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/iscsilogin";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -290,10 +281,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Response delete() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
@@ -308,10 +298,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action deactivate(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/deactivate";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -326,10 +315,9 @@ public class Host extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action commitnetconfig(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/commitnetconfig";
         return getProxy().action(url, action, Action.class, Action.class);
     }

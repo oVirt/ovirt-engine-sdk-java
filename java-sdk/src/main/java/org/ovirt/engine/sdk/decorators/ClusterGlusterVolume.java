@@ -23,8 +23,6 @@ package org.ovirt.engine.sdk.decorators;
 import java.io.IOException;
 import java.util.List;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
@@ -90,10 +88,9 @@ public class ClusterGlusterVolume extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action stop(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/stop";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -112,10 +109,9 @@ public class ClusterGlusterVolume extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action start(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/start";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -133,10 +129,9 @@ public class ClusterGlusterVolume extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action resetalloptions(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/resetalloptions";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -149,10 +144,9 @@ public class ClusterGlusterVolume extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Response delete() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().delete(url, Response.class);
     }
@@ -172,10 +166,9 @@ public class ClusterGlusterVolume extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action resetoption(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/resetoption";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -195,10 +188,9 @@ public class ClusterGlusterVolume extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action setoption(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/setoption";
         return getProxy().action(url, action, Action.class, Action.class);
     }
@@ -218,10 +210,9 @@ public class ClusterGlusterVolume extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public Action rebalance(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref() + "/rebalance";
         return getProxy().action(url, action, Action.class, Action.class);
     }

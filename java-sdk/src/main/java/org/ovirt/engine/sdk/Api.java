@@ -22,8 +22,6 @@ package org.ovirt.engine.sdk;
 
 import java.io.IOException;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.ConnectionsPoolBuilder;
@@ -74,12 +72,9 @@ public class Api {
      *             oVirt api error
      * @throws IOException
      * @throws UnsecuredConnectionAttemptError
-     * @throws JAXBException
      */
     public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
-            IOException, UnsecuredConnectionAttemptError, JAXBException {
-
-        // FIXME: do not throw ClientProtocolException/JAXBException
+            IOException, UnsecuredConnectionAttemptError {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password).build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool).build();
@@ -101,12 +96,9 @@ public class Api {
      *             oVirt api error
      * @throws UnsecuredConnectionAttemptError
      * @throws IOException
-     * @throws JAXBException
      */
     public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
-            ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
-
-        // FIXME: do not throw ClientProtocolException/JAXBException
+            ServerException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                                  .build();
@@ -133,13 +125,9 @@ public class Api {
      *             oVirt api error
      * @throws UnsecuredConnectionAttemptError
      * @throws IOException
-     * @throws JAXBException
      */
     public Api(String url, String username, String password, String ca_file, boolean filter)
-            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException,
-            JAXBException {
-
-        // FIXME: do not throw ClientProtocolException/JAXBException
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                                    .ca_file(ca_file)
@@ -181,14 +169,11 @@ public class Api {
      *             oVirt api error
      * @throws UnsecuredConnectionAttemptError
      * @throws IOException
-     * @throws JAXBException
      */
     public Api(String url, String username, String password, String key_file,
               String cert_file, String ca_file, Integer port, Integer timeout,
               Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
-            ServerException, UnsecuredConnectionAttemptError, IOException, JAXBException {
-
-        // FIXME: do not throw ClientProtocolException/JAXBException
+            ServerException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                                 .key_file(key_file)
@@ -208,7 +193,7 @@ public class Api {
     }
 
     private API getEntryPoint() throws ClientProtocolException, ServerException, IOException,
-            UnsecuredConnectionAttemptError, JAXBException {
+            UnsecuredConnectionAttemptError {
         String entryPointXML = this.proxy.get(this.proxy.getRoot());
         if (entryPointXML != null && !entryPointXML.equals("")) {
             return SerializationHelper.unmarshall(API.class, entryPointXML);
@@ -217,7 +202,7 @@ public class Api {
     }
 
     private void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
-            IOException, JAXBException {
+            IOException {
         this.entryPoint = getEntryPoint();
     }
 

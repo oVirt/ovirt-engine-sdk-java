@@ -8,10 +8,9 @@ $docParams$
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public $decoratorName$ update() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.getHref();
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorName$.class);
     }

@@ -24,8 +24,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
@@ -62,11 +60,10 @@ public class Users extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     @Override
     public List<User> list() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Users.class, User.class);
     }
@@ -79,11 +76,10 @@ public class Users extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     @Override
     public User get(UUID id) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, User.class);
     }
@@ -104,10 +100,9 @@ public class Users extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public User add(org.ovirt.engine.sdk.entities.User user) throws 
-            ClientProtocolException, ServerException, IOException, JAXBException {
+            ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
         return getProxy().add(url, user, org.ovirt.engine.sdk.entities.User.class, User.class);
     }

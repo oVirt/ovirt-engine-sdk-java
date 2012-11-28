@@ -24,8 +24,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
@@ -66,11 +64,10 @@ public class TemplatePermissions extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     @Override
     public List<TemplatePermission> list() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class, TemplatePermission.class);
     }
@@ -84,11 +81,10 @@ public class TemplatePermissions extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     @Override
     public TemplatePermission get(UUID id) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, TemplatePermission.class);
     }
@@ -114,10 +110,9 @@ public class TemplatePermissions extends
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public TemplatePermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
-            ClientProtocolException, ServerException, IOException, JAXBException {
+            ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
         return getProxy().add(url, permission, org.ovirt.engine.sdk.entities.Permission.class, TemplatePermission.class);
     }

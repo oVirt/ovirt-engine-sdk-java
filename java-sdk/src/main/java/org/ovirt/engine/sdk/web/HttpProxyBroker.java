@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXBException;
-
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -69,10 +67,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T update(String url, F entity, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         return update(url, entity, from, to, null);
     }
 
@@ -95,10 +92,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T update(String url, F entity, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
 
         HttpPut httpput = new HttpPut(this.urlHelper.combine(url));
 
@@ -129,10 +125,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T action(String url, F entity, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         return add(url, entity, from, to, null);
     }
 
@@ -155,10 +150,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T action(String url, F entity, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         return add(url, entity, from, to, headers);
     }
 
@@ -179,10 +173,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T add(String url, F entity, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         return add(url, entity, from, to, null);
     }
 
@@ -206,10 +199,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T add(String url, F entity, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
 
         HttpPost httpost = new HttpPost(this.urlHelper.combine(url));
 
@@ -234,10 +226,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T delete(String url, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         return delete(url, null, null, to, null);
     }
 
@@ -258,10 +249,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T delete(String url, F entity, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         return delete(url, entity, from, to, null);
     }
 
@@ -284,10 +274,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T delete(String url, F entity, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
 
         HttpDelete httdelete = new HttpDelete(this.urlHelper.combine(url));
         if (entity != null && from != null) {
@@ -317,11 +306,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T get(String url, Class<F> from, Class<T> to, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
-
+            throws IOException, ClientProtocolException, ServerException {
         HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
         String xmlRes = this.proxy.execute(httpget, headers, null);
 
@@ -343,10 +330,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F, T> T get(String url, Class<F> from, Class<T> to)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         return get(url, from, to, null);
     }
 
@@ -363,10 +349,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public <F> F get(String url, Class<F> from)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
         String xmlRes = this.proxy.execute(httpget, null, null);
         return SerializationHelper.unmarshall(from, xmlRes);
@@ -383,10 +368,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public String get(String url)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
         return get(url, new ArrayList<Header>());
     }
 
@@ -403,10 +387,9 @@ public class HttpProxyBroker {
      * @throws IOException
      * @throws ClientProtocolException
      * @throws ServerException
-     * @throws JAXBException
      */
     public String get(String url, List<Header> headers)
-            throws IOException, ClientProtocolException, ServerException, JAXBException {
+            throws IOException, ClientProtocolException, ServerException {
 
         HttpGet httpget = new HttpGet(this.urlHelper.combine(url));
         return this.proxy.execute(httpget, headers, null);
@@ -495,9 +478,8 @@ public class HttpProxyBroker {
      * 
      * @return decorator
      * 
-     * @throws JAXBException
      */
-    private <F, T> T unmarshall(Class<F> from, Class<T> to, String xml) throws JAXBException {
+    private <F, T> T unmarshall(Class<F> from, Class<T> to, String xml) {
         F res = SerializationHelper.unmarshall(from, xml);
         return Mapper.map(res, to, this);
     }

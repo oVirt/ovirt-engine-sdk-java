@@ -30,6 +30,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
 
+import org.ovirt.engine.sdk.exceptions.MarshallingException;
+
 /**
  * Provides serialization services.
  * 
@@ -42,6 +44,14 @@ public class SerializationHelper {
     private SerializationHelper() {
     }
 
+    /**
+     * Marshalls object to XML
+     * 
+     * @param element
+     * @return XML String
+     * 
+     * @throws JAXBException
+     */
     private static <S> String marshall(JAXBElement<S> element) throws JAXBException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         marshall(baos, element);
@@ -57,13 +67,24 @@ public class SerializationHelper {
      *            Resource to marshall
      * 
      * @return XML string
+     */
+    public static <S> String marshall(Class<S> clz, S obj) {
+        try {
+            return marshall(new JAXBElement<S>(new QName("", clz.getSimpleName().toLowerCase()), clz, null, obj));
+        } catch (JAXBException e) {
+            // TODO: log error
+            throw new MarshallingException(e);
+        }
+    }
+
+    /**
+     * Marshalls object to XML
+     * 
+     * @param os
+     * @param element
      * 
      * @throws JAXBException
      */
-    public static <S> String marshall(Class<S> clz, S obj) throws JAXBException {
-        return marshall(new JAXBElement<S>(new QName("", clz.getSimpleName().toLowerCase()), clz, null, obj));
-    }
-
     private static <S> void marshall(OutputStream os, JAXBElement<S> element) throws JAXBException {
         Marshaller marshaller = getContext(element.getDeclaredType()).getMarshaller();
         synchronized (marshaller) {
@@ -80,17 +101,28 @@ public class SerializationHelper {
      *            string to unmarshall from
      * 
      * @return S
-     * 
-     * @throws JAXBException
      */
-    public static <S> S unmarshall(Class<S> clz, String xml) throws JAXBException {
-        Unmarshaller unmarshaller = getContext(clz).getUnmarshaller();
-        synchronized (unmarshaller) {
-            JAXBElement<S> root = unmarshaller.unmarshal(new StreamSource(new StringReader(xml)), clz);
-            return root.getValue();
+    public static <S> S unmarshall(Class<S> clz, String xml) {
+        try {
+            Unmarshaller unmarshaller = getContext(clz).getUnmarshaller();
+            synchronized (unmarshaller) {
+                JAXBElement<S> root = unmarshaller.unmarshal(new StreamSource(new StringReader(xml)), clz);
+                return root.getValue();
+            }
+        } catch (JAXBException e) {
+            // TODO: log error
+            throw new MarshallingException(e);
         }
     }
 
+    /**
+     * Fetches JAXB context.
+     * 
+     * @param clz
+     * @return JAXBContextHolder
+     * 
+     * @throws JAXBException
+     */
     private synchronized static JAXBContextHolder getContext(Class<?> clz) throws JAXBException {
         if (JAXB_CONTEXT == null) {
             JAXB_CONTEXT = JAXBContext.newInstance(PACKAGE_CONTEXT);
@@ -101,6 +133,9 @@ public class SerializationHelper {
         return contexts.get(clz);
     }
 
+    /**
+     * JAXBContextHolder
+     */
     private static class JAXBContextHolder {
         Unmarshaller unmarshaller;
         Marshaller marshaller;

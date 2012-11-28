@@ -7,10 +7,9 @@ $docParams$
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
-     * @throws JAXBException
      */
     public $decoratorName$ add(org.ovirt.engine.sdk.entities.$publicEntityName$ $publicEntityNameLowerCase$) throws 
-            ClientProtocolException, ServerException, IOException, JAXBException {
+            ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
         return getProxy().add(url, $publicEntityNameLowerCase$, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorName$.class);
     }

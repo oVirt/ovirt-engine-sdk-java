@@ -7,10 +7,9 @@ $docParams$
     * @throws ClientProtocolException
     * @throws ServerException
     * @throws IOException
-    * @throws JAXBException
     */
    public Action $methodName$(Action action) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+            ServerException, IOException {
         String url = this.parent.getHref() + SLASH + "$actionName$";
         return getProxy().action(url, action, Action.class, Action.class);
     }
