@@ -23,8 +23,11 @@ import org.ovirt.engine.sdk.entities.ParametersSet;
 /**
  * Provides documentation related codegen capabilities
  */
-public class DocsCodegen {
+public class DocsGen {
 
+    private static final String SPACE = " ";
+    private static final String BREACKS_OPEN = "[";
+    private static final String BREACKS_CLOSE = "]";
     private static final String NEW_LINE = "\n";
     private static final String PRE_CLOSE = " </pre>";
     private static final String PRE_OPEN = " <pre>";
@@ -51,12 +54,13 @@ public class DocsCodegen {
                 docParams.append(NEW_LINE + PREFIX + PRE_OPEN);
                 int i = 1;
                 for (ParametersSet ps : detailedLink.getRequest().getBody().getParametersSets()) {
-                    docParams.append(NEW_LINE + PREFIX + OVERLOAD + i + ": \n");
+                    docParams.append(NEW_LINE + PREFIX + OVERLOAD + i + ": " + NEW_LINE);
                     for (Parameter param : ps.getParameters()) {
                         if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
                             docParams.append(PREFIX + offset + param.getName() + NEW_LINE);
                         } else {
-                            docParams.append(PREFIX + offset + "[" + param.getName() + "]" + NEW_LINE);
+                            docParams.append(PREFIX + offset + BREACKS_OPEN + param.getName() +
+                                                               BREACKS_CLOSE + NEW_LINE);
                         }
                     }
                     docParams.append(PREFIX);
@@ -69,9 +73,10 @@ public class DocsCodegen {
                     for (Parameter param : detailedLink.getRequest()
                             .getBody().getParametersSets().get(0).getParameters()) {
                         if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
-                            docParams.append(NEW_LINE + PREFIX + " " + param.getName());
+                            docParams.append(NEW_LINE + PREFIX + SPACE + param.getName());
                         } else {
-                            docParams.append(NEW_LINE + PREFIX + " [" + param.getName() + "]");
+                            docParams.append(NEW_LINE + PREFIX + SPACE + BREACKS_OPEN + param.getName() +
+                                                                         BREACKS_CLOSE);
                         }
                     }
                     docParams.append(NEW_LINE + PREFIX + PRE_CLOSE);
