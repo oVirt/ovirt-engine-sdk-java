@@ -61,7 +61,7 @@ public class Host extends
     }
 
     /**
-     * Gets the value of the HostNICs property.
+     * Gets HostNICs collection decorator.
      * 
      * @return
      *     {@link HostNICs }
@@ -74,7 +74,7 @@ public class Host extends
         return hostNICs;
     }
     /**
-     * Gets the value of the HostTags property.
+     * Gets HostTags collection decorator.
      * 
      * @return
      *     {@link HostTags }
@@ -87,7 +87,7 @@ public class Host extends
         return hostTags;
     }
     /**
-     * Gets the value of the HostPermissions property.
+     * Gets HostPermissions collection decorator.
      * 
      * @return
      *     {@link HostPermissions }
@@ -100,7 +100,7 @@ public class Host extends
         return hostPermissions;
     }
     /**
-     * Gets the value of the HostStatistics property.
+     * Gets HostStatistics collection decorator.
      * 
      * @return
      *     {@link HostStatistics }

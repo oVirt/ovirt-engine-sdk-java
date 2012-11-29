@@ -58,7 +58,7 @@ public class UserRole extends
     }
 
     /**
-     * Gets the value of the UserRolePermits property.
+     * Gets UserRolePermits collection decorator.
      * 
      * @return
      *     {@link UserRolePermits }

@@ -271,7 +271,7 @@ public class Api {
     }
 
     /**
-     * Gets the value of the Networks property.
+     * Gets Networks collection decorator.
      * 
      * @return
      *     {@link Networks }
@@ -284,7 +284,7 @@ public class Api {
         return networks;
     }
     /**
-     * Gets the value of the Tags property.
+     * Gets Tags collection decorator.
      * 
      * @return
      *     {@link Tags }
@@ -297,7 +297,7 @@ public class Api {
         return tags;
     }
     /**
-     * Gets the value of the Users property.
+     * Gets Users collection decorator.
      * 
      * @return
      *     {@link Users }
@@ -310,7 +310,7 @@ public class Api {
         return users;
     }
     /**
-     * Gets the value of the Templates property.
+     * Gets Templates collection decorator.
      * 
      * @return
      *     {@link Templates }
@@ -323,7 +323,7 @@ public class Api {
         return templates;
     }
     /**
-     * Gets the value of the Events property.
+     * Gets Events collection decorator.
      * 
      * @return
      *     {@link Events }
@@ -336,7 +336,7 @@ public class Api {
         return events;
     }
     /**
-     * Gets the value of the Domains property.
+     * Gets Domains collection decorator.
      * 
      * @return
      *     {@link Domains }
@@ -349,7 +349,7 @@ public class Api {
         return domains;
     }
     /**
-     * Gets the value of the Disks property.
+     * Gets Disks collection decorator.
      * 
      * @return
      *     {@link Disks }
@@ -362,7 +362,7 @@ public class Api {
         return disks;
     }
     /**
-     * Gets the value of the Clusters property.
+     * Gets Clusters collection decorator.
      * 
      * @return
      *     {@link Clusters }
@@ -375,7 +375,7 @@ public class Api {
         return clusters;
     }
     /**
-     * Gets the value of the DataCenters property.
+     * Gets DataCenters collection decorator.
      * 
      * @return
      *     {@link DataCenters }
@@ -388,7 +388,7 @@ public class Api {
         return dataCenters;
     }
     /**
-     * Gets the value of the Roles property.
+     * Gets Roles collection decorator.
      * 
      * @return
      *     {@link Roles }
@@ -401,7 +401,7 @@ public class Api {
         return roles;
     }
     /**
-     * Gets the value of the Hosts property.
+     * Gets Hosts collection decorator.
      * 
      * @return
      *     {@link Hosts }
@@ -414,7 +414,7 @@ public class Api {
         return hosts;
     }
     /**
-     * Gets the value of the VMs property.
+     * Gets VMs collection decorator.
      * 
      * @return
      *     {@link VMs }
@@ -427,7 +427,7 @@ public class Api {
         return vMs;
     }
     /**
-     * Gets the value of the VmPools property.
+     * Gets VmPools collection decorator.
      * 
      * @return
      *     {@link VmPools }
@@ -440,7 +440,7 @@ public class Api {
         return vmPools;
     }
     /**
-     * Gets the value of the StorageDomains property.
+     * Gets StorageDomains collection decorator.
      * 
      * @return
      *     {@link StorageDomains }
@@ -453,7 +453,7 @@ public class Api {
         return storageDomains;
     }
     /**
-     * Gets the value of the Groups property.
+     * Gets Groups collection decorator.
      * 
      * @return
      *     {@link Groups }

@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Roles decorator.
+ * GroupRoles decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Roles } decorating services.
  */
 @SuppressWarnings("unused")
 public class GroupRoles extends

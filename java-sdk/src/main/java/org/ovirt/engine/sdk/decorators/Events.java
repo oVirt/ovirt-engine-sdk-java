@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Events decorator.
+ * Events decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Events } decorating services.
  */
 @SuppressWarnings("unused")
 public class Events extends

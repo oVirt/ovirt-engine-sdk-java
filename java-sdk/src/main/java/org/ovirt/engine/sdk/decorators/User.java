@@ -60,7 +60,7 @@ public class User extends
     }
 
     /**
-     * Gets the value of the UserRoles property.
+     * Gets UserRoles collection decorator.
      * 
      * @return
      *     {@link UserRoles }
@@ -73,7 +73,7 @@ public class User extends
         return userRoles;
     }
     /**
-     * Gets the value of the UserTags property.
+     * Gets UserTags collection decorator.
      * 
      * @return
      *     {@link UserTags }
@@ -86,7 +86,7 @@ public class User extends
         return userTags;
     }
     /**
-     * Gets the value of the UserPermissions property.
+     * Gets UserPermissions collection decorator.
      * 
      * @return
      *     {@link UserPermissions }

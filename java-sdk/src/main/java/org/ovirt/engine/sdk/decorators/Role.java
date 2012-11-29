@@ -58,7 +58,7 @@ public class Role extends
     }
 
     /**
-     * Gets the value of the RolePermits property.
+     * Gets RolePermits collection decorator.
      * 
      * @return
      *     {@link RolePermits }

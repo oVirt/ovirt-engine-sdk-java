@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Permissions decorator.
+ * VMPermissions decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Permissions } decorating services.
  */
 @SuppressWarnings("unused")
 public class VMPermissions extends

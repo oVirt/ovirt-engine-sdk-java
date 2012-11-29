@@ -58,7 +58,7 @@ public class ClusterGlusterVolume extends
     }
 
     /**
-     * Gets the value of the ClusterGlusterVolumeGlusterBricks property.
+     * Gets ClusterGlusterVolumeGlusterBricks collection decorator.
      * 
      * @return
      *     {@link ClusterGlusterVolumeGlusterBricks }

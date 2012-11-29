@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Statistics decorator.
+ * HostNICStatistics decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Statistics } decorating services.
  */
 @SuppressWarnings("unused")
 public class HostNICStatistics extends

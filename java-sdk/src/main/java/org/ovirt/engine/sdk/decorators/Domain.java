@@ -59,7 +59,7 @@ public class Domain extends
     }
 
     /**
-     * Gets the value of the DomainGroups property.
+     * Gets DomainGroups collection decorator.
      * 
      * @return
      *     {@link DomainGroups }
@@ -72,7 +72,7 @@ public class Domain extends
         return domainGroups;
     }
     /**
-     * Gets the value of the DomainUsers property.
+     * Gets DomainUsers collection decorator.
      * 
      * @return
      *     {@link DomainUsers }

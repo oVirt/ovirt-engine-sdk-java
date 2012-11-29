@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Tags decorator.
+ * UserTags decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Tags } decorating services.
  */
 @SuppressWarnings("unused")
 public class UserTags extends

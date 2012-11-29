@@ -58,7 +58,7 @@ public class GroupRole extends
     }
 
     /**
-     * Gets the value of the GroupRolePermits property.
+     * Gets GroupRolePermits collection decorator.
      * 
      * @return
      *     {@link GroupRolePermits }

@@ -60,7 +60,7 @@ public class DataCenter extends
     }
 
     /**
-     * Gets the value of the DataCenterPermissions property.
+     * Gets DataCenterPermissions collection decorator.
      * 
      * @return
      *     {@link DataCenterPermissions }
@@ -73,7 +73,7 @@ public class DataCenter extends
         return dataCenterPermissions;
     }
     /**
-     * Gets the value of the DataCenterStorageDomains property.
+     * Gets DataCenterStorageDomains collection decorator.
      * 
      * @return
      *     {@link DataCenterStorageDomains }
@@ -86,7 +86,7 @@ public class DataCenter extends
         return dataCenterStorageDomains;
     }
     /**
-     * Gets the value of the DataCenterQuotas property.
+     * Gets DataCenterQuotas collection decorator.
      * 
      * @return
      *     {@link DataCenterQuotas }

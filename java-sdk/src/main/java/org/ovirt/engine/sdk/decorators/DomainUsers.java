@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Users decorator.
+ * DomainUsers decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Users } decorating services.
  */
 @SuppressWarnings("unused")
 public class DomainUsers extends

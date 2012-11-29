@@ -58,7 +58,7 @@ public class HostNIC extends
     }
 
     /**
-     * Gets the value of the HostNICStatistics property.
+     * Gets HostNICStatistics collection decorator.
      * 
      * @return
      *     {@link HostNICStatistics }

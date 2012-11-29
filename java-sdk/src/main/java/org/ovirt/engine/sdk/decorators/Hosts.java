@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Hosts decorator.
+ * Hosts decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Hosts } decorating services.
  */
 @SuppressWarnings("unused")
 public class Hosts extends

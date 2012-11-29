@@ -64,7 +64,7 @@ public class VM extends
     }
 
     /**
-     * Gets the value of the VMPermissions property.
+     * Gets VMPermissions collection decorator.
      * 
      * @return
      *     {@link VMPermissions }
@@ -77,7 +77,7 @@ public class VM extends
         return vMPermissions;
     }
     /**
-     * Gets the value of the VMTags property.
+     * Gets VMTags collection decorator.
      * 
      * @return
      *     {@link VMTags }
@@ -90,7 +90,7 @@ public class VM extends
         return vMTags;
     }
     /**
-     * Gets the value of the VMSnapshots property.
+     * Gets VMSnapshots collection decorator.
      * 
      * @return
      *     {@link VMSnapshots }
@@ -103,7 +103,7 @@ public class VM extends
         return vMSnapshots;
     }
     /**
-     * Gets the value of the VMStatistics property.
+     * Gets VMStatistics collection decorator.
      * 
      * @return
      *     {@link VMStatistics }
@@ -116,7 +116,7 @@ public class VM extends
         return vMStatistics;
     }
     /**
-     * Gets the value of the VMDisks property.
+     * Gets VMDisks collection decorator.
      * 
      * @return
      *     {@link VMDisks }
@@ -129,7 +129,7 @@ public class VM extends
         return vMDisks;
     }
     /**
-     * Gets the value of the VMNICs property.
+     * Gets VMNICs collection decorator.
      * 
      * @return
      *     {@link VMNICs }
@@ -142,7 +142,7 @@ public class VM extends
         return vMNICs;
     }
     /**
-     * Gets the value of the VMCdRoms property.
+     * Gets VMCdRoms collection decorator.
      * 
      * @return
      *     {@link VMCdRoms }

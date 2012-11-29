@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Quotas decorator.
+ * DataCenterQuotas decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Quotas } decorating services.
  */
 @SuppressWarnings("unused")
 public class DataCenterQuotas extends

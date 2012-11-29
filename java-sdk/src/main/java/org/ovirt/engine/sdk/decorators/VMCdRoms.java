@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * CdRoms decorator.
+ * VMCdRoms decorator
+ * providing {@link org.ovirt.engine.sdk.entities.CdRoms } decorating services.
  */
 @SuppressWarnings("unused")
 public class VMCdRoms extends

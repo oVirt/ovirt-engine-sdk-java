@@ -61,7 +61,7 @@ public class Template extends
     }
 
     /**
-     * Gets the value of the TemplateCdRoms property.
+     * Gets TemplateCdRoms collection decorator.
      * 
      * @return
      *     {@link TemplateCdRoms }
@@ -74,7 +74,7 @@ public class Template extends
         return templateCdRoms;
     }
     /**
-     * Gets the value of the TemplateNICs property.
+     * Gets TemplateNICs collection decorator.
      * 
      * @return
      *     {@link TemplateNICs }
@@ -87,7 +87,7 @@ public class Template extends
         return templateNICs;
     }
     /**
-     * Gets the value of the TemplatePermissions property.
+     * Gets TemplatePermissions collection decorator.
      * 
      * @return
      *     {@link TemplatePermissions }
@@ -100,7 +100,7 @@ public class Template extends
         return templatePermissions;
     }
     /**
-     * Gets the value of the TemplateDisks property.
+     * Gets TemplateDisks collection decorator.
      * 
      * @return
      *     {@link TemplateDisks }

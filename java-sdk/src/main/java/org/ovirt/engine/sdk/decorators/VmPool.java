@@ -58,7 +58,7 @@ public class VmPool extends
     }
 
     /**
-     * Gets the value of the VmPoolPermissions property.
+     * Gets VmPoolPermissions collection decorator.
      * 
      * @return
      *     {@link VmPoolPermissions }

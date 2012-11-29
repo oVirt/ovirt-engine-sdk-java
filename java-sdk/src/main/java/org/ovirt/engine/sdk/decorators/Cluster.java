@@ -60,7 +60,7 @@ public class Cluster extends
     }
 
     /**
-     * Gets the value of the ClusterGlusterVolumes property.
+     * Gets ClusterGlusterVolumes collection decorator.
      * 
      * @return
      *     {@link ClusterGlusterVolumes }
@@ -73,7 +73,7 @@ public class Cluster extends
         return clusterGlusterVolumes;
     }
     /**
-     * Gets the value of the ClusterNetworks property.
+     * Gets ClusterNetworks collection decorator.
      * 
      * @return
      *     {@link ClusterNetworks }
@@ -86,7 +86,7 @@ public class Cluster extends
         return clusterNetworks;
     }
     /**
-     * Gets the value of the ClusterPermissions property.
+     * Gets ClusterPermissions collection decorator.
      * 
      * @return
      *     {@link ClusterPermissions }

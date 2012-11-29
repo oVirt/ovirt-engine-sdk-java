@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Networks decorator.
+ * ClusterNetworks decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Networks } decorating services.
  */
 @SuppressWarnings("unused")
 public class ClusterNetworks extends

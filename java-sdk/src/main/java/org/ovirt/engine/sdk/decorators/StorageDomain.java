@@ -61,7 +61,7 @@ public class StorageDomain extends
     }
 
     /**
-     * Gets the value of the StorageDomainPermissions property.
+     * Gets StorageDomainPermissions collection decorator.
      * 
      * @return
      *     {@link StorageDomainPermissions }
@@ -74,7 +74,7 @@ public class StorageDomain extends
         return storageDomainPermissions;
     }
     /**
-     * Gets the value of the StorageDomainVMs property.
+     * Gets StorageDomainVMs collection decorator.
      * 
      * @return
      *     {@link StorageDomainVMs }
@@ -87,7 +87,7 @@ public class StorageDomain extends
         return storageDomainVMs;
     }
     /**
-     * Gets the value of the StorageDomainTemplates property.
+     * Gets StorageDomainTemplates collection decorator.
      * 
      * @return
      *     {@link StorageDomainTemplates }
@@ -100,7 +100,7 @@ public class StorageDomain extends
         return storageDomainTemplates;
     }
     /**
-     * Gets the value of the StorageDomainFiles property.
+     * Gets StorageDomainFiles collection decorator.
      * 
      * @return
      *     {@link StorageDomainFiles }

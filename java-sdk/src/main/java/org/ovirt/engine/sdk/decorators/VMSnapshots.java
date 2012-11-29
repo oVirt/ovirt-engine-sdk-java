@@ -36,7 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Snapshots decorator.
+ * VMSnapshots decorator
+ * providing {@link org.ovirt.engine.sdk.entities.Snapshots } decorating services.
  */
 @SuppressWarnings("unused")
 public class VMSnapshots extends

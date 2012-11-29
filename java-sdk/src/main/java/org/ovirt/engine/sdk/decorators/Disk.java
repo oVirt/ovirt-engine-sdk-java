@@ -58,7 +58,7 @@ public class Disk extends
     }
 
     /**
-     * Gets the value of the DiskStatistics property.
+     * Gets DiskStatistics collection decorator.
      * 
      * @return
      *     {@link DiskStatistics }

@@ -16,7 +16,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * $publicCollectionName$ decorator.
+ * $decoratorSubCollectionName$ decorator
+ * providing {@link org.ovirt.engine.sdk.entities.$publicCollectionName$ } decorating services.
  */
 @SuppressWarnings("unused")
 public class $decoratorSubCollectionName$ extends
