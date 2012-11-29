@@ -76,7 +76,6 @@ public class Network extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link Network }
      *
      * @throws ClientProtocolException

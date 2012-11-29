@@ -59,7 +59,7 @@ public class ClusterGlusterVolumes extends
      * Lists ClusterGlusterVolume objects.
      * 
      * @return
-     *     List of ClusterGlusterVolumes
+     *     List of {@link ClusterGlusterVolume }
      *
      * @throws ClientProtocolException
      * @throws ServerException

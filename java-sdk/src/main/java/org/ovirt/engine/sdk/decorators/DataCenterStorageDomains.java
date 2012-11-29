@@ -59,7 +59,7 @@ public class DataCenterStorageDomains extends
      * Lists DataCenterStorageDomain objects.
      * 
      * @return
-     *     List of DataCenterStorageDomains
+     *     List of {@link DataCenterStorageDomain }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -59,7 +59,7 @@ public class VMNICs extends
      * Lists VMNIC objects.
      * 
      * @return
-     *     List of VMNICs
+     *     List of {@link VMNIC }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -59,7 +59,7 @@ public class HostPermissions extends
      * Lists HostPermission objects.
      * 
      * @return
-     *     List of HostPermissions
+     *     List of {@link HostPermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

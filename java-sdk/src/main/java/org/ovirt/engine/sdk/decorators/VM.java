@@ -67,7 +67,6 @@ public class VM extends
      * Gets the value of the VMPermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link VMPermissions }
      *     
      */
@@ -81,7 +80,6 @@ public class VM extends
      * Gets the value of the VMTags property.
      * 
      * @return
-     *     possible object is
      *     {@link VMTags }
      *     
      */
@@ -95,7 +93,6 @@ public class VM extends
      * Gets the value of the VMSnapshots property.
      * 
      * @return
-     *     possible object is
      *     {@link VMSnapshots }
      *     
      */
@@ -109,7 +106,6 @@ public class VM extends
      * Gets the value of the VMStatistics property.
      * 
      * @return
-     *     possible object is
      *     {@link VMStatistics }
      *     
      */
@@ -123,7 +119,6 @@ public class VM extends
      * Gets the value of the VMDisks property.
      * 
      * @return
-     *     possible object is
      *     {@link VMDisks }
      *     
      */
@@ -137,7 +132,6 @@ public class VM extends
      * Gets the value of the VMNICs property.
      * 
      * @return
-     *     possible object is
      *     {@link VMNICs }
      *     
      */
@@ -151,7 +145,6 @@ public class VM extends
      * Gets the value of the VMCdRoms property.
      * 
      * @return
-     *     possible object is
      *     {@link VMCdRoms }
      *     
      */
@@ -218,7 +211,6 @@ public class VM extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link VM }
      *
      * @throws ClientProtocolException

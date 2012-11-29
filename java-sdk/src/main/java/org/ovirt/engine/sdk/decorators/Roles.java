@@ -55,7 +55,7 @@ public class Roles extends
      * Lists Role objects.
      *
      * @return
-     *     List of Roles
+     *     List of {@link Role }
      *
      * @throws ClientProtocolException
      * @throws ServerException

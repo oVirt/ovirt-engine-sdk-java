@@ -55,7 +55,7 @@ public class VMs extends
      * Lists VM objects.
      *
      * @return
-     *     List of VMs
+     *     List of {@link VM }
      *
      * @throws ClientProtocolException
      * @throws ServerException

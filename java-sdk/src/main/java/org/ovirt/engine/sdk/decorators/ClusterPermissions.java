@@ -59,7 +59,7 @@ public class ClusterPermissions extends
      * Lists ClusterPermission objects.
      * 
      * @return
-     *     List of ClusterPermissions
+     *     List of {@link ClusterPermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -70,7 +70,6 @@ public class Tag extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link Tag }
      *
      * @throws ClientProtocolException

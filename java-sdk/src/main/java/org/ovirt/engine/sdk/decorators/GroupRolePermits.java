@@ -59,7 +59,7 @@ public class GroupRolePermits extends
      * Lists GroupRolePermit objects.
      * 
      * @return
-     *     List of GroupRolePermits
+     *     List of {@link GroupRolePermit }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -59,7 +59,7 @@ public class GroupTags extends
      * Lists GroupTag objects.
      * 
      * @return
-     *     List of GroupTags
+     *     List of {@link GroupTag }
      *
      * @throws ClientProtocolException
      * @throws ServerException

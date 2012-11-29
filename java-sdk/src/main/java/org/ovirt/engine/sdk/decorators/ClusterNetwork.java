@@ -69,7 +69,6 @@ public class ClusterNetwork extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link ClusterNetwork }
      *
      * @throws ClientProtocolException

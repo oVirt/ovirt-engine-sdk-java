@@ -59,7 +59,7 @@ public class VMDiskStatistics extends
      * Lists VMDiskStatistic objects.
      * 
      * @return
-     *     List of VMDiskStatistics
+     *     List of {@link VMDiskStatistic }
      *
      * @throws ClientProtocolException
      * @throws ServerException

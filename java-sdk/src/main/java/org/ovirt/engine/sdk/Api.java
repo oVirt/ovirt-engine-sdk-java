@@ -274,7 +274,6 @@ public class Api {
      * Gets the value of the Networks property.
      * 
      * @return
-     *     possible object is
      *     {@link Networks }
      *     
      */
@@ -288,7 +287,6 @@ public class Api {
      * Gets the value of the Tags property.
      * 
      * @return
-     *     possible object is
      *     {@link Tags }
      *     
      */
@@ -302,7 +300,6 @@ public class Api {
      * Gets the value of the Users property.
      * 
      * @return
-     *     possible object is
      *     {@link Users }
      *     
      */
@@ -316,7 +313,6 @@ public class Api {
      * Gets the value of the Templates property.
      * 
      * @return
-     *     possible object is
      *     {@link Templates }
      *     
      */
@@ -330,7 +326,6 @@ public class Api {
      * Gets the value of the Events property.
      * 
      * @return
-     *     possible object is
      *     {@link Events }
      *     
      */
@@ -344,7 +339,6 @@ public class Api {
      * Gets the value of the Domains property.
      * 
      * @return
-     *     possible object is
      *     {@link Domains }
      *     
      */
@@ -358,7 +352,6 @@ public class Api {
      * Gets the value of the Disks property.
      * 
      * @return
-     *     possible object is
      *     {@link Disks }
      *     
      */
@@ -372,7 +365,6 @@ public class Api {
      * Gets the value of the Clusters property.
      * 
      * @return
-     *     possible object is
      *     {@link Clusters }
      *     
      */
@@ -386,7 +378,6 @@ public class Api {
      * Gets the value of the DataCenters property.
      * 
      * @return
-     *     possible object is
      *     {@link DataCenters }
      *     
      */
@@ -400,7 +391,6 @@ public class Api {
      * Gets the value of the Roles property.
      * 
      * @return
-     *     possible object is
      *     {@link Roles }
      *     
      */
@@ -414,7 +404,6 @@ public class Api {
      * Gets the value of the Hosts property.
      * 
      * @return
-     *     possible object is
      *     {@link Hosts }
      *     
      */
@@ -428,7 +417,6 @@ public class Api {
      * Gets the value of the VMs property.
      * 
      * @return
-     *     possible object is
      *     {@link VMs }
      *     
      */
@@ -442,7 +430,6 @@ public class Api {
      * Gets the value of the VmPools property.
      * 
      * @return
-     *     possible object is
      *     {@link VmPools }
      *     
      */
@@ -456,7 +443,6 @@ public class Api {
      * Gets the value of the StorageDomains property.
      * 
      * @return
-     *     possible object is
      *     {@link StorageDomains }
      *     
      */
@@ -470,7 +456,6 @@ public class Api {
      * Gets the value of the Groups property.
      * 
      * @return
-     *     possible object is
      *     {@link Groups }
      *     
      */

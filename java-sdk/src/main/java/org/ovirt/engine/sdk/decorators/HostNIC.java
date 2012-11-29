@@ -61,7 +61,6 @@ public class HostNIC extends
      * Gets the value of the HostNICStatistics property.
      * 
      * @return
-     *     possible object is
      *     {@link HostNICStatistics }
      *     
      */
@@ -92,7 +91,6 @@ public class HostNIC extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link HostNIC }
      *
      * @throws ClientProtocolException

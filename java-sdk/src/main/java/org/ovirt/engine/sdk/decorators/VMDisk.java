@@ -61,7 +61,6 @@ public class VMDisk extends
      * Gets the value of the VMDiskStatistics property.
      * 
      * @return
-     *     possible object is
      *     {@link VMDiskStatistics }
      *     
      */
@@ -108,7 +107,6 @@ public class VMDisk extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link VMDisk }
      *
      * @throws ClientProtocolException

@@ -59,7 +59,7 @@ public class VMDisks extends
      * Lists VMDisk objects.
      * 
      * @return
-     *     List of VMDisks
+     *     List of {@link VMDisk }
      *
      * @throws ClientProtocolException
      * @throws ServerException

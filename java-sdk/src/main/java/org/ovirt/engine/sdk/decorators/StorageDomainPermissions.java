@@ -59,7 +59,7 @@ public class StorageDomainPermissions extends
      * Lists StorageDomainPermission objects.
      * 
      * @return
-     *     List of StorageDomainPermissions
+     *     List of {@link StorageDomainPermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

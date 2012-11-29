@@ -61,7 +61,6 @@ public class ClusterGlusterVolume extends
      * Gets the value of the ClusterGlusterVolumeGlusterBricks property.
      * 
      * @return
-     *     possible object is
      *     {@link ClusterGlusterVolumeGlusterBricks }
      *     
      */

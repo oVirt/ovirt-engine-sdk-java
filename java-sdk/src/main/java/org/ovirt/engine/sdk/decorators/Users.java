@@ -55,7 +55,7 @@ public class Users extends
      * Lists User objects.
      *
      * @return
-     *     List of Users
+     *     List of {@link User }
      *
      * @throws ClientProtocolException
      * @throws ServerException

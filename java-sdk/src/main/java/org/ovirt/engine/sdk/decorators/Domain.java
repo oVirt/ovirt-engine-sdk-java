@@ -62,7 +62,6 @@ public class Domain extends
      * Gets the value of the DomainGroups property.
      * 
      * @return
-     *     possible object is
      *     {@link DomainGroups }
      *     
      */
@@ -76,7 +75,6 @@ public class Domain extends
      * Gets the value of the DomainUsers property.
      * 
      * @return
-     *     possible object is
      *     {@link DomainUsers }
      *     
      */

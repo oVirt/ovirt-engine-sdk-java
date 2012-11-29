@@ -59,7 +59,7 @@ public class GroupRoles extends
      * Lists GroupRole objects.
      * 
      * @return
-     *     List of GroupRoles
+     *     List of {@link GroupRole }
      *
      * @throws ClientProtocolException
      * @throws ServerException

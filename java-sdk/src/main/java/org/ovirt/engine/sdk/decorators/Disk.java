@@ -61,7 +61,6 @@ public class Disk extends
      * Gets the value of the DiskStatistics property.
      * 
      * @return
-     *     possible object is
      *     {@link DiskStatistics }
      *     
      */

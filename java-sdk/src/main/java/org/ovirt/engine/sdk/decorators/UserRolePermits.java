@@ -59,7 +59,7 @@ public class UserRolePermits extends
      * Lists UserRolePermit objects.
      * 
      * @return
-     *     List of UserRolePermits
+     *     List of {@link UserRolePermit }
      *
      * @throws ClientProtocolException
      * @throws ServerException

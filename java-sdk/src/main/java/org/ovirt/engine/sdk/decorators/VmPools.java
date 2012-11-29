@@ -55,7 +55,7 @@ public class VmPools extends
      * Lists VmPool objects.
      *
      * @return
-     *     List of VmPools
+     *     List of {@link VmPool }
      *
      * @throws ClientProtocolException
      * @throws ServerException

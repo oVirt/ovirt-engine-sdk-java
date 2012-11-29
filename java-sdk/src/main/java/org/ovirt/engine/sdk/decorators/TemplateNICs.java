@@ -59,7 +59,7 @@ public class TemplateNICs extends
      * Lists TemplateNIC objects.
      * 
      * @return
-     *     List of TemplateNICs
+     *     List of {@link TemplateNIC }
      *
      * @throws ClientProtocolException
      * @throws ServerException

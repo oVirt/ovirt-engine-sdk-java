@@ -59,7 +59,7 @@ public class UserTags extends
      * Lists UserTag objects.
      * 
      * @return
-     *     List of UserTags
+     *     List of {@link UserTag }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -55,7 +55,7 @@ public class Tags extends
      * Lists Tag objects.
      *
      * @return
-     *     List of Tags
+     *     List of {@link Tag }
      *
      * @throws ClientProtocolException
      * @throws ServerException

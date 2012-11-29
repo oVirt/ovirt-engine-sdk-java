@@ -2,7 +2,6 @@
      * Gets the value of the $decoratorCollectionName$ property.
      * 
      * @return
-     *     possible object is
      *     {@link $decoratorCollectionName$ }
      *     
      */

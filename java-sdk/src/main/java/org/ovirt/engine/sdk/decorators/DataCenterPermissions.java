@@ -59,7 +59,7 @@ public class DataCenterPermissions extends
      * Lists DataCenterPermission objects.
      * 
      * @return
-     *     List of DataCenterPermissions
+     *     List of {@link DataCenterPermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

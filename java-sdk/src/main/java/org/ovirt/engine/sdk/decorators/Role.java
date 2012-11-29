@@ -61,7 +61,6 @@ public class Role extends
      * Gets the value of the RolePermits property.
      * 
      * @return
-     *     possible object is
      *     {@link RolePermits }
      *     
      */
@@ -84,7 +83,6 @@ public class Role extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link Role }
      *
      * @throws ClientProtocolException

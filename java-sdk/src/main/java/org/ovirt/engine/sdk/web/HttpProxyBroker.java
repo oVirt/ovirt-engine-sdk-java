@@ -103,9 +103,7 @@ public class HttpProxyBroker {
         httpput.setEntity(httpentity);
 
         String xmlRes = this.proxy.execute(httpput, headers, null);
-        F res = SerializationHelper.unmarshall(from, xmlRes);
-
-        return Mapper.map(res, to, this);
+        return unmarshall(from, to, xmlRes);
     }
 
     /**
@@ -210,7 +208,7 @@ public class HttpProxyBroker {
         httpost.setEntity(httpentity);
 
         String xmlRes = this.proxy.execute(httpost, headers, null);
-        return SerializationHelper.unmarshall(to, xmlRes);
+        return unmarshall(from, to, xmlRes);
     }
 
     /**

@@ -59,7 +59,7 @@ public class VMSnapshotCdRoms extends
      * Lists VMSnapshotCdRom objects.
      * 
      * @return
-     *     List of VMSnapshotCdRoms
+     *     List of {@link VMSnapshotCdRom }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -55,7 +55,7 @@ public class StorageDomains extends
      * Lists StorageDomain objects.
      *
      * @return
-     *     List of StorageDomains
+     *     List of {@link StorageDomain }
      *
      * @throws ClientProtocolException
      * @throws ServerException

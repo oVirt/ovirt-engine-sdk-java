@@ -59,7 +59,7 @@ public class VmPoolPermissions extends
      * Lists VmPoolPermission objects.
      * 
      * @return
-     *     List of VmPoolPermissions
+     *     List of {@link VmPoolPermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

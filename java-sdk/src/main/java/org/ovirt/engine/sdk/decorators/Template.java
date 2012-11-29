@@ -64,7 +64,6 @@ public class Template extends
      * Gets the value of the TemplateCdRoms property.
      * 
      * @return
-     *     possible object is
      *     {@link TemplateCdRoms }
      *     
      */
@@ -78,7 +77,6 @@ public class Template extends
      * Gets the value of the TemplateNICs property.
      * 
      * @return
-     *     possible object is
      *     {@link TemplateNICs }
      *     
      */
@@ -92,7 +90,6 @@ public class Template extends
      * Gets the value of the TemplatePermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link TemplatePermissions }
      *     
      */
@@ -106,7 +103,6 @@ public class Template extends
      * Gets the value of the TemplateDisks property.
      * 
      * @return
-     *     possible object is
      *     {@link TemplateDisks }
      *     
      */
@@ -152,7 +148,6 @@ public class Template extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link Template }
      *
      * @throws ClientProtocolException

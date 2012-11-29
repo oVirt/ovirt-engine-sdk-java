@@ -59,7 +59,7 @@ public class UserRoles extends
      * Lists UserRole objects.
      * 
      * @return
-     *     List of UserRoles
+     *     List of {@link UserRole }
      *
      * @throws ClientProtocolException
      * @throws ServerException

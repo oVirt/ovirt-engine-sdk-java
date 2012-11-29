@@ -55,7 +55,7 @@ public class Networks extends
      * Lists Network objects.
      *
      * @return
-     *     List of Networks
+     *     List of {@link Network }
      *
      * @throws ClientProtocolException
      * @throws ServerException

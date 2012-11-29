@@ -59,7 +59,7 @@ public class VMTags extends
      * Lists VMTag objects.
      * 
      * @return
-     *     List of VMTags
+     *     List of {@link VMTag }
      *
      * @throws ClientProtocolException
      * @throws ServerException

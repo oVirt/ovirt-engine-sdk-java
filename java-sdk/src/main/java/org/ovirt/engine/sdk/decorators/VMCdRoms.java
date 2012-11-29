@@ -59,7 +59,7 @@ public class VMCdRoms extends
      * Lists VMCdRom objects.
      * 
      * @return
-     *     List of VMCdRoms
+     *     List of {@link VMCdRom }
      *
      * @throws ClientProtocolException
      * @throws ServerException

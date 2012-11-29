@@ -59,7 +59,7 @@ public class HostNICStatistics extends
      * Lists HostNICStatistic objects.
      * 
      * @return
-     *     List of HostNICStatistics
+     *     List of {@link HostNICStatistic }
      *
      * @throws ClientProtocolException
      * @throws ServerException

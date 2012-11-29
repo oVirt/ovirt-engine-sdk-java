@@ -63,7 +63,6 @@ public class Cluster extends
      * Gets the value of the ClusterGlusterVolumes property.
      * 
      * @return
-     *     possible object is
      *     {@link ClusterGlusterVolumes }
      *     
      */
@@ -77,7 +76,6 @@ public class Cluster extends
      * Gets the value of the ClusterNetworks property.
      * 
      * @return
-     *     possible object is
      *     {@link ClusterNetworks }
      *     
      */
@@ -91,7 +89,6 @@ public class Cluster extends
      * Gets the value of the ClusterPermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link ClusterPermissions }
      *     
      */
@@ -126,7 +123,6 @@ public class Cluster extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link Cluster }
      *
      * @throws ClientProtocolException

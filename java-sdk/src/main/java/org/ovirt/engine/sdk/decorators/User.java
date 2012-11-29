@@ -63,7 +63,6 @@ public class User extends
      * Gets the value of the UserRoles property.
      * 
      * @return
-     *     possible object is
      *     {@link UserRoles }
      *     
      */
@@ -77,7 +76,6 @@ public class User extends
      * Gets the value of the UserTags property.
      * 
      * @return
-     *     possible object is
      *     {@link UserTags }
      *     
      */
@@ -91,7 +89,6 @@ public class User extends
      * Gets the value of the UserPermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link UserPermissions }
      *     
      */

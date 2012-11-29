@@ -63,7 +63,6 @@ public class VMSnapshot extends
      * Gets the value of the VMSnapshotNics property.
      * 
      * @return
-     *     possible object is
      *     {@link VMSnapshotNics }
      *     
      */
@@ -77,7 +76,6 @@ public class VMSnapshot extends
      * Gets the value of the VMSnapshotDisks property.
      * 
      * @return
-     *     possible object is
      *     {@link VMSnapshotDisks }
      *     
      */
@@ -91,7 +89,6 @@ public class VMSnapshot extends
      * Gets the value of the VMSnapshotCdRoms property.
      * 
      * @return
-     *     possible object is
      *     {@link VMSnapshotCdRoms }
      *     
      */

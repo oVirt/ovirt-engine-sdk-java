@@ -55,7 +55,7 @@ public class Templates extends
      * Lists Template objects.
      *
      * @return
-     *     List of Templates
+     *     List of {@link Template }
      *
      * @throws ClientProtocolException
      * @throws ServerException

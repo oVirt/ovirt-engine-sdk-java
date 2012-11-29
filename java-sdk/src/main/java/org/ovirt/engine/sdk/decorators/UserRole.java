@@ -61,7 +61,6 @@ public class UserRole extends
      * Gets the value of the UserRolePermits property.
      * 
      * @return
-     *     possible object is
      *     {@link UserRolePermits }
      *     
      */

@@ -59,7 +59,7 @@ public class VMNICStatistics extends
      * Lists VMNICStatistic objects.
      * 
      * @return
-     *     List of VMNICStatistics
+     *     List of {@link VMNICStatistic }
      *
      * @throws ClientProtocolException
      * @throws ServerException

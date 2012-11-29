@@ -64,7 +64,6 @@ public class Host extends
      * Gets the value of the HostNICs property.
      * 
      * @return
-     *     possible object is
      *     {@link HostNICs }
      *     
      */
@@ -78,7 +77,6 @@ public class Host extends
      * Gets the value of the HostTags property.
      * 
      * @return
-     *     possible object is
      *     {@link HostTags }
      *     
      */
@@ -92,7 +90,6 @@ public class Host extends
      * Gets the value of the HostPermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link HostPermissions }
      *     
      */
@@ -106,7 +103,6 @@ public class Host extends
      * Gets the value of the HostStatistics property.
      * 
      * @return
-     *     possible object is
      *     {@link HostStatistics }
      *     
      */
@@ -177,7 +173,6 @@ public class Host extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link Host }
      *
      * @throws ClientProtocolException

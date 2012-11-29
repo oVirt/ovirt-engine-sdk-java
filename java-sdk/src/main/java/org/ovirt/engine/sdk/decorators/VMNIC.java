@@ -61,7 +61,6 @@ public class VMNIC extends
      * Gets the value of the VMNICStatistics property.
      * 
      * @return
-     *     possible object is
      *     {@link VMNICStatistics }
      *     
      */
@@ -104,7 +103,6 @@ public class VMNIC extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link VMNIC }
      *
      * @throws ClientProtocolException

@@ -63,7 +63,6 @@ public class Group extends
      * Gets the value of the GroupRoles property.
      * 
      * @return
-     *     possible object is
      *     {@link GroupRoles }
      *     
      */
@@ -77,7 +76,6 @@ public class Group extends
      * Gets the value of the GroupPermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link GroupPermissions }
      *     
      */
@@ -91,7 +89,6 @@ public class Group extends
      * Gets the value of the GroupTags property.
      * 
      * @return
-     *     possible object is
      *     {@link GroupTags }
      *     
      */

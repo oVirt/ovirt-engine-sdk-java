@@ -59,7 +59,7 @@ public class VMPermissions extends
      * Lists VMPermission objects.
      * 
      * @return
-     *     List of VMPermissions
+     *     List of {@link VMPermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

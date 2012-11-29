@@ -59,7 +59,7 @@ public class TemplatePermissions extends
      * Lists TemplatePermission objects.
      * 
      * @return
-     *     List of TemplatePermissions
+     *     List of {@link TemplatePermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

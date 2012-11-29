@@ -59,7 +59,7 @@ public class VMStatistics extends
      * Lists VMStatistic objects.
      * 
      * @return
-     *     List of VMStatistics
+     *     List of {@link VMStatistic }
      *
      * @throws ClientProtocolException
      * @throws ServerException

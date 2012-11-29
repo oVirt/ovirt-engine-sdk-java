@@ -55,7 +55,7 @@ public class DataCenters extends
      * Lists DataCenter objects.
      *
      * @return
-     *     List of DataCenters
+     *     List of {@link DataCenter }
      *
      * @throws ClientProtocolException
      * @throws ServerException

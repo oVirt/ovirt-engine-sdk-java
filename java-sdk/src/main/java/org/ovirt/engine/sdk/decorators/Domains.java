@@ -55,7 +55,7 @@ public class Domains extends
      * Lists Domain objects.
      *
      * @return
-     *     List of Domains
+     *     List of {@link Domain }
      *
      * @throws ClientProtocolException
      * @throws ServerException

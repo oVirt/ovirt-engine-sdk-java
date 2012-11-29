@@ -59,7 +59,7 @@ public class DiskStatistics extends
      * Lists DiskStatistic objects.
      * 
      * @return
-     *     List of DiskStatistics
+     *     List of {@link DiskStatistic }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -61,7 +61,6 @@ public class GroupRole extends
      * Gets the value of the GroupRolePermits property.
      * 
      * @return
-     *     possible object is
      *     {@link GroupRolePermits }
      *     
      */

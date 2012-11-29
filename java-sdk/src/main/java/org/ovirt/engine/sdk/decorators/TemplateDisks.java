@@ -59,7 +59,7 @@ public class TemplateDisks extends
      * Lists TemplateDisk objects.
      * 
      * @return
-     *     List of TemplateDisks
+     *     List of {@link TemplateDisk }
      *
      * @throws ClientProtocolException
      * @throws ServerException

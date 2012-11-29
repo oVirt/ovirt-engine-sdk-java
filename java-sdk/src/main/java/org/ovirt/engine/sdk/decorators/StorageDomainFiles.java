@@ -59,7 +59,7 @@ public class StorageDomainFiles extends
      * Lists StorageDomainFile objects.
      * 
      * @return
-     *     List of StorageDomainFiles
+     *     List of {@link StorageDomainFile }
      *
      * @throws ClientProtocolException
      * @throws ServerException

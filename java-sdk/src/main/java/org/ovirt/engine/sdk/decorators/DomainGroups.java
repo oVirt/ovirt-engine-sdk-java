@@ -59,7 +59,7 @@ public class DomainGroups extends
      * Lists DomainGroup objects.
      * 
      * @return
-     *     List of DomainGroups
+     *     List of {@link DomainGroup }
      *
      * @throws ClientProtocolException
      * @throws ServerException

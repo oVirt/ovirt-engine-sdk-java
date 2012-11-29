@@ -59,7 +59,7 @@ public class HostNICs extends
      * Lists HostNIC objects.
      * 
      * @return
-     *     List of HostNICs
+     *     List of {@link HostNIC }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -61,7 +61,6 @@ public class VmPool extends
      * Gets the value of the VmPoolPermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link VmPoolPermissions }
      *     
      */
@@ -86,7 +85,6 @@ public class VmPool extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link VmPool }
      *
      * @throws ClientProtocolException

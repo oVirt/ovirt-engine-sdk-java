@@ -55,7 +55,7 @@ public class Hosts extends
      * Lists Host objects.
      *
      * @return
-     *     List of Hosts
+     *     List of {@link Host }
      *
      * @throws ClientProtocolException
      * @throws ServerException

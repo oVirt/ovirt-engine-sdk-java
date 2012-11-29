@@ -55,7 +55,7 @@ public class Disks extends
      * Lists Disk objects.
      *
      * @return
-     *     List of Disks
+     *     List of {@link Disk }
      *
      * @throws ClientProtocolException
      * @throws ServerException

@@ -72,7 +72,6 @@ public class TemplateNIC extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link TemplateNIC }
      *
      * @throws ClientProtocolException

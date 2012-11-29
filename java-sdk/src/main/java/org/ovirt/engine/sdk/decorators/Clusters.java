@@ -55,7 +55,7 @@ public class Clusters extends
      * Lists Cluster objects.
      *
      * @return
-     *     List of Clusters
+     *     List of {@link Cluster }
      *
      * @throws ClientProtocolException
      * @throws ServerException

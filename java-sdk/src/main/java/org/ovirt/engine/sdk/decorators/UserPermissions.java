@@ -59,7 +59,7 @@ public class UserPermissions extends
      * Lists UserPermission objects.
      * 
      * @return
-     *     List of UserPermissions
+     *     List of {@link UserPermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

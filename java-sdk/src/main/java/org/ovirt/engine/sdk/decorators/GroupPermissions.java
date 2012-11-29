@@ -59,7 +59,7 @@ public class GroupPermissions extends
      * Lists GroupPermission objects.
      * 
      * @return
-     *     List of GroupPermissions
+     *     List of {@link GroupPermission }
      *
      * @throws ClientProtocolException
      * @throws ServerException

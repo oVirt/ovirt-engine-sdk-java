@@ -2,7 +2,6 @@
      * Updates $decoratorName$ object.
 $docParams$
      * @return
-     *     possible object is
      *     {@link $decoratorName$ }
      *
      * @throws ClientProtocolException

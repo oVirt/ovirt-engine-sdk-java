@@ -59,7 +59,7 @@ public class RolePermits extends
      * Lists RolePermit objects.
      * 
      * @return
-     *     List of RolePermits
+     *     List of {@link RolePermit }
      *
      * @throws ClientProtocolException
      * @throws ServerException

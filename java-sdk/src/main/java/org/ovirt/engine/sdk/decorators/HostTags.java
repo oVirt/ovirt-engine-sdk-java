@@ -59,7 +59,7 @@ public class HostTags extends
      * Lists HostTag objects.
      * 
      * @return
-     *     List of HostTags
+     *     List of {@link HostTag }
      *
      * @throws ClientProtocolException
      * @throws ServerException

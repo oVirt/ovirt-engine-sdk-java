@@ -59,7 +59,7 @@ public class VMSnapshots extends
      * Lists VMSnapshot objects.
      * 
      * @return
-     *     List of VMSnapshots
+     *     List of {@link VMSnapshot }
      *
      * @throws ClientProtocolException
      * @throws ServerException

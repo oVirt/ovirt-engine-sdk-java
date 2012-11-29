@@ -59,7 +59,7 @@ public class StorageDomainTemplates extends
      * Lists StorageDomainTemplate objects.
      * 
      * @return
-     *     List of StorageDomainTemplates
+     *     List of {@link StorageDomainTemplate }
      *
      * @throws ClientProtocolException
      * @throws ServerException

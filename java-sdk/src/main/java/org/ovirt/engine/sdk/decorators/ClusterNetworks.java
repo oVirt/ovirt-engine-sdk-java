@@ -59,7 +59,7 @@ public class ClusterNetworks extends
      * Lists ClusterNetwork objects.
      * 
      * @return
-     *     List of ClusterNetworks
+     *     List of {@link ClusterNetwork }
      *
      * @throws ClientProtocolException
      * @throws ServerException

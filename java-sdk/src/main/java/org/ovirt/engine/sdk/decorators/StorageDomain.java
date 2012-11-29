@@ -64,7 +64,6 @@ public class StorageDomain extends
      * Gets the value of the StorageDomainPermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link StorageDomainPermissions }
      *     
      */
@@ -78,7 +77,6 @@ public class StorageDomain extends
      * Gets the value of the StorageDomainVMs property.
      * 
      * @return
-     *     possible object is
      *     {@link StorageDomainVMs }
      *     
      */
@@ -92,7 +90,6 @@ public class StorageDomain extends
      * Gets the value of the StorageDomainTemplates property.
      * 
      * @return
-     *     possible object is
      *     {@link StorageDomainTemplates }
      *     
      */
@@ -106,7 +103,6 @@ public class StorageDomain extends
      * Gets the value of the StorageDomainFiles property.
      * 
      * @return
-     *     possible object is
      *     {@link StorageDomainFiles }
      *     
      */
@@ -128,7 +124,6 @@ public class StorageDomain extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link StorageDomain }
      *
      * @throws ClientProtocolException

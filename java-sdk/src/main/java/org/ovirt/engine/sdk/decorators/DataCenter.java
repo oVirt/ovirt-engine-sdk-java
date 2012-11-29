@@ -63,7 +63,6 @@ public class DataCenter extends
      * Gets the value of the DataCenterPermissions property.
      * 
      * @return
-     *     possible object is
      *     {@link DataCenterPermissions }
      *     
      */
@@ -77,7 +76,6 @@ public class DataCenter extends
      * Gets the value of the DataCenterStorageDomains property.
      * 
      * @return
-     *     possible object is
      *     {@link DataCenterStorageDomains }
      *     
      */
@@ -91,7 +89,6 @@ public class DataCenter extends
      * Gets the value of the DataCenterQuotas property.
      * 
      * @return
-     *     possible object is
      *     {@link DataCenterQuotas }
      *     
      */
@@ -118,7 +115,6 @@ public class DataCenter extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link DataCenter }
      *
      * @throws ClientProtocolException

@@ -68,7 +68,6 @@ public class VMCdRom extends
      * </pre>
      *
      * @return
-     *     possible object is
      *     {@link VMCdRom }
      *
      * @throws ClientProtocolException
