@@ -477,8 +477,12 @@ public class HttpProxyBroker {
      * @return decorator
      * 
      */
+    @SuppressWarnings("unchecked")
     private <F, T> T unmarshall(Class<F> from, Class<T> to, String xml) {
         F res = SerializationHelper.unmarshall(from, xml);
+        if (from.getClass().equals(to.getClass())) {
+            return (T) res;
+        }
         return Mapper.map(res, to, this);
     }
 }
