@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * VMs decorator
- * providing {@link org.ovirt.engine.sdk.entities.VMs } decorating services.
+ * <p>VMs providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.VMs } .
  */
 @SuppressWarnings("unused")
 public class VMs extends

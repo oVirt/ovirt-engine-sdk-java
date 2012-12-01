@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * VMSnapshotCdRoms decorator
- * providing {@link org.ovirt.engine.sdk.entities.CdRoms } decorating services.
+ * <p>VMSnapshotCdRoms providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.CdRoms }.
  */
 @SuppressWarnings("unused")
 public class VMSnapshotCdRoms extends

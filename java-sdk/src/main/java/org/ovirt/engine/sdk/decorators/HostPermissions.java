@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * HostPermissions decorator
- * providing {@link org.ovirt.engine.sdk.entities.Permissions } decorating services.
+ * <p>HostPermissions providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permissions }.
  */
 @SuppressWarnings("unused")
 public class HostPermissions extends

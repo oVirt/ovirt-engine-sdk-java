@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Statistic decorator.
+ * <p>DiskStatistic providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Statistic }. 
  */
 @SuppressWarnings("unused")
 public class DiskStatistic extends

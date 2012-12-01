@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Domain decorator.
+ * <p>Domain providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Domain }. 
  */
 @SuppressWarnings("unused")
 public class Domain extends
@@ -59,11 +60,10 @@ public class Domain extends
     }
 
     /**
-     * Gets DomainGroups collection decorator.
-     * 
+     * Gets the value of the DomainGroups property. 
+     *
      * @return
      *     {@link DomainGroups }
-     *     
      */
     public synchronized DomainGroups getGroups() {
         if (this.domainGroups == null) {
@@ -72,11 +72,10 @@ public class Domain extends
         return domainGroups;
     }
     /**
-     * Gets DomainUsers collection decorator.
-     * 
+     * Gets the value of the DomainUsers property. 
+     *
      * @return
      *     {@link DomainUsers }
-     *     
      */
     public synchronized DomainUsers getUsers() {
         if (this.domainUsers == null) {

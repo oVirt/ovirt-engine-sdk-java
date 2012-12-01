@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * HostNICs decorator
- * providing {@link org.ovirt.engine.sdk.entities.HostNics } decorating services.
+ * <p>HostNICs providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.HostNics }.
  */
 @SuppressWarnings("unused")
 public class HostNICs extends

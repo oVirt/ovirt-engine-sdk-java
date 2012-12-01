@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * VMNICStatistics decorator
- * providing {@link org.ovirt.engine.sdk.entities.Statistics } decorating services.
+ * <p>VMNICStatistics providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Statistics }.
  */
 @SuppressWarnings("unused")
 public class VMNICStatistics extends

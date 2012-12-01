@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Role decorator.
+ * <p>Role providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Role }. 
  */
 @SuppressWarnings("unused")
 public class Role extends
@@ -58,11 +59,10 @@ public class Role extends
     }
 
     /**
-     * Gets RolePermits collection decorator.
-     * 
+     * Gets the value of the RolePermits property. 
+     *
      * @return
      *     {@link RolePermits }
-     *     
      */
     public synchronized RolePermits getPermits() {
         if (this.rolePermits == null) {

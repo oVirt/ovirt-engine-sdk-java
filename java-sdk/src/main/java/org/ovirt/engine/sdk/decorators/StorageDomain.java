@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * StorageDomain decorator.
+ * <p>StorageDomain providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageDomain }. 
  */
 @SuppressWarnings("unused")
 public class StorageDomain extends
@@ -61,11 +62,10 @@ public class StorageDomain extends
     }
 
     /**
-     * Gets StorageDomainPermissions collection decorator.
-     * 
+     * Gets the value of the StorageDomainPermissions property. 
+     *
      * @return
      *     {@link StorageDomainPermissions }
-     *     
      */
     public synchronized StorageDomainPermissions getPermissions() {
         if (this.storageDomainPermissions == null) {
@@ -74,11 +74,10 @@ public class StorageDomain extends
         return storageDomainPermissions;
     }
     /**
-     * Gets StorageDomainVMs collection decorator.
-     * 
+     * Gets the value of the StorageDomainVMs property. 
+     *
      * @return
      *     {@link StorageDomainVMs }
-     *     
      */
     public synchronized StorageDomainVMs getVMs() {
         if (this.storageDomainVMs == null) {
@@ -87,11 +86,10 @@ public class StorageDomain extends
         return storageDomainVMs;
     }
     /**
-     * Gets StorageDomainTemplates collection decorator.
-     * 
+     * Gets the value of the StorageDomainTemplates property. 
+     *
      * @return
      *     {@link StorageDomainTemplates }
-     *     
      */
     public synchronized StorageDomainTemplates getTemplates() {
         if (this.storageDomainTemplates == null) {
@@ -100,11 +98,10 @@ public class StorageDomain extends
         return storageDomainTemplates;
     }
     /**
-     * Gets StorageDomainFiles collection decorator.
-     * 
+     * Gets the value of the StorageDomainFiles property. 
+     *
      * @return
      *     {@link StorageDomainFiles }
-     *     
      */
     public synchronized StorageDomainFiles getFiles() {
         if (this.storageDomainFiles == null) {

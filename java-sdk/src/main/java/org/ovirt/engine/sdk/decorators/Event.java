@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Event decorator.
+ * <p>Event providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Event }. 
  */
 @SuppressWarnings("unused")
 public class Event extends

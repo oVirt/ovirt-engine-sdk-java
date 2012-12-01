@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Permission decorator.
+ * <p>ClusterPermission providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permission }. 
  */
 @SuppressWarnings("unused")
 public class ClusterPermission extends

@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Disk decorator.
+ * <p>Disk providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Disk }. 
  */
 @SuppressWarnings("unused")
 public class Disk extends
@@ -58,11 +59,10 @@ public class Disk extends
     }
 
     /**
-     * Gets DiskStatistics collection decorator.
-     * 
+     * Gets the value of the DiskStatistics property. 
+     *
      * @return
      *     {@link DiskStatistics }
-     *     
      */
     public synchronized DiskStatistics getStatistics() {
         if (this.diskStatistics == null) {

@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * GlusterVolume decorator.
+ * <p>ClusterGlusterVolume providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.GlusterVolume }. 
  */
 @SuppressWarnings("unused")
 public class ClusterGlusterVolume extends
@@ -58,11 +59,10 @@ public class ClusterGlusterVolume extends
     }
 
     /**
-     * Gets ClusterGlusterVolumeGlusterBricks collection decorator.
-     * 
+     * Gets the value of the ClusterGlusterVolumeGlusterBricks property. 
+     *
      * @return
      *     {@link ClusterGlusterVolumeGlusterBricks }
-     *     
      */
     public synchronized ClusterGlusterVolumeGlusterBricks getGlusterBricks() {
         if (this.clusterGlusterVolumeGlusterBricks == null) {

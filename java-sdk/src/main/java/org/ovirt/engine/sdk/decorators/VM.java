@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * VM decorator.
+ * <p>VM providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.VM }. 
  */
 @SuppressWarnings("unused")
 public class VM extends
@@ -64,11 +65,10 @@ public class VM extends
     }
 
     /**
-     * Gets VMPermissions collection decorator.
-     * 
+     * Gets the value of the VMPermissions property. 
+     *
      * @return
      *     {@link VMPermissions }
-     *     
      */
     public synchronized VMPermissions getPermissions() {
         if (this.vMPermissions == null) {
@@ -77,11 +77,10 @@ public class VM extends
         return vMPermissions;
     }
     /**
-     * Gets VMTags collection decorator.
-     * 
+     * Gets the value of the VMTags property. 
+     *
      * @return
      *     {@link VMTags }
-     *     
      */
     public synchronized VMTags getTags() {
         if (this.vMTags == null) {
@@ -90,11 +89,10 @@ public class VM extends
         return vMTags;
     }
     /**
-     * Gets VMSnapshots collection decorator.
-     * 
+     * Gets the value of the VMSnapshots property. 
+     *
      * @return
      *     {@link VMSnapshots }
-     *     
      */
     public synchronized VMSnapshots getSnapshots() {
         if (this.vMSnapshots == null) {
@@ -103,11 +101,10 @@ public class VM extends
         return vMSnapshots;
     }
     /**
-     * Gets VMStatistics collection decorator.
-     * 
+     * Gets the value of the VMStatistics property. 
+     *
      * @return
      *     {@link VMStatistics }
-     *     
      */
     public synchronized VMStatistics getStatistics() {
         if (this.vMStatistics == null) {
@@ -116,11 +113,10 @@ public class VM extends
         return vMStatistics;
     }
     /**
-     * Gets VMDisks collection decorator.
-     * 
+     * Gets the value of the VMDisks property. 
+     *
      * @return
      *     {@link VMDisks }
-     *     
      */
     public synchronized VMDisks getDisks() {
         if (this.vMDisks == null) {
@@ -129,11 +125,10 @@ public class VM extends
         return vMDisks;
     }
     /**
-     * Gets VMNICs collection decorator.
-     * 
+     * Gets the value of the VMNICs property. 
+     *
      * @return
      *     {@link VMNICs }
-     *     
      */
     public synchronized VMNICs getNics() {
         if (this.vMNICs == null) {
@@ -142,11 +137,10 @@ public class VM extends
         return vMNICs;
     }
     /**
-     * Gets VMCdRoms collection decorator.
-     * 
+     * Gets the value of the VMCdRoms property. 
+     *
      * @return
      *     {@link VMCdRoms }
-     *     
      */
     public synchronized VMCdRoms getCdRoms() {
         if (this.vMCdRoms == null) {

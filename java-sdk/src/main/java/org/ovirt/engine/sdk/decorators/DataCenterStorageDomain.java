@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * StorageDomain decorator.
+ * <p>DataCenterStorageDomain providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageDomain }. 
  */
 @SuppressWarnings("unused")
 public class DataCenterStorageDomain extends

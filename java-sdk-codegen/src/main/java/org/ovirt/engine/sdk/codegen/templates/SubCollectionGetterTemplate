@@ -1,9 +1,8 @@
     /**
-     * Gets $decoratorCollectionName$ collection decorator.
-     * 
+     * Gets the value of the $decoratorCollectionName$ property. 
+     *
      * @return
      *     {@link $decoratorCollectionName$ }
-     *     
      */
     public synchronized $decoratorCollectionName$ get$publicCollecionName$() {
         if (this.$decoratorCollectionVariableName$ == null) {

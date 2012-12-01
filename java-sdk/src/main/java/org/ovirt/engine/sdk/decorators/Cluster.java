@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Cluster decorator.
+ * <p>Cluster providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Cluster }. 
  */
 @SuppressWarnings("unused")
 public class Cluster extends
@@ -60,11 +61,10 @@ public class Cluster extends
     }
 
     /**
-     * Gets ClusterGlusterVolumes collection decorator.
-     * 
+     * Gets the value of the ClusterGlusterVolumes property. 
+     *
      * @return
      *     {@link ClusterGlusterVolumes }
-     *     
      */
     public synchronized ClusterGlusterVolumes getGlusterVolumes() {
         if (this.clusterGlusterVolumes == null) {
@@ -73,11 +73,10 @@ public class Cluster extends
         return clusterGlusterVolumes;
     }
     /**
-     * Gets ClusterNetworks collection decorator.
-     * 
+     * Gets the value of the ClusterNetworks property. 
+     *
      * @return
      *     {@link ClusterNetworks }
-     *     
      */
     public synchronized ClusterNetworks getNetworks() {
         if (this.clusterNetworks == null) {
@@ -86,11 +85,10 @@ public class Cluster extends
         return clusterNetworks;
     }
     /**
-     * Gets ClusterPermissions collection decorator.
-     * 
+     * Gets the value of the ClusterPermissions property. 
+     *
      * @return
      *     {@link ClusterPermissions }
-     *     
      */
     public synchronized ClusterPermissions getPermissions() {
         if (this.clusterPermissions == null) {

@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * VMSnapshotNics decorator
- * providing {@link org.ovirt.engine.sdk.entities.Nics } decorating services.
+ * <p>VMSnapshotNics providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Nics }.
  */
 @SuppressWarnings("unused")
 public class VMSnapshotNics extends

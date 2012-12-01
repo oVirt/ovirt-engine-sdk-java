@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * User decorator.
+ * <p>User providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.User }. 
  */
 @SuppressWarnings("unused")
 public class User extends
@@ -60,11 +61,10 @@ public class User extends
     }
 
     /**
-     * Gets UserRoles collection decorator.
-     * 
+     * Gets the value of the UserRoles property. 
+     *
      * @return
      *     {@link UserRoles }
-     *     
      */
     public synchronized UserRoles getRoles() {
         if (this.userRoles == null) {
@@ -73,11 +73,10 @@ public class User extends
         return userRoles;
     }
     /**
-     * Gets UserTags collection decorator.
-     * 
+     * Gets the value of the UserTags property. 
+     *
      * @return
      *     {@link UserTags }
-     *     
      */
     public synchronized UserTags getTags() {
         if (this.userTags == null) {
@@ -86,11 +85,10 @@ public class User extends
         return userTags;
     }
     /**
-     * Gets UserPermissions collection decorator.
-     * 
+     * Gets the value of the UserPermissions property. 
+     *
      * @return
      *     {@link UserPermissions }
-     *     
      */
     public synchronized UserPermissions getPermissions() {
         if (this.userPermissions == null) {

@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * StorageDomainFiles decorator
- * providing {@link org.ovirt.engine.sdk.entities.Files } decorating services.
+ * <p>StorageDomainFiles providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Files }.
  */
 @SuppressWarnings("unused")
 public class StorageDomainFiles extends

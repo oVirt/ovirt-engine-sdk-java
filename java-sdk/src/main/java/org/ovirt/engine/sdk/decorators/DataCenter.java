@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * DataCenter decorator.
+ * <p>DataCenter providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.DataCenter }. 
  */
 @SuppressWarnings("unused")
 public class DataCenter extends
@@ -60,11 +61,10 @@ public class DataCenter extends
     }
 
     /**
-     * Gets DataCenterPermissions collection decorator.
-     * 
+     * Gets the value of the DataCenterPermissions property. 
+     *
      * @return
      *     {@link DataCenterPermissions }
-     *     
      */
     public synchronized DataCenterPermissions getPermissions() {
         if (this.dataCenterPermissions == null) {
@@ -73,11 +73,10 @@ public class DataCenter extends
         return dataCenterPermissions;
     }
     /**
-     * Gets DataCenterStorageDomains collection decorator.
-     * 
+     * Gets the value of the DataCenterStorageDomains property. 
+     *
      * @return
      *     {@link DataCenterStorageDomains }
-     *     
      */
     public synchronized DataCenterStorageDomains getStorageDomains() {
         if (this.dataCenterStorageDomains == null) {
@@ -86,11 +85,10 @@ public class DataCenter extends
         return dataCenterStorageDomains;
     }
     /**
-     * Gets DataCenterQuotas collection decorator.
-     * 
+     * Gets the value of the DataCenterQuotas property. 
+     *
      * @return
      *     {@link DataCenterQuotas }
-     *     
      */
     public synchronized DataCenterQuotas getQuotas() {
         if (this.dataCenterQuotas == null) {

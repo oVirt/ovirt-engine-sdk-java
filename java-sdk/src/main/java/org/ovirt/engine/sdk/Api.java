@@ -271,11 +271,11 @@ public class Api {
     }
 
     /**
-     * Gets Networks collection decorator.
-     * 
+     * Gets the value of the Networks property. 
+     *
      * @return
      *     {@link Networks }
-     *     
+     *
      */
     public synchronized Networks getNetworks() {
         if (this.networks == null) {
@@ -284,11 +284,11 @@ public class Api {
         return networks;
     }
     /**
-     * Gets Tags collection decorator.
-     * 
+     * Gets the value of the Tags property. 
+     *
      * @return
      *     {@link Tags }
-     *     
+     *
      */
     public synchronized Tags getTags() {
         if (this.tags == null) {
@@ -297,11 +297,11 @@ public class Api {
         return tags;
     }
     /**
-     * Gets Users collection decorator.
-     * 
+     * Gets the value of the Users property. 
+     *
      * @return
      *     {@link Users }
-     *     
+     *
      */
     public synchronized Users getUsers() {
         if (this.users == null) {
@@ -310,11 +310,11 @@ public class Api {
         return users;
     }
     /**
-     * Gets Templates collection decorator.
-     * 
+     * Gets the value of the Templates property. 
+     *
      * @return
      *     {@link Templates }
-     *     
+     *
      */
     public synchronized Templates getTemplates() {
         if (this.templates == null) {
@@ -323,11 +323,11 @@ public class Api {
         return templates;
     }
     /**
-     * Gets Events collection decorator.
-     * 
+     * Gets the value of the Events property. 
+     *
      * @return
      *     {@link Events }
-     *     
+     *
      */
     public synchronized Events getEvents() {
         if (this.events == null) {
@@ -336,11 +336,11 @@ public class Api {
         return events;
     }
     /**
-     * Gets Domains collection decorator.
-     * 
+     * Gets the value of the Domains property. 
+     *
      * @return
      *     {@link Domains }
-     *     
+     *
      */
     public synchronized Domains getDomains() {
         if (this.domains == null) {
@@ -349,11 +349,11 @@ public class Api {
         return domains;
     }
     /**
-     * Gets Disks collection decorator.
-     * 
+     * Gets the value of the Disks property. 
+     *
      * @return
      *     {@link Disks }
-     *     
+     *
      */
     public synchronized Disks getDisks() {
         if (this.disks == null) {
@@ -362,11 +362,11 @@ public class Api {
         return disks;
     }
     /**
-     * Gets Clusters collection decorator.
-     * 
+     * Gets the value of the Clusters property. 
+     *
      * @return
      *     {@link Clusters }
-     *     
+     *
      */
     public synchronized Clusters getClusters() {
         if (this.clusters == null) {
@@ -375,11 +375,11 @@ public class Api {
         return clusters;
     }
     /**
-     * Gets DataCenters collection decorator.
-     * 
+     * Gets the value of the DataCenters property. 
+     *
      * @return
      *     {@link DataCenters }
-     *     
+     *
      */
     public synchronized DataCenters getDataCenters() {
         if (this.dataCenters == null) {
@@ -388,11 +388,11 @@ public class Api {
         return dataCenters;
     }
     /**
-     * Gets Roles collection decorator.
-     * 
+     * Gets the value of the Roles property. 
+     *
      * @return
      *     {@link Roles }
-     *     
+     *
      */
     public synchronized Roles getRoles() {
         if (this.roles == null) {
@@ -401,11 +401,11 @@ public class Api {
         return roles;
     }
     /**
-     * Gets Hosts collection decorator.
-     * 
+     * Gets the value of the Hosts property. 
+     *
      * @return
      *     {@link Hosts }
-     *     
+     *
      */
     public synchronized Hosts getHosts() {
         if (this.hosts == null) {
@@ -414,11 +414,11 @@ public class Api {
         return hosts;
     }
     /**
-     * Gets VMs collection decorator.
-     * 
+     * Gets the value of the VMs property. 
+     *
      * @return
      *     {@link VMs }
-     *     
+     *
      */
     public synchronized VMs getVMs() {
         if (this.vMs == null) {
@@ -427,11 +427,11 @@ public class Api {
         return vMs;
     }
     /**
-     * Gets VmPools collection decorator.
-     * 
+     * Gets the value of the VmPools property. 
+     *
      * @return
      *     {@link VmPools }
-     *     
+     *
      */
     public synchronized VmPools getVmPools() {
         if (this.vmPools == null) {
@@ -440,11 +440,11 @@ public class Api {
         return vmPools;
     }
     /**
-     * Gets StorageDomains collection decorator.
-     * 
+     * Gets the value of the StorageDomains property. 
+     *
      * @return
      *     {@link StorageDomains }
-     *     
+     *
      */
     public synchronized StorageDomains getStorageDomains() {
         if (this.storageDomains == null) {
@@ -453,11 +453,11 @@ public class Api {
         return storageDomains;
     }
     /**
-     * Gets Groups collection decorator.
-     * 
+     * Gets the value of the Groups property. 
+     *
      * @return
      *     {@link Groups }
-     *     
+     *
      */
     public synchronized Groups getGroups() {
         if (this.groups == null) {

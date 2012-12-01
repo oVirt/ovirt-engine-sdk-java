@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Domains decorator
- * providing {@link org.ovirt.engine.sdk.entities.Domains } decorating services.
+ * <p>Domains providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Domains } .
  */
 @SuppressWarnings("unused")
 public class Domains extends

@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * DataCenterPermissions decorator
- * providing {@link org.ovirt.engine.sdk.entities.Permissions } decorating services.
+ * <p>DataCenterPermissions providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permissions }.
  */
 @SuppressWarnings("unused")
 public class DataCenterPermissions extends

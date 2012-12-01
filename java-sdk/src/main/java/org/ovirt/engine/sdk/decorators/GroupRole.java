@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Role decorator.
+ * <p>GroupRole providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Role }. 
  */
 @SuppressWarnings("unused")
 public class GroupRole extends
@@ -58,11 +59,10 @@ public class GroupRole extends
     }
 
     /**
-     * Gets GroupRolePermits collection decorator.
-     * 
+     * Gets the value of the GroupRolePermits property. 
+     *
      * @return
      *     {@link GroupRolePermits }
-     *     
      */
     public synchronized GroupRolePermits getPermits() {
         if (this.groupRolePermits == null) {

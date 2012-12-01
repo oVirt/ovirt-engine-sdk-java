@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Template decorator.
+ * <p>Template providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Template }. 
  */
 @SuppressWarnings("unused")
 public class Template extends
@@ -61,11 +62,10 @@ public class Template extends
     }
 
     /**
-     * Gets TemplateCdRoms collection decorator.
-     * 
+     * Gets the value of the TemplateCdRoms property. 
+     *
      * @return
      *     {@link TemplateCdRoms }
-     *     
      */
     public synchronized TemplateCdRoms getCdRoms() {
         if (this.templateCdRoms == null) {
@@ -74,11 +74,10 @@ public class Template extends
         return templateCdRoms;
     }
     /**
-     * Gets TemplateNICs collection decorator.
-     * 
+     * Gets the value of the TemplateNICs property. 
+     *
      * @return
      *     {@link TemplateNICs }
-     *     
      */
     public synchronized TemplateNICs getNics() {
         if (this.templateNICs == null) {
@@ -87,11 +86,10 @@ public class Template extends
         return templateNICs;
     }
     /**
-     * Gets TemplatePermissions collection decorator.
-     * 
+     * Gets the value of the TemplatePermissions property. 
+     *
      * @return
      *     {@link TemplatePermissions }
-     *     
      */
     public synchronized TemplatePermissions getPermissions() {
         if (this.templatePermissions == null) {
@@ -100,11 +98,10 @@ public class Template extends
         return templatePermissions;
     }
     /**
-     * Gets TemplateDisks collection decorator.
-     * 
+     * Gets the value of the TemplateDisks property. 
+     *
      * @return
      *     {@link TemplateDisks }
-     *     
      */
     public synchronized TemplateDisks getDisks() {
         if (this.templateDisks == null) {

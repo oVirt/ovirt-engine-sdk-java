@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * VmPools decorator
- * providing {@link org.ovirt.engine.sdk.entities.VmPools } decorating services.
+ * <p>VmPools providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.VmPools } .
  */
 @SuppressWarnings("unused")
 public class VmPools extends

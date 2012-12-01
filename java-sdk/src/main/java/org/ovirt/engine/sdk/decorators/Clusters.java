@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Clusters decorator
- * providing {@link org.ovirt.engine.sdk.entities.Clusters } decorating services.
+ * <p>Clusters providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Clusters } .
  */
 @SuppressWarnings("unused")
 public class Clusters extends

@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * DomainGroups decorator
- * providing {@link org.ovirt.engine.sdk.entities.Groups } decorating services.
+ * <p>DomainGroups providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Groups }.
  */
 @SuppressWarnings("unused")
 public class DomainGroups extends

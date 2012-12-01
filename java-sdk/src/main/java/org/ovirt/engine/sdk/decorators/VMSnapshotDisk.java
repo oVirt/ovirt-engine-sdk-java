@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Disk decorator.
+ * <p>VMSnapshotDisk providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Disk }. 
  */
 @SuppressWarnings("unused")
 public class VMSnapshotDisk extends

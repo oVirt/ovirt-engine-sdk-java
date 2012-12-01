@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Snapshot decorator.
+ * <p>VMSnapshot providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Snapshot }. 
  */
 @SuppressWarnings("unused")
 public class VMSnapshot extends
@@ -60,11 +61,10 @@ public class VMSnapshot extends
     }
 
     /**
-     * Gets VMSnapshotNics collection decorator.
-     * 
+     * Gets the value of the VMSnapshotNics property. 
+     *
      * @return
      *     {@link VMSnapshotNics }
-     *     
      */
     public synchronized VMSnapshotNics getNics() {
         if (this.vMSnapshotNics == null) {
@@ -73,11 +73,10 @@ public class VMSnapshot extends
         return vMSnapshotNics;
     }
     /**
-     * Gets VMSnapshotDisks collection decorator.
-     * 
+     * Gets the value of the VMSnapshotDisks property. 
+     *
      * @return
      *     {@link VMSnapshotDisks }
-     *     
      */
     public synchronized VMSnapshotDisks getDisks() {
         if (this.vMSnapshotDisks == null) {
@@ -86,11 +85,10 @@ public class VMSnapshot extends
         return vMSnapshotDisks;
     }
     /**
-     * Gets VMSnapshotCdRoms collection decorator.
-     * 
+     * Gets the value of the VMSnapshotCdRoms property. 
+     *
      * @return
      *     {@link VMSnapshotCdRoms }
-     *     
      */
     public synchronized VMSnapshotCdRoms getCdRoms() {
         if (this.vMSnapshotCdRoms == null) {

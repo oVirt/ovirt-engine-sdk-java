@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Group decorator.
+ * <p>Group providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Group }. 
  */
 @SuppressWarnings("unused")
 public class Group extends
@@ -60,11 +61,10 @@ public class Group extends
     }
 
     /**
-     * Gets GroupRoles collection decorator.
-     * 
+     * Gets the value of the GroupRoles property. 
+     *
      * @return
      *     {@link GroupRoles }
-     *     
      */
     public synchronized GroupRoles getRoles() {
         if (this.groupRoles == null) {
@@ -73,11 +73,10 @@ public class Group extends
         return groupRoles;
     }
     /**
-     * Gets GroupPermissions collection decorator.
-     * 
+     * Gets the value of the GroupPermissions property. 
+     *
      * @return
      *     {@link GroupPermissions }
-     *     
      */
     public synchronized GroupPermissions getPermissions() {
         if (this.groupPermissions == null) {
@@ -86,11 +85,10 @@ public class Group extends
         return groupPermissions;
     }
     /**
-     * Gets GroupTags collection decorator.
-     * 
+     * Gets the value of the GroupTags property. 
+     *
      * @return
      *     {@link GroupTags }
-     *     
      */
     public synchronized GroupTags getTags() {
         if (this.groupTags == null) {

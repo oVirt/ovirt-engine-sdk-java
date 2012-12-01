@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * CdRom decorator.
+ * <p>TemplateCdRom providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.CdRom }. 
  */
 @SuppressWarnings("unused")
 public class TemplateCdRom extends

@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Tag decorator.
+ * <p>VMTag providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Tag }. 
  */
 @SuppressWarnings("unused")
 public class VMTag extends

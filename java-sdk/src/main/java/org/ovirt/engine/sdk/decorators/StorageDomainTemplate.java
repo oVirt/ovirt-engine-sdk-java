@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Template decorator.
+ * <p>StorageDomainTemplate providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Template }. 
  */
 @SuppressWarnings("unused")
 public class StorageDomainTemplate extends

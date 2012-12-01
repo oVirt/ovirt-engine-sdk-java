@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Group decorator.
+ * <p>DomainGroup providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Group }. 
  */
 @SuppressWarnings("unused")
 public class DomainGroup extends

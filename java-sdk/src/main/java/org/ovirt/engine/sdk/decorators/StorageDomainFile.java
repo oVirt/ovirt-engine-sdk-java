@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * File decorator.
+ * <p>StorageDomainFile providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.File }. 
  */
 @SuppressWarnings("unused")
 public class StorageDomainFile extends

@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * GroupPermissions decorator
- * providing {@link org.ovirt.engine.sdk.entities.Permissions } decorating services.
+ * <p>GroupPermissions providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permissions }.
  */
 @SuppressWarnings("unused")
 public class GroupPermissions extends

@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * VmPool decorator.
+ * <p>VmPool providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.VmPool }. 
  */
 @SuppressWarnings("unused")
 public class VmPool extends
@@ -58,11 +59,10 @@ public class VmPool extends
     }
 
     /**
-     * Gets VmPoolPermissions collection decorator.
-     * 
+     * Gets the value of the VmPoolPermissions property. 
+     *
      * @return
      *     {@link VmPoolPermissions }
-     *     
      */
     public synchronized VmPoolPermissions getPermissions() {
         if (this.vmPoolPermissions == null) {

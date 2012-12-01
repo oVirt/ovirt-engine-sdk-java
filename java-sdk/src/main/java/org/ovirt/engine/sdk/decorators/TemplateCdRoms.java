@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * TemplateCdRoms decorator
- * providing {@link org.ovirt.engine.sdk.entities.CdRoms } decorating services.
+ * <p>TemplateCdRoms providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.CdRoms }.
  */
 @SuppressWarnings("unused")
 public class TemplateCdRoms extends

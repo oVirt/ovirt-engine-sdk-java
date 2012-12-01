@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Disk decorator.
+ * <p>VMDisk providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Disk }. 
  */
 @SuppressWarnings("unused")
 public class VMDisk extends
@@ -58,11 +59,10 @@ public class VMDisk extends
     }
 
     /**
-     * Gets VMDiskStatistics collection decorator.
-     * 
+     * Gets the value of the VMDiskStatistics property. 
+     *
      * @return
      *     {@link VMDiskStatistics }
-     *     
      */
     public synchronized VMDiskStatistics getStatistics() {
         if (this.vMDiskStatistics == null) {

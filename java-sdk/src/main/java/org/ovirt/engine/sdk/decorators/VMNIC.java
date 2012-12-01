@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * NIC decorator.
+ * <p>VMNIC providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.NIC }. 
  */
 @SuppressWarnings("unused")
 public class VMNIC extends
@@ -58,11 +59,10 @@ public class VMNIC extends
     }
 
     /**
-     * Gets VMNICStatistics collection decorator.
-     * 
+     * Gets the value of the VMNICStatistics property. 
+     *
      * @return
      *     {@link VMNICStatistics }
-     *     
      */
     public synchronized VMNICStatistics getStatistics() {
         if (this.vMNICStatistics == null) {

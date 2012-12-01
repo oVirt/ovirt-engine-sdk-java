@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Templates decorator
- * providing {@link org.ovirt.engine.sdk.entities.Templates } decorating services.
+ * <p>Templates providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Templates } .
  */
 @SuppressWarnings("unused")
 public class Templates extends

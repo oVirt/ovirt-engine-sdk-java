@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * UserRolePermits decorator
- * providing {@link org.ovirt.engine.sdk.entities.Permits } decorating services.
+ * <p>UserRolePermits providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permits }.
  */
 @SuppressWarnings("unused")
 public class UserRolePermits extends

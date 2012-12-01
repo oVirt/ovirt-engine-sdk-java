@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * Networks decorator
- * providing {@link org.ovirt.engine.sdk.entities.Networks } decorating services.
+ * <p>Networks providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Networks } .
  */
 @SuppressWarnings("unused")
 public class Networks extends

@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * UserRoles decorator
- * providing {@link org.ovirt.engine.sdk.entities.Roles } decorating services.
+ * <p>UserRoles providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Roles }.
  */
 @SuppressWarnings("unused")
 public class UserRoles extends

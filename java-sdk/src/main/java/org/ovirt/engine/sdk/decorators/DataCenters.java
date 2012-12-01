@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * DataCenters decorator
- * providing {@link org.ovirt.engine.sdk.entities.DataCenters } decorating services.
+ * <p>DataCenters providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.DataCenters } .
  */
 @SuppressWarnings("unused")
 public class DataCenters extends

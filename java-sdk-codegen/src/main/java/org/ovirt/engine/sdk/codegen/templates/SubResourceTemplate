@@ -12,7 +12,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * $publicEntityName$ decorator.
+ * <p>$subResourceDecoratorName$ providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.$publicEntityName$ }. 
  */
 @SuppressWarnings("unused")
 public class $subResourceDecoratorName$ extends

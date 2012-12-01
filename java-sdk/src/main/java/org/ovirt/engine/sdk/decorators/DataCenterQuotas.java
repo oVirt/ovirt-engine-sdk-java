@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * DataCenterQuotas decorator
- * providing {@link org.ovirt.engine.sdk.entities.Quotas } decorating services.
+ * <p>DataCenterQuotas providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Quotas }.
  */
 @SuppressWarnings("unused")
 public class DataCenterQuotas extends

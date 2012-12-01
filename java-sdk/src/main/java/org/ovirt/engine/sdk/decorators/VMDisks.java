@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * VMDisks decorator
- * providing {@link org.ovirt.engine.sdk.entities.Disks } decorating services.
+ * <p>VMDisks providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Disks }.
  */
 @SuppressWarnings("unused")
 public class VMDisks extends

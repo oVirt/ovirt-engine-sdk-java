@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * VMDiskStatistics decorator
- * providing {@link org.ovirt.engine.sdk.entities.Statistics } decorating services.
+ * <p>VMDiskStatistics providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Statistics }.
  */
 @SuppressWarnings("unused")
 public class VMDiskStatistics extends

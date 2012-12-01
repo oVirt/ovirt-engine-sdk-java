@@ -36,8 +36,8 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * GroupTags decorator
- * providing {@link org.ovirt.engine.sdk.entities.Tags } decorating services.
+ * <p>GroupTags providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Tags }.
  */
 @SuppressWarnings("unused")
 public class GroupTags extends

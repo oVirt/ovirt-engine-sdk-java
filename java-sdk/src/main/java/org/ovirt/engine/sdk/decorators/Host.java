@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * Host decorator.
+ * <p>Host providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Host }. 
  */
 @SuppressWarnings("unused")
 public class Host extends
@@ -61,11 +62,10 @@ public class Host extends
     }
 
     /**
-     * Gets HostNICs collection decorator.
-     * 
+     * Gets the value of the HostNICs property. 
+     *
      * @return
      *     {@link HostNICs }
-     *     
      */
     public synchronized HostNICs getHostNics() {
         if (this.hostNICs == null) {
@@ -74,11 +74,10 @@ public class Host extends
         return hostNICs;
     }
     /**
-     * Gets HostTags collection decorator.
-     * 
+     * Gets the value of the HostTags property. 
+     *
      * @return
      *     {@link HostTags }
-     *     
      */
     public synchronized HostTags getTags() {
         if (this.hostTags == null) {
@@ -87,11 +86,10 @@ public class Host extends
         return hostTags;
     }
     /**
-     * Gets HostPermissions collection decorator.
-     * 
+     * Gets the value of the HostPermissions property. 
+     *
      * @return
      *     {@link HostPermissions }
-     *     
      */
     public synchronized HostPermissions getPermissions() {
         if (this.hostPermissions == null) {
@@ -100,11 +98,10 @@ public class Host extends
         return hostPermissions;
     }
     /**
-     * Gets HostStatistics collection decorator.
-     * 
+     * Gets the value of the HostStatistics property. 
+     *
      * @return
      *     {@link HostStatistics }
-     *     
      */
     public synchronized HostStatistics getStatistics() {
         if (this.hostStatistics == null) {

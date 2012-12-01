@@ -32,7 +32,8 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * HostNIC decorator.
+ * <p>HostNIC providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.HostNIC }. 
  */
 @SuppressWarnings("unused")
 public class HostNIC extends
@@ -58,11 +59,10 @@ public class HostNIC extends
     }
 
     /**
-     * Gets HostNICStatistics collection decorator.
-     * 
+     * Gets the value of the HostNICStatistics property. 
+     *
      * @return
      *     {@link HostNICStatistics }
-     *     
      */
     public synchronized HostNICStatistics getStatistics() {
         if (this.hostNICStatistics == null) {
