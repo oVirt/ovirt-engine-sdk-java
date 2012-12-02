@@ -5,8 +5,9 @@
 	<artifactId>ovirt-java-sdk</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.0.1-SNAPSHOT</version>
-	<name>ovirt-java-sdk</name>
+	<name>ovirt-engine-sdk-java</name>
 	<description>This is Java SDK for oVirt virtualization</description>
+	<url>http://www.ovirt.org/Java-sdk</url>
 	<organization>
 		<name>oVirt</name>
 		<url>www.ovirt.org</url>

@@ -5,9 +5,8 @@
 	<artifactId>ovirt-java-sdk-codegen</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.0.1-SNAPSHOT</version>
-	<name>ovirt-java-sdk-codegen</name>
+	<name>ovirt-engine-sdk-java-codegen</name>
 	<description>This is Java SDK codegen for oVirt virtualization</description>
-	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- dependency versions -->
@@ -61,6 +60,7 @@
         	<scope>compile</scope>
         </dependency>
 	</dependencies>
+	<url>http://www.ovirt.org/Java-sdk</url>
 	<build>
 		<pluginManagement>
 			<plugins>
