@@ -37,7 +37,6 @@ import org.ovirt.engine.sdk.utils.SerializationHelper;
 /**
  * oVirt virtualization Java SDK.
  */
-@SuppressWarnings("unused")
 public class Api {
 
     private HttpProxyBroker proxy = null;
@@ -467,6 +466,54 @@ public class Api {
     }
 
 
+    /**
+     * Gets the value of the Time property.
+     * 
+     * @return {@link javax.xml.datatype.XMLGregorianCalendar }
+     * 
+     * @throws IOException
+     * @throws UnsecuredConnectionAttemptError
+     * @throws ServerException
+     * @throws ClientProtocolException
+     * 
+     */
+    public javax.xml.datatype.XMLGregorianCalendar getTime() throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException {
+        return getEntryPoint().getTime();
+    }
+    /**
+     * Gets the value of the Summary property.
+     * 
+     * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
+     * 
+     * @throws IOException
+     * @throws UnsecuredConnectionAttemptError
+     * @throws ServerException
+     * @throws ClientProtocolException
+     * 
+     */
+    public org.ovirt.engine.sdk.entities.ApiSummary getSummary() throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException {
+        return getEntryPoint().getSummary();
+    }
+    /**
+     * Gets the value of the SpecialObjects property.
+     * 
+     * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
+     * 
+     */
+    public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
+        return this.entryPoint.getSpecialObjects();
+    }
+    /**
+     * Gets the value of the ProductInfo property.
+     * 
+     * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
+     * 
+     */
+    public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
+        return this.entryPoint.getProductInfo();
+    }
 
 }
 

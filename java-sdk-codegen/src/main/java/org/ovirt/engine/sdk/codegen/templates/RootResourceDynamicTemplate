@@ -1,0 +1,15 @@
+    /**
+     * Gets the value of the $simpleMethodName$ property.
+     * 
+     * @return {@link $responseTypePackage$.$responseType$ }
+     * 
+     * @throws IOException
+     * @throws UnsecuredConnectionAttemptError
+     * @throws ServerException
+     * @throws ClientProtocolException
+     * 
+     */
+    public $responseTypePackage$.$responseType$ $methodName$() throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException {
+        return getEntryPoint().$methodName$();
+    }

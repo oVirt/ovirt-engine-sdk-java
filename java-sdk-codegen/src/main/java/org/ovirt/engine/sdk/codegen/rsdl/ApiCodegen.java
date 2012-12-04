@@ -17,6 +17,7 @@
 package org.ovirt.engine.sdk.codegen.rsdl;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 import javax.xml.bind.JAXBException;
@@ -26,9 +27,13 @@ import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.templates.ApiTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
+import org.ovirt.engine.sdk.codegen.templates.RootResourceDynamicTemplate;
+import org.ovirt.engine.sdk.codegen.templates.RootResourceStaticTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
+import org.ovirt.engine.sdk.entities.API;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.ArrayUtils;
 import org.ovirt.engine.sdk.utils.StringUtils;
 
 /**
@@ -48,6 +53,9 @@ public class ApiCodegen extends AbstractCodegen {
     private VariableTemplate variableTemplate;
     private CollectionGetterTemplate collectionGetterTemplate;
 
+    private RootResourceStaticTemplate rootResourceStaticTemplate;
+    private RootResourceDynamicTemplate rootResourceDynamicTemplate;
+
     /**
      * @param collectionsHolder
      * @param variableTemplate
@@ -58,6 +66,9 @@ public class ApiCodegen extends AbstractCodegen {
             CollectionGetterTemplate collectionGetterTemplate) {
         super(getApiPath());
         this.apiTemplate = new ApiTemplate();
+        this.rootResourceStaticTemplate = new RootResourceStaticTemplate();
+        this.rootResourceDynamicTemplate = new RootResourceDynamicTemplate();
+
         this.collectionsHolder = collectionsHolder;
         this.variableTemplate = variableTemplate;
         this.collectionGetterTemplate = collectionGetterTemplate;
@@ -96,10 +107,37 @@ public class ApiCodegen extends AbstractCodegen {
 
     /**
      * @return /api resource methods
+     * 
+     * @throws IOException
+     * @throws ServerException
+     * @throws ClientProtocolException
      */
-    private String produceRootMethods() {
-        // TODO: produce root methods
-        return "";
+    private String produceRootMethods() throws ClientProtocolException, ServerException, IOException {
+        String rootMethods = "";
+
+        String[] exceptions =
+                new String[] { "Actions", "Href", "Links", "ExtensionType",
+                               "CreationStatus", "Id", "Name", "Description", "Class" };
+
+        String[] staticMethods =
+                new String[] { "SpecialObjects", "ProductInfo" };
+
+        for (Method method : API.class.getMethods()) {
+            String simpleMethodName = method.getName().replace("get", "");
+            if (method.getName().startsWith("get")
+                    && !ArrayUtils.contains(exceptions, simpleMethodName)) {
+                if (ArrayUtils.contains(staticMethods, simpleMethodName)) { // static methods
+                    rootMethods +=
+                            this.rootResourceStaticTemplate.getTemplate(method.getName(), method.getReturnType()
+                                    .getSimpleName(), method.getReturnType().getPackage().getName(), simpleMethodName);
+                } else { // dynamic methods
+                    rootMethods +=
+                            this.rootResourceDynamicTemplate.getTemplate(method.getName(), method.getReturnType()
+                                    .getSimpleName(), method.getReturnType().getPackage().getName(), simpleMethodName);
+                }
+            }
+        }
+        return rootMethods;
     }
 
     /**

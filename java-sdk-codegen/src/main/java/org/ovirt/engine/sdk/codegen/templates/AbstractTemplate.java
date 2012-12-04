@@ -61,6 +61,7 @@ public abstract class AbstractTemplate implements ITemplate {
     /**
      * Loads template in given context
      */
+    @Override
     public String loadTemplate() {
         try {
             return readFileTemplate();
@@ -113,7 +114,7 @@ public abstract class AbstractTemplate implements ITemplate {
     }
 
     /**
-     * @return Template
+     * @return abstract template form
      */
     public String getTemplate() {
         return this.template;
