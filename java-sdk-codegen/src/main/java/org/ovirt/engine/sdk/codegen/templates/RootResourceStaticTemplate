@@ -1,9 +1,12 @@
     /**
      * Gets the value of the $simpleMethodName$ property.
-     * 
+     *
      * @return {@link $responseTypePackage$.$responseType$ }
-     * 
+     *
      */
     public $responseTypePackage$.$responseType$ $methodName$() {
-        return this.entryPoint.$methodName$();
+        if (this.entryPoint != null) {
+            return this.entryPoint.$methodName$();
+        }
+        return null;
     }

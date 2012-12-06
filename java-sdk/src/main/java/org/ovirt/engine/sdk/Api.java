@@ -528,21 +528,27 @@ public class Api {
     }
     /**
      * Gets the value of the SpecialObjects property.
-     * 
+     *
      * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
-     * 
+     *
      */
     public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
-        return this.entryPoint.getSpecialObjects();
+        if (this.entryPoint != null) {
+            return this.entryPoint.getSpecialObjects();
+        }
+        return null;
     }
     /**
      * Gets the value of the ProductInfo property.
-     * 
+     *
      * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
-     * 
+     *
      */
     public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
-        return this.entryPoint.getProductInfo();
+        if (this.entryPoint != null) {
+            return this.entryPoint.getProductInfo();
+        }
+        return null;
     }
 
 }
