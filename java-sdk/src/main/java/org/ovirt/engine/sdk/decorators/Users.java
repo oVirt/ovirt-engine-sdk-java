@@ -59,8 +59,11 @@ public class Users extends
      *     List of {@link User }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<User> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Users extends
      * @return {@link User }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public User get(UUID id) throws ClientProtocolException,
@@ -99,8 +105,11 @@ public class Users extends
      *     {@link User }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public User add(org.ovirt.engine.sdk.entities.User user) throws 
             ClientProtocolException, ServerException, IOException {

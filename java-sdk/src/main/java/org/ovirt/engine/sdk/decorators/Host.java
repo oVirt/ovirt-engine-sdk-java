@@ -124,8 +124,11 @@ public class Host extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action install(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -141,8 +144,11 @@ public class Host extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action activate(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -173,8 +179,11 @@ public class Host extends
      *     {@link Host }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Host update() throws ClientProtocolException,
             ServerException, IOException {
@@ -190,8 +199,11 @@ public class Host extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action fence(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -211,8 +223,11 @@ public class Host extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action iscsidiscover(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -234,8 +249,11 @@ public class Host extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action approve(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -256,8 +274,11 @@ public class Host extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action iscsilogin(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -271,8 +292,11 @@ public class Host extends
      *     {@link Response }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException {
@@ -288,8 +312,11 @@ public class Host extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action deactivate(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -305,8 +332,11 @@ public class Host extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action commitnetconfig(Action action) throws ClientProtocolException,
             ServerException, IOException {

@@ -39,8 +39,11 @@ public class $decoratorCollectionName$ extends
      *     List of {@link $decoratorEntityName$ }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<$decoratorEntityName$> list() throws ClientProtocolException,
@@ -55,8 +58,11 @@ public class $decoratorCollectionName$ extends
      * @return {@link $decoratorEntityName$ }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public $decoratorEntityName$ get(UUID id) throws ClientProtocolException,

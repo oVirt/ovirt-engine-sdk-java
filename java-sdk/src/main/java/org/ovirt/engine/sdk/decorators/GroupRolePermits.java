@@ -63,8 +63,11 @@ public class GroupRolePermits extends
      *     List of {@link GroupRolePermit }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<GroupRolePermit> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class GroupRolePermits extends
      *     {@link GroupRolePermit }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public GroupRolePermit get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class GroupRolePermits extends
      *     {@link GroupRolePermit }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public GroupRolePermit add(org.ovirt.engine.sdk.entities.Permit permit) throws 
             ClientProtocolException, ServerException, IOException {

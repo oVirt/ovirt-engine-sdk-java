@@ -66,11 +66,15 @@ public class Api {
      *            oVirt api username
      * @param password
      *            oVirt api password
+     *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
-     *             oVirt api error
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
     public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError {
@@ -90,11 +94,15 @@ public class Api {
      *            oVirt api password
      * @param insecure
      *            do not throw error when accessing SSL sites without certificate
+     *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
-     *             oVirt api error
-     * @throws UnsecuredConnectionAttemptError
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
     public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException {
@@ -119,11 +127,15 @@ public class Api {
      *            CA certificate to validate the server identity
      * @param filter
      *            enables filtering based on user's permissions
+     *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
-     *             oVirt api error
-     * @throws UnsecuredConnectionAttemptError
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
     public Api(String url, String username, String password, String ca_file, boolean filter)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
@@ -163,11 +175,15 @@ public class Api {
      *            enables filtering based on user's permissions
      * @param debug
      *            enables debug mode
+     *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
-     *             oVirt api error
-     * @throws UnsecuredConnectionAttemptError
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
     public Api(String url, String username, String password, String key_file,
               String cert_file, String ca_file, Integer port, Integer timeout,
@@ -191,6 +207,11 @@ public class Api {
         initResources();
     }
 
+    /**
+     * Fetches /api entry point
+     * 
+     * @return API object instance
+     */
     private API getEntryPoint() throws ClientProtocolException, ServerException, IOException,
             UnsecuredConnectionAttemptError {
         String entryPointXML = this.proxy.get(this.proxy.getRoot());
@@ -200,6 +221,9 @@ public class Api {
         throw new UnsecuredConnectionAttemptError();
     }
 
+    /**
+     * initializes resources
+     */
     private void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
             IOException {
         this.entryPoint = getEntryPoint();
@@ -470,12 +494,15 @@ public class Api {
      * Gets the value of the Time property.
      * 
      * @return {@link javax.xml.datatype.XMLGregorianCalendar }
-     * 
-     * @throws IOException
-     * @throws UnsecuredConnectionAttemptError
-     * @throws ServerException
+     *
      * @throws ClientProtocolException
-     * 
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
     public javax.xml.datatype.XMLGregorianCalendar getTime() throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {
@@ -485,12 +512,15 @@ public class Api {
      * Gets the value of the Summary property.
      * 
      * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
-     * 
-     * @throws IOException
-     * @throws UnsecuredConnectionAttemptError
-     * @throws ServerException
+     *
      * @throws ClientProtocolException
-     * 
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
     public org.ovirt.engine.sdk.entities.ApiSummary getSummary() throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {

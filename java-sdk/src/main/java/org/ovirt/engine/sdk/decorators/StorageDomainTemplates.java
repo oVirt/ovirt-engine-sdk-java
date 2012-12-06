@@ -63,8 +63,11 @@ public class StorageDomainTemplates extends
      *     List of {@link StorageDomainTemplate }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<StorageDomainTemplate> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class StorageDomainTemplates extends
      *     {@link StorageDomainTemplate }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public StorageDomainTemplate get(UUID id) throws ClientProtocolException,

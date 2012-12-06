@@ -159,8 +159,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action suspend(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -208,8 +211,11 @@ public class VM extends
      *     {@link VM }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public VM update() throws ClientProtocolException,
             ServerException, IOException {
@@ -225,8 +231,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action stop(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -242,8 +251,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action cancelmigration(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -267,8 +279,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action export(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -284,8 +299,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action detach(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -301,8 +319,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action ticket(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -335,8 +356,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action start(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -359,8 +383,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action migrate(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -374,8 +401,11 @@ public class VM extends
      *     {@link Response }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException {
@@ -397,8 +427,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action move(Action action) throws ClientProtocolException,
             ServerException, IOException {
@@ -414,8 +447,11 @@ public class VM extends
      *     {@link Action }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Action shutdown(Action action) throws ClientProtocolException,
             ServerException, IOException {

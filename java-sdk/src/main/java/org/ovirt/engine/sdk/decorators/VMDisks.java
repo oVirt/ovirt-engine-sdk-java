@@ -63,8 +63,11 @@ public class VMDisks extends
      *     List of {@link VMDisk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMDisk> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMDisks extends
      *     {@link VMDisk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMDisk get(UUID id) throws ClientProtocolException,
@@ -132,8 +138,11 @@ public class VMDisks extends
      *     {@link VMDisk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public VMDisk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
             ClientProtocolException, ServerException, IOException {

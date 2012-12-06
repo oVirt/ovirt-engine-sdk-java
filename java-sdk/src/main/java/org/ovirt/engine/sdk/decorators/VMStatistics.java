@@ -63,8 +63,11 @@ public class VMStatistics extends
      *     List of {@link VMStatistic }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMStatistic> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMStatistics extends
      *     {@link VMStatistic }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMStatistic get(UUID id) throws ClientProtocolException,

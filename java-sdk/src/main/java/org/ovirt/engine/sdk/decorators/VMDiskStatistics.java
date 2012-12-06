@@ -63,8 +63,11 @@ public class VMDiskStatistics extends
      *     List of {@link VMDiskStatistic }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMDiskStatistic> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMDiskStatistics extends
      *     {@link VMDiskStatistic }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMDiskStatistic get(UUID id) throws ClientProtocolException,

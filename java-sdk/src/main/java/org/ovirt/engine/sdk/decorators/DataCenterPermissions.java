@@ -63,8 +63,11 @@ public class DataCenterPermissions extends
      *     List of {@link DataCenterPermission }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<DataCenterPermission> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class DataCenterPermissions extends
      *     {@link DataCenterPermission }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public DataCenterPermission get(UUID id) throws ClientProtocolException,
@@ -109,8 +115,11 @@ public class DataCenterPermissions extends
      *     {@link DataCenterPermission }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public DataCenterPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException {

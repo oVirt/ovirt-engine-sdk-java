@@ -105,8 +105,11 @@ public class User extends
      *     {@link Response }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Response delete() throws ClientProtocolException,
             ServerException, IOException {

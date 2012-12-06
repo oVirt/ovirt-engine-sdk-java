@@ -63,8 +63,11 @@ public class DataCenterQuotas extends
      *     List of {@link DataCenterQuota }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<DataCenterQuota> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class DataCenterQuotas extends
      *     {@link DataCenterQuota }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public DataCenterQuota get(UUID id) throws ClientProtocolException,
@@ -99,8 +105,11 @@ public class DataCenterQuotas extends
      *     {@link DataCenterQuota }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public DataCenterQuota add(org.ovirt.engine.sdk.entities.Quota quota) throws 
             ClientProtocolException, ServerException, IOException {

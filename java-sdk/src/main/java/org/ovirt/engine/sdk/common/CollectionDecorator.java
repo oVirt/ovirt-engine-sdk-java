@@ -68,9 +68,11 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @return List<Z>
      * 
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
-     *             oVirt API error
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     abstract public List<Z> list() throws ClientProtocolException, ServerException, IOException;
 
@@ -83,9 +85,11 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @return Z
      * 
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
-     *             oVirt API error
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException;
 
@@ -98,19 +102,62 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
      * @return entity
      * 
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Z get(String name) throws ClientProtocolException, ServerException, IOException {
         List<Z> collection = list();
         return CollectionUtils.getItemByName(name, collection);
     }
 
+    /**
+     * List entities in collection
+     * 
+     * @param url
+     *            url to get the collection from
+     * @param from
+     *            convert from type
+     * @param to
+     *            convert to type
+     * 
+     * @return collection of items
+     * 
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
     protected List<Z> list(String url, Class<Q> from, Class<Z> to) throws ClientProtocolException,
             ServerException, IOException {
         return this.list(url, from, to, null);
     }
 
+    /**
+     * List entities in collection
+     * 
+     * @param url
+     *            url to get the collection from
+     * @param from
+     *            convert from type
+     * @param to
+     *            convert to type
+     * @param headers
+     *            http headers to send
+     * 
+     * @return collection of items
+     * 
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
     protected List<Z> list(String url, Class<Q> from, Class<Z> to, List<Header> headers)
             throws ClientProtocolException, ServerException, IOException {
         String resXml = getProxy().get(url, headers);

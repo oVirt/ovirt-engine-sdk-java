@@ -63,8 +63,11 @@ public class StorageDomainFiles extends
      *     List of {@link StorageDomainFile }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<StorageDomainFile> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class StorageDomainFiles extends
      *     {@link StorageDomainFile }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public StorageDomainFile get(UUID id) throws ClientProtocolException,

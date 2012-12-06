@@ -59,8 +59,11 @@ public class VMs extends
      *     List of {@link VM }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VM> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class VMs extends
      * @return {@link VM }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VM get(UUID id) throws ClientProtocolException,
@@ -129,8 +135,11 @@ public class VMs extends
      *     {@link VM }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public VM add(org.ovirt.engine.sdk.entities.VM vm) throws 
             ClientProtocolException, ServerException, IOException {

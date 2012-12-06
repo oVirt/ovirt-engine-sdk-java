@@ -63,8 +63,11 @@ public class DomainGroups extends
      *     List of {@link DomainGroup }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<DomainGroup> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class DomainGroups extends
      *     {@link DomainGroup }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public DomainGroup get(UUID id) throws ClientProtocolException,

@@ -59,8 +59,11 @@ public class Networks extends
      *     List of {@link Network }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Network> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Networks extends
      * @return {@link Network }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Network get(UUID id) throws ClientProtocolException,
@@ -107,8 +113,11 @@ public class Networks extends
      *     {@link Network }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Network add(org.ovirt.engine.sdk.entities.Network network) throws 
             ClientProtocolException, ServerException, IOException {

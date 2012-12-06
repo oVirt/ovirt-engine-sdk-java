@@ -63,8 +63,11 @@ public class DataCenterStorageDomains extends
      *     List of {@link DataCenterStorageDomain }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<DataCenterStorageDomain> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class DataCenterStorageDomains extends
      *     {@link DataCenterStorageDomain }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public DataCenterStorageDomain get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class DataCenterStorageDomains extends
      *     {@link DataCenterStorageDomain }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public DataCenterStorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws 
             ClientProtocolException, ServerException, IOException {

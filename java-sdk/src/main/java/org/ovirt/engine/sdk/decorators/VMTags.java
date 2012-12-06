@@ -63,8 +63,11 @@ public class VMTags extends
      *     List of {@link VMTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMTag> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMTags extends
      *     {@link VMTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMTag get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class VMTags extends
      *     {@link VMTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public VMTag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
             ClientProtocolException, ServerException, IOException {

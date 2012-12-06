@@ -2,12 +2,15 @@
      * Gets the value of the $simpleMethodName$ property.
      * 
      * @return {@link $responseTypePackage$.$responseType$ }
-     * 
-     * @throws IOException
-     * @throws UnsecuredConnectionAttemptError
-     * @throws ServerException
+     *
      * @throws ClientProtocolException
-     * 
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
     public $responseTypePackage$.$responseType$ $methodName$() throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {

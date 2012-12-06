@@ -63,8 +63,11 @@ public class HostNICs extends
      *     List of {@link HostNIC }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<HostNIC> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class HostNICs extends
      *     {@link HostNIC }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public HostNIC get(UUID id) throws ClientProtocolException,
@@ -90,8 +96,8 @@ public class HostNICs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.HostNIC.class, HostNIC.class);
     }
 
-   /**
-    * Performs setupnetworks action.
+    /**
+     * Performs setupnetworks action.
      *
      * @param action
      *
@@ -102,14 +108,17 @@ public class HostNICs extends
      * [action.force]
      * </pre>
      *
-    * @return
-    *     {@link Action }
-    *
-    * @throws ClientProtocolException
-    * @throws ServerException
-    * @throws IOException
-    */
-   public Action setupnetworks(Action action) throws ClientProtocolException,
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action setupnetworks(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + "setupnetworks";
         return getProxy().action(url, action, Action.class, Action.class);
@@ -130,8 +139,11 @@ public class HostNICs extends
      *     {@link HostNIC }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public HostNIC add(org.ovirt.engine.sdk.entities.HostNIC hostnic) throws 
             ClientProtocolException, ServerException, IOException {

@@ -63,8 +63,11 @@ public class DiskStatistics extends
      *     List of {@link DiskStatistic }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<DiskStatistic> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class DiskStatistics extends
      *     {@link DiskStatistic }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public DiskStatistic get(UUID id) throws ClientProtocolException,

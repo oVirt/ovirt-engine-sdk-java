@@ -59,8 +59,11 @@ public class Tags extends
      *     List of {@link Tag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Tag> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Tags extends
      * @return {@link Tag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Tag get(UUID id) throws ClientProtocolException,
@@ -100,8 +106,11 @@ public class Tags extends
      *     {@link Tag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Tag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
             ClientProtocolException, ServerException, IOException {

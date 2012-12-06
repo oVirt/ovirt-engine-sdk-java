@@ -63,8 +63,11 @@ public class TemplateDisks extends
      *     List of {@link TemplateDisk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<TemplateDisk> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class TemplateDisks extends
      *     {@link TemplateDisk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public TemplateDisk get(UUID id) throws ClientProtocolException,

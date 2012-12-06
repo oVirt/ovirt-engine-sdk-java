@@ -59,8 +59,11 @@ public class Hosts extends
      *     List of {@link Host }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Host> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Hosts extends
      * @return {@link Host }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Host get(UUID id) throws ClientProtocolException,
@@ -110,8 +116,11 @@ public class Hosts extends
      *     {@link Host }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Host add(org.ovirt.engine.sdk.entities.Host host) throws 
             ClientProtocolException, ServerException, IOException {

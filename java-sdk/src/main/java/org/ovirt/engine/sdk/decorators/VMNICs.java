@@ -63,8 +63,11 @@ public class VMNICs extends
      *     List of {@link VMNIC }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMNIC> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMNICs extends
      *     {@link VMNIC }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMNIC get(UUID id) throws ClientProtocolException,
@@ -107,8 +113,11 @@ public class VMNICs extends
      *     {@link VMNIC }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws 
             ClientProtocolException, ServerException, IOException {

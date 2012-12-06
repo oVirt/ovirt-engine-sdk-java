@@ -63,8 +63,11 @@ public class VMSnapshots extends
      *     List of {@link VMSnapshot }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMSnapshot> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMSnapshots extends
      *     {@link VMSnapshot }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMSnapshot get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class VMSnapshots extends
      *     {@link VMSnapshot }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot) throws 
             ClientProtocolException, ServerException, IOException {

@@ -59,8 +59,11 @@ public class Groups extends
      *     List of {@link Group }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Group> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Groups extends
      * @return {@link Group }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Group get(UUID id) throws ClientProtocolException,
@@ -98,8 +104,11 @@ public class Groups extends
      *     {@link Group }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Group add(org.ovirt.engine.sdk.entities.Group group) throws 
             ClientProtocolException, ServerException, IOException {

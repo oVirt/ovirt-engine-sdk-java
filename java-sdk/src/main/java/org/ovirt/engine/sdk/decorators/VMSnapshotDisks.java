@@ -63,8 +63,11 @@ public class VMSnapshotDisks extends
      *     List of {@link VMSnapshotDisk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMSnapshotDisk> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMSnapshotDisks extends
      *     {@link VMSnapshotDisk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMSnapshotDisk get(UUID id) throws ClientProtocolException,

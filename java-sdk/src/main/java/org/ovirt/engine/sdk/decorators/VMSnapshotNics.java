@@ -63,8 +63,11 @@ public class VMSnapshotNics extends
      *     List of {@link VMSnapshotNIC }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMSnapshotNIC> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMSnapshotNics extends
      *     {@link VMSnapshotNIC }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMSnapshotNIC get(UUID id) throws ClientProtocolException,

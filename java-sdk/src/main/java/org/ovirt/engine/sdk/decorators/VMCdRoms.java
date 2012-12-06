@@ -63,8 +63,11 @@ public class VMCdRoms extends
      *     List of {@link VMCdRom }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VMCdRom> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class VMCdRoms extends
      *     {@link VMCdRom }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VMCdRom get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class VMCdRoms extends
      *     {@link VMCdRom }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public VMCdRom add(org.ovirt.engine.sdk.entities.CdRom cdrom) throws 
             ClientProtocolException, ServerException, IOException {

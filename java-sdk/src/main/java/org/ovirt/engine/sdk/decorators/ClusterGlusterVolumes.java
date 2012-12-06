@@ -63,8 +63,11 @@ public class ClusterGlusterVolumes extends
      *     List of {@link ClusterGlusterVolume }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<ClusterGlusterVolume> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class ClusterGlusterVolumes extends
      *     {@link ClusterGlusterVolume }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public ClusterGlusterVolume get(UUID id) throws ClientProtocolException,
@@ -109,8 +115,11 @@ public class ClusterGlusterVolumes extends
      *     {@link ClusterGlusterVolume }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public ClusterGlusterVolume add(org.ovirt.engine.sdk.entities.GlusterVolume glustervolume) throws 
             ClientProtocolException, ServerException, IOException {

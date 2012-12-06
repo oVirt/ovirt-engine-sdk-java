@@ -63,8 +63,11 @@ public class ClusterNetworks extends
      *     List of {@link ClusterNetwork }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<ClusterNetwork> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class ClusterNetworks extends
      *     {@link ClusterNetwork }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public ClusterNetwork get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class ClusterNetworks extends
      *     {@link ClusterNetwork }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public ClusterNetwork add(org.ovirt.engine.sdk.entities.Network network) throws 
             ClientProtocolException, ServerException, IOException {

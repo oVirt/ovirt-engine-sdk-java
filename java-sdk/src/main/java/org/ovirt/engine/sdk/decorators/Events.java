@@ -59,8 +59,11 @@ public class Events extends
      *     List of {@link Event }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Event> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Events extends
      * @return {@link Event }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Event get(UUID id) throws ClientProtocolException,

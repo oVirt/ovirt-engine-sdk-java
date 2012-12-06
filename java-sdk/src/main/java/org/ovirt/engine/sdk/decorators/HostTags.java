@@ -63,8 +63,11 @@ public class HostTags extends
      *     List of {@link HostTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<HostTag> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class HostTags extends
      *     {@link HostTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public HostTag get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class HostTags extends
      *     {@link HostTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public HostTag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
             ClientProtocolException, ServerException, IOException {

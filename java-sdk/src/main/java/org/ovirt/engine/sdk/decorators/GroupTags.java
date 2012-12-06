@@ -63,8 +63,11 @@ public class GroupTags extends
      *     List of {@link GroupTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<GroupTag> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class GroupTags extends
      *     {@link GroupTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public GroupTag get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class GroupTags extends
      *     {@link GroupTag }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public GroupTag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
             ClientProtocolException, ServerException, IOException {

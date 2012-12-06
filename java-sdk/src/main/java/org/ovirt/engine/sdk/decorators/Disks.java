@@ -59,8 +59,11 @@ public class Disks extends
      *     List of {@link Disk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Disk> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Disks extends
      * @return {@link Disk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Disk get(UUID id) throws ClientProtocolException,
@@ -123,8 +129,11 @@ public class Disks extends
      *     {@link Disk }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Disk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
             ClientProtocolException, ServerException, IOException {

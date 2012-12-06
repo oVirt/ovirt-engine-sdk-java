@@ -59,8 +59,11 @@ public class VmPools extends
      *     List of {@link VmPool }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<VmPool> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class VmPools extends
      * @return {@link VmPool }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public VmPool get(UUID id) throws ClientProtocolException,
@@ -101,8 +107,11 @@ public class VmPools extends
      *     {@link VmPool }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool) throws 
             ClientProtocolException, ServerException, IOException {

@@ -59,8 +59,11 @@ public class Templates extends
      *     List of {@link Template }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Template> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Templates extends
      * @return {@link Template }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Template get(UUID id) throws ClientProtocolException,
@@ -125,8 +131,11 @@ public class Templates extends
      *     {@link Template }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Template add(org.ovirt.engine.sdk.entities.Template template) throws 
             ClientProtocolException, ServerException, IOException {

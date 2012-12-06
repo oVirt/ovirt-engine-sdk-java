@@ -59,8 +59,11 @@ public class Domains extends
      *     List of {@link Domain }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Domain> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Domains extends
      * @return {@link Domain }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Domain get(UUID id) throws ClientProtocolException,

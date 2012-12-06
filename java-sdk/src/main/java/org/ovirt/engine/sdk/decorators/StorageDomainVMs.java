@@ -63,8 +63,11 @@ public class StorageDomainVMs extends
      *     List of {@link StorageDomainVM }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<StorageDomainVM> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class StorageDomainVMs extends
      *     {@link StorageDomainVM }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public StorageDomainVM get(UUID id) throws ClientProtocolException,

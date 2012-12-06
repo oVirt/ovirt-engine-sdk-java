@@ -63,8 +63,11 @@ public class HostNICStatistics extends
      *     List of {@link HostNICStatistic }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<HostNICStatistic> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class HostNICStatistics extends
      *     {@link HostNICStatistic }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public HostNICStatistic get(UUID id) throws ClientProtocolException,

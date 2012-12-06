@@ -59,8 +59,11 @@ public class DataCenters extends
      *     List of {@link DataCenter }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<DataCenter> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class DataCenters extends
      * @return {@link DataCenter }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public DataCenter get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class DataCenters extends
      *     {@link DataCenter }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter) throws 
             ClientProtocolException, ServerException, IOException {

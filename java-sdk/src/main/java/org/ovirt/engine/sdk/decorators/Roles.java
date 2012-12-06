@@ -59,8 +59,11 @@ public class Roles extends
      *     List of {@link Role }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<Role> list() throws ClientProtocolException,
@@ -75,8 +78,11 @@ public class Roles extends
      * @return {@link Role }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public Role get(UUID id) throws ClientProtocolException,
@@ -101,8 +107,11 @@ public class Roles extends
      *     {@link Role }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public Role add(org.ovirt.engine.sdk.entities.Role role) throws 
             ClientProtocolException, ServerException, IOException {

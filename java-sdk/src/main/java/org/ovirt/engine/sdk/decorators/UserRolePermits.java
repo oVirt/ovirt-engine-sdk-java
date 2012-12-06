@@ -63,8 +63,11 @@ public class UserRolePermits extends
      *     List of {@link UserRolePermit }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public List<UserRolePermit> list() throws ClientProtocolException,
@@ -80,8 +83,11 @@ public class UserRolePermits extends
      *     {@link UserRolePermit }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
     public UserRolePermit get(UUID id) throws ClientProtocolException,
@@ -103,8 +109,11 @@ public class UserRolePermits extends
      *     {@link UserRolePermit }
      *
      * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
      * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
      */
     public UserRolePermit add(org.ovirt.engine.sdk.entities.Permit permit) throws 
             ClientProtocolException, ServerException, IOException {
