@@ -58,7 +58,7 @@ public class HostNICs extends
 
     /**
      * Lists HostNIC objects.
-     * 
+     *
      * @return
      *     List of {@link HostNIC }
      *
@@ -79,7 +79,7 @@ public class HostNICs extends
     /**
      * Fetches HostNIC object by id.
      * 
-     * @return 
+     * @return
      *     {@link HostNIC }
      *
      * @throws ClientProtocolException

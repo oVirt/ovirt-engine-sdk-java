@@ -58,7 +58,7 @@ public class DataCenterPermissions extends
 
     /**
      * Lists DataCenterPermission objects.
-     * 
+     *
      * @return
      *     List of {@link DataCenterPermission }
      *
@@ -79,7 +79,7 @@ public class DataCenterPermissions extends
     /**
      * Fetches DataCenterPermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link DataCenterPermission }
      *
      * @throws ClientProtocolException

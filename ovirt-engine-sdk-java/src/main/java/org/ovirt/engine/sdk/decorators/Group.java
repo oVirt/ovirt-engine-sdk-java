@@ -61,7 +61,7 @@ public class Group extends
     }
 
     /**
-     * Gets the value of the GroupRoles property. 
+     * Gets the value of the GroupRoles property.
      *
      * @return
      *     {@link GroupRoles }
@@ -73,7 +73,7 @@ public class Group extends
         return groupRoles;
     }
     /**
-     * Gets the value of the GroupPermissions property. 
+     * Gets the value of the GroupPermissions property.
      *
      * @return
      *     {@link GroupPermissions }
@@ -85,7 +85,7 @@ public class Group extends
         return groupPermissions;
     }
     /**
-     * Gets the value of the GroupTags property. 
+     * Gets the value of the GroupTags property.
      *
      * @return
      *     {@link GroupTags }

@@ -109,6 +109,7 @@ public class Templates extends
      * [template.domain.name]
      * [template.type]
      * [template.stateless]
+     * [template.delete_protected]
      * [template.placement_policy.affinity]
      * [template.description]
      * [template.custom_properties.custom_property]

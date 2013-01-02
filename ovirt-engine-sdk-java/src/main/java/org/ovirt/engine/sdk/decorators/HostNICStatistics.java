@@ -58,7 +58,7 @@ public class HostNICStatistics extends
 
     /**
      * Lists HostNICStatistic objects.
-     * 
+     *
      * @return
      *     List of {@link HostNICStatistic }
      *
@@ -79,7 +79,7 @@ public class HostNICStatistics extends
     /**
      * Fetches HostNICStatistic object by id.
      * 
-     * @return 
+     * @return
      *     {@link HostNICStatistic }
      *
      * @throws ClientProtocolException

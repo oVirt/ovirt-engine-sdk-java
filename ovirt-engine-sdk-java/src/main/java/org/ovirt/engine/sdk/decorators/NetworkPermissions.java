@@ -36,31 +36,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>VMNICs providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Nics }.
+ * <p>NetworkPermissions providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permissions }.
  */
 @SuppressWarnings("unused")
-public class VMNICs extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.NIC,
-                            org.ovirt.engine.sdk.entities.Nics,
-                            VMNIC> {
+public class NetworkPermissions extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
+                            org.ovirt.engine.sdk.entities.Permissions,
+                            NetworkPermission> {
 
-    private VM parent;
+    private Network parent;
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent VM
+     * @param parent Network
      */
-    public VMNICs(HttpProxyBroker proxy, VM parent) {
-        super(proxy, "nics");
+    public NetworkPermissions(HttpProxyBroker proxy, Network parent) {
+        super(proxy, "permissions");
         this.parent = parent;
     }
 
     /**
-     * Lists VMNIC objects.
+     * Lists NetworkPermission objects.
      *
      * @return
-     *     List of {@link VMNIC }
+     *     List of {@link NetworkPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -70,17 +70,17 @@ public class VMNICs extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<VMNIC> list() throws ClientProtocolException,
+    public List<NetworkPermission> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Nics.class, VMNIC.class);
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, NetworkPermission.class);
     }
 
     /**
-     * Fetches VMNIC object by id.
+     * Fetches NetworkPermission object by id.
      * 
      * @return
-     *     {@link VMNIC }
+     *     {@link NetworkPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -90,27 +90,29 @@ public class VMNICs extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMNIC get(UUID id) throws ClientProtocolException,
+    public NetworkPermission get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, NetworkPermission.class);
     }
 
     /**
-     * Adds NIC object.
+     * Adds Permission object.
      *
-     * @param nic
+     * @param permission
      *
      * <pre>
-     * nic.network.id|name
-     * nic.name
-     * [nic.mac.address]
-     * [nic.interface]
-     * [nic.port_mirroring.networks.network]
+     * Overload 1: 
+     *    permission.user.id
+     *    permission.role.id
+     *
+     * Overload 2: 
+     *    permission.group.id
+     *    permission.role.id
      * </pre>
      *
      * @return
-     *     {@link VMNIC }
+     *     {@link NetworkPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -119,10 +121,10 @@ public class VMNICs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws 
+    public NetworkPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, nic, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
+        return getProxy().add(url, permission, org.ovirt.engine.sdk.entities.Permission.class, NetworkPermission.class);
     }
 
 }

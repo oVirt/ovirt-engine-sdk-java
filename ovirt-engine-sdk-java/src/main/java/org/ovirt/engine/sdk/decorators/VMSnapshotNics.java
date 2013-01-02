@@ -58,7 +58,7 @@ public class VMSnapshotNics extends
 
     /**
      * Lists VMSnapshotNIC objects.
-     * 
+     *
      * @return
      *     List of {@link VMSnapshotNIC }
      *
@@ -79,7 +79,7 @@ public class VMSnapshotNics extends
     /**
      * Fetches VMSnapshotNIC object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMSnapshotNIC }
      *
      * @throws ClientProtocolException

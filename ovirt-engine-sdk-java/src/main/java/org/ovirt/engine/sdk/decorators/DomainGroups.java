@@ -58,7 +58,7 @@ public class DomainGroups extends
 
     /**
      * Lists DomainGroup objects.
-     * 
+     *
      * @return
      *     List of {@link DomainGroup }
      *
@@ -79,7 +79,7 @@ public class DomainGroups extends
     /**
      * Fetches DomainGroup object by id.
      * 
-     * @return 
+     * @return
      *     {@link DomainGroup }
      *
      * @throws ClientProtocolException

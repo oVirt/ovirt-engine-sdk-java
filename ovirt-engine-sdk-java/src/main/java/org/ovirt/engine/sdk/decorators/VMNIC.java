@@ -59,7 +59,7 @@ public class VMNIC extends
     }
 
     /**
-     * Gets the value of the VMNICStatistics property. 
+     * Gets the value of the VMNICStatistics property.
      *
      * @return
      *     {@link VMNICStatistics }

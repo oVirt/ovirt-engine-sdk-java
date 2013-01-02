@@ -58,7 +58,7 @@ public class GroupPermissions extends
 
     /**
      * Lists GroupPermission objects.
-     * 
+     *
      * @return
      *     List of {@link GroupPermission }
      *
@@ -79,7 +79,7 @@ public class GroupPermissions extends
     /**
      * Fetches GroupPermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link GroupPermission }
      *
      * @throws ClientProtocolException

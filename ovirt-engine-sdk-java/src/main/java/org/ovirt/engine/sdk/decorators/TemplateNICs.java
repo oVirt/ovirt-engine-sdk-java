@@ -58,7 +58,7 @@ public class TemplateNICs extends
 
     /**
      * Lists TemplateNIC objects.
-     * 
+     *
      * @return
      *     List of {@link TemplateNIC }
      *
@@ -79,7 +79,7 @@ public class TemplateNICs extends
     /**
      * Fetches TemplateNIC object by id.
      * 
-     * @return 
+     * @return
      *     {@link TemplateNIC }
      *
      * @throws ClientProtocolException

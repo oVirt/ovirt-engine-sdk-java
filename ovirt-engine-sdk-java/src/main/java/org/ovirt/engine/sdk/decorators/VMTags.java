@@ -58,7 +58,7 @@ public class VMTags extends
 
     /**
      * Lists VMTag objects.
-     * 
+     *
      * @return
      *     List of {@link VMTag }
      *
@@ -79,7 +79,7 @@ public class VMTags extends
     /**
      * Fetches VMTag object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMTag }
      *
      * @throws ClientProtocolException

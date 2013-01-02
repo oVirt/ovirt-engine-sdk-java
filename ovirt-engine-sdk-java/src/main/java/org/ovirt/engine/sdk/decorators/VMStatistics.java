@@ -58,7 +58,7 @@ public class VMStatistics extends
 
     /**
      * Lists VMStatistic objects.
-     * 
+     *
      * @return
      *     List of {@link VMStatistic }
      *
@@ -79,7 +79,7 @@ public class VMStatistics extends
     /**
      * Fetches VMStatistic object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMStatistic }
      *
      * @throws ClientProtocolException

@@ -58,7 +58,7 @@ public class StorageDomainVMs extends
 
     /**
      * Lists StorageDomainVM objects.
-     * 
+     *
      * @return
      *     List of {@link StorageDomainVM }
      *
@@ -79,7 +79,7 @@ public class StorageDomainVMs extends
     /**
      * Fetches StorageDomainVM object by id.
      * 
-     * @return 
+     * @return
      *     {@link StorageDomainVM }
      *
      * @throws ClientProtocolException

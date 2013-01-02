@@ -58,7 +58,7 @@ public class DomainUsers extends
 
     /**
      * Lists DomainUser objects.
-     * 
+     *
      * @return
      *     List of {@link DomainUser }
      *
@@ -79,7 +79,7 @@ public class DomainUsers extends
     /**
      * Fetches DomainUser object by id.
      * 
-     * @return 
+     * @return
      *     {@link DomainUser }
      *
      * @throws ClientProtocolException

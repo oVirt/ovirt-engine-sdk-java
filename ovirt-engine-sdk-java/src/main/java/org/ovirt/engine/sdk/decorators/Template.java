@@ -62,7 +62,7 @@ public class Template extends
     }
 
     /**
-     * Gets the value of the TemplateCdRoms property. 
+     * Gets the value of the TemplateCdRoms property.
      *
      * @return
      *     {@link TemplateCdRoms }
@@ -74,7 +74,7 @@ public class Template extends
         return templateCdRoms;
     }
     /**
-     * Gets the value of the TemplateNICs property. 
+     * Gets the value of the TemplateNICs property.
      *
      * @return
      *     {@link TemplateNICs }
@@ -86,7 +86,7 @@ public class Template extends
         return templateNICs;
     }
     /**
-     * Gets the value of the TemplatePermissions property. 
+     * Gets the value of the TemplatePermissions property.
      *
      * @return
      *     {@link TemplatePermissions }
@@ -98,7 +98,7 @@ public class Template extends
         return templatePermissions;
     }
     /**
-     * Gets the value of the TemplateDisks property. 
+     * Gets the value of the TemplateDisks property.
      *
      * @return
      *     {@link TemplateDisks }
@@ -128,6 +128,7 @@ public class Template extends
      * [template.domain.name]
      * [template.type]
      * [template.stateless]
+     * [template.delete_protected]
      * [template.placement_policy.affinity]
      * [template.description]
      * [template.custom_properties.custom_property]

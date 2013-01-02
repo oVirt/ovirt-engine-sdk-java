@@ -83,6 +83,7 @@ import javax.xml.bind.annotation.XmlType;
     StorageDomain.class,
     Action.class,
     DataCenter.class,
+    Hook.class,
     Permission.class,
     GlusterBrick.class,
     GlusterVolume.class,

@@ -61,7 +61,7 @@ public class Cluster extends
     }
 
     /**
-     * Gets the value of the ClusterGlusterVolumes property. 
+     * Gets the value of the ClusterGlusterVolumes property.
      *
      * @return
      *     {@link ClusterGlusterVolumes }
@@ -73,7 +73,7 @@ public class Cluster extends
         return clusterGlusterVolumes;
     }
     /**
-     * Gets the value of the ClusterNetworks property. 
+     * Gets the value of the ClusterNetworks property.
      *
      * @return
      *     {@link ClusterNetworks }
@@ -85,7 +85,7 @@ public class Cluster extends
         return clusterNetworks;
     }
     /**
-     * Gets the value of the ClusterPermissions property. 
+     * Gets the value of the ClusterPermissions property.
      *
      * @return
      *     {@link ClusterPermissions }
@@ -118,6 +118,7 @@ public class Cluster extends
      * [cluster.error_handling.on_error]
      * [cluster.virt_service]
      * [cluster.gluster_service]
+     * [cluster.threads_as_cores]
      * </pre>
      *
      * @return

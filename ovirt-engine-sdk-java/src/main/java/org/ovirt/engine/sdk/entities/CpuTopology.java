@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;attribute name="sockets" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="cores" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;attribute name="threads" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -53,6 +54,8 @@ public class CpuTopology {
     protected Integer sockets;
     @XmlAttribute
     protected Integer cores;
+    @XmlAttribute
+    protected Integer threads;
 
     /**
      * Gets the value of the sockets property.
@@ -100,6 +103,30 @@ public class CpuTopology {
      */
     public void setCores(Integer value) {
         this.cores = value;
+    }
+
+    /**
+     * Gets the value of the threads property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getThreads() {
+        return threads;
+    }
+
+    /**
+     * Sets the value of the threads property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setThreads(Integer value) {
+        this.threads = value;
     }
 
 }

@@ -59,7 +59,7 @@ public class VMDisk extends
     }
 
     /**
-     * Gets the value of the VMDiskStatistics property. 
+     * Gets the value of the VMDiskStatistics property.
      *
      * @return
      *     {@link VMDiskStatistics }

@@ -1,6 +1,6 @@
     /**
      * Gets the value of the $simpleMethodName$ property.
-     * 
+     *
      * @return {@link $responseTypePackage$.$responseType$ }
      *
      * @throws ClientProtocolException

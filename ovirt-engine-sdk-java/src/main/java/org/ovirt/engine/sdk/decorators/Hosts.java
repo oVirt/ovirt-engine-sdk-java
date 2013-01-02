@@ -109,6 +109,7 @@ public class Hosts extends
      * [host.power_management.user_name]
      * [host.power_management.password]
      * [host.power_management.options.option]
+     * [host.power_management.pm_proxy]
      * [host.reboot_after_installation]
      * </pre>
      *

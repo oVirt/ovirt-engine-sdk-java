@@ -58,7 +58,7 @@ public class HostStatistics extends
 
     /**
      * Lists HostStatistic objects.
-     * 
+     *
      * @return
      *     List of {@link HostStatistic }
      *
@@ -79,7 +79,7 @@ public class HostStatistics extends
     /**
      * Fetches HostStatistic object by id.
      * 
-     * @return 
+     * @return
      *     {@link HostStatistic }
      *
      * @throws ClientProtocolException

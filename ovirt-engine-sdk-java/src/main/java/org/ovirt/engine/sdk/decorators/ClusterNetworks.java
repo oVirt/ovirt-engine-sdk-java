@@ -58,7 +58,7 @@ public class ClusterNetworks extends
 
     /**
      * Lists ClusterNetwork objects.
-     * 
+     *
      * @return
      *     List of {@link ClusterNetwork }
      *
@@ -79,7 +79,7 @@ public class ClusterNetworks extends
     /**
      * Fetches ClusterNetwork object by id.
      * 
-     * @return 
+     * @return
      *     {@link ClusterNetwork }
      *
      * @throws ClientProtocolException

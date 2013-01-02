@@ -58,7 +58,7 @@ public class ClusterPermissions extends
 
     /**
      * Lists ClusterPermission objects.
-     * 
+     *
      * @return
      *     List of {@link ClusterPermission }
      *
@@ -79,7 +79,7 @@ public class ClusterPermissions extends
     /**
      * Fetches ClusterPermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link ClusterPermission }
      *
      * @throws ClientProtocolException

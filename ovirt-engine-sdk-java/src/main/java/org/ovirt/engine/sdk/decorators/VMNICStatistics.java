@@ -58,7 +58,7 @@ public class VMNICStatistics extends
 
     /**
      * Lists VMNICStatistic objects.
-     * 
+     *
      * @return
      *     List of {@link VMNICStatistic }
      *
@@ -79,7 +79,7 @@ public class VMNICStatistics extends
     /**
      * Fetches VMNICStatistic object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMNICStatistic }
      *
      * @throws ClientProtocolException

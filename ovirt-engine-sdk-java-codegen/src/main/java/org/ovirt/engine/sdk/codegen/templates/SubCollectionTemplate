@@ -38,7 +38,7 @@ public class $decoratorSubCollectionName$ extends
 
     /**
      * Lists $decoratorEntityName$ objects.
-     * 
+     *
      * @return
      *     List of {@link $decoratorEntityName$ }
      *
@@ -59,7 +59,7 @@ public class $decoratorSubCollectionName$ extends
     /**
      * Fetches $decoratorEntityName$ object by id.
      * 
-     * @return 
+     * @return
      *     {@link $decoratorEntityName$ }
      *
      * @throws ClientProtocolException

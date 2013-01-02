@@ -58,7 +58,7 @@ public class GroupTags extends
 
     /**
      * Lists GroupTag objects.
-     * 
+     *
      * @return
      *     List of {@link GroupTag }
      *
@@ -79,7 +79,7 @@ public class GroupTags extends
     /**
      * Fetches GroupTag object by id.
      * 
-     * @return 
+     * @return
      *     {@link GroupTag }
      *
      * @throws ClientProtocolException

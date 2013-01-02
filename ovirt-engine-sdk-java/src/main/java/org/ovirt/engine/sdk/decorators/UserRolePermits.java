@@ -58,7 +58,7 @@ public class UserRolePermits extends
 
     /**
      * Lists UserRolePermit objects.
-     * 
+     *
      * @return
      *     List of {@link UserRolePermit }
      *
@@ -79,7 +79,7 @@ public class UserRolePermits extends
     /**
      * Fetches UserRolePermit object by id.
      * 
-     * @return 
+     * @return
      *     {@link UserRolePermit }
      *
      * @throws ClientProtocolException

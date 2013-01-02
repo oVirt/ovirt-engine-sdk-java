@@ -58,7 +58,7 @@ public class StorageDomainFiles extends
 
     /**
      * Lists StorageDomainFile objects.
-     * 
+     *
      * @return
      *     List of {@link StorageDomainFile }
      *
@@ -79,7 +79,7 @@ public class StorageDomainFiles extends
     /**
      * Fetches StorageDomainFile object by id.
      * 
-     * @return 
+     * @return
      *     {@link StorageDomainFile }
      *
      * @throws ClientProtocolException

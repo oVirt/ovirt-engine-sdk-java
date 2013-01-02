@@ -55,6 +55,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="creation_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="origin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element name="custom_properties" type="{}CustomProperties" minOccurs="0"/>
@@ -97,6 +98,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "creationTime",
     "origin",
     "stateless",
+    "deleteProtected",
     "timezone",
     "domain",
     "customProperties",
@@ -143,6 +145,8 @@ public class VM
     protected XMLGregorianCalendar creationTime;
     protected String origin;
     protected Boolean stateless;
+    @XmlElement(name = "delete_protected")
+    protected Boolean deleteProtected;
     protected String timezone;
     protected Domain domain;
     @XmlElement(name = "custom_properties")
@@ -584,6 +588,34 @@ public class VM
 
     public boolean isSetStateless() {
         return (this.stateless!= null);
+    }
+
+    /**
+     * Gets the value of the deleteProtected property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isDeleteProtected() {
+        return deleteProtected;
+    }
+
+    /**
+     * Sets the value of the deleteProtected property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setDeleteProtected(Boolean value) {
+        this.deleteProtected = value;
+    }
+
+    public boolean isSetDeleteProtected() {
+        return (this.deleteProtected!= null);
     }
 
     /**

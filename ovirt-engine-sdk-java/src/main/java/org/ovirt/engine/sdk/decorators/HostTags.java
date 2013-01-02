@@ -58,7 +58,7 @@ public class HostTags extends
 
     /**
      * Lists HostTag objects.
-     * 
+     *
      * @return
      *     List of {@link HostTag }
      *
@@ -79,7 +79,7 @@ public class HostTags extends
     /**
      * Fetches HostTag object by id.
      * 
-     * @return 
+     * @return
      *     {@link HostTag }
      *
      * @throws ClientProtocolException

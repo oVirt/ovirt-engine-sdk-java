@@ -41,6 +41,7 @@ public class Host extends
 
     private HttpProxyBroker proxy;
 
+    private HostHooks hostHooks;
     private HostNICs hostNICs;
     private HostTags hostTags;
     private HostPermissions hostPermissions;
@@ -62,7 +63,19 @@ public class Host extends
     }
 
     /**
-     * Gets the value of the HostNICs property. 
+     * Gets the value of the HostHooks property.
+     *
+     * @return
+     *     {@link HostHooks }
+     */
+    public synchronized HostHooks getHooks() {
+        if (this.hostHooks == null) {
+            this.hostHooks = new HostHooks(proxy, this);
+        }
+        return hostHooks;
+    }
+    /**
+     * Gets the value of the HostNICs property.
      *
      * @return
      *     {@link HostNICs }
@@ -74,7 +87,7 @@ public class Host extends
         return hostNICs;
     }
     /**
-     * Gets the value of the HostTags property. 
+     * Gets the value of the HostTags property.
      *
      * @return
      *     {@link HostTags }
@@ -86,7 +99,7 @@ public class Host extends
         return hostTags;
     }
     /**
-     * Gets the value of the HostPermissions property. 
+     * Gets the value of the HostPermissions property.
      *
      * @return
      *     {@link HostPermissions }
@@ -98,7 +111,7 @@ public class Host extends
         return hostPermissions;
     }
     /**
-     * Gets the value of the HostStatistics property. 
+     * Gets the value of the HostStatistics property.
      *
      * @return
      *     {@link HostStatistics }
@@ -173,6 +186,7 @@ public class Host extends
      * [host.power_management.user_name]
      * [host.power_management.password]
      * [host.power_management.options.option]
+     * [host.power_management.pm_proxy]
      * </pre>
      *
      * @return

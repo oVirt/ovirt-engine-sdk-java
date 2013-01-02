@@ -58,7 +58,7 @@ public class TemplatePermissions extends
 
     /**
      * Lists TemplatePermission objects.
-     * 
+     *
      * @return
      *     List of {@link TemplatePermission }
      *
@@ -79,7 +79,7 @@ public class TemplatePermissions extends
     /**
      * Fetches TemplatePermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link TemplatePermission }
      *
      * @throws ClientProtocolException

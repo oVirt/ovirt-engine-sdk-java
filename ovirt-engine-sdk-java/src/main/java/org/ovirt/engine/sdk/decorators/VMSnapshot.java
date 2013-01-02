@@ -61,7 +61,7 @@ public class VMSnapshot extends
     }
 
     /**
-     * Gets the value of the VMSnapshotNics property. 
+     * Gets the value of the VMSnapshotNics property.
      *
      * @return
      *     {@link VMSnapshotNics }
@@ -73,7 +73,7 @@ public class VMSnapshot extends
         return vMSnapshotNics;
     }
     /**
-     * Gets the value of the VMSnapshotDisks property. 
+     * Gets the value of the VMSnapshotDisks property.
      *
      * @return
      *     {@link VMSnapshotDisks }
@@ -85,7 +85,7 @@ public class VMSnapshot extends
         return vMSnapshotDisks;
     }
     /**
-     * Gets the value of the VMSnapshotCdRoms property. 
+     * Gets the value of the VMSnapshotCdRoms property.
      *
      * @return
      *     {@link VMSnapshotCdRoms }

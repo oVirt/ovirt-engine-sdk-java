@@ -492,7 +492,7 @@ public class Api {
 
     /**
      * Gets the value of the Time property.
-     * 
+     *
      * @return {@link javax.xml.datatype.XMLGregorianCalendar }
      *
      * @throws ClientProtocolException
@@ -510,7 +510,7 @@ public class Api {
     }
     /**
      * Gets the value of the Summary property.
-     * 
+     *
      * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
      *
      * @throws ClientProtocolException

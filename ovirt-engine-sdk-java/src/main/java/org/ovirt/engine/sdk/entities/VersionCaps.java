@@ -73,6 +73,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}scheduling_policies" minOccurs="0"/>
  *         &lt;element ref="{}usages" minOccurs="0"/>
  *         &lt;element ref="{}nfs_versions" minOccurs="0"/>
+ *         &lt;element ref="{}pm_proxy_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
  *         &lt;element ref="{}transport_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_states" minOccurs="0"/>
@@ -123,6 +124,7 @@ import javax.xml.bind.annotation.XmlType;
     "schedulingPolicies",
     "usages",
     "nfsVersions",
+    "pmProxyTypes",
     "glusterVolumeTypes",
     "transportTypes",
     "glusterVolumeStates",
@@ -199,6 +201,8 @@ public class VersionCaps
     protected Usages usages;
     @XmlElement(name = "nfs_versions")
     protected NfsVersions nfsVersions;
+    @XmlElement(name = "pm_proxy_types")
+    protected PmProxyTypes pmProxyTypes;
     @XmlElement(name = "gluster_volume_types")
     protected GlusterVolumeTypes glusterVolumeTypes;
     @XmlElement(name = "transport_types")
@@ -1214,6 +1218,34 @@ public class VersionCaps
 
     public boolean isSetNfsVersions() {
         return (this.nfsVersions!= null);
+    }
+
+    /**
+     * Gets the value of the pmProxyTypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PmProxyTypes }
+     *     
+     */
+    public PmProxyTypes getPmProxyTypes() {
+        return pmProxyTypes;
+    }
+
+    /**
+     * Sets the value of the pmProxyTypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PmProxyTypes }
+     *     
+     */
+    public void setPmProxyTypes(PmProxyTypes value) {
+        this.pmProxyTypes = value;
+    }
+
+    public boolean isSetPmProxyTypes() {
+        return (this.pmProxyTypes!= null);
     }
 
     /**

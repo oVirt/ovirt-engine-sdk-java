@@ -58,7 +58,7 @@ public class DataCenterStorageDomains extends
 
     /**
      * Lists DataCenterStorageDomain objects.
-     * 
+     *
      * @return
      *     List of {@link DataCenterStorageDomain }
      *
@@ -79,7 +79,7 @@ public class DataCenterStorageDomains extends
     /**
      * Fetches DataCenterStorageDomain object by id.
      * 
-     * @return 
+     * @return
      *     {@link DataCenterStorageDomain }
      *
      * @throws ClientProtocolException

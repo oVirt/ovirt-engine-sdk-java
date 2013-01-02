@@ -44,6 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="speed" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="cpu_tune" type="{}CpuTune" minOccurs="0"/>
+ *         &lt;element name="mode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -59,7 +60,8 @@ import javax.xml.bind.annotation.XmlType;
     "level",
     "name",
     "speed",
-    "cpuTune"
+    "cpuTune",
+    "mode"
 })
 public class CPU {
 
@@ -69,6 +71,8 @@ public class CPU {
     protected BigDecimal speed;
     @XmlElement(name = "cpu_tune")
     protected CpuTune cpuTune;
+    @XmlElement(defaultValue = "CUSTOM")
+    protected String mode;
     @XmlAttribute
     protected String id;
 
@@ -210,6 +214,34 @@ public class CPU {
 
     public boolean isSetCpuTune() {
         return (this.cpuTune!= null);
+    }
+
+    /**
+     * Gets the value of the mode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMode() {
+        return mode;
+    }
+
+    /**
+     * Sets the value of the mode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMode(String value) {
+        this.mode = value;
+    }
+
+    public boolean isSetMode() {
+        return (this.mode!= null);
     }
 
     /**

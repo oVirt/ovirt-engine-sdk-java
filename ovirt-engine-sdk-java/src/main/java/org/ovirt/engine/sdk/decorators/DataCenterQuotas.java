@@ -58,7 +58,7 @@ public class DataCenterQuotas extends
 
     /**
      * Lists DataCenterQuota objects.
-     * 
+     *
      * @return
      *     List of {@link DataCenterQuota }
      *
@@ -79,7 +79,7 @@ public class DataCenterQuotas extends
     /**
      * Fetches DataCenterQuota object by id.
      * 
-     * @return 
+     * @return
      *     {@link DataCenterQuota }
      *
      * @throws ClientProtocolException

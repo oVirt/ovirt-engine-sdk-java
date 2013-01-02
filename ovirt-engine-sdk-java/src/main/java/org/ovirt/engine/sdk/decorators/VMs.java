@@ -121,6 +121,7 @@ public class VMs extends
      * [vm.domain.name]
      * [vm.description]
      * [vm.stateless]
+     * [vm.delete_protected]
      * [vm.cpu.topology.sockets]
      * [vm.placement_policy.affinity]
      * [vm.placement_policy.host.id|name]

@@ -58,7 +58,7 @@ public class VMDiskStatistics extends
 
     /**
      * Lists VMDiskStatistic objects.
-     * 
+     *
      * @return
      *     List of {@link VMDiskStatistic }
      *
@@ -79,7 +79,7 @@ public class VMDiskStatistics extends
     /**
      * Fetches VMDiskStatistic object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMDiskStatistic }
      *
      * @throws ClientProtocolException

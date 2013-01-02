@@ -58,7 +58,7 @@ public class RolePermits extends
 
     /**
      * Lists RolePermit objects.
-     * 
+     *
      * @return
      *     List of {@link RolePermit }
      *
@@ -79,7 +79,7 @@ public class RolePermits extends
     /**
      * Fetches RolePermit object by id.
      * 
-     * @return 
+     * @return
      *     {@link RolePermit }
      *
      * @throws ClientProtocolException

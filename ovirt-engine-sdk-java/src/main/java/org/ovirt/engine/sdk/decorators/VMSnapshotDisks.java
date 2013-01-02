@@ -58,7 +58,7 @@ public class VMSnapshotDisks extends
 
     /**
      * Lists VMSnapshotDisk objects.
-     * 
+     *
      * @return
      *     List of {@link VMSnapshotDisk }
      *
@@ -79,7 +79,7 @@ public class VMSnapshotDisks extends
     /**
      * Fetches VMSnapshotDisk object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMSnapshotDisk }
      *
      * @throws ClientProtocolException

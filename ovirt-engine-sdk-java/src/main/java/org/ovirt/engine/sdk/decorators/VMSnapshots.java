@@ -58,7 +58,7 @@ public class VMSnapshots extends
 
     /**
      * Lists VMSnapshot objects.
-     * 
+     *
      * @return
      *     List of {@link VMSnapshot }
      *
@@ -79,7 +79,7 @@ public class VMSnapshots extends
     /**
      * Fetches VMSnapshot object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMSnapshot }
      *
      * @throws ClientProtocolException

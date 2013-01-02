@@ -24,6 +24,7 @@ package org.ovirt.engine.sdk.entities;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -43,6 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="options" type="{}Options" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
+ *         &lt;element ref="{}pm_proxies" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -59,7 +61,8 @@ import javax.xml.bind.annotation.XmlType;
     "username",
     "password",
     "options",
-    "status"
+    "status",
+    "pmProxies"
 })
 public class PowerManagement {
 
@@ -69,6 +72,8 @@ public class PowerManagement {
     protected String password;
     protected Options options;
     protected Status status;
+    @XmlElement(name = "pm_proxies")
+    protected PmProxies pmProxies;
     @XmlAttribute
     protected String type;
 
@@ -238,6 +243,34 @@ public class PowerManagement {
 
     public boolean isSetStatus() {
         return (this.status!= null);
+    }
+
+    /**
+     * Gets the value of the pmProxies property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PmProxies }
+     *     
+     */
+    public PmProxies getPmProxies() {
+        return pmProxies;
+    }
+
+    /**
+     * Sets the value of the pmProxies property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PmProxies }
+     *     
+     */
+    public void setPmProxies(PmProxies value) {
+        this.pmProxies = value;
+    }
+
+    public boolean isSetPmProxies() {
+        return (this.pmProxies!= null);
     }
 
     /**

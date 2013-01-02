@@ -58,7 +58,7 @@ public class UserTags extends
 
     /**
      * Lists UserTag objects.
-     * 
+     *
      * @return
      *     List of {@link UserTag }
      *
@@ -79,7 +79,7 @@ public class UserTags extends
     /**
      * Fetches UserTag object by id.
      * 
-     * @return 
+     * @return
      *     {@link UserTag }
      *
      * @throws ClientProtocolException

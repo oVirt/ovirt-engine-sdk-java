@@ -58,7 +58,7 @@ public class VmPoolPermissions extends
 
     /**
      * Lists VmPoolPermission objects.
-     * 
+     *
      * @return
      *     List of {@link VmPoolPermission }
      *
@@ -79,7 +79,7 @@ public class VmPoolPermissions extends
     /**
      * Fetches VmPoolPermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link VmPoolPermission }
      *
      * @throws ClientProtocolException

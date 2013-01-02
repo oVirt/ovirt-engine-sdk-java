@@ -65,7 +65,7 @@ public class VM extends
     }
 
     /**
-     * Gets the value of the VMPermissions property. 
+     * Gets the value of the VMPermissions property.
      *
      * @return
      *     {@link VMPermissions }
@@ -77,7 +77,7 @@ public class VM extends
         return vMPermissions;
     }
     /**
-     * Gets the value of the VMTags property. 
+     * Gets the value of the VMTags property.
      *
      * @return
      *     {@link VMTags }
@@ -89,7 +89,7 @@ public class VM extends
         return vMTags;
     }
     /**
-     * Gets the value of the VMSnapshots property. 
+     * Gets the value of the VMSnapshots property.
      *
      * @return
      *     {@link VMSnapshots }
@@ -101,7 +101,7 @@ public class VM extends
         return vMSnapshots;
     }
     /**
-     * Gets the value of the VMStatistics property. 
+     * Gets the value of the VMStatistics property.
      *
      * @return
      *     {@link VMStatistics }
@@ -113,7 +113,7 @@ public class VM extends
         return vMStatistics;
     }
     /**
-     * Gets the value of the VMDisks property. 
+     * Gets the value of the VMDisks property.
      *
      * @return
      *     {@link VMDisks }
@@ -125,7 +125,7 @@ public class VM extends
         return vMDisks;
     }
     /**
-     * Gets the value of the VMNICs property. 
+     * Gets the value of the VMNICs property.
      *
      * @return
      *     {@link VMNICs }
@@ -137,7 +137,7 @@ public class VM extends
         return vMNICs;
     }
     /**
-     * Gets the value of the VMCdRoms property. 
+     * Gets the value of the VMCdRoms property.
      *
      * @return
      *     {@link VMCdRoms }
@@ -198,6 +198,7 @@ public class VM extends
      * [vm.domain.name]
      * [vm.description]
      * [vm.stateless]
+     * [vm.delete_protected]
      * [vm.cpu.topology.sockets]
      * [vm.placement_policy.affinity]
      * [vm.placement_policy.host.id|name]

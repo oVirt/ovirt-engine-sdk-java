@@ -46,6 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="storage_manager" type="{}StorageManager" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
+ *         &lt;element ref="{}hardware_information" minOccurs="0"/>
  *         &lt;element ref="{}power_management" minOccurs="0"/>
  *         &lt;element ref="{}ksm" minOccurs="0"/>
  *         &lt;element ref="{}transparent_hugepages" minOccurs="0"/>
@@ -58,6 +59,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="summary" type="{}VmSummary" minOccurs="0"/>
  *         &lt;element name="override_iptables" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="reboot_after_installation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
+ *         &lt;element ref="{}hooks" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -76,6 +79,7 @@ import javax.xml.bind.annotation.XmlType;
     "type",
     "storageManager",
     "version",
+    "hardwareInformation",
     "powerManagement",
     "ksm",
     "transparentHugepages",
@@ -87,7 +91,9 @@ import javax.xml.bind.annotation.XmlType;
     "maxSchedulingMemory",
     "summary",
     "overrideIptables",
-    "rebootAfterInstallation"
+    "rebootAfterInstallation",
+    "os",
+    "hooks"
 })
 public class Host
     extends BaseResource
@@ -103,6 +109,8 @@ public class Host
     @XmlElement(name = "storage_manager")
     protected StorageManager storageManager;
     protected Version version;
+    @XmlElement(name = "hardware_information")
+    protected HardwareInformation hardwareInformation;
     @XmlElement(name = "power_management")
     protected PowerManagement powerManagement;
     protected KSM ksm;
@@ -121,6 +129,8 @@ public class Host
     protected Boolean overrideIptables;
     @XmlElement(name = "reboot_after_installation")
     protected Boolean rebootAfterInstallation;
+    protected OperatingSystem os;
+    protected Hooks hooks;
 
     /**
      * Gets the value of the address property.
@@ -344,6 +354,34 @@ public class Host
 
     public boolean isSetVersion() {
         return (this.version!= null);
+    }
+
+    /**
+     * Gets the value of the hardwareInformation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link HardwareInformation }
+     *     
+     */
+    public HardwareInformation getHardwareInformation() {
+        return hardwareInformation;
+    }
+
+    /**
+     * Sets the value of the hardwareInformation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link HardwareInformation }
+     *     
+     */
+    public void setHardwareInformation(HardwareInformation value) {
+        this.hardwareInformation = value;
+    }
+
+    public boolean isSetHardwareInformation() {
+        return (this.hardwareInformation!= null);
     }
 
     /**
@@ -680,6 +718,62 @@ public class Host
 
     public boolean isSetRebootAfterInstallation() {
         return (this.rebootAfterInstallation!= null);
+    }
+
+    /**
+     * Gets the value of the os property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link OperatingSystem }
+     *     
+     */
+    public OperatingSystem getOs() {
+        return os;
+    }
+
+    /**
+     * Sets the value of the os property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link OperatingSystem }
+     *     
+     */
+    public void setOs(OperatingSystem value) {
+        this.os = value;
+    }
+
+    public boolean isSetOs() {
+        return (this.os!= null);
+    }
+
+    /**
+     * Gets the value of the hooks property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Hooks }
+     *     
+     */
+    public Object getHooks() {
+        return hooks;
+    }
+
+    /**
+     * Sets the value of the hooks property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Hooks }
+     *     
+     */
+    public void setHooks(Hooks value) {
+        this.hooks = value;
+    }
+
+    public boolean isSetHooks() {
+        return (this.hooks!= null);
     }
 
 }

@@ -58,7 +58,7 @@ public class UserRoles extends
 
     /**
      * Lists UserRole objects.
-     * 
+     *
      * @return
      *     List of {@link UserRole }
      *
@@ -79,7 +79,7 @@ public class UserRoles extends
     /**
      * Fetches UserRole object by id.
      * 
-     * @return 
+     * @return
      *     {@link UserRole }
      *
      * @throws ClientProtocolException

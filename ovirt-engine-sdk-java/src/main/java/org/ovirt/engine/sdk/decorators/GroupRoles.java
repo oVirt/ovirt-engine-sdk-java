@@ -58,7 +58,7 @@ public class GroupRoles extends
 
     /**
      * Lists GroupRole objects.
-     * 
+     *
      * @return
      *     List of {@link GroupRole }
      *
@@ -79,7 +79,7 @@ public class GroupRoles extends
     /**
      * Fetches GroupRole object by id.
      * 
-     * @return 
+     * @return
      *     {@link GroupRole }
      *
      * @throws ClientProtocolException

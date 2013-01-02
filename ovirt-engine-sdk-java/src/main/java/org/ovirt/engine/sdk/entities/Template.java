@@ -52,6 +52,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="high_availability" type="{}HighAvailability" minOccurs="0"/>
  *         &lt;element name="display" type="{}Display" minOccurs="0"/>
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
@@ -78,6 +79,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "highAvailability",
     "display",
     "stateless",
+    "deleteProtected",
     "timezone",
     "domain",
     "usb"
@@ -103,6 +105,8 @@ public class Template
     protected HighAvailability highAvailability;
     protected Display display;
     protected Boolean stateless;
+    @XmlElement(name = "delete_protected")
+    protected Boolean deleteProtected;
     protected String timezone;
     protected Domain domain;
     protected Usb usb;
@@ -469,6 +473,34 @@ public class Template
 
     public boolean isSetStateless() {
         return (this.stateless!= null);
+    }
+
+    /**
+     * Gets the value of the deleteProtected property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isDeleteProtected() {
+        return deleteProtected;
+    }
+
+    /**
+     * Sets the value of the deleteProtected property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setDeleteProtected(Boolean value) {
+        this.deleteProtected = value;
+    }
+
+    public boolean isSetDeleteProtected() {
+        return (this.deleteProtected!= null);
     }
 
     /**

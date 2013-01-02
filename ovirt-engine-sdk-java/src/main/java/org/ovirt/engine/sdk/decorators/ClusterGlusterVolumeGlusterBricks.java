@@ -58,7 +58,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
 
     /**
      * Lists ClusterGlusterVolumeGlusterBrick objects.
-     * 
+     *
      * @return
      *     List of {@link ClusterGlusterVolumeGlusterBrick }
      *
@@ -79,7 +79,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
     /**
      * Fetches ClusterGlusterVolumeGlusterBrick object by id.
      * 
-     * @return 
+     * @return
      *     {@link ClusterGlusterVolumeGlusterBrick }
      *
      * @throws ClientProtocolException

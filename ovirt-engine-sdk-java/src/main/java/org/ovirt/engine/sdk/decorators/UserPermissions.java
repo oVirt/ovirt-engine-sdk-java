@@ -58,7 +58,7 @@ public class UserPermissions extends
 
     /**
      * Lists UserPermission objects.
-     * 
+     *
      * @return
      *     List of {@link UserPermission }
      *
@@ -79,7 +79,7 @@ public class UserPermissions extends
     /**
      * Fetches UserPermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link UserPermission }
      *
      * @throws ClientProtocolException

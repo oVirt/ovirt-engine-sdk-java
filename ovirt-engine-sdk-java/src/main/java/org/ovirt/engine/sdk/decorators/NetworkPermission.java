@@ -32,23 +32,21 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * <p>Domain providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Domain }. 
+ * <p>NetworkPermission providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permission }. 
  */
 @SuppressWarnings("unused")
-public class Domain extends
-        org.ovirt.engine.sdk.entities.Domain {
+public class NetworkPermission extends
+        org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
 
-    private DomainGroups domainGroups;
-    private DomainUsers domainUsers;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public Domain(HttpProxyBroker proxy) {
+    public NetworkPermission(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -59,32 +57,26 @@ public class Domain extends
         return proxy;
     }
 
-    /**
-     * Gets the value of the DomainGroups property.
-     *
-     * @return
-     *     {@link DomainGroups }
-     */
-    public synchronized DomainGroups getGroups() {
-        if (this.domainGroups == null) {
-            this.domainGroups = new DomainGroups(proxy, this);
-        }
-        return domainGroups;
-    }
-    /**
-     * Gets the value of the DomainUsers property.
-     *
-     * @return
-     *     {@link DomainUsers }
-     */
-    public synchronized DomainUsers getUsers() {
-        if (this.domainUsers == null) {
-            this.domainUsers = new DomainUsers(proxy, this);
-        }
-        return domainUsers;
-    }
 
 
+    /**
+     * Deletes object.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+        return getProxy().delete(url, Response.class);
+    }
 
 }
 

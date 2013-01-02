@@ -58,7 +58,7 @@ public class StorageDomainTemplates extends
 
     /**
      * Lists StorageDomainTemplate objects.
-     * 
+     *
      * @return
      *     List of {@link StorageDomainTemplate }
      *
@@ -79,7 +79,7 @@ public class StorageDomainTemplates extends
     /**
      * Fetches StorageDomainTemplate object by id.
      * 
-     * @return 
+     * @return
      *     {@link StorageDomainTemplate }
      *
      * @throws ClientProtocolException

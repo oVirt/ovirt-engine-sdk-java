@@ -59,7 +59,7 @@ public class VmPool extends
     }
 
     /**
-     * Gets the value of the VmPoolPermissions property. 
+     * Gets the value of the VmPoolPermissions property.
      *
      * @return
      *     {@link VmPoolPermissions }

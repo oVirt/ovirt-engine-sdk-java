@@ -58,7 +58,7 @@ public class StorageDomainPermissions extends
 
     /**
      * Lists StorageDomainPermission objects.
-     * 
+     *
      * @return
      *     List of {@link StorageDomainPermission }
      *
@@ -79,7 +79,7 @@ public class StorageDomainPermissions extends
     /**
      * Fetches StorageDomainPermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link StorageDomainPermission }
      *
      * @throws ClientProtocolException

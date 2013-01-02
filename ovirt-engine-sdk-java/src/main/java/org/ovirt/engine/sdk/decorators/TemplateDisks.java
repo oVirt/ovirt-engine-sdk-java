@@ -58,7 +58,7 @@ public class TemplateDisks extends
 
     /**
      * Lists TemplateDisk objects.
-     * 
+     *
      * @return
      *     List of {@link TemplateDisk }
      *
@@ -79,7 +79,7 @@ public class TemplateDisks extends
     /**
      * Fetches TemplateDisk object by id.
      * 
-     * @return 
+     * @return
      *     {@link TemplateDisk }
      *
      * @throws ClientProtocolException

@@ -78,6 +78,7 @@ import javax.xml.bind.annotation.XmlType;
     Templates.class,
     Clusters.class,
     Permits.class,
+    Hooks.class,
     Statistics.class,
     VmPools.class,
     BaseDevices.class

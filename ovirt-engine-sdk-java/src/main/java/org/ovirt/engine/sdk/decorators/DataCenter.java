@@ -61,7 +61,7 @@ public class DataCenter extends
     }
 
     /**
-     * Gets the value of the DataCenterPermissions property. 
+     * Gets the value of the DataCenterPermissions property.
      *
      * @return
      *     {@link DataCenterPermissions }
@@ -73,7 +73,7 @@ public class DataCenter extends
         return dataCenterPermissions;
     }
     /**
-     * Gets the value of the DataCenterStorageDomains property. 
+     * Gets the value of the DataCenterStorageDomains property.
      *
      * @return
      *     {@link DataCenterStorageDomains }
@@ -85,7 +85,7 @@ public class DataCenter extends
         return dataCenterStorageDomains;
     }
     /**
-     * Gets the value of the DataCenterQuotas property. 
+     * Gets the value of the DataCenterQuotas property.
      *
      * @return
      *     {@link DataCenterQuotas }

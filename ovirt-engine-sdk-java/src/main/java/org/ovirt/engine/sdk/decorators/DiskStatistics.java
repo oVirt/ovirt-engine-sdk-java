@@ -58,7 +58,7 @@ public class DiskStatistics extends
 
     /**
      * Lists DiskStatistic objects.
-     * 
+     *
      * @return
      *     List of {@link DiskStatistic }
      *
@@ -79,7 +79,7 @@ public class DiskStatistics extends
     /**
      * Fetches DiskStatistic object by id.
      * 
-     * @return 
+     * @return
      *     {@link DiskStatistic }
      *
      * @throws ClientProtocolException

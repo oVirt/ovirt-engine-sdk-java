@@ -41,6 +41,7 @@ public class Network extends
 
     private HttpProxyBroker proxy;
 
+    private NetworkPermissions networkPermissions;
 
 
     /**
@@ -57,6 +58,18 @@ public class Network extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the NetworkPermissions property.
+     *
+     * @return
+     *     {@link NetworkPermissions }
+     */
+    public synchronized NetworkPermissions getPermissions() {
+        if (this.networkPermissions == null) {
+            this.networkPermissions = new NetworkPermissions(proxy, this);
+        }
+        return networkPermissions;
+    }
 
 
     /**

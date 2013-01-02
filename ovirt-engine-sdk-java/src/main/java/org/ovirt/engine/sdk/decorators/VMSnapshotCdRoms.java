@@ -58,7 +58,7 @@ public class VMSnapshotCdRoms extends
 
     /**
      * Lists VMSnapshotCdRom objects.
-     * 
+     *
      * @return
      *     List of {@link VMSnapshotCdRom }
      *
@@ -79,7 +79,7 @@ public class VMSnapshotCdRoms extends
     /**
      * Fetches VMSnapshotCdRom object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMSnapshotCdRom }
      *
      * @throws ClientProtocolException

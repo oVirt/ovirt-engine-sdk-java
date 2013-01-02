@@ -58,7 +58,7 @@ public class VMCdRoms extends
 
     /**
      * Lists VMCdRom objects.
-     * 
+     *
      * @return
      *     List of {@link VMCdRom }
      *
@@ -79,7 +79,7 @@ public class VMCdRoms extends
     /**
      * Fetches VMCdRom object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMCdRom }
      *
      * @throws ClientProtocolException

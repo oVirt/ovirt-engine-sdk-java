@@ -58,7 +58,7 @@ public class HostPermissions extends
 
     /**
      * Lists HostPermission objects.
-     * 
+     *
      * @return
      *     List of {@link HostPermission }
      *
@@ -79,7 +79,7 @@ public class HostPermissions extends
     /**
      * Fetches HostPermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link HostPermission }
      *
      * @throws ClientProtocolException

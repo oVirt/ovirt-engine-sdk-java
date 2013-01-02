@@ -58,7 +58,7 @@ public class VMDisks extends
 
     /**
      * Lists VMDisk objects.
-     * 
+     *
      * @return
      *     List of {@link VMDisk }
      *
@@ -79,7 +79,7 @@ public class VMDisks extends
     /**
      * Fetches VMDisk object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMDisk }
      *
      * @throws ClientProtocolException

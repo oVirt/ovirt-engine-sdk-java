@@ -58,7 +58,7 @@ public class TemplateCdRoms extends
 
     /**
      * Lists TemplateCdRom objects.
-     * 
+     *
      * @return
      *     List of {@link TemplateCdRom }
      *
@@ -79,7 +79,7 @@ public class TemplateCdRoms extends
     /**
      * Fetches TemplateCdRom object by id.
      * 
-     * @return 
+     * @return
      *     {@link TemplateCdRom }
      *
      * @throws ClientProtocolException

@@ -62,7 +62,7 @@ public class StorageDomain extends
     }
 
     /**
-     * Gets the value of the StorageDomainPermissions property. 
+     * Gets the value of the StorageDomainPermissions property.
      *
      * @return
      *     {@link StorageDomainPermissions }
@@ -74,7 +74,7 @@ public class StorageDomain extends
         return storageDomainPermissions;
     }
     /**
-     * Gets the value of the StorageDomainVMs property. 
+     * Gets the value of the StorageDomainVMs property.
      *
      * @return
      *     {@link StorageDomainVMs }
@@ -86,7 +86,7 @@ public class StorageDomain extends
         return storageDomainVMs;
     }
     /**
-     * Gets the value of the StorageDomainTemplates property. 
+     * Gets the value of the StorageDomainTemplates property.
      *
      * @return
      *     {@link StorageDomainTemplates }
@@ -98,7 +98,7 @@ public class StorageDomain extends
         return storageDomainTemplates;
     }
     /**
-     * Gets the value of the StorageDomainFiles property. 
+     * Gets the value of the StorageDomainFiles property.
      *
      * @return
      *     {@link StorageDomainFiles }
@@ -117,7 +117,13 @@ public class StorageDomain extends
      * @param storagedomain
      *
      * <pre>
-     * [storagedomain.name]
+     * Overload 1: 
+     *    [storagedomain.name]
+     *
+     * Overload 2: 
+     *    storagedomain.storage.logical_unit
+     *    [storagedomain.name]
+     *    [storagedomain.storage.override_luns]
      * </pre>
      *
      * @return

@@ -59,7 +59,7 @@ public class GroupRole extends
     }
 
     /**
-     * Gets the value of the GroupRolePermits property. 
+     * Gets the value of the GroupRolePermits property.
      *
      * @return
      *     {@link GroupRolePermits }

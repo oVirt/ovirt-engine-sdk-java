@@ -112,6 +112,7 @@ public class Clusters extends
      * [cluster.error_handling.on_error]
      * [cluster.virt_service]
      * [cluster.gluster_service]
+     * [cluster.threads_as_cores]
      * </pre>
      *
      * @return

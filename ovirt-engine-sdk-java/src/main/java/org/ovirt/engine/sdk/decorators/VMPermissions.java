@@ -58,7 +58,7 @@ public class VMPermissions extends
 
     /**
      * Lists VMPermission objects.
-     * 
+     *
      * @return
      *     List of {@link VMPermission }
      *
@@ -79,7 +79,7 @@ public class VMPermissions extends
     /**
      * Fetches VMPermission object by id.
      * 
-     * @return 
+     * @return
      *     {@link VMPermission }
      *
      * @throws ClientProtocolException

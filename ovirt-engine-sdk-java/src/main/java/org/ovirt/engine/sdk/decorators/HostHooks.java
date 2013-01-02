@@ -36,31 +36,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>VMNICs providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Nics }.
+ * <p>HostHooks providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Hooks }.
  */
 @SuppressWarnings("unused")
-public class VMNICs extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.NIC,
-                            org.ovirt.engine.sdk.entities.Nics,
-                            VMNIC> {
+public class HostHooks extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Hook,
+                            org.ovirt.engine.sdk.entities.Hooks,
+                            HostHook> {
 
-    private VM parent;
+    private Host parent;
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent VM
+     * @param parent Host
      */
-    public VMNICs(HttpProxyBroker proxy, VM parent) {
-        super(proxy, "nics");
+    public HostHooks(HttpProxyBroker proxy, Host parent) {
+        super(proxy, "hooks");
         this.parent = parent;
     }
 
     /**
-     * Lists VMNIC objects.
+     * Lists HostHook objects.
      *
      * @return
-     *     List of {@link VMNIC }
+     *     List of {@link HostHook }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -70,17 +70,17 @@ public class VMNICs extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<VMNIC> list() throws ClientProtocolException,
+    public List<HostHook> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Nics.class, VMNIC.class);
+        return list(url, org.ovirt.engine.sdk.entities.Hooks.class, HostHook.class);
     }
 
     /**
-     * Fetches VMNIC object by id.
+     * Fetches HostHook object by id.
      * 
      * @return
-     *     {@link VMNIC }
+     *     {@link HostHook }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -90,40 +90,12 @@ public class VMNICs extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMNIC get(UUID id) throws ClientProtocolException,
+    public HostHook get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Hook.class, HostHook.class);
     }
 
-    /**
-     * Adds NIC object.
-     *
-     * @param nic
-     *
-     * <pre>
-     * nic.network.id|name
-     * nic.name
-     * [nic.mac.address]
-     * [nic.interface]
-     * [nic.port_mirroring.networks.network]
-     * </pre>
-     *
-     * @return
-     *     {@link VMNIC }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws 
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, nic, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
-    }
 
 }
 
