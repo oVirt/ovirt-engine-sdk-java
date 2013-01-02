@@ -29,7 +29,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.HttpProxyBuilder;
 
 /**
- * oVirt java-sdk codegen suite
+ * oVirt ovirt-engine-sdk-java codegen suite
  */
 public class Main {
 
@@ -43,17 +43,17 @@ public class Main {
         HttpProxyBroker httpProxyBroker = new HttpProxyBroker(
                 new HttpProxyBuilder(
                         new ConnectionsPoolBuilder(API_URL, USER, PASSWORD).build()
-                        ).build());
+                ).build());
 
         // #1 - generate api entities from the XSD schema
         new XsdCodegen(httpProxyBroker).generate();
 
-        // #2 - compile java-sdk
+        // #2 - compile ovirt-engine-sdk-java
 
         // #3 - generate api entities decorators by RSDL and SDK entry point
         new RsdlCodegen(httpProxyBroker).generate();
 
-        // #4 - compile java-sdk
+        // #4 - compile ovirt-engine-sdk-java
 
         // #5 - exit
         System.exit(0);

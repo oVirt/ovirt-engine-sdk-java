@@ -42,9 +42,9 @@ import org.ovirt.engine.sdk.utils.StringUtils;
 public class ApiCodegen extends AbstractCodegen {
 
     private static final String NX_API_PATH =
-            "../java-sdk/src/main/java/org/ovirt/engine/sdk/";
+            "../ovirt-engine-sdk-java/src/main/java/org/ovirt/engine/sdk/";
     private static final String WINDOWS_API_PATH =
-            "..\\java-sdk\\src\\main\\java\\org\\ovirt\\engine\\sdk\\";
+            "..\\ovirt-engine-sdk-java\\src\\main\\java\\org\\ovirt\\engine\\sdk\\";
     private static final String EP_NAME = "Api";
 
     private ApiTemplate apiTemplate;
@@ -98,10 +98,10 @@ public class ApiCodegen extends AbstractCodegen {
         String rootMethods = produceRootMethods();
 
         persistClass(EP_NAME,
-                    this.apiTemplate.getTemplate(collectionsVariables,
-                                                collectionsGetters,
-                                                rootMethods),
-                    distPath);
+                this.apiTemplate.getTemplate(collectionsVariables,
+                        collectionsGetters,
+                        rootMethods),
+                distPath);
 
     }
 
@@ -117,7 +117,7 @@ public class ApiCodegen extends AbstractCodegen {
 
         String[] exceptions =
                 new String[] { "Actions", "Href", "Links", "ExtensionType",
-                               "CreationStatus", "Id", "Name", "Description", "Class" };
+                        "CreationStatus", "Id", "Name", "Description", "Class" };
 
         String[] staticMethods =
                 new String[] { "SpecialObjects", "ProductInfo" };

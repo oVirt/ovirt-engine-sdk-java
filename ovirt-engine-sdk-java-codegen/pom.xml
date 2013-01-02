@@ -54,7 +54,7 @@
         </dependency>
         <dependency>
         	<groupId>org.ovirt.engine.sdk</groupId>
-        	<artifactId>ovirt-java-sdk</artifactId>
+        	<artifactId>ovirt-engine-sdk-java</artifactId>
         	<version>1.0.0.1-SNAPSHOT</version>
         	<type>jar</type>
         	<scope>compile</scope>

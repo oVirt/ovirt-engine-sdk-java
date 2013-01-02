@@ -85,9 +85,9 @@ public class RsdlCodegen extends AbstractCodegen {
 
     private static final String RSDL_URL = "?rsdl";
     private static final String NX_DECORATORS_PATH =
-            "../java-sdk/src/main/java/org/ovirt/engine/sdk/decorators/";
+            "../ovirt-engine-sdk-java/src/main/java/org/ovirt/engine/sdk/decorators/";
     private static final String WINDOWS_DECORATORS_PATH =
-            "..\\java-sdk\\src\\main\\java\\org\\ovirt\\engine\\sdk\\decorators\\";
+            "..\\ovirt-engine-sdk-java\\src\\main\\java\\org\\ovirt\\engine\\sdk\\decorators\\";
     private static final String SLASH = "/";
     private static final String ROOT_URL = "/api/";
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
@@ -222,16 +222,16 @@ public class RsdlCodegen extends AbstractCodegen {
 
                             if (!this.collectionsHolder.containsKey(decoratorCollectionName.toLowerCase())) {
                                 this.collectionsHolder.put(decoratorCollectionName.toLowerCase(),
-                                                            new CollectionHolder(
-                                                                    decoratorCollectionName,
-                                                                    publicEntityName,
-                                                                    publicCollectionName,
-                                                                    decoratorEntityName,
-                                                                    StringUtils.toPlural(period),
-                                                                    collectionTemplate));
+                                        new CollectionHolder(
+                                                decoratorCollectionName,
+                                                publicEntityName,
+                                                publicCollectionName,
+                                                decoratorEntityName,
+                                                StringUtils.toPlural(period),
+                                                collectionTemplate));
                             }
                             addCollectionMethod(this.collectionsHolder.get(decoratorCollectionName.toLowerCase()),
-                                              url, rel, decoratorEntityName, publicEntityName, i, dl);
+                                    url, rel, decoratorEntityName, publicEntityName, i, dl);
                         } else if (i == 2) { // root-resource
                             String resource = getRootResourceName(collectionName);
                             String decoratorResourceName = StringUtils.toUpperCase(resource);
@@ -239,12 +239,12 @@ public class RsdlCodegen extends AbstractCodegen {
 
                             if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
                                 this.resourcesHolder.put(resource.toLowerCase(),
-                                                            new ResourceHolder(
-                                                                    decoratorResourceName,
-                                                                    publicEntityName,
-                                                                    resourceTemplate,
-                                                                    variableTemplate,
-                                                                    subCollectionGetterTemplate));
+                                        new ResourceHolder(
+                                                decoratorResourceName,
+                                                publicEntityName,
+                                                resourceTemplate,
+                                                variableTemplate,
+                                                subCollectionGetterTemplate));
                             }
                             addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()),
                                     url, rel, decoratorResourceName, publicEntityName, dl);
@@ -265,19 +265,19 @@ public class RsdlCodegen extends AbstractCodegen {
                                     String parentDecoratorName = parent;
                                     resourceHolder.addSubCollection(collection.toLowerCase(),
                                             new CollectionHolder(decoratorSubCollectionName,
-                                                                    publicEntityName,
-                                                                    publicCollectionName,
-                                                                    parentDecoratorName,
-                                                                    decoratorEntityName,
-                                                                    StringUtils.toPlural(period),
-                                                                    subCollectionTemplate));
+                                                    publicEntityName,
+                                                    publicCollectionName,
+                                                    parentDecoratorName,
+                                                    decoratorEntityName,
+                                                    StringUtils.toPlural(period),
+                                                    subCollectionTemplate));
                                 }
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
                                 addCollectionAction(rel, periods, i, period, resourceHolder, dl);
                             }
                             addCollectionMethod(resourceHolder.getSubcollections().get(collection.toLowerCase()),
-                                              url, rel, decoratorEntityName, publicEntityName, i, dl);
+                                    url, rel, decoratorEntityName, publicEntityName, i, dl);
                         } else { // sub-resource
                             if (!isAction(period, rel, requestMethod)) {
                                 String resource = getSubResourceName(collectionName, parent);
@@ -292,7 +292,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                                     subCollectionGetterTemplate));
                                 }
                                 addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel,
-                                                  subResourceDecoratorName, publicEntityName, dl);
+                                        subResourceDecoratorName, publicEntityName, dl);
                                 parent = resource;
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
@@ -338,7 +338,7 @@ public class RsdlCodegen extends AbstractCodegen {
             }
             for (CollectionHolder subCollection : resource.getSubcollections().values()) {
                 publicAccessors.get(resource.getPublicEntityName())
-                                    .add(subCollection.getPublicCollectionName());
+                        .add(subCollection.getPublicCollectionName());
             }
         }
         return publicAccessors;
@@ -376,7 +376,7 @@ public class RsdlCodegen extends AbstractCodegen {
             HttpMethod requestMethod, String[] periods, int i, String period) {
         String publicEntityName =
                 getPublicEntity(StringUtils.toSingular(StringUtils.toPlural(actualReturnType)),
-                                false);
+                        false);
         if (publicEntityName == null && isAction(period, rel, requestMethod)) {
             publicEntityName =
                     getPublicEntity(StringUtils.toSingular(StringUtils.toPlural(periods[i - 3])));
@@ -413,7 +413,7 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param detailedLink
      */
     private void addCollectionAction(String rel, String[] periods, int i, String period,
-                                     ResourceHolder resourceHolder, DetailedLink detailedLink) {
+            ResourceHolder resourceHolder, DetailedLink detailedLink) {
 
         String methodName = getActionMethodName(period, periods[i - 3]);
         if (!resourceHolder.hasMethod(period)) {
@@ -421,8 +421,8 @@ public class RsdlCodegen extends AbstractCodegen {
 
             resourceHolder.addMethod(period,
                     this.resourceActionMethodTemplate.getTemplate(methodName,
-                                                                  rel,
-                                                                  docParams));
+                            rel,
+                            docParams));
         }
     }
 
@@ -436,7 +436,7 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param detailedLink
      */
     private void addResourceAction(String rel, String parent, String collectionName,
-                                   String period, DetailedLink detailedLink) {
+            String period, DetailedLink detailedLink) {
 
         String methodName = getActionMethodName(period, parent);
         ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
@@ -448,8 +448,8 @@ public class RsdlCodegen extends AbstractCodegen {
 
             collectionHolder.addMethod(period,
                     this.collectionActionMethodTemplate.getTemplate(methodName,
-                                                                    rel,
-                                                                    docParams));
+                            rel,
+                            docParams));
         }
     }
 
@@ -474,16 +474,16 @@ public class RsdlCodegen extends AbstractCodegen {
                     String docParams = DocsGen.generate(detailedLink);
                     collectionHolder.addMethod(rel,
                             this.collectionAddMethodTemplate.getTemplate(decoratorCollectionName,
-                                                                         publicEntityName,
-                                                                         docParams));
+                                    publicEntityName,
+                                    docParams));
                 }
             } else {
                 if (!collectionHolder.hasMethod(rel)) {
                     String docParams = DocsGen.generate(detailedLink);
                     collectionHolder.addMethod(rel,
                             this.subCollectionAddMethodTemplate.getTemplate(decoratorCollectionName,
-                                                                            publicEntityName,
-                                                                            docParams));
+                                    publicEntityName,
+                                    docParams));
 
                 }
             }
@@ -515,8 +515,8 @@ public class RsdlCodegen extends AbstractCodegen {
 
                 resourceHolder.addMethod(UPDATE_REL,
                         this.updateMethodTemplate.getTemplate(decoratorName,
-                                                              publicEntityName,
-                                                              docParams));
+                                publicEntityName,
+                                docParams));
             }
         }
     }
@@ -567,8 +567,8 @@ public class RsdlCodegen extends AbstractCodegen {
             collection = StringUtils.toPlural(StringUtils.toUpperCase(actualReturnType));
             if (!actualReturnType.toLowerCase().startsWith(parent.toLowerCase())) {
                 collection = StringUtils.toPlural(parent
-                             +
-                             StringUtils.toUpperCase(actualReturnType));
+                        +
+                        StringUtils.toUpperCase(actualReturnType));
             }
         } else {
             collection = getPublicCollection(periods[i - 1].toLowerCase(), false);

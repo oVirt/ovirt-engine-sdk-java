@@ -46,8 +46,8 @@ public class XsdCodegen extends AbstractCodegen {
     private static final String WINDOWS_XJC_PATH = "%java_home%\\bin\\xjc";
     private static final String NX_XJC_PATH = "xjc";
 
-    private static final String WINDOWS_ENTITIES_PATH = "..\\java-sdk\\src\\main\\java\\";
-    private static final String NX_ENTITIES_PATH = "../java-sdk/src/main/java/";
+    private static final String WINDOWS_ENTITIES_PATH = "..\\ovirt-engine-sdk-java\\src\\main\\java\\";
+    private static final String NX_ENTITIES_PATH = "../ovirt-engine-sdk-java/src/main/java/";
 
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
     private static final String SCHEMA_FILE_NAME = "api.xsd";
@@ -254,7 +254,7 @@ public class XsdCodegen extends AbstractCodegen {
                         if (!isInAccessor) {
                             for (String accessor : accessorsToCheck) {
                                 if (str.toLowerCase().equals(templateOriginal.replace(placeHolder, accessor)
-                                                .toLowerCase())) {
+                                        .toLowerCase())) {
                                     isInAccessor = true;
                                     tempContent.append(templateReplace.replace(placeHolder, accessor));
                                     break;
@@ -276,7 +276,7 @@ public class XsdCodegen extends AbstractCodegen {
             }
             // save new content
             FileUtils.saveFile(file.getAbsolutePath(),
-                               finalContent.toString());
+                    finalContent.toString());
         }
     }
 
