@@ -30,6 +30,7 @@ import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
@@ -89,6 +90,38 @@ public class Events extends
             ServerException, IOException {
         String url = SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Event.class, Event.class);
+    }
+
+    /**
+     * Lists Event objects.
+     *
+     * @param query
+     *            search query
+     * @param caseSensitive
+     *            true|false
+     * @param from
+     *            event_id
+     * @param max
+     *            max results
+     *
+     * @return List of {@link Event }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Event> list(String query, Boolean caseSensitive, String from, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = new UrlBuilder(SLASH + getName())
+                .add("search", query, UrlParameterType.QUERY)
+                .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
+                .add("from", from, UrlParameterType.MATRIX)
+                .add("max", max, UrlParameterType.MATRIX)
+                .build();
+        return list(url, org.ovirt.engine.sdk.entities.Events.class, Event.class);
     }
 
 

@@ -32,12 +32,14 @@ import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
 import org.ovirt.engine.sdk.codegen.templates.CollectionActionMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionAddMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
+import org.ovirt.engine.sdk.codegen.templates.CollectionListMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionTemplate;
 import org.ovirt.engine.sdk.codegen.templates.DeleteMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceActionMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionAddMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
+import org.ovirt.engine.sdk.codegen.templates.SubCollectionListMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.UpdateMethodTemplate;
@@ -79,6 +81,8 @@ public class RsdlCodegen extends AbstractCodegen {
     private UpdateMethodTemplate updateMethodTemplate;
     private CollectionAddMethodTemplate collectionAddMethodTemplate;
     private SubCollectionAddMethodTemplate subCollectionAddMethodTemplate;
+    private CollectionListMethodTemplate collectionListMethodTemplate;
+    private SubCollectionListMethodTemplate subCollectionListMethodTemplate;
 
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
@@ -121,6 +125,8 @@ public class RsdlCodegen extends AbstractCodegen {
         this.updateMethodTemplate = new UpdateMethodTemplate();
         this.collectionAddMethodTemplate = new CollectionAddMethodTemplate();
         this.subCollectionAddMethodTemplate = new SubCollectionAddMethodTemplate();
+        this.collectionListMethodTemplate = new CollectionListMethodTemplate();
+        this.subCollectionListMethodTemplate = new SubCollectionListMethodTemplate();
 
         this.collectionsHolder = new HashMap<String, CollectionHolder>();
         this.resourcesHolder = new HashMap<String, ResourceHolder>();
@@ -231,7 +237,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                                 collectionTemplate));
                             }
                             addCollectionMethod(this.collectionsHolder.get(decoratorCollectionName.toLowerCase()),
-                                    url, rel, decoratorEntityName, publicEntityName, i, dl);
+                                    url, rel, decoratorEntityName, publicEntityName, publicCollectionName, i, dl);
                         } else if (i == 2) { // root-resource
                             String resource = getRootResourceName(collectionName);
                             String decoratorResourceName = StringUtils.toUpperCase(resource);
@@ -255,13 +261,13 @@ public class RsdlCodegen extends AbstractCodegen {
                             String decoratorEntityName = getSubResourceName(collectionName, parent);
                             String publicEntityName =
                                     getSubCollectionEntityName(rel, actualReturnType, requestMethod, periods, i, period);
+                            String publicCollectionName =
+                                    getPublicCollection(StringUtils.toPlural(actualReturnType));
 
                             if (!isAction(period, rel, requestMethod)) {
                                 if (!resourceHolder.getSubcollections().containsKey(collection.toLowerCase())) {
 
                                     String decoratorSubCollectionName = collection;
-                                    String publicCollectionName =
-                                            getPublicCollection(StringUtils.toPlural(actualReturnType));
                                     String parentDecoratorName = parent;
                                     resourceHolder.addSubCollection(collection.toLowerCase(),
                                             new CollectionHolder(decoratorSubCollectionName,
@@ -277,7 +283,7 @@ public class RsdlCodegen extends AbstractCodegen {
                                 addCollectionAction(rel, periods, i, period, resourceHolder, dl);
                             }
                             addCollectionMethod(resourceHolder.getSubcollections().get(collection.toLowerCase()),
-                                    url, rel, decoratorEntityName, publicEntityName, i, dl);
+                                    url, rel, decoratorEntityName, publicEntityName, publicCollectionName, i, dl);
                         } else { // sub-resource
                             if (!isAction(period, rel, requestMethod)) {
                                 String resource = getSubResourceName(collectionName, parent);
@@ -466,7 +472,7 @@ public class RsdlCodegen extends AbstractCodegen {
      */
     private void addCollectionMethod(CollectionHolder collectionHolder,
             String url, String rel, String decoratorCollectionName, String publicEntityName,
-            int indx, DetailedLink detailedLink) {
+            String publicCollectionName, int indx, DetailedLink detailedLink) {
 
         if (rel.equals(ADD_REL)) {
             if (indx == 1) {
@@ -488,7 +494,29 @@ public class RsdlCodegen extends AbstractCodegen {
                 }
             }
         } else if (rel.equals(GET_REL)) {
-            // TODO: implement parameterised GET
+            if (detailedLink.getRequest() != null && detailedLink.getRequest().getUrl() != null &&
+                    detailedLink.getRequest().getUrl().getParametersSets().size() > 0) {
+
+                String methodId = "list_"
+                        + detailedLink.getRequest().getUrl().getParametersSets().size();
+
+                if (!collectionHolder.hasMethod(methodId)) {
+                    if (indx == 1) {
+                        collectionHolder.addMethod(methodId,
+                                this.collectionListMethodTemplate.getTemplate(
+                                        StringUtils.toSingular(decoratorCollectionName),
+                                        publicCollectionName,
+                                        detailedLink.getRequest().getUrl()));
+                    } else {
+                        collectionHolder.addMethod(methodId,
+                                this.subCollectionListMethodTemplate.getTemplate(
+                                        StringUtils.toSingular(decoratorCollectionName),
+                                        publicCollectionName,
+                                        detailedLink.getRequest().getUrl()));
+
+                    }
+                }
+            }
         }
     }
 

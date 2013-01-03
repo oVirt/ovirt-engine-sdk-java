@@ -30,6 +30,7 @@ import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
@@ -94,6 +95,29 @@ public class UserRolePermits extends
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Permit.class, UserRolePermit.class);
+    }
+
+    /**
+     * Lists UserRolePermit objects.
+     *
+     * @param max
+     *            max results
+     *
+     * @return List of {@link UserRolePermit }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<UserRolePermit> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
+                .add("max", max, UrlParameterType.MATRIX)
+                .build();
+        return list(url, org.ovirt.engine.sdk.entities.Permits.class, UserRolePermit.class);
     }
 
     /**

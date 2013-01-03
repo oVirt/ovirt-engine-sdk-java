@@ -48,8 +48,8 @@ public class CollectionTemplate extends AbstractTemplate {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getCopyrightTemplate()
-                                   +
-                                   getTemplate());
+                        +
+                        getTemplate());
 
         templateWrapper.set("decoratorCollectionName", decoratorCollectionName);
         templateWrapper.set("publicEntityName", publicEntityName);
