@@ -41,6 +41,7 @@ public class VMNIC extends
 
     private HttpProxyBroker proxy;
 
+    private VMNICReportedDevices vMNICReportedDevices;
     private VMNICStatistics vMNICStatistics;
 
 
@@ -58,6 +59,18 @@ public class VMNIC extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the VMNICReportedDevices property.
+     *
+     * @return
+     *     {@link VMNICReportedDevices }
+     */
+    public synchronized VMNICReportedDevices getReportedDevices() {
+        if (this.vMNICReportedDevices == null) {
+            this.vMNICReportedDevices = new VMNICReportedDevices(proxy, this);
+        }
+        return vMNICReportedDevices;
+    }
     /**
      * Gets the value of the VMNICStatistics property.
      *
@@ -99,10 +112,12 @@ public class VMNIC extends
      *
      * <pre>
      * [nic.network.id|name]
+     * [nic.linked]
      * [nic.name]
      * [nic.mac.address]
      * [nic.interface]
      * [nic.port_mirroring.networks.network]
+     * [nic.plugged]
      * </pre>
      *
      * @return

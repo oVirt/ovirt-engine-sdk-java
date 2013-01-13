@@ -73,6 +73,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}vmpool" minOccurs="0"/>
  *         &lt;element ref="{}cdroms" minOccurs="0"/>
  *         &lt;element ref="{}floppies" minOccurs="0"/>
+ *         &lt;element ref="{}reported_devices" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -115,7 +116,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "usb",
     "vmPool",
     "cdroms",
-    "floppies"
+    "floppies",
+    "reportedDevices"
 })
 @XmlSeeAlso({
     Snapshot.class
@@ -169,6 +171,8 @@ public class VM
     protected VmPool vmPool;
     protected CdRoms cdroms;
     protected Floppies floppies;
+    @XmlElement(name = "reported_devices")
+    protected ReportedDevices reportedDevices;
 
     /**
      * Gets the value of the type property.
@@ -1092,6 +1096,34 @@ public class VM
 
     public boolean isSetFloppies() {
         return (this.floppies!= null);
+    }
+
+    /**
+     * Gets the value of the reportedDevices property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReportedDevices }
+     *     
+     */
+    public Object getReportedDevices() {
+        return reportedDevices;
+    }
+
+    /**
+     * Sets the value of the reportedDevices property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReportedDevices }
+     *     
+     */
+    public void setReportedDevices(ReportedDevices value) {
+        this.reportedDevices = value;
+    }
+
+    public boolean isSetReportedDevices() {
+        return (this.reportedDevices!= null);
     }
 
 }

@@ -126,11 +126,13 @@ public class VMNICs extends
      * @param nic
      *
      * <pre>
-     * nic.network.id|name
      * nic.name
+     * [nic.network.id|name]
+     * [nic.linked]
      * [nic.mac.address]
      * [nic.interface]
      * [nic.port_mirroring.networks.network]
+     * [nic.plugged]
      * </pre>
      *
      * @return

@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
     Domains.class,
     HostStorage.class,
     HostNics.class,
+    ReportedDevices.class,
     Groups.class,
     StorageDomains.class,
     Roles.class,

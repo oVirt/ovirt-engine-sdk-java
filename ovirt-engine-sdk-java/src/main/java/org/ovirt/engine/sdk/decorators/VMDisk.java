@@ -41,6 +41,7 @@ public class VMDisk extends
 
     private HttpProxyBroker proxy;
 
+    private VMDiskPermissions vMDiskPermissions;
     private VMDiskStatistics vMDiskStatistics;
 
 
@@ -58,6 +59,18 @@ public class VMDisk extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the VMDiskPermissions property.
+     *
+     * @return
+     *     {@link VMDiskPermissions }
+     */
+    public synchronized VMDiskPermissions getPermissions() {
+        if (this.vMDiskPermissions == null) {
+            this.vMDiskPermissions = new VMDiskPermissions(proxy, this);
+        }
+        return vMDiskPermissions;
+    }
     /**
      * Gets the value of the VMDiskStatistics property.
      *
@@ -160,6 +173,32 @@ public class VMDisk extends
     public Action deactivate(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/deactivate";
+        return getProxy().action(url, action, Action.class, Action.class);
+    }
+    /**
+     * Performs move action.
+     *
+     * @param action
+     *
+     * <pre>
+     * storagedomain.id|name
+     * [action.async]
+     * [action.grace_period.expiry]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action move(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/move";
         return getProxy().action(url, action, Action.class, Action.class);
     }
 

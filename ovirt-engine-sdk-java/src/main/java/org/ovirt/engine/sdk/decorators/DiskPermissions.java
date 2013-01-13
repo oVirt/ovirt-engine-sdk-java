@@ -37,27 +37,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>Hosts providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Hosts } .
+ * <p>DiskPermissions providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permissions }.
  */
 @SuppressWarnings("unused")
-public class Hosts extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Host, 
-                            org.ovirt.engine.sdk.entities.Hosts, 
-                            Host> {
+public class DiskPermissions extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
+                            org.ovirt.engine.sdk.entities.Permissions,
+                            DiskPermission> {
+
+    private Disk parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent Disk
      */
-    public Hosts(HttpProxyBroker proxy) {
-        super(proxy, "hosts");
+    public DiskPermissions(HttpProxyBroker proxy, Disk parent) {
+        super(proxy, "permissions");
+        this.parent = parent;
     }
 
     /**
-     * Lists Host objects.
+     * Lists DiskPermission objects.
      *
      * @return
-     *     List of {@link Host }
+     *     List of {@link DiskPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -67,16 +71,17 @@ public class Hosts extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<Host> list() throws ClientProtocolException,
+    public List<DiskPermission> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Hosts.class, Host.class);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, DiskPermission.class);
     }
 
     /**
-     * Fetches Host object by id.
-     *
-     * @return {@link Host }
+     * Fetches DiskPermission object by id.
+     * 
+     * @return
+     *     {@link DiskPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -86,66 +91,19 @@ public class Hosts extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public Host get(UUID id) throws ClientProtocolException,
+    public DiskPermission get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Host.class, Host.class);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, DiskPermission.class);
     }
 
     /**
-     * Lists Host objects.
+     * Adds Permission object.
      *
-     * @param query
-     *            search query
-     * @param caseSensitive
-     *            true|false
-     * @param max
-     *            max results
-     *
-     * @return List of {@link Host }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Host> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = new UrlBuilder(SLASH + getName())
-                .add("search", query, UrlParameterType.QUERY)
-                .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
-                .add("max", max, UrlParameterType.MATRIX)
-                .build();
-        return list(url, org.ovirt.engine.sdk.entities.Hosts.class, Host.class);
-    }
-
-    /**
-     * Adds Host object.
-     *
-     * @param host
-     *
-     * <pre>
-     * host.name
-     * host.address
-     * host.root_password
-     * host.cluster.id|name
-     * [host.port]
-     * [host.storage_manager.priority]
-     * [host.power_management.type]
-     * [host.power_management.enabled]
-     * [host.power_management.address]
-     * [host.power_management.user_name]
-     * [host.power_management.password]
-     * [host.power_management.options.option]
-     * [host.power_management.pm_proxy]
-     * [host.power_management.agents.agent]
-     * [host.reboot_after_installation]
-     * </pre>
+     * @param permission
      *
      * @return
-     *     {@link Host }
+     *     {@link DiskPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -154,10 +112,10 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Host add(org.ovirt.engine.sdk.entities.Host host) throws 
+    public DiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException {
-        String url = SLASH + getName();
-        return getProxy().add(url, host, org.ovirt.engine.sdk.entities.Host.class, Host.class);
+        String url = this.parent.getHref() + SLASH + getName();
+        return getProxy().add(url, permission, org.ovirt.engine.sdk.entities.Permission.class, DiskPermission.class);
     }
 
 }

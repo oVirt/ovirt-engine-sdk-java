@@ -48,6 +48,7 @@ import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.codegen.utils.ReflectionHelper;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.entities.DetailedLink;
+import org.ovirt.engine.sdk.entities.Device;
 import org.ovirt.engine.sdk.entities.GlusterBrick;
 import org.ovirt.engine.sdk.entities.GlusterBricks;
 import org.ovirt.engine.sdk.entities.HostNIC;
@@ -166,12 +167,13 @@ public class RsdlCodegen extends AbstractCodegen {
      * @return updated map
      */
     private Map<String, Class<?>> addExceptions(Map<String, Class<?>> map) {
-        // TODO: Fix this on server side
+        // FIXME: Fix this on server side or fond a way locating exceptions programatically
 
         map.put("brick", GlusterBrick.class);
         map.put("bricks", GlusterBricks.class);
         map.put("hostnic", HostNIC.class);
         map.put("hostnics", HostNics.class);
+        map.put("reporteddevice", Device.class);
 
         return map;
     }

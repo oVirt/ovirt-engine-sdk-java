@@ -47,6 +47,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}vm" minOccurs="0"/>
  *         &lt;element ref="{}vmpool" minOccurs="0"/>
  *         &lt;element ref="{}template" minOccurs="0"/>
+ *         &lt;element ref="{}disk" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -66,7 +67,8 @@ import javax.xml.bind.annotation.XmlType;
     "storageDomain",
     "vm",
     "vmpool",
-    "template"
+    "template",
+    "disk"
 })
 public class Permission
     extends BaseResource
@@ -84,6 +86,7 @@ public class Permission
     protected VM vm;
     protected VmPool vmpool;
     protected Template template;
+    protected Disk disk;
 
     /**
      * Gets the value of the role property.
@@ -363,6 +366,34 @@ public class Permission
 
     public boolean isSetTemplate() {
         return (this.template!= null);
+    }
+
+    /**
+     * Gets the value of the disk property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Disk }
+     *     
+     */
+    public Disk getDisk() {
+        return disk;
+    }
+
+    /**
+     * Sets the value of the disk property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Disk }
+     *     
+     */
+    public void setDisk(Disk value) {
+        this.disk = value;
+    }
+
+    public boolean isSetDisk() {
+        return (this.disk!= null);
     }
 
 }

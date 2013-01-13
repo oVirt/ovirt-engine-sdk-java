@@ -24,28 +24,25 @@ package org.ovirt.engine.sdk.entities;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for PowerManagement complex type.
+ * <p>Java class for Agent complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PowerManagement">
+ * &lt;complexType name="Agent">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="address" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="options" type="{}Options" minOccurs="0"/>
- *         &lt;element ref="{}status" minOccurs="0"/>
- *         &lt;element ref="{}pm_proxies" minOccurs="0"/>
- *         &lt;element ref="{}agents" minOccurs="0"/>
+ *         &lt;element ref="{}options" minOccurs="0"/>
+ *         &lt;element name="concurrent" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="order" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -56,57 +53,24 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PowerManagement", propOrder = {
-    "enabled",
+@XmlType(name = "Agent", propOrder = {
     "address",
     "username",
     "password",
     "options",
-    "status",
-    "pmProxies",
-    "agents"
+    "concurrent",
+    "order"
 })
-public class PowerManagement {
+public class Agent {
 
-    protected Boolean enabled;
     protected String address;
     protected String username;
     protected String password;
     protected Options options;
-    protected Status status;
-    @XmlElement(name = "pm_proxies")
-    protected PmProxies pmProxies;
-    protected Agents agents;
+    protected Boolean concurrent;
+    protected Integer order;
     @XmlAttribute
     protected String type;
-
-    /**
-     * Gets the value of the enabled property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isEnabled() {
-        return enabled;
-    }
-
-    /**
-     * Sets the value of the enabled property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setEnabled(Boolean value) {
-        this.enabled = value;
-    }
-
-    public boolean isSetEnabled() {
-        return (this.enabled!= null);
-    }
 
     /**
      * Gets the value of the address property.
@@ -221,87 +185,59 @@ public class PowerManagement {
     }
 
     /**
-     * Gets the value of the status property.
+     * Gets the value of the concurrent property.
      * 
      * @return
      *     possible object is
-     *     {@link Status }
+     *     {@link Boolean }
      *     
      */
-    public Status getStatus() {
-        return status;
+    public Boolean isConcurrent() {
+        return concurrent;
     }
 
     /**
-     * Sets the value of the status property.
+     * Sets the value of the concurrent property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Status }
+     *     {@link Boolean }
      *     
      */
-    public void setStatus(Status value) {
-        this.status = value;
+    public void setConcurrent(Boolean value) {
+        this.concurrent = value;
     }
 
-    public boolean isSetStatus() {
-        return (this.status!= null);
+    public boolean isSetConcurrent() {
+        return (this.concurrent!= null);
     }
 
     /**
-     * Gets the value of the pmProxies property.
+     * Gets the value of the order property.
      * 
      * @return
      *     possible object is
-     *     {@link PmProxies }
+     *     {@link Integer }
      *     
      */
-    public PmProxies getPmProxies() {
-        return pmProxies;
+    public Integer getOrder() {
+        return order;
     }
 
     /**
-     * Sets the value of the pmProxies property.
+     * Sets the value of the order property.
      * 
      * @param value
      *     allowed object is
-     *     {@link PmProxies }
+     *     {@link Integer }
      *     
      */
-    public void setPmProxies(PmProxies value) {
-        this.pmProxies = value;
+    public void setOrder(Integer value) {
+        this.order = value;
     }
 
-    public boolean isSetPmProxies() {
-        return (this.pmProxies!= null);
-    }
-
-    /**
-     * Gets the value of the agents property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Agents }
-     *     
-     */
-    public Agents getAgents() {
-        return agents;
-    }
-
-    /**
-     * Sets the value of the agents property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Agents }
-     *     
-     */
-    public void setAgents(Agents value) {
-        this.agents = value;
-    }
-
-    public boolean isSetAgents() {
-        return (this.agents!= null);
+    public boolean isSetOrder() {
+        return (this.order!= null);
     }
 
     /**

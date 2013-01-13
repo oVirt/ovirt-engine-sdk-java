@@ -32,12 +32,12 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * <p>TemplateNIC providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.NIC }. 
+ * <p>DiskPermission providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permission }. 
  */
 @SuppressWarnings("unused")
-public class TemplateNIC extends
-        org.ovirt.engine.sdk.entities.NIC {
+public class DiskPermission extends
+        org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
 
@@ -46,7 +46,7 @@ public class TemplateNIC extends
     /**
      * @param proxy HttpProxyBroker
      */
-    public TemplateNIC(HttpProxyBroker proxy) {
+    public DiskPermission(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -59,35 +59,6 @@ public class TemplateNIC extends
 
 
 
-    /**
-     * Updates TemplateNIC object.
-     *
-     * @param nic
-     *
-     * <pre>
-     * [nic.network.id|name]
-     * [nic.linked]
-     * [nic.name]
-     * [nic.mac.address]
-     * [nic.interface]
-     * [nic.port_mirroring.networks.network]
-     * </pre>
-     *
-     * @return
-     *     {@link TemplateNIC }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public TemplateNIC update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, TemplateNIC.class);
-    }
     /**
      * Deletes object.
      *

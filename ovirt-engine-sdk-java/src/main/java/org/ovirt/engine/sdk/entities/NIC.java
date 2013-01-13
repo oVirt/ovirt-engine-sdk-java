@@ -38,11 +38,14 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseDevice">
  *       &lt;sequence>
  *         &lt;element ref="{}network" minOccurs="0"/>
+ *         &lt;element name="linked" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="interface" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}mac" minOccurs="0"/>
  *         &lt;element name="statistics" type="{}Statistics" minOccurs="0"/>
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="plugged" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}port_mirroring" minOccurs="0"/>
+ *         &lt;element ref="{}reported_devices" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -54,24 +57,31 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NIC", propOrder = {
     "network",
+    "linked",
     "_interface",
     "mac",
     "statistics",
     "active",
-    "portMirroring"
+    "plugged",
+    "portMirroring",
+    "reportedDevices"
 })
 public class NIC
     extends BaseDevice
 {
 
     protected Network network;
+    protected Boolean linked;
     @XmlElement(name = "interface")
     protected String _interface;
     protected MAC mac;
     protected Statistics statistics;
     protected Boolean active;
+    protected Boolean plugged;
     @XmlElement(name = "port_mirroring")
     protected PortMirroring portMirroring;
+    @XmlElement(name = "reported_devices")
+    protected ReportedDevices reportedDevices;
 
     /**
      * Gets the value of the network property.
@@ -99,6 +109,34 @@ public class NIC
 
     public boolean isSetNetwork() {
         return (this.network!= null);
+    }
+
+    /**
+     * Gets the value of the linked property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isLinked() {
+        return linked;
+    }
+
+    /**
+     * Sets the value of the linked property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setLinked(Boolean value) {
+        this.linked = value;
+    }
+
+    public boolean isSetLinked() {
+        return (this.linked!= null);
     }
 
     /**
@@ -214,6 +252,34 @@ public class NIC
     }
 
     /**
+     * Gets the value of the plugged property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isPlugged() {
+        return plugged;
+    }
+
+    /**
+     * Sets the value of the plugged property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setPlugged(Boolean value) {
+        this.plugged = value;
+    }
+
+    public boolean isSetPlugged() {
+        return (this.plugged!= null);
+    }
+
+    /**
      * Gets the value of the portMirroring property.
      * 
      * @return
@@ -239,6 +305,34 @@ public class NIC
 
     public boolean isSetPortMirroring() {
         return (this.portMirroring!= null);
+    }
+
+    /**
+     * Gets the value of the reportedDevices property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReportedDevices }
+     *     
+     */
+    public Object getReportedDevices() {
+        return reportedDevices;
+    }
+
+    /**
+     * Sets the value of the reportedDevices property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReportedDevices }
+     *     
+     */
+    public void setReportedDevices(ReportedDevices value) {
+        this.reportedDevices = value;
+    }
+
+    public boolean isSetReportedDevices() {
+        return (this.reportedDevices!= null);
     }
 
 }

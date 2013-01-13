@@ -78,6 +78,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}transport_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_states" minOccurs="0"/>
  *         &lt;element ref="{}brick_states" minOccurs="0"/>
+ *         &lt;element ref="{}reported_device_types" minOccurs="0"/>
+ *         &lt;element ref="{}ip_versions" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -128,7 +130,9 @@ import javax.xml.bind.annotation.XmlType;
     "glusterVolumeTypes",
     "transportTypes",
     "glusterVolumeStates",
-    "brickStates"
+    "brickStates",
+    "reportedDeviceTypes",
+    "ipVersions"
 })
 public class VersionCaps
     extends Version
@@ -211,6 +215,10 @@ public class VersionCaps
     protected GlusterStates glusterVolumeStates;
     @XmlElement(name = "brick_states")
     protected GlusterStates brickStates;
+    @XmlElement(name = "reported_device_types")
+    protected ReportedDeviceTypes reportedDeviceTypes;
+    @XmlElement(name = "ip_versions")
+    protected IpVersions ipVersions;
 
     /**
      * Gets the value of the current property.
@@ -1358,6 +1366,62 @@ public class VersionCaps
 
     public boolean isSetBrickStates() {
         return (this.brickStates!= null);
+    }
+
+    /**
+     * Gets the value of the reportedDeviceTypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReportedDeviceTypes }
+     *     
+     */
+    public ReportedDeviceTypes getReportedDeviceTypes() {
+        return reportedDeviceTypes;
+    }
+
+    /**
+     * Sets the value of the reportedDeviceTypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReportedDeviceTypes }
+     *     
+     */
+    public void setReportedDeviceTypes(ReportedDeviceTypes value) {
+        this.reportedDeviceTypes = value;
+    }
+
+    public boolean isSetReportedDeviceTypes() {
+        return (this.reportedDeviceTypes!= null);
+    }
+
+    /**
+     * Gets the value of the ipVersions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link IpVersions }
+     *     
+     */
+    public IpVersions getIpVersions() {
+        return ipVersions;
+    }
+
+    /**
+     * Sets the value of the ipVersions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link IpVersions }
+     *     
+     */
+    public void setIpVersions(IpVersions value) {
+        this.ipVersions = value;
+    }
+
+    public boolean isSetIpVersions() {
+        return (this.ipVersions!= null);
     }
 
 }

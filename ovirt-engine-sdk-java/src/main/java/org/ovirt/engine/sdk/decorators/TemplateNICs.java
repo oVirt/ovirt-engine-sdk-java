@@ -128,6 +128,7 @@ public class TemplateNICs extends
      * <pre>
      * nic.network.id|name
      * nic.name
+     * [nic.linked]
      * [nic.mac.address]
      * [nic.interface]
      * [nic.port_mirroring.networks.network]

@@ -187,6 +187,7 @@ public class Host extends
      * [host.power_management.password]
      * [host.power_management.options.option]
      * [host.power_management.pm_proxy]
+     * [host.power_management.agents.agent]
      * </pre>
      *
      * @return

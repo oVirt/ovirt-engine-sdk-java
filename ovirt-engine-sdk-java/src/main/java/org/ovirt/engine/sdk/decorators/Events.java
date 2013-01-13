@@ -124,6 +124,41 @@ public class Events extends
         return list(url, org.ovirt.engine.sdk.entities.Events.class, Event.class);
     }
 
+    /**
+     * Adds Event object.
+     *
+     * @param event
+     *
+     * <pre>
+     * event.description
+     * event.severity
+     * event.origin
+     * event.custom_id
+     * [event.flood_rate]
+     * [event.host.id]
+     * [event.user.id]
+     * [event.vm.id]
+     * [event.storage_domain.id]
+     * [event.template.id]
+     * [event.cluster.id]
+     * [event.data_center.id]
+     * </pre>
+     *
+     * @return
+     *     {@link Event }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Event add(org.ovirt.engine.sdk.entities.Event event) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+        return getProxy().add(url, event, org.ovirt.engine.sdk.entities.Event.class, Event.class);
+    }
 
 }
 

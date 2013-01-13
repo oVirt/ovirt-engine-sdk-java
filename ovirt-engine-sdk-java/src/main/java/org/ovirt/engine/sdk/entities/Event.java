@@ -50,6 +50,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}template" minOccurs="0"/>
  *         &lt;element ref="{}cluster" minOccurs="0"/>
  *         &lt;element ref="{}data_center" minOccurs="0"/>
+ *         &lt;element name="origin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="custom_id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="flood_rate" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="custom_data" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -70,7 +74,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "host",
     "template",
     "cluster",
-    "dataCenter"
+    "dataCenter",
+    "origin",
+    "customId",
+    "floodRate",
+    "customData"
 })
 public class Event
     extends BaseResource
@@ -91,6 +99,13 @@ public class Event
     protected Cluster cluster;
     @XmlElement(name = "data_center")
     protected DataCenter dataCenter;
+    protected String origin;
+    @XmlElement(name = "custom_id")
+    protected Integer customId;
+    @XmlElement(name = "flood_rate")
+    protected Integer floodRate;
+    @XmlElement(name = "custom_data")
+    protected String customData;
 
     /**
      * Gets the value of the code property.
@@ -398,6 +413,118 @@ public class Event
 
     public boolean isSetDataCenter() {
         return (this.dataCenter!= null);
+    }
+
+    /**
+     * Gets the value of the origin property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOrigin() {
+        return origin;
+    }
+
+    /**
+     * Sets the value of the origin property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOrigin(String value) {
+        this.origin = value;
+    }
+
+    public boolean isSetOrigin() {
+        return (this.origin!= null);
+    }
+
+    /**
+     * Gets the value of the customId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getCustomId() {
+        return customId;
+    }
+
+    /**
+     * Sets the value of the customId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setCustomId(Integer value) {
+        this.customId = value;
+    }
+
+    public boolean isSetCustomId() {
+        return (this.customId!= null);
+    }
+
+    /**
+     * Gets the value of the floodRate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getFloodRate() {
+        return floodRate;
+    }
+
+    /**
+     * Sets the value of the floodRate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setFloodRate(Integer value) {
+        this.floodRate = value;
+    }
+
+    public boolean isSetFloodRate() {
+        return (this.floodRate!= null);
+    }
+
+    /**
+     * Gets the value of the customData property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCustomData() {
+        return customData;
+    }
+
+    /**
+     * Sets the value of the customData property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCustomData(String value) {
+        this.customData = value;
+    }
+
+    public boolean isSetCustomData() {
+        return (this.customData!= null);
     }
 
 }

@@ -41,6 +41,7 @@ public class Disk extends
 
     private HttpProxyBroker proxy;
 
+    private DiskPermissions diskPermissions;
     private DiskStatistics diskStatistics;
 
 
@@ -58,6 +59,18 @@ public class Disk extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the DiskPermissions property.
+     *
+     * @return
+     *     {@link DiskPermissions }
+     */
+    public synchronized DiskPermissions getPermissions() {
+        if (this.diskPermissions == null) {
+            this.diskPermissions = new DiskPermissions(proxy, this);
+        }
+        return diskPermissions;
+    }
     /**
      * Gets the value of the DiskStatistics property.
      *

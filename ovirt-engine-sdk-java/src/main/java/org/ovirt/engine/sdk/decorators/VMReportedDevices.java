@@ -22,59 +22,46 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.entities.Action;
-import org.ovirt.engine.sdk.entities.Response;
+import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
+import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>TemplateNIC providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.NIC }. 
+ * <p>VMReportedDevices providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.ReportedDevices }.
  */
 @SuppressWarnings("unused")
-public class TemplateNIC extends
-        org.ovirt.engine.sdk.entities.NIC {
+public class VMReportedDevices extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Device,
+                            org.ovirt.engine.sdk.entities.ReportedDevices,
+                            VMDevice> {
 
-    private HttpProxyBroker proxy;
-
-
+    private VM parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent VM
      */
-    public TemplateNIC(HttpProxyBroker proxy) {
-        this.proxy = proxy;
+    public VMReportedDevices(HttpProxyBroker proxy, VM parent) {
+        super(proxy, "reporteddevices");
+        this.parent = parent;
     }
 
     /**
-     * @return HttpProxyBroker
-     */
-    private HttpProxyBroker getProxy() {
-        return proxy;
-    }
-
-
-
-    /**
-     * Updates TemplateNIC object.
-     *
-     * @param nic
-     *
-     * <pre>
-     * [nic.network.id|name]
-     * [nic.linked]
-     * [nic.name]
-     * [nic.mac.address]
-     * [nic.interface]
-     * [nic.port_mirroring.networks.network]
-     * </pre>
+     * Lists VMDevice objects.
      *
      * @return
-     *     {@link TemplateNIC }
+     *     List of {@link VMDevice }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -83,16 +70,18 @@ public class TemplateNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public TemplateNIC update() throws ClientProtocolException,
+    @Override
+    public List<VMDevice> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, TemplateNIC.class);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.ReportedDevices.class, VMDevice.class);
     }
+
     /**
-     * Deletes object.
-     *
+     * Fetches VMDevice object by id.
+     * 
      * @return
-     *     {@link Response }
+     *     {@link VMDevice }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -101,11 +90,13 @@ public class TemplateNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete() throws ClientProtocolException,
+    @Override
+    public VMDevice get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().delete(url, Response.class);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Device.class, VMDevice.class);
     }
+
 
 }
 

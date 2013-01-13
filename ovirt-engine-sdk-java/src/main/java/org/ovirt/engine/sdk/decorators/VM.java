@@ -42,6 +42,7 @@ public class VM extends
     private HttpProxyBroker proxy;
 
     private VMPermissions vMPermissions;
+    private VMReportedDevices vMReportedDevices;
     private VMTags vMTags;
     private VMSnapshots vMSnapshots;
     private VMStatistics vMStatistics;
@@ -75,6 +76,18 @@ public class VM extends
             this.vMPermissions = new VMPermissions(proxy, this);
         }
         return vMPermissions;
+    }
+    /**
+     * Gets the value of the VMReportedDevices property.
+     *
+     * @return
+     *     {@link VMReportedDevices }
+     */
+    public synchronized VMReportedDevices getReportedDevices() {
+        if (this.vMReportedDevices == null) {
+            this.vMReportedDevices = new VMReportedDevices(proxy, this);
+        }
+        return vMReportedDevices;
     }
     /**
      * Gets the value of the VMTags property.

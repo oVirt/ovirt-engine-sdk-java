@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element ref="{}disk" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="clone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="detach_only" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -52,7 +53,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Disks", propOrder = {
     "disks",
-    "clone"
+    "clone",
+    "detachOnly"
 })
 public class Disks
     extends BaseDevices
@@ -61,6 +63,8 @@ public class Disks
     @XmlElement(name = "disk")
     protected List<Disk> disks;
     protected Boolean clone;
+    @XmlElement(name = "detach_only")
+    protected Boolean detachOnly;
 
     /**
      * Gets the value of the disks property.
@@ -125,6 +129,34 @@ public class Disks
 
     public boolean isSetClone() {
         return (this.clone!= null);
+    }
+
+    /**
+     * Gets the value of the detachOnly property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isDetachOnly() {
+        return detachOnly;
+    }
+
+    /**
+     * Sets the value of the detachOnly property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setDetachOnly(Boolean value) {
+        this.detachOnly = value;
+    }
+
+    public boolean isSetDetachOnly() {
+        return (this.detachOnly!= null);
     }
 
 }

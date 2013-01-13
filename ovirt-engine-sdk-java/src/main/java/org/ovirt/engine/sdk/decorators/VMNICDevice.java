@@ -32,12 +32,12 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * <p>Event providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Event }. 
+ * <p>VMNICDevice providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Device }. 
  */
 @SuppressWarnings("unused")
-public class Event extends
-        org.ovirt.engine.sdk.entities.Event {
+public class VMNICDevice extends
+        org.ovirt.engine.sdk.entities.Device {
 
     private HttpProxyBroker proxy;
 
@@ -46,7 +46,7 @@ public class Event extends
     /**
      * @param proxy HttpProxyBroker
      */
-    public Event(HttpProxyBroker proxy) {
+    public VMNICDevice(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -59,24 +59,6 @@ public class Event extends
 
 
 
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().delete(url, Response.class);
-    }
 
 }
 

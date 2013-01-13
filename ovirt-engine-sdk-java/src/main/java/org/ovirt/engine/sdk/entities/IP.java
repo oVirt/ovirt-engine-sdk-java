@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;attribute name="address" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="netmask" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="gateway" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="version" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -56,6 +57,8 @@ public class IP {
     protected String netmask;
     @XmlAttribute
     protected String gateway;
+    @XmlAttribute
+    protected String version;
 
     /**
      * Gets the value of the address property.
@@ -139,6 +142,34 @@ public class IP {
 
     public boolean isSetGateway() {
         return (this.gateway!= null);
+    }
+
+    /**
+     * Gets the value of the version property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getVersion() {
+        return version;
+    }
+
+    /**
+     * Sets the value of the version property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setVersion(String value) {
+        this.version = value;
+    }
+
+    public boolean isSetVersion() {
+        return (this.version!= null);
     }
 
 }

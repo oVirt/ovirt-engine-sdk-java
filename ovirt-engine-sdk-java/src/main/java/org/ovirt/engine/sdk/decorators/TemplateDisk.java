@@ -83,8 +83,9 @@ public class TemplateDisk extends
      * @param action
      *
      * <pre>
-     * storagedomain.host.id|name
+     * storagedomain.id|name
      * [action.async]
+     * [action.grace_period.expiry]
      * </pre>
      *
      * @return
