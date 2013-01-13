@@ -6,10 +6,10 @@
 	<packaging>jar</packaging>
 	<version>1.0.0.1-SNAPSHOT</version>
 	<name>ovirt-engine-sdk-java</name>
-	<description>This is Java SDK for oVirt virtualization</description>
+	<description>This is Java SDK for the oVirt virtualization</description>
 	<url>http://www.ovirt.org/Java-sdk</url>
 	<organization>
-		<name>oVirt</name>
+		<name>oVirt.org</name>
 		<url>www.ovirt.org</url>
 	</organization>
 	<properties>
