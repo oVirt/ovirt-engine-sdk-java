@@ -61,6 +61,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="reboot_after_installation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
  *         &lt;element ref="{}hooks" minOccurs="0"/>
+ *         &lt;element name="libvirt_version" type="{}Version" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -93,7 +94,8 @@ import javax.xml.bind.annotation.XmlType;
     "overrideIptables",
     "rebootAfterInstallation",
     "os",
-    "hooks"
+    "hooks",
+    "libvirtVersion"
 })
 public class Host
     extends BaseResource
@@ -131,6 +133,8 @@ public class Host
     protected Boolean rebootAfterInstallation;
     protected OperatingSystem os;
     protected Hooks hooks;
+    @XmlElement(name = "libvirt_version")
+    protected Version libvirtVersion;
 
     /**
      * Gets the value of the address property.
@@ -774,6 +778,34 @@ public class Host
 
     public boolean isSetHooks() {
         return (this.hooks!= null);
+    }
+
+    /**
+     * Gets the value of the libvirtVersion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Version }
+     *     
+     */
+    public Version getLibvirtVersion() {
+        return libvirtVersion;
+    }
+
+    /**
+     * Sets the value of the libvirtVersion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Version }
+     *     
+     */
+    public void setLibvirtVersion(Version value) {
+        this.libvirtVersion = value;
+    }
+
+    public boolean isSetLibvirtVersion() {
+        return (this.libvirtVersion!= null);
     }
 
 }

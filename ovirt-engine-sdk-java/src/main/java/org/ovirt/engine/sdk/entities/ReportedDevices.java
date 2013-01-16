@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
- *         &lt;element ref="{}device" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}reported_device" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -56,8 +56,8 @@ public class ReportedDevices
     extends BaseResources
 {
 
-    @XmlElement(name = "device")
-    protected List<Device> reportedDevices;
+    @XmlElement(name = "reported_device")
+    protected List<ReportedDevice> reportedDevices;
 
     /**
      * Gets the value of the reportedDevices property.
@@ -77,13 +77,13 @@ public class ReportedDevices
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Device }
+     * {@link ReportedDevice }
      * 
      * 
      */
-    public List<Device> getReportedDevices() {
+    public List<ReportedDevice> getReportedDevices() {
         if (reportedDevices == null) {
-            reportedDevices = new ArrayList<Device>();
+            reportedDevices = new ArrayList<ReportedDevice>();
         }
         return this.reportedDevices;
     }

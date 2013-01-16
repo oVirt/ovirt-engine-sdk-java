@@ -189,10 +189,10 @@ public class ObjectFactory {
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
     private final static QName _CpuTune_QNAME = new QName("", "cpu_tune");
     private final static QName _Nic_QNAME = new QName("", "nic");
+    private final static QName _ReportedDevice_QNAME = new QName("", "reported_device");
     private final static QName _Ip_QNAME = new QName("", "ip");
     private final static QName _VmTypes_QNAME = new QName("", "vm_types");
     private final static QName _PmProxies_QNAME = new QName("", "pm_proxies");
-    private final static QName _Device_QNAME = new QName("", "device");
     private final static QName _Vlan_QNAME = new QName("", "vlan");
     private final static QName _Cluster_QNAME = new QName("", "cluster");
     private final static QName _VmPauseDetails_QNAME = new QName("", "vm_pause_details");
@@ -219,27 +219,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Network }
-     * 
-     */
-    public Network createNetwork() {
-        return new Network();
-    }
-
-    /**
      * Create an instance of {@link GlusterVolume }
      * 
      */
     public GlusterVolume createGlusterVolume() {
         return new GlusterVolume();
-    }
-
-    /**
-     * Create an instance of {@link NfsVersions }
-     * 
-     */
-    public NfsVersions createNfsVersions() {
-        return new NfsVersions();
     }
 
     /**
@@ -251,19 +235,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Agents }
-     * 
-     */
-    public Agents createAgents() {
-        return new Agents();
-    }
-
-    /**
      * Create an instance of {@link Disks }
      * 
      */
     public Disks createDisks() {
         return new Disks();
+    }
+
+    /**
+     * Create an instance of {@link NicInterfaces }
+     * 
+     */
+    public NicInterfaces createNicInterfaces() {
+        return new NicInterfaces();
     }
 
     /**
@@ -299,19 +283,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Statistics }
-     * 
-     */
-    public Statistics createStatistics() {
-        return new Statistics();
-    }
-
-    /**
      * Create an instance of {@link VM }
      * 
      */
     public VM createVM() {
         return new VM();
+    }
+
+    /**
+     * Create an instance of {@link DisplayTypes }
+     * 
+     */
+    public DisplayTypes createDisplayTypes() {
+        return new DisplayTypes();
     }
 
     /**
@@ -379,11 +363,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Device }
+     * Create an instance of {@link PmProxies }
      * 
      */
-    public Device createDevice() {
-        return new Device();
+    public PmProxies createPmProxies() {
+        return new PmProxies();
     }
 
     /**
@@ -408,14 +392,6 @@ public class ObjectFactory {
      */
     public CPU createCPU() {
         return new CPU();
-    }
-
-    /**
-     * Create an instance of {@link PmProxy }
-     * 
-     */
-    public PmProxy createPmProxy() {
-        return new PmProxy();
     }
 
     /**
@@ -459,6 +435,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Quota }
+     * 
+     */
+    public Quota createQuota() {
+        return new Quota();
+    }
+
+    /**
      * Create an instance of {@link ReportedDevices }
      * 
      */
@@ -472,14 +456,6 @@ public class ObjectFactory {
      */
     public VmDeviceTypes createVmDeviceTypes() {
         return new VmDeviceTypes();
-    }
-
-    /**
-     * Create an instance of {@link GlusterBrick }
-     * 
-     */
-    public GlusterBrick createGlusterBrick() {
-        return new GlusterBrick();
     }
 
     /**
@@ -619,6 +595,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link BootProtocols }
+     * 
+     */
+    public BootProtocols createBootProtocols() {
+        return new BootProtocols();
+    }
+
+    /**
      * Create an instance of {@link Headers }
      * 
      */
@@ -747,11 +731,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VmTypes }
+     * Create an instance of {@link ReportedDevice }
      * 
      */
-    public VmTypes createVmTypes() {
-        return new VmTypes();
+    public ReportedDevice createReportedDevice() {
+        return new ReportedDevice();
     }
 
     /**
@@ -763,27 +747,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StorageManager }
-     * 
-     */
-    public StorageManager createStorageManager() {
-        return new StorageManager();
-    }
-
-    /**
      * Create an instance of {@link Quotas }
      * 
      */
     public Quotas createQuotas() {
         return new Quotas();
-    }
-
-    /**
-     * Create an instance of {@link NicInterfaces }
-     * 
-     */
-    public NicInterfaces createNicInterfaces() {
-        return new NicInterfaces();
     }
 
     /**
@@ -795,11 +763,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link StorageManager }
+     * 
+     */
+    public StorageManager createStorageManager() {
+        return new StorageManager();
+    }
+
+    /**
      * Create an instance of {@link Permit }
      * 
      */
     public Permit createPermit() {
         return new Permit();
+    }
+
+    /**
+     * Create an instance of {@link Agents }
+     * 
+     */
+    public Agents createAgents() {
+        return new Agents();
     }
 
     /**
@@ -832,6 +816,14 @@ public class ObjectFactory {
      */
     public Schema createSchema() {
         return new Schema();
+    }
+
+    /**
+     * Create an instance of {@link Network }
+     * 
+     */
+    public Network createNetwork() {
+        return new Network();
     }
 
     /**
@@ -891,6 +883,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LogicalUnit }
+     * 
+     */
+    public LogicalUnit createLogicalUnit() {
+        return new LogicalUnit();
+    }
+
+    /**
      * Create an instance of {@link MAC }
      * 
      */
@@ -907,11 +907,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Parameter }
+     * Create an instance of {@link VmPool }
      * 
      */
-    public Parameter createParameter() {
-        return new Parameter();
+    public VmPool createVmPool() {
+        return new VmPool();
     }
 
     /**
@@ -947,6 +947,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HostNICStates }
+     * 
+     */
+    public HostNICStates createHostNICStates() {
+        return new HostNICStates();
+    }
+
+    /**
      * Create an instance of {@link Version }
      * 
      */
@@ -960,14 +968,6 @@ public class ObjectFactory {
      */
     public Host createHost() {
         return new Host();
-    }
-
-    /**
-     * Create an instance of {@link BootProtocols }
-     * 
-     */
-    public BootProtocols createBootProtocols() {
-        return new BootProtocols();
     }
 
     /**
@@ -1003,6 +1003,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DiskInterfaces }
+     * 
+     */
+    public DiskInterfaces createDiskInterfaces() {
+        return new DiskInterfaces();
+    }
+
+    /**
      * Create an instance of {@link Options }
      * 
      */
@@ -1016,14 +1024,6 @@ public class ObjectFactory {
      */
     public Tags createTags() {
         return new Tags();
-    }
-
-    /**
-     * Create an instance of {@link HostNICStates }
-     * 
-     */
-    public HostNICStates createHostNICStates() {
-        return new HostNICStates();
     }
 
     /**
@@ -1123,6 +1123,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PmProxy }
+     * 
+     */
+    public PmProxy createPmProxy() {
+        return new PmProxy();
+    }
+
+    /**
      * Create an instance of {@link Templates }
      * 
      */
@@ -1160,14 +1168,6 @@ public class ObjectFactory {
      */
     public Tag createTag() {
         return new Tag();
-    }
-
-    /**
-     * Create an instance of {@link Quota }
-     * 
-     */
-    public Quota createQuota() {
-        return new Quota();
     }
 
     /**
@@ -1291,11 +1291,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IP }
+     * Create an instance of {@link VmTypes }
      * 
      */
-    public IP createIP() {
-        return new IP();
+    public VmTypes createVmTypes() {
+        return new VmTypes();
     }
 
     /**
@@ -1320,14 +1320,6 @@ public class ObjectFactory {
      */
     public DiskStates createDiskStates() {
         return new DiskStates();
-    }
-
-    /**
-     * Create an instance of {@link OperatingSystem }
-     * 
-     */
-    public OperatingSystem createOperatingSystem() {
-        return new OperatingSystem();
     }
 
     /**
@@ -1403,6 +1395,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Statistics }
+     * 
+     */
+    public Statistics createStatistics() {
+        return new Statistics();
+    }
+
+    /**
      * Create an instance of {@link VmSummary }
      * 
      */
@@ -1419,27 +1419,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Response }
-     * 
-     */
-    public Response createResponse() {
-        return new Response();
-    }
-
-    /**
-     * Create an instance of {@link VmPool }
-     * 
-     */
-    public VmPool createVmPool() {
-        return new VmPool();
-    }
-
-    /**
      * Create an instance of {@link CdRom }
      * 
      */
     public CdRom createCdRom() {
         return new CdRom();
+    }
+
+    /**
+     * Create an instance of {@link NfsVersions }
+     * 
+     */
+    public NfsVersions createNfsVersions() {
+        return new NfsVersions();
     }
 
     /**
@@ -1459,11 +1451,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DisplayTypes }
+     * Create an instance of {@link Response }
      * 
      */
-    public DisplayTypes createDisplayTypes() {
-        return new DisplayTypes();
+    public Response createResponse() {
+        return new Response();
     }
 
     /**
@@ -1472,6 +1464,14 @@ public class ObjectFactory {
      */
     public Snapshot createSnapshot() {
         return new Snapshot();
+    }
+
+    /**
+     * Create an instance of {@link Parameter }
+     * 
+     */
+    public Parameter createParameter() {
+        return new Parameter();
     }
 
     /**
@@ -1643,27 +1643,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LogicalUnit }
+     * Create an instance of {@link OperatingSystem }
      * 
      */
-    public LogicalUnit createLogicalUnit() {
-        return new LogicalUnit();
+    public OperatingSystem createOperatingSystem() {
+        return new OperatingSystem();
     }
 
     /**
-     * Create an instance of {@link PmProxies }
+     * Create an instance of {@link GlusterBrick }
      * 
      */
-    public PmProxies createPmProxies() {
-        return new PmProxies();
+    public GlusterBrick createGlusterBrick() {
+        return new GlusterBrick();
     }
 
     /**
-     * Create an instance of {@link DiskInterfaces }
+     * Create an instance of {@link IP }
      * 
      */
-    public DiskInterfaces createDiskInterfaces() {
-        return new DiskInterfaces();
+    public IP createIP() {
+        return new IP();
     }
 
     /**
@@ -2980,6 +2980,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReportedDevice }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "reported_device")
+    public JAXBElement<ReportedDevice> createReportedDevice(ReportedDevice value) {
+        return new JAXBElement<ReportedDevice>(_ReportedDevice_QNAME, ReportedDevice.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IP }{@code >}}
      * 
      */
@@ -3004,15 +3013,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "pm_proxies")
     public JAXBElement<PmProxies> createPmProxies(PmProxies value) {
         return new JAXBElement<PmProxies>(_PmProxies_QNAME, PmProxies.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Device }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "", name = "device")
-    public JAXBElement<Device> createDevice(Device value) {
-        return new JAXBElement<Device>(_Device_QNAME, Device.class, null, value);
     }
 
     /**
