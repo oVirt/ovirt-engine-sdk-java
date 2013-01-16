@@ -16,7 +16,6 @@
 
 package org.ovirt.engine.sdk.web;
 
-
 /**
  * Provides HttpProxy building services
  */
@@ -41,8 +40,10 @@ public class HttpProxyBuilder {
      * @param persistentAuth
      *            persistent authentication flag
      */
-    public HttpProxyBuilder persistentAuth(boolean persistentAuth) {
-        this.persistentAuth = persistentAuth;
+    public HttpProxyBuilder persistentAuth(Boolean persistentAuth) {
+        if (persistentAuth != null) {
+            this.persistentAuth = persistentAuth.booleanValue();
+        }
         return this;
     }
 
@@ -50,8 +51,10 @@ public class HttpProxyBuilder {
      * @param insecure
      *            flag
      */
-    public HttpProxyBuilder insecure(boolean insecure) {
-        this.insecure = insecure;
+    public HttpProxyBuilder insecure(Boolean insecure) {
+        if (insecure != null) {
+            this.insecure = insecure.booleanValue();
+        }
         return this;
     }
 
@@ -59,8 +62,10 @@ public class HttpProxyBuilder {
      * @param filter
      *            flag
      */
-    public HttpProxyBuilder filter(boolean filter) {
-        this.filter = filter;
+    public HttpProxyBuilder filter(Boolean filter) {
+        if (filter != null) {
+            this.filter = filter.booleanValue();
+        }
         return this;
     }
 
@@ -68,8 +73,10 @@ public class HttpProxyBuilder {
      * @param debug
      *            flag
      */
-    public HttpProxyBuilder debug(boolean debug) {
-        this.debug = debug;
+    public HttpProxyBuilder debug(Boolean debug) {
+        if (debug != null) {
+            this.debug = debug.booleanValue();
+        }
         return this;
     }
 

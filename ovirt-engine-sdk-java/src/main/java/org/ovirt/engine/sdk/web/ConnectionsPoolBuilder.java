@@ -135,8 +135,10 @@ public class ConnectionsPoolBuilder {
      * @param port
      *            oVirt API port
      */
-    public ConnectionsPoolBuilder port(int port) {
-        this.port = port;
+    public ConnectionsPoolBuilder port(Integer port) {
+        if (port != null) {
+            this.port = port.intValue();
+        }
         return this;
     }
 
@@ -144,8 +146,10 @@ public class ConnectionsPoolBuilder {
      * @param timeout
      *            request timeout
      */
-    public ConnectionsPoolBuilder timeout(int timeout) {
-        this.timeout = timeout;
+    public ConnectionsPoolBuilder timeout(Integer timeout) {
+        if (timeout != null) {
+            this.timeout = timeout.intValue();
+        }
         return this;
     }
 
@@ -172,8 +176,8 @@ public class ConnectionsPoolBuilder {
         cm.setMaxTotal(MAX_CONNECTIONS);
         cm.setDefaultMaxPerRoute(MAX_CONNECTIONS_PER_ROUTE);
         cm.setMaxPerRoute(new HttpRoute(new HttpHost(getHost(url),
-                                                     getPort(url, port))),
-                         MAX_CONNECTIONS_PER_HOST);
+                getPort(url, port))),
+                MAX_CONNECTIONS_PER_HOST);
 
         new IdleConnectionMonitorThread(cm, WAIT_IDLE_CHECK_TTL, WAIT_IDLE_CLOSE_TTL).start();
 
@@ -228,7 +232,7 @@ public class ConnectionsPoolBuilder {
      */
     public ConnectionsPool build() {
         return new ConnectionsPool(createDefaultHttpClient(url, username, password, key_file,
-                                        cert_file, ca_file, port, timeout),
-                                   this.urlobj);
+                cert_file, ca_file, port, timeout),
+                this.urlobj);
     }
 }
