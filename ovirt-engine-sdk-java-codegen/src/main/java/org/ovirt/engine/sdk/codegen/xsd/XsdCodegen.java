@@ -164,10 +164,7 @@ public class XsdCodegen extends AbstractCodegen {
      */
     @Override
     public void doCleanPackage(String dir) {
-        ;
-        // delete of the /entities content will
-        // break compilation of this project as
-        // it has refernces to this package
+        FileUtils.deleteAllFiles(dir);
     }
 
     /**

@@ -42,9 +42,9 @@ import org.ovirt.engine.sdk.entities.Action;
  */
 @SuppressWarnings("unused")
 public class VMNICReportedDevices extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Device,
+        CollectionDecorator<org.ovirt.engine.sdk.entities.ReportedDevice,
                             org.ovirt.engine.sdk.entities.ReportedDevices,
-                            VMNICDevice> {
+                            VMNICReportedDevice> {
 
     private VMNIC parent;
 
@@ -58,10 +58,10 @@ public class VMNICReportedDevices extends
     }
 
     /**
-     * Lists VMNICDevice objects.
+     * Lists VMNICReportedDevice objects.
      *
      * @return
-     *     List of {@link VMNICDevice }
+     *     List of {@link VMNICReportedDevice }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -71,17 +71,17 @@ public class VMNICReportedDevices extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<VMNICDevice> list() throws ClientProtocolException,
+    public List<VMNICReportedDevice> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.ReportedDevices.class, VMNICDevice.class);
+        return list(url, org.ovirt.engine.sdk.entities.ReportedDevices.class, VMNICReportedDevice.class);
     }
 
     /**
-     * Fetches VMNICDevice object by id.
+     * Fetches VMNICReportedDevice object by id.
      * 
      * @return
-     *     {@link VMNICDevice }
+     *     {@link VMNICReportedDevice }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -91,10 +91,10 @@ public class VMNICReportedDevices extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMNICDevice get(UUID id) throws ClientProtocolException,
+    public VMNICReportedDevice get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Device.class, VMNICDevice.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.ReportedDevice.class, VMNICReportedDevice.class);
     }
 
 

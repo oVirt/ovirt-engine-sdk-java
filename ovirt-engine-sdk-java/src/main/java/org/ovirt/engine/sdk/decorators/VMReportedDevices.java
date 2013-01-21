@@ -42,9 +42,9 @@ import org.ovirt.engine.sdk.entities.Action;
  */
 @SuppressWarnings("unused")
 public class VMReportedDevices extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Device,
+        CollectionDecorator<org.ovirt.engine.sdk.entities.ReportedDevice,
                             org.ovirt.engine.sdk.entities.ReportedDevices,
-                            VMDevice> {
+                            VMReportedDevice> {
 
     private VM parent;
 
@@ -58,10 +58,10 @@ public class VMReportedDevices extends
     }
 
     /**
-     * Lists VMDevice objects.
+     * Lists VMReportedDevice objects.
      *
      * @return
-     *     List of {@link VMDevice }
+     *     List of {@link VMReportedDevice }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -71,17 +71,17 @@ public class VMReportedDevices extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<VMDevice> list() throws ClientProtocolException,
+    public List<VMReportedDevice> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.ReportedDevices.class, VMDevice.class);
+        return list(url, org.ovirt.engine.sdk.entities.ReportedDevices.class, VMReportedDevice.class);
     }
 
     /**
-     * Fetches VMDevice object by id.
+     * Fetches VMReportedDevice object by id.
      * 
      * @return
-     *     {@link VMDevice }
+     *     {@link VMReportedDevice }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -91,10 +91,10 @@ public class VMReportedDevices extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMDevice get(UUID id) throws ClientProtocolException,
+    public VMReportedDevice get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Device.class, VMDevice.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.ReportedDevice.class, VMReportedDevice.class);
     }
 
 

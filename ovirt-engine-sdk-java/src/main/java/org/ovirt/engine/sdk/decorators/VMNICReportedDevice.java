@@ -32,12 +32,12 @@ import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
- * <p>VMDevice providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Device }. 
+ * <p>VMNICReportedDevice providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.ReportedDevice }. 
  */
 @SuppressWarnings("unused")
-public class VMDevice extends
-        org.ovirt.engine.sdk.entities.Device {
+public class VMNICReportedDevice extends
+        org.ovirt.engine.sdk.entities.ReportedDevice {
 
     private HttpProxyBroker proxy;
 
@@ -46,7 +46,7 @@ public class VMDevice extends
     /**
      * @param proxy HttpProxyBroker
      */
-    public VMDevice(HttpProxyBroker proxy) {
+    public VMNICReportedDevice(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
