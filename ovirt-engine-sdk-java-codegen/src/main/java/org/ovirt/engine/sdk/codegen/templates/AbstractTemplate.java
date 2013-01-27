@@ -60,6 +60,8 @@ public abstract class AbstractTemplate implements ITemplate {
 
     /**
      * Loads template in given context
+     * 
+     * @return template
      */
     @Override
     public String loadTemplate() {
@@ -68,7 +70,7 @@ public abstract class AbstractTemplate implements ITemplate {
         } catch (FileNotFoundException e) {
             // TODO: Log error
             e.printStackTrace();
-            return null;
+            throw new RuntimeException("Template \"" + getName() + "\" not found.", e);
         }
     }
 
@@ -80,7 +82,7 @@ public abstract class AbstractTemplate implements ITemplate {
      * @throws FileNotFoundException
      */
     private String readFileTemplate() throws FileNotFoundException {
-        return FileUtils.getFileContent(getTemplatePath() + this.name);
+        return FileUtils.getFileContent(getTemplatePath() + getName());
     }
 
     /**

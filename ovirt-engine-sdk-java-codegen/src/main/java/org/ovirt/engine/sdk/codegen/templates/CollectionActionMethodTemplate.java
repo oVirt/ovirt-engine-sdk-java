@@ -16,12 +16,16 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
+import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+import org.ovirt.engine.sdk.entities.DetailedLink;
+import org.ovirt.engine.sdk.entities.Parameter;
+import org.ovirt.engine.sdk.entities.ParametersSet;
 
 /**
  * Provides Resource action templating services
  */
-public class CollectionActionMethodTemplate extends AbstractTemplate {
+public class CollectionActionMethodTemplate extends AbstractOverloadableTemplate {
 
     public CollectionActionMethodTemplate() {
         super();
@@ -39,7 +43,34 @@ public class CollectionActionMethodTemplate extends AbstractTemplate {
      * 
      * @return Formated template
      */
-    public String getTemplate(String methodName, String actionName, String docParams) {
+    private String getTemplate(String methodName, String actionName, String docParams) {
+        return getTemplate(methodName, actionName, docParams, "", "", "");
+    }
+
+    /**
+     * Formats template in to the resource action template
+     * 
+     * @param methodName
+     *            name of java method
+     * @param actionName
+     *            name of api action
+     * @param docParams
+     *            documentation params
+     * @param methodExtraParamsDef
+     *            method parameters (url/header encapsulations)
+     * @param headersToBuild
+     *            headers to build with HttpHeaderBuilder
+     * @param urlParamsToBuild
+     *            url Params To Build with UrlParamsBuilder
+     * 
+     * @return formated template
+     */
+    private String getTemplate(String methodName,
+            String actionName,
+            String docParams,
+            String methodExtraParamsDef,
+            String headersToBuild,
+            String urlParamsToBuild) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getTemplate());
@@ -47,7 +78,69 @@ public class CollectionActionMethodTemplate extends AbstractTemplate {
         templateWrapper.set("methodName", methodName);
         templateWrapper.set("actionName", actionName);
         templateWrapper.set("docParams", docParams);
+        templateWrapper.set("methodExtraParamsDef", methodExtraParamsDef);
+        templateWrapper.set("headersToBuild", headersToBuild);
+        templateWrapper.set("urlParamsToBuild", urlParamsToBuild);
 
         return templateWrapper.toString();
+    }
+
+    /**
+     * Formats template in to the resource action template
+     * 
+     * @param methodName
+     *            name of java method
+     * @param actionName
+     *            name of api action
+     * @param docParams
+     *            documentation params
+     * @param dl
+     *            DetailedLink
+     * 
+     * @return formated template
+     */
+    public String getTemplate(String methodName, String actionName,
+            String docParams, DetailedLink dl) {
+
+        StringBuffer methodExtraParamsDef = new StringBuffer();
+        StringBuffer headersToBuild = new StringBuffer();
+        StringBuffer urlParamsToBuild = new StringBuffer();
+        StringBuffer templateBuff = new StringBuffer();
+
+        if (dl.isSetRequest() && dl.getRequest().isSetUrl() &&
+                dl.getRequest().getUrl().isSetParametersSets() &&
+                !dl.getRequest().getUrl().getParametersSets().isEmpty()) {
+
+            // url params
+            for (ParametersSet parametersSet : dl.getRequest().getUrl().getParametersSets()) {
+                for (Parameter parameter : parametersSet.getParameters()) {
+                    addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
+                }
+                methodExtraParamsDef =
+                        addHeaderParams(methodName, actionName, docParams, dl,
+                                methodExtraParamsDef, headersToBuild, urlParamsToBuild, templateBuff);
+            }
+        } else {
+            methodExtraParamsDef =
+                    addHeaderParams(methodName, actionName, docParams, dl,
+                            methodExtraParamsDef, headersToBuild, urlParamsToBuild, templateBuff);
+        }
+
+        // add default method
+        templateBuff.append(getTemplate(methodName,
+                actionName,
+                docParams));
+
+        // add method overload containing url/matrix params
+        if (methodExtraParamsDef.length() > 0) {
+            templateBuff.append(getTemplate(methodName,
+                    actionName,
+                    DocsGen.appendHttpDocs(docParams, dl),
+                    methodExtraParamsDef.toString(),
+                    headersToBuild.toString(),
+                    urlParamsToBuild.toString()));
+        }
+
+        return templateBuff.toString();
     }
 }

@@ -49,7 +49,7 @@ public class DocsGen {
 
         if (detailedLink.getRequest() != null && detailedLink.getRequest().getBody() != null) {
             docParams.append(NEW_LINE + PARAM + detailedLink.getRequest().getBody()
-                                                    .getType().toLowerCase() + NEW_LINE + PREFIX);
+                    .getType().toLowerCase() + NEW_LINE + PREFIX);
             if (detailedLink.getRequest().getBody().getParametersSets().size() > 1) {
                 docParams.append(NEW_LINE + PREFIX + PRE_OPEN);
                 int i = 1;
@@ -60,7 +60,7 @@ public class DocsGen {
                             docParams.append(PREFIX + offset + param.getName() + NEW_LINE);
                         } else {
                             docParams.append(PREFIX + offset + BREACKS_OPEN + param.getName() +
-                                                               BREACKS_CLOSE + NEW_LINE);
+                                    BREACKS_CLOSE + NEW_LINE);
                         }
                     }
                     docParams.append(PREFIX);
@@ -76,7 +76,7 @@ public class DocsGen {
                             docParams.append(NEW_LINE + PREFIX + SPACE + param.getName());
                         } else {
                             docParams.append(NEW_LINE + PREFIX + SPACE + BREACKS_OPEN + param.getName() +
-                                                                         BREACKS_CLOSE);
+                                    BREACKS_CLOSE);
                         }
                     }
                     docParams.append(NEW_LINE + PREFIX + PRE_CLOSE);
@@ -86,4 +86,21 @@ public class DocsGen {
         }
         return docParams.toString();
     }
+
+    /**
+     * Appends URL and Http headers docs
+     * 
+     * @param docParams
+     *            documentation to append to
+     * @param dl
+     *            detailed link
+     * 
+     * @return doc string
+     */
+    public static String appendHttpDocs(String docParams, DetailedLink dl) {
+        StringBuffer docParamsBuffer = new StringBuffer(docParams);
+        // TODO Auto-generated method stub
+        return docParamsBuffer.toString();
+    }
+
 }

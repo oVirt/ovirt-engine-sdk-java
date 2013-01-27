@@ -26,7 +26,7 @@ public class StringUtils {
      * @return string
      */
     public static String removeBrackets(String txt) {
-        if (txt != null & txt.startsWith("[") && txt.endsWith("]")) {
+        if (txt != null && txt.length() >= 1 && txt.startsWith("[") && txt.endsWith("]")) {
             return txt.substring(1, txt.length() - 2);
         }
         return txt;
@@ -40,7 +40,9 @@ public class StringUtils {
      * @return candidate
      */
     public static String toUpperCase(String candidate) {
-        return Character.toUpperCase(candidate.charAt(0)) + candidate.substring(1);
+        if (candidate.length() >= 1)
+            return Character.toUpperCase(candidate.charAt(0)) + candidate.substring(1);
+        return candidate;
     }
 
     /**
@@ -51,7 +53,9 @@ public class StringUtils {
      * @return candidate
      */
     public static String toLowerCase(String candidate) {
-        return Character.toLowerCase(candidate.charAt(0)) + candidate.substring(1);
+        if (candidate.length() >= 1)
+            return Character.toLowerCase(candidate.charAt(0)) + candidate.substring(1);
+        return candidate;
     }
 
     /**
@@ -62,7 +66,7 @@ public class StringUtils {
      * @return singular string
      */
     public static String toSingular(String candidate) {
-        if (candidate.endsWith("s")) {
+        if (candidate.length() >= 1 && candidate.endsWith("s")) {
             return candidate.substring(0, candidate.length() - 1);
         }
         return candidate;
@@ -76,7 +80,7 @@ public class StringUtils {
      * @return plural string
      */
     public static String toPlural(String candidate) {
-        if (!candidate.endsWith("s")) {
+        if (candidate.length() >= 1 && !candidate.endsWith("s")) {
             return candidate + "s";
         }
         return candidate;

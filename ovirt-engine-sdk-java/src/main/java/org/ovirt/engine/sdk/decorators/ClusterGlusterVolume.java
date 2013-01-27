@@ -28,8 +28,11 @@ import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
 import org.ovirt.engine.sdk.entities.Response;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
+
 
 /**
  * <p>ClusterGlusterVolume providing relation and functional services
@@ -94,7 +97,46 @@ public class ClusterGlusterVolume extends
     public Action stop(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/stop";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs stop action.
+     *
+     * @param action
+     *
+     * <pre>
+     * [action.force]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action stop(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/stop";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs start action.
@@ -118,7 +160,46 @@ public class ClusterGlusterVolume extends
     public Action start(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/start";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs start action.
+     *
+     * @param action
+     *
+     * <pre>
+     * [action.force]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action start(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/start";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs resetalloptions action.
@@ -141,7 +222,45 @@ public class ClusterGlusterVolume extends
     public Action resetalloptions(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/resetalloptions";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs resetalloptions action.
+     *
+     * @param action
+     *
+     * <pre>
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action resetalloptions(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/resetalloptions";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Deletes object.
@@ -184,7 +303,47 @@ public class ClusterGlusterVolume extends
     public Action resetoption(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/resetoption";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs resetoption action.
+     *
+     * @param action
+     *
+     * <pre>
+     * action.option.name
+     * action.force
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action resetoption(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/resetoption";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs setoption action.
@@ -209,7 +368,47 @@ public class ClusterGlusterVolume extends
     public Action setoption(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/setoption";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs setoption action.
+     *
+     * @param action
+     *
+     * <pre>
+     * action.option.name
+     * action.option.value
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action setoption(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/setoption";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs rebalance action.
@@ -234,7 +433,47 @@ public class ClusterGlusterVolume extends
     public Action rebalance(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/rebalance";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs rebalance action.
+     *
+     * @param action
+     *
+     * <pre>
+     * [action.fix_layout]
+     * [action.force]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action rebalance(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/rebalance";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

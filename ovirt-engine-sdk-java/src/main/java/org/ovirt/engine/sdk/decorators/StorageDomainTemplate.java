@@ -28,8 +28,11 @@ import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
 import org.ovirt.engine.sdk.entities.Response;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
+
 
 /**
  * <p>StorageDomainTemplate providing relation and functional services
@@ -104,7 +107,51 @@ public class StorageDomainTemplate extends
     public Action importTemplate(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/import";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs importTemplate action.
+     *
+     * @param action
+     *
+     * <pre>
+     * action.cluster.id|name
+     * [action.storage_domain.id|name]
+     * [action.clone]
+     * [action.exclusive]
+     * [action.template.name]
+     * [action.vm.disks.disk]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action importTemplate(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/import";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

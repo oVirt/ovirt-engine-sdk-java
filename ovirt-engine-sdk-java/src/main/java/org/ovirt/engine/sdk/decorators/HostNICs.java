@@ -29,7 +29,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.CollectionUtils;
+import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
@@ -122,7 +124,49 @@ public class HostNICs extends
     public Action setupnetworks(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + "setupnetworks";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs setupnetworks action.
+     *
+     * @param action
+     *
+     * <pre>
+     * [action.host_nics.host_nic]
+     * [action.checkConnectivity]
+     * [action.connectivityTimeout]
+     * [action.force]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action setupnetworks(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + "setupnetworks";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Lists HostNIC objects.

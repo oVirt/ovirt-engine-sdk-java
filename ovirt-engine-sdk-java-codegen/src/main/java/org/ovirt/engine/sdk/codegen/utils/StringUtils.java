@@ -54,4 +54,19 @@ public class StringUtils {
     public static String toUpperCase(String candidate) {
         return Character.toUpperCase(candidate.charAt(0)) + candidate.substring(1);
     }
+
+    /**
+     * Removes trailing NewLine
+     * 
+     * @param string
+     * 
+     * @return string with no trailing NewLine
+     */
+    public static String removeTrailingNewLine(String string) {
+        if (string.endsWith(FileUtils.NEW_LINE)) {
+            return string.substring(0,
+                    string.length() - FileUtils.NEW_LINE.length());
+        }
+        return string;
+    }
 }

@@ -28,7 +28,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.entities.Action;
 import org.ovirt.engine.sdk.entities.Response;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
@@ -181,7 +183,42 @@ public class VM extends
     public Action suspend(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/suspend";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs suspend action.
+     *
+     * @param action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action suspend(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/suspend";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Updates VM object.
@@ -254,7 +291,42 @@ public class VM extends
     public Action stop(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/stop";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs stop action.
+     *
+     * @param action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action stop(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/stop";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs cancelmigration action.
@@ -274,7 +346,14 @@ public class VM extends
     public Action cancelmigration(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/cancelmigration";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs export action.
@@ -302,7 +381,50 @@ public class VM extends
     public Action export(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs export action.
+     *
+     * @param action
+     *
+     * <pre>
+     * [action.async]
+     * [action.exclusive]
+     * [action.discard_snapshots]
+     * [action.storage_domain.id|name]
+     * [action.grace_period.expiry]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action export(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/export";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs detach action.
@@ -322,7 +444,42 @@ public class VM extends
     public Action detach(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/detach";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs detach action.
+     *
+     * @param action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action detach(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/detach";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs ticket action.
@@ -342,7 +499,42 @@ public class VM extends
     public Action ticket(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/ticket";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs ticket action.
+     *
+     * @param action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action ticket(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/ticket";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs start action.
@@ -379,7 +571,59 @@ public class VM extends
     public Action start(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/start";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs start action.
+     *
+     * @param action
+     *
+     * <pre>
+     * [action.vm.os.initRd]
+     * [action.vm.domain.name]
+     * [action.vm.placement_policy.host.id|name]
+     * [action.vm.placement_policy.affinity]
+     * [action.async]
+     * [action.vm.os.kernel]
+     * [action.grace_period.expiry]
+     * [action.vm.display.type]
+     * [action.vm.stateless]
+     * [action.vm.os.cmdline]
+     * [action.vm.domain.user.username]
+     * [action.pause]
+     * [action.vm.os.boot]
+     * [action.vm.domain.user.password]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action start(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/start";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs migrate action.
@@ -406,7 +650,49 @@ public class VM extends
     public Action migrate(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/migrate";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs migrate action.
+     *
+     * @param action
+     *
+     * <pre>
+     * [action.host.id|name]
+     * [action.async]
+     * [action.force]
+     * [action.grace_period.expiry]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action migrate(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/migrate";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Deletes object.
@@ -450,7 +736,48 @@ public class VM extends
     public Action move(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/move";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs move action.
+     *
+     * @param action
+     *
+     * <pre>
+     * action.storage_domain.id|name
+     * [action.async]
+     * [action.grace_period.expiry]
+     * </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action move(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/move";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs shutdown action.
@@ -470,7 +797,42 @@ public class VM extends
     public Action shutdown(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/shutdown";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs shutdown action.
+     *
+     * @param action
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action shutdown(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/shutdown";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

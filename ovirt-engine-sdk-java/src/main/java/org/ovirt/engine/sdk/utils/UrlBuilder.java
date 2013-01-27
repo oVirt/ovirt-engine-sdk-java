@@ -31,6 +31,8 @@ public class UrlBuilder {
     private List<UrlParsameter> params;
 
     /**
+     * Providing URL building services
+     * 
      * @param url
      *            url string
      */
@@ -82,9 +84,6 @@ public class UrlBuilder {
         for (UrlParsameter urlParam : this.params) {
             if (urlParam.getValue() != null) {
                 switch (urlParam.getType()) {
-                case SEARCH:
-                    queryParams.append("?search=" + UrlHelper.encode(urlParam.getValue()));
-                    break;
                 case MATRIX:
                     matrixParams.append(";" + urlParam.getKey() + "=" + urlParam.getValue());
                     break;

@@ -31,6 +31,7 @@ public class FileUtils {
 
     public static final String LINE_SEPARATOR = "line.separator";
     public static final String ENCODING = "UTF-8";
+    public static final String NEW_LINE = System.getProperty(LINE_SEPARATOR);
 
     /**
      * Deletes all files in given directory
@@ -100,18 +101,44 @@ public class FileUtils {
     /**
      * Reads file content
      * 
+     * @param path
+     *            file path to read from
+     * 
      * @return file content
      * 
      * @throws FileNotFoundException
      */
     public static String getFileContent(String path) throws FileNotFoundException {
+        return getFileContent(path, true);
+    }
+
+    /**
+     * Reads file content
+     * 
+     * @param path
+     *            file path to read from
+     * @param appendNewLine
+     *            append new line to the end of the file
+     * 
+     * @return file content
+     * 
+     * @throws FileNotFoundException
+     */
+    public static String getFileContent(String path, boolean appendNewLine) throws FileNotFoundException {
         StringBuilder text = new StringBuilder();
-        String NL = System.getProperty(LINE_SEPARATOR);
         Scanner scanner = new Scanner(new FileInputStream(path), ENCODING);
 
         try {
             while (scanner.hasNextLine()) {
-                text.append(scanner.nextLine() + NL);
+                if (scanner.hasNextLine()) {
+                    text.append(scanner.nextLine() + NEW_LINE);
+                } else {
+                    if (appendNewLine) {
+                        text.append(scanner.nextLine() + NEW_LINE);
+                    } else {
+                        text.append(scanner.nextLine());
+                    }
+                }
             }
         } finally {
             if (scanner != null) {

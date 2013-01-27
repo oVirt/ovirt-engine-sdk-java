@@ -428,7 +428,8 @@ public class RsdlCodegen extends AbstractCodegen {
             resourceHolder.addMethod(period,
                     this.resourceActionMethodTemplate.getTemplate(methodName,
                             rel,
-                            docParams));
+                            docParams,
+                            detailedLink));
         }
     }
 
@@ -455,7 +456,8 @@ public class RsdlCodegen extends AbstractCodegen {
             collectionHolder.addMethod(period,
                     this.collectionActionMethodTemplate.getTemplate(methodName,
                             rel,
-                            docParams));
+                            docParams,
+                            detailedLink));
         }
     }
 

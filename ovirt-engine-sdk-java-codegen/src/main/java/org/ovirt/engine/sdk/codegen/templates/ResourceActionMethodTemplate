@@ -11,8 +11,15 @@ $docParams$
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action $methodName$(Action action) throws ClientProtocolException,
+    public Action $methodName$(Action action$methodExtraParamsDef$) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/$actionName$";
-        return getProxy().action(url, action, Action.class, Action.class);
+
+        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
+                .build();
+
+        url = new UrlBuilder(url)$urlParamsToBuild$
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
