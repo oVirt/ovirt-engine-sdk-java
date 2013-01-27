@@ -83,16 +83,15 @@ public class StorageDomainTemplate extends
     /**
      * Performs importTemplate action.
      *
-     * @param action
-     *
-     * <pre>
-     * action.cluster.id|name
-     * [action.storage_domain.id|name]
-     * [action.clone]
-     * [action.exclusive]
-     * [action.template.name]
-     * [action.vm.disks.disk]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.cluster.id|name
+     *    [action.storage_domain.id|name]
+     *    [action.clone]
+     *    [action.exclusive]
+     *    [action.template.name]
+     *    [action.vm.disks.disk]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -119,16 +118,20 @@ public class StorageDomainTemplate extends
     /**
      * Performs importTemplate action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.cluster.id|name
+     *    [action.storage_domain.id|name]
+     *    [action.clone]
+     *    [action.exclusive]
+     *    [action.template.name]
+     *    [action.vm.disks.disk]
+     *    </pre>
      *
-     * <pre>
-     * action.cluster.id|name
-     * [action.storage_domain.id|name]
-     * [action.clone]
-     * [action.exclusive]
-     * [action.template.name]
-     * [action.vm.disks.disk]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

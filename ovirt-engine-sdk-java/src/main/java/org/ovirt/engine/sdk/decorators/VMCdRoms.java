@@ -125,11 +125,10 @@ public class VMCdRoms extends
     /**
      * Adds CdRom object.
      *
-     * @param cdrom
-     *
-     * <pre>
-     * cdrom.file.id
-     * </pre>
+     * @param cdrom {@link org.ovirt.engine.sdk.entities.CdRom}
+     *    <pre>
+     *    cdrom.file.id
+     *    </pre>
      *
      * @return
      *     {@link VMCdRom }

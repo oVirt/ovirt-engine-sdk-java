@@ -126,20 +126,19 @@ public class Networks extends
     /**
      * Adds Network object.
      *
-     * @param network
-     *
-     * <pre>
-     * network.data_center.id|name
-     * network.name
-     * [network.description]
-     * [network.vlan.id]
-     * [network.ip.address]
-     * [network.ip.gateway]
-     * [network.ip.netmask]
-     * [network.display]
-     * [network.stp]
-     * [network.mtu]
-     * </pre>
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    network.data_center.id|name
+     *    network.name
+     *    [network.description]
+     *    [network.vlan.id]
+     *    [network.ip.address]
+     *    [network.ip.gateway]
+     *    [network.ip.netmask]
+     *    [network.display]
+     *    [network.stp]
+     *    [network.mtu]
+     *    </pre>
      *
      * @return
      *     {@link Network }

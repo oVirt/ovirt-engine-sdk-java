@@ -78,11 +78,10 @@ public class ClusterGlusterVolume extends
     /**
      * Performs stop action.
      *
-     * @param action
-     *
-     * <pre>
-     * [action.force]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.force]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -109,11 +108,15 @@ public class ClusterGlusterVolume extends
     /**
      * Performs stop action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.force]
+     *    </pre>
      *
-     * <pre>
-     * [action.force]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -141,11 +144,10 @@ public class ClusterGlusterVolume extends
     /**
      * Performs start action.
      *
-     * @param action
-     *
-     * <pre>
-     * [action.force]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.force]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -172,11 +174,15 @@ public class ClusterGlusterVolume extends
     /**
      * Performs start action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.force]
+     *    </pre>
      *
-     * <pre>
-     * [action.force]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -204,10 +210,9 @@ public class ClusterGlusterVolume extends
     /**
      * Performs resetalloptions action.
      *
-     * @param action
-     *
-     * <pre>
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -234,10 +239,14 @@ public class ClusterGlusterVolume extends
     /**
      * Performs resetalloptions action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    </pre>
      *
-     * <pre>
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -283,12 +292,11 @@ public class ClusterGlusterVolume extends
     /**
      * Performs resetoption action.
      *
-     * @param action
-     *
-     * <pre>
-     * action.option.name
-     * action.force
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.option.name
+     *    action.force
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -315,12 +323,16 @@ public class ClusterGlusterVolume extends
     /**
      * Performs resetoption action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.option.name
+     *    action.force
+     *    </pre>
      *
-     * <pre>
-     * action.option.name
-     * action.force
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -348,12 +360,11 @@ public class ClusterGlusterVolume extends
     /**
      * Performs setoption action.
      *
-     * @param action
-     *
-     * <pre>
-     * action.option.name
-     * action.option.value
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.option.name
+     *    action.option.value
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -380,12 +391,16 @@ public class ClusterGlusterVolume extends
     /**
      * Performs setoption action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.option.name
+     *    action.option.value
+     *    </pre>
      *
-     * <pre>
-     * action.option.name
-     * action.option.value
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -413,12 +428,11 @@ public class ClusterGlusterVolume extends
     /**
      * Performs rebalance action.
      *
-     * @param action
-     *
-     * <pre>
-     * [action.fix_layout]
-     * [action.force]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.fix_layout]
+     *    [action.force]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -445,12 +459,16 @@ public class ClusterGlusterVolume extends
     /**
      * Performs rebalance action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.fix_layout]
+     *    [action.force]
+     *    </pre>
      *
-     * <pre>
-     * [action.fix_layout]
-     * [action.force]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

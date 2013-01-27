@@ -125,17 +125,16 @@ public class VMNICs extends
     /**
      * Adds NIC object.
      *
-     * @param nic
-     *
-     * <pre>
-     * nic.name
-     * [nic.network.id|name]
-     * [nic.linked]
-     * [nic.mac.address]
-     * [nic.interface]
-     * [nic.port_mirroring.networks.network]
-     * [nic.plugged]
-     * </pre>
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    nic.name
+     *    [nic.network.id|name]
+     *    [nic.linked]
+     *    [nic.mac.address]
+     *    [nic.interface]
+     *    [nic.port_mirroring.networks.network]
+     *    [nic.plugged]
+     *    </pre>
      *
      * @return
      *     {@link VMNIC }

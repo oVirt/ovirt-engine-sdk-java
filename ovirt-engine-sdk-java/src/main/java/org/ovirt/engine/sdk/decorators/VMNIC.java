@@ -91,8 +91,7 @@ public class VMNIC extends
     /**
      * Performs activate action.
      *
-     * @param action
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
      *     {@link Action }
      *
@@ -118,7 +117,11 @@ public class VMNIC extends
     /**
      * Performs activate action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -146,17 +149,16 @@ public class VMNIC extends
     /**
      * Updates VMNIC object.
      *
-     * @param nic
-     *
-     * <pre>
-     * [nic.network.id|name]
-     * [nic.linked]
-     * [nic.name]
-     * [nic.mac.address]
-     * [nic.interface]
-     * [nic.port_mirroring.networks.network]
-     * [nic.plugged]
-     * </pre>
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    [nic.network.id|name]
+     *    [nic.linked]
+     *    [nic.name]
+     *    [nic.mac.address]
+     *    [nic.interface]
+     *    [nic.port_mirroring.networks.network]
+     *    [nic.plugged]
+     *    </pre>
      *
      * @return
      *     {@link VMNIC }
@@ -194,8 +196,7 @@ public class VMNIC extends
     /**
      * Performs deactivate action.
      *
-     * @param action
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
      *     {@link Action }
      *
@@ -221,7 +222,11 @@ public class VMNIC extends
     /**
      * Performs deactivate action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

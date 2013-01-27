@@ -91,8 +91,7 @@ public class VMDisk extends
     /**
      * Performs activate action.
      *
-     * @param action
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
      *     {@link Action }
      *
@@ -118,7 +117,11 @@ public class VMDisk extends
     /**
      * Performs activate action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -146,19 +149,18 @@ public class VMDisk extends
     /**
      * Updates VMDisk object.
      *
-     * @param disk
-     *
-     * <pre>
-     * [size]
-     * [provisioned_size]
-     * [disk.interface]
-     * [disk.format]
-     * [disk.sparse]
-     * [disk.bootable]
-     * [disk.shareable]
-     * [disk.propagate_errors]
-     * [disk.wipe_after_delete]
-     * </pre>
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    [size]
+     *    [provisioned_size]
+     *    [disk.interface]
+     *    [disk.format]
+     *    [disk.sparse]
+     *    [disk.bootable]
+     *    [disk.shareable]
+     *    [disk.propagate_errors]
+     *    [disk.wipe_after_delete]
+     *    </pre>
      *
      * @return
      *     {@link VMDisk }
@@ -196,8 +198,7 @@ public class VMDisk extends
     /**
      * Performs deactivate action.
      *
-     * @param action
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
      *     {@link Action }
      *
@@ -223,7 +224,11 @@ public class VMDisk extends
     /**
      * Performs deactivate action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -251,13 +256,12 @@ public class VMDisk extends
     /**
      * Performs move action.
      *
-     * @param action
-     *
-     * <pre>
-     * storagedomain.id|name
-     * [action.async]
-     * [action.grace_period.expiry]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -284,13 +288,17 @@ public class VMDisk extends
     /**
      * Performs move action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
      *
-     * <pre>
-     * storagedomain.id|name
-     * [action.async]
-     * [action.grace_period.expiry]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

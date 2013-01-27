@@ -125,37 +125,36 @@ public class UserPermissions extends
     /**
      * Adds Permission object.
      *
-     * @param permission
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *    <pre>
+     *    Overload 1:
+     *      permission.role.id
+     *      permission.data_center.id
      *
-     * <pre>
-     * Overload 1: 
-     *    permission.role.id
-     *    permission.data_center.id
+     *    Overload 2:
+     *      permission.role.id
+     *      permission.cluster.id
      *
-     * Overload 2: 
-     *    permission.role.id
-     *    permission.cluster.id
+     *    Overload 3:
+     *      permission.role.id
+     *      permission.host.id
      *
-     * Overload 3: 
-     *    permission.role.id
-     *    permission.host.id
+     *    Overload 4:
+     *      permission.role.id
+     *      permission.storage_domain.id
      *
-     * Overload 4: 
-     *    permission.role.id
-     *    permission.storage_domain.id
+     *    Overload 5:
+     *      permission.role.id
+     *      permission.vm.id
      *
-     * Overload 5: 
-     *    permission.role.id
-     *    permission.vm.id
+     *    Overload 6:
+     *      permission.role.id
+     *      permission.vmpool.id
      *
-     * Overload 6: 
-     *    permission.role.id
-     *    permission.vmpool.id
-     *
-     * Overload 7: 
-     *    permission.role.id
-     *    permission.template.id
-     * </pre>
+     *    Overload 7:
+     *      permission.role.id
+     *      permission.template.id
+     *    </pre>
      *
      * @return
      *     {@link UserPermission }

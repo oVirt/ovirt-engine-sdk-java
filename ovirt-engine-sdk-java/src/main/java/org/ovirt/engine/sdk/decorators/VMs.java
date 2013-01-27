@@ -126,43 +126,42 @@ public class VMs extends
     /**
      * Adds VM object.
      *
-     * @param vm
-     *
-     * <pre>
-     * vm.name
-     * vm.template.id|name
-     * vm.cluster.id|name
-     * [vm.quota.id]
-     * [vm.timezone]
-     * [vm.os.boot]
-     * [vm.custom_properties.custom_property]
-     * [vm.os.type]
-     * [vm.usb.enabled]
-     * [vm.usb.type]
-     * [vm.type]
-     * [vm.os.initRd]
-     * [vm.display.monitors]
-     * [vm.display.type]
-     * [vm.display.allow_override]
-     * [vm.display.smartcard_enabled]
-     * [vm.os.cmdline]
-     * [vm.cpu.topology.cores]
-     * [vm.memory]
-     * [vm.high_availability.priority]
-     * [vm.high_availability.enabled]
-     * [vm.domain.name]
-     * [vm.description]
-     * [vm.stateless]
-     * [vm.delete_protected]
-     * [vm.cpu.topology.sockets]
-     * [vm.placement_policy.affinity]
-     * [vm.placement_policy.host.id|name]
-     * [vm.origin]
-     * [vm.os.kernel]
-     * [vm.disks.clone]
-     * [vm.payloads.payload]
-     * [vm.cpu.cpu_tune.vcpu_pin]
-     * </pre>
+     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
+     *    <pre>
+     *    vm.name
+     *    vm.template.id|name
+     *    vm.cluster.id|name
+     *    [vm.quota.id]
+     *    [vm.timezone]
+     *    [vm.os.boot]
+     *    [vm.custom_properties.custom_property]
+     *    [vm.os.type]
+     *    [vm.usb.enabled]
+     *    [vm.usb.type]
+     *    [vm.type]
+     *    [vm.os.initRd]
+     *    [vm.display.monitors]
+     *    [vm.display.type]
+     *    [vm.display.allow_override]
+     *    [vm.display.smartcard_enabled]
+     *    [vm.os.cmdline]
+     *    [vm.cpu.topology.cores]
+     *    [vm.memory]
+     *    [vm.high_availability.priority]
+     *    [vm.high_availability.enabled]
+     *    [vm.domain.name]
+     *    [vm.description]
+     *    [vm.stateless]
+     *    [vm.delete_protected]
+     *    [vm.cpu.topology.sockets]
+     *    [vm.placement_policy.affinity]
+     *    [vm.placement_policy.host.id|name]
+     *    [vm.origin]
+     *    [vm.os.kernel]
+     *    [vm.disks.clone]
+     *    [vm.payloads.payload]
+     *    [vm.cpu.cpu_tune.vcpu_pin]
+     *    </pre>
      *
      * @return
      *     {@link VM }

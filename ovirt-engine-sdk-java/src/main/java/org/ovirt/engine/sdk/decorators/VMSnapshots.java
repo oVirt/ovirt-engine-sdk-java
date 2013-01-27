@@ -125,11 +125,10 @@ public class VMSnapshots extends
     /**
      * Adds Snapshot object.
      *
-     * @param snapshot
-     *
-     * <pre>
-     * snapshot.description
-     * </pre>
+     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
+     *    <pre>
+     *    snapshot.description
+     *    </pre>
      *
      * @return
      *     {@link VMSnapshot }

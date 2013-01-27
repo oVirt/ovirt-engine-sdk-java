@@ -102,14 +102,13 @@ public class HostNICs extends
     /**
      * Performs setupnetworks action.
      *
-     * @param action
-     *
-     * <pre>
-     * [action.host_nics.host_nic]
-     * [action.checkConnectivity]
-     * [action.connectivityTimeout]
-     * [action.force]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.host_nics.host_nic]
+     *    [action.checkConnectivity]
+     *    [action.connectivityTimeout]
+     *    [action.force]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -136,14 +135,18 @@ public class HostNICs extends
     /**
      * Performs setupnetworks action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.host_nics.host_nic]
+     *    [action.checkConnectivity]
+     *    [action.connectivityTimeout]
+     *    [action.force]
+     *    </pre>
      *
-     * <pre>
-     * [action.host_nics.host_nic]
-     * [action.checkConnectivity]
-     * [action.connectivityTimeout]
-     * [action.force]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -194,14 +197,13 @@ public class HostNICs extends
     /**
      * Adds HostNIC object.
      *
-     * @param hostnic
-     *
-     * <pre>
-     * hostnic.network.id|name
-     * hostnic.name
-     * hostnic.bonding.slaves.host_nic
-     * [hostnic.bonding.options.option]
-     * </pre>
+     * @param hostnic {@link org.ovirt.engine.sdk.entities.HostNIC}
+     *    <pre>
+     *    hostnic.network.id|name
+     *    hostnic.name
+     *    hostnic.bonding.slaves.host_nic
+     *    [hostnic.bonding.options.option]
+     *    </pre>
      *
      * @return
      *     {@link HostNIC }

@@ -125,11 +125,10 @@ public class DataCenterStorageDomains extends
     /**
      * Adds StorageDomain object.
      *
-     * @param storagedomain
-     *
-     * <pre>
-     * storagedomain.id|name
-     * </pre>
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    storagedomain.id|name
+     *    </pre>
      *
      * @return
      *     {@link DataCenterStorageDomain }

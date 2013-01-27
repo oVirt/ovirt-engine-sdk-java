@@ -125,40 +125,39 @@ public class VMDisks extends
     /**
      * Adds Disk object.
      *
-     * @param disk
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    Overload 1:
+     *      provisioned_size
+     *      disk.interface
+     *      disk.format
+     *      [disk.alias]
+     *      [disk.name]
+     *      [disk.size]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
+     *      [disk.storage_domains.storage_domain]
      *
-     * <pre>
-     * Overload 1: 
-     *    provisioned_size
-     *    disk.interface
-     *    disk.format
-     *    [disk.alias]
-     *    [disk.name]
-     *    [disk.size]
-     *    [disk.sparse]
-     *    [disk.bootable]
-     *    [disk.shareable]
-     *    [disk.propagate_errors]
-     *    [disk.wipe_after_delete]
-     *    [disk.storage_domains.storage_domain]
+     *    Overload 2:
+     *      disk.interface
+     *      disk.format
+     *      disk.lun_storage.type
+     *      disk.lun_storage.logical_unit
+     *      [disk.alias]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
+     *      [disk.storage_domains.storage_domain]
      *
-     * Overload 2: 
-     *    disk.interface
-     *    disk.format
-     *    disk.lun_storage.type
-     *    disk.lun_storage.logical_unit
-     *    [disk.alias]
-     *    [disk.sparse]
-     *    [disk.bootable]
-     *    [disk.shareable]
-     *    [disk.propagate_errors]
-     *    [disk.wipe_after_delete]
-     *    [disk.storage_domains.storage_domain]
-     *
-     * Overload 3: 
-     *    disk.id
-     *    [disk.active]
-     * </pre>
+     *    Overload 3:
+     *      disk.id
+     *      [disk.active]
+     *    </pre>
      *
      * @return
      *     {@link VMDisk }

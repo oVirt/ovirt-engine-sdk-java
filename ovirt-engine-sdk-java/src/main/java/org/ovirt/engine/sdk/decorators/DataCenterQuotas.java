@@ -102,8 +102,7 @@ public class DataCenterQuotas extends
     /**
      * Adds Quota object.
      *
-     * @param quota
-     *
+     * @param quota {@link org.ovirt.engine.sdk.entities.Quota}
      * @return
      *     {@link DataCenterQuota }
      *

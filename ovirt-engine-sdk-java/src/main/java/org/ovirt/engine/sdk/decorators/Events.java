@@ -129,22 +129,21 @@ public class Events extends
     /**
      * Adds Event object.
      *
-     * @param event
-     *
-     * <pre>
-     * event.description
-     * event.severity
-     * event.origin
-     * event.custom_id
-     * [event.flood_rate]
-     * [event.host.id]
-     * [event.user.id]
-     * [event.vm.id]
-     * [event.storage_domain.id]
-     * [event.template.id]
-     * [event.cluster.id]
-     * [event.data_center.id]
-     * </pre>
+     * @param event {@link org.ovirt.engine.sdk.entities.Event}
+     *    <pre>
+     *    event.description
+     *    event.severity
+     *    event.origin
+     *    event.custom_id
+     *    [event.flood_rate]
+     *    [event.host.id]
+     *    [event.user.id]
+     *    [event.vm.id]
+     *    [event.storage_domain.id]
+     *    [event.template.id]
+     *    [event.cluster.id]
+     *    [event.data_center.id]
+     *    </pre>
      *
      * @return
      *     {@link Event }

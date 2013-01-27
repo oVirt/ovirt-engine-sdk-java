@@ -65,8 +65,7 @@ public class DataCenterStorageDomain extends
     /**
      * Performs activate action.
      *
-     * @param action
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
      *     {@link Action }
      *
@@ -92,7 +91,11 @@ public class DataCenterStorageDomain extends
     /**
      * Performs activate action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -138,8 +141,7 @@ public class DataCenterStorageDomain extends
     /**
      * Performs deactivate action.
      *
-     * @param action
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
      *     {@link Action }
      *
@@ -165,7 +167,11 @@ public class DataCenterStorageDomain extends
     /**
      * Performs deactivate action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

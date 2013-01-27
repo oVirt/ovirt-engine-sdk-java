@@ -78,20 +78,19 @@ public class HostNIC extends
     /**
      * Updates HostNIC object.
      *
-     * @param hostnic
-     *
-     * <pre>
-     * [hostnic.bonding.slaves.host_nic]
-     * [hostnic.network.id|name]
-     * [hostnic.name]
-     * [hostnic.bonding.options.option]
-     * [hostnic.ip.gateway]
-     * [hostnic.boot_protocol]
-     * [hostnic.mac]
-     * [hostnic.ip.address]
-     * [hostnic.ip.netmask]
-     * [hostnic.ip.mtu]
-     * </pre>
+     * @param hostnic {@link org.ovirt.engine.sdk.entities.HostNIC}
+     *    <pre>
+     *    [hostnic.bonding.slaves.host_nic]
+     *    [hostnic.network.id|name]
+     *    [hostnic.name]
+     *    [hostnic.bonding.options.option]
+     *    [hostnic.ip.gateway]
+     *    [hostnic.boot_protocol]
+     *    [hostnic.mac]
+     *    [hostnic.ip.address]
+     *    [hostnic.ip.netmask]
+     *    [hostnic.ip.mtu]
+     *    </pre>
      *
      * @return
      *     {@link HostNIC }
@@ -111,11 +110,10 @@ public class HostNIC extends
     /**
      * Performs detach action.
      *
-     * @param action
-     *
-     * <pre>
-     * [action.async]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -142,11 +140,15 @@ public class HostNIC extends
     /**
      * Performs detach action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    </pre>
      *
-     * <pre>
-     * [action.async]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -174,13 +176,12 @@ public class HostNIC extends
     /**
      * Performs attach action.
      *
-     * @param action
-     *
-     * <pre>
-     * action.network.id|name
-     * [action.async]
-     * [action.grace_period.expiry]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.network.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -207,13 +208,17 @@ public class HostNIC extends
     /**
      * Performs attach action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.network.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
      *
-     * <pre>
-     * action.network.id|name
-     * [action.async]
-     * [action.grace_period.expiry]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

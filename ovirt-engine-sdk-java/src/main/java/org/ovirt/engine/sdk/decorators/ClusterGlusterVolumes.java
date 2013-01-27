@@ -128,17 +128,16 @@ public class ClusterGlusterVolumes extends
     /**
      * Adds GlusterVolume object.
      *
-     * @param glustervolume
-     *
-     * <pre>
-     * gluster_volume.name
-     * gluster_volume.volume_type
-     * gluster_volume.bricks.brick
-     * [gluster_volume.transport_types]
-     * [gluster_volume.replica_count]
-     * [gluster_volume.stripe_count]
-     * [gluster_volume.options.option]
-     * </pre>
+     * @param glustervolume {@link org.ovirt.engine.sdk.entities.GlusterVolume}
+     *    <pre>
+     *    gluster_volume.name
+     *    gluster_volume.volume_type
+     *    gluster_volume.bricks.brick
+     *    [gluster_volume.transport_types]
+     *    [gluster_volume.replica_count]
+     *    [gluster_volume.stripe_count]
+     *    [gluster_volume.options.option]
+     *    </pre>
      *
      * @return
      *     {@link ClusterGlusterVolume }

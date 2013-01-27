@@ -126,11 +126,10 @@ public class Groups extends
     /**
      * Adds Group object.
      *
-     * @param group
-     *
-     * <pre>
-     * group.name
-     * </pre>
+     * @param group {@link org.ovirt.engine.sdk.entities.Group}
+     *    <pre>
+     *    group.name
+     *    </pre>
      *
      * @return
      *     {@link Group }

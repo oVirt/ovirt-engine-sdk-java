@@ -116,17 +116,16 @@ public class StorageDomain extends
     /**
      * Updates StorageDomain object.
      *
-     * @param storagedomain
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    Overload 1:
+     *      [storagedomain.name]
      *
-     * <pre>
-     * Overload 1: 
-     *    [storagedomain.name]
-     *
-     * Overload 2: 
-     *    storagedomain.storage.logical_unit
-     *    [storagedomain.name]
-     *    [storagedomain.storage.override_luns]
-     * </pre>
+     *    Overload 2:
+     *      storagedomain.storage.logical_unit
+     *      [storagedomain.name]
+     *      [storagedomain.storage.override_luns]
+     *    </pre>
      *
      * @return
      *     {@link StorageDomain }

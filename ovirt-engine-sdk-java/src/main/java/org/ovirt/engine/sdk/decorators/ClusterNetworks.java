@@ -125,11 +125,10 @@ public class ClusterNetworks extends
     /**
      * Adds Network object.
      *
-     * @param network
-     *
-     * <pre>
-     * network.id|name
-     * </pre>
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    network.id|name
+     *    </pre>
      *
      * @return
      *     {@link ClusterNetwork }

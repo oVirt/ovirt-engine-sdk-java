@@ -65,13 +65,12 @@ public class ClusterGlusterVolumeGlusterBrick extends
     /**
      * Performs replace action.
      *
-     * @param action
-     *
-     * <pre>
-     * action.brick.server_id
-     * action.brick.brick_dir
-     * [action.force]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.brick.server_id
+     *    action.brick.brick_dir
+     *    [action.force]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -98,13 +97,17 @@ public class ClusterGlusterVolumeGlusterBrick extends
     /**
      * Performs replace action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.brick.server_id
+     *    action.brick.brick_dir
+     *    [action.force]
+     *    </pre>
      *
-     * <pre>
-     * action.brick.server_id
-     * action.brick.brick_dir
-     * [action.force]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

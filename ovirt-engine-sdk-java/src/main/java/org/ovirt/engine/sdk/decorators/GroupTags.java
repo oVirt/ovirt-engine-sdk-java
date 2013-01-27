@@ -125,11 +125,10 @@ public class GroupTags extends
     /**
      * Adds Tag object.
      *
-     * @param tag
-     *
-     * <pre>
-     * tag.id|name
-     * </pre>
+     * @param tag {@link org.ovirt.engine.sdk.entities.Tag}
+     *    <pre>
+     *    tag.id|name
+     *    </pre>
      *
      * @return
      *     {@link GroupTag }

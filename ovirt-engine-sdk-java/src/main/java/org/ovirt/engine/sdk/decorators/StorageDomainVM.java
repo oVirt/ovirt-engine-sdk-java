@@ -83,17 +83,16 @@ public class StorageDomainVM extends
     /**
      * Performs importVm action.
      *
-     * @param action
-     *
-     * <pre>
-     * action.cluster.id|name
-     * [action.storage_domain.id|name]
-     * [action.vm.snapshots.collapse_snapshots]
-     * [action.clone]
-     * [action.exclusive]
-     * [action.vm.name]
-     * [action.vm.disks.disk]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.cluster.id|name
+     *    [action.storage_domain.id|name]
+     *    [action.vm.snapshots.collapse_snapshots]
+     *    [action.clone]
+     *    [action.exclusive]
+     *    [action.vm.name]
+     *    [action.vm.disks.disk]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -120,17 +119,21 @@ public class StorageDomainVM extends
     /**
      * Performs importVm action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.cluster.id|name
+     *    [action.storage_domain.id|name]
+     *    [action.vm.snapshots.collapse_snapshots]
+     *    [action.clone]
+     *    [action.exclusive]
+     *    [action.vm.name]
+     *    [action.vm.disks.disk]
+     *    </pre>
      *
-     * <pre>
-     * action.cluster.id|name
-     * [action.storage_domain.id|name]
-     * [action.vm.snapshots.collapse_snapshots]
-     * [action.clone]
-     * [action.exclusive]
-     * [action.vm.name]
-     * [action.vm.disks.disk]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

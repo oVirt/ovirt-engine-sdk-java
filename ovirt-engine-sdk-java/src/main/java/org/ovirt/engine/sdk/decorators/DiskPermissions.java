@@ -102,8 +102,7 @@ public class DiskPermissions extends
     /**
      * Adds Permission object.
      *
-     * @param permission
-     *
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      * @return
      *     {@link DiskPermission }
      *

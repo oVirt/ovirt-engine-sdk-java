@@ -125,11 +125,10 @@ public class RolePermits extends
     /**
      * Adds Permit object.
      *
-     * @param permit
-     *
-     * <pre>
-     * permit.id|name
-     * </pre>
+     * @param permit {@link org.ovirt.engine.sdk.entities.Permit}
+     *    <pre>
+     *    permit.id|name
+     *    </pre>
      *
      * @return
      *     {@link RolePermit }

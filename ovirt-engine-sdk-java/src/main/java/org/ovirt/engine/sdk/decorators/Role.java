@@ -77,12 +77,11 @@ public class Role extends
     /**
      * Updates Role object.
      *
-     * @param role
-     *
-     * <pre>
-     * [role.permits.permit]
-     * [role.description]
-     * </pre>
+     * @param role {@link org.ovirt.engine.sdk.entities.Role}
+     *    <pre>
+     *    [role.permits.permit]
+     *    [role.description]
+     *    </pre>
      *
      * @return
      *     {@link Role }

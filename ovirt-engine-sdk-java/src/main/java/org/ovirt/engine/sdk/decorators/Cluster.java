@@ -103,25 +103,24 @@ public class Cluster extends
     /**
      * Updates Cluster object.
      *
-     * @param cluster
-     *
-     * <pre>
-     * [cluster.name]
-     * [cluster.description]
-     * [cluster.cpu.id]
-     * [cluster.version.major]
-     * [cluster.version.minor]
-     * [cluster.memory_policy.overcommit.percent]
-     * [cluster.memory_policy.transparent_hugepages.enabled]
-     * [cluster.scheduling_policy.policy]
-     * [cluster.scheduling_policy.thresholds.low]
-     * [cluster.scheduling_policy.thresholds.high]
-     * [cluster.scheduling_policy.thresholds.duration]
-     * [cluster.error_handling.on_error]
-     * [cluster.virt_service]
-     * [cluster.gluster_service]
-     * [cluster.threads_as_cores]
-     * </pre>
+     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     *    <pre>
+     *    [cluster.name]
+     *    [cluster.description]
+     *    [cluster.cpu.id]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.policy]
+     *    [cluster.scheduling_policy.thresholds.low]
+     *    [cluster.scheduling_policy.thresholds.high]
+     *    [cluster.scheduling_policy.thresholds.duration]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.virt_service]
+     *    [cluster.gluster_service]
+     *    [cluster.threads_as_cores]
+     *    </pre>
      *
      * @return
      *     {@link Cluster }

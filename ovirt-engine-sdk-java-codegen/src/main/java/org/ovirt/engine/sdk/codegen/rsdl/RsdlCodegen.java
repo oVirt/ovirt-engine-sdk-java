@@ -423,7 +423,7 @@ public class RsdlCodegen extends AbstractCodegen {
 
         String methodName = getActionMethodName(period, periods[i - 3]);
         if (!resourceHolder.hasMethod(period)) {
-            String docParams = DocsGen.generate(detailedLink);
+            String docParams = DocsGen.generateBodyParams(detailedLink);
 
             resourceHolder.addMethod(period,
                     this.resourceActionMethodTemplate.getTemplate(methodName,
@@ -451,7 +451,7 @@ public class RsdlCodegen extends AbstractCodegen {
                 resourceHolder.getSubcollections().get(collectionName.toLowerCase());
 
         if (!collectionHolder.hasMethod(period)) {
-            String docParams = DocsGen.generate(detailedLink);
+            String docParams = DocsGen.generateBodyParams(detailedLink);
 
             collectionHolder.addMethod(period,
                     this.collectionActionMethodTemplate.getTemplate(methodName,
@@ -479,7 +479,7 @@ public class RsdlCodegen extends AbstractCodegen {
         if (rel.equals(ADD_REL)) {
             if (indx == 1) {
                 if (!collectionHolder.hasMethod(rel)) {
-                    String docParams = DocsGen.generate(detailedLink);
+                    String docParams = DocsGen.generateBodyParams(detailedLink);
                     collectionHolder.addMethod(rel,
                             this.collectionAddMethodTemplate.getTemplate(decoratorCollectionName,
                                     publicEntityName,
@@ -487,7 +487,7 @@ public class RsdlCodegen extends AbstractCodegen {
                 }
             } else {
                 if (!collectionHolder.hasMethod(rel)) {
-                    String docParams = DocsGen.generate(detailedLink);
+                    String docParams = DocsGen.generateBodyParams(detailedLink);
                     collectionHolder.addMethod(rel,
                             this.subCollectionAddMethodTemplate.getTemplate(decoratorCollectionName,
                                     publicEntityName,
@@ -541,7 +541,7 @@ public class RsdlCodegen extends AbstractCodegen {
             }
         } else if (rel.equals(UPDATE_REL)) {
             if (!resourceHolder.hasMethod(UPDATE_REL)) {
-                String docParams = DocsGen.generate(detailedLink);
+                String docParams = DocsGen.generateBodyParams(detailedLink);
 
                 resourceHolder.addMethod(UPDATE_REL,
                         this.updateMethodTemplate.getTemplate(decoratorName,

@@ -126,12 +126,11 @@ public class Users extends
     /**
      * Adds User object.
      *
-     * @param user
-     *
-     * <pre>
-     * user.user_name
-     * user.domain.id|name
-     * </pre>
+     * @param user {@link org.ovirt.engine.sdk.entities.User}
+     *    <pre>
+     *    user.user_name
+     *    user.domain.id|name
+     *    </pre>
      *
      * @return
      *     {@link User }

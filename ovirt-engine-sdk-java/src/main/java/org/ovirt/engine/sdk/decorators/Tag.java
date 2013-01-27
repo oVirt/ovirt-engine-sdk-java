@@ -64,13 +64,12 @@ public class Tag extends
     /**
      * Updates Tag object.
      *
-     * @param tag
-     *
-     * <pre>
-     * [tag.name]
-     * [tag.description]
-     * [tag.parent.name]
-     * </pre>
+     * @param tag {@link org.ovirt.engine.sdk.entities.Tag}
+     *    <pre>
+     *    [tag.name]
+     *    [tag.description]
+     *    [tag.parent.name]
+     *    </pre>
      *
      * @return
      *     {@link Tag }

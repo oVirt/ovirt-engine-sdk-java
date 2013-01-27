@@ -77,14 +77,13 @@ public class VmPool extends
     /**
      * Updates VmPool object.
      *
-     * @param vmpool
-     *
-     * <pre>
-     * [vmpool.cluster.id|name]
-     * [vmpool.template.id|name]
-     * [vmpool.name]
-     * [vmpool.size]
-     * </pre>
+     * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
+     *    <pre>
+     *    [vmpool.cluster.id|name]
+     *    [vmpool.template.id|name]
+     *    [vmpool.name]
+     *    [vmpool.size]
+     *    </pre>
      *
      * @return
      *     {@link VmPool }
@@ -104,11 +103,10 @@ public class VmPool extends
     /**
      * Performs allocatevm action.
      *
-     * @param action
-     *
-     * <pre>
-     * [action.async]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -135,11 +133,15 @@ public class VmPool extends
     /**
      * Performs allocatevm action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    </pre>
      *
-     * <pre>
-     * [action.async]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

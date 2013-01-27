@@ -65,11 +65,10 @@ public class VMCdRom extends
     /**
      * Updates VMCdRom object.
      *
-     * @param cdrom
-     *
-     * <pre>
-     * [cdrom.file.id]
-     * </pre>
+     * @param cdrom {@link org.ovirt.engine.sdk.entities.CdRom}
+     *    <pre>
+     *    [cdrom.file.id]
+     *    </pre>
      *
      * @return
      *     {@link VMCdRom }

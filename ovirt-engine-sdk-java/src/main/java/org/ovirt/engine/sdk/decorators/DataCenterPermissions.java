@@ -102,17 +102,16 @@ public class DataCenterPermissions extends
     /**
      * Adds Permission object.
      *
-     * @param permission
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *    <pre>
+     *    Overload 1:
+     *      permission.user.id
+     *      permission.role.id
      *
-     * <pre>
-     * Overload 1: 
-     *    permission.user.id
-     *    permission.role.id
-     *
-     * Overload 2: 
-     *    permission.role.id
-     *    permission.group.id
-     * </pre>
+     *    Overload 2:
+     *      permission.role.id
+     *      permission.group.id
+     *    </pre>
      *
      * @return
      *     {@link DataCenterPermission }

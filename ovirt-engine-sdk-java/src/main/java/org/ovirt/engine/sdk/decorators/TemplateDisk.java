@@ -83,13 +83,12 @@ public class TemplateDisk extends
     /**
      * Performs copy action.
      *
-     * @param action
-     *
-     * <pre>
-     * storagedomain.id|name
-     * [action.async]
-     * [action.grace_period.expiry]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -116,13 +115,17 @@ public class TemplateDisk extends
     /**
      * Performs copy action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
      *
-     * <pre>
-     * storagedomain.id|name
-     * [action.async]
-     * [action.grace_period.expiry]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

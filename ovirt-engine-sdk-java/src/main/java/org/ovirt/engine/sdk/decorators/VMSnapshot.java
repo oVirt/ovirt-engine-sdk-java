@@ -104,8 +104,7 @@ public class VMSnapshot extends
     /**
      * Performs restore action.
      *
-     * @param action
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
      *     {@link Action }
      *
@@ -131,7 +130,11 @@ public class VMSnapshot extends
     /**
      * Performs restore action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

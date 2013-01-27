@@ -126,25 +126,24 @@ public class Hosts extends
     /**
      * Adds Host object.
      *
-     * @param host
-     *
-     * <pre>
-     * host.name
-     * host.address
-     * host.root_password
-     * host.cluster.id|name
-     * [host.port]
-     * [host.storage_manager.priority]
-     * [host.power_management.type]
-     * [host.power_management.enabled]
-     * [host.power_management.address]
-     * [host.power_management.user_name]
-     * [host.power_management.password]
-     * [host.power_management.options.option]
-     * [host.power_management.pm_proxy]
-     * [host.power_management.agents.agent]
-     * [host.reboot_after_installation]
-     * </pre>
+     * @param host {@link org.ovirt.engine.sdk.entities.Host}
+     *    <pre>
+     *    host.name
+     *    host.address
+     *    host.root_password
+     *    host.cluster.id|name
+     *    [host.port]
+     *    [host.storage_manager.priority]
+     *    [host.power_management.type]
+     *    [host.power_management.enabled]
+     *    [host.power_management.address]
+     *    [host.power_management.user_name]
+     *    [host.power_management.password]
+     *    [host.power_management.options.option]
+     *    [host.power_management.pm_proxy]
+     *    [host.power_management.agents.agent]
+     *    [host.reboot_after_installation]
+     *    </pre>
      *
      * @return
      *     {@link Host }

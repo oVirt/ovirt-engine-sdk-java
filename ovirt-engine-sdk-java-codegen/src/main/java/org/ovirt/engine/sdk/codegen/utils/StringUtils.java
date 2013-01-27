@@ -69,4 +69,23 @@ public class StringUtils {
         }
         return string;
     }
+
+    /**
+     * Combines strings
+     * 
+     * @param source
+     *            source to combine to
+     * @param strings
+     *            strings to combine
+     * @return
+     */
+    public static String combine(String source, String... strings) {
+        StringBuffer buffer = new StringBuffer(source);
+        if (strings != null) {
+            for (String str : strings) {
+                buffer.append(str);
+            }
+        }
+        return buffer.toString();
+    }
 }

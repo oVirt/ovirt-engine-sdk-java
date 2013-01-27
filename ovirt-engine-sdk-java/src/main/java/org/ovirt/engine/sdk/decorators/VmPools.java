@@ -126,14 +126,13 @@ public class VmPools extends
     /**
      * Adds VmPool object.
      *
-     * @param vmpool
-     *
-     * <pre>
-     * vmpool.cluster.id|name
-     * vmpool.template.id|name
-     * vmpool.name
-     * [vmpool.size]
-     * </pre>
+     * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
+     *    <pre>
+     *    vmpool.cluster.id|name
+     *    vmpool.template.id|name
+     *    vmpool.name
+     *    [vmpool.size]
+     *    </pre>
      *
      * @return
      *     {@link VmPool }

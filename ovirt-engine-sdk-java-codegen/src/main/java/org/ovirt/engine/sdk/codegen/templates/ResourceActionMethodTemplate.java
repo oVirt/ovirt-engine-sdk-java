@@ -18,6 +18,7 @@ package org.ovirt.engine.sdk.codegen.templates;
 
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Parameter;
 import org.ovirt.engine.sdk.entities.ParametersSet;
@@ -135,7 +136,7 @@ public class ResourceActionMethodTemplate extends AbstractOverloadableTemplate {
         if (methodExtraParamsDef.length() > 0) {
             templateBuff.append(getTemplate(methodName,
                     actionName,
-                    DocsGen.appendHttpDocs(docParams, dl),
+                    StringUtils.combine(docParams, DocsGen.generateUrlAndHeadersParams(dl)),
                     methodExtraParamsDef.toString(),
                     headersToBuild.toString(),
                     urlParamsToBuild.toString()));

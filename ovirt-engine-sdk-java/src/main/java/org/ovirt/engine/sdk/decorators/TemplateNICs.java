@@ -125,16 +125,15 @@ public class TemplateNICs extends
     /**
      * Adds NIC object.
      *
-     * @param nic
-     *
-     * <pre>
-     * nic.network.id|name
-     * nic.name
-     * [nic.linked]
-     * [nic.mac.address]
-     * [nic.interface]
-     * [nic.port_mirroring.networks.network]
-     * </pre>
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    nic.network.id|name
+     *    nic.name
+     *    [nic.linked]
+     *    [nic.mac.address]
+     *    [nic.interface]
+     *    [nic.port_mirroring.networks.network]
+     *    </pre>
      *
      * @return
      *     {@link TemplateNIC }

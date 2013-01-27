@@ -125,11 +125,10 @@ public class UserRoles extends
     /**
      * Adds Role object.
      *
-     * @param role
-     *
-     * <pre>
-     * role.id
-     * </pre>
+     * @param role {@link org.ovirt.engine.sdk.entities.Role}
+     *    <pre>
+     *    role.id
+     *    </pre>
      *
      * @return
      *     {@link UserRole }

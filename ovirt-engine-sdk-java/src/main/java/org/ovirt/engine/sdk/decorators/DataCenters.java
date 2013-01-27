@@ -126,16 +126,15 @@ public class DataCenters extends
     /**
      * Adds DataCenter object.
      *
-     * @param datacenter
-     *
-     * <pre>
-     * datacenter.name
-     * datacenter.storage_type
-     * datacenter.version.major
-     * datacenter.version.minor
-     * [datacenter.description]
-     * [datacenter.storage_format]
-     * </pre>
+     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
+     *    <pre>
+     *    datacenter.name
+     *    datacenter.storage_type
+     *    datacenter.version.major
+     *    datacenter.version.minor
+     *    [datacenter.description]
+     *    [datacenter.storage_format]
+     *    </pre>
      *
      * @return
      *     {@link DataCenter }

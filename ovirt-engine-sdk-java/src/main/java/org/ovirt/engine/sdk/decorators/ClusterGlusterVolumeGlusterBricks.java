@@ -102,12 +102,11 @@ public class ClusterGlusterVolumeGlusterBricks extends
     /**
      * Adds GlusterBrick object.
      *
-     * @param glusterbricks
-     *
-     * <pre>
-     * bricks.brick
-     * [bricks.brick]
-     * </pre>
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     *    <pre>
+     *    bricks.brick
+     *    [bricks.brick]
+     *    </pre>
      *
      * @return
      *     {@link ClusterGlusterVolumeGlusterBrick }

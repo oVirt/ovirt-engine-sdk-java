@@ -116,36 +116,35 @@ public class Template extends
     /**
      * Updates Template object.
      *
-     * @param template
-     *
-     * <pre>
-     * [template.name]
-     * [template.memory]
-     * [template.cpu.topology.cores]
-     * [template.high_availability.enabled]
-     * [template.os.cmdline]
-     * [template.origin]
-     * [template.high_availability.priority]
-     * [template.timezone]
-     * [template.domain.name]
-     * [template.type]
-     * [template.stateless]
-     * [template.delete_protected]
-     * [template.placement_policy.affinity]
-     * [template.description]
-     * [template.custom_properties.custom_property]
-     * [template.os.type]
-     * [template.os.boot]
-     * [template.cpu.topology.sockets]
-     * [template.os.kernel]
-     * [template.display.type]
-     * [template.display.monitors]
-     * [template.display.allow_override]
-     * [template.display.smartcard_enabled]
-     * [template.os.initRd]
-     * [template.usb.enabled]
-     * [template.usb.type]
-     * </pre>
+     * @param template {@link org.ovirt.engine.sdk.entities.Template}
+     *    <pre>
+     *    [template.name]
+     *    [template.memory]
+     *    [template.cpu.topology.cores]
+     *    [template.high_availability.enabled]
+     *    [template.os.cmdline]
+     *    [template.origin]
+     *    [template.high_availability.priority]
+     *    [template.timezone]
+     *    [template.domain.name]
+     *    [template.type]
+     *    [template.stateless]
+     *    [template.delete_protected]
+     *    [template.placement_policy.affinity]
+     *    [template.description]
+     *    [template.custom_properties.custom_property]
+     *    [template.os.type]
+     *    [template.os.boot]
+     *    [template.cpu.topology.sockets]
+     *    [template.os.kernel]
+     *    [template.display.type]
+     *    [template.display.monitors]
+     *    [template.display.allow_override]
+     *    [template.display.smartcard_enabled]
+     *    [template.os.initRd]
+     *    [template.usb.enabled]
+     *    [template.usb.type]
+     *    </pre>
      *
      * @return
      *     {@link Template }
@@ -165,14 +164,13 @@ public class Template extends
     /**
      * Performs export action.
      *
-     * @param action
-     *
-     * <pre>
-     * action.storage_domain.id|name
-     * [action.async]
-     * [action.exclusive]
-     * [action.grace_period.expiry]
-     * </pre>
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.storage_domain.id|name
+     *    [action.async]
+     *    [action.exclusive]
+     *    [action.grace_period.expiry]
+     *    </pre>
      *
      * @return
      *     {@link Action }
@@ -199,14 +197,18 @@ public class Template extends
     /**
      * Performs export action.
      *
-     * @param action
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.storage_domain.id|name
+     *    [action.async]
+     *    [action.exclusive]
+     *    [action.grace_period.expiry]
+     *    </pre>
      *
-     * <pre>
-     * action.storage_domain.id|name
-     * [action.async]
-     * [action.exclusive]
-     * [action.grace_period.expiry]
-     * </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      *
      * @return
      *     {@link Action }

@@ -120,14 +120,13 @@ public class Roles extends
     /**
      * Adds Role object.
      *
-     * @param role
-     *
-     * <pre>
-     * role.name
-     * role.permits.permit
-     * [role.description]
-     * [role.administrative]
-     * </pre>
+     * @param role {@link org.ovirt.engine.sdk.entities.Role}
+     *    <pre>
+     *    role.name
+     *    role.permits.permit
+     *    [role.description]
+     *    [role.administrative]
+     *    </pre>
      *
      * @return
      *     {@link Role }

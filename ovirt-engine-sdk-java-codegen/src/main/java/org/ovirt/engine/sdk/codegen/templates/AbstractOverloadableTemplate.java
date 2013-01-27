@@ -16,6 +16,7 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
+import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.utils.FormatUtils;
 import org.ovirt.engine.sdk.codegen.utils.TypeUtils;
 import org.ovirt.engine.sdk.codegen.utils.UrlUtils;
@@ -29,7 +30,6 @@ import org.ovirt.engine.sdk.utils.ArrayUtils;
  */
 public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
     private static final String XSD_STRING_TYPE = "xs:string";
-    private static final String[] HEADERS_EXCEPTIONS = new String[] { "Content-Type", "Filter" };
 
     private static HeaderBuilderParameterTemplate headerBuilderParameterTemplate;
     private static ExtraMethodParameterTemplate extraMethodParameterTemplate;
@@ -109,7 +109,7 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
                 !dl.getRequest().getHeaders().getHeaders().isEmpty()) {
             for (Header header : dl.getRequest().getHeaders().getHeaders()) {
 
-                if (!ArrayUtils.contains(HEADERS_EXCEPTIONS, header.getName())) {
+                if (!ArrayUtils.contains(DocsGen.HEADERS_EXCEPTIONS, header.getName())) {
                     methodExtraParamsDef.append(extraMethodParameterTemplate.getTemplate(
                             TypeUtils.toJava(XSD_STRING_TYPE),
                             FormatUtils.toJava(header.getName())));
