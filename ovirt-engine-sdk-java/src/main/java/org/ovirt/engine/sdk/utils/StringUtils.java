@@ -113,4 +113,15 @@ public class StringUtils {
 
         return new String(newArray);
     }
+
+    /**
+     * Checks if string is null or empty
+     * 
+     * @param string
+     * 
+     * @return if string is null or empty true else false
+     */
+    public static boolean isNulOrEmpty(String string) {
+        return string.equals(null) || "".equals(string);
+    }
 }

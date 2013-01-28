@@ -243,6 +243,10 @@ public class StorageDomains extends
      *    <pre>
      *    [any string]
      *    </pre>
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      * @return
      *     {@link StorageDomain }

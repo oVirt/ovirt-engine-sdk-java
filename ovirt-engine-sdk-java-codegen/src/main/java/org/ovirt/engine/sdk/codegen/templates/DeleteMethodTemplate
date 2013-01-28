@@ -1,6 +1,6 @@
     /**
      * Deletes object.
-     *
+$docParams$
      * @return
      *     {@link Response }
      *
@@ -11,8 +11,15 @@
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete() throws ClientProtocolException,
+    public Response delete($methodExtraParamsDef$) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().delete(url, Response.class);
+
+        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
+                .build();
+
+        url = new UrlBuilder(url)$urlParamsToBuild$
+                .build();
+
+        return getProxy().delete(url, Response.class, headers);
     }

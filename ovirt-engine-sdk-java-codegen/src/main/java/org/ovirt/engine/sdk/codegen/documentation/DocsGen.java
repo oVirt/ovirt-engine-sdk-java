@@ -56,7 +56,8 @@ public class DocsGen implements IDocCodegen {
         StringBuffer docParams = new StringBuffer();
         docParams.append(PREFIX);
 
-        if (detailedLink.getRequest() != null && detailedLink.getRequest().getBody() != null) {
+        if (detailedLink.isSetRequest() && detailedLink.getRequest().isSetBody()
+                && detailedLink.getRequest().getBody().isSetType()) {
             docParams.append(NEW_LINE + PARAM + detailedLink.getRequest().getBody()
                     .getType().toLowerCase() + LINK.replace("$TYPE$",
                     NAMESPACE + detailedLink.getRequest().getBody().getType()));
@@ -160,7 +161,7 @@ public class DocsGen implements IDocCodegen {
                     docParams.append(PREFIX);
                     i++;
                 }
-            } else if (detailedLink.getRequest().getBody().getParametersSets().size() == 1) {
+            } else if (detailedLink.getRequest().getUrl().getParametersSets().size() == 1) {
                 for (Parameter param : detailedLink.getRequest().getUrl().getParametersSets().get(0).getParameters()) {
                     if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
                         docParams.append(NEW_LINE + PARAM + param.getName() +

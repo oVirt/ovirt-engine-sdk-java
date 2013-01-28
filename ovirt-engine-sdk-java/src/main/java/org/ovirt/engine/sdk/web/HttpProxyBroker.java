@@ -235,6 +235,27 @@ public class HttpProxyBroker {
      * 
      * @param url
      *            resource url
+     * @param to
+     *            to typr
+     * @param headers
+     *            HTTP headers
+     * 
+     * @return response
+     * 
+     * @throws IOException
+     * @throws ClientProtocolException
+     * @throws ServerException
+     */
+    public <F, T> T delete(String url, Class<T> to, List<Header> headers)
+            throws IOException, ClientProtocolException, ServerException {
+        return delete(url, null, null, to, headers);
+    }
+
+    /**
+     * Deletes resource
+     * 
+     * @param url
+     *            resource url
      * @param entity
      *            entity to pass
      * @param from

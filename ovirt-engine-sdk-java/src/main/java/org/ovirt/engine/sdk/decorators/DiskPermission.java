@@ -32,7 +32,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
-
+import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>DiskPermission providing relation and functional services
@@ -64,7 +64,7 @@ public class DiskPermission extends
 
     /**
      * Deletes object.
-     *
+
      * @return
      *     {@link Response }
      *
@@ -78,7 +78,14 @@ public class DiskPermission extends
     public Response delete() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().delete(url, Response.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().delete(url, Response.class, headers);
     }
 
 }

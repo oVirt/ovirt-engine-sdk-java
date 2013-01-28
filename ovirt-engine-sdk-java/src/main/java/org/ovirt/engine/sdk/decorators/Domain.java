@@ -32,6 +32,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
+import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>Domain providing relation and functional services

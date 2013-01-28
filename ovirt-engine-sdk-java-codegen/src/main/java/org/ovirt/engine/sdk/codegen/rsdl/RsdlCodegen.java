@@ -535,14 +535,15 @@ public class RsdlCodegen extends AbstractCodegen {
     private void addResourceMethod(ResourceHolder resourceHolder,
             String url, String rel, String decoratorName, String publicEntityName, DetailedLink detailedLink) {
 
+        String docParams = DocsGen.generateBodyParams(detailedLink);
+
         if (rel.equals(DELETE_REL)) {
             if (!resourceHolder.hasMethod(DELETE_REL)) {
-                resourceHolder.addMethod(DELETE_REL, this.deleteMethodTemplate.getTemplate());
+                resourceHolder.addMethod(DELETE_REL,
+                        this.deleteMethodTemplate.getTemplate(docParams, detailedLink));
             }
         } else if (rel.equals(UPDATE_REL)) {
             if (!resourceHolder.hasMethod(UPDATE_REL)) {
-                String docParams = DocsGen.generateBodyParams(detailedLink);
-
                 resourceHolder.addMethod(UPDATE_REL,
                         this.updateMethodTemplate.getTemplate(decoratorName,
                                 publicEntityName,

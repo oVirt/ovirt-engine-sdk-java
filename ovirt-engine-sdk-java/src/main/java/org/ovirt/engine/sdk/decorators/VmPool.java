@@ -32,6 +32,7 @@ import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
+import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>VmPool providing relation and functional services
@@ -168,7 +169,7 @@ public class VmPool extends
     }
     /**
      * Deletes object.
-     *
+
      * @return
      *     {@link Response }
      *
@@ -182,7 +183,50 @@ public class VmPool extends
     public Response delete() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().delete(url, Response.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .add("async", async, UrlParameterType.MATRIX)
+                .build();
+
+        return getProxy().delete(url, Response.class, headers);
     }
 
 }

@@ -103,15 +103,19 @@ public class SerializationHelper {
      * @return S
      */
     public static <S> S unmarshall(Class<S> clz, String xml) {
-        try {
-            Unmarshaller unmarshaller = getContext(clz).getUnmarshaller();
-            synchronized (unmarshaller) {
-                JAXBElement<S> root = unmarshaller.unmarshal(new StreamSource(new StringReader(xml)), clz);
-                return root.getValue();
+        if (StringUtils.isNulOrEmpty(xml)) {
+            return null;
+        } else {
+            try {
+                Unmarshaller unmarshaller = getContext(clz).getUnmarshaller();
+                synchronized (unmarshaller) {
+                    JAXBElement<S> root = unmarshaller.unmarshal(new StreamSource(new StringReader(xml)), clz);
+                    return root.getValue();
+                }
+            } catch (JAXBException e) {
+                // TODO: log error
+                throw new MarshallingException(e);
             }
-        } catch (JAXBException e) {
-            // TODO: log error
-            throw new MarshallingException(e);
         }
     }
 
