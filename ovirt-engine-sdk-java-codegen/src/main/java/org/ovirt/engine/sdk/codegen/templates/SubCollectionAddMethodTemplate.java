@@ -16,12 +16,17 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
+import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+import org.ovirt.engine.sdk.codegen.utils.StringUtils;
+import org.ovirt.engine.sdk.entities.DetailedLink;
+import org.ovirt.engine.sdk.entities.Parameter;
+import org.ovirt.engine.sdk.entities.ParametersSet;
 
 /**
  * Provides Resource add templating services
  */
-public class SubCollectionAddMethodTemplate extends AbstractTemplate {
+public class SubCollectionAddMethodTemplate extends AbstractOverloadableTemplate {
 
     public SubCollectionAddMethodTemplate() {
         super();
@@ -36,7 +41,27 @@ public class SubCollectionAddMethodTemplate extends AbstractTemplate {
      * 
      * @return formated add template
      */
-    public String getTemplate(String decoratorName, String publicEntityName, String docParams) {
+    private String getTemplate(String decoratorName, String publicEntityName, String docParams) {
+        return getTemplate(decoratorName, publicEntityName, docParams, "", "", "");
+    }
+
+    /**
+     * Formats template in to the resource add template
+     * 
+     * @param decoratorName
+     * @param publicEntityName
+     * @param docParams
+     * @param methodExtraParamsDef
+     *            method parameters (url/header encapsulations)
+     * @param headersToBuild
+     *            headers to build with HttpHeaderBuilder
+     * @param urlParamsToBuild
+     *            url Params To Build with UrlParamsBuilder
+     * 
+     * @return formated add template
+     */
+    private String getTemplate(String decoratorName, String publicEntityName, String docParams,
+            String methodExtraParamsDef, String headersToBuild, String urlParamsToBuild) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getTemplate());
@@ -45,7 +70,65 @@ public class SubCollectionAddMethodTemplate extends AbstractTemplate {
         templateWrapper.set("publicEntityName", publicEntityName);
         templateWrapper.set("publicEntityNameLowerCase", publicEntityName.toLowerCase());
         templateWrapper.set("docParams", docParams);
+        templateWrapper.set("methodExtraParamsDef", methodExtraParamsDef);
+        templateWrapper.set("headersToBuild", headersToBuild);
+        templateWrapper.set("urlParamsToBuild", urlParamsToBuild);
 
         return templateWrapper.toString();
+    }
+
+    /**
+     * Formats template in to the resource add template
+     * 
+     * @param decoratorName
+     *            decorator entity name
+     * @param publicEntityName
+     *            public entity name
+     * @param docParams
+     *            documentation params
+     * @param dl
+     *            a DetailedLink
+     * 
+     * @return formated add template
+     */
+    public String getTemplate(String decoratorName, String publicEntityName, String docParams, DetailedLink dl) {
+        StringBuffer methodExtraParamsDef = new StringBuffer();
+        StringBuffer headersToBuild = new StringBuffer();
+        StringBuffer urlParamsToBuild = new StringBuffer();
+        StringBuffer templateBuff = new StringBuffer();
+
+        if (dl.isSetRequest() && dl.getRequest().isSetUrl() &&
+                dl.getRequest().getUrl().isSetParametersSets() &&
+                !dl.getRequest().getUrl().getParametersSets().isEmpty()) {
+
+            // url params
+            for (ParametersSet parametersSet : dl.getRequest().getUrl().getParametersSets()) {
+                for (Parameter parameter : parametersSet.getParameters()) {
+                    addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
+                }
+                methodExtraParamsDef =
+                        addHeaderParams(dl, methodExtraParamsDef,
+                                headersToBuild, urlParamsToBuild, templateBuff);
+            }
+        } else {
+            methodExtraParamsDef =
+                    addHeaderParams(dl, methodExtraParamsDef,
+                            headersToBuild, urlParamsToBuild, templateBuff);
+        }
+
+        // add default method
+        templateBuff.append(getTemplate(decoratorName, publicEntityName, docParams));
+
+        // add method overload containing url/matrix params
+        if (methodExtraParamsDef.length() > 0) {
+            templateBuff.append(getTemplate(decoratorName,
+                    publicEntityName,
+                    StringUtils.combine(docParams, DocsGen.generateUrlAndHeadersParams(dl)),
+                    methodExtraParamsDef.toString(),
+                    headersToBuild.toString(),
+                    urlParamsToBuild.toString()));
+        }
+
+        return templateBuff.toString();
     }
 }

@@ -81,12 +81,6 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
     /**
      * Appends header params
      * 
-     * @param methodName
-     *            name of java method
-     * @param actionName
-     *            name of api action
-     * @param docParams
-     *            documentation params
      * @param dl
      *            DetailedLink
      * @param methodExtraParamsDef
@@ -100,9 +94,8 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
      * 
      * @return StringBuffer
      */
-    protected StringBuffer addHeaderParams(String methodName, String actionName, String docParams,
-            DetailedLink dl, StringBuffer methodExtraParamsDef, StringBuffer headersToBuild,
-            StringBuffer urlParamsToBuild, StringBuffer templateBuff) {
+    protected StringBuffer addHeaderParams(DetailedLink dl, StringBuffer methodExtraParamsDef,
+            StringBuffer headersToBuild, StringBuffer urlParamsToBuild, StringBuffer templateBuff) {
         // header params
         if (dl.isSetRequest() && dl.getRequest().isSetHeaders() &&
                 dl.getRequest().getHeaders().isSetHeaders() &&
@@ -120,12 +113,6 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
                 }
             }
 
-        }
-
-        if (methodExtraParamsDef.length() > 0 && methodExtraParamsDef.length() - 2 > 0) {
-            methodExtraParamsDef =
-                    new StringBuffer(methodExtraParamsDef.toString()
-                            .substring(0, methodExtraParamsDef.length() - 2));
         }
 
         return methodExtraParamsDef;

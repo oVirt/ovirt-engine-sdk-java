@@ -116,7 +116,16 @@ public class DiskPermissions extends
     public DiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, permission, org.ovirt.engine.sdk.entities.Permission.class, DiskPermission.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                DiskPermission.class, headers);
     }
 
 }

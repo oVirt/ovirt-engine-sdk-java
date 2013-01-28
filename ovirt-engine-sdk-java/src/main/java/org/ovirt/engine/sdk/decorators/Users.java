@@ -145,7 +145,60 @@ public class Users extends
     public User add(org.ovirt.engine.sdk.entities.User user) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, user, org.ovirt.engine.sdk.entities.User.class, User.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, user,
+                org.ovirt.engine.sdk.entities.User.class,
+                User.class, headers);
+    }
+    /**
+     * Adds User object.
+     *
+     * @param user {@link org.ovirt.engine.sdk.entities.User}
+     *    <pre>
+     *    user.user_name
+     *    user.domain.id|name
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link User }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public User add(org.ovirt.engine.sdk.entities.User user, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, user,
+                org.ovirt.engine.sdk.entities.User.class,
+                User.class, headers);
     }
 
 }

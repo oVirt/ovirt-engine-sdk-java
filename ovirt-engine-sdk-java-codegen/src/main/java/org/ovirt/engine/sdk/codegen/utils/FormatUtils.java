@@ -44,7 +44,7 @@ public class FormatUtils {
             }
         }
 
-        return StringUtils.toLowerCase(newName.toString());
+        return StringUtils.toLowerCase(newName.length() > 0 ? newName.toString() : string);
     }
 
     /**

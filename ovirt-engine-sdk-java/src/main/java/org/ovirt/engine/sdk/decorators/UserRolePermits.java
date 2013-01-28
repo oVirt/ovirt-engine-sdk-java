@@ -143,7 +143,59 @@ public class UserRolePermits extends
     public UserRolePermit add(org.ovirt.engine.sdk.entities.Permit permit) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, permit, org.ovirt.engine.sdk.entities.Permit.class, UserRolePermit.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, permit,
+                org.ovirt.engine.sdk.entities.Permit.class,
+                UserRolePermit.class, headers);
+    }
+    /**
+     * Adds Permit object.
+     *
+     * @param permit {@link org.ovirt.engine.sdk.entities.Permit}
+     *    <pre>
+     *    permit.id|name
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link UserRolePermit }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public UserRolePermit add(org.ovirt.engine.sdk.entities.Permit permit, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, permit,
+                org.ovirt.engine.sdk.entities.Permit.class,
+                UserRolePermit.class, headers);
     }
 
 }

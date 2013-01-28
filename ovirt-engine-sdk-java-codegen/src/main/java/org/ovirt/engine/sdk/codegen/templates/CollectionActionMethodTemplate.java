@@ -118,13 +118,13 @@ public class CollectionActionMethodTemplate extends AbstractOverloadableTemplate
                     addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
                 }
                 methodExtraParamsDef =
-                        addHeaderParams(methodName, actionName, docParams, dl,
-                                methodExtraParamsDef, headersToBuild, urlParamsToBuild, templateBuff);
+                        addHeaderParams(dl, methodExtraParamsDef,
+                                headersToBuild, urlParamsToBuild, templateBuff);
             }
         } else {
             methodExtraParamsDef =
-                    addHeaderParams(methodName, actionName, docParams, dl,
-                            methodExtraParamsDef, headersToBuild, urlParamsToBuild, templateBuff);
+                    addHeaderParams(dl, methodExtraParamsDef,
+                            headersToBuild, urlParamsToBuild, templateBuff);
         }
 
         // add default method

@@ -158,7 +158,73 @@ public class Hosts extends
     public Host add(org.ovirt.engine.sdk.entities.Host host) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, host, org.ovirt.engine.sdk.entities.Host.class, Host.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, host,
+                org.ovirt.engine.sdk.entities.Host.class,
+                Host.class, headers);
+    }
+    /**
+     * Adds Host object.
+     *
+     * @param host {@link org.ovirt.engine.sdk.entities.Host}
+     *    <pre>
+     *    host.name
+     *    host.address
+     *    host.root_password
+     *    host.cluster.id|name
+     *    [host.port]
+     *    [host.storage_manager.priority]
+     *    [host.power_management.type]
+     *    [host.power_management.enabled]
+     *    [host.power_management.address]
+     *    [host.power_management.user_name]
+     *    [host.power_management.password]
+     *    [host.power_management.options.option]
+     *    [host.power_management.pm_proxy]
+     *    [host.power_management.agents.agent]
+     *    [host.reboot_after_installation]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Host }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Host add(org.ovirt.engine.sdk.entities.Host host, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, host,
+                org.ovirt.engine.sdk.entities.Host.class,
+                Host.class, headers);
     }
 
 }

@@ -147,7 +147,62 @@ public class VmPools extends
     public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, vmpool, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, vmpool,
+                org.ovirt.engine.sdk.entities.VmPool.class,
+                VmPool.class, headers);
+    }
+    /**
+     * Adds VmPool object.
+     *
+     * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
+     *    <pre>
+     *    vmpool.cluster.id|name
+     *    vmpool.template.id|name
+     *    vmpool.name
+     *    [vmpool.size]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VmPool }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, vmpool,
+                org.ovirt.engine.sdk.entities.VmPool.class,
+                VmPool.class, headers);
     }
 
 }

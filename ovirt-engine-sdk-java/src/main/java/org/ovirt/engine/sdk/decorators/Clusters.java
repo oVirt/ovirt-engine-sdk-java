@@ -159,7 +159,74 @@ public class Clusters extends
     public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, cluster, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, cluster,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                Cluster.class, headers);
+    }
+    /**
+     * Adds Cluster object.
+     *
+     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     *    <pre>
+     *    cluster.data_center.id|name
+     *    cluster.name
+     *    cluster.version.major
+     *    cluster.version.minor
+     *    cluster.cpu.id
+     *    [cluster.description]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.policy]
+     *    [cluster.scheduling_policy.thresholds.low]
+     *    [cluster.scheduling_policy.thresholds.high]
+     *    [cluster.scheduling_policy.thresholds.duration]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.virt_service]
+     *    [cluster.gluster_service]
+     *    [cluster.threads_as_cores]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Cluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, cluster,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                Cluster.class, headers);
     }
 
 }

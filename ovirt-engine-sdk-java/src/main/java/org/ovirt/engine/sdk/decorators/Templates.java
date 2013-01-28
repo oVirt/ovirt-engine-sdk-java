@@ -172,7 +172,87 @@ public class Templates extends
     public Template add(org.ovirt.engine.sdk.entities.Template template) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, template, org.ovirt.engine.sdk.entities.Template.class, Template.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, template,
+                org.ovirt.engine.sdk.entities.Template.class,
+                Template.class, headers);
+    }
+    /**
+     * Adds Template object.
+     *
+     * @param template {@link org.ovirt.engine.sdk.entities.Template}
+     *    <pre>
+     *    template.vm.id|name
+     *    template.name
+     *    [template.memory]
+     *    [template.cpu.topology.cores]
+     *    [template.high_availability.enabled]
+     *    [template.os.cmdline]
+     *    [template.origin]
+     *    [template.high_availability.priority]
+     *    [template.timezone]
+     *    [template.domain.name]
+     *    [template.type]
+     *    [template.stateless]
+     *    [template.delete_protected]
+     *    [template.placement_policy.affinity]
+     *    [template.description]
+     *    [template.custom_properties.custom_property]
+     *    [template.os.type]
+     *    [template.os.boot]
+     *    [template.cpu.topology.sockets]
+     *    [template.os.kernel]
+     *    [template.display.type]
+     *    [template.display.monitors]
+     *    [template.display.allow_override]
+     *    [template.display.smartcard_enabled]
+     *    [template.os.initRd]
+     *    [template.usb.enabled]
+     *    [template.usb.type]
+     *    [template.vm.disks.disk]
+     *    [template.cpu.cpu_tune.vcpu_pin]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Template add(org.ovirt.engine.sdk.entities.Template template, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, template,
+                org.ovirt.engine.sdk.entities.Template.class,
+                Template.class, headers);
     }
 
 }

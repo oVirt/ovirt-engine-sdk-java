@@ -169,7 +169,85 @@ public class GroupPermissions extends
     public GroupPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, permission, org.ovirt.engine.sdk.entities.Permission.class, GroupPermission.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                GroupPermission.class, headers);
+    }
+    /**
+     * Adds Permission object.
+     *
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *    <pre>
+     *    Overload 1:
+     *      permission.role.id
+     *      permission.data_center.id
+     *
+     *    Overload 2:
+     *      permission.role.id
+     *      permission.cluster.id
+     *
+     *    Overload 3:
+     *      permission.role.id
+     *      permission.host.id
+     *
+     *    Overload 4:
+     *      permission.role.id
+     *      permission.storage_domain.id
+     *
+     *    Overload 5:
+     *      permission.role.id
+     *      permission.vm.id
+     *
+     *    Overload 6:
+     *      permission.role.id
+     *      permission.vmpool.id
+     *
+     *    Overload 7:
+     *      permission.role.id
+     *      permission.template.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link GroupPermission }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public GroupPermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                GroupPermission.class, headers);
     }
 
 }

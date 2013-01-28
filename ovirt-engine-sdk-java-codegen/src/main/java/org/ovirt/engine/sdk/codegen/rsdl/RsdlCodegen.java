@@ -483,7 +483,7 @@ public class RsdlCodegen extends AbstractCodegen {
                     collectionHolder.addMethod(rel,
                             this.collectionAddMethodTemplate.getTemplate(decoratorCollectionName,
                                     publicEntityName,
-                                    docParams));
+                                    docParams, detailedLink));
                 }
             } else {
                 if (!collectionHolder.hasMethod(rel)) {
@@ -491,7 +491,7 @@ public class RsdlCodegen extends AbstractCodegen {
                     collectionHolder.addMethod(rel,
                             this.subCollectionAddMethodTemplate.getTemplate(decoratorCollectionName,
                                     publicEntityName,
-                                    docParams));
+                                    docParams, detailedLink));
 
                 }
             }

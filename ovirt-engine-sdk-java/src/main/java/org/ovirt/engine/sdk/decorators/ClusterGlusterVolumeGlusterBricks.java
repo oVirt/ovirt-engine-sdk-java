@@ -121,7 +121,60 @@ public class ClusterGlusterVolumeGlusterBricks extends
     public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, glusterbrick, org.ovirt.engine.sdk.entities.GlusterBrick.class, ClusterGlusterVolumeGlusterBrick.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
+     * Adds GlusterBrick object.
+     *
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     *    <pre>
+     *    bricks.brick
+     *    [bricks.brick]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
     }
 
 }

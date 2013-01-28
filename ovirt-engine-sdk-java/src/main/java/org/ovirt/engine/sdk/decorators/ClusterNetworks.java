@@ -143,7 +143,59 @@ public class ClusterNetworks extends
     public ClusterNetwork add(org.ovirt.engine.sdk.entities.Network network) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, network, org.ovirt.engine.sdk.entities.Network.class, ClusterNetwork.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                ClusterNetwork.class, headers);
+    }
+    /**
+     * Adds Network object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    network.id|name
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterNetwork add(org.ovirt.engine.sdk.entities.Network network, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                ClusterNetwork.class, headers);
     }
 
 }

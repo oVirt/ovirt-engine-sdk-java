@@ -143,7 +143,59 @@ public class UserRoles extends
     public UserRole add(org.ovirt.engine.sdk.entities.Role role) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, role, org.ovirt.engine.sdk.entities.Role.class, UserRole.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, role,
+                org.ovirt.engine.sdk.entities.Role.class,
+                UserRole.class, headers);
+    }
+    /**
+     * Adds Role object.
+     *
+     * @param role {@link org.ovirt.engine.sdk.entities.Role}
+     *    <pre>
+     *    role.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link UserRole }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public UserRole add(org.ovirt.engine.sdk.entities.Role role, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, role,
+                org.ovirt.engine.sdk.entities.Role.class,
+                UserRole.class, headers);
     }
 
 }

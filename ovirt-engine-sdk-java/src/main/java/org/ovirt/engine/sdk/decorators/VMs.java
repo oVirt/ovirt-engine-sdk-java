@@ -176,7 +176,91 @@ public class VMs extends
     public VM add(org.ovirt.engine.sdk.entities.VM vm) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, vm, org.ovirt.engine.sdk.entities.VM.class, VM.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, vm,
+                org.ovirt.engine.sdk.entities.VM.class,
+                VM.class, headers);
+    }
+    /**
+     * Adds VM object.
+     *
+     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
+     *    <pre>
+     *    vm.name
+     *    vm.template.id|name
+     *    vm.cluster.id|name
+     *    [vm.quota.id]
+     *    [vm.timezone]
+     *    [vm.os.boot]
+     *    [vm.custom_properties.custom_property]
+     *    [vm.os.type]
+     *    [vm.usb.enabled]
+     *    [vm.usb.type]
+     *    [vm.type]
+     *    [vm.os.initRd]
+     *    [vm.display.monitors]
+     *    [vm.display.type]
+     *    [vm.display.allow_override]
+     *    [vm.display.smartcard_enabled]
+     *    [vm.os.cmdline]
+     *    [vm.cpu.topology.cores]
+     *    [vm.memory]
+     *    [vm.high_availability.priority]
+     *    [vm.high_availability.enabled]
+     *    [vm.domain.name]
+     *    [vm.description]
+     *    [vm.stateless]
+     *    [vm.delete_protected]
+     *    [vm.cpu.topology.sockets]
+     *    [vm.placement_policy.affinity]
+     *    [vm.placement_policy.host.id|name]
+     *    [vm.origin]
+     *    [vm.os.kernel]
+     *    [vm.disks.clone]
+     *    [vm.payloads.payload]
+     *    [vm.cpu.cpu_tune.vcpu_pin]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link VM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VM add(org.ovirt.engine.sdk.entities.VM vm, String correlationId, String expect) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .add("Expect", expect)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, vm,
+                org.ovirt.engine.sdk.entities.VM.class,
+                VM.class, headers);
     }
 
 }

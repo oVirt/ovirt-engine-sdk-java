@@ -158,7 +158,70 @@ public class Events extends
     public Event add(org.ovirt.engine.sdk.entities.Event event) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, event, org.ovirt.engine.sdk.entities.Event.class, Event.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, event,
+                org.ovirt.engine.sdk.entities.Event.class,
+                Event.class, headers);
+    }
+    /**
+     * Adds Event object.
+     *
+     * @param event {@link org.ovirt.engine.sdk.entities.Event}
+     *    <pre>
+     *    event.description
+     *    event.severity
+     *    event.origin
+     *    event.custom_id
+     *    [event.flood_rate]
+     *    [event.host.id]
+     *    [event.user.id]
+     *    [event.vm.id]
+     *    [event.storage_domain.id]
+     *    [event.template.id]
+     *    [event.cluster.id]
+     *    [event.data_center.id]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Event }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Event add(org.ovirt.engine.sdk.entities.Event event, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, event,
+                org.ovirt.engine.sdk.entities.Event.class,
+                Event.class, headers);
     }
 
 }

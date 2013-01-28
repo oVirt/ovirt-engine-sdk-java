@@ -180,7 +180,96 @@ public class StorageDomains extends
     public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, storagedomain, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, storagedomain,
+                org.ovirt.engine.sdk.entities.StorageDomain.class,
+                StorageDomain.class, headers);
+    }
+    /**
+     * Adds StorageDomain object.
+     *
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    Overload 1:
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.format
+     *      storagedomain.storage.address
+     *      storagedomain.storage.logical_unit
+     *      [storagedomain.name]
+     *      [storagedomain.storage.override_luns]
+     *
+     *    Overload 2:
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.format
+     *      storagedomain.storage.address
+     *      storagedomain.storage.path
+     *      [storagedomain.name]
+     *
+     *    Overload 3:
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.format
+     *      storagedomain.storage.path
+     *      [storagedomain.name]
+     *
+     *    Overload 4:
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.format
+     *      storagedomain.storage.path
+     *      storagedomain.storage.vfs_type
+     *      [storagedomain.name]
+     *      [storagedomain.storage.address]
+     *      [storagedomain.storage.mount_options]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, Boolean async, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .add("async", async, UrlParameterType.MATRIX)
+                .build();
+
+        return getProxy().add(url, storagedomain,
+                org.ovirt.engine.sdk.entities.StorageDomain.class,
+                StorageDomain.class, headers);
     }
 
 }

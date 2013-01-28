@@ -148,7 +148,64 @@ public class TemplateNICs extends
     public TemplateNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, nic, org.ovirt.engine.sdk.entities.NIC.class, TemplateNIC.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, nic,
+                org.ovirt.engine.sdk.entities.NIC.class,
+                TemplateNIC.class, headers);
+    }
+    /**
+     * Adds NIC object.
+     *
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    nic.network.id|name
+     *    nic.name
+     *    [nic.linked]
+     *    [nic.mac.address]
+     *    [nic.interface]
+     *    [nic.port_mirroring.networks.network]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link TemplateNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public TemplateNIC add(org.ovirt.engine.sdk.entities.NIC nic, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, nic,
+                org.ovirt.engine.sdk.entities.NIC.class,
+                TemplateNIC.class, headers);
     }
 
 }

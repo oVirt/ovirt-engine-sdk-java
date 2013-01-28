@@ -149,7 +149,64 @@ public class DataCenters extends
     public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, datacenter, org.ovirt.engine.sdk.entities.DataCenter.class, DataCenter.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, datacenter,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class, headers);
+    }
+    /**
+     * Adds DataCenter object.
+     *
+     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
+     *    <pre>
+     *    datacenter.name
+     *    datacenter.storage_type
+     *    datacenter.version.major
+     *    datacenter.version.minor
+     *    [datacenter.description]
+     *    [datacenter.storage_format]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, datacenter,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class, headers);
     }
 
 }

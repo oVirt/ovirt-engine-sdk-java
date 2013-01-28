@@ -116,7 +116,16 @@ public class DataCenterQuotas extends
     public DataCenterQuota add(org.ovirt.engine.sdk.entities.Quota quota) throws 
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return getProxy().add(url, quota, org.ovirt.engine.sdk.entities.Quota.class, DataCenterQuota.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, quota,
+                org.ovirt.engine.sdk.entities.Quota.class,
+                DataCenterQuota.class, headers);
     }
 
 }

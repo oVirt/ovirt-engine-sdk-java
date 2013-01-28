@@ -141,7 +141,62 @@ public class Roles extends
     public Role add(org.ovirt.engine.sdk.entities.Role role) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, role, org.ovirt.engine.sdk.entities.Role.class, Role.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, role,
+                org.ovirt.engine.sdk.entities.Role.class,
+                Role.class, headers);
+    }
+    /**
+     * Adds Role object.
+     *
+     * @param role {@link org.ovirt.engine.sdk.entities.Role}
+     *    <pre>
+     *    role.name
+     *    role.permits.permit
+     *    [role.description]
+     *    [role.administrative]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Role }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Role add(org.ovirt.engine.sdk.entities.Role role, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, role,
+                org.ovirt.engine.sdk.entities.Role.class,
+                Role.class, headers);
     }
 
 }

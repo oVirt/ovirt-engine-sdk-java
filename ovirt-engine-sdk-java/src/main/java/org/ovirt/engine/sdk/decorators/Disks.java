@@ -169,7 +169,84 @@ public class Disks extends
     public Disk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
-        return getProxy().add(url, disk, org.ovirt.engine.sdk.entities.Disk.class, Disk.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, disk,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                Disk.class, headers);
+    }
+    /**
+     * Adds Disk object.
+     *
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    Overload 1:
+     *      provisioned_size
+     *      disk.interface
+     *      disk.format
+     *      [disk.alias]
+     *      [disk.name]
+     *      [disk.size]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
+     *      [disk.storage_domains.storage_domain]
+     *
+     *    Overload 2:
+     *      disk.interface
+     *      disk.format
+     *      disk.lun_storage.type
+     *      disk.lun_storage.logical_unit
+     *      [disk.alias]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
+     *      [disk.storage_domains.storage_domain]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Disk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Disk add(org.ovirt.engine.sdk.entities.Disk disk, String expect, String correlationId) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, disk,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                Disk.class, headers);
     }
 
 }
