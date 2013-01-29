@@ -90,7 +90,7 @@ public class Disk extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

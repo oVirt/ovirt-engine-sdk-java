@@ -64,7 +64,7 @@ public class VMPermission extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

@@ -103,7 +103,7 @@ public class User extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

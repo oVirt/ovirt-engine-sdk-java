@@ -64,7 +64,7 @@ public class StorageDomainPermission extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

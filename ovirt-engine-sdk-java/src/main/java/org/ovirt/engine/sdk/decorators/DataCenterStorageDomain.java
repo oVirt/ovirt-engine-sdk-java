@@ -122,7 +122,7 @@ public class DataCenterStorageDomain extends
     }
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

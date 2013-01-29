@@ -26,20 +26,20 @@ import org.ovirt.engine.sdk.entities.ParametersSet;
 /**
  * Provides Resource action templating services
  */
-public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
+public class DeleteMethodWithBodyTemplate extends AbstractOverloadableTemplate {
 
-    public DeleteMethodTemplate() {
+    private static DeleteMethodTemplate deleteMethodTemplate;
+
+    public DeleteMethodWithBodyTemplate() {
         super();
+        initStaticContext();
     }
 
     /**
-     * Formats template in to the resource delete template
-     * 
-     * @return DeleteMethodTemplate
+     * Initalises static context
      */
-    @Override
-    public String getTemplate() {
-        return getTemplate("     *", "", "", "");
+    private static synchronized void initStaticContext() {
+        deleteMethodTemplate = new DeleteMethodTemplate();
     }
 
     /**
@@ -56,16 +56,14 @@ public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
      * 
      * @return formated add template
      */
-    private String getTemplate(String docParams, String methodExtraParamsDef,
+    private String getTemplate(String deleteBody, String docParams, String methodExtraParamsDef,
             String headersToBuild, String urlParamsToBuild) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(super.getTemplate());
 
-        if (methodExtraParamsDef.startsWith(", ") && methodExtraParamsDef.length() > 2) {
-            methodExtraParamsDef =
-                    methodExtraParamsDef.substring(2, methodExtraParamsDef.length());
-        }
+        templateWrapper.set("deleteBody", deleteBody);
+        templateWrapper.set("deleteBodyLowerCase", deleteBody.toLowerCase());
 
         templateWrapper.set("docParams", docParams);
         templateWrapper.set("methodExtraParamsDef", methodExtraParamsDef);
@@ -80,46 +78,49 @@ public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
      * 
      * @param docParams
      *            documentation params
-     * @param dl
+     * @param detailedLink
      *            a DetailedLink
      * 
      * @return formated add template
      */
-    public String getTemplate(String docParams, DetailedLink dl) {
+    public String getTemplate(String docParams, DetailedLink detailedLink) {
 
         StringBuffer methodExtraParamsDef = new StringBuffer();
         StringBuffer headersToBuild = new StringBuffer();
         StringBuffer urlParamsToBuild = new StringBuffer();
         StringBuffer templateBuff = new StringBuffer();
 
-        if (dl.isSetRequest() && dl.getRequest().isSetUrl() &&
-                dl.getRequest().getUrl().isSetParametersSets() &&
-                !dl.getRequest().getUrl().getParametersSets().isEmpty()) {
+        if (detailedLink.isSetRequest() && detailedLink.getRequest().isSetUrl() &&
+                detailedLink.getRequest().getUrl().isSetParametersSets() &&
+                !detailedLink.getRequest().getUrl().getParametersSets().isEmpty()) {
 
             // add url params
-            for (ParametersSet parametersSet : dl.getRequest().getUrl().getParametersSets()) {
+            for (ParametersSet parametersSet : detailedLink.getRequest().getUrl().getParametersSets()) {
                 for (Parameter parameter : parametersSet.getParameters()) {
                     addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
                 }
                 // add header params
                 methodExtraParamsDef =
-                        addHeaderParams(dl, methodExtraParamsDef,
+                        addHeaderParams(detailedLink, methodExtraParamsDef,
                                 headersToBuild, urlParamsToBuild, templateBuff);
             }
         } else {
             // add header params
             methodExtraParamsDef =
-                    addHeaderParams(dl, methodExtraParamsDef,
+                    addHeaderParams(detailedLink, methodExtraParamsDef,
                             headersToBuild, urlParamsToBuild, templateBuff);
         }
 
         // add default method
-        templateBuff.append(getTemplate());
+        templateBuff.append(deleteMethodTemplate.getTemplate(
+                "     *",
+                detailedLink));
 
         // add method overload containing url/matrix params
         if (methodExtraParamsDef.length() > 0) {
             templateBuff.append(getTemplate(
-                    StringUtils.combine(docParams, DocsGen.generateUrlAndHeadersParams(dl)),
+                    detailedLink.getRequest().getBody().getType(),
+                    StringUtils.combine(docParams, DocsGen.generateUrlAndHeadersParams(detailedLink)),
                     methodExtraParamsDef.toString(),
                     headersToBuild.toString(),
                     urlParamsToBuild.toString()));

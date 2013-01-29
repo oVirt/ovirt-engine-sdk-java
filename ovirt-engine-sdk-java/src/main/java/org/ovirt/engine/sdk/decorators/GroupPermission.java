@@ -64,7 +64,7 @@ public class GroupPermission extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

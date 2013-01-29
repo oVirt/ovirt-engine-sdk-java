@@ -64,7 +64,7 @@ public class Event extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

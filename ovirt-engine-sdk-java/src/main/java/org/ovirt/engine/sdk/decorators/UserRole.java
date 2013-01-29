@@ -77,7 +77,7 @@ public class UserRole extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

@@ -77,7 +77,7 @@ public class GroupRole extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

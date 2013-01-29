@@ -64,7 +64,7 @@ public class VMTag extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

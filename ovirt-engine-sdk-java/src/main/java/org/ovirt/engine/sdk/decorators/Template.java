@@ -236,7 +236,7 @@ public class Template extends
     }
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

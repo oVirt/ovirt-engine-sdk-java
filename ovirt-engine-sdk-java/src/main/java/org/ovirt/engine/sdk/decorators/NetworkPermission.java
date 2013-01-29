@@ -64,7 +64,7 @@ public class NetworkPermission extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

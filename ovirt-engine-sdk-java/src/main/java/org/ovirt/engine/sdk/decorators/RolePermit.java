@@ -64,7 +64,7 @@ public class RolePermit extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

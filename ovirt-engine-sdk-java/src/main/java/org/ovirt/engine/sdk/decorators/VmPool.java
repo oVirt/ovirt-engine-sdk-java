@@ -169,7 +169,7 @@ public class VmPool extends
     }
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

@@ -64,7 +64,7 @@ public class StorageDomainVM extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

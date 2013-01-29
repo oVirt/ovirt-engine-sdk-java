@@ -23,7 +23,6 @@ import java.util.List;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
@@ -298,12 +297,13 @@ public class HttpProxyBroker {
             throws IOException, ClientProtocolException, ServerException {
 
         HttpDelete httdelete = new HttpDelete(this.urlHelper.combine(url));
+
         if (entity != null && from != null) {
-            // TODO: inject entity to DELETE request
-            // String xmlReq = SerializationHelper.marshall(from, entity);
-            // HttpEntity httpentity = new StringEntity(xmlReq);
-            // httdelete.setEntity(httpentity);
+            String xmlReq = SerializationHelper.marshall(from, entity);
+            HttpEntity httpentity = new StringEntity(xmlReq);
+            httdelete.setEntity(httpentity);
         }
+
         String xmlRes = this.proxy.execute(httdelete, headers, null);
         return SerializationHelper.unmarshall(to, xmlRes);
     }

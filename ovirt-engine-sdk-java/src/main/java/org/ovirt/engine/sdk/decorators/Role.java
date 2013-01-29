@@ -101,7 +101,7 @@ public class Role extends
     }
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

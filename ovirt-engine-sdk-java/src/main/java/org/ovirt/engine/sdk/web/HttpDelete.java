@@ -16,7 +16,33 @@
 
 package org.ovirt.engine.sdk.web;
 
-public enum UrlParameterType {
-    QUERY,
-    MATRIX
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import java.net.URI;
+import org.apache.http.annotation.NotThreadSafe;
+
+/**
+ * Encapsulates HTTP DELETE to include body
+ */
+@NotThreadSafe
+class HttpDelete extends HttpEntityEnclosingRequestBase {
+    public static final String HTTP_METHOD = "DELETE";
+
+    public HttpDelete(final String uri) {
+        super();
+        setURI(URI.create(uri));
+    }
+
+    public HttpDelete(final URI uri) {
+        super();
+        setURI(uri);
+    }
+
+    public HttpDelete() {
+        super();
+    }
+
+    @Override
+    public String getMethod() {
+        return HTTP_METHOD;
+    }
 }

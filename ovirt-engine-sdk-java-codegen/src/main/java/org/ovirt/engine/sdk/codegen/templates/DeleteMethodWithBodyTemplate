@@ -1,0 +1,26 @@
+    /**
+     * Deletes object.
+$docParams$
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(org.ovirt.engine.sdk.entities.$deleteBody$ $deleteBodyLowerCase$$methodExtraParamsDef$) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
+                .build();
+
+        url = new UrlBuilder(url)$urlParamsToBuild$
+                .build();
+
+        return getProxy().delete(url, $deleteBodyLowerCase$,
+                org.ovirt.engine.sdk.entities.$deleteBody$.class, Response.class, headers);
+    }

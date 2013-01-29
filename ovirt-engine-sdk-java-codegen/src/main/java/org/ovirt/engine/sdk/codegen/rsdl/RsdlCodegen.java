@@ -35,6 +35,7 @@ import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionListMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionTemplate;
 import org.ovirt.engine.sdk.codegen.templates.DeleteMethodTemplate;
+import org.ovirt.engine.sdk.codegen.templates.DeleteMethodWithBodyTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceActionMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionAddMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubCollectionGetterTemplate;
@@ -78,6 +79,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private ResourceActionMethodTemplate resourceActionMethodTemplate;
     private CollectionActionMethodTemplate collectionActionMethodTemplate;
     private DeleteMethodTemplate deleteMethodTemplate;
+    private DeleteMethodWithBodyTemplate deleteMethodWithBodyTemplate;
     private UpdateMethodTemplate updateMethodTemplate;
     private CollectionAddMethodTemplate collectionAddMethodTemplate;
     private SubCollectionAddMethodTemplate subCollectionAddMethodTemplate;
@@ -122,6 +124,7 @@ public class RsdlCodegen extends AbstractCodegen {
         this.resourceActionMethodTemplate = new ResourceActionMethodTemplate();
         this.collectionActionMethodTemplate = new CollectionActionMethodTemplate();
         this.deleteMethodTemplate = new DeleteMethodTemplate();
+        this.deleteMethodWithBodyTemplate = new DeleteMethodWithBodyTemplate();
         this.updateMethodTemplate = new UpdateMethodTemplate();
         this.collectionAddMethodTemplate = new CollectionAddMethodTemplate();
         this.subCollectionAddMethodTemplate = new SubCollectionAddMethodTemplate();
@@ -540,8 +543,15 @@ public class RsdlCodegen extends AbstractCodegen {
 
         if (rel.equals(DELETE_REL)) {
             if (!resourceHolder.hasMethod(DELETE_REL)) {
-                resourceHolder.addMethod(DELETE_REL,
-                        this.deleteMethodTemplate.getTemplate(docParams, detailedLink));
+                if (detailedLink.isSetRequest() && detailedLink.getRequest().isSetBody()
+                        && detailedLink.getRequest().getBody().isSetType() && !
+                        detailedLink.getRequest().getBody().getType().equals("")) {
+                    resourceHolder.addMethod(DELETE_REL,
+                            this.deleteMethodWithBodyTemplate.getTemplate(docParams, detailedLink));
+                } else {
+                    resourceHolder.addMethod(DELETE_REL,
+                            this.deleteMethodTemplate.getTemplate(docParams, detailedLink));
+                }
             }
         } else if (rel.equals(UPDATE_REL)) {
             if (!resourceHolder.hasMethod(UPDATE_REL)) {

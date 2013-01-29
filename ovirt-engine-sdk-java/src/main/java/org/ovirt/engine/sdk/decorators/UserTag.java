@@ -64,7 +64,7 @@ public class UserTag extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

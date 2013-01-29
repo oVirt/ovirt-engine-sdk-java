@@ -23,7 +23,8 @@ import java.util.List;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.cookie.Cookie;
@@ -137,9 +138,17 @@ public class HttpProxy {
 
         // inject .ctr defined static parameters
         for (Header header : this.staticHeaders) {
-            // TODO: support DELETE with body
-            if (header.getName().equals(CONTENT_TYPE_HEADER) && (request instanceof HttpDelete)) {
-                continue;
+            if (header.getName().equals(CONTENT_TYPE_HEADER)) {
+                if ((request instanceof HttpDelete) &&
+                        ((HttpDelete) request).getEntity() == null) {
+                    continue;
+                } else if ((request instanceof HttpPut) &&
+                        ((HttpPut) request).getEntity() == null) {
+                    continue;
+                } else if ((request instanceof HttpPost) &&
+                        ((HttpPost) request).getEntity() == null) {
+                    continue;
+                }
             }
             request.addHeader(header);
         }

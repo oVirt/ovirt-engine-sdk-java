@@ -64,7 +64,7 @@ public class StorageDomainTemplate extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

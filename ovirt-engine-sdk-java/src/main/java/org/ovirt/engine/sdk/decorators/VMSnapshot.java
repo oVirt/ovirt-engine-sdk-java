@@ -161,7 +161,7 @@ public class VMSnapshot extends
     }
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

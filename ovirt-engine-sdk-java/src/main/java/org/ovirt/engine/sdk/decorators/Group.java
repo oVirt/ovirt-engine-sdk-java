@@ -103,7 +103,7 @@ public class Group extends
 
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *

@@ -140,7 +140,7 @@ public class Cluster extends
     }
     /**
      * Deletes object.
-
+     *
      * @return
      *     {@link Response }
      *
