@@ -21,6 +21,7 @@ import java.io.InterruptedIOException;
 import java.net.ConnectException;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.List;
 
 import javax.net.ssl.SSLException;
 
@@ -28,9 +29,11 @@ import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
@@ -42,7 +45,8 @@ public class ConnectionsPool {
 
     private static int MAX_RETRY_REQUEST = 5;
 
-    DefaultHttpClient client = null;
+    private DefaultHttpClient client = null;
+    private CookieStore cookieStore;
     URL url = null;
 
     /**
@@ -54,6 +58,7 @@ public class ConnectionsPool {
      */
     public ConnectionsPool(DefaultHttpClient client, URL url) {
         this.client = client;
+        this.cookieStore = this.client.getCookieStore();
         this.url = url;
         injectHttpRequestRetryHandler(this.client);
     }
@@ -66,7 +71,7 @@ public class ConnectionsPool {
      * @param context
      *            HttpContext
      * 
-     * @return HTTP request response
+     * @return {@link HttpResponse}
      * 
      * @throws IOException
      * @throws ClientProtocolException
@@ -77,7 +82,21 @@ public class ConnectionsPool {
     }
 
     /**
-     * @return ConnectionManager
+     * @return {@link Cookie}
+     */
+    public List<Cookie> getCookies() {
+        return cookieStore.getCookies();
+    }
+
+    /**
+     * @return {@link CookieStore}
+     */
+    public CookieStore getCookieStore() {
+        return cookieStore;
+    }
+
+    /**
+     * @return {@link ConnectionManager}
      */
     public ClientConnectionManager getConnectionManager() {
         return this.client.getConnectionManager();
@@ -86,6 +105,7 @@ public class ConnectionsPool {
     private void injectHttpRequestRetryHandler(DefaultHttpClient httpclient) {
         HttpRequestRetryHandler myRetryHandler = new HttpRequestRetryHandler() {
 
+            @Override
             public boolean retryRequest(
                     IOException exception,
                     int executionCount,

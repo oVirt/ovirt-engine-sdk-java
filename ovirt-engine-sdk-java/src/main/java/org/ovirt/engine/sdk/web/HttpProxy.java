@@ -25,6 +25,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.protocol.BasicHttpContext;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
@@ -35,9 +37,12 @@ import org.ovirt.engine.sdk.utils.HttpResponseHelper;
  */
 public class HttpProxy {
 
+    private static final String CONTENT_TYPE_HEADER = "Content-type";
+    private static final String PERSISTENT_AUTH_HEADER = "Prefer";
+    private static final String FILTER_HEADER = "Filter";
+    private static final String JSESSIONID = "JSESSIONID";
     private static int BAD_REQUEST = 400;
     private static String STATIC_HEADERS[] = new String[] { "Content-type:application/xml" };
-    // private static String PERSISTENT_AUTH_HEADER = "Prefer:persistent-auth";
 
     private ConnectionsPool pool;
     private List<Header> staticHeaders;
@@ -97,15 +102,26 @@ public class HttpProxy {
             throws IOException, ClientProtocolException, ServerException {
 
         injectHeaders(request, headers);
-        HttpResponse response = this.pool.execute(request, new BasicHttpContext());
-
-        // TODO: save cookie
+        HttpResponse response = this.pool.execute(request, getContext());
 
         if (response.getStatusLine().getStatusCode() < BAD_REQUEST) {
             return HttpResponseHelper.getEntity(response.getEntity());
         }
 
         throw new ServerException(response);
+    }
+
+    /**
+     * Generates peer hit context
+     * 
+     * @return {@link BasicHttpContext}
+     */
+    public BasicHttpContext getContext() {
+        BasicHttpContext context = new BasicHttpContext();
+        if (this.persistentAuth) {
+            context.setAttribute(ClientContext.COOKIE_STORE, this.pool.getCookieStore());
+        }
+        return context;
     }
 
     /**
@@ -119,18 +135,42 @@ public class HttpProxy {
             request.setHeaders(headers.toArray(new Header[headers.size()]));
         }
 
+        // inject .ctr defined static parameters
         for (Header header : this.staticHeaders) {
             // TODO: support DELETE with body
-            if (header.getName().equals("Content-type") && (request instanceof HttpDelete)) {
+            if (header.getName().equals(CONTENT_TYPE_HEADER) && (request instanceof HttpDelete)) {
                 continue;
             }
             request.addHeader(header);
         }
 
-        request.addHeader("Filter", Boolean.toString(isFilter()));
+        // inject FILTER_HEADER
+        request.addHeader(FILTER_HEADER, Boolean.toString(isFilter()));
 
-        // TODO: fetch + inject JSESSIONID cookie in to headers
-        // TODO: inject dynamic headers
+        // inject PERSISTENT_AUTH_HEADER
+        if (this.persistentAuth) {
+            request.addHeader(PERSISTENT_AUTH_HEADER, "persistent-auth");
+            String session = getJsession();
+            if (session != null) {
+                request.addHeader(JSESSIONID, session);
+            }
+        }
+    }
+
+    /**
+     * Fetches JSESSIONID from CookieStore
+     * 
+     * @return JSESSIONID
+     */
+    private String getJsession() {
+        if (this.pool.getCookies() != null && !this.pool.getCookies().isEmpty()) {
+            for (Cookie cookie : this.pool.getCookies()) {
+                if (cookie.getName().equals(JSESSIONID)) {
+                    return cookie.getValue();
+                }
+            }
+        }
+        return null;
     }
 
     /**

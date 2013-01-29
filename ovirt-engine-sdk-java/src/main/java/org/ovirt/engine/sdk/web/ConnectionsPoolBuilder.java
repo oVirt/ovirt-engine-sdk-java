@@ -153,6 +153,20 @@ public class ConnectionsPoolBuilder {
         return this;
     }
 
+    /**
+     * Creates DefaultHttpClient
+     * 
+     * @param url
+     * @param username
+     * @param password
+     * @param key_file
+     * @param cert_file
+     * @param ca_file
+     * @param port
+     * @param timeout
+     * 
+     * @return {@link DefaultHttpClient}
+     */
     private DefaultHttpClient createDefaultHttpClient(String url, String username, String password, String key_file,
             String cert_file, String ca_file, Integer port, Integer timeout) {
 
@@ -168,6 +182,14 @@ public class ConnectionsPoolBuilder {
         return client;
     }
 
+    /**
+     * Creates PoolingClientConnectionManager
+     * 
+     * @param url
+     * @param port
+     * 
+     * @return {@link ClientConnectionManager}
+     */
     private ClientConnectionManager createPoolingClientConnectionManager(String url, Integer port) {
         SchemeRegistry schemeRegistry = createSchemeRegistry(url, port);
 
@@ -184,6 +206,14 @@ public class ConnectionsPoolBuilder {
         return cm;
     }
 
+    /**
+     * Creates SchemeRegistry
+     * 
+     * @param url
+     * @param port
+     * 
+     * @return {@link SchemeRegistry}
+     */
     private SchemeRegistry createSchemeRegistry(String url, Integer port) {
         SchemeRegistry schemeRegistry = new SchemeRegistry();
         String protocol = getProtocol(url);
