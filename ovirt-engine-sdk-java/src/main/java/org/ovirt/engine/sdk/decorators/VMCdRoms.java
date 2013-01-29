@@ -103,7 +103,10 @@ public class VMCdRoms extends
      * Lists VMCdRom objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link VMCdRom }
      *
@@ -116,12 +119,17 @@ public class VMCdRoms extends
      */
     public List<VMCdRom> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, VMCdRom.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.CdRoms.class,
+                VMCdRom.class, headers);
+    }
     /**
      * Adds CdRom object.
      *

@@ -103,7 +103,10 @@ public class ClusterPermissions extends
      * Lists ClusterPermission objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link ClusterPermission }
      *
@@ -116,12 +119,17 @@ public class ClusterPermissions extends
      */
     public List<ClusterPermission> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, ClusterPermission.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                ClusterPermission.class, headers);
+    }
     /**
      * Adds Permission object.
      *

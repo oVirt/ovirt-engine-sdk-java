@@ -103,7 +103,10 @@ public class UserPermissions extends
      * Lists UserPermission objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link UserPermission }
      *
@@ -116,12 +119,17 @@ public class UserPermissions extends
      */
     public List<UserPermission> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, UserPermission.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                UserPermission.class, headers);
+    }
     /**
      * Adds Permission object.
      *

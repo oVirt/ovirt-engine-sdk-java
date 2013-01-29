@@ -98,7 +98,10 @@ public class Domains extends
      * Lists Domain objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link Domain }
      *
@@ -111,12 +114,17 @@ public class Domains extends
      */
     public List<Domain> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Domains.class, Domain.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Domains.class,
+                Domain.class, headers);
+    }
 
 }
 

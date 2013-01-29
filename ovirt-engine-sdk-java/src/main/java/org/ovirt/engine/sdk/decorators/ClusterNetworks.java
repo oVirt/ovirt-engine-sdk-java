@@ -103,7 +103,10 @@ public class ClusterNetworks extends
      * Lists ClusterNetwork objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link ClusterNetwork }
      *
@@ -116,12 +119,17 @@ public class ClusterNetworks extends
      */
     public List<ClusterNetwork> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Networks.class, ClusterNetwork.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Networks.class,
+                ClusterNetwork.class, headers);
+    }
     /**
      * Adds Network object.
      *

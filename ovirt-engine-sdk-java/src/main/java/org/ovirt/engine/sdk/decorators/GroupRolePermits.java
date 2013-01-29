@@ -103,7 +103,10 @@ public class GroupRolePermits extends
      * Lists GroupRolePermit objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link GroupRolePermit }
      *
@@ -116,12 +119,17 @@ public class GroupRolePermits extends
      */
     public List<GroupRolePermit> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Permits.class, GroupRolePermit.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Permits.class,
+                GroupRolePermit.class, headers);
+    }
     /**
      * Adds Permit object.
      *

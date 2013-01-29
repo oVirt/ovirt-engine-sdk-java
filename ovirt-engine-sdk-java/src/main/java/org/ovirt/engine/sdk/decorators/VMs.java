@@ -98,11 +98,18 @@ public class VMs extends
      * Lists VM objects.
      *
      * @param query
-     *            search query
+     *    <pre>
+     *    [search query]
+     *    </pre>
      * @param caseSensitive
-     *            true|false
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link VM }
      *
@@ -115,14 +122,19 @@ public class VMs extends
      */
     public List<VM> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(SLASH + getName())
                 .add("search", query, UrlParameterType.QUERY)
                 .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.VMs.class, VM.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.VMs.class,
+                VM.class, headers);
+    }
     /**
      * Adds VM object.
      *

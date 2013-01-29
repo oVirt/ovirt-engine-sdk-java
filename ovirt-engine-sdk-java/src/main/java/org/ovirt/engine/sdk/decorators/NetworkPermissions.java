@@ -103,7 +103,10 @@ public class NetworkPermissions extends
      * Lists NetworkPermission objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link NetworkPermission }
      *
@@ -116,12 +119,17 @@ public class NetworkPermissions extends
      */
     public List<NetworkPermission> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, NetworkPermission.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                NetworkPermission.class, headers);
+    }
     /**
      * Adds Permission object.
      *

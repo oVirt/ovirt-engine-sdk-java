@@ -98,11 +98,18 @@ public class DataCenters extends
      * Lists DataCenter objects.
      *
      * @param query
-     *            search query
+     *    <pre>
+     *    [search query]
+     *    </pre>
      * @param caseSensitive
-     *            true|false
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link DataCenter }
      *
@@ -115,14 +122,19 @@ public class DataCenters extends
      */
     public List<DataCenter> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(SLASH + getName())
                 .add("search", query, UrlParameterType.QUERY)
                 .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class, DataCenter.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class,
+                DataCenter.class, headers);
+    }
     /**
      * Adds DataCenter object.
      *

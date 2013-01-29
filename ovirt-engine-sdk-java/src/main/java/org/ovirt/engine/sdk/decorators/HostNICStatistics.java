@@ -103,7 +103,10 @@ public class HostNICStatistics extends
      * Lists HostNICStatistic objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link HostNICStatistic }
      *
@@ -116,12 +119,17 @@ public class HostNICStatistics extends
      */
     public List<HostNICStatistic> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, HostNICStatistic.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class,
+                HostNICStatistic.class, headers);
+    }
 
 }
 

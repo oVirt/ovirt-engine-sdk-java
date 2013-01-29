@@ -103,7 +103,10 @@ public class TemplateNICs extends
      * Lists TemplateNIC objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link TemplateNIC }
      *
@@ -116,12 +119,17 @@ public class TemplateNICs extends
      */
     public List<TemplateNIC> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Nics.class, TemplateNIC.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Nics.class,
+                TemplateNIC.class, headers);
+    }
     /**
      * Adds NIC object.
      *

@@ -103,7 +103,10 @@ public class VMStatistics extends
      * Lists VMStatistic objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link VMStatistic }
      *
@@ -116,12 +119,17 @@ public class VMStatistics extends
      */
     public List<VMStatistic> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, VMStatistic.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class,
+                VMStatistic.class, headers);
+    }
 
 }
 

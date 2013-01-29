@@ -103,7 +103,10 @@ public class StorageDomainPermissions extends
      * Lists StorageDomainPermission objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link StorageDomainPermission }
      *
@@ -116,12 +119,17 @@ public class StorageDomainPermissions extends
      */
     public List<StorageDomainPermission> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, StorageDomainPermission.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                StorageDomainPermission.class, headers);
+    }
     /**
      * Adds Permission object.
      *

@@ -103,7 +103,10 @@ public class VMSnapshots extends
      * Lists VMSnapshot objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link VMSnapshot }
      *
@@ -116,12 +119,17 @@ public class VMSnapshots extends
      */
     public List<VMSnapshot> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class, VMSnapshot.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class,
+                VMSnapshot.class, headers);
+    }
     /**
      * Adds Snapshot object.
      *

@@ -103,9 +103,14 @@ public class ClusterGlusterVolumes extends
      * Lists ClusterGlusterVolume objects.
      *
      * @param query
-     *            search query
+     *    <pre>
+     *    [search query]
+     *    </pre>
      * @param caseSensitive
-     *            true|false
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
      *
      * @return List of {@link ClusterGlusterVolume }
      *
@@ -118,13 +123,18 @@ public class ClusterGlusterVolumes extends
      */
     public List<ClusterGlusterVolume> list(String query, Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("search", query, UrlParameterType.QUERY)
                 .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class, ClusterGlusterVolume.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class,
+                ClusterGlusterVolume.class, headers);
+    }
     /**
      * Adds GlusterVolume object.
      *

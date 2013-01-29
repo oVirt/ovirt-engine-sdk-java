@@ -103,11 +103,18 @@ public class DomainGroups extends
      * Lists DomainGroup objects.
      *
      * @param query
-     *            search query
+     *    <pre>
+     *    [search query]
+     *    </pre>
      * @param caseSensitive
-     *            true|false
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link DomainGroup }
      *
@@ -120,14 +127,19 @@ public class DomainGroups extends
      */
     public List<DomainGroup> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("search", query, UrlParameterType.QUERY)
                 .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Groups.class, DomainGroup.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Groups.class,
+                DomainGroup.class, headers);
+    }
 
 }
 

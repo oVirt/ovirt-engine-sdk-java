@@ -103,7 +103,10 @@ public class HostPermissions extends
      * Lists HostPermission objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link HostPermission }
      *
@@ -116,12 +119,17 @@ public class HostPermissions extends
      */
     public List<HostPermission> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, HostPermission.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                HostPermission.class, headers);
+    }
     /**
      * Adds Permission object.
      *

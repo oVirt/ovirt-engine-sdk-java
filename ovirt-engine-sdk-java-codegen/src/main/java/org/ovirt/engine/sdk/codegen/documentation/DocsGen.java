@@ -18,6 +18,7 @@ package org.ovirt.engine.sdk.codegen.documentation;
 
 import org.ovirt.engine.sdk.codegen.common.IDocCodegen;
 import org.ovirt.engine.sdk.codegen.utils.FormatUtils;
+import org.ovirt.engine.sdk.codegen.utils.UrlUtils;
 import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Header;
 import org.ovirt.engine.sdk.entities.Parameter;
@@ -164,12 +165,12 @@ public class DocsGen implements IDocCodegen {
             } else if (detailedLink.getRequest().getUrl().getParametersSets().size() == 1) {
                 for (Parameter param : detailedLink.getRequest().getUrl().getParametersSets().get(0).getParameters()) {
                     if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
-                        docParams.append(NEW_LINE + PARAM + param.getName() +
+                        docParams.append(NEW_LINE + PARAM + UrlUtils.toQueryParam(param.getName()) +
                                 NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
                                 NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + param.getValue() +
                                 NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_CLOSE);
                     } else {
-                        docParams.append(NEW_LINE + PARAM + param.getName() +
+                        docParams.append(NEW_LINE + PARAM + UrlUtils.toQueryParam(param.getName()) +
                                 NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
                                 NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET +
                                 BREACKS_OPEN + param.getValue() + BREACKS_CLOSE +

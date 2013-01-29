@@ -175,7 +175,10 @@ public class HostNICs extends
      * Lists HostNIC objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link HostNIC }
      *
@@ -188,12 +191,17 @@ public class HostNICs extends
      */
     public List<HostNIC> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.HostNics.class, HostNIC.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.HostNics.class,
+                HostNIC.class, headers);
+    }
     /**
      * Adds HostNIC object.
      *

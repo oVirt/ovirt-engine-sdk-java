@@ -16,52 +16,58 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
+import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
-import org.ovirt.engine.sdk.codegen.utils.TypeUtils;
-import org.ovirt.engine.sdk.codegen.utils.UrlUtils;
+import org.ovirt.engine.sdk.codegen.utils.StringUtils;
+import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Parameter;
 import org.ovirt.engine.sdk.entities.ParametersSet;
-import org.ovirt.engine.sdk.entities.Url;
 
 /**
  * Provides list templating services
  */
-public class ListMethodTemplate extends AbstractTemplate {
+public class ListMethodTemplate extends AbstractOverloadableTemplate {
 
     public ListMethodTemplate() {
         super();
     }
 
     /**
-     * Formats template in to the Collection.list method
+     * Formats template in to the resource delete template
      * 
-     * @param decoratorName
-     *            collection item decoarator name
-     * @param paramsDoc
-     *            parameters documentation
-     * @param paramsDef
-     *            parameters method declarations
-     * @param paramsAdd
-     *            parameters to add via Urlbuilder
      * @param publicCollectionName
      *            public collection name
+     * @param decoratorName
+     *            collection item decoarator name
+     * @param docParams
+     *            documentation params
+     * @param methodExtraParamsDef
+     *            method parameters (url/header encapsulations)
+     * @param headersToBuild
+     *            headers to build with HttpHeaderBuilder
+     * @param urlParamsToBuild
+     *            url Params To Build with UrlParamsBuilder
      * 
      * @return formated Collection.list method
      */
-    private String getTemplate(String decoratorName,
-            String paramsDoc,
-            String paramsDef,
-            String paramsAdd,
-            String publicCollectionName) {
+    private String getTemplate(String decoratorName, String publicCollectionName,
+            String docParams, String methodExtraParamsDef,
+            String headersToBuild, String urlParamsToBuild) {
 
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(getTemplate());
 
+        if (methodExtraParamsDef.startsWith(", ") && methodExtraParamsDef.length() > 2) {
+            methodExtraParamsDef =
+                    methodExtraParamsDef.substring(2, methodExtraParamsDef.length());
+        }
+
         templateWrapper.set("decoratorName", decoratorName);
-        templateWrapper.set("paramsDoc", paramsDoc);
-        templateWrapper.set("paramsDef", paramsDef);
-        templateWrapper.set("paramsAdd", paramsAdd);
         templateWrapper.set("publicCollectionName", publicCollectionName);
+        templateWrapper.set("docParams", docParams);
+        templateWrapper.set("methodExtraParamsDef", methodExtraParamsDef);
+        templateWrapper.set("headersToBuild", headersToBuild);
+        templateWrapper.set("urlParamsToBuild", urlParamsToBuild);
 
         return templateWrapper.toString();
     }
@@ -73,52 +79,53 @@ public class ListMethodTemplate extends AbstractTemplate {
      *            collection item decoarator name
      * @param publicCollectionName
      *            public collection name
-     * @param url
-     *            url parameters holder
+     * @param docParams
+     *            documentation params
+     * @param dl
+     *            a DetailedLink
      * 
      * @return formated Collection.list method
      */
-    public String getTemplate(String decoratorName,
-            String publicCollectionName,
-            Url url) {
+    public String getTemplate(String decoratorName, String publicCollectionName,
+            String docParams, DetailedLink dl) {
 
-        StringBuffer effectiveTemplate = new StringBuffer();
-        StringBuffer paramsDoc = new StringBuffer();
-        StringBuffer paramsDef = new StringBuffer();
-        StringBuffer paramsAdd = new StringBuffer();
+        StringBuffer methodExtraParamsDef = new StringBuffer();
+        StringBuffer headersToBuild = new StringBuffer();
+        StringBuffer urlParamsToBuild = new StringBuffer();
+        StringBuffer templateBuff = new StringBuffer();
 
-        for (ParametersSet parametersSet : url.getParametersSets()) {
-            for (Parameter parameter : parametersSet.getParameters()) {
-                StringTemplateWrapper PARAMS_DOC_TEMPLATE =
-                        new StringTemplateWrapper("\n     * @param $urlParamName$" +
-                                "\n     *            $urlParamDescription$");
-                StringTemplateWrapper PARAMS_DEF_TEMPLATE =
-                        new StringTemplateWrapper("$urlParamType$ $urlParamName$");
+        if (dl.isSetRequest() && dl.getRequest().isSetUrl() &&
+                dl.getRequest().getUrl().isSetParametersSets() &&
+                !dl.getRequest().getUrl().getParametersSets().isEmpty()) {
 
-                StringTemplateWrapper PARAMS_ADD_TEMPLATE =
-                        new StringTemplateWrapper("\n                .add(\"$realUrlParamName$\", $urlParamName$, UrlParameterType.$urlParamType$)");
-
-                PARAMS_DOC_TEMPLATE.set("urlParamName", UrlUtils.toQueryParam(parameter.getName()));
-                PARAMS_DOC_TEMPLATE.set("urlParamDescription", parameter.getValue());
-                paramsDoc.append(PARAMS_DOC_TEMPLATE.toString());
-
-                PARAMS_DEF_TEMPLATE.set("urlParamType", TypeUtils.toJava(parameter.getType()));
-                PARAMS_DEF_TEMPLATE.set("urlParamName", UrlUtils.toQueryParam(parameter.getName()));
-                paramsDef.append(PARAMS_DEF_TEMPLATE.toString() + ", ");
-
-                PARAMS_ADD_TEMPLATE.set("realUrlParamName", parameter.getName());
-                PARAMS_ADD_TEMPLATE.set("urlParamName", UrlUtils.toQueryParam(parameter.getName()));
-                PARAMS_ADD_TEMPLATE.set("urlParamType", UrlUtils.toParamType(parameter.getContext()));
-                paramsAdd.append(PARAMS_ADD_TEMPLATE.toString());
-
+            // add url params
+            for (ParametersSet parametersSet : dl.getRequest().getUrl().getParametersSets()) {
+                for (Parameter parameter : parametersSet.getParameters()) {
+                    addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
+                }
+                // add header params
+                methodExtraParamsDef =
+                        addHeaderParams(dl, methodExtraParamsDef,
+                                headersToBuild, urlParamsToBuild, templateBuff);
             }
-            effectiveTemplate.append(getTemplate(
-                    decoratorName,
-                    paramsDoc.toString(),
-                    paramsDef.toString().substring(0, paramsDef.length() - 2),
-                    paramsAdd.toString(),
-                    publicCollectionName) + "\n");
+        } else {
+            // add header params
+            methodExtraParamsDef =
+                    addHeaderParams(dl, methodExtraParamsDef,
+                            headersToBuild, urlParamsToBuild, templateBuff);
         }
-        return effectiveTemplate.toString();
+
+        // add method overload containing url/matrix params
+        if (methodExtraParamsDef.length() > 0) {
+            templateBuff.append(getTemplate(
+                    decoratorName,
+                    publicCollectionName,
+                    StringUtils.combine(docParams, DocsGen.generateUrlAndHeadersParams(dl)),
+                    methodExtraParamsDef.toString(),
+                    headersToBuild.toString(),
+                    urlParamsToBuild.toString()));
+        }
+
+        return templateBuff.toString();
     }
 }

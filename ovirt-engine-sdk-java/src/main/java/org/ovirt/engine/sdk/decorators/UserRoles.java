@@ -103,7 +103,10 @@ public class UserRoles extends
      * Lists UserRole objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link UserRole }
      *
@@ -116,12 +119,17 @@ public class UserRoles extends
      */
     public List<UserRole> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Roles.class, UserRole.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Roles.class,
+                UserRole.class, headers);
+    }
     /**
      * Adds Role object.
      *

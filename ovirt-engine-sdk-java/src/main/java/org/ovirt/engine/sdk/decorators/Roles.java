@@ -98,7 +98,10 @@ public class Roles extends
      * Lists Role objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link Role }
      *
@@ -111,12 +114,17 @@ public class Roles extends
      */
     public List<Role> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Roles.class, Role.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Roles.class,
+                Role.class, headers);
+    }
     /**
      * Adds Role object.
      *

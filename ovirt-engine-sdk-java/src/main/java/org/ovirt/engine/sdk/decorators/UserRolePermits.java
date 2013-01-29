@@ -103,7 +103,10 @@ public class UserRolePermits extends
      * Lists UserRolePermit objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link UserRolePermit }
      *
@@ -116,12 +119,17 @@ public class UserRolePermits extends
      */
     public List<UserRolePermit> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Permits.class, UserRolePermit.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Permits.class,
+                UserRolePermit.class, headers);
+    }
     /**
      * Adds Permit object.
      *

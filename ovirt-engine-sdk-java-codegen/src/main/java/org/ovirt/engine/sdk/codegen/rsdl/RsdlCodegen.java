@@ -476,10 +476,10 @@ public class RsdlCodegen extends AbstractCodegen {
             String url, String rel, String decoratorCollectionName, String publicEntityName,
             String publicCollectionName, int indx, DetailedLink detailedLink) {
 
+        String docParams = DocsGen.generateBodyParams(detailedLink);
         if (rel.equals(ADD_REL)) {
             if (indx == 1) {
                 if (!collectionHolder.hasMethod(rel)) {
-                    String docParams = DocsGen.generateBodyParams(detailedLink);
                     collectionHolder.addMethod(rel,
                             this.collectionAddMethodTemplate.getTemplate(decoratorCollectionName,
                                     publicEntityName,
@@ -487,7 +487,6 @@ public class RsdlCodegen extends AbstractCodegen {
                 }
             } else {
                 if (!collectionHolder.hasMethod(rel)) {
-                    String docParams = DocsGen.generateBodyParams(detailedLink);
                     collectionHolder.addMethod(rel,
                             this.subCollectionAddMethodTemplate.getTemplate(decoratorCollectionName,
                                     publicEntityName,
@@ -508,13 +507,15 @@ public class RsdlCodegen extends AbstractCodegen {
                                 this.collectionListMethodTemplate.getTemplate(
                                         StringUtils.toSingular(decoratorCollectionName),
                                         publicCollectionName,
-                                        detailedLink.getRequest().getUrl()));
+                                        docParams,
+                                        detailedLink));
                     } else {
                         collectionHolder.addMethod(methodId,
                                 this.subCollectionListMethodTemplate.getTemplate(
                                         StringUtils.toSingular(decoratorCollectionName),
                                         publicCollectionName,
-                                        detailedLink.getRequest().getUrl()));
+                                        docParams,
+                                        detailedLink));
 
                     }
                 }

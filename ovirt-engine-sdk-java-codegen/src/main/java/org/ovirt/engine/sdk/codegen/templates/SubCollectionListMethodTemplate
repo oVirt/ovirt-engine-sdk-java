@@ -1,6 +1,6 @@
     /**
      * Lists $decoratorName$ objects.
-     *$paramsDoc$
+$docParams$
      *
      * @return List of {@link $decoratorName$ }
      *
@@ -11,9 +11,15 @@
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<$decoratorName$> list($paramsDef$) throws ClientProtocolException,
+    public List<$decoratorName$> list($methodExtraParamsDef$) throws ClientProtocolException,
             ServerException, IOException {
-        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())$paramsAdd$
+
+        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.$publicCollectionName$.class, $decoratorName$.class);
+
+        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())$urlParamsToBuild$
+                .build();
+
+        return list(url, org.ovirt.engine.sdk.entities.$publicCollectionName$.class,
+                $decoratorName$.class, headers);
     }

@@ -103,7 +103,10 @@ public class UserTags extends
      * Lists UserTag objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link UserTag }
      *
@@ -116,12 +119,17 @@ public class UserTags extends
      */
     public List<UserTag> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Tags.class, UserTag.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Tags.class,
+                UserTag.class, headers);
+    }
     /**
      * Adds Tag object.
      *

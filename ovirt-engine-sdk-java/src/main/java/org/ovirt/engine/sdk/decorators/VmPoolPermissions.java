@@ -103,7 +103,10 @@ public class VmPoolPermissions extends
      * Lists VmPoolPermission objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link VmPoolPermission }
      *
@@ -116,12 +119,17 @@ public class VmPoolPermissions extends
      */
     public List<VmPoolPermission> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, VmPoolPermission.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                VmPoolPermission.class, headers);
+    }
     /**
      * Adds Permission object.
      *

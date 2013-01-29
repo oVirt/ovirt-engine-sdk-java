@@ -103,7 +103,10 @@ public class DataCenterStorageDomains extends
      * Lists DataCenterStorageDomain objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link DataCenterStorageDomain }
      *
@@ -116,12 +119,17 @@ public class DataCenterStorageDomains extends
      */
     public List<DataCenterStorageDomain> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.StorageDomains.class, DataCenterStorageDomain.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.StorageDomains.class,
+                DataCenterStorageDomain.class, headers);
+    }
     /**
      * Adds StorageDomain object.
      *

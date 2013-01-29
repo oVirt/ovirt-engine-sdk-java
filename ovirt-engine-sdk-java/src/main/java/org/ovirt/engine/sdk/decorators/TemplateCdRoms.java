@@ -103,7 +103,10 @@ public class TemplateCdRoms extends
      * Lists TemplateCdRom objects.
      *
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link TemplateCdRom }
      *
@@ -116,12 +119,17 @@ public class TemplateCdRoms extends
      */
     public List<TemplateCdRom> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.CdRoms.class, TemplateCdRom.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.CdRoms.class,
+                TemplateCdRom.class, headers);
+    }
 
 }
 

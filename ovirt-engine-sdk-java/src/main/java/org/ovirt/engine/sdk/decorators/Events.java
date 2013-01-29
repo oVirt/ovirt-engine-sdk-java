@@ -98,13 +98,22 @@ public class Events extends
      * Lists Event objects.
      *
      * @param query
-     *            search query
+     *    <pre>
+     *    [search query]
+     *    </pre>
      * @param caseSensitive
-     *            true|false
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param from
-     *            event_id
+     *    <pre>
+     *    [event_id]
+     *    </pre>
      * @param max
-     *            max results
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
      *
      * @return List of {@link Event }
      *
@@ -117,15 +126,20 @@ public class Events extends
      */
     public List<Event> list(String query, Boolean caseSensitive, String from, Integer max) throws ClientProtocolException,
             ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
         String url = new UrlBuilder(SLASH + getName())
                 .add("search", query, UrlParameterType.QUERY)
                 .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
                 .add("from", from, UrlParameterType.MATRIX)
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
-        return list(url, org.ovirt.engine.sdk.entities.Events.class, Event.class);
-    }
 
+        return list(url, org.ovirt.engine.sdk.entities.Events.class,
+                Event.class, headers);
+    }
     /**
      * Adds Event object.
      *
