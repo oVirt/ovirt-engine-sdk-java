@@ -259,6 +259,7 @@ public class Host extends
      *    [host.name]
      *    [host.address]
      *    [host.root_password]
+     *    [host.display.address]
      *    [host.cluster.id]
      *    [host.port]
      *    [host.storage_manager.priority]

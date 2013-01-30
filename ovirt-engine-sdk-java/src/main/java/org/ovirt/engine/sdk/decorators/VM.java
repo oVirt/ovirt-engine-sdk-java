@@ -496,6 +496,10 @@ public class VM extends
      * Performs ticket action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.ticket.value]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -522,6 +526,10 @@ public class VM extends
      * Performs ticket action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.ticket.value]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]

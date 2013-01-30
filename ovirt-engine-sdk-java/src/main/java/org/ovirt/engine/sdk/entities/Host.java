@@ -62,6 +62,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
  *         &lt;element ref="{}hooks" minOccurs="0"/>
  *         &lt;element name="libvirt_version" type="{}Version" minOccurs="0"/>
+ *         &lt;element ref="{}display" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -95,7 +96,8 @@ import javax.xml.bind.annotation.XmlType;
     "rebootAfterInstallation",
     "os",
     "hooks",
-    "libvirtVersion"
+    "libvirtVersion",
+    "display"
 })
 public class Host
     extends BaseResource
@@ -135,6 +137,7 @@ public class Host
     protected Hooks hooks;
     @XmlElement(name = "libvirt_version")
     protected Version libvirtVersion;
+    protected Display display;
 
     /**
      * Gets the value of the address property.
@@ -806,6 +809,34 @@ public class Host
 
     public boolean isSetLibvirtVersion() {
         return (this.libvirtVersion!= null);
+    }
+
+    /**
+     * Gets the value of the display property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Display }
+     *     
+     */
+    public Display getDisplay() {
+        return display;
+    }
+
+    /**
+     * Sets the value of the display property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Display }
+     *     
+     */
+    public void setDisplay(Display value) {
+        this.display = value;
+    }
+
+    public boolean isSetDisplay() {
+        return (this.display!= null);
     }
 
 }

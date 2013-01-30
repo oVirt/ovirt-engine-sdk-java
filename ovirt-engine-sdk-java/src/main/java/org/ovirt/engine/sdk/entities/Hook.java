@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="event_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="md5" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element ref="{}host" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -50,7 +51,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Hook", propOrder = {
     "eventName",
-    "md5"
+    "md5",
+    "host"
 })
 public class Hook
     extends BaseResource
@@ -59,6 +61,7 @@ public class Hook
     @XmlElement(name = "event_name")
     protected String eventName;
     protected String md5;
+    protected Host host;
 
     /**
      * Gets the value of the eventName property.
@@ -114,6 +117,34 @@ public class Hook
 
     public boolean isSetMd5() {
         return (this.md5 != null);
+    }
+
+    /**
+     * Gets the value of the host property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Host }
+     *     
+     */
+    public Host getHost() {
+        return host;
+    }
+
+    /**
+     * Sets the value of the host property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Host }
+     *     
+     */
+    public void setHost(Host value) {
+        this.host = value;
+    }
+
+    public boolean isSetHost() {
+        return (this.host!= null);
     }
 
 }

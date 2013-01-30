@@ -143,6 +143,7 @@ public class Hosts extends
      *    host.name
      *    host.address
      *    host.root_password
+     *    host.display.address
      *    host.cluster.id|name
      *    [host.port]
      *    [host.storage_manager.priority]
@@ -189,6 +190,7 @@ public class Hosts extends
      *    host.name
      *    host.address
      *    host.root_password
+     *    host.display.address
      *    host.cluster.id|name
      *    [host.port]
      *    [host.storage_manager.priority]
