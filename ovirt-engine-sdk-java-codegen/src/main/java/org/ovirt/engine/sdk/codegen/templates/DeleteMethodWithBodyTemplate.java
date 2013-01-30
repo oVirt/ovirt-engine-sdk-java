@@ -24,22 +24,12 @@ import org.ovirt.engine.sdk.entities.Parameter;
 import org.ovirt.engine.sdk.entities.ParametersSet;
 
 /**
- * Provides Resource action templating services
+ * Provides Resource delete with body templating services
  */
 public class DeleteMethodWithBodyTemplate extends AbstractOverloadableTemplate {
 
-    private static DeleteMethodTemplate deleteMethodTemplate;
-
     public DeleteMethodWithBodyTemplate() {
         super();
-        initStaticContext();
-    }
-
-    /**
-     * Initalises static context
-     */
-    private static synchronized void initStaticContext() {
-        deleteMethodTemplate = new DeleteMethodTemplate();
     }
 
     /**
@@ -110,11 +100,6 @@ public class DeleteMethodWithBodyTemplate extends AbstractOverloadableTemplate {
                     addHeaderParams(detailedLink, methodExtraParamsDef,
                             headersToBuild, urlParamsToBuild, templateBuff);
         }
-
-        // add default method
-        templateBuff.append(deleteMethodTemplate.getTemplate(
-                "     *",
-                detailedLink));
 
         // add method overload containing url/matrix params
         if (methodExtraParamsDef.length() > 0) {

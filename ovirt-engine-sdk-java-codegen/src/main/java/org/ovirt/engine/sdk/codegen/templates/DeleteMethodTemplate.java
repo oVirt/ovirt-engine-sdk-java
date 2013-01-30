@@ -24,12 +24,23 @@ import org.ovirt.engine.sdk.entities.Parameter;
 import org.ovirt.engine.sdk.entities.ParametersSet;
 
 /**
- * Provides Resource action templating services
+ * Provides Resource delete templating services
  */
 public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
 
+    private static final String DOC_SEPARATOR = "     *";
+    private static DeleteMethodWithBodyTemplate deleteMethodWithBodyTemplate;
+
     public DeleteMethodTemplate() {
         super();
+        initStaticContext();
+    }
+
+    /**
+     * Initalises static context
+     */
+    private static synchronized void initStaticContext() {
+        deleteMethodWithBodyTemplate = new DeleteMethodWithBodyTemplate();
     }
 
     /**
@@ -39,7 +50,7 @@ public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
      */
     @Override
     public String getTemplate() {
-        return getTemplate("     *", "", "", "");
+        return getTemplate(DOC_SEPARATOR, "", "", "");
     }
 
     /**
@@ -92,37 +103,54 @@ public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
         StringBuffer urlParamsToBuild = new StringBuffer();
         StringBuffer templateBuff = new StringBuffer();
 
-        if (dl.isSetRequest() && dl.getRequest().isSetUrl() &&
-                dl.getRequest().getUrl().isSetParametersSets() &&
-                !dl.getRequest().getUrl().getParametersSets().isEmpty()) {
+        if (dl.isSetRequest() && dl.getRequest().isSetBody() && dl.getRequest().getBody().isSetType() && !
+                dl.getRequest().getBody().getType().equals("") && dl.getRequest().getBody().isRequired() != null
+                && dl.getRequest().getBody().isRequired()) {
+            // add delete() with body overload (body is mandatory)
+            templateBuff.append(deleteMethodWithBodyTemplate.getTemplate(docParams, dl));
+        } else {
+            if (dl.isSetRequest() && dl.getRequest().isSetUrl() &&
+                    dl.getRequest().getUrl().isSetParametersSets() &&
+                    !dl.getRequest().getUrl().getParametersSets().isEmpty()) {
 
-            // add url params
-            for (ParametersSet parametersSet : dl.getRequest().getUrl().getParametersSets()) {
-                for (Parameter parameter : parametersSet.getParameters()) {
-                    addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
+                // add url params
+                for (ParametersSet parametersSet : dl.getRequest().getUrl().getParametersSets()) {
+                    for (Parameter parameter : parametersSet.getParameters()) {
+                        addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
+                    }
+                    // add header params
+                    methodExtraParamsDef =
+                            addHeaderParams(dl, methodExtraParamsDef,
+                                    headersToBuild, urlParamsToBuild, templateBuff);
                 }
+            } else {
                 // add header params
                 methodExtraParamsDef =
                         addHeaderParams(dl, methodExtraParamsDef,
                                 headersToBuild, urlParamsToBuild, templateBuff);
             }
-        } else {
-            // add header params
-            methodExtraParamsDef =
-                    addHeaderParams(dl, methodExtraParamsDef,
-                            headersToBuild, urlParamsToBuild, templateBuff);
-        }
 
-        // add default method
-        templateBuff.append(getTemplate());
+            // add default method
+            templateBuff.append(getTemplate());
 
-        // add method overload containing url/matrix params
-        if (methodExtraParamsDef.length() > 0) {
-            templateBuff.append(getTemplate(
-                    StringUtils.combine(docParams, DocsGen.generateUrlAndHeadersParams(dl)),
-                    methodExtraParamsDef.toString(),
-                    headersToBuild.toString(),
-                    urlParamsToBuild.toString()));
+            // add delete() overload with url/header params
+            if (methodExtraParamsDef.length() > 0) {
+                templateBuff.append(getTemplate(
+                        StringUtils.combine(DOC_SEPARATOR, DocsGen.generateUrlAndHeadersParams(dl)),
+                        methodExtraParamsDef.toString(),
+                        headersToBuild.toString(),
+                        urlParamsToBuild.toString()));
+            }
+
+            // add delete() with body overload (body is optional)
+            if (dl.isSetRequest() && dl.getRequest().isSetBody() && dl.getRequest().getBody().isSetType()
+                    && !dl.getRequest().getBody().getType().equals("")
+                    && ((dl.getRequest().getBody().isRequired() != null
+                    && !dl.getRequest().getBody().isRequired())
+                    ||
+                    dl.getRequest().getBody().isRequired() == null)) {
+                templateBuff.append(deleteMethodWithBodyTemplate.getTemplate(docParams, dl));
+            }
         }
 
         return templateBuff.toString();
