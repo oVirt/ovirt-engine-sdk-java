@@ -47,7 +47,8 @@ public class ConnectionsPool {
 
     private DefaultHttpClient client = null;
     private CookieStore cookieStore;
-    URL url = null;
+    private IdleConnectionMonitorThread idleConnectionsWatchdog;
+    private URL url = null;
 
     /**
      * 
@@ -55,12 +56,22 @@ public class ConnectionsPool {
      *            DefaultHttpClient
      * @param url
      *            oVirt API url
+     * @param idleCheckTTL
+     *            idle connections check TTL
+     * @param closeCloseTTl
+     *            idle connections close TTL
      */
-    public ConnectionsPool(DefaultHttpClient client, URL url) {
+    public ConnectionsPool(DefaultHttpClient client, URL url, long idleCheckTTL, long closeCloseTTl) {
         this.client = client;
         this.cookieStore = this.client.getCookieStore();
         this.url = url;
         injectHttpRequestRetryHandler(this.client);
+        idleConnectionsWatchdog =
+                new IdleConnectionMonitorThread(
+                        this.client.getConnectionManager(),
+                        idleCheckTTL,
+                        closeCloseTTl);
+        idleConnectionsWatchdog.start();
     }
 
     /**
@@ -149,5 +160,15 @@ public class ConnectionsPool {
      */
     public URL getUrl() {
         return url;
+    }
+
+    /**
+     * When ConnectionsPool instance is no longer needed, shut down the
+     * connection manager and idle connections watchdog to ensure immediate
+     * deallocation of all system resources.
+     */
+    public void shutdown() {
+        this.idleConnectionsWatchdog.shutdown();
+        this.getConnectionManager().shutdown();
     }
 }

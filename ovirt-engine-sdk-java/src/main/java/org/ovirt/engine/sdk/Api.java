@@ -525,4 +525,12 @@ public class Api {
         return null;
     }
 
+    /**
+     * When SDK instance is no longer needed, shut down the connection
+     * manager/httpproxy to ensure immediate deallocation of all system
+     * resources.
+     */
+    public void shutdown() {
+        proxy.shutdown();
+    }
 }

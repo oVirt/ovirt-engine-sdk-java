@@ -225,10 +225,11 @@ public class HttpProxy {
     }
 
     /**
-     * When HttpClient instance is no longer needed, shut down the connection manager to ensure immediate deallocation
-     * of all system resources.
+     * When HttpProxy instance is no longer needed, shut down the
+     * connection manager to ensure immediate deallocation of all system
+     * resources.
      */
     public void shutdown() {
-        this.pool.getConnectionManager().shutdown();
+        this.pool.shutdown();
     }
 }

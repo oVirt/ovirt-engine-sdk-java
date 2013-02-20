@@ -490,4 +490,12 @@ public class HttpProxyBroker {
         }
         return Mapper.map(res, to, this);
     }
+
+    /**
+     * When HttpProxyBroker instance is no longer needed, shut down the connection
+     * manager to ensure immediate deallocation of all system resources.
+     */
+    public void shutdown() {
+        this.proxy.shutdown();
+    }
 }

@@ -60,6 +60,9 @@ public class IdleConnectionMonitorThread extends Thread {
         }
     }
 
+    /**
+     * Shuts down ConnectionMonitorThread
+     */
     public void shutdown() {
         shutdown = true;
         synchronized (this) {

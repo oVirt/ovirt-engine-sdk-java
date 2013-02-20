@@ -226,8 +226,6 @@ public class ConnectionsPoolBuilder {
                 getPort(url, port))),
                 MAX_CONNECTIONS_PER_HOST);
 
-        new IdleConnectionMonitorThread(cm, WAIT_IDLE_CHECK_TTL, WAIT_IDLE_CLOSE_TTL).start();
-
         return cm;
     }
 
@@ -315,9 +313,19 @@ public class ConnectionsPoolBuilder {
      * @return ConnectionsPool
      */
     public ConnectionsPool build() {
-        return new ConnectionsPool(createDefaultHttpClient(url, username, password, key_file,
-                cert_file, ca_file, port, timeout),
-                this.urlobj);
+        return new ConnectionsPool(
+                createDefaultHttpClient(url,
+                        username,
+                        password,
+                        key_file,
+                        cert_file,
+                        ca_file,
+                        port,
+                        timeout
+                ),
+                this.urlobj,
+                WAIT_IDLE_CHECK_TTL,
+                WAIT_IDLE_CLOSE_TTL);
     }
 
     /**
