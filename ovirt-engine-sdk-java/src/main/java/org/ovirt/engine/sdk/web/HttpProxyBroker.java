@@ -433,15 +433,6 @@ public class HttpProxyBroker {
     }
 
     /**
-     * Enable/Disable accessing SSL sites without validating host identity (default is False)
-     * 
-     * @param insecure
-     */
-    public void setInsecure(boolean insecure) {
-        this.proxy.setInsecure(insecure);
-    }
-
-    /**
      * Enable/Disable persistent authentication (default is True)
      * 
      * @param persistentAuth
@@ -455,13 +446,6 @@ public class HttpProxyBroker {
      */
     public boolean isPersistentAuth() {
         return this.proxy.isPersistentAuth();
-    }
-
-    /**
-     * @return Insecure flag
-     */
-    public boolean isInsecure() {
-        return this.proxy.isInsecure();
     }
 
     /**

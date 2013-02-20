@@ -23,7 +23,6 @@ public class HttpProxyBuilder {
 
     private ConnectionsPool pool;
     private boolean persistentAuth = true;
-    private boolean insecure = false;
     private boolean filter = false;
     private boolean debug = false;
 
@@ -43,17 +42,6 @@ public class HttpProxyBuilder {
     public HttpProxyBuilder persistentAuth(Boolean persistentAuth) {
         if (persistentAuth != null) {
             this.persistentAuth = persistentAuth.booleanValue();
-        }
-        return this;
-    }
-
-    /**
-     * @param insecure
-     *            flag
-     */
-    public HttpProxyBuilder insecure(Boolean insecure) {
-        if (insecure != null) {
-            this.insecure = insecure.booleanValue();
         }
         return this;
     }
@@ -84,6 +72,6 @@ public class HttpProxyBuilder {
      * builds the proxy
      */
     public HttpProxy build() {
-        return new HttpProxy(pool, persistentAuth, insecure, filter, debug);
+        return new HttpProxy(pool, persistentAuth, filter, debug);
     }
 }

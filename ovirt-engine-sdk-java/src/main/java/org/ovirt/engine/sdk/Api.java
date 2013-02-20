@@ -58,7 +58,6 @@ public class Api {
     private StorageDomains storageDomains;
     private Groups groups;
 
-
     /**
      * @param url
      *            oVirt api url
@@ -66,7 +65,7 @@ public class Api {
      *            oVirt api username
      * @param password
      *            oVirt api password
-     *
+     * 
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -92,9 +91,9 @@ public class Api {
      *            oVirt api username
      * @param password
      *            oVirt api password
-     * @param insecure
-     *            do not throw error when accessing SSL sites without certificate
-     *
+     * @param noHostVerification
+     *            turns hostname verification off
+     * 
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -104,48 +103,14 @@ public class Api {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
-            ServerException, UnsecuredConnectionAttemptError, IOException {
-
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                                 .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                                 .insecure(insecure)
-                                 .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        initResources();
-    }
-
-    /**
-     * @param url
-     *            oVirt api url
-     * @param username
-     *            oVirt api username
-     * @param password
-     *            oVirt api password
-     * @param ca_file
-     *            CA certificate to validate the server identity
-     * @param filter
-     *            enables filtering based on user's permissions
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     * @throws UnsecuredConnectionAttemptError
-     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
-     */
-    public Api(String url, String username, String password, String ca_file, boolean filter)
+    public Api(String url, String username, String password, boolean noHostVerification)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                                   .ca_file(ca_file)
-                                   .build();
+                .noHostVerification(noHostVerification)
+                .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                                   .filter(filter)
-                                   .build();
+                .build();
         this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
     }
@@ -157,25 +122,53 @@ public class Api {
      *            oVirt api username
      * @param password
      *            oVirt api password
-     * @param key_file
-     *            user key file to validate client identity
-     * @param cert_file
-     *            user certificate file to validate client identity
-     * @param ca_file
-     *            CA certificate to validate the server identity
+     * @param noHostVerification
+     *            turns hostname verification off
+     * @param filter
+     *            enables filtering based on user's permissions
+     * 
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     */
+    public Api(String url, String username, String password, Boolean noHostVerification, Boolean filter)
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+
+        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
+                .noHostVerification(noHostVerification)
+                .build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                .filter(filter)
+                .build();
+        this.proxy = new HttpProxyBroker(httpProxy);
+        initResources();
+    }
+
+    /**
+     * @param url
+     *            oVirt api url
+     * @param username
+     *            oVirt api username
+     * @param password
+     *            oVirt api password
      * @param port
      *            oVirt api port
      * @param timeout
      *            request timeout
      * @param persistentAuth
-     *            disable persistent authetication (will be used auth. per request)
-     * @param insecure
-     *            do not throw error when accessing SSL sites without certificate
+     *            disable persistent authentication (will be used auth. per request)
+     * @param noHostVerification
+     *            turns hostname verification off
      * @param filter
      *            enables filtering based on user's permissions
      * @param debug
      *            enables debug mode
-     *
+     * 
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -185,24 +178,20 @@ public class Api {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, String key_file,
-              String cert_file, String ca_file, Integer port, Integer timeout,
-              Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
-            ServerException, UnsecuredConnectionAttemptError, IOException {
+    public Api(String url, String username, String password, Integer port, Integer timeout,
+            Boolean persistentAuth, Boolean noHostVerification, Boolean filter, Boolean debug)
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                                .key_file(key_file)
-                                .cert_file(cert_file)
-                                .ca_file(ca_file)
-                                .port(port)
-                                .timeout(timeout)
-                                .build();
+                .port(port)
+                .timeout(timeout)
+                .noHostVerification(noHostVerification)
+                .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                                .persistentAuth(persistentAuth)
-                                .insecure(insecure)
-                                .filter(filter)
-                                .debug(debug)
-                                .build();
+                .persistentAuth(persistentAuth)
+                .filter(filter)
+                .debug(debug)
+                .build();
         this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
     }
@@ -248,15 +237,6 @@ public class Api {
     }
 
     /**
-     * Enable/Disable accessing SSL sites without validating host identity (default is False)
-     * 
-     * @param insecure
-     */
-    public void setInsecure(boolean insecure) {
-        this.proxy.setInsecure(insecure);
-    }
-
-    /**
      * Enable/Disable persistent authentication (default is True)
      * 
      * @param persistentAuth
@@ -270,13 +250,6 @@ public class Api {
      */
     public boolean isPersistentAuth() {
         return this.proxy.isPersistentAuth();
-    }
-
-    /**
-     * @return Insecure flag
-     */
-    public boolean isInsecure() {
-        return this.proxy.isInsecure();
     }
 
     /**
@@ -294,11 +267,10 @@ public class Api {
     }
 
     /**
-     * Gets the value of the Networks property. 
-     *
-     * @return
-     *     {@link Networks }
-     *
+     * Gets the value of the Networks property.
+     * 
+     * @return {@link Networks }
+     * 
      */
     public synchronized Networks getNetworks() {
         if (this.networks == null) {
@@ -306,12 +278,12 @@ public class Api {
         }
         return networks;
     }
+
     /**
-     * Gets the value of the Tags property. 
-     *
-     * @return
-     *     {@link Tags }
-     *
+     * Gets the value of the Tags property.
+     * 
+     * @return {@link Tags }
+     * 
      */
     public synchronized Tags getTags() {
         if (this.tags == null) {
@@ -319,12 +291,12 @@ public class Api {
         }
         return tags;
     }
+
     /**
-     * Gets the value of the Users property. 
-     *
-     * @return
-     *     {@link Users }
-     *
+     * Gets the value of the Users property.
+     * 
+     * @return {@link Users }
+     * 
      */
     public synchronized Users getUsers() {
         if (this.users == null) {
@@ -332,12 +304,12 @@ public class Api {
         }
         return users;
     }
+
     /**
-     * Gets the value of the Templates property. 
-     *
-     * @return
-     *     {@link Templates }
-     *
+     * Gets the value of the Templates property.
+     * 
+     * @return {@link Templates }
+     * 
      */
     public synchronized Templates getTemplates() {
         if (this.templates == null) {
@@ -345,12 +317,12 @@ public class Api {
         }
         return templates;
     }
+
     /**
-     * Gets the value of the Events property. 
-     *
-     * @return
-     *     {@link Events }
-     *
+     * Gets the value of the Events property.
+     * 
+     * @return {@link Events }
+     * 
      */
     public synchronized Events getEvents() {
         if (this.events == null) {
@@ -358,12 +330,12 @@ public class Api {
         }
         return events;
     }
+
     /**
-     * Gets the value of the Domains property. 
-     *
-     * @return
-     *     {@link Domains }
-     *
+     * Gets the value of the Domains property.
+     * 
+     * @return {@link Domains }
+     * 
      */
     public synchronized Domains getDomains() {
         if (this.domains == null) {
@@ -371,12 +343,12 @@ public class Api {
         }
         return domains;
     }
+
     /**
-     * Gets the value of the Disks property. 
-     *
-     * @return
-     *     {@link Disks }
-     *
+     * Gets the value of the Disks property.
+     * 
+     * @return {@link Disks }
+     * 
      */
     public synchronized Disks getDisks() {
         if (this.disks == null) {
@@ -384,12 +356,12 @@ public class Api {
         }
         return disks;
     }
+
     /**
-     * Gets the value of the Clusters property. 
-     *
-     * @return
-     *     {@link Clusters }
-     *
+     * Gets the value of the Clusters property.
+     * 
+     * @return {@link Clusters }
+     * 
      */
     public synchronized Clusters getClusters() {
         if (this.clusters == null) {
@@ -397,12 +369,12 @@ public class Api {
         }
         return clusters;
     }
+
     /**
-     * Gets the value of the DataCenters property. 
-     *
-     * @return
-     *     {@link DataCenters }
-     *
+     * Gets the value of the DataCenters property.
+     * 
+     * @return {@link DataCenters }
+     * 
      */
     public synchronized DataCenters getDataCenters() {
         if (this.dataCenters == null) {
@@ -410,12 +382,12 @@ public class Api {
         }
         return dataCenters;
     }
+
     /**
-     * Gets the value of the Roles property. 
-     *
-     * @return
-     *     {@link Roles }
-     *
+     * Gets the value of the Roles property.
+     * 
+     * @return {@link Roles }
+     * 
      */
     public synchronized Roles getRoles() {
         if (this.roles == null) {
@@ -423,12 +395,12 @@ public class Api {
         }
         return roles;
     }
+
     /**
-     * Gets the value of the Hosts property. 
-     *
-     * @return
-     *     {@link Hosts }
-     *
+     * Gets the value of the Hosts property.
+     * 
+     * @return {@link Hosts }
+     * 
      */
     public synchronized Hosts getHosts() {
         if (this.hosts == null) {
@@ -436,12 +408,12 @@ public class Api {
         }
         return hosts;
     }
+
     /**
-     * Gets the value of the VMs property. 
-     *
-     * @return
-     *     {@link VMs }
-     *
+     * Gets the value of the VMs property.
+     * 
+     * @return {@link VMs }
+     * 
      */
     public synchronized VMs getVMs() {
         if (this.vMs == null) {
@@ -449,12 +421,12 @@ public class Api {
         }
         return vMs;
     }
+
     /**
-     * Gets the value of the VmPools property. 
-     *
-     * @return
-     *     {@link VmPools }
-     *
+     * Gets the value of the VmPools property.
+     * 
+     * @return {@link VmPools }
+     * 
      */
     public synchronized VmPools getVmPools() {
         if (this.vmPools == null) {
@@ -462,12 +434,12 @@ public class Api {
         }
         return vmPools;
     }
+
     /**
-     * Gets the value of the StorageDomains property. 
-     *
-     * @return
-     *     {@link StorageDomains }
-     *
+     * Gets the value of the StorageDomains property.
+     * 
+     * @return {@link StorageDomains }
+     * 
      */
     public synchronized StorageDomains getStorageDomains() {
         if (this.storageDomains == null) {
@@ -475,12 +447,12 @@ public class Api {
         }
         return storageDomains;
     }
+
     /**
-     * Gets the value of the Groups property. 
-     *
-     * @return
-     *     {@link Groups }
-     *
+     * Gets the value of the Groups property.
+     * 
+     * @return {@link Groups }
+     * 
      */
     public synchronized Groups getGroups() {
         if (this.groups == null) {
@@ -489,12 +461,11 @@ public class Api {
         return groups;
     }
 
-
     /**
      * Gets the value of the Time property.
-     *
+     * 
      * @return {@link javax.xml.datatype.XMLGregorianCalendar }
-     *
+     * 
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -508,11 +479,12 @@ public class Api {
             UnsecuredConnectionAttemptError, IOException {
         return getEntryPoint().getTime();
     }
+
     /**
      * Gets the value of the Summary property.
-     *
+     * 
      * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
-     *
+     * 
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -526,11 +498,12 @@ public class Api {
             UnsecuredConnectionAttemptError, IOException {
         return getEntryPoint().getSummary();
     }
+
     /**
      * Gets the value of the SpecialObjects property.
-     *
+     * 
      * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
-     *
+     * 
      */
     public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
         if (this.entryPoint != null) {
@@ -538,11 +511,12 @@ public class Api {
         }
         return null;
     }
+
     /**
      * Gets the value of the ProductInfo property.
-     *
+     * 
      * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
-     *
+     * 
      */
     public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
         if (this.entryPoint != null) {
@@ -552,4 +526,3 @@ public class Api {
     }
 
 }
-

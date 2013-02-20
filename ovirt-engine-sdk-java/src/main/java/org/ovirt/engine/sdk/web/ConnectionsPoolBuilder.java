@@ -18,6 +18,12 @@ package org.ovirt.engine.sdk.web;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
@@ -35,6 +41,10 @@ import org.apache.http.impl.conn.PoolingClientConnectionManager;
  * Provides ConnectionsPool building services
  */
 public class ConnectionsPoolBuilder {
+
+    private static final String BAD_PROTOCOL_ERROR = "Unsupported protocol ";
+    private static final String BAD_KEY_ERROR = "SSL context initiation has failed because of key error.";
+    private static final String NO_TLS_ERROR = "SSL context initiation has failed locating TLS slgorithm.";
 
     private static int MAX_CONNECTIONS = 20;
     private static int MAX_CONNECTIONS_PER_HOST = 50;
@@ -54,6 +64,7 @@ public class ConnectionsPoolBuilder {
     private String ca_file;
     private int port = -1;
     private int timeout = -1;
+    private boolean noHostVerification = false;
 
     private URL urlobj = null;
 
@@ -134,6 +145,7 @@ public class ConnectionsPoolBuilder {
     /**
      * @param port
      *            oVirt API port
+     * 
      */
     public ConnectionsPoolBuilder port(Integer port) {
         if (port != null) {
@@ -149,6 +161,17 @@ public class ConnectionsPoolBuilder {
     public ConnectionsPoolBuilder timeout(Integer timeout) {
         if (timeout != null) {
             this.timeout = timeout.intValue();
+        }
+        return this;
+    }
+
+    /**
+     * @param noHostVerification
+     *            flag
+     */
+    public ConnectionsPoolBuilder noHostVerification(Boolean noHostVerification) {
+        if (noHostVerification != null) {
+            this.noHostVerification = noHostVerification.booleanValue();
         }
         return this;
     }
@@ -170,11 +193,13 @@ public class ConnectionsPoolBuilder {
     private DefaultHttpClient createDefaultHttpClient(String url, String username, String password, String key_file,
             String cert_file, String ca_file, Integer port, Integer timeout) {
 
+        int port_ = getPort(url, port);
+
         DefaultHttpClient client =
-                new DefaultHttpClient(createPoolingClientConnectionManager(url, port));
+                new DefaultHttpClient(createPoolingClientConnectionManager(url, port_));
 
         client.getCredentialsProvider().setCredentials(
-                new AuthScope(getHost(url), getPort(url, port)),
+                new AuthScope(getHost(url), port_),
                 new UsernamePasswordCredentials(username, password));
 
         // FIXME: use all .ctr params
@@ -190,7 +215,7 @@ public class ConnectionsPoolBuilder {
      * 
      * @return {@link ClientConnectionManager}
      */
-    private ClientConnectionManager createPoolingClientConnectionManager(String url, Integer port) {
+    private ClientConnectionManager createPoolingClientConnectionManager(String url, int port) {
         SchemeRegistry schemeRegistry = createSchemeRegistry(url, port);
 
         PoolingClientConnectionManager cm =
@@ -214,19 +239,48 @@ public class ConnectionsPoolBuilder {
      * 
      * @return {@link SchemeRegistry}
      */
-    private SchemeRegistry createSchemeRegistry(String url, Integer port) {
+    private SchemeRegistry createSchemeRegistry(String url, int port) {
         SchemeRegistry schemeRegistry = new SchemeRegistry();
         String protocol = getProtocol(url);
+        SSLSocketFactory sf;
+
         if (HTTP_PROTOCOL.equals(protocol)) {
             schemeRegistry.register(
                     new Scheme(HTTP_PROTOCOL,
-                            getPort(url, port),
+                            port,
                             PlainSocketFactory.getSocketFactory()));
+        } else if (HTTPS_PROTOCOL.equals(protocol)) {
+            SSLContext sslcontext;
+            try {
+                sslcontext = SSLContext.getInstance("TLS");
+
+                if (this.noHostVerification) {
+                    sslcontext.init(null, new TrustManager[] { noCaTrustManager }, null);
+                    sf = new SSLSocketFactory(
+                            sslcontext,
+                            SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+                } else {
+                    sslcontext.init(null, null, null);
+                    sf = new SSLSocketFactory(
+                            sslcontext,
+                            // This hostname verifier that works the same way as Curl and Firefox. The hostname must
+                            // match either the first CN, or any of the subject-alts. A wildcard can occur in the CN,
+                            // and in any of the subject-alts. The only difference between BrowserCompatHostnameVerifier
+                            // and StrictHostnameVerifier is that a wildcard (such as "*.foo.com") with
+                            // BrowserCompatHostnameVerifier matches all subdomains, including "a.b.foo.com".
+                            SSLSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
+                }
+
+                schemeRegistry.register(
+                        new Scheme(HTTPS_PROTOCOL, port, sf));
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+                throw new RuntimeException(NO_TLS_ERROR, e);
+            } catch (KeyManagementException e) {
+                throw new RuntimeException(BAD_KEY_ERROR, e);
+            }
         } else {
-            schemeRegistry.register(
-                    new Scheme(HTTPS_PROTOCOL,
-                            getPort(url, port),
-                            SSLSocketFactory.getSocketFactory()));
+            throw new RuntimeException(BAD_PROTOCOL_ERROR + protocol);
         }
 
         return schemeRegistry;
@@ -265,4 +319,29 @@ public class ConnectionsPoolBuilder {
                 cert_file, ca_file, port, timeout),
                 this.urlobj);
     }
+
+    /**
+     * This TrustManager used to ignore CA cert validation and should not be used unless user explicitly asks to ignore
+     * host identity validation.
+     */
+    X509TrustManager noCaTrustManager = new X509TrustManager() {
+
+        @Override
+        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
+                throws java.security.cert.CertificateException {
+            // do nothing
+        }
+
+        @Override
+        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
+                throws java.security.cert.CertificateException {
+            // do nothing
+
+        }
+
+        @Override
+        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+            return null;
+        }
+    };
 }

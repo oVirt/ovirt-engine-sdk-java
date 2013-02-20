@@ -48,7 +48,6 @@ public class HttpProxy {
     private ConnectionsPool pool;
     private List<Header> staticHeaders;
     private boolean persistentAuth = true;
-    private boolean insecure = false;
     private boolean filter = false;
     private boolean debug = false;
 
@@ -65,13 +64,11 @@ public class HttpProxy {
      * @param debug
      *            flag
      */
-    public HttpProxy(ConnectionsPool pool, boolean persistent_auth, boolean insecure,
-            boolean filter, boolean debug) {
+    public HttpProxy(ConnectionsPool pool, boolean persistent_auth, boolean filter, boolean debug) {
         super();
         this.pool = pool;
         this.staticHeaders = HttpHeaderUtils.toHeaders(STATIC_HEADERS);
         this.persistentAuth = persistent_auth;
-        this.insecure = insecure;
         this.filter = filter;
         this.debug = debug;
     }
@@ -195,21 +192,6 @@ public class HttpProxy {
      */
     public void setPersistentAuth(boolean persistentAuth) {
         this.persistentAuth = persistentAuth;
-    }
-
-    /**
-     * @return Insecure flag
-     */
-    public boolean isInsecure() {
-        return insecure;
-    }
-
-    /**
-     * @param insecure
-     *            sets Insecure flag
-     */
-    public void setInsecure(boolean insecure) {
-        this.insecure = insecure;
     }
 
     /**
