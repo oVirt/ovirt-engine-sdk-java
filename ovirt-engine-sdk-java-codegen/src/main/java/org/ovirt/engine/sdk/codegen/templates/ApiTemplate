@@ -31,7 +31,7 @@ $collectionsVariables$
      *            oVirt api username
      * @param password
      *            oVirt api password
-     *
+     * 
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -57,9 +57,9 @@ $collectionsVariables$
      *            oVirt api username
      * @param password
      *            oVirt api password
-     * @param insecure
-     *            do not throw error when accessing SSL sites without certificate
-     *
+     * @param noHostVerification
+     *            turns hostname verification off
+     * 
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -69,48 +69,14 @@ $collectionsVariables$
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, boolean insecure) throws ClientProtocolException,
-            ServerException, UnsecuredConnectionAttemptError, IOException {
-
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                                 .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                                 .insecure(insecure)
-                                 .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        initResources();
-    }
-
-    /**
-     * @param url
-     *            oVirt api url
-     * @param username
-     *            oVirt api username
-     * @param password
-     *            oVirt api password
-     * @param ca_file
-     *            CA certificate to validate the server identity
-     * @param filter
-     *            enables filtering based on user's permissions
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     * @throws UnsecuredConnectionAttemptError
-     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
-     */
-    public Api(String url, String username, String password, String ca_file, boolean filter)
+    public Api(String url, String username, String password, boolean noHostVerification)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                                   .ca_file(ca_file)
-                                   .build();
+                .noHostVerification(noHostVerification)
+                .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                                   .filter(filter)
-                                   .build();
+                .build();
         this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
     }
@@ -122,25 +88,53 @@ $collectionsVariables$
      *            oVirt api username
      * @param password
      *            oVirt api password
-     * @param key_file
-     *            user key file to validate client identity
-     * @param cert_file
-     *            user certificate file to validate client identity
-     * @param ca_file
-     *            CA certificate to validate the server identity
+     * @param noHostVerification
+     *            turns hostname verification off
+     * @param filter
+     *            enables filtering based on user's permissions
+     * 
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     */
+    public Api(String url, String username, String password, Boolean noHostVerification, Boolean filter)
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+
+        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
+                .noHostVerification(noHostVerification)
+                .build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                .filter(filter)
+                .build();
+        this.proxy = new HttpProxyBroker(httpProxy);
+        initResources();
+    }
+
+    /**
+     * @param url
+     *            oVirt api url
+     * @param username
+     *            oVirt api username
+     * @param password
+     *            oVirt api password
      * @param port
      *            oVirt api port
      * @param timeout
      *            request timeout
      * @param persistentAuth
-     *            disable persistent authetication (will be used auth. per request)
-     * @param insecure
-     *            do not throw error when accessing SSL sites without certificate
+     *            disable persistent authentication (will be used auth. per request)
+     * @param noHostVerification
+     *            turns hostname verification off
      * @param filter
      *            enables filtering based on user's permissions
      * @param debug
      *            enables debug mode
-     *
+     * 
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -150,24 +144,20 @@ $collectionsVariables$
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, String key_file,
-              String cert_file, String ca_file, Integer port, Integer timeout,
-              Boolean persistentAuth, Boolean insecure, Boolean filter, Boolean debug) throws ClientProtocolException,
-            ServerException, UnsecuredConnectionAttemptError, IOException {
+    public Api(String url, String username, String password, Integer port, Integer timeout,
+            Boolean persistentAuth, Boolean noHostVerification, Boolean filter, Boolean debug)
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                                .key_file(key_file)
-                                .cert_file(cert_file)
-                                .ca_file(ca_file)
-                                .port(port)
-                                .timeout(timeout)
-                                .build();
+                .port(port)
+                .timeout(timeout)
+                .noHostVerification(noHostVerification)
+                .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                                .persistentAuth(persistentAuth)
-                                .insecure(insecure)
-                                .filter(filter)
-                                .debug(debug)
-                                .build();
+                .persistentAuth(persistentAuth)
+                .filter(filter)
+                .debug(debug)
+                .build();
         this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
     }
@@ -213,15 +203,6 @@ $collectionsVariables$
     }
 
     /**
-     * Enable/Disable accessing SSL sites without validating host identity (default is False)
-     * 
-     * @param insecure
-     */
-    public void setInsecure(boolean insecure) {
-        this.proxy.setInsecure(insecure);
-    }
-
-    /**
      * Enable/Disable persistent authentication (default is True)
      * 
      * @param persistentAuth
@@ -235,13 +216,6 @@ $collectionsVariables$
      */
     public boolean isPersistentAuth() {
         return this.proxy.isPersistentAuth();
-    }
-
-    /**
-     * @return Insecure flag
-     */
-    public boolean isInsecure() {
-        return this.proxy.isInsecure();
     }
 
     /**
@@ -261,4 +235,13 @@ $collectionsVariables$
 $collectionsGetters$
 
 $rootMethods$
+
+    /**
+     * When SDK instance is no longer needed, shut down the connection
+     * manager/httpproxy to ensure immediate deallocation of all system
+     * resources.
+     */
+    public void shutdown() {
+        proxy.shutdown();
+    }
 }
