@@ -46,6 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="allow_override" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}certificate" minOccurs="0"/>
  *         &lt;element name="smartcard_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="keyboard_layout" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -63,7 +64,8 @@ import javax.xml.bind.annotation.XmlType;
     "monitors",
     "allowOverride",
     "certificate",
-    "smartcardEnabled"
+    "smartcardEnabled",
+    "keyboardLayout"
 })
 public class Display {
 
@@ -80,6 +82,8 @@ public class Display {
     protected Certificate certificate;
     @XmlElement(name = "smartcard_enabled")
     protected Boolean smartcardEnabled;
+    @XmlElement(name = "keyboard_layout")
+    protected String keyboardLayout;
 
     /**
      * Gets the value of the type property.
@@ -303,6 +307,34 @@ public class Display {
 
     public boolean isSetSmartcardEnabled() {
         return (this.smartcardEnabled!= null);
+    }
+
+    /**
+     * Gets the value of the keyboardLayout property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getKeyboardLayout() {
+        return keyboardLayout;
+    }
+
+    /**
+     * Sets the value of the keyboardLayout property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setKeyboardLayout(String value) {
+        this.keyboardLayout = value;
+    }
+
+    public boolean isSetKeyboardLayout() {
+        return (this.keyboardLayout!= null);
     }
 
 }

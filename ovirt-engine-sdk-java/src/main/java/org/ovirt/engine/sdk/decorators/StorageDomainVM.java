@@ -44,6 +44,7 @@ public class StorageDomainVM extends
 
     private HttpProxyBroker proxy;
 
+    private StorageDomainVMDisks storageDomainVMDisks;
 
 
     /**
@@ -60,6 +61,18 @@ public class StorageDomainVM extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the StorageDomainVMDisks property.
+     *
+     * @return
+     *     {@link StorageDomainVMDisks }
+     */
+    public synchronized StorageDomainVMDisks getDisks() {
+        if (this.storageDomainVMDisks == null) {
+            this.storageDomainVMDisks = new StorageDomainVMDisks(proxy, this);
+        }
+        return storageDomainVMDisks;
+    }
 
 
     /**

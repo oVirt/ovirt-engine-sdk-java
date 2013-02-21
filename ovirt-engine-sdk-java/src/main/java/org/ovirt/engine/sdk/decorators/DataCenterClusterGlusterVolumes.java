@@ -39,31 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>DiskStatistics providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Statistics }.
+ * <p>DataCenterClusterGlusterVolumes providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.GlusterVolumes }.
  */
 @SuppressWarnings("unused")
-public class DiskStatistics extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
-                            org.ovirt.engine.sdk.entities.Statistics,
-                            DiskStatistic> {
+public class DataCenterClusterGlusterVolumes extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.GlusterVolume,
+                            org.ovirt.engine.sdk.entities.GlusterVolumes,
+                            DataCenterClusterGlusterVolume> {
 
-    private Disk parent;
+    private DataCenterCluster parent;
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent Disk
+     * @param parent DataCenterCluster
      */
-    public DiskStatistics(HttpProxyBroker proxy, Disk parent) {
-        super(proxy, "statistics");
+    public DataCenterClusterGlusterVolumes(HttpProxyBroker proxy, DataCenterCluster parent) {
+        super(proxy, "glustervolumes");
         this.parent = parent;
     }
 
     /**
-     * Lists DiskStatistic objects.
+     * Lists DataCenterClusterGlusterVolume objects.
      *
      * @return
-     *     List of {@link DiskStatistic }
+     *     List of {@link DataCenterClusterGlusterVolume }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +73,17 @@ public class DiskStatistics extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<DiskStatistic> list() throws ClientProtocolException,
+    public List<DataCenterClusterGlusterVolume> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, DiskStatistic.class);
+        return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class, DataCenterClusterGlusterVolume.class);
     }
 
     /**
-     * Fetches DiskStatistic object by id.
+     * Fetches DataCenterClusterGlusterVolume object by id.
      * 
      * @return
-     *     {@link DiskStatistic }
+     *     {@link DataCenterClusterGlusterVolume }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,22 +93,18 @@ public class DiskStatistics extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public DiskStatistic get(UUID id) throws ClientProtocolException,
+    public DataCenterClusterGlusterVolume get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, DiskStatistic.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterVolume.class, DataCenterClusterGlusterVolume.class);
     }
 
     /**
-     * Lists DiskStatistic objects.
+     * Adds GlusterVolume object.
      *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link DiskStatistic }
+     * @param glustervolume {@link org.ovirt.engine.sdk.entities.GlusterVolume}
+     * @return
+     *     {@link DataCenterClusterGlusterVolume }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -117,18 +113,19 @@ public class DiskStatistics extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<DiskStatistic> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
+    public DataCenterClusterGlusterVolume add(org.ovirt.engine.sdk.entities.GlusterVolume glustervolume) throws 
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
 
-        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
-                .add("max", max, UrlParameterType.MATRIX)
+        url = new UrlBuilder(url)
                 .build();
 
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class,
-                DiskStatistic.class, headers);
+        return getProxy().add(url, glustervolume,
+                org.ovirt.engine.sdk.entities.GlusterVolume.class,
+                DataCenterClusterGlusterVolume.class, headers);
     }
 
 }

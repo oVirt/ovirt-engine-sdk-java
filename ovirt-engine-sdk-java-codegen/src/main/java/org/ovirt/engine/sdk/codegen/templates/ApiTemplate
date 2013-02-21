@@ -31,7 +31,7 @@ $collectionsVariables$
      *            oVirt api username
      * @param password
      *            oVirt api password
-     * 
+     *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -59,7 +59,7 @@ $collectionsVariables$
      *            oVirt api password
      * @param noHostVerification
      *            turns hostname verification off
-     * 
+     *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -92,7 +92,7 @@ $collectionsVariables$
      *            turns hostname verification off
      * @param filter
      *            enables filtering based on user's permissions
-     * 
+     *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -134,7 +134,7 @@ $collectionsVariables$
      *            enables filtering based on user's permissions
      * @param debug
      *            enables debug mode
-     * 
+     *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
      * @throws ServerException
@@ -232,10 +232,6 @@ $collectionsVariables$
         return this.proxy.isDebug();
     }
 
-$collectionsGetters$
-
-$rootMethods$
-
     /**
      * When SDK instance is no longer needed, shut down the connection
      * manager/httpproxy to ensure immediate deallocation of all system
@@ -244,4 +240,8 @@ $rootMethods$
     public void shutdown() {
         proxy.shutdown();
     }
+
+$collectionsGetters$
+
+$rootMethods$
 }

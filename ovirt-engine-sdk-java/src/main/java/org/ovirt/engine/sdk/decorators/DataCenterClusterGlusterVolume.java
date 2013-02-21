@@ -35,24 +35,22 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>VMSnapshot providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Snapshot }. 
+ * <p>DataCenterClusterGlusterVolume providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.GlusterVolume }. 
  */
 @SuppressWarnings("unused")
-public class VMSnapshot extends
-        org.ovirt.engine.sdk.entities.Snapshot {
+public class DataCenterClusterGlusterVolume extends
+        org.ovirt.engine.sdk.entities.GlusterVolume {
 
     private HttpProxyBroker proxy;
 
-    private VMSnapshotNics vMSnapshotNics;
-    private VMSnapshotDisks vMSnapshotDisks;
-    private VMSnapshotCdRoms vMSnapshotCdRoms;
+    private DataCenterClusterGlusterVolumeGlusterBricks dataCenterClusterGlusterVolumeGlusterBricks;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public VMSnapshot(HttpProxyBroker proxy) {
+    public DataCenterClusterGlusterVolume(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -64,45 +62,21 @@ public class VMSnapshot extends
     }
 
     /**
-     * Gets the value of the VMSnapshotNics property.
+     * Gets the value of the DataCenterClusterGlusterVolumeGlusterBricks property.
      *
      * @return
-     *     {@link VMSnapshotNics }
+     *     {@link DataCenterClusterGlusterVolumeGlusterBricks }
      */
-    public synchronized VMSnapshotNics getNics() {
-        if (this.vMSnapshotNics == null) {
-            this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
+    public synchronized DataCenterClusterGlusterVolumeGlusterBricks getGlusterBricks() {
+        if (this.dataCenterClusterGlusterVolumeGlusterBricks == null) {
+            this.dataCenterClusterGlusterVolumeGlusterBricks = new DataCenterClusterGlusterVolumeGlusterBricks(proxy, this);
         }
-        return vMSnapshotNics;
-    }
-    /**
-     * Gets the value of the VMSnapshotDisks property.
-     *
-     * @return
-     *     {@link VMSnapshotDisks }
-     */
-    public synchronized VMSnapshotDisks getDisks() {
-        if (this.vMSnapshotDisks == null) {
-            this.vMSnapshotDisks = new VMSnapshotDisks(proxy, this);
-        }
-        return vMSnapshotDisks;
-    }
-    /**
-     * Gets the value of the VMSnapshotCdRoms property.
-     *
-     * @return
-     *     {@link VMSnapshotCdRoms }
-     */
-    public synchronized VMSnapshotCdRoms getCdRoms() {
-        if (this.vMSnapshotCdRoms == null) {
-            this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
-        }
-        return vMSnapshotCdRoms;
+        return dataCenterClusterGlusterVolumeGlusterBricks;
     }
 
 
     /**
-     * Performs preview action.
+     * Performs stop action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
@@ -115,9 +89,9 @@ public class VMSnapshot extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action preview(Action action) throws ClientProtocolException,
+    public Action stop(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/preview";
+        String url = this.getHref() + "/stop";
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
@@ -128,39 +102,7 @@ public class VMSnapshot extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs preview action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action preview(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/preview";
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs undo action.
+     * Performs start action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
@@ -173,9 +115,9 @@ public class VMSnapshot extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action undo(Action action) throws ClientProtocolException,
+    public Action start(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/undo";
+        String url = this.getHref() + "/start";
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
@@ -186,39 +128,7 @@ public class VMSnapshot extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs undo action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action undo(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/undo";
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs commit action.
+     * Performs resetalloptions action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
@@ -231,101 +141,11 @@ public class VMSnapshot extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action commit(Action action) throws ClientProtocolException,
+    public Action resetalloptions(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/commit";
+        String url = this.getHref() + "/resetalloptions";
 
         List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs commit action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action commit(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/commit";
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs restore action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action restore(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/restore";
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs restore action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action restore(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/restore";
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
                 .build();
 
         url = new UrlBuilder(url)
@@ -359,19 +179,11 @@ public class VMSnapshot extends
         return getProxy().delete(url, Response.class, headers);
     }
     /**
-     * Deletes object.
+     * Performs resetoption action.
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
-     *     {@link Response }
+     *     {@link Action }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -380,19 +192,69 @@ public class VMSnapshot extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+    public Action resetoption(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
+        String url = this.getHref() + "/resetoption";
 
         List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
                 .build();
 
         url = new UrlBuilder(url)
-                .add("async", async, UrlParameterType.MATRIX)
                 .build();
 
-        return getProxy().delete(url, Response.class, headers);
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs setoption action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action setoption(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/setoption";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs rebalance action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action rebalance(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/rebalance";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

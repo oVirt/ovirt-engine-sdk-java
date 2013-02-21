@@ -44,6 +44,7 @@ public class StorageDomainTemplate extends
 
     private HttpProxyBroker proxy;
 
+    private StorageDomainTemplateDisks storageDomainTemplateDisks;
 
 
     /**
@@ -60,6 +61,18 @@ public class StorageDomainTemplate extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the StorageDomainTemplateDisks property.
+     *
+     * @return
+     *     {@link StorageDomainTemplateDisks }
+     */
+    public synchronized StorageDomainTemplateDisks getDisks() {
+        if (this.storageDomainTemplateDisks == null) {
+            this.storageDomainTemplateDisks = new StorageDomainTemplateDisks(proxy, this);
+        }
+        return storageDomainTemplateDisks;
+    }
 
 
     /**

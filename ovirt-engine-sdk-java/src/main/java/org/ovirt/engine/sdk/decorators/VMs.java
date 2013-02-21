@@ -156,6 +156,7 @@ public class VMs extends
      *    [vm.display.type]
      *    [vm.display.allow_override]
      *    [vm.display.smartcard_enabled]
+     *    [vm.display.keyboard_layout]
      *    [vm.os.cmdline]
      *    [vm.cpu.topology.cores]
      *    [vm.memory]
@@ -171,6 +172,7 @@ public class VMs extends
      *    [vm.origin]
      *    [vm.os.kernel]
      *    [vm.disks.clone]
+     *    [vm.tunnel_migration]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
      *    </pre>
@@ -220,6 +222,7 @@ public class VMs extends
      *    [vm.display.type]
      *    [vm.display.allow_override]
      *    [vm.display.smartcard_enabled]
+     *    [vm.display.keyboard_layout]
      *    [vm.os.cmdline]
      *    [vm.cpu.topology.cores]
      *    [vm.memory]
@@ -235,6 +238,7 @@ public class VMs extends
      *    [vm.origin]
      *    [vm.os.kernel]
      *    [vm.disks.clone]
+     *    [vm.tunnel_migration]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
      *    </pre>

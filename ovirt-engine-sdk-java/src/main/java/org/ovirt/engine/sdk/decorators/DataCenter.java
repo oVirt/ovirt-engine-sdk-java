@@ -44,6 +44,7 @@ public class DataCenter extends
 
     private HttpProxyBroker proxy;
 
+    private DataCenterClusters dataCenterClusters;
     private DataCenterPermissions dataCenterPermissions;
     private DataCenterStorageDomains dataCenterStorageDomains;
     private DataCenterQuotas dataCenterQuotas;
@@ -63,6 +64,18 @@ public class DataCenter extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the DataCenterClusters property.
+     *
+     * @return
+     *     {@link DataCenterClusters }
+     */
+    public synchronized DataCenterClusters getClusters() {
+        if (this.dataCenterClusters == null) {
+            this.dataCenterClusters = new DataCenterClusters(proxy, this);
+        }
+        return dataCenterClusters;
+    }
     /**
      * Gets the value of the DataCenterPermissions property.
      *

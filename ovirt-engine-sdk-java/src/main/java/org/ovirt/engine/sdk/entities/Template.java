@@ -56,6 +56,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
+ *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -82,7 +83,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "deleteProtected",
     "timezone",
     "domain",
-    "usb"
+    "usb",
+    "tunnelMigration"
 })
 public class Template
     extends BaseResource
@@ -110,6 +112,8 @@ public class Template
     protected String timezone;
     protected Domain domain;
     protected Usb usb;
+    @XmlElement(name = "tunnel_migration")
+    protected Boolean tunnelMigration;
 
     /**
      * Gets the value of the vm property.
@@ -585,6 +589,34 @@ public class Template
 
     public boolean isSetUsb() {
         return (this.usb!= null);
+    }
+
+    /**
+     * Gets the value of the tunnelMigration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isTunnelMigration() {
+        return tunnelMigration;
+    }
+
+    /**
+     * Sets the value of the tunnelMigration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setTunnelMigration(Boolean value) {
+        this.tunnelMigration = value;
+    }
+
+    public boolean isSetTunnelMigration() {
+        return (this.tunnelMigration!= null);
     }
 
 }

@@ -39,31 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>DiskStatistics providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Statistics }.
+ * <p>StorageDomainVMDisks providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Disks }.
  */
 @SuppressWarnings("unused")
-public class DiskStatistics extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
-                            org.ovirt.engine.sdk.entities.Statistics,
-                            DiskStatistic> {
+public class StorageDomainVMDisks extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Disk,
+                            org.ovirt.engine.sdk.entities.Disks,
+                            StorageDomainVMDisk> {
 
-    private Disk parent;
+    private StorageDomainVM parent;
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent Disk
+     * @param parent StorageDomainVM
      */
-    public DiskStatistics(HttpProxyBroker proxy, Disk parent) {
-        super(proxy, "statistics");
+    public StorageDomainVMDisks(HttpProxyBroker proxy, StorageDomainVM parent) {
+        super(proxy, "disks");
         this.parent = parent;
     }
 
     /**
-     * Lists DiskStatistic objects.
+     * Lists StorageDomainVMDisk objects.
      *
      * @return
-     *     List of {@link DiskStatistic }
+     *     List of {@link StorageDomainVMDisk }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +73,17 @@ public class DiskStatistics extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<DiskStatistic> list() throws ClientProtocolException,
+    public List<StorageDomainVMDisk> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, DiskStatistic.class);
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class, StorageDomainVMDisk.class);
     }
 
     /**
-     * Fetches DiskStatistic object by id.
+     * Fetches StorageDomainVMDisk object by id.
      * 
      * @return
-     *     {@link DiskStatistic }
+     *     {@link StorageDomainVMDisk }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,43 +93,12 @@ public class DiskStatistics extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public DiskStatistic get(UUID id) throws ClientProtocolException,
+    public StorageDomainVMDisk get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, DiskStatistic.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, StorageDomainVMDisk.class);
     }
 
-    /**
-     * Lists DiskStatistic objects.
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link DiskStatistic }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<DiskStatistic> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
-                .add("max", max, UrlParameterType.MATRIX)
-                .build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Statistics.class,
-                DiskStatistic.class, headers);
-    }
 
 }
 

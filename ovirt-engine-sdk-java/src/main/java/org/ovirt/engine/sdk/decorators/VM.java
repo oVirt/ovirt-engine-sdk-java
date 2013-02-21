@@ -243,6 +243,7 @@ public class VM extends
      *    [vm.display.type]
      *    [vm.display.allow_override]
      *    [vm.display.smartcard_enabled]
+     *    [vm.display.keyboard_layout]
      *    [vm.os.cmdline]
      *    [vm.cpu.topology.cores]
      *    [vm.memory]
@@ -257,6 +258,7 @@ public class VM extends
      *    [vm.placement_policy.host.id|name]
      *    [vm.origin]
      *    [vm.os.kernel]
+     *    [vm.tunnel_migration]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
      *    </pre>

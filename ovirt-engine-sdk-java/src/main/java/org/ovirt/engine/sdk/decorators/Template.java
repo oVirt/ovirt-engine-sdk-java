@@ -142,9 +142,11 @@ public class Template extends
      *    [template.display.monitors]
      *    [template.display.allow_override]
      *    [template.display.smartcard_enabled]
+     *    [template.display.keyboard_layout]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
+     *    [template.tunnel_migration]
      *    </pre>
      *
      * @return

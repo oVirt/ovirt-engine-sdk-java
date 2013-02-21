@@ -164,9 +164,11 @@ public class Templates extends
      *    [template.display.monitors]
      *    [template.display.allow_override]
      *    [template.display.smartcard_enabled]
+     *    [template.display.keyboard_layout]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
+     *    [template.tunnel_migration]
      *    [template.vm.disks.disk]
      *    [template.cpu.cpu_tune.vcpu_pin]
      *    </pre>
@@ -224,9 +226,11 @@ public class Templates extends
      *    [template.display.monitors]
      *    [template.display.allow_override]
      *    [template.display.smartcard_enabled]
+     *    [template.display.keyboard_layout]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
+     *    [template.tunnel_migration]
      *    [template.vm.disks.disk]
      *    [template.cpu.cpu_tune.vcpu_pin]
      *    </pre>

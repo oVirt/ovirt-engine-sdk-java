@@ -39,27 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>Clusters providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Clusters } .
+ * <p>DataCenterClusterPermissions providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permissions }.
  */
 @SuppressWarnings("unused")
-public class Clusters extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Cluster, 
-                            org.ovirt.engine.sdk.entities.Clusters, 
-                            Cluster> {
+public class DataCenterClusterPermissions extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
+                            org.ovirt.engine.sdk.entities.Permissions,
+                            DataCenterClusterPermission> {
+
+    private DataCenterCluster parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent DataCenterCluster
      */
-    public Clusters(HttpProxyBroker proxy) {
-        super(proxy, "clusters");
+    public DataCenterClusterPermissions(HttpProxyBroker proxy, DataCenterCluster parent) {
+        super(proxy, "permissions");
+        this.parent = parent;
     }
 
     /**
-     * Lists Cluster objects.
+     * Lists DataCenterClusterPermission objects.
      *
      * @return
-     *     List of {@link Cluster }
+     *     List of {@link DataCenterClusterPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -69,16 +73,17 @@ public class Clusters extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<Cluster> list() throws ClientProtocolException,
+    public List<DataCenterClusterPermission> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Clusters.class, Cluster.class);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, DataCenterClusterPermission.class);
     }
 
     /**
-     * Fetches Cluster object by id.
-     *
-     * @return {@link Cluster }
+     * Fetches DataCenterClusterPermission object by id.
+     * 
+     * @return
+     *     {@link DataCenterClusterPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -88,30 +93,22 @@ public class Clusters extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public Cluster get(UUID id) throws ClientProtocolException,
+    public DataCenterClusterPermission get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, DataCenterClusterPermission.class);
     }
 
     /**
-     * Lists Cluster objects.
+     * Lists DataCenterClusterPermission objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
      *
      *
-     * @return List of {@link Cluster }
+     * @return List of {@link DataCenterClusterPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -120,47 +117,35 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Cluster> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+    public List<DataCenterClusterPermission> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
 
-        String url = new UrlBuilder(SLASH + getName())
-                .add("search", query, UrlParameterType.QUERY)
-                .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
+        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
 
-        return list(url, org.ovirt.engine.sdk.entities.Clusters.class,
-                Cluster.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                DataCenterClusterPermission.class, headers);
     }
     /**
-     * Adds Cluster object.
+     * Adds Permission object.
      *
-     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
-     *    cluster.data_center.id|name
-     *    cluster.name
-     *    cluster.version.major
-     *    cluster.version.minor
-     *    cluster.cpu.id
-     *    [cluster.description]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
+     *    Overload 1:
+     *      permission.user.id
+     *      permission.role.id
+     *
+     *    Overload 2:
+     *      permission.role.id
+     *      permission.group.id
      *    </pre>
      *
      * @return
-     *     {@link Cluster }
+     *     {@link DataCenterClusterPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -169,9 +154,9 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws 
+    public DataCenterClusterPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
             ClientProtocolException, ServerException, IOException {
-        String url = SLASH + getName();
+        String url = this.parent.getHref() + SLASH + getName();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
@@ -179,32 +164,22 @@ public class Clusters extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, cluster,
-                org.ovirt.engine.sdk.entities.Cluster.class,
-                Cluster.class, headers);
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                DataCenterClusterPermission.class, headers);
     }
     /**
-     * Adds Cluster object.
+     * Adds Permission object.
      *
-     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
-     *    cluster.data_center.id|name
-     *    cluster.name
-     *    cluster.version.major
-     *    cluster.version.minor
-     *    cluster.cpu.id
-     *    [cluster.description]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
+     *    Overload 1:
+     *      permission.user.id
+     *      permission.role.id
+     *
+     *    Overload 2:
+     *      permission.role.id
+     *      permission.group.id
      *    </pre>
      *
      * @param expect
@@ -217,7 +192,7 @@ public class Clusters extends
      *    </pre>
      *
      * @return
-     *     {@link Cluster }
+     *     {@link DataCenterClusterPermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -226,9 +201,9 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect, String correlationId) throws 
+    public DataCenterClusterPermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect, String correlationId) throws 
             ClientProtocolException, ServerException, IOException {
-        String url = SLASH + getName();
+        String url = this.parent.getHref() + SLASH + getName();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .add("Expect", expect)
@@ -238,9 +213,9 @@ public class Clusters extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, cluster,
-                org.ovirt.engine.sdk.entities.Cluster.class,
-                Cluster.class, headers);
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                DataCenterClusterPermission.class, headers);
     }
 
 }

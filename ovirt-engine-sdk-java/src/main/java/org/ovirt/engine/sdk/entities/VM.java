@@ -70,6 +70,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="guest_info" type="{}GuestInfo" minOccurs="0"/>
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
+ *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}vmpool" minOccurs="0"/>
  *         &lt;element ref="{}cdroms" minOccurs="0"/>
  *         &lt;element ref="{}floppies" minOccurs="0"/>
@@ -114,6 +115,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "guestInfo",
     "quota",
     "usb",
+    "tunnelMigration",
     "vmPool",
     "cdroms",
     "floppies",
@@ -167,6 +169,8 @@ public class VM
     protected GuestInfo guestInfo;
     protected Quota quota;
     protected Usb usb;
+    @XmlElement(name = "tunnel_migration")
+    protected Boolean tunnelMigration;
     @XmlElement(name = "vmpool")
     protected VmPool vmPool;
     protected CdRoms cdroms;
@@ -1012,6 +1016,34 @@ public class VM
 
     public boolean isSetUsb() {
         return (this.usb!= null);
+    }
+
+    /**
+     * Gets the value of the tunnelMigration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isTunnelMigration() {
+        return tunnelMigration;
+    }
+
+    /**
+     * Sets the value of the tunnelMigration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setTunnelMigration(Boolean value) {
+        this.tunnelMigration = value;
+    }
+
+    public boolean isSetTunnelMigration() {
+        return (this.tunnelMigration!= null);
     }
 
     /**

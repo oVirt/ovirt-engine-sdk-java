@@ -35,24 +35,24 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>Cluster providing relation and functional services
+ * <p>DataCenterCluster providing relation and functional services
  * <p>to {@link org.ovirt.engine.sdk.entities.Cluster }. 
  */
 @SuppressWarnings("unused")
-public class Cluster extends
+public class DataCenterCluster extends
         org.ovirt.engine.sdk.entities.Cluster {
 
     private HttpProxyBroker proxy;
 
-    private ClusterGlusterVolumes clusterGlusterVolumes;
-    private ClusterNetworks clusterNetworks;
-    private ClusterPermissions clusterPermissions;
+    private DataCenterClusterPermissions dataCenterClusterPermissions;
+    private DataCenterClusterGlusterVolumes dataCenterClusterGlusterVolumes;
+    private DataCenterClusterNetworks dataCenterClusterNetworks;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public Cluster(HttpProxyBroker proxy) {
+    public DataCenterCluster(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -64,45 +64,45 @@ public class Cluster extends
     }
 
     /**
-     * Gets the value of the ClusterGlusterVolumes property.
+     * Gets the value of the DataCenterClusterPermissions property.
      *
      * @return
-     *     {@link ClusterGlusterVolumes }
+     *     {@link DataCenterClusterPermissions }
      */
-    public synchronized ClusterGlusterVolumes getGlusterVolumes() {
-        if (this.clusterGlusterVolumes == null) {
-            this.clusterGlusterVolumes = new ClusterGlusterVolumes(proxy, this);
+    public synchronized DataCenterClusterPermissions getPermissions() {
+        if (this.dataCenterClusterPermissions == null) {
+            this.dataCenterClusterPermissions = new DataCenterClusterPermissions(proxy, this);
         }
-        return clusterGlusterVolumes;
+        return dataCenterClusterPermissions;
     }
     /**
-     * Gets the value of the ClusterNetworks property.
+     * Gets the value of the DataCenterClusterGlusterVolumes property.
      *
      * @return
-     *     {@link ClusterNetworks }
+     *     {@link DataCenterClusterGlusterVolumes }
      */
-    public synchronized ClusterNetworks getNetworks() {
-        if (this.clusterNetworks == null) {
-            this.clusterNetworks = new ClusterNetworks(proxy, this);
+    public synchronized DataCenterClusterGlusterVolumes getGlusterVolumes() {
+        if (this.dataCenterClusterGlusterVolumes == null) {
+            this.dataCenterClusterGlusterVolumes = new DataCenterClusterGlusterVolumes(proxy, this);
         }
-        return clusterNetworks;
+        return dataCenterClusterGlusterVolumes;
     }
     /**
-     * Gets the value of the ClusterPermissions property.
+     * Gets the value of the DataCenterClusterNetworks property.
      *
      * @return
-     *     {@link ClusterPermissions }
+     *     {@link DataCenterClusterNetworks }
      */
-    public synchronized ClusterPermissions getPermissions() {
-        if (this.clusterPermissions == null) {
-            this.clusterPermissions = new ClusterPermissions(proxy, this);
+    public synchronized DataCenterClusterNetworks getNetworks() {
+        if (this.dataCenterClusterNetworks == null) {
+            this.dataCenterClusterNetworks = new DataCenterClusterNetworks(proxy, this);
         }
-        return clusterPermissions;
+        return dataCenterClusterNetworks;
     }
 
 
     /**
-     * Updates Cluster object.
+     * Updates DataCenterCluster object.
      *
      * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
      *    <pre>
@@ -125,7 +125,7 @@ public class Cluster extends
      *    </pre>
      *
      * @return
-     *     {@link Cluster }
+     *     {@link DataCenterCluster }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -134,10 +134,10 @@ public class Cluster extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster update() throws ClientProtocolException,
+    public DataCenterCluster update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Cluster.class, DataCenterCluster.class);
     }
     /**
      * Deletes object.

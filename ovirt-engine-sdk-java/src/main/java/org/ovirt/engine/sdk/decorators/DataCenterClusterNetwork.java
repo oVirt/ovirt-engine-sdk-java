@@ -35,24 +35,21 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>Cluster providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Cluster }. 
+ * <p>DataCenterClusterNetwork providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Network }. 
  */
 @SuppressWarnings("unused")
-public class Cluster extends
-        org.ovirt.engine.sdk.entities.Cluster {
+public class DataCenterClusterNetwork extends
+        org.ovirt.engine.sdk.entities.Network {
 
     private HttpProxyBroker proxy;
 
-    private ClusterGlusterVolumes clusterGlusterVolumes;
-    private ClusterNetworks clusterNetworks;
-    private ClusterPermissions clusterPermissions;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public Cluster(HttpProxyBroker proxy) {
+    public DataCenterClusterNetwork(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -63,69 +60,19 @@ public class Cluster extends
         return proxy;
     }
 
-    /**
-     * Gets the value of the ClusterGlusterVolumes property.
-     *
-     * @return
-     *     {@link ClusterGlusterVolumes }
-     */
-    public synchronized ClusterGlusterVolumes getGlusterVolumes() {
-        if (this.clusterGlusterVolumes == null) {
-            this.clusterGlusterVolumes = new ClusterGlusterVolumes(proxy, this);
-        }
-        return clusterGlusterVolumes;
-    }
-    /**
-     * Gets the value of the ClusterNetworks property.
-     *
-     * @return
-     *     {@link ClusterNetworks }
-     */
-    public synchronized ClusterNetworks getNetworks() {
-        if (this.clusterNetworks == null) {
-            this.clusterNetworks = new ClusterNetworks(proxy, this);
-        }
-        return clusterNetworks;
-    }
-    /**
-     * Gets the value of the ClusterPermissions property.
-     *
-     * @return
-     *     {@link ClusterPermissions }
-     */
-    public synchronized ClusterPermissions getPermissions() {
-        if (this.clusterPermissions == null) {
-            this.clusterPermissions = new ClusterPermissions(proxy, this);
-        }
-        return clusterPermissions;
-    }
 
 
     /**
-     * Updates Cluster object.
+     * Updates DataCenterClusterNetwork object.
      *
-     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
-     *    [cluster.name]
-     *    [cluster.description]
-     *    [cluster.cpu.id]
-     *    [cluster.version.major]
-     *    [cluster.version.minor]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
+     *    [network.display]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @return
-     *     {@link Cluster }
+     *     {@link DataCenterClusterNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -134,10 +81,10 @@ public class Cluster extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster update() throws ClientProtocolException,
+    public DataCenterClusterNetwork update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Network.class, DataCenterClusterNetwork.class);
     }
     /**
      * Deletes object.

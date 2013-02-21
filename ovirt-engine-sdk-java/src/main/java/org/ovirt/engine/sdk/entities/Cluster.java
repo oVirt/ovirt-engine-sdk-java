@@ -47,6 +47,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="virt_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="gluster_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="threads_as_cores" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -66,7 +67,8 @@ import javax.xml.bind.annotation.XmlType;
     "errorHandling",
     "virtService",
     "glusterService",
-    "threadsAsCores"
+    "threadsAsCores",
+    "tunnelMigration"
 })
 public class Cluster
     extends BaseResource
@@ -90,6 +92,8 @@ public class Cluster
     protected Boolean glusterService;
     @XmlElement(name = "threads_as_cores")
     protected Boolean threadsAsCores;
+    @XmlElement(name = "tunnel_migration")
+    protected Boolean tunnelMigration;
 
     /**
      * Gets the value of the cpu property.
@@ -369,6 +373,34 @@ public class Cluster
 
     public boolean isSetThreadsAsCores() {
         return (this.threadsAsCores!= null);
+    }
+
+    /**
+     * Gets the value of the tunnelMigration property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isTunnelMigration() {
+        return tunnelMigration;
+    }
+
+    /**
+     * Sets the value of the tunnelMigration property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setTunnelMigration(Boolean value) {
+        this.tunnelMigration = value;
+    }
+
+    public boolean isSetTunnelMigration() {
+        return (this.tunnelMigration!= null);
     }
 
 }

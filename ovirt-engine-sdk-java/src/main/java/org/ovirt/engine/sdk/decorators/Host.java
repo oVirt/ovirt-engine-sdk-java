@@ -260,7 +260,7 @@ public class Host extends
      *    [host.address]
      *    [host.root_password]
      *    [host.display.address]
-     *    [host.cluster.id]
+     *    [host.cluster.id|name]
      *    [host.port]
      *    [host.storage_manager.priority]
      *    [host.power_management.type]
