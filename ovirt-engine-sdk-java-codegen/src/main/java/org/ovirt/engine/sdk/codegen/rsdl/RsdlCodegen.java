@@ -103,7 +103,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String[] COLLECTION2ENTITY_EXCEPTIONS = new String[] { "capabilities", "storage",
             "versioncaps" };
     private static final String[] RETURN_BODY_EXCEPTIONS = new String[] { "Response", "Responses" };
-    private static final String[] ACTION_NAME_EXCEPTIONS = new String[] { "import" };
+    private static final String[] ACTION_NAME_EXCEPTIONS = new String[] { "import", "export" };
 
     public RsdlCodegen(HttpProxyBroker httpProxy) {
         super(getDecoratorsPath());

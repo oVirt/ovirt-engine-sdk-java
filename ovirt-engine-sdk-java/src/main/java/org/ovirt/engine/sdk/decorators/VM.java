@@ -363,7 +363,7 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs export action.
+     * Performs exportVm action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -384,7 +384,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action export(Action action) throws ClientProtocolException,
+    public Action exportVm(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 
@@ -397,7 +397,7 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs export action.
+     * Performs exportVm action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -423,7 +423,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action export(Action action, String correlationId) throws ClientProtocolException,
+    public Action exportVm(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 

@@ -165,7 +165,7 @@ public class Template extends
         return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Template.class, Template.class);
     }
     /**
-     * Performs export action.
+     * Performs exportTemplate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -185,7 +185,7 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action export(Action action) throws ClientProtocolException,
+    public Action exportTemplate(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 
@@ -198,7 +198,7 @@ public class Template extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs export action.
+     * Performs exportTemplate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -223,7 +223,7 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action export(Action action, String correlationId) throws ClientProtocolException,
+    public Action exportTemplate(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 
