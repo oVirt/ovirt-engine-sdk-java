@@ -47,6 +47,8 @@ public class UrlHelper {
         if (path.startsWith(this.root)) {
             return this.effectiveUri + path;
         }
+        if (this.root.startsWith(SLASH))
+            return this.effectiveUri + this.root + path;
         return this.effectiveUri + SLASH + this.root + path;
     }
 
