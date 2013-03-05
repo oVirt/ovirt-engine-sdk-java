@@ -39,27 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>Hosts providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Hosts } .
+ * <p>DataCenterStorageDomainDisks providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Disks }.
  */
 @SuppressWarnings("unused")
-public class Hosts extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Host, 
-                            org.ovirt.engine.sdk.entities.Hosts, 
-                            Host> {
+public class DataCenterStorageDomainDisks extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Disk,
+                            org.ovirt.engine.sdk.entities.Disks,
+                            DataCenterStorageDomainDisk> {
+
+    private DataCenterStorageDomain parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent DataCenterStorageDomain
      */
-    public Hosts(HttpProxyBroker proxy) {
-        super(proxy, "hosts");
+    public DataCenterStorageDomainDisks(HttpProxyBroker proxy, DataCenterStorageDomain parent) {
+        super(proxy, "disks");
+        this.parent = parent;
     }
 
     /**
-     * Lists Host objects.
+     * Lists DataCenterStorageDomainDisk objects.
      *
      * @return
-     *     List of {@link Host }
+     *     List of {@link DataCenterStorageDomainDisk }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -69,16 +73,17 @@ public class Hosts extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<Host> list() throws ClientProtocolException,
+    public List<DataCenterStorageDomainDisk> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Hosts.class, Host.class);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class, DataCenterStorageDomainDisk.class);
     }
 
     /**
-     * Fetches Host object by id.
-     *
-     * @return {@link Host }
+     * Fetches DataCenterStorageDomainDisk object by id.
+     * 
+     * @return
+     *     {@link DataCenterStorageDomainDisk }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -88,18 +93,18 @@ public class Hosts extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public Host get(UUID id) throws ClientProtocolException,
+    public DataCenterStorageDomainDisk get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Host.class, Host.class);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, DataCenterStorageDomainDisk.class);
     }
 
     /**
-     * Lists Host objects.
+     * Lists DataCenterStorageDomainDisk objects.
      *
      * @param query
      *    <pre>
-     *    [search query]
+     *    [query]
      *    </pre>
      * @param caseSensitive
      *    <pre>
@@ -109,9 +114,13 @@ public class Hosts extends
      *    <pre>
      *    [max results]
      *    </pre>
+     * @param unregistered
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      *
-     * @return List of {@link Host }
+     * @return List of {@link DataCenterStorageDomainDisk }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -120,46 +129,55 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Host> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+    public List<DataCenterStorageDomainDisk> list(String query, Boolean caseSensitive, Integer max, Boolean unregistered) throws ClientProtocolException,
             ServerException, IOException {
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
 
-        String url = new UrlBuilder(SLASH + getName())
+        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("search", query, UrlParameterType.QUERY)
                 .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
                 .add("max", max, UrlParameterType.MATRIX)
+                .add("unregistered", unregistered, UrlParameterType.MATRIX)
                 .build();
 
-        return list(url, org.ovirt.engine.sdk.entities.Hosts.class,
-                Host.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
+                DataCenterStorageDomainDisk.class, headers);
     }
     /**
-     * Adds Host object.
+     * Adds Disk object.
      *
-     * @param host {@link org.ovirt.engine.sdk.entities.Host}
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
-     *    host.name
-     *    host.address
-     *    host.root_password
-     *    host.cluster.id|name
-     *    [host.port]
-     *    [host.display.address]
-     *    [host.storage_manager.priority]
-     *    [host.power_management.type]
-     *    [host.power_management.enabled]
-     *    [host.power_management.address]
-     *    [host.power_management.user_name]
-     *    [host.power_management.password]
-     *    [host.power_management.options.option]
-     *    [host.power_management.pm_proxy]
-     *    [host.power_management.agents.agent]
-     *    [host.reboot_after_installation]
+     *    Overload 1:
+     *      provisioned_size
+     *      disk.interface
+     *      disk.format
+     *      [disk.alias]
+     *      [disk.name]
+     *      [disk.size]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
+     *
+     *    Overload 2:
+     *      disk.interface
+     *      disk.format
+     *      disk.lun_storage.type
+     *      disk.lun_storage.logical_unit
+     *      [disk.alias]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
      *    </pre>
      *
      * @return
-     *     {@link Host }
+     *     {@link DataCenterStorageDomainDisk }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -168,9 +186,9 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Host add(org.ovirt.engine.sdk.entities.Host host) throws 
+    public DataCenterStorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
             ClientProtocolException, ServerException, IOException {
-        String url = SLASH + getName();
+        String url = this.parent.getHref() + SLASH + getName();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
@@ -178,31 +196,39 @@ public class Hosts extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, host,
-                org.ovirt.engine.sdk.entities.Host.class,
-                Host.class, headers);
+        return getProxy().add(url, disk,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                DataCenterStorageDomainDisk.class, headers);
     }
     /**
-     * Adds Host object.
+     * Adds Disk object.
      *
-     * @param host {@link org.ovirt.engine.sdk.entities.Host}
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
-     *    host.name
-     *    host.address
-     *    host.root_password
-     *    host.cluster.id|name
-     *    [host.port]
-     *    [host.display.address]
-     *    [host.storage_manager.priority]
-     *    [host.power_management.type]
-     *    [host.power_management.enabled]
-     *    [host.power_management.address]
-     *    [host.power_management.user_name]
-     *    [host.power_management.password]
-     *    [host.power_management.options.option]
-     *    [host.power_management.pm_proxy]
-     *    [host.power_management.agents.agent]
-     *    [host.reboot_after_installation]
+     *    Overload 1:
+     *      provisioned_size
+     *      disk.interface
+     *      disk.format
+     *      [disk.alias]
+     *      [disk.name]
+     *      [disk.size]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
+     *
+     *    Overload 2:
+     *      disk.interface
+     *      disk.format
+     *      disk.lun_storage.type
+     *      disk.lun_storage.logical_unit
+     *      [disk.alias]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
      *    </pre>
      *
      * @param expect
@@ -213,9 +239,13 @@ public class Hosts extends
      *    <pre>
      *    [any string]
      *    </pre>
+     * @param unregistered
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      * @return
-     *     {@link Host }
+     *     {@link DataCenterStorageDomainDisk }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -224,9 +254,9 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Host add(org.ovirt.engine.sdk.entities.Host host, String expect, String correlationId) throws 
+    public DataCenterStorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, Boolean unregistered, String expect, String correlationId) throws 
             ClientProtocolException, ServerException, IOException {
-        String url = SLASH + getName();
+        String url = this.parent.getHref() + SLASH + getName();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .add("Expect", expect)
@@ -234,11 +264,12 @@ public class Hosts extends
                 .build();
 
         url = new UrlBuilder(url)
+                .add("unregistered", unregistered, UrlParameterType.MATRIX)
                 .build();
 
-        return getProxy().add(url, host,
-                org.ovirt.engine.sdk.entities.Host.class,
-                Host.class, headers);
+        return getProxy().add(url, disk,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                DataCenterStorageDomainDisk.class, headers);
     }
 
 }

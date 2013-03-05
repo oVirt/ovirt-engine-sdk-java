@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="alias" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="image_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element ref="{}storage_domain" minOccurs="0"/>
  *         &lt;element ref="{}storage_domains" minOccurs="0"/>
  *         &lt;element name="size" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -68,6 +69,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Disk", propOrder = {
     "alias",
     "imageId",
+    "storageDomain",
     "storageDomains",
     "size",
     "type",
@@ -93,6 +95,8 @@ public class Disk
     protected String alias;
     @XmlElement(name = "image_id")
     protected String imageId;
+    @XmlElement(name = "storage_domain")
+    protected StorageDomain storageDomain;
     @XmlElement(name = "storage_domains")
     protected StorageDomains storageDomains;
     protected Long size;
@@ -172,6 +176,34 @@ public class Disk
 
     public boolean isSetImageId() {
         return (this.imageId!= null);
+    }
+
+    /**
+     * Gets the value of the storageDomain property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link StorageDomain }
+     *     
+     */
+    public StorageDomain getStorageDomain() {
+        return storageDomain;
+    }
+
+    /**
+     * Sets the value of the storageDomain property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link StorageDomain }
+     *     
+     */
+    public void setStorageDomain(StorageDomain value) {
+        this.storageDomain = value;
+    }
+
+    public boolean isSetStorageDomain() {
+        return (this.storageDomain!= null);
     }
 
     /**

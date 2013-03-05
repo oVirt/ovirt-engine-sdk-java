@@ -44,6 +44,7 @@ public class DataCenterStorageDomain extends
 
     private HttpProxyBroker proxy;
 
+    private DataCenterStorageDomainDisks dataCenterStorageDomainDisks;
 
 
     /**
@@ -60,6 +61,18 @@ public class DataCenterStorageDomain extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the DataCenterStorageDomainDisks property.
+     *
+     * @return
+     *     {@link DataCenterStorageDomainDisks }
+     */
+    public synchronized DataCenterStorageDomainDisks getDisks() {
+        if (this.dataCenterStorageDomainDisks == null) {
+            this.dataCenterStorageDomainDisks = new DataCenterStorageDomainDisks(proxy, this);
+        }
+        return dataCenterStorageDomainDisks;
+    }
 
 
     /**

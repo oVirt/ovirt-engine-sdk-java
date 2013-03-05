@@ -47,6 +47,7 @@ public class StorageDomain extends
     private StorageDomainPermissions storageDomainPermissions;
     private StorageDomainVMs storageDomainVMs;
     private StorageDomainTemplates storageDomainTemplates;
+    private StorageDomainDisks storageDomainDisks;
     private StorageDomainFiles storageDomainFiles;
 
 
@@ -99,6 +100,18 @@ public class StorageDomain extends
             this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
         }
         return storageDomainTemplates;
+    }
+    /**
+     * Gets the value of the StorageDomainDisks property.
+     *
+     * @return
+     *     {@link StorageDomainDisks }
+     */
+    public synchronized StorageDomainDisks getDisks() {
+        if (this.storageDomainDisks == null) {
+            this.storageDomainDisks = new StorageDomainDisks(proxy, this);
+        }
+        return storageDomainDisks;
     }
     /**
      * Gets the value of the StorageDomainFiles property.
