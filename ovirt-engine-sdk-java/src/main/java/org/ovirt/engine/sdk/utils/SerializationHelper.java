@@ -19,6 +19,8 @@ package org.ovirt.engine.sdk.utils;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +32,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
 
+import org.ovirt.engine.sdk.entities.DataCenter;
+import org.ovirt.engine.sdk.entities.ObjectFactory;
 import org.ovirt.engine.sdk.exceptions.MarshallingException;
 
 /**
@@ -40,6 +44,8 @@ public class SerializationHelper {
     private final static Map<Class<?>, JAXBContextHolder> contexts = new HashMap<Class<?>, JAXBContextHolder>();
     private static String PACKAGE_CONTEXT = "org.ovirt.engine.sdk.entities";
     private static JAXBContext JAXB_CONTEXT = null;
+    private static ObjectFactory factory = new ObjectFactory();
+    private static Map<String, Method> factoryMethods = new HashMap<String, Method>();
 
     private SerializationHelper() {
     }
@@ -70,11 +76,69 @@ public class SerializationHelper {
      */
     public static <S> String marshall(Class<S> clz, S obj) {
         try {
-            return marshall(new JAXBElement<S>(new QName("", clz.getSimpleName().toLowerCase()), clz, null, obj));
+            JAXBElement<S> element = getElement(clz, obj);
+            if (element != null)
+                return marshall(element);
+            throw new MarshallingException(
+                    "Coresponding JAXBElement for \"" + clz.getSimpleName() +
+                            "\" is not found.");
         } catch (JAXBException e) {
             // TODO: log error
             throw new MarshallingException(e);
         }
+    }
+
+    /**
+     * Produces JAXBElement
+     * 
+     * @param clz
+     *            class to initiate the JAXBElement for
+     * @param obj
+     *            object to initiate the JAXBElement from
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    private static <S> JAXBElement<S> getElement(Class<S> clz, S obj) {
+        Method m = getCreateMethod(clz);
+        if (m != null) {
+            try {
+                return (JAXBElement<S>) m.invoke(factory, obj);
+            } catch (IllegalArgumentException e) {
+                // TODO: should never happen, but log error anyway
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                // TODO: should never happen, but log error anyway
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                // TODO: should never happen, but log error anyway
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Fetches factory method to create the corresponding JAXBElement
+     * 
+     * @param clz
+     *            class to create the JAXBElement from
+     * 
+     * @return factory method or null
+     */
+    public static synchronized <S> Method getCreateMethod(Class<S> clz) {
+        String createMethod = "create" + clz.getSimpleName();
+
+        if (factoryMethods.isEmpty()) {
+            for (Method m : factory.getClass().getMethods()) {
+                if (m.getParameterTypes().length > 0)
+                    factoryMethods.put(m.getName(), m);
+            }
+        }
+
+        if (factoryMethods.containsKey(createMethod)) {
+            return factoryMethods.get(createMethod);
+        }
+        return null;
     }
 
     /**
