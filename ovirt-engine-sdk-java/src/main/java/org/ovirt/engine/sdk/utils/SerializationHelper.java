@@ -193,7 +193,8 @@ public class SerializationHelper {
      */
     private synchronized static JAXBContextHolder getContext(Class<?> clz) throws JAXBException {
         if (JAXB_CONTEXT == null) {
-            JAXB_CONTEXT = JAXBContext.newInstance(PACKAGE_CONTEXT);
+            ClassLoader cl = ObjectFactory.class.getClassLoader();
+            JAXB_CONTEXT = JAXBContext.newInstance(PACKAGE_CONTEXT, cl);
         }
         if (!contexts.containsKey(clz)) {
             contexts.put(clz, new JAXBContextHolder(JAXB_CONTEXT));
