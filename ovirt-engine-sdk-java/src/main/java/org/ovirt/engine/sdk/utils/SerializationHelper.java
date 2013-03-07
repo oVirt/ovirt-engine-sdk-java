@@ -29,10 +29,8 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
 
-import org.ovirt.engine.sdk.entities.DataCenter;
 import org.ovirt.engine.sdk.entities.ObjectFactory;
 import org.ovirt.engine.sdk.exceptions.MarshallingException;
 
