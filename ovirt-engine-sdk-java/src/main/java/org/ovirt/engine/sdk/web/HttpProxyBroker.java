@@ -442,6 +442,23 @@ public class HttpProxyBroker {
     }
 
     /**
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
+     */
+    public void setSessionid(String sessionid) {
+        this.proxy.setSessionid(sessionid);
+    }
+
+    /**
+    * oVirt api sessionid to authenticate the user with
+    * (used as SSO solution instead of username+password)
+     */
+    public boolean isSetSessionid() {
+        return this.proxy.isSetSessionid();
+    }
+
+    /**
      * @return persistent authentication flag
      */
     public boolean isPersistentAuth() {

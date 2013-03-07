@@ -27,29 +27,32 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.ClientContext;
-import org.apache.http.cookie.Cookie;
 import org.apache.http.protocol.BasicHttpContext;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.HttpResponseHelper;
+import org.ovirt.engine.sdk.utils.StringUtils;
 
 /**
  * Proxy in to transport layer
  */
 public class HttpProxy {
 
+    private static final String COOKIE_HEADER = "Cookie";
     private static final String CONTENT_TYPE_HEADER = "Content-type";
+    private static final String PERSISTENT_AUTH_HEADER_CONTENT = "persistent-auth";
     private static final String PERSISTENT_AUTH_HEADER = "Prefer";
     private static final String FILTER_HEADER = "Filter";
-    private static final String JSESSIONID = "JSESSIONID";
+    private static final String STATIC_HEADERS[] = new String[] { "Content-type:application/xml" };
+
     private static int BAD_REQUEST = 400;
-    private static String STATIC_HEADERS[] = new String[] { "Content-type:application/xml" };
 
     private ConnectionsPool pool;
     private List<Header> staticHeaders;
     private boolean persistentAuth = true;
     private boolean filter = false;
     private boolean debug = false;
+    private String sessionid;
 
     /**
      * 
@@ -57,6 +60,9 @@ public class HttpProxy {
      *            ConnectionsPool
      * @param persistent_auth
      *            persistent authetication
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
      * @param insecure
      *            flag
      * @param filter
@@ -64,11 +70,13 @@ public class HttpProxy {
      * @param debug
      *            flag
      */
-    public HttpProxy(ConnectionsPool pool, boolean persistent_auth, boolean filter, boolean debug) {
+    public HttpProxy(ConnectionsPool pool, boolean persistent_auth,
+            String sessionid, boolean filter, boolean debug) {
         super();
         this.pool = pool;
         this.staticHeaders = HttpHeaderUtils.toHeaders(STATIC_HEADERS);
         this.persistentAuth = persistent_auth;
+        this.sessionid = sessionid;
         this.filter = filter;
         this.debug = debug;
     }
@@ -114,9 +122,9 @@ public class HttpProxy {
      * 
      * @return {@link BasicHttpContext}
      */
-    public BasicHttpContext getContext() {
+    private BasicHttpContext getContext() {
         BasicHttpContext context = new BasicHttpContext();
-        if (this.persistentAuth) {
+        if (this.persistentAuth && StringUtils.isNulOrEmpty(this.sessionid)) {
             context.setAttribute(ClientContext.COOKIE_STORE, this.pool.getCookieStore());
         }
         return context;
@@ -153,30 +161,15 @@ public class HttpProxy {
         // inject FILTER_HEADER
         request.addHeader(FILTER_HEADER, Boolean.toString(isFilter()));
 
-        // inject PERSISTENT_AUTH_HEADER
         if (this.persistentAuth) {
-            request.addHeader(PERSISTENT_AUTH_HEADER, "persistent-auth");
-            String session = getJsession();
-            if (session != null) {
-                request.addHeader(JSESSIONID, session);
-            }
-        }
-    }
+            // inject PERSISTENT_AUTH_HEADER
+            request.addHeader(PERSISTENT_AUTH_HEADER, PERSISTENT_AUTH_HEADER_CONTENT);
 
-    /**
-     * Fetches JSESSIONID from CookieStore
-     * 
-     * @return JSESSIONID
-     */
-    private String getJsession() {
-        if (this.pool.getCookies() != null && !this.pool.getCookies().isEmpty()) {
-            for (Cookie cookie : this.pool.getCookies()) {
-                if (cookie.getName().equals(JSESSIONID)) {
-                    return cookie.getValue();
-                }
+            // inject COOKIE_HEADER if JSESSION provided explicitly
+            if (!StringUtils.isNulOrEmpty(this.sessionid)) {
+                request.addHeader(COOKIE_HEADER, this.sessionid);
             }
         }
-        return null;
     }
 
     /**
@@ -192,6 +185,23 @@ public class HttpProxy {
      */
     public void setPersistentAuth(boolean persistentAuth) {
         this.persistentAuth = persistentAuth;
+    }
+
+    /**
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
+     */
+    public void setSessionid(String sessionid) {
+        this.sessionid = sessionid;
+    }
+
+    /**
+     * oVirt api sessionid to authenticate the user with
+     * (used as SSO solution instead of username+password)
+     */
+    public boolean isSetSessionid() {
+        return !StringUtils.isNulOrEmpty(this.sessionid);
     }
 
     /**
@@ -225,9 +235,8 @@ public class HttpProxy {
     }
 
     /**
-     * When HttpProxy instance is no longer needed, shut down the
-     * connection manager to ensure immediate deallocation of all system
-     * resources.
+     * When HttpProxy instance is no longer needed, shut down the connection
+     * manager to ensure immediate deallocation of all system resources.
      */
     public void shutdown() {
         this.pool.shutdown();

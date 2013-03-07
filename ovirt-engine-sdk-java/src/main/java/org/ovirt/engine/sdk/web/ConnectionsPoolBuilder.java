@@ -36,6 +36,7 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.ovirt.engine.sdk.utils.StringUtils;
 
 /**
  * Provides ConnectionsPool building services
@@ -82,6 +83,16 @@ public class ConnectionsPoolBuilder {
         url(url);
         username(username);
         password(password);
+    }
+
+    /**
+     * @param url
+     *            oVirt API url
+     * 
+     * @throws MalformedURLException
+     */
+    public ConnectionsPoolBuilder(String url) throws MalformedURLException {
+        url(url);
     }
 
     /**
@@ -198,9 +209,10 @@ public class ConnectionsPoolBuilder {
         DefaultHttpClient client =
                 new DefaultHttpClient(createPoolingClientConnectionManager(url, port_));
 
-        client.getCredentialsProvider().setCredentials(
-                new AuthScope(getHost(url), port_),
-                new UsernamePasswordCredentials(username, password));
+        if (!StringUtils.isNulOrEmpty(username))
+            client.getCredentialsProvider().setCredentials(
+                    new AuthScope(getHost(url), port_),
+                    new UsernamePasswordCredentials(username, password));
 
         // FIXME: use all .ctr params
 

@@ -122,6 +122,6 @@ public class StringUtils {
      * @return if string is null or empty true else false
      */
     public static boolean isNulOrEmpty(String string) {
-        return string.equals(null) || "".equals(string);
+        return string == null || "".equals(string);
     }
 }

@@ -74,13 +74,43 @@ public class Api {
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      * @throws UnsecuredConnectionAttemptError
-     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     *             Signals that attempt of connecting to SSL secured site using
+     *             HTTP protocol has occurred.
      */
     public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError {
 
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password).build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool).build();
+        this.proxy = new HttpProxyBroker(httpProxy);
+        this.initResources();
+    }
+
+    /**
+     * @param url
+     *            oVirt api url
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site
+     *             using HTTP protocol has occurred.
+     */
+    public Api(String url, String sessionid) throws ClientProtocolException, ServerException,
+            IOException, UnsecuredConnectionAttemptError {
+
+        ConnectionsPool pool = new ConnectionsPoolBuilder(url).build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                .sessionid(sessionid)
+                .persistentAuth(true)
+                .build();
         this.proxy = new HttpProxyBroker(httpProxy);
         this.initResources();
     }
@@ -102,7 +132,8 @@ public class Api {
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      * @throws UnsecuredConnectionAttemptError
-     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     *             Signals that attempt of connecting to SSL secured site
+     *             using HTTP protocol has occurred.
      */
     public Api(String url, String username, String password, boolean noHostVerification)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
@@ -111,6 +142,39 @@ public class Api {
                 .noHostVerification(noHostVerification)
                 .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                .build();
+        this.proxy = new HttpProxyBroker(httpProxy);
+        initResources();
+    }
+
+    /**
+     * @param url
+     *            oVirt api url
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
+     * @param noHostVerification
+     *            turns hostname verification off
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site
+     *             using HTTP protocol has occurred.
+     */
+    public Api(String url, String sessionid, boolean noHostVerification)
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+
+        ConnectionsPool pool = new ConnectionsPoolBuilder(url)
+                .noHostVerification(noHostVerification)
+                .build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                .sessionid(sessionid)
+                .persistentAuth(true)
                 .build();
         this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
@@ -135,7 +199,8 @@ public class Api {
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      * @throws UnsecuredConnectionAttemptError
-     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     *             Signals that attempt of connecting to SSL secured site
+     *             using HTTP protocol has occurred.
      */
     public Api(String url, String username, String password, Boolean noHostVerification, Boolean filter)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
@@ -157,6 +222,9 @@ public class Api {
      *            oVirt api username
      * @param password
      *            oVirt api password
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
      * @param port
      *            oVirt api port
      * @param timeout
@@ -177,9 +245,10 @@ public class Api {
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      * @throws UnsecuredConnectionAttemptError
-     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     *             Signals that attempt of connecting to SSL secured site
+     *             using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, Integer port, Integer timeout,
+    public Api(String url, String username, String password, String sessionid, Integer port, Integer timeout,
             Boolean persistentAuth, Boolean noHostVerification, Boolean filter, Boolean debug)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
@@ -189,6 +258,7 @@ public class Api {
                 .noHostVerification(noHostVerification)
                 .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                .sessionid(sessionid)
                 .persistentAuth(persistentAuth)
                 .filter(filter)
                 .debug(debug)
@@ -199,7 +269,7 @@ public class Api {
 
     /**
      * Fetches /api entry point
-     * 
+     *
      * @return API object instance
      */
     private API getEntryPoint() throws ClientProtocolException, ServerException, IOException,
@@ -221,7 +291,7 @@ public class Api {
 
     /**
      * Enable/Disable client permissions based filtering (default is False)
-     * 
+     *
      * @param filter
      */
     public void setFilter(boolean filter) {
@@ -230,7 +300,7 @@ public class Api {
 
     /**
      * Enable/Disable debug mode (default is False)
-     * 
+     *
      * @param debug
      */
     public void setDebug(boolean debug) {
@@ -239,7 +309,7 @@ public class Api {
 
     /**
      * Enable/Disable persistent authentication (default is True)
-     * 
+     *
      * @param persistentAuth
      */
     public void setPersistentAuth(boolean persistentAuth) {
@@ -265,6 +335,23 @@ public class Api {
      */
     public boolean isDebug() {
         return this.proxy.isDebug();
+    }
+
+    /**
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
+     */
+    public void setSessionid(String sessionid) {
+        this.proxy.setSessionid(sessionid);
+    }
+
+    /**
+    * oVirt api sessionid to authenticate the user with
+    * (used as SSO solution instead of username+password)
+     */
+    public boolean isSetSessionid() {
+        return this.proxy.isSetSessionid();
     }
 
     /**

@@ -23,6 +23,7 @@ public class HttpProxyBuilder {
 
     private ConnectionsPool pool;
     private boolean persistentAuth = true;
+    private String sessionid;
     private boolean filter = false;
     private boolean debug = false;
 
@@ -43,6 +44,16 @@ public class HttpProxyBuilder {
         if (persistentAuth != null) {
             this.persistentAuth = persistentAuth.booleanValue();
         }
+        return this;
+    }
+
+    /**
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
+     */
+    public HttpProxyBuilder sessionid(String sessionid) {
+        this.sessionid = sessionid;
         return this;
     }
 
@@ -72,6 +83,6 @@ public class HttpProxyBuilder {
      * builds the proxy
      */
     public HttpProxy build() {
-        return new HttpProxy(pool, persistentAuth, filter, debug);
+        return new HttpProxy(pool, persistentAuth, sessionid, filter, debug);
     }
 }
