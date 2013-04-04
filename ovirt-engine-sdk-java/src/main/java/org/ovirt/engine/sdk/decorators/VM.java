@@ -245,6 +245,7 @@ public class VM extends
      *    [vm.display.smartcard_enabled]
      *    [vm.display.keyboard_layout]
      *    [vm.os.cmdline]
+     *    [vm.cpu.mode]
      *    [vm.cpu.topology.cores]
      *    [vm.memory]
      *    [vm.high_availability.priority]

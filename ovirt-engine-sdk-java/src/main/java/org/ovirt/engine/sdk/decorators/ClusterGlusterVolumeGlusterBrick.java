@@ -44,6 +44,7 @@ public class ClusterGlusterVolumeGlusterBrick extends
 
     private HttpProxyBroker proxy;
 
+    private ClusterGlusterVolumeGlusterBrickStatistics clusterGlusterVolumeGlusterBrickStatistics;
 
 
     /**
@@ -60,6 +61,18 @@ public class ClusterGlusterVolumeGlusterBrick extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the ClusterGlusterVolumeGlusterBrickStatistics property.
+     *
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrickStatistics }
+     */
+    public synchronized ClusterGlusterVolumeGlusterBrickStatistics getStatistics() {
+        if (this.clusterGlusterVolumeGlusterBrickStatistics == null) {
+            this.clusterGlusterVolumeGlusterBrickStatistics = new ClusterGlusterVolumeGlusterBrickStatistics(proxy, this);
+        }
+        return clusterGlusterVolumeGlusterBrickStatistics;
+    }
 
 
     /**

@@ -100,6 +100,37 @@ public class ClusterGlusterVolumeGlusterBricks extends
     }
 
     /**
+     * Lists ClusterGlusterVolumeGlusterBrick objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<ClusterGlusterVolumeGlusterBrick> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
+                .add("max", max, UrlParameterType.MATRIX)
+                .build();
+
+        return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
      * Adds GlusterBrick object.
      *
      * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}

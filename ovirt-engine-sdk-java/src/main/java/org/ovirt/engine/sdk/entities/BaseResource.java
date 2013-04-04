@@ -85,7 +85,7 @@ import javax.xml.bind.annotation.XmlType;
     DataCenter.class,
     Hook.class,
     Permission.class,
-    GlusterBrick.class,
+    GlusterBrickAdvancedDetails.class,
     GlusterVolume.class,
     VmPool.class,
     Network.class,

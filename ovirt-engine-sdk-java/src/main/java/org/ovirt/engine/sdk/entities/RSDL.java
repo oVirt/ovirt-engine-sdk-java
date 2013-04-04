@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
  *         &lt;element ref="{}schema" minOccurs="0"/>
+ *         &lt;element name="general" type="{}GeneralMetadata" minOccurs="0"/>
  *         &lt;element name="links" type="{}DetailedLinks" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -56,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
     "description",
     "version",
     "schema",
+    "general",
     "links"
 })
 public class RSDL {
@@ -63,6 +65,7 @@ public class RSDL {
     protected String description;
     protected Version version;
     protected Schema schema;
+    protected GeneralMetadata general;
     protected DetailedLinks links;
     @XmlAttribute
     protected String href;
@@ -151,6 +154,34 @@ public class RSDL {
 
     public boolean isSetSchema() {
         return (this.schema!= null);
+    }
+
+    /**
+     * Gets the value of the general property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link GeneralMetadata }
+     *     
+     */
+    public GeneralMetadata getGeneral() {
+        return general;
+    }
+
+    /**
+     * Sets the value of the general property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link GeneralMetadata }
+     *     
+     */
+    public void setGeneral(GeneralMetadata value) {
+        this.general = value;
+    }
+
+    public boolean isSetGeneral() {
+        return (this.general!= null);
     }
 
     /**

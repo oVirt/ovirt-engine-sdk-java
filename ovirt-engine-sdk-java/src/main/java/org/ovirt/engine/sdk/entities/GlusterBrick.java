@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="GlusterBrick">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseResource">
+ *     &lt;extension base="{}GlusterBrickAdvancedDetails">
  *       &lt;sequence>
  *         &lt;element ref="{}gluster_volume" minOccurs="0"/>
  *         &lt;element name="server_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -57,7 +57,7 @@ import javax.xml.bind.annotation.XmlType;
     "status"
 })
 public class GlusterBrick
-    extends BaseResource
+    extends GlusterBrickAdvancedDetails
 {
 
     @XmlElement(name = "gluster_volume")

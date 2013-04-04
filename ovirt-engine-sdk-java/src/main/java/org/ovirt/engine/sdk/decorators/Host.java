@@ -133,6 +133,7 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.root_password]
+     *    [action.image]
      *    </pre>
      *
      * @return
@@ -163,6 +164,7 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.root_password]
+     *    [action.image]
      *    </pre>
      *
      * @param correlationId

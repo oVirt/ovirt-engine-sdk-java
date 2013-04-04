@@ -74,6 +74,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}usages" minOccurs="0"/>
  *         &lt;element ref="{}nfs_versions" minOccurs="0"/>
  *         &lt;element ref="{}pm_proxy_types" minOccurs="0"/>
+ *         &lt;element ref="{}cpu_modes" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
  *         &lt;element ref="{}transport_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_states" minOccurs="0"/>
@@ -127,6 +128,7 @@ import javax.xml.bind.annotation.XmlType;
     "usages",
     "nfsVersions",
     "pmProxyTypes",
+    "cpuModes",
     "glusterVolumeTypes",
     "transportTypes",
     "glusterVolumeStates",
@@ -207,6 +209,8 @@ public class VersionCaps
     protected NfsVersions nfsVersions;
     @XmlElement(name = "pm_proxy_types")
     protected PmProxyTypes pmProxyTypes;
+    @XmlElement(name = "cpu_modes")
+    protected CpuModes cpuModes;
     @XmlElement(name = "gluster_volume_types")
     protected GlusterVolumeTypes glusterVolumeTypes;
     @XmlElement(name = "transport_types")
@@ -1254,6 +1258,34 @@ public class VersionCaps
 
     public boolean isSetPmProxyTypes() {
         return (this.pmProxyTypes!= null);
+    }
+
+    /**
+     * Gets the value of the cpuModes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CpuModes }
+     *     
+     */
+    public CpuModes getCpuModes() {
+        return cpuModes;
+    }
+
+    /**
+     * Sets the value of the cpuModes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CpuModes }
+     *     
+     */
+    public void setCpuModes(CpuModes value) {
+        this.cpuModes = value;
+    }
+
+    public boolean isSetCpuModes() {
+        return (this.cpuModes!= null);
     }
 
     /**

@@ -22,65 +22,48 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.entities.Action;
-import org.ovirt.engine.sdk.entities.Response;
+import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>DataCenterClusterGlusterVolumeGlusterBrick providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.GlusterBrick }. 
+ * <p>DataCenterClusterGlusterVolumeGlusterBrickStatistics providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Statistics }.
  */
 @SuppressWarnings("unused")
-public class DataCenterClusterGlusterVolumeGlusterBrick extends
-        org.ovirt.engine.sdk.entities.GlusterBrick {
+public class DataCenterClusterGlusterVolumeGlusterBrickStatistics extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
+                            org.ovirt.engine.sdk.entities.Statistics,
+                            DataCenterClusterGlusterVolumeGlusterBrickStatistic> {
 
-    private HttpProxyBroker proxy;
-
-    private DataCenterClusterGlusterVolumeGlusterBrickStatistics dataCenterClusterGlusterVolumeGlusterBrickStatistics;
-
+    private DataCenterClusterGlusterVolumeGlusterBrick parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent DataCenterClusterGlusterVolumeGlusterBrick
      */
-    public DataCenterClusterGlusterVolumeGlusterBrick(HttpProxyBroker proxy) {
-        this.proxy = proxy;
+    public DataCenterClusterGlusterVolumeGlusterBrickStatistics(HttpProxyBroker proxy, DataCenterClusterGlusterVolumeGlusterBrick parent) {
+        super(proxy, "statistics");
+        this.parent = parent;
     }
 
     /**
-     * @return HttpProxyBroker
-     */
-    private HttpProxyBroker getProxy() {
-        return proxy;
-    }
-
-    /**
-     * Gets the value of the DataCenterClusterGlusterVolumeGlusterBrickStatistics property.
+     * Lists DataCenterClusterGlusterVolumeGlusterBrickStatistic objects.
      *
      * @return
-     *     {@link DataCenterClusterGlusterVolumeGlusterBrickStatistics }
-     */
-    public synchronized DataCenterClusterGlusterVolumeGlusterBrickStatistics getStatistics() {
-        if (this.dataCenterClusterGlusterVolumeGlusterBrickStatistics == null) {
-            this.dataCenterClusterGlusterVolumeGlusterBrickStatistics = new DataCenterClusterGlusterVolumeGlusterBrickStatistics(proxy, this);
-        }
-        return dataCenterClusterGlusterVolumeGlusterBrickStatistics;
-    }
-
-
-    /**
-     * Performs replace action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @return
-     *     {@link Action }
+     *     List of {@link DataCenterClusterGlusterVolumeGlusterBrickStatistic }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -89,23 +72,18 @@ public class DataCenterClusterGlusterVolumeGlusterBrick extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action replace(Action action) throws ClientProtocolException,
+    @Override
+    public List<DataCenterClusterGlusterVolumeGlusterBrickStatistic> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/replace";
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, DataCenterClusterGlusterVolumeGlusterBrickStatistic.class);
     }
+
     /**
-     * Deletes object.
-     *
+     * Fetches DataCenterClusterGlusterVolumeGlusterBrickStatistic object by id.
+     * 
      * @return
-     *     {@link Response }
+     *     {@link DataCenterClusterGlusterVolumeGlusterBrickStatistic }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -114,18 +92,13 @@ public class DataCenterClusterGlusterVolumeGlusterBrick extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete() throws ClientProtocolException,
+    @Override
+    public DataCenterClusterGlusterVolumeGlusterBrickStatistic get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().delete(url, Response.class, headers);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, DataCenterClusterGlusterVolumeGlusterBrickStatistic.class);
     }
+
 
 }
 
