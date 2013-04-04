@@ -129,14 +129,11 @@ public class SerializationHelper {
         if (factoryMethods.isEmpty()) {
             for (Method m : factory.getClass().getMethods()) {
                 if (m.getParameterTypes().length > 0)
-                    factoryMethods.put(m.getName(), m);
+                    factoryMethods.put(m.getName().toLowerCase(), m);
             }
         }
 
-        if (factoryMethods.containsKey(createMethod)) {
-            return factoryMethods.get(createMethod);
-        }
-        return null;
+        return factoryMethods.get(createMethod.toLowerCase());
     }
 
     /**
