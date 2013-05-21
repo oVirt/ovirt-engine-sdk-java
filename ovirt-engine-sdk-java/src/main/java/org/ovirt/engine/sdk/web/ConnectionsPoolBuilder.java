@@ -35,7 +35,8 @@ import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.PoolingClientConnectionManager;
+//import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.ovirt.engine.sdk.utils.StringUtils;
 
 /**
@@ -230,13 +231,22 @@ public class ConnectionsPoolBuilder {
     private ClientConnectionManager createPoolingClientConnectionManager(String url, int port) {
         SchemeRegistry schemeRegistry = createSchemeRegistry(url, port);
 
-        PoolingClientConnectionManager cm =
-                new PoolingClientConnectionManager(schemeRegistry);
+        // TODO: move to PoolingClientConnectionManager when upgrading to 4.2.x
+        // PoolingClientConnectionManager cm =
+        // new PoolingClientConnectionManager(schemeRegistry);
+
+        ThreadSafeClientConnManager cm =
+                new ThreadSafeClientConnManager(schemeRegistry);
+
         cm.setMaxTotal(MAX_CONNECTIONS);
         cm.setDefaultMaxPerRoute(MAX_CONNECTIONS_PER_ROUTE);
-        cm.setMaxPerRoute(new HttpRoute(new HttpHost(getHost(url),
+        cm.setMaxForRoute(new HttpRoute(new HttpHost(getHost(url),
                 getPort(url, port))),
                 MAX_CONNECTIONS_PER_HOST);
+
+        // cm.setMaxPerRoute(new HttpRoute(new HttpHost(getHost(url),
+        // getPort(url, port))),
+        // MAX_CONNECTIONS_PER_HOST);
 
         return cm;
     }
