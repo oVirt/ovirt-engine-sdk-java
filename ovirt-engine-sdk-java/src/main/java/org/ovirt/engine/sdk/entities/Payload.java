@@ -56,7 +56,7 @@ public class Payload {
 
     @XmlElement(required = true)
     protected PayloadFile file;
-    @XmlAttribute
+    @XmlAttribute(name = "type")
     protected String type;
 
     /**

@@ -50,11 +50,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "CpuTopology")
 public class CpuTopology {
 
-    @XmlAttribute
+    @XmlAttribute(name = "sockets")
     protected Integer sockets;
-    @XmlAttribute
+    @XmlAttribute(name = "cores")
     protected Integer cores;
-    @XmlAttribute
+    @XmlAttribute(name = "threads")
     protected Integer threads;
 
     /**

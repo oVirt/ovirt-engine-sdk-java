@@ -55,8 +55,8 @@ public class ObjectFactory {
     private final static QName _HostNics_QNAME = new QName("", "host_nics");
     private final static QName _HostStorage_QNAME = new QName("", "host_storage");
     private final static QName _Floppies_QNAME = new QName("", "floppies");
-    private final static QName _ReportedDevices_QNAME = new QName("", "reported_devices");
     private final static QName _Rsdl_QNAME = new QName("", "rsdl");
+    private final static QName _ReportedDevices_QNAME = new QName("", "reported_devices");
     private final static QName _Event_QNAME = new QName("", "event");
     private final static QName _File_QNAME = new QName("", "file");
     private final static QName _Features_QNAME = new QName("", "features");
@@ -141,8 +141,8 @@ public class ObjectFactory {
     private final static QName _Request_QNAME = new QName("", "request");
     private final static QName _Permissions_QNAME = new QName("", "permissions");
     private final static QName _Hosts_QNAME = new QName("", "hosts");
-    private final static QName _Action_QNAME = new QName("", "action");
     private final static QName _Value_QNAME = new QName("", "value");
+    private final static QName _Action_QNAME = new QName("", "action");
     private final static QName _Vms_QNAME = new QName("", "vms");
     private final static QName _DataCenter_QNAME = new QName("", "data_center");
     private final static QName _SchedulingPolicies_QNAME = new QName("", "scheduling_policies");
@@ -209,342 +209,14 @@ public class ObjectFactory {
     private final static QName _Vmpools_QNAME = new QName("", "vmpools");
     private final static QName _Group_QNAME = new QName("", "group");
     private final static QName _User_QNAME = new QName("", "user");
-    private final static QName _Storage_QNAME = new QName("", "storage");
     private final static QName _TransparentHugepages_QNAME = new QName("", "transparent_hugepages");
+    private final static QName _Storage_QNAME = new QName("", "storage");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.ovirt.engine.sdk.entities
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link DisplayTypes }
-     * 
-     */
-    public DisplayTypes createDisplayTypes() {
-        return new DisplayTypes();
-    }
-
-    /**
-     * Create an instance of {@link SupportedVersions }
-     * 
-     */
-    public SupportedVersions createSupportedVersions() {
-        return new SupportedVersions();
-    }
-
-    /**
-     * Create an instance of {@link StorageDomainTypes }
-     * 
-     */
-    public StorageDomainTypes createStorageDomainTypes() {
-        return new StorageDomainTypes();
-    }
-
-    /**
-     * Create an instance of {@link PmProxyTypes }
-     * 
-     */
-    public PmProxyTypes createPmProxyTypes() {
-        return new PmProxyTypes();
-    }
-
-    /**
-     * Create an instance of {@link Permits }
-     * 
-     */
-    public Permits createPermits() {
-        return new Permits();
-    }
-
-    /**
-     * Create an instance of {@link SchedulingPolicy }
-     * 
-     */
-    public SchedulingPolicy createSchedulingPolicy() {
-        return new SchedulingPolicy();
-    }
-
-    /**
-     * Create an instance of {@link DiskStates }
-     * 
-     */
-    public DiskStates createDiskStates() {
-        return new DiskStates();
-    }
-
-    /**
-     * Create an instance of {@link GlusterStates }
-     * 
-     */
-    public GlusterStates createGlusterStates() {
-        return new GlusterStates();
-    }
-
-    /**
-     * Create an instance of {@link GlusterClients }
-     * 
-     */
-    public GlusterClients createGlusterClients() {
-        return new GlusterClients();
-    }
-
-    /**
-     * Create an instance of {@link OperatingSystem }
-     * 
-     */
-    public OperatingSystem createOperatingSystem() {
-        return new OperatingSystem();
-    }
-
-    /**
-     * Create an instance of {@link Host }
-     * 
-     */
-    public Host createHost() {
-        return new Host();
-    }
-
-    /**
-     * Create an instance of {@link PowerManagers }
-     * 
-     */
-    public PowerManagers createPowerManagers() {
-        return new PowerManagers();
-    }
-
-    /**
-     * Create an instance of {@link Template }
-     * 
-     */
-    public Template createTemplate() {
-        return new Template();
-    }
-
-    /**
-     * Create an instance of {@link CpuTune }
-     * 
-     */
-    public CpuTune createCpuTune() {
-        return new CpuTune();
-    }
-
-    /**
-     * Create an instance of {@link MemoryOverCommit }
-     * 
-     */
-    public MemoryOverCommit createMemoryOverCommit() {
-        return new MemoryOverCommit();
-    }
-
-    /**
-     * Create an instance of {@link LinkCapabilities }
-     * 
-     */
-    public LinkCapabilities createLinkCapabilities() {
-        return new LinkCapabilities();
-    }
-
-    /**
-     * Create an instance of {@link TemplateStates }
-     * 
-     */
-    public TemplateStates createTemplateStates() {
-        return new TemplateStates();
-    }
-
-    /**
-     * Create an instance of {@link ErrorHandlingOptions }
-     * 
-     */
-    public ErrorHandlingOptions createErrorHandlingOptions() {
-        return new ErrorHandlingOptions();
-    }
-
-    /**
-     * Create an instance of {@link Snapshot }
-     * 
-     */
-    public Snapshot createSnapshot() {
-        return new Snapshot();
-    }
-
-    /**
-     * Create an instance of {@link Creation }
-     * 
-     */
-    public Creation createCreation() {
-        return new Creation();
-    }
-
-    /**
-     * Create an instance of {@link CustomProperty }
-     * 
-     */
-    public CustomProperty createCustomProperty() {
-        return new CustomProperty();
-    }
-
-    /**
-     * Create an instance of {@link SpecialObjects }
-     * 
-     */
-    public SpecialObjects createSpecialObjects() {
-        return new SpecialObjects();
-    }
-
-    /**
-     * Create an instance of {@link VmAffinities }
-     * 
-     */
-    public VmAffinities createVmAffinities() {
-        return new VmAffinities();
-    }
-
-    /**
-     * Create an instance of {@link OsTypes }
-     * 
-     */
-    public OsTypes createOsTypes() {
-        return new OsTypes();
-    }
-
-    /**
-     * Create an instance of {@link DataCenter }
-     * 
-     */
-    public DataCenter createDataCenter() {
-        return new DataCenter();
-    }
-
-    /**
-     * Create an instance of {@link Actions }
-     * 
-     */
-    public Actions createActions() {
-        return new Actions();
-    }
-
-    /**
-     * Create an instance of {@link BootDevices }
-     * 
-     */
-    public BootDevices createBootDevices() {
-        return new BootDevices();
-    }
-
-    /**
-     * Create an instance of {@link Clusters }
-     * 
-     */
-    public Clusters createClusters() {
-        return new Clusters();
-    }
-
-    /**
-     * Create an instance of {@link Hook }
-     * 
-     */
-    public Hook createHook() {
-        return new Hook();
-    }
-
-    /**
-     * Create an instance of {@link GlusterVolume }
-     * 
-     */
-    public GlusterVolume createGlusterVolume() {
-        return new GlusterVolume();
-    }
-
-    /**
-     * Create an instance of {@link Capabilities }
-     * 
-     */
-    public Capabilities createCapabilities() {
-        return new Capabilities();
-    }
-
-    /**
-     * Create an instance of {@link Bonding }
-     * 
-     */
-    public Bonding createBonding() {
-        return new Bonding();
-    }
-
-    /**
-     * Create an instance of {@link Files }
-     * 
-     */
-    public Files createFiles() {
-        return new Files();
-    }
-
-    /**
-     * Create an instance of {@link Event }
-     * 
-     */
-    public Event createEvent() {
-        return new Event();
-    }
-
-    /**
-     * Create an instance of {@link VmTypes }
-     * 
-     */
-    public VmTypes createVmTypes() {
-        return new VmTypes();
-    }
-
-    /**
-     * Create an instance of {@link RSDL }
-     * 
-     */
-    public RSDL createRSDL() {
-        return new RSDL();
-    }
-
-    /**
-     * Create an instance of {@link CpuModes }
-     * 
-     */
-    public CpuModes createCpuModes() {
-        return new CpuModes();
-    }
-
-    /**
-     * Create an instance of {@link Statistic }
-     * 
-     */
-    public Statistic createStatistic() {
-        return new Statistic();
-    }
-
-    /**
-     * Create an instance of {@link ErrorHandling }
-     * 
-     */
-    public ErrorHandling createErrorHandling() {
-        return new ErrorHandling();
-    }
-
-    /**
-     * Create an instance of {@link GlusterBrickMemoryInfo }
-     * 
-     */
-    public GlusterBrickMemoryInfo createGlusterBrickMemoryInfo() {
-        return new GlusterBrickMemoryInfo();
-    }
-
-    /**
-     * Create an instance of {@link Usages }
-     * 
-     */
-    public Usages createUsages() {
-        return new Usages();
     }
 
     /**
@@ -556,275 +228,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Networks }
+     * Create an instance of {@link Tag }
      * 
      */
-    public Networks createNetworks() {
-        return new Networks();
+    public Tag createTag() {
+        return new Tag();
     }
 
     /**
-     * Create an instance of {@link Ticket }
+     * Create an instance of {@link Domains }
      * 
      */
-    public Ticket createTicket() {
-        return new Ticket();
-    }
-
-    /**
-     * Create an instance of {@link Group }
-     * 
-     */
-    public Group createGroup() {
-        return new Group();
-    }
-
-    /**
-     * Create an instance of {@link Templates }
-     * 
-     */
-    public Templates createTemplates() {
-        return new Templates();
-    }
-
-    /**
-     * Create an instance of {@link Permit }
-     * 
-     */
-    public Permit createPermit() {
-        return new Permit();
-    }
-
-    /**
-     * Create an instance of {@link GlusterMemoryPools }
-     * 
-     */
-    public GlusterMemoryPools createGlusterMemoryPools() {
-        return new GlusterMemoryPools();
-    }
-
-    /**
-     * Create an instance of {@link Version }
-     * 
-     */
-    public Version createVersion() {
-        return new Version();
-    }
-
-    /**
-     * Create an instance of {@link VmDeviceTypes }
-     * 
-     */
-    public VmDeviceTypes createVmDeviceTypes() {
-        return new VmDeviceTypes();
-    }
-
-    /**
-     * Create an instance of {@link BaseResource }
-     * 
-     */
-    public BaseResource createBaseResource() {
-        return new BaseResource();
-    }
-
-    /**
-     * Create an instance of {@link DataCenterStates }
-     * 
-     */
-    public DataCenterStates createDataCenterStates() {
-        return new DataCenterStates();
-    }
-
-    /**
-     * Create an instance of {@link Header }
-     * 
-     */
-    public Header createHeader() {
-        return new Header();
-    }
-
-    /**
-     * Create an instance of {@link Roles }
-     * 
-     */
-    public Roles createRoles() {
-        return new Roles();
-    }
-
-    /**
-     * Create an instance of {@link Feature }
-     * 
-     */
-    public Feature createFeature() {
-        return new Feature();
-    }
-
-    /**
-     * Create an instance of {@link Quotas }
-     * 
-     */
-    public Quotas createQuotas() {
-        return new Quotas();
-    }
-
-    /**
-     * Create an instance of {@link CpuTopology }
-     * 
-     */
-    public CpuTopology createCpuTopology() {
-        return new CpuTopology();
-    }
-
-    /**
-     * Create an instance of {@link Url }
-     * 
-     */
-    public Url createUrl() {
-        return new Url();
-    }
-
-    /**
-     * Create an instance of {@link KSM }
-     * 
-     */
-    public KSM createKSM() {
-        return new KSM();
-    }
-
-    /**
-     * Create an instance of {@link BaseResources }
-     * 
-     */
-    public BaseResources createBaseResources() {
-        return new BaseResources();
-    }
-
-    /**
-     * Create an instance of {@link DetailedLink }
-     * 
-     */
-    public DetailedLink createDetailedLink() {
-        return new DetailedLink();
-    }
-
-    /**
-     * Create an instance of {@link ActionableResource }
-     * 
-     */
-    public ActionableResource createActionableResource() {
-        return new ActionableResource();
-    }
-
-    /**
-     * Create an instance of {@link Status }
-     * 
-     */
-    public Status createStatus() {
-        return new Status();
-    }
-
-    /**
-     * Create an instance of {@link PortMirroring }
-     * 
-     */
-    public PortMirroring createPortMirroring() {
-        return new PortMirroring();
-    }
-
-    /**
-     * Create an instance of {@link Hosts }
-     * 
-     */
-    public Hosts createHosts() {
-        return new Hosts();
-    }
-
-    /**
-     * Create an instance of {@link IP }
-     * 
-     */
-    public IP createIP() {
-        return new IP();
-    }
-
-    /**
-     * Create an instance of {@link KeyValuePair }
-     * 
-     */
-    public KeyValuePair createKeyValuePair() {
-        return new KeyValuePair();
-    }
-
-    /**
-     * Create an instance of {@link VmSummary }
-     * 
-     */
-    public VmSummary createVmSummary() {
-        return new VmSummary();
-    }
-
-    /**
-     * Create an instance of {@link StorageDomain }
-     * 
-     */
-    public StorageDomain createStorageDomain() {
-        return new StorageDomain();
-    }
-
-    /**
-     * Create an instance of {@link Request }
-     * 
-     */
-    public Request createRequest() {
-        return new Request();
-    }
-
-    /**
-     * Create an instance of {@link IscsiDetails }
-     * 
-     */
-    public IscsiDetails createIscsiDetails() {
-        return new IscsiDetails();
-    }
-
-    /**
-     * Create an instance of {@link GlusterMemoryPool }
-     * 
-     */
-    public GlusterMemoryPool createGlusterMemoryPool() {
-        return new GlusterMemoryPool();
-    }
-
-    /**
-     * Create an instance of {@link CreationStates }
-     * 
-     */
-    public CreationStates createCreationStates() {
-        return new CreationStates();
-    }
-
-    /**
-     * Create an instance of {@link Cluster }
-     * 
-     */
-    public Cluster createCluster() {
-        return new Cluster();
-    }
-
-    /**
-     * Create an instance of {@link HostNICStates }
-     * 
-     */
-    public HostNICStates createHostNICStates() {
-        return new HostNICStates();
-    }
-
-    /**
-     * Create an instance of {@link Values }
-     * 
-     */
-    public Values createValues() {
-        return new Values();
+    public Domains createDomains() {
+        return new Domains();
     }
 
     /**
@@ -836,86 +252,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Agent }
-     * 
-     */
-    public Agent createAgent() {
-        return new Agent();
-    }
-
-    /**
-     * Create an instance of {@link VmPool }
-     * 
-     */
-    public VmPool createVmPool() {
-        return new VmPool();
-    }
-
-    /**
-     * Create an instance of {@link Tags }
-     * 
-     */
-    public Tags createTags() {
-        return new Tags();
-    }
-
-    /**
-     * Create an instance of {@link Agents }
-     * 
-     */
-    public Agents createAgents() {
-        return new Agents();
-    }
-
-    /**
-     * Create an instance of {@link HostNonOperationalDetails }
-     * 
-     */
-    public HostNonOperationalDetails createHostNonOperationalDetails() {
-        return new HostNonOperationalDetails();
-    }
-
-    /**
-     * Create an instance of {@link SchedulingPolicyThresholds }
-     * 
-     */
-    public SchedulingPolicyThresholds createSchedulingPolicyThresholds() {
-        return new SchedulingPolicyThresholds();
-    }
-
-    /**
-     * Create an instance of {@link PayloadFile }
-     * 
-     */
-    public PayloadFile createPayloadFile() {
-        return new PayloadFile();
-    }
-
-    /**
-     * Create an instance of {@link Floppies }
-     * 
-     */
-    public Floppies createFloppies() {
-        return new Floppies();
-    }
-
-    /**
-     * Create an instance of {@link Options }
-     * 
-     */
-    public Options createOptions() {
-        return new Options();
-    }
-
-    /**
-     * Create an instance of {@link Events }
-     * 
-     */
-    public Events createEvents() {
-        return new Events();
-    }
-
-    /**
      * Create an instance of {@link Payload }
      * 
      */
@@ -924,155 +260,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VMs }
+     * Create an instance of {@link Schema }
      * 
      */
-    public VMs createVMs() {
-        return new VMs();
+    public Schema createSchema() {
+        return new Schema();
     }
 
     /**
-     * Create an instance of {@link Action }
+     * Create an instance of {@link HostStorage }
      * 
      */
-    public Action createAction() {
-        return new Action();
-    }
-
-    /**
-     * Create an instance of {@link HighAvailability }
-     * 
-     */
-    public HighAvailability createHighAvailability() {
-        return new HighAvailability();
-    }
-
-    /**
-     * Create an instance of {@link TransportTypes }
-     * 
-     */
-    public TransportTypes createTransportTypes() {
-        return new TransportTypes();
-    }
-
-    /**
-     * Create an instance of {@link GlusterVolumeTypes }
-     * 
-     */
-    public GlusterVolumeTypes createGlusterVolumeTypes() {
-        return new GlusterVolumeTypes();
-    }
-
-    /**
-     * Create an instance of {@link MAC }
-     * 
-     */
-    public MAC createMAC() {
-        return new MAC();
-    }
-
-    /**
-     * Create an instance of {@link DetailedLinks }
-     * 
-     */
-    public DetailedLinks createDetailedLinks() {
-        return new DetailedLinks();
-    }
-
-    /**
-     * Create an instance of {@link CdRom }
-     * 
-     */
-    public CdRom createCdRom() {
-        return new CdRom();
-    }
-
-    /**
-     * Create an instance of {@link VmPauseDetails }
-     * 
-     */
-    public VmPauseDetails createVmPauseDetails() {
-        return new VmPauseDetails();
-    }
-
-    /**
-     * Create an instance of {@link NfsVersions }
-     * 
-     */
-    public NfsVersions createNfsVersions() {
-        return new NfsVersions();
-    }
-
-    /**
-     * Create an instance of {@link Floppy }
-     * 
-     */
-    public Floppy createFloppy() {
-        return new Floppy();
-    }
-
-    /**
-     * Create an instance of {@link FenceTypes }
-     * 
-     */
-    public FenceTypes createFenceTypes() {
-        return new FenceTypes();
-    }
-
-    /**
-     * Create an instance of {@link PowerManagementStates }
-     * 
-     */
-    public PowerManagementStates createPowerManagementStates() {
-        return new PowerManagementStates();
-    }
-
-    /**
-     * Create an instance of {@link GlusterBrickAdvancedDetails }
-     * 
-     */
-    public GlusterBrickAdvancedDetails createGlusterBrickAdvancedDetails() {
-        return new GlusterBrickAdvancedDetails();
-    }
-
-    /**
-     * Create an instance of {@link IpVersions }
-     * 
-     */
-    public IpVersions createIpVersions() {
-        return new IpVersions();
-    }
-
-    /**
-     * Create an instance of {@link Statistics }
-     * 
-     */
-    public Statistics createStatistics() {
-        return new Statistics();
-    }
-
-    /**
-     * Create an instance of {@link Option }
-     * 
-     */
-    public Option createOption() {
-        return new Option();
-    }
-
-    /**
-     * Create an instance of {@link Parameter }
-     * 
-     */
-    public Parameter createParameter() {
-        return new Parameter();
-    }
-
-    /**
-     * Create an instance of {@link ReportedDeviceTypes }
-     * 
-     */
-    public ReportedDeviceTypes createReportedDeviceTypes() {
-        return new ReportedDeviceTypes();
+    public HostStorage createHostStorage() {
+        return new HostStorage();
     }
 
     /**
@@ -1084,11 +284,403 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VLAN }
+     * Create an instance of {@link CreationStates }
      * 
      */
-    public VLAN createVLAN() {
-        return new VLAN();
+    public CreationStates createCreationStates() {
+        return new CreationStates();
+    }
+
+    /**
+     * Create an instance of {@link Certificate }
+     * 
+     */
+    public Certificate createCertificate() {
+        return new Certificate();
+    }
+
+    /**
+     * Create an instance of {@link Floppies }
+     * 
+     */
+    public Floppies createFloppies() {
+        return new Floppies();
+    }
+
+    /**
+     * Create an instance of {@link RSDL }
+     * 
+     */
+    public RSDL createRSDL() {
+        return new RSDL();
+    }
+
+    /**
+     * Create an instance of {@link ReportedDevices }
+     * 
+     */
+    public ReportedDevices createReportedDevices() {
+        return new ReportedDevices();
+    }
+
+    /**
+     * Create an instance of {@link Event }
+     * 
+     */
+    public Event createEvent() {
+        return new Event();
+    }
+
+    /**
+     * Create an instance of {@link File }
+     * 
+     */
+    public File createFile() {
+        return new File();
+    }
+
+    /**
+     * Create an instance of {@link Features }
+     * 
+     */
+    public Features createFeatures() {
+        return new Features();
+    }
+
+    /**
+     * Create an instance of {@link Role }
+     * 
+     */
+    public Role createRole() {
+        return new Role();
+    }
+
+    /**
+     * Create an instance of {@link Feature }
+     * 
+     */
+    public Feature createFeature() {
+        return new Feature();
+    }
+
+    /**
+     * Create an instance of {@link StorageTypes }
+     * 
+     */
+    public StorageTypes createStorageTypes() {
+        return new StorageTypes();
+    }
+
+    /**
+     * Create an instance of {@link Groups }
+     * 
+     */
+    public Groups createGroups() {
+        return new Groups();
+    }
+
+    /**
+     * Create an instance of {@link StorageDomains }
+     * 
+     */
+    public StorageDomains createStorageDomains() {
+        return new StorageDomains();
+    }
+
+    /**
+     * Create an instance of {@link Template }
+     * 
+     */
+    public Template createTemplate() {
+        return new Template();
+    }
+
+    /**
+     * Create an instance of {@link IpVersions }
+     * 
+     */
+    public IpVersions createIpVersions() {
+        return new IpVersions();
+    }
+
+    /**
+     * Create an instance of {@link Host }
+     * 
+     */
+    public Host createHost() {
+        return new Host();
+    }
+
+    /**
+     * Create an instance of {@link Disks }
+     * 
+     */
+    public Disks createDisks() {
+        return new Disks();
+    }
+
+    /**
+     * Create an instance of {@link Header }
+     * 
+     */
+    public Header createHeader() {
+        return new Header();
+    }
+
+    /**
+     * Create an instance of {@link StorageFormats }
+     * 
+     */
+    public StorageFormats createStorageFormats() {
+        return new StorageFormats();
+    }
+
+    /**
+     * Create an instance of {@link SpecialObjects }
+     * 
+     */
+    public SpecialObjects createSpecialObjects() {
+        return new SpecialObjects();
+    }
+
+    /**
+     * Create an instance of {@link Statistic }
+     * 
+     */
+    public Statistic createStatistic() {
+        return new Statistic();
+    }
+
+    /**
+     * Create an instance of {@link VmDeviceTypes }
+     * 
+     */
+    public VmDeviceTypes createVmDeviceTypes() {
+        return new VmDeviceTypes();
+    }
+
+    /**
+     * Create an instance of {@link PowerManagementStates }
+     * 
+     */
+    public PowerManagementStates createPowerManagementStates() {
+        return new PowerManagementStates();
+    }
+
+    /**
+     * Create an instance of {@link Roles }
+     * 
+     */
+    public Roles createRoles() {
+        return new Roles();
+    }
+
+    /**
+     * Create an instance of {@link CustomProperties }
+     * 
+     */
+    public CustomProperties createCustomProperties() {
+        return new CustomProperties();
+    }
+
+    /**
+     * Create an instance of {@link Nics }
+     * 
+     */
+    public Nics createNics() {
+        return new Nics();
+    }
+
+    /**
+     * Create an instance of {@link TemplateStates }
+     * 
+     */
+    public TemplateStates createTemplateStates() {
+        return new TemplateStates();
+    }
+
+    /**
+     * Create an instance of {@link VM }
+     * 
+     */
+    public VM createVM() {
+        return new VM();
+    }
+
+    /**
+     * Create an instance of {@link OsTypes }
+     * 
+     */
+    public OsTypes createOsTypes() {
+        return new OsTypes();
+    }
+
+    /**
+     * Create an instance of {@link Creation }
+     * 
+     */
+    public Creation createCreation() {
+        return new Creation();
+    }
+
+    /**
+     * Create an instance of {@link StorageDomainStates }
+     * 
+     */
+    public StorageDomainStates createStorageDomainStates() {
+        return new StorageDomainStates();
+    }
+
+    /**
+     * Create an instance of {@link VmStates }
+     * 
+     */
+    public VmStates createVmStates() {
+        return new VmStates();
+    }
+
+    /**
+     * Create an instance of {@link PowerManagers }
+     * 
+     */
+    public PowerManagers createPowerManagers() {
+        return new PowerManagers();
+    }
+
+    /**
+     * Create an instance of {@link Events }
+     * 
+     */
+    public Events createEvents() {
+        return new Events();
+    }
+
+    /**
+     * Create an instance of {@link Link }
+     * 
+     */
+    public Link createLink() {
+        return new Link();
+    }
+
+    /**
+     * Create an instance of {@link Usb }
+     * 
+     */
+    public Usb createUsb() {
+        return new Usb();
+    }
+
+    /**
+     * Create an instance of {@link DetailedLinks }
+     * 
+     */
+    public DetailedLinks createDetailedLinks() {
+        return new DetailedLinks();
+    }
+
+    /**
+     * Create an instance of {@link MAC }
+     * 
+     */
+    public MAC createMAC() {
+        return new MAC();
+    }
+
+    /**
+     * Create an instance of {@link HostNIC }
+     * 
+     */
+    public HostNIC createHostNIC() {
+        return new HostNIC();
+    }
+
+    /**
+     * Create an instance of {@link DataCenterStates }
+     * 
+     */
+    public DataCenterStates createDataCenterStates() {
+        return new DataCenterStates();
+    }
+
+    /**
+     * Create an instance of {@link VersionCaps }
+     * 
+     */
+    public VersionCaps createVersionCaps() {
+        return new VersionCaps();
+    }
+
+    /**
+     * Create an instance of {@link VCpuPin }
+     * 
+     */
+    public VCpuPin createVCpuPin() {
+        return new VCpuPin();
+    }
+
+    /**
+     * Create an instance of {@link CPUs }
+     * 
+     */
+    public CPUs createCPUs() {
+        return new CPUs();
+    }
+
+    /**
+     * Create an instance of {@link GlusterBrickAdvancedDetails }
+     * 
+     */
+    public GlusterBrickAdvancedDetails createGlusterBrickAdvancedDetails() {
+        return new GlusterBrickAdvancedDetails();
+    }
+
+    /**
+     * Create an instance of {@link DiskStates }
+     * 
+     */
+    public DiskStates createDiskStates() {
+        return new DiskStates();
+    }
+
+    /**
+     * Create an instance of {@link HostNonOperationalDetails }
+     * 
+     */
+    public HostNonOperationalDetails createHostNonOperationalDetails() {
+        return new HostNonOperationalDetails();
+    }
+
+    /**
+     * Create an instance of {@link Domain }
+     * 
+     */
+    public Domain createDomain() {
+        return new Domain();
+    }
+
+    /**
+     * Create an instance of {@link Payloads }
+     * 
+     */
+    public Payloads createPayloads() {
+        return new Payloads();
+    }
+
+    /**
+     * Create an instance of {@link API }
+     * 
+     */
+    public API createAPI() {
+        return new API();
+    }
+
+    /**
+     * Create an instance of {@link GlusterBricks }
+     * 
+     */
+    public GlusterBricks createGlusterBricks() {
+        return new GlusterBricks();
     }
 
     /**
@@ -1108,459 +700,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PmProxy }
+     * Create an instance of {@link KSM }
      * 
      */
-    public PmProxy createPmProxy() {
-        return new PmProxy();
+    public KSM createKSM() {
+        return new KSM();
     }
 
     /**
-     * Create an instance of {@link Network }
+     * Create an instance of {@link Options }
      * 
      */
-    public Network createNetwork() {
-        return new Network();
+    public Options createOptions() {
+        return new Options();
     }
 
     /**
-     * Create an instance of {@link Link }
+     * Create an instance of {@link Tags }
      * 
      */
-    public Link createLink() {
-        return new Link();
-    }
-
-    /**
-     * Create an instance of {@link GlusterBricks }
-     * 
-     */
-    public GlusterBricks createGlusterBricks() {
-        return new GlusterBricks();
-    }
-
-    /**
-     * Create an instance of {@link DataCenters }
-     * 
-     */
-    public DataCenters createDataCenters() {
-        return new DataCenters();
-    }
-
-    /**
-     * Create an instance of {@link ParametersSet }
-     * 
-     */
-    public ParametersSet createParametersSet() {
-        return new ParametersSet();
-    }
-
-    /**
-     * Create an instance of {@link Disks }
-     * 
-     */
-    public Disks createDisks() {
-        return new Disks();
-    }
-
-    /**
-     * Create an instance of {@link Slaves }
-     * 
-     */
-    public Slaves createSlaves() {
-        return new Slaves();
-    }
-
-    /**
-     * Create an instance of {@link BaseDevices }
-     * 
-     */
-    public BaseDevices createBaseDevices() {
-        return new BaseDevices();
-    }
-
-    /**
-     * Create an instance of {@link GlusterVolumes }
-     * 
-     */
-    public GlusterVolumes createGlusterVolumes() {
-        return new GlusterVolumes();
-    }
-
-    /**
-     * Create an instance of {@link IPs }
-     * 
-     */
-    public IPs createIPs() {
-        return new IPs();
-    }
-
-    /**
-     * Create an instance of {@link ProductInfo }
-     * 
-     */
-    public ProductInfo createProductInfo() {
-        return new ProductInfo();
-    }
-
-    /**
-     * Create an instance of {@link MemoryPolicy }
-     * 
-     */
-    public MemoryPolicy createMemoryPolicy() {
-        return new MemoryPolicy();
-    }
-
-    /**
-     * Create an instance of {@link NicInterfaces }
-     * 
-     */
-    public NicInterfaces createNicInterfaces() {
-        return new NicInterfaces();
-    }
-
-    /**
-     * Create an instance of {@link NetworkStates }
-     * 
-     */
-    public NetworkStates createNetworkStates() {
-        return new NetworkStates();
-    }
-
-    /**
-     * Create an instance of {@link HostNIC }
-     * 
-     */
-    public HostNIC createHostNIC() {
-        return new HostNIC();
-    }
-
-    /**
-     * Create an instance of {@link Schema }
-     * 
-     */
-    public Schema createSchema() {
-        return new Schema();
-    }
-
-    /**
-     * Create an instance of {@link VmPools }
-     * 
-     */
-    public VmPools createVmPools() {
-        return new VmPools();
-    }
-
-    /**
-     * Create an instance of {@link GlusterBrick }
-     * 
-     */
-    public GlusterBrick createGlusterBrick() {
-        return new GlusterBrick();
-    }
-
-    /**
-     * Create an instance of {@link Payloads }
-     * 
-     */
-    public Payloads createPayloads() {
-        return new Payloads();
-    }
-
-    /**
-     * Create an instance of {@link StorageFormats }
-     * 
-     */
-    public StorageFormats createStorageFormats() {
-        return new StorageFormats();
-    }
-
-    /**
-     * Create an instance of {@link Permission }
-     * 
-     */
-    public Permission createPermission() {
-        return new Permission();
-    }
-
-    /**
-     * Create an instance of {@link File }
-     * 
-     */
-    public File createFile() {
-        return new File();
-    }
-
-    /**
-     * Create an instance of {@link Tag }
-     * 
-     */
-    public Tag createTag() {
-        return new Tag();
-    }
-
-    /**
-     * Create an instance of {@link HostStorage }
-     * 
-     */
-    public HostStorage createHostStorage() {
-        return new HostStorage();
-    }
-
-    /**
-     * Create an instance of {@link VersionCaps }
-     * 
-     */
-    public VersionCaps createVersionCaps() {
-        return new VersionCaps();
-    }
-
-    /**
-     * Create an instance of {@link StorageDomains }
-     * 
-     */
-    public StorageDomains createStorageDomains() {
-        return new StorageDomains();
-    }
-
-    /**
-     * Create an instance of {@link Domains }
-     * 
-     */
-    public Domains createDomains() {
-        return new Domains();
-    }
-
-    /**
-     * Create an instance of {@link Value }
-     * 
-     */
-    public Value createValue() {
-        return new Value();
-    }
-
-    /**
-     * Create an instance of {@link VCpuPin }
-     * 
-     */
-    public VCpuPin createVCpuPin() {
-        return new VCpuPin();
-    }
-
-    /**
-     * Create an instance of {@link Users }
-     * 
-     */
-    public Users createUsers() {
-        return new Users();
-    }
-
-    /**
-     * Create an instance of {@link ReportedDevice }
-     * 
-     */
-    public ReportedDevice createReportedDevice() {
-        return new ReportedDevice();
-    }
-
-    /**
-     * Create an instance of {@link CPUs }
-     * 
-     */
-    public CPUs createCPUs() {
-        return new CPUs();
-    }
-
-    /**
-     * Create an instance of {@link Features }
-     * 
-     */
-    public Features createFeatures() {
-        return new Features();
-    }
-
-    /**
-     * Create an instance of {@link Boot }
-     * 
-     */
-    public Boot createBoot() {
-        return new Boot();
-    }
-
-    /**
-     * Create an instance of {@link CustomProperties }
-     * 
-     */
-    public CustomProperties createCustomProperties() {
-        return new CustomProperties();
-    }
-
-    /**
-     * Create an instance of {@link Certificate }
-     * 
-     */
-    public Certificate createCertificate() {
-        return new Certificate();
-    }
-
-    /**
-     * Create an instance of {@link HostStates }
-     * 
-     */
-    public HostStates createHostStates() {
-        return new HostStates();
-    }
-
-    /**
-     * Create an instance of {@link SchedulingPolicies }
-     * 
-     */
-    public SchedulingPolicies createSchedulingPolicies() {
-        return new SchedulingPolicies();
-    }
-
-    /**
-     * Create an instance of {@link User }
-     * 
-     */
-    public User createUser() {
-        return new User();
-    }
-
-    /**
-     * Create an instance of {@link Usb }
-     * 
-     */
-    public Usb createUsb() {
-        return new Usb();
-    }
-
-    /**
-     * Create an instance of {@link TagParent }
-     * 
-     */
-    public TagParent createTagParent() {
-        return new TagParent();
-    }
-
-    /**
-     * Create an instance of {@link TransparentHugePages }
-     * 
-     */
-    public TransparentHugePages createTransparentHugePages() {
-        return new TransparentHugePages();
-    }
-
-    /**
-     * Create an instance of {@link StorageManager }
-     * 
-     */
-    public StorageManager createStorageManager() {
-        return new StorageManager();
-    }
-
-    /**
-     * Create an instance of {@link DiskInterfaces }
-     * 
-     */
-    public DiskInterfaces createDiskInterfaces() {
-        return new DiskInterfaces();
-    }
-
-    /**
-     * Create an instance of {@link Permissions }
-     * 
-     */
-    public Permissions createPermissions() {
-        return new Permissions();
-    }
-
-    /**
-     * Create an instance of {@link Groups }
-     * 
-     */
-    public Groups createGroups() {
-        return new Groups();
-    }
-
-    /**
-     * Create an instance of {@link BootProtocols }
-     * 
-     */
-    public BootProtocols createBootProtocols() {
-        return new BootProtocols();
-    }
-
-    /**
-     * Create an instance of {@link Disk }
-     * 
-     */
-    public Disk createDisk() {
-        return new Disk();
-    }
-
-    /**
-     * Create an instance of {@link Hooks }
-     * 
-     */
-    public Hooks createHooks() {
-        return new Hooks();
-    }
-
-    /**
-     * Create an instance of {@link DiskFormats }
-     * 
-     */
-    public DiskFormats createDiskFormats() {
-        return new DiskFormats();
-    }
-
-    /**
-     * Create an instance of {@link Storage }
-     * 
-     */
-    public Storage createStorage() {
-        return new Storage();
-    }
-
-    /**
-     * Create an instance of {@link PmProxies }
-     * 
-     */
-    public PmProxies createPmProxies() {
-        return new PmProxies();
-    }
-
-    /**
-     * Create an instance of {@link Fault }
-     * 
-     */
-    public Fault createFault() {
-        return new Fault();
-    }
-
-    /**
-     * Create an instance of {@link Nics }
-     * 
-     */
-    public Nics createNics() {
-        return new Nics();
-    }
-
-    /**
-     * Create an instance of {@link API }
-     * 
-     */
-    public API createAPI() {
-        return new API();
-    }
-
-    /**
-     * Create an instance of {@link LogicalUnit }
-     * 
-     */
-    public LogicalUnit createLogicalUnit() {
-        return new LogicalUnit();
+    public Tags createTags() {
+        return new Tags();
     }
 
     /**
@@ -1572,83 +732,67 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Role }
+     * Create an instance of {@link Files }
      * 
      */
-    public Role createRole() {
-        return new Role();
+    public Files createFiles() {
+        return new Files();
     }
 
     /**
-     * Create an instance of {@link NIC }
+     * Create an instance of {@link Quotas }
      * 
      */
-    public NIC createNIC() {
-        return new NIC();
+    public Quotas createQuotas() {
+        return new Quotas();
     }
 
     /**
-     * Create an instance of {@link BaseDevice }
+     * Create an instance of {@link GlusterMemoryPools }
      * 
      */
-    public BaseDevice createBaseDevice() {
-        return new BaseDevice();
+    public GlusterMemoryPools createGlusterMemoryPools() {
+        return new GlusterMemoryPools();
     }
 
     /**
-     * Create an instance of {@link Display }
+     * Create an instance of {@link Snapshot }
      * 
      */
-    public Display createDisplay() {
-        return new Display();
+    public Snapshot createSnapshot() {
+        return new Snapshot();
     }
 
     /**
-     * Create an instance of {@link VolumeGroup }
+     * Create an instance of {@link KeyValuePair }
      * 
      */
-    public VolumeGroup createVolumeGroup() {
-        return new VolumeGroup();
+    public KeyValuePair createKeyValuePair() {
+        return new KeyValuePair();
     }
 
     /**
-     * Create an instance of {@link VmStates }
+     * Create an instance of {@link Slaves }
      * 
      */
-    public VmStates createVmStates() {
-        return new VmStates();
+    public Slaves createSlaves() {
+        return new Slaves();
     }
 
     /**
-     * Create an instance of {@link CPU }
+     * Create an instance of {@link GlusterVolumeTypes }
      * 
      */
-    public CPU createCPU() {
-        return new CPU();
+    public GlusterVolumeTypes createGlusterVolumeTypes() {
+        return new GlusterVolumeTypes();
     }
 
     /**
-     * Create an instance of {@link Body }
+     * Create an instance of {@link Fault }
      * 
      */
-    public Body createBody() {
-        return new Body();
-    }
-
-    /**
-     * Create an instance of {@link GracePeriod }
-     * 
-     */
-    public GracePeriod createGracePeriod() {
-        return new GracePeriod();
-    }
-
-    /**
-     * Create an instance of {@link Headers }
-     * 
-     */
-    public Headers createHeaders() {
-        return new Headers();
+    public Fault createFault() {
+        return new Fault();
     }
 
     /**
@@ -1660,59 +804,259 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportedDevices }
+     * Create an instance of {@link VmAffinities }
      * 
      */
-    public ReportedDevices createReportedDevices() {
-        return new ReportedDevices();
+    public VmAffinities createVmAffinities() {
+        return new VmAffinities();
     }
 
     /**
-     * Create an instance of {@link Domain }
+     * Create an instance of {@link GlusterVolumes }
      * 
      */
-    public Domain createDomain() {
-        return new Domain();
+    public GlusterVolumes createGlusterVolumes() {
+        return new GlusterVolumes();
     }
 
     /**
-     * Create an instance of {@link StorageTypes }
+     * Create an instance of {@link CdRom }
      * 
      */
-    public StorageTypes createStorageTypes() {
-        return new StorageTypes();
+    public CdRom createCdRom() {
+        return new CdRom();
     }
 
     /**
-     * Create an instance of {@link VmPlacementPolicy }
+     * Create an instance of {@link DetailedLink }
      * 
      */
-    public VmPlacementPolicy createVmPlacementPolicy() {
-        return new VmPlacementPolicy();
+    public DetailedLink createDetailedLink() {
+        return new DetailedLink();
     }
 
     /**
-     * Create an instance of {@link GuestInfo }
+     * Create an instance of {@link ErrorHandlingOptions }
      * 
      */
-    public GuestInfo createGuestInfo() {
-        return new GuestInfo();
+    public ErrorHandlingOptions createErrorHandlingOptions() {
+        return new ErrorHandlingOptions();
     }
 
     /**
-     * Create an instance of {@link VM }
+     * Create an instance of {@link Capabilities }
      * 
      */
-    public VM createVM() {
-        return new VM();
+    public Capabilities createCapabilities() {
+        return new Capabilities();
     }
 
     /**
-     * Create an instance of {@link Quota }
+     * Create an instance of {@link ProductInfo }
      * 
      */
-    public Quota createQuota() {
-        return new Quota();
+    public ProductInfo createProductInfo() {
+        return new ProductInfo();
+    }
+
+    /**
+     * Create an instance of {@link Headers }
+     * 
+     */
+    public Headers createHeaders() {
+        return new Headers();
+    }
+
+    /**
+     * Create an instance of {@link Body }
+     * 
+     */
+    public Body createBody() {
+        return new Body();
+    }
+
+    /**
+     * Create an instance of {@link Users }
+     * 
+     */
+    public Users createUsers() {
+        return new Users();
+    }
+
+    /**
+     * Create an instance of {@link ParametersSet }
+     * 
+     */
+    public ParametersSet createParametersSet() {
+        return new ParametersSet();
+    }
+
+    /**
+     * Create an instance of {@link PayloadFile }
+     * 
+     */
+    public PayloadFile createPayloadFile() {
+        return new PayloadFile();
+    }
+
+    /**
+     * Create an instance of {@link BootDevices }
+     * 
+     */
+    public BootDevices createBootDevices() {
+        return new BootDevices();
+    }
+
+    /**
+     * Create an instance of {@link IPs }
+     * 
+     */
+    public IPs createIPs() {
+        return new IPs();
+    }
+
+    /**
+     * Create an instance of {@link Disk }
+     * 
+     */
+    public Disk createDisk() {
+        return new Disk();
+    }
+
+    /**
+     * Create an instance of {@link Permit }
+     * 
+     */
+    public Permit createPermit() {
+        return new Permit();
+    }
+
+    /**
+     * Create an instance of {@link Bonding }
+     * 
+     */
+    public Bonding createBonding() {
+        return new Bonding();
+    }
+
+    /**
+     * Create an instance of {@link DataCenters }
+     * 
+     */
+    public DataCenters createDataCenters() {
+        return new DataCenters();
+    }
+
+    /**
+     * Create an instance of {@link StorageDomain }
+     * 
+     */
+    public StorageDomain createStorageDomain() {
+        return new StorageDomain();
+    }
+
+    /**
+     * Create an instance of {@link Values }
+     * 
+     */
+    public Values createValues() {
+        return new Values();
+    }
+
+    /**
+     * Create an instance of {@link HostStates }
+     * 
+     */
+    public HostStates createHostStates() {
+        return new HostStates();
+    }
+
+    /**
+     * Create an instance of {@link Request }
+     * 
+     */
+    public Request createRequest() {
+        return new Request();
+    }
+
+    /**
+     * Create an instance of {@link Action }
+     * 
+     */
+    public Action createAction() {
+        return new Action();
+    }
+
+    /**
+     * Create an instance of {@link Value }
+     * 
+     */
+    public Value createValue() {
+        return new Value();
+    }
+
+    /**
+     * Create an instance of {@link Hosts }
+     * 
+     */
+    public Hosts createHosts() {
+        return new Hosts();
+    }
+
+    /**
+     * Create an instance of {@link Permissions }
+     * 
+     */
+    public Permissions createPermissions() {
+        return new Permissions();
+    }
+
+    /**
+     * Create an instance of {@link VMs }
+     * 
+     */
+    public VMs createVMs() {
+        return new VMs();
+    }
+
+    /**
+     * Create an instance of {@link DataCenter }
+     * 
+     */
+    public DataCenter createDataCenter() {
+        return new DataCenter();
+    }
+
+    /**
+     * Create an instance of {@link SchedulingPolicies }
+     * 
+     */
+    public SchedulingPolicies createSchedulingPolicies() {
+        return new SchedulingPolicies();
+    }
+
+    /**
+     * Create an instance of {@link TransportTypes }
+     * 
+     */
+    public TransportTypes createTransportTypes() {
+        return new TransportTypes();
+    }
+
+    /**
+     * Create an instance of {@link Networks }
+     * 
+     */
+    public Networks createNetworks() {
+        return new Networks();
+    }
+
+    /**
+     * Create an instance of {@link NetworkStates }
+     * 
+     */
+    public NetworkStates createNetworkStates() {
+        return new NetworkStates();
     }
 
     /**
@@ -1724,11 +1068,267 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Hook }
+     * 
+     */
+    public Hook createHook() {
+        return new Hook();
+    }
+
+    /**
+     * Create an instance of {@link PortMirroring }
+     * 
+     */
+    public PortMirroring createPortMirroring() {
+        return new PortMirroring();
+    }
+
+    /**
+     * Create an instance of {@link Templates }
+     * 
+     */
+    public Templates createTemplates() {
+        return new Templates();
+    }
+
+    /**
+     * Create an instance of {@link Status }
+     * 
+     */
+    public Status createStatus() {
+        return new Status();
+    }
+
+    /**
+     * Create an instance of {@link CPU }
+     * 
+     */
+    public CPU createCPU() {
+        return new CPU();
+    }
+
+    /**
+     * Create an instance of {@link Display }
+     * 
+     */
+    public Display createDisplay() {
+        return new Display();
+    }
+
+    /**
+     * Create an instance of {@link FenceTypes }
+     * 
+     */
+    public FenceTypes createFenceTypes() {
+        return new FenceTypes();
+    }
+
+    /**
+     * Create an instance of {@link Permission }
+     * 
+     */
+    public Permission createPermission() {
+        return new Permission();
+    }
+
+    /**
+     * Create an instance of {@link ReportedDeviceTypes }
+     * 
+     */
+    public ReportedDeviceTypes createReportedDeviceTypes() {
+        return new ReportedDeviceTypes();
+    }
+
+    /**
+     * Create an instance of {@link Agent }
+     * 
+     */
+    public Agent createAgent() {
+        return new Agent();
+    }
+
+    /**
+     * Create an instance of {@link Url }
+     * 
+     */
+    public Url createUrl() {
+        return new Url();
+    }
+
+    /**
+     * Create an instance of {@link Floppy }
+     * 
+     */
+    public Floppy createFloppy() {
+        return new Floppy();
+    }
+
+    /**
+     * Create an instance of {@link Clusters }
+     * 
+     */
+    public Clusters createClusters() {
+        return new Clusters();
+    }
+
+    /**
+     * Create an instance of {@link CpuModes }
+     * 
+     */
+    public CpuModes createCpuModes() {
+        return new CpuModes();
+    }
+
+    /**
+     * Create an instance of {@link GlusterMemoryPool }
+     * 
+     */
+    public GlusterMemoryPool createGlusterMemoryPool() {
+        return new GlusterMemoryPool();
+    }
+
+    /**
+     * Create an instance of {@link GlusterStates }
+     * 
+     */
+    public GlusterStates createGlusterStates() {
+        return new GlusterStates();
+    }
+
+    /**
+     * Create an instance of {@link Usages }
+     * 
+     */
+    public Usages createUsages() {
+        return new Usages();
+    }
+
+    /**
+     * Create an instance of {@link Permits }
+     * 
+     */
+    public Permits createPermits() {
+        return new Permits();
+    }
+
+    /**
+     * Create an instance of {@link GlusterClients }
+     * 
+     */
+    public GlusterClients createGlusterClients() {
+        return new GlusterClients();
+    }
+
+    /**
+     * Create an instance of {@link PmProxyTypes }
+     * 
+     */
+    public PmProxyTypes createPmProxyTypes() {
+        return new PmProxyTypes();
+    }
+
+    /**
      * Create an instance of {@link GeneralMetadata }
      * 
      */
     public GeneralMetadata createGeneralMetadata() {
         return new GeneralMetadata();
+    }
+
+    /**
+     * Create an instance of {@link DiskFormats }
+     * 
+     */
+    public DiskFormats createDiskFormats() {
+        return new DiskFormats();
+    }
+
+    /**
+     * Create an instance of {@link StorageDomainTypes }
+     * 
+     */
+    public StorageDomainTypes createStorageDomainTypes() {
+        return new StorageDomainTypes();
+    }
+
+    /**
+     * Create an instance of {@link LinkCapabilities }
+     * 
+     */
+    public LinkCapabilities createLinkCapabilities() {
+        return new LinkCapabilities();
+    }
+
+    /**
+     * Create an instance of {@link Hooks }
+     * 
+     */
+    public Hooks createHooks() {
+        return new Hooks();
+    }
+
+    /**
+     * Create an instance of {@link GlusterBrick }
+     * 
+     */
+    public GlusterBrick createGlusterBrick() {
+        return new GlusterBrick();
+    }
+
+    /**
+     * Create an instance of {@link NfsVersions }
+     * 
+     */
+    public NfsVersions createNfsVersions() {
+        return new NfsVersions();
+    }
+
+    /**
+     * Create an instance of {@link Agents }
+     * 
+     */
+    public Agents createAgents() {
+        return new Agents();
+    }
+
+    /**
+     * Create an instance of {@link GlusterVolume }
+     * 
+     */
+    public GlusterVolume createGlusterVolume() {
+        return new GlusterVolume();
+    }
+
+    /**
+     * Create an instance of {@link LogicalUnit }
+     * 
+     */
+    public LogicalUnit createLogicalUnit() {
+        return new LogicalUnit();
+    }
+
+    /**
+     * Create an instance of {@link VmPool }
+     * 
+     */
+    public VmPool createVmPool() {
+        return new VmPool();
+    }
+
+    /**
+     * Create an instance of {@link Network }
+     * 
+     */
+    public Network createNetwork() {
+        return new Network();
+    }
+
+    /**
+     * Create an instance of {@link Statistics }
+     * 
+     */
+    public Statistics createStatistics() {
+        return new Statistics();
     }
 
     /**
@@ -1740,11 +1340,411 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StorageDomainStates }
+     * Create an instance of {@link GlusterBrickMemoryInfo }
      * 
      */
-    public StorageDomainStates createStorageDomainStates() {
-        return new StorageDomainStates();
+    public GlusterBrickMemoryInfo createGlusterBrickMemoryInfo() {
+        return new GlusterBrickMemoryInfo();
+    }
+
+    /**
+     * Create an instance of {@link Quota }
+     * 
+     */
+    public Quota createQuota() {
+        return new Quota();
+    }
+
+    /**
+     * Create an instance of {@link Parameter }
+     * 
+     */
+    public Parameter createParameter() {
+        return new Parameter();
+    }
+
+    /**
+     * Create an instance of {@link NicInterfaces }
+     * 
+     */
+    public NicInterfaces createNicInterfaces() {
+        return new NicInterfaces();
+    }
+
+    /**
+     * Create an instance of {@link PmProxy }
+     * 
+     */
+    public PmProxy createPmProxy() {
+        return new PmProxy();
+    }
+
+    /**
+     * Create an instance of {@link DisplayTypes }
+     * 
+     */
+    public DisplayTypes createDisplayTypes() {
+        return new DisplayTypes();
+    }
+
+    /**
+     * Create an instance of {@link StorageManager }
+     * 
+     */
+    public StorageManager createStorageManager() {
+        return new StorageManager();
+    }
+
+    /**
+     * Create an instance of {@link HostNICStates }
+     * 
+     */
+    public HostNICStates createHostNICStates() {
+        return new HostNICStates();
+    }
+
+    /**
+     * Create an instance of {@link BootProtocols }
+     * 
+     */
+    public BootProtocols createBootProtocols() {
+        return new BootProtocols();
+    }
+
+    /**
+     * Create an instance of {@link DiskInterfaces }
+     * 
+     */
+    public DiskInterfaces createDiskInterfaces() {
+        return new DiskInterfaces();
+    }
+
+    /**
+     * Create an instance of {@link CpuTune }
+     * 
+     */
+    public CpuTune createCpuTune() {
+        return new CpuTune();
+    }
+
+    /**
+     * Create an instance of {@link Version }
+     * 
+     */
+    public Version createVersion() {
+        return new Version();
+    }
+
+    /**
+     * Create an instance of {@link NIC }
+     * 
+     */
+    public NIC createNIC() {
+        return new NIC();
+    }
+
+    /**
+     * Create an instance of {@link ReportedDevice }
+     * 
+     */
+    public ReportedDevice createReportedDevice() {
+        return new ReportedDevice();
+    }
+
+    /**
+     * Create an instance of {@link VmTypes }
+     * 
+     */
+    public VmTypes createVmTypes() {
+        return new VmTypes();
+    }
+
+    /**
+     * Create an instance of {@link IP }
+     * 
+     */
+    public IP createIP() {
+        return new IP();
+    }
+
+    /**
+     * Create an instance of {@link PmProxies }
+     * 
+     */
+    public PmProxies createPmProxies() {
+        return new PmProxies();
+    }
+
+    /**
+     * Create an instance of {@link VmPauseDetails }
+     * 
+     */
+    public VmPauseDetails createVmPauseDetails() {
+        return new VmPauseDetails();
+    }
+
+    /**
+     * Create an instance of {@link Cluster }
+     * 
+     */
+    public Cluster createCluster() {
+        return new Cluster();
+    }
+
+    /**
+     * Create an instance of {@link VLAN }
+     * 
+     */
+    public VLAN createVLAN() {
+        return new VLAN();
+    }
+
+    /**
+     * Create an instance of {@link VolumeGroup }
+     * 
+     */
+    public VolumeGroup createVolumeGroup() {
+        return new VolumeGroup();
+    }
+
+    /**
+     * Create an instance of {@link VmPools }
+     * 
+     */
+    public VmPools createVmPools() {
+        return new VmPools();
+    }
+
+    /**
+     * Create an instance of {@link Group }
+     * 
+     */
+    public Group createGroup() {
+        return new Group();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
+    }
+
+    /**
+     * Create an instance of {@link Storage }
+     * 
+     */
+    public Storage createStorage() {
+        return new Storage();
+    }
+
+    /**
+     * Create an instance of {@link TransparentHugePages }
+     * 
+     */
+    public TransparentHugePages createTransparentHugePages() {
+        return new TransparentHugePages();
+    }
+
+    /**
+     * Create an instance of {@link Ticket }
+     * 
+     */
+    public Ticket createTicket() {
+        return new Ticket();
+    }
+
+    /**
+     * Create an instance of {@link CpuTopology }
+     * 
+     */
+    public CpuTopology createCpuTopology() {
+        return new CpuTopology();
+    }
+
+    /**
+     * Create an instance of {@link HighAvailability }
+     * 
+     */
+    public HighAvailability createHighAvailability() {
+        return new HighAvailability();
+    }
+
+    /**
+     * Create an instance of {@link GuestInfo }
+     * 
+     */
+    public GuestInfo createGuestInfo() {
+        return new GuestInfo();
+    }
+
+    /**
+     * Create an instance of {@link BaseResources }
+     * 
+     */
+    public BaseResources createBaseResources() {
+        return new BaseResources();
+    }
+
+    /**
+     * Create an instance of {@link SupportedVersions }
+     * 
+     */
+    public SupportedVersions createSupportedVersions() {
+        return new SupportedVersions();
+    }
+
+    /**
+     * Create an instance of {@link VmSummary }
+     * 
+     */
+    public VmSummary createVmSummary() {
+        return new VmSummary();
+    }
+
+    /**
+     * Create an instance of {@link OperatingSystem }
+     * 
+     */
+    public OperatingSystem createOperatingSystem() {
+        return new OperatingSystem();
+    }
+
+    /**
+     * Create an instance of {@link SchedulingPolicy }
+     * 
+     */
+    public SchedulingPolicy createSchedulingPolicy() {
+        return new SchedulingPolicy();
+    }
+
+    /**
+     * Create an instance of {@link MemoryPolicy }
+     * 
+     */
+    public MemoryPolicy createMemoryPolicy() {
+        return new MemoryPolicy();
+    }
+
+    /**
+     * Create an instance of {@link MemoryOverCommit }
+     * 
+     */
+    public MemoryOverCommit createMemoryOverCommit() {
+        return new MemoryOverCommit();
+    }
+
+    /**
+     * Create an instance of {@link Option }
+     * 
+     */
+    public Option createOption() {
+        return new Option();
+    }
+
+    /**
+     * Create an instance of {@link Actions }
+     * 
+     */
+    public Actions createActions() {
+        return new Actions();
+    }
+
+    /**
+     * Create an instance of {@link BaseDevice }
+     * 
+     */
+    public BaseDevice createBaseDevice() {
+        return new BaseDevice();
+    }
+
+    /**
+     * Create an instance of {@link BaseDevices }
+     * 
+     */
+    public BaseDevices createBaseDevices() {
+        return new BaseDevices();
+    }
+
+    /**
+     * Create an instance of {@link Boot }
+     * 
+     */
+    public Boot createBoot() {
+        return new Boot();
+    }
+
+    /**
+     * Create an instance of {@link IscsiDetails }
+     * 
+     */
+    public IscsiDetails createIscsiDetails() {
+        return new IscsiDetails();
+    }
+
+    /**
+     * Create an instance of {@link ErrorHandling }
+     * 
+     */
+    public ErrorHandling createErrorHandling() {
+        return new ErrorHandling();
+    }
+
+    /**
+     * Create an instance of {@link BaseResource }
+     * 
+     */
+    public BaseResource createBaseResource() {
+        return new BaseResource();
+    }
+
+    /**
+     * Create an instance of {@link ActionableResource }
+     * 
+     */
+    public ActionableResource createActionableResource() {
+        return new ActionableResource();
+    }
+
+    /**
+     * Create an instance of {@link TagParent }
+     * 
+     */
+    public TagParent createTagParent() {
+        return new TagParent();
+    }
+
+    /**
+     * Create an instance of {@link GracePeriod }
+     * 
+     */
+    public GracePeriod createGracePeriod() {
+        return new GracePeriod();
+    }
+
+    /**
+     * Create an instance of {@link CustomProperty }
+     * 
+     */
+    public CustomProperty createCustomProperty() {
+        return new CustomProperty();
+    }
+
+    /**
+     * Create an instance of {@link VmPlacementPolicy }
+     * 
+     */
+    public VmPlacementPolicy createVmPlacementPolicy() {
+        return new VmPlacementPolicy();
+    }
+
+    /**
+     * Create an instance of {@link SchedulingPolicyThresholds }
+     * 
+     */
+    public SchedulingPolicyThresholds createSchedulingPolicyThresholds() {
+        return new SchedulingPolicyThresholds();
     }
 
     /**
@@ -1847,21 +1847,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReportedDevices }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "", name = "reported_devices")
-    public JAXBElement<ReportedDevices> createReportedDevices(ReportedDevices value) {
-        return new JAXBElement<ReportedDevices>(_ReportedDevices_QNAME, ReportedDevices.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RSDL }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "rsdl")
     public JAXBElement<RSDL> createRsdl(RSDL value) {
         return new JAXBElement<RSDL>(_Rsdl_QNAME, RSDL.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReportedDevices }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "reported_devices")
+    public JAXBElement<ReportedDevices> createReportedDevices(ReportedDevices value) {
+        return new JAXBElement<ReportedDevices>(_ReportedDevices_QNAME, ReportedDevices.class, null, value);
     }
 
     /**
@@ -2621,21 +2621,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Action }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "", name = "action")
-    public JAXBElement<Action> createAction(Action value) {
-        return new JAXBElement<Action>(_Action_QNAME, Action.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Value }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "value")
     public JAXBElement<Value> createValue(Value value) {
         return new JAXBElement<Value>(_Value_QNAME, Value.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Action }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "action")
+    public JAXBElement<Action> createAction(Action value) {
+        return new JAXBElement<Action>(_Action_QNAME, Action.class, null, value);
     }
 
     /**
@@ -3233,21 +3233,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Storage }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "", name = "storage")
-    public JAXBElement<Storage> createStorage(Storage value) {
-        return new JAXBElement<Storage>(_Storage_QNAME, Storage.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TransparentHugePages }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "transparent_hugepages")
     public JAXBElement<TransparentHugePages> createTransparentHugepages(TransparentHugePages value) {
         return new JAXBElement<TransparentHugePages>(_TransparentHugepages_QNAME, TransparentHugePages.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Storage }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "storage")
+    public JAXBElement<Storage> createStorage(Storage value) {
+        return new JAXBElement<Storage>(_Storage_QNAME, Storage.class, null, value);
     }
 
 }

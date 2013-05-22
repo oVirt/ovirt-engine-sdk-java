@@ -64,11 +64,11 @@ public class Parameter
     protected String value;
     @XmlElement(name = "parameters_set")
     protected ParametersSet parametersSet;
-    @XmlAttribute
+    @XmlAttribute(name = "required")
     protected Boolean required;
-    @XmlAttribute
+    @XmlAttribute(name = "type")
     protected String type;
-    @XmlAttribute
+    @XmlAttribute(name = "context")
     protected String context;
 
     /**

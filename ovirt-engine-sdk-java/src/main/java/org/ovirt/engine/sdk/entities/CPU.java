@@ -71,9 +71,8 @@ public class CPU {
     protected BigDecimal speed;
     @XmlElement(name = "cpu_tune")
     protected CpuTune cpuTune;
-    @XmlElement(defaultValue = "CUSTOM")
     protected String mode;
-    @XmlAttribute
+    @XmlAttribute(name = "id")
     protected String id;
 
     /**

@@ -49,7 +49,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "VCpuPin")
 public class VCpuPin {
 
-    @XmlAttribute(required = true)
+    @XmlAttribute(name = "vcpu", required = true)
     protected int vcpu;
     @XmlAttribute(name = "cpu_set", required = true)
     protected String cpuSet;

@@ -50,11 +50,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SchedulingPolicyThresholds")
 public class SchedulingPolicyThresholds {
 
-    @XmlAttribute
+    @XmlAttribute(name = "low")
     protected Integer low;
-    @XmlAttribute
+    @XmlAttribute(name = "high")
     protected Integer high;
-    @XmlAttribute
+    @XmlAttribute(name = "duration")
     protected Integer duration;
 
     /**

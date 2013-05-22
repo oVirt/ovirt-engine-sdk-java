@@ -23,6 +23,7 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="vendor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
+ *         &lt;element name="full_version" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -49,7 +51,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProductInfo", propOrder = {
     "vendor",
-    "version"
+    "version",
+    "fullVersion"
 })
 public class ProductInfo
     extends BaseResource
@@ -57,6 +60,8 @@ public class ProductInfo
 
     protected String vendor;
     protected Version version;
+    @XmlElement(name = "full_version")
+    protected String fullVersion;
 
     /**
      * Gets the value of the vendor property.
@@ -112,6 +117,34 @@ public class ProductInfo
 
     public boolean isSetVersion() {
         return (this.version!= null);
+    }
+
+    /**
+     * Gets the value of the fullVersion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFullVersion() {
+        return fullVersion;
+    }
+
+    /**
+     * Sets the value of the fullVersion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFullVersion(String value) {
+        this.fullVersion = value;
+    }
+
+    public boolean isSetFullVersion() {
+        return (this.fullVersion!= null);
     }
 
 }

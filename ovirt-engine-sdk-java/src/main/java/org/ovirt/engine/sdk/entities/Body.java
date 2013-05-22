@@ -62,7 +62,7 @@ public class Body {
     protected String type;
     @XmlElement(name = "parameters_set")
     protected List<ParametersSet> parametersSets;
-    @XmlAttribute
+    @XmlAttribute(name = "required")
     protected Boolean required;
 
     /**

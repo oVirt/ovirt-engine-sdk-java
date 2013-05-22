@@ -51,13 +51,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "IP")
 public class IP {
 
-    @XmlAttribute
+    @XmlAttribute(name = "address")
     protected String address;
-    @XmlAttribute
+    @XmlAttribute(name = "netmask")
     protected String netmask;
-    @XmlAttribute
+    @XmlAttribute(name = "gateway")
     protected String gateway;
-    @XmlAttribute
+    @XmlAttribute(name = "version")
     protected String version;
 
     /**

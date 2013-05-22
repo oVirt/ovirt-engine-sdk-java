@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "MAC")
 public class MAC {
 
-    @XmlAttribute
+    @XmlAttribute(name = "address")
     protected String address;
 
     /**

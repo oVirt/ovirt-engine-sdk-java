@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Boot")
 public class Boot {
 
-    @XmlAttribute
+    @XmlAttribute(name = "dev")
     protected String dev;
 
     /**

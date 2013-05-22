@@ -61,7 +61,7 @@ public class VolumeGroup {
     protected String name;
     @XmlElement(name = "logical_unit")
     protected List<LogicalUnit> logicalUnits;
-    @XmlAttribute
+    @XmlAttribute(name = "id")
     protected String id;
 
     /**

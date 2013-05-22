@@ -69,7 +69,7 @@ public class Tag extends
      *    <pre>
      *    [tag.name]
      *    [tag.description]
-     *    [tag.parent.name]
+     *    [tag.parent.tag.name]
      *    </pre>
      *
      * @return

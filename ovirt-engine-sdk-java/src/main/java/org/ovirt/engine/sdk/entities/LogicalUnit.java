@@ -93,7 +93,7 @@ public class LogicalUnit {
     protected String storageDomainId;
     @XmlElement(name = "disk_id")
     protected String diskId;
-    @XmlAttribute
+    @XmlAttribute(name = "id")
     protected String id;
 
     /**

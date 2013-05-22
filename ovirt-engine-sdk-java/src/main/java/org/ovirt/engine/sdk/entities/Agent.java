@@ -69,7 +69,7 @@ public class Agent {
     protected Options options;
     protected Boolean concurrent;
     protected Integer order;
-    @XmlAttribute
+    @XmlAttribute(name = "type")
     protected String type;
 
     /**

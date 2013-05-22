@@ -58,7 +58,7 @@ public class Header
 
     @XmlElement(required = true)
     protected String value;
-    @XmlAttribute
+    @XmlAttribute(name = "required")
     protected Boolean required;
 
     /**

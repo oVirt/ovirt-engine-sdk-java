@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "MemoryOverCommit")
 public class MemoryOverCommit {
 
-    @XmlAttribute
+    @XmlAttribute(name = "percent")
     protected Integer percent;
 
     /**

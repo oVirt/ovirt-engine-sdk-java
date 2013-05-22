@@ -99,34 +99,6 @@ public class DataCenterQuotas extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Quota.class, DataCenterQuota.class);
     }
 
-    /**
-     * Adds Quota object.
-     *
-     * @param quota {@link org.ovirt.engine.sdk.entities.Quota}
-     * @return
-     *     {@link DataCenterQuota }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DataCenterQuota add(org.ovirt.engine.sdk.entities.Quota quota) throws 
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().add(url, quota,
-                org.ovirt.engine.sdk.entities.Quota.class,
-                DataCenterQuota.class, headers);
-    }
 
 }
 

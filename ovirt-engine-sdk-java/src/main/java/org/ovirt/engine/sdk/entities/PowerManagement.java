@@ -77,7 +77,7 @@ public class PowerManagement {
     @XmlElement(name = "pm_proxies")
     protected PmProxies pmProxies;
     protected Agents agents;
-    @XmlAttribute
+    @XmlAttribute(name = "type")
     protected String type;
 
     /**

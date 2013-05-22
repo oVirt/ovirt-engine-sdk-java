@@ -68,7 +68,7 @@ public class OperatingSystem {
     protected String initrd;
     protected String cmdline;
     protected Version version;
-    @XmlAttribute
+    @XmlAttribute(name = "type")
     protected String type;
 
     /**

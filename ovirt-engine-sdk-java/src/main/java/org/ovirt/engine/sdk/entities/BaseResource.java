@@ -109,9 +109,9 @@ public class BaseResource
     protected Status creationStatus;
     @XmlElement(name = "link")
     protected List<Link> links;
-    @XmlAttribute
+    @XmlAttribute(name = "href")
     protected String href;
-    @XmlAttribute
+    @XmlAttribute(name = "id")
     protected String id;
 
     /**

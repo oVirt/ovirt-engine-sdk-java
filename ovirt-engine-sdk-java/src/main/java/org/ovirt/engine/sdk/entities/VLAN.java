@@ -49,7 +49,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "VLAN")
 public class VLAN {
 
-    @XmlAttribute
+    @XmlAttribute(name = "id")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer id;
 

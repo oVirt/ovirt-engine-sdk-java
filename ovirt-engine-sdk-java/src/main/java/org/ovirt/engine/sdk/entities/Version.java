@@ -59,16 +59,16 @@ public class Version
     extends BaseResource
 {
 
-    @XmlAttribute
+    @XmlAttribute(name = "major")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer major;
-    @XmlAttribute
+    @XmlAttribute(name = "minor")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer minor;
-    @XmlAttribute
+    @XmlAttribute(name = "build")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer build;
-    @XmlAttribute
+    @XmlAttribute(name = "revision")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer revision;
     @XmlAttribute(name = "full_version")

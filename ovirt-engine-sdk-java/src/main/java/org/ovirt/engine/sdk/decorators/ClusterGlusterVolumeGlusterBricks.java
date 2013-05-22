@@ -135,8 +135,9 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *
      * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
      *    <pre>
-     *    bricks.brick
-     *    [bricks.brick]
+     *    brick
+     *    [replica_count]
+     *    [stripe_count]
      *    </pre>
      *
      * @return
@@ -168,8 +169,9 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *
      * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
      *    <pre>
-     *    bricks.brick
-     *    [bricks.brick]
+     *    brick
+     *    [replica_count]
+     *    [stripe_count]
      *    </pre>
      *
      * @param expect

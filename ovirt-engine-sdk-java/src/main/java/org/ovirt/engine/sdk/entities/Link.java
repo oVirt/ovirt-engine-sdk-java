@@ -54,9 +54,9 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Link {
 
-    @XmlAttribute
+    @XmlAttribute(name = "href")
     protected String href;
-    @XmlAttribute
+    @XmlAttribute(name = "rel")
     protected String rel;
 
     /**

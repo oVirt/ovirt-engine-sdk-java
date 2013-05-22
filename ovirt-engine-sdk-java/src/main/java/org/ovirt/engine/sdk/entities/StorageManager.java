@@ -53,7 +53,7 @@ public class StorageManager {
 
     @XmlValue
     protected boolean value;
-    @XmlAttribute
+    @XmlAttribute(name = "priority")
     protected Integer priority;
 
     /**

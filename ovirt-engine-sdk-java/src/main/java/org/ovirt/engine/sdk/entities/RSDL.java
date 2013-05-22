@@ -67,9 +67,9 @@ public class RSDL {
     protected Schema schema;
     protected GeneralMetadata general;
     protected DetailedLinks links;
-    @XmlAttribute
+    @XmlAttribute(name = "href")
     protected String href;
-    @XmlAttribute
+    @XmlAttribute(name = "rel")
     protected String rel;
 
     /**

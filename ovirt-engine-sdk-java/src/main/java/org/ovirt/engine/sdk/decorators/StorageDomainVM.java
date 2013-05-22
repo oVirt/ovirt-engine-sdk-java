@@ -142,6 +142,7 @@ public class StorageDomainVM extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.cluster.id|name
+     *    [action.async]
      *    [action.storage_domain.id|name]
      *    [action.vm.snapshots.collapse_snapshots]
      *    [action.clone]
@@ -178,6 +179,7 @@ public class StorageDomainVM extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.cluster.id|name
+     *    [action.async]
      *    [action.storage_domain.id|name]
      *    [action.vm.snapshots.collapse_snapshots]
      *    [action.clone]

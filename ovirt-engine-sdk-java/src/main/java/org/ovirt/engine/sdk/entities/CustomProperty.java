@@ -50,11 +50,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "CustomProperty")
 public class CustomProperty {
 
-    @XmlAttribute
+    @XmlAttribute(name = "name")
     protected String name;
-    @XmlAttribute
+    @XmlAttribute(name = "value")
     protected String value;
-    @XmlAttribute
+    @XmlAttribute(name = "regexp")
     protected String regexp;
 
     /**

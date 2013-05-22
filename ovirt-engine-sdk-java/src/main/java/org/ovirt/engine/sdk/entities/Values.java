@@ -58,7 +58,7 @@ public class Values {
 
     @XmlElement(name = "value", required = true)
     protected List<Value> values;
-    @XmlAttribute
+    @XmlAttribute(name = "type")
     protected ValueType type;
 
     /**

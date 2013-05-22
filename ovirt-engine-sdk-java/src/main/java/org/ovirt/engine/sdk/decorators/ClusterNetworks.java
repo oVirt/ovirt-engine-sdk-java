@@ -136,6 +136,7 @@ public class ClusterNetworks extends
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
      *    network.id|name
+     *    [network.usages.usage]
      *    </pre>
      *
      * @return
@@ -168,6 +169,7 @@ public class ClusterNetworks extends
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
      *    network.id|name
+     *    [network.usages.usage]
      *    </pre>
      *
      * @param expect

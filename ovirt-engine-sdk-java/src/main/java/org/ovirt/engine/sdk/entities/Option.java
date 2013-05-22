@@ -50,11 +50,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Option")
 public class Option {
 
-    @XmlAttribute
+    @XmlAttribute(name = "name")
     protected String name;
-    @XmlAttribute
+    @XmlAttribute(name = "value")
     protected String value;
-    @XmlAttribute
+    @XmlAttribute(name = "type")
     protected String type;
 
     /**
