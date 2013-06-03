@@ -12,6 +12,10 @@ target
 *.swp
 *.iws
 
+# generated files
+###########################
+*.spec
+
 # IDE files
 ###########################
 .settings
