@@ -1,6 +1,22 @@
 %global     package_version 1.0.0.8
 %global     package_maven_version 1.0.0.8-SNAPSHOT
 
+%if 0%{?fedora}
+%global     install_poms 1
+%global     require_maven 1
+%global     require_java_dep 1
+%global     mvn mvn-rpmbuild
+%global     mvnout target
+%endif
+
+%if 0%{?rhel}
+%global     install_poms 0
+%global     require_maven 0
+%global     require_java_dep 0
+%global     mvn mvn
+%global     mvnout target
+%endif
+
 Name:           ovirt-engine-sdk-java
 Version:        %{package_version}
 Release:        0.1%{?dist}
@@ -14,15 +30,22 @@ BuildArch: noarch
 
 BuildRequires:  java-devel
 BuildRequires:  jpackage-utils
+
+%if %{require_java_dep}
+BuildRequires:  apache-commons-logging
 BuildRequires:  apache-commons-compress
 BuildRequires:  junit
+BuildRequires:  xerces-j2
+%endif
+
+%if %{require_maven}
 BuildRequires:  maven
 BuildRequires:  maven-compiler-plugin
 BuildRequires:  maven-install-plugin
 BuildRequires:  maven-jar-plugin
 BuildRequires:  maven-javadoc-plugin
 BuildRequires:  maven-source-plugin
-BuildRequires:  xerces-j2
+%endif
 
 Requires: java
 Requires: httpcomponents-httpclient >= 4.2
@@ -47,25 +70,29 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{name}
 
 %build
-mvn-rpmbuild install javadoc:aggregate
+%{mvn} install javadoc:aggregate
 
 %install
 install -d -m 755 "%{buildroot}%{_javadir}/%{name}"
 install -d -m 755 "%{buildroot}%{_mavenpomdir}"
 
-install -pm 644 target/%{name}-%{package_maven_version}.jar %{buildroot}%{_javadir}/%{name}
+install -pm 644 %{mvnout}/%{name}-%{package_maven_version}.jar %{buildroot}%{_javadir}/%{name}
 ln -s "%{name}-%{package_maven_version}.jar" "%{buildroot}%{_javadir}/%{name}/%{name}.jar"
 
+%if %{install_poms}
 install -pm 644 "pom.xml" "%{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}.pom"
 %add_maven_depmap "JPP.%{name}-%{name}.pom" "%{name}/%{name}.jar"
+%endif
 
 mkdir -p "%{buildroot}%{_javadocdir}/%{name}"
 #cp -rp target/apidocs/*  "%{buildroot}%{_javadocdir}/%{name}"
 
 %files
 %{_javadir}/%{name}/
+%if %{install_poms}
 %{_mavenpomdir}/JPP.%{name}-%{name}.pom
 %{_mavendepmapfragdir}/%{name}
+%endif
 %doc AUTHORS
 %doc README
 %doc LICENSE
