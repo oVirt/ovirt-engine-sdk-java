@@ -14,7 +14,6 @@ BuildArch: noarch
 
 BuildRequires:  java-devel
 BuildRequires:  jpackage-utils
-BuildRequires:  apache-commons-logging
 BuildRequires:  apache-commons-compress
 BuildRequires:  junit
 BuildRequires:  maven
@@ -25,10 +24,9 @@ BuildRequires:  maven-javadoc-plugin
 BuildRequires:  maven-source-plugin
 BuildRequires:  xerces-j2
 
-Requires:  java
-Requires:  jpackage-utils
-Requires:  apache-commons-logging
-Requires:  xerces-j2
+Requires: java
+Requires: httpcomponents-httpclient
+Requires: apache-commons-beanutils
 
 %description
 This package contains The oVirt-Engine Java Software Development Kit.
