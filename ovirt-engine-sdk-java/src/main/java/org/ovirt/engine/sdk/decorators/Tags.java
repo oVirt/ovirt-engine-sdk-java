@@ -132,7 +132,7 @@ public class Tags extends
      *    <pre>
      *    tag.name
      *    [tag.description]
-     *    [tag.parent.tag.name]
+     *    [tag.parent.tag.id|name]
      *    </pre>
      *
      * @return
@@ -166,7 +166,7 @@ public class Tags extends
      *    <pre>
      *    tag.name
      *    [tag.description]
-     *    [tag.parent.tag.name]
+     *    [tag.parent.tag.id|name]
      *    </pre>
      *
      * @param correlationId

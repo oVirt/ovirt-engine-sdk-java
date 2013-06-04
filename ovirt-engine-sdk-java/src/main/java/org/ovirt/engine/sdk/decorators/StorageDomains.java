@@ -149,6 +149,7 @@ public class StorageDomains extends
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]
      *      [storagedomain.storage.override_luns]
+     *      [storagedomain.storage_format]
      *
      *    Overload 2:
      *      storagedomain.host.id|name
@@ -158,6 +159,7 @@ public class StorageDomains extends
      *      storagedomain.storage.address
      *      storagedomain.storage.path
      *      [storagedomain.name]
+     *      [storagedomain.storage_format]
      *
      *    Overload 3:
      *      storagedomain.host.id|name
@@ -166,6 +168,7 @@ public class StorageDomains extends
      *      storagedomain.format
      *      storagedomain.storage.path
      *      [storagedomain.name]
+     *      [storagedomain.storage_format]
      *
      *    Overload 4:
      *      storagedomain.host.id|name
@@ -177,6 +180,7 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
+     *      [storagedomain.storage_format]
      *    </pre>
      *
      * @return
@@ -217,6 +221,7 @@ public class StorageDomains extends
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]
      *      [storagedomain.storage.override_luns]
+     *      [storagedomain.storage_format]
      *
      *    Overload 2:
      *      storagedomain.host.id|name
@@ -226,6 +231,7 @@ public class StorageDomains extends
      *      storagedomain.storage.address
      *      storagedomain.storage.path
      *      [storagedomain.name]
+     *      [storagedomain.storage_format]
      *
      *    Overload 3:
      *      storagedomain.host.id|name
@@ -234,6 +240,7 @@ public class StorageDomains extends
      *      storagedomain.format
      *      storagedomain.storage.path
      *      [storagedomain.name]
+     *      [storagedomain.storage_format]
      *
      *    Overload 4:
      *      storagedomain.host.id|name
@@ -245,6 +252,7 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
+     *      [storagedomain.storage_format]
      *    </pre>
      *
      * @param expect
