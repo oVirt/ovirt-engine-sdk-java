@@ -97,7 +97,7 @@ public class Header
      *     {@link Boolean }
      *     
      */
-    public Boolean isRequired() {
+    public Boolean getRequired() {
         return required;
     }
 

@@ -204,7 +204,7 @@ public class Network
      *     {@link Boolean }
      *     
      */
-    public Boolean isStp() {
+    public Boolean getStp() {
         return stp;
     }
 
@@ -260,7 +260,7 @@ public class Network
      *     {@link Boolean }
      *     
      */
-    public Boolean isDisplay() {
+    public Boolean getDisplay() {
         return display;
     }
 
@@ -344,7 +344,7 @@ public class Network
      *     {@link Boolean }
      *     
      */
-    public Boolean isRequired() {
+    public Boolean getRequired() {
         return required;
     }
 

@@ -334,7 +334,7 @@ public class HostNIC
      *     {@link Boolean }
      *     
      */
-    public Boolean isCheckConnectivity() {
+    public Boolean getCheckConnectivity() {
         return checkConnectivity;
     }
 
@@ -446,7 +446,7 @@ public class HostNIC
      *     {@link Boolean }
      *     
      */
-    public Boolean isBridged() {
+    public Boolean getBridged() {
         return bridged;
     }
 
@@ -474,7 +474,7 @@ public class HostNIC
      *     {@link Boolean }
      *     
      */
-    public Boolean isCustomConfiguration() {
+    public Boolean getCustomConfiguration() {
         return customConfiguration;
     }
 
@@ -502,7 +502,7 @@ public class HostNIC
      *     {@link Boolean }
      *     
      */
-    public Boolean isOverrideConfiguration() {
+    public Boolean getOverrideConfiguration() {
         return overrideConfiguration;
     }
 

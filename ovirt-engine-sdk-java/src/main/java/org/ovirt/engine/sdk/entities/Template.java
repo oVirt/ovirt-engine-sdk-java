@@ -459,7 +459,7 @@ public class Template
      *     {@link Boolean }
      *     
      */
-    public Boolean isStateless() {
+    public Boolean getStateless() {
         return stateless;
     }
 
@@ -487,7 +487,7 @@ public class Template
      *     {@link Boolean }
      *     
      */
-    public Boolean isDeleteProtected() {
+    public Boolean getDeleteProtected() {
         return deleteProtected;
     }
 
@@ -599,7 +599,7 @@ public class Template
      *     {@link Boolean }
      *     
      */
-    public Boolean isTunnelMigration() {
+    public Boolean getTunnelMigration() {
         return tunnelMigration;
     }
 

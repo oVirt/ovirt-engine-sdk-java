@@ -51,7 +51,7 @@ public class XsdCodegen extends AbstractCodegen {
 
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
     private static final String SCHEMA_FILE_NAME = "api.xsd";
-    private static final String XJC_FLAGS = " -extension -no-header ";
+    private static final String XJC_FLAGS = " -extension -no-header -enableIntrospection ";
 
     private static final String copyrightTemplate = new CopyrightTemplate().getTemplate();
 

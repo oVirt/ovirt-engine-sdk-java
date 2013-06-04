@@ -108,7 +108,7 @@ public class Snapshots
      *     {@link Boolean }
      *     
      */
-    public Boolean isCollapseSnapshots() {
+    public Boolean getCollapseSnapshots() {
         return collapseSnapshots;
     }
 

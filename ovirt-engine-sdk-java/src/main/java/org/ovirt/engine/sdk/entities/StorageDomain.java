@@ -183,7 +183,7 @@ public class StorageDomain
      *     {@link Boolean }
      *     
      */
-    public Boolean isMaster() {
+    public Boolean getMaster() {
         return master;
     }
 
@@ -267,7 +267,7 @@ public class StorageDomain
      *     {@link Boolean }
      *     
      */
-    public Boolean isFormat() {
+    public Boolean getFormat() {
         return format;
     }
 
@@ -295,7 +295,7 @@ public class StorageDomain
      *     {@link Boolean }
      *     
      */
-    public Boolean isDestroy() {
+    public Boolean getDestroy() {
         return destroy;
     }
 

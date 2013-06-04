@@ -147,7 +147,7 @@ public class User
      *     {@link Boolean }
      *     
      */
-    public Boolean isLoggedIn() {
+    public Boolean getLoggedIn() {
         return loggedIn;
     }
 

@@ -135,7 +135,7 @@ public class Parameter
      *     {@link Boolean }
      *     
      */
-    public Boolean isRequired() {
+    public Boolean getRequired() {
         return required;
     }
 

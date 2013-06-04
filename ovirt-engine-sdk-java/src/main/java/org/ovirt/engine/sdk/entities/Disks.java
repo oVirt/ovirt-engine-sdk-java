@@ -111,7 +111,7 @@ public class Disks
      *     {@link Boolean }
      *     
      */
-    public Boolean isClone() {
+    public Boolean getClone() {
         return clone;
     }
 
@@ -139,7 +139,7 @@ public class Disks
      *     {@link Boolean }
      *     
      */
-    public Boolean isDetachOnly() {
+    public Boolean getDetachOnly() {
         return detachOnly;
     }
 

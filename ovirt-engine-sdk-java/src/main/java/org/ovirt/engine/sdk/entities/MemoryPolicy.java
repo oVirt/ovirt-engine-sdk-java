@@ -101,7 +101,7 @@ public class MemoryPolicy {
      *     {@link Boolean }
      *     
      */
-    public Boolean isBallooning() {
+    public Boolean getBallooning() {
         return ballooning;
     }
 

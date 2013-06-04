@@ -137,7 +137,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isAsync() {
+    public Boolean getAsync() {
         return async;
     }
 
@@ -445,7 +445,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isDiscardSnapshots() {
+    public Boolean getDiscardSnapshots() {
         return discardSnapshots;
     }
 
@@ -473,7 +473,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isExclusive() {
+    public Boolean getExclusive() {
         return exclusive;
     }
 
@@ -585,7 +585,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isCheckConnectivity() {
+    public Boolean getCheckConnectivity() {
         return checkConnectivity;
     }
 
@@ -641,7 +641,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isPause() {
+    public Boolean getPause() {
         return pause;
     }
 
@@ -669,7 +669,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isForce() {
+    public Boolean getForce() {
         return force;
     }
 
@@ -725,7 +725,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isFixLayout() {
+    public Boolean getFixLayout() {
         return fixLayout;
     }
 
@@ -781,7 +781,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isDetach() {
+    public Boolean getDetach() {
         return detach;
     }
 
@@ -809,7 +809,7 @@ public class Action
      *     {@link Boolean }
      *     
      */
-    public Boolean isClone() {
+    public Boolean getClone() {
         return clone;
     }
 

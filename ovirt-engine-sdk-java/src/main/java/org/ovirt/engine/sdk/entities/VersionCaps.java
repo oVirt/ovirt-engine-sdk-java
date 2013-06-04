@@ -232,7 +232,7 @@ public class VersionCaps
      *     {@link Boolean }
      *     
      */
-    public Boolean isCurrent() {
+    public Boolean getCurrent() {
         return current;
     }
 

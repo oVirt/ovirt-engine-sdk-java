@@ -72,7 +72,7 @@ public class Role
      *     {@link Boolean }
      *     
      */
-    public Boolean isMutable() {
+    public Boolean getMutable() {
         return mutable;
     }
 
@@ -100,7 +100,7 @@ public class Role
      *     {@link Boolean }
      *     
      */
-    public Boolean isAdministrative() {
+    public Boolean getAdministrative() {
         return administrative;
     }
 

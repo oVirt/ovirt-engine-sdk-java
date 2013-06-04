@@ -119,7 +119,7 @@ public class NIC
      *     {@link Boolean }
      *     
      */
-    public Boolean isLinked() {
+    public Boolean getLinked() {
         return linked;
     }
 
@@ -231,7 +231,7 @@ public class NIC
      *     {@link Boolean }
      *     
      */
-    public Boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
@@ -259,7 +259,7 @@ public class NIC
      *     {@link Boolean }
      *     
      */
-    public Boolean isPlugged() {
+    public Boolean getPlugged() {
         return plugged;
     }
 

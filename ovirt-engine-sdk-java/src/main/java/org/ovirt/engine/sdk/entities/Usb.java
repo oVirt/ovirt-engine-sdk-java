@@ -64,7 +64,7 @@ public class Usb {
      *     {@link Boolean }
      *     
      */
-    public Boolean isEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 

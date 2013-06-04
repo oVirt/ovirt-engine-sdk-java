@@ -299,7 +299,7 @@ public class Cluster
      *     {@link Boolean }
      *     
      */
-    public Boolean isVirtService() {
+    public Boolean getVirtService() {
         return virtService;
     }
 
@@ -327,7 +327,7 @@ public class Cluster
      *     {@link Boolean }
      *     
      */
-    public Boolean isGlusterService() {
+    public Boolean getGlusterService() {
         return glusterService;
     }
 
@@ -355,7 +355,7 @@ public class Cluster
      *     {@link Boolean }
      *     
      */
-    public Boolean isThreadsAsCores() {
+    public Boolean getThreadsAsCores() {
         return threadsAsCores;
     }
 
@@ -383,7 +383,7 @@ public class Cluster
      *     {@link Boolean }
      *     
      */
-    public Boolean isTunnelMigration() {
+    public Boolean getTunnelMigration() {
         return tunnelMigration;
     }
 

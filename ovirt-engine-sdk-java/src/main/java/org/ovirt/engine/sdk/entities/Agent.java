@@ -192,7 +192,7 @@ public class Agent {
      *     {@link Boolean }
      *     
      */
-    public Boolean isConcurrent() {
+    public Boolean getConcurrent() {
         return concurrent;
     }
 

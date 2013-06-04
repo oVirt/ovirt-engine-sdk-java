@@ -438,7 +438,7 @@ public class Disk
      *     {@link Boolean }
      *     
      */
-    public Boolean isSparse() {
+    public Boolean getSparse() {
         return sparse;
     }
 
@@ -466,7 +466,7 @@ public class Disk
      *     {@link Boolean }
      *     
      */
-    public Boolean isBootable() {
+    public Boolean getBootable() {
         return bootable;
     }
 
@@ -494,7 +494,7 @@ public class Disk
      *     {@link Boolean }
      *     
      */
-    public Boolean isShareable() {
+    public Boolean getShareable() {
         return shareable;
     }
 
@@ -522,7 +522,7 @@ public class Disk
      *     {@link Boolean }
      *     
      */
-    public Boolean isWipeAfterDelete() {
+    public Boolean getWipeAfterDelete() {
         return wipeAfterDelete;
     }
 
@@ -550,7 +550,7 @@ public class Disk
      *     {@link Boolean }
      *     
      */
-    public Boolean isPropagateErrors() {
+    public Boolean getPropagateErrors() {
         return propagateErrors;
     }
 
@@ -606,7 +606,7 @@ public class Disk
      *     {@link Boolean }
      *     
      */
-    public Boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 

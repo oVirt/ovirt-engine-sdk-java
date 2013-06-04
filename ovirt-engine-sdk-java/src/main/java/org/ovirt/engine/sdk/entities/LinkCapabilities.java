@@ -61,7 +61,7 @@ public class LinkCapabilities {
      *     {@link Boolean }
      *     
      */
-    public Boolean isSearchable() {
+    public Boolean getSearchable() {
         return searchable;
     }
 

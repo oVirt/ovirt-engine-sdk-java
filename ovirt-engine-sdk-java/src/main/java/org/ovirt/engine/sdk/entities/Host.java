@@ -679,7 +679,7 @@ public class Host
      *     {@link Boolean }
      *     
      */
-    public Boolean isOverrideIptables() {
+    public Boolean getOverrideIptables() {
         return overrideIptables;
     }
 
@@ -707,7 +707,7 @@ public class Host
      *     {@link Boolean }
      *     
      */
-    public Boolean isRebootAfterInstallation() {
+    public Boolean getRebootAfterInstallation() {
         return rebootAfterInstallation;
     }
 

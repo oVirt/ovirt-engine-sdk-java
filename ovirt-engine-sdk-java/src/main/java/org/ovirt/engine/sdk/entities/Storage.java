@@ -393,7 +393,7 @@ public class Storage
      *     {@link Boolean }
      *     
      */
-    public Boolean isOverrideLuns() {
+    public Boolean getOverrideLuns() {
         return overrideLuns;
     }
 

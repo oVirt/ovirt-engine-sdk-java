@@ -233,7 +233,7 @@ public class Display {
      *     {@link Boolean }
      *     
      */
-    public Boolean isAllowOverride() {
+    public Boolean getAllowOverride() {
         return allowOverride;
     }
 
@@ -289,7 +289,7 @@ public class Display {
      *     {@link Boolean }
      *     
      */
-    public Boolean isSmartcardEnabled() {
+    public Boolean getSmartcardEnabled() {
         return smartcardEnabled;
     }
 
