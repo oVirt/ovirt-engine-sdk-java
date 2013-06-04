@@ -1,5 +1,5 @@
-%global     package_version 1.0.0.7
-%global     package_maven_version 1.0.0.7-1
+%global     package_version 1.0.0.8
+%global     package_maven_version 1.0.0.8-SNAPSHOT
 
 Name:           ovirt-engine-sdk-java
 Version:        %{package_version}
