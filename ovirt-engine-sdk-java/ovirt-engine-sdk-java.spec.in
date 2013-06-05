@@ -27,6 +27,7 @@ BuildRequires:  xerces-j2
 Requires: java
 Requires: httpcomponents-httpclient
 Requires: apache-commons-beanutils
+Requires: apache-commons-logging
 
 %description
 This package contains The oVirt-Engine Java Software Development Kit.
