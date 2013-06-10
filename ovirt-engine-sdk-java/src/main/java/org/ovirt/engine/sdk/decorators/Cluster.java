@@ -108,6 +108,7 @@ public class Cluster extends
      *    <pre>
      *    [cluster.name]
      *    [cluster.description]
+     *    [cluster.data_center.id]
      *    [cluster.cpu.id]
      *    [cluster.version.major]
      *    [cluster.version.minor]

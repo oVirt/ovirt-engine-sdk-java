@@ -49,6 +49,7 @@ public class VM extends
     private VMTags vMTags;
     private VMSnapshots vMSnapshots;
     private VMStatistics vMStatistics;
+    private VMApplications vMApplications;
     private VMDisks vMDisks;
     private VMNICs vMNICs;
     private VMCdRoms vMCdRoms;
@@ -127,6 +128,18 @@ public class VM extends
             this.vMStatistics = new VMStatistics(proxy, this);
         }
         return vMStatistics;
+    }
+    /**
+     * Gets the value of the VMApplications property.
+     *
+     * @return
+     *     {@link VMApplications }
+     */
+    public synchronized VMApplications getApplications() {
+        if (this.vMApplications == null) {
+            this.vMApplications = new VMApplications(proxy, this);
+        }
+        return vMApplications;
     }
     /**
      * Gets the value of the VMDisks property.

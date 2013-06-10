@@ -223,6 +223,7 @@ public class StorageDomain extends
      * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
      *    <pre>
      *    storagedomain.host.id|name
+     *    [storagedomain.format]
      *    </pre>
      *
      * @param correlationId

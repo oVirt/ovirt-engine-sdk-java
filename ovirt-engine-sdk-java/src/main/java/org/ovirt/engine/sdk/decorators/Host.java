@@ -268,7 +268,7 @@ public class Host extends
      *    [host.power_management.type]
      *    [host.power_management.enabled]
      *    [host.power_management.address]
-     *    [host.power_management.user_name]
+     *    [host.power_management.username]
      *    [host.power_management.password]
      *    [host.power_management.options.option]
      *    [host.power_management.pm_proxy]
@@ -294,6 +294,10 @@ public class Host extends
      * Performs fence action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.fence_type
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -320,6 +324,10 @@ public class Host extends
      * Performs fence action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.fence_type
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]

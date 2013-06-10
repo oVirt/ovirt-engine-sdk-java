@@ -73,6 +73,7 @@ public class TemplateNIC extends
      *    [nic.mac.address]
      *    [nic.interface]
      *    [nic.port_mirroring.networks.network]
+     *    [nic.custom_properties.custom_property]
      *    </pre>
      *
      * @return

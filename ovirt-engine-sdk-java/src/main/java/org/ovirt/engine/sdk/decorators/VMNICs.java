@@ -142,6 +142,7 @@ public class VMNICs extends
      *    [nic.interface]
      *    [nic.port_mirroring.networks.network]
      *    [nic.plugged]
+     *    [nic.custom_properties.custom_property]
      *    </pre>
      *
      * @return
@@ -180,6 +181,7 @@ public class VMNICs extends
      *    [nic.interface]
      *    [nic.port_mirroring.networks.network]
      *    [nic.plugged]
+     *    [nic.custom_properties.custom_property]
      *    </pre>
      *
      * @param expect

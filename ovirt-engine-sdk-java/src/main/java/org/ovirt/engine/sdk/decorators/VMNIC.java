@@ -158,6 +158,7 @@ public class VMNIC extends
      *    [nic.interface]
      *    [nic.port_mirroring.networks.network]
      *    [nic.plugged]
+     *    [nic.custom_properties.custom_property]
      *    </pre>
      *
      * @return

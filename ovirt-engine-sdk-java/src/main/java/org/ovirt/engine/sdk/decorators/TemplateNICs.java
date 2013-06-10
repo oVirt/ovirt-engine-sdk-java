@@ -141,6 +141,7 @@ public class TemplateNICs extends
      *    [nic.mac.address]
      *    [nic.interface]
      *    [nic.port_mirroring.networks.network]
+     *    [nic.custom_properties.custom_property]
      *    </pre>
      *
      * @return
@@ -178,6 +179,7 @@ public class TemplateNICs extends
      *    [nic.mac.address]
      *    [nic.interface]
      *    [nic.port_mirroring.networks.network]
+     *    [nic.custom_properties.custom_property]
      *    </pre>
      *
      * @param expect

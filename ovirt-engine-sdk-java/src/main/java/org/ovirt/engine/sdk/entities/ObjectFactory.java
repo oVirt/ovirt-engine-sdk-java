@@ -144,6 +144,7 @@ public class ObjectFactory {
     private final static QName _Value_QNAME = new QName("", "value");
     private final static QName _Action_QNAME = new QName("", "action");
     private final static QName _Vms_QNAME = new QName("", "vms");
+    private final static QName _Applications_QNAME = new QName("", "applications");
     private final static QName _DataCenter_QNAME = new QName("", "data_center");
     private final static QName _SchedulingPolicies_QNAME = new QName("", "scheduling_policies");
     private final static QName _TransportTypes_QNAME = new QName("", "transport_types");
@@ -197,6 +198,7 @@ public class ObjectFactory {
     private final static QName _BrickStates_QNAME = new QName("", "brick_states");
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
     private final static QName _CpuTune_QNAME = new QName("", "cpu_tune");
+    private final static QName _Application_QNAME = new QName("", "application");
     private final static QName _Nic_QNAME = new QName("", "nic");
     private final static QName _ReportedDevice_QNAME = new QName("", "reported_device");
     private final static QName _Ip_QNAME = new QName("", "ip");
@@ -1020,6 +1022,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Applications }
+     * 
+     */
+    public Applications createApplications() {
+        return new Applications();
+    }
+
+    /**
      * Create an instance of {@link DataCenter }
      * 
      */
@@ -1433,6 +1443,14 @@ public class ObjectFactory {
      */
     public Version createVersion() {
         return new Version();
+    }
+
+    /**
+     * Create an instance of {@link Application }
+     * 
+     */
+    public Application createApplication() {
+        return new Application();
     }
 
     /**
@@ -2648,6 +2666,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Applications }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "applications")
+    public JAXBElement<Applications> createApplications(Applications value) {
+        return new JAXBElement<Applications>(_Applications_QNAME, Applications.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DataCenter }{@code >}}
      * 
      */
@@ -3122,6 +3149,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "cpu_tune")
     public JAXBElement<CpuTune> createCpuTune(CpuTune value) {
         return new JAXBElement<CpuTune>(_CpuTune_QNAME, CpuTune.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Application }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "application")
+    public JAXBElement<Application> createApplication(Application value) {
+        return new JAXBElement<Application>(_Application_QNAME, Application.class, null, value);
     }
 
     /**

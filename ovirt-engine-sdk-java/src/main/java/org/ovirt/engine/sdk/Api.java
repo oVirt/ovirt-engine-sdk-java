@@ -579,6 +579,18 @@ public class Api {
         return getEntryPoint().getTime();
     }
     /**
+     * Gets the value of the SpecialObjects property.
+     *
+     * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
+     *
+     */
+    public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
+        if (this.entryPoint != null) {
+            return this.entryPoint.getSpecialObjects();
+        }
+        return null;
+    }
+    /**
      * Gets the value of the ProductInfo property.
      *
      * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
@@ -607,18 +619,6 @@ public class Api {
     public org.ovirt.engine.sdk.entities.ApiSummary getSummary() throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {
         return getEntryPoint().getSummary();
-    }
-    /**
-     * Gets the value of the SpecialObjects property.
-     *
-     * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
-     *
-     */
-    public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
-        if (this.entryPoint != null) {
-            return this.entryPoint.getSpecialObjects();
-        }
-        return null;
     }
 
 }

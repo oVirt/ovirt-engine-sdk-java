@@ -75,6 +75,7 @@ import javax.xml.bind.annotation.XmlType;
     Hosts.class,
     Permissions.class,
     VMs.class,
+    Applications.class,
     Networks.class,
     PreviewVMs.class,
     Templates.class,

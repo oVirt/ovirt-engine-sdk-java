@@ -92,6 +92,7 @@ import javax.xml.bind.annotation.XmlType;
     Quota.class,
     Parameter.class,
     Version.class,
+    Application.class,
     ReportedDevice.class,
     Cluster.class,
     Group.class,
