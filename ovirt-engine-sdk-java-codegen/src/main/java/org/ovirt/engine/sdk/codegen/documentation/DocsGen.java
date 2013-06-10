@@ -69,7 +69,7 @@ public class DocsGen implements IDocCodegen {
                 for (ParametersSet ps : detailedLink.getRequest().getBody().getParametersSets()) {
                     docParams.append(NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + OVERLOAD + i + ":" + NEW_LINE);
                     for (Parameter param : ps.getParameters()) {
-                        if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
+                        if (param.getRequired() != null && param.getRequired().equals(Boolean.TRUE)) {
                             docParams.append(PREFIX + PARAM_DETAILS_OFFSET + OVERLOAD_OFFSET + param.getName()
                                     + NEW_LINE);
                         } else {
@@ -86,7 +86,7 @@ public class DocsGen implements IDocCodegen {
                 docParams.append(NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN);
                 for (Parameter param : detailedLink.getRequest()
                         .getBody().getParametersSets().get(0).getParameters()) {
-                    if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
+                    if (param.getRequired() != null && param.getRequired().equals(Boolean.TRUE)) {
                         docParams.append(NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + param.getName());
                     } else {
                         docParams.append(NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + BREACKS_OPEN
@@ -119,7 +119,7 @@ public class DocsGen implements IDocCodegen {
             if (!detailedLink.getRequest().getHeaders().getHeaders().isEmpty()) {
                 for (Header header : detailedLink.getRequest().getHeaders().getHeaders()) {
                     if (!ArrayUtils.contains(HEADERS_EXCEPTIONS, header.getName())) {
-                        if (header.isRequired() != null && header.isRequired().equals(Boolean.TRUE)) {
+                        if (header.getRequired() != null && header.getRequired().equals(Boolean.TRUE)) {
                             docParams.append(NEW_LINE + PARAM + FormatUtils.toJava(header.getName() +
                                     NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
                                     NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + header.getValue()) +
@@ -146,7 +146,7 @@ public class DocsGen implements IDocCodegen {
                 for (ParametersSet ps : detailedLink.getRequest().getUrl().getParametersSets()) {
                     docParams.append(NEW_LINE + PREFIX + OVERLOAD + i + ": " + NEW_LINE);
                     for (Parameter param : ps.getParameters()) {
-                        if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
+                        if (param.getRequired() != null && param.getRequired().equals(Boolean.TRUE)) {
                             docParams.append(PARAM + FormatUtils.toJava(param.getName()) +
                                     NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
                                     NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + param.getValue() +
@@ -164,7 +164,7 @@ public class DocsGen implements IDocCodegen {
                 }
             } else if (detailedLink.getRequest().getUrl().getParametersSets().size() == 1) {
                 for (Parameter param : detailedLink.getRequest().getUrl().getParametersSets().get(0).getParameters()) {
-                    if (param.isRequired() != null && param.isRequired().equals(Boolean.TRUE)) {
+                    if (param.getRequired() != null && param.getRequired().equals(Boolean.TRUE)) {
                         docParams.append(NEW_LINE + PARAM + UrlUtils.toQueryParam(param.getName()) +
                                 NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
                                 NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + param.getValue() +

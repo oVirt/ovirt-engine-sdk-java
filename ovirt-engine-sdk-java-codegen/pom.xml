@@ -28,7 +28,7 @@
         <dependency>
         	<groupId>org.ovirt.engine.sdk</groupId>
         	<artifactId>ovirt-engine-sdk-java</artifactId>
-        	<version>1.0.0.6-1</version>
+        	<version>1.0.0.7-1</version>
         	<type>jar</type>
         	<scope>compile</scope>
         </dependency>
