@@ -101,7 +101,7 @@ mkdir -p "%{buildroot}%{_javadocdir}/%{name}"
 %{_javadocdir}/%{name}
 
 %changelog
-* Thu  June 4 2013 Michael Pasternak <mpastern@redhat.com> - 1.0.0.7-1
+* Thu  Jun 4 2013 Michael Pasternak <mpastern@redhat.com> - 1.0.0.7-1
 - updated storagedomain add()/update() docs
 - updated tag update() docs
 - enable correct generation of Boolean getters/setters
