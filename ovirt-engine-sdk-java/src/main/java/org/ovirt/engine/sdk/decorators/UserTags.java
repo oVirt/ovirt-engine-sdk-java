@@ -148,7 +148,7 @@ public class UserTags extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public UserTag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
+    public UserTag add(org.ovirt.engine.sdk.entities.Tag tag) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -189,7 +189,7 @@ public class UserTags extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public UserTag add(org.ovirt.engine.sdk.entities.Tag tag, String expect, String correlationId) throws 
+    public UserTag add(org.ovirt.engine.sdk.entities.Tag tag, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

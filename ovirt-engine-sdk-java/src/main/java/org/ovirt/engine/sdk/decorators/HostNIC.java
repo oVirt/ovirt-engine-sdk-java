@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>HostNIC providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.HostNIC }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.HostNIC }.
  */
 @SuppressWarnings("unused")
 public class HostNIC extends

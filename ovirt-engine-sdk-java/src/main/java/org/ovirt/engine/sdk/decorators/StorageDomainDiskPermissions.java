@@ -113,7 +113,7 @@ public class StorageDomainDiskPermissions extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomainDiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
+    public StorageDomainDiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

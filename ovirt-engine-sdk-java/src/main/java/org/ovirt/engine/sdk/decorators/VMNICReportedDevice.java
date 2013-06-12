@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>VMNICReportedDevice providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.ReportedDevice }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.ReportedDevice }.
  */
 @SuppressWarnings("unused")
 public class VMNICReportedDevice extends

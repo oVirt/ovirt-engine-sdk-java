@@ -20,12 +20,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>$decoratorCollectionName$ providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.$publicCollectionName$ } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.$publicCollectionName$ }.
  */
 @SuppressWarnings("unused")
 public class $decoratorCollectionName$ extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.$publicEntityName$, 
-                            org.ovirt.engine.sdk.entities.$publicCollectionName$, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.$publicEntityName$,
+                            org.ovirt.engine.sdk.entities.$publicCollectionName$,
                             $decoratorEntityName$> {
 
     /**

@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Groups providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Groups } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Groups }.
  */
 @SuppressWarnings("unused")
 public class Groups extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Group, 
-                            org.ovirt.engine.sdk.entities.Groups, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Group,
+                            org.ovirt.engine.sdk.entities.Groups,
                             Group> {
 
     /**
@@ -153,7 +153,7 @@ public class Groups extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Group add(org.ovirt.engine.sdk.entities.Group group) throws 
+    public Group add(org.ovirt.engine.sdk.entities.Group group) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -190,7 +190,7 @@ public class Groups extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Group add(org.ovirt.engine.sdk.entities.Group group, String correlationId) throws 
+    public Group add(org.ovirt.engine.sdk.entities.Group group, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

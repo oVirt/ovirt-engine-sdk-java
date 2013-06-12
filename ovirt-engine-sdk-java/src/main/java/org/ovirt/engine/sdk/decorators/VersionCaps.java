@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>VersionCaps providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.VersionCaps }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.VersionCaps }.
  */
 @SuppressWarnings("unused")
 public class VersionCaps extends

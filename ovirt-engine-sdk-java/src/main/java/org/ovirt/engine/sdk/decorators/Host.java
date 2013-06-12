@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>Host providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Host }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Host }.
  */
 @SuppressWarnings("unused")
 public class Host extends

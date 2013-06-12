@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>StorageDomains providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.StorageDomains } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageDomains }.
  */
 @SuppressWarnings("unused")
 public class StorageDomains extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.StorageDomain, 
-                            org.ovirt.engine.sdk.entities.StorageDomains, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.StorageDomain,
+                            org.ovirt.engine.sdk.entities.StorageDomains,
                             StorageDomain> {
 
     /**
@@ -193,7 +193,7 @@ public class StorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws 
+    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -278,7 +278,7 @@ public class StorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, Boolean async, String expect, String correlationId) throws 
+    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, Boolean async, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

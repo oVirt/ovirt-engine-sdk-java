@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>Domain providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Domain }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Domain }.
  */
 @SuppressWarnings("unused")
 public class Domain extends

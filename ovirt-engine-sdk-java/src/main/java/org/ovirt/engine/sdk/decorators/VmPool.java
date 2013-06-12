@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>VmPool providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.VmPool }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.VmPool }.
  */
 @SuppressWarnings("unused")
 public class VmPool extends
@@ -84,6 +84,7 @@ public class VmPool extends
      *    [vmpool.template.id|name]
      *    [vmpool.name]
      *    [vmpool.size]
+     *    [vmpool.max_user_vms]
      *    </pre>
      *
      * @return

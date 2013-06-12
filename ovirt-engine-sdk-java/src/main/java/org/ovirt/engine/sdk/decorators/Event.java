@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>Event providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Event }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Event }.
  */
 @SuppressWarnings("unused")
 public class Event extends

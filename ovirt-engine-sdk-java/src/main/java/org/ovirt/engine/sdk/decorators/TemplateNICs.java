@@ -154,7 +154,7 @@ public class TemplateNICs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public TemplateNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws 
+    public TemplateNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -201,7 +201,7 @@ public class TemplateNICs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public TemplateNIC add(org.ovirt.engine.sdk.entities.NIC nic, String expect, String correlationId) throws 
+    public TemplateNIC add(org.ovirt.engine.sdk.entities.NIC nic, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

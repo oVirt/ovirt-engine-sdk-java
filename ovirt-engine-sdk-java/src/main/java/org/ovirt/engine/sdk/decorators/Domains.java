@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Domains providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Domains } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Domains }.
  */
 @SuppressWarnings("unused")
 public class Domains extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Domain, 
-                            org.ovirt.engine.sdk.entities.Domains, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Domain,
+                            org.ovirt.engine.sdk.entities.Domains,
                             Domain> {
 
     /**

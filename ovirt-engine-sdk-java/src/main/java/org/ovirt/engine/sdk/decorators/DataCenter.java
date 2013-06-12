@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>DataCenter providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.DataCenter }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.DataCenter }.
  */
 @SuppressWarnings("unused")
 public class DataCenter extends

@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Templates providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Templates } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Templates }.
  */
 @SuppressWarnings("unused")
 public class Templates extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Template, 
-                            org.ovirt.engine.sdk.entities.Templates, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Template,
+                            org.ovirt.engine.sdk.entities.Templates,
                             Template> {
 
     /**
@@ -183,7 +183,7 @@ public class Templates extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Template add(org.ovirt.engine.sdk.entities.Template template) throws 
+    public Template add(org.ovirt.engine.sdk.entities.Template template) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -254,7 +254,7 @@ public class Templates extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Template add(org.ovirt.engine.sdk.entities.Template template, String expect, String correlationId) throws 
+    public Template add(org.ovirt.engine.sdk.entities.Template template, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

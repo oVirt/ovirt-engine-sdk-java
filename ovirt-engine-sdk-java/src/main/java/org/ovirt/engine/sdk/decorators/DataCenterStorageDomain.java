@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>DataCenterStorageDomain providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.StorageDomain }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageDomain }.
  */
 @SuppressWarnings("unused")
 public class DataCenterStorageDomain extends

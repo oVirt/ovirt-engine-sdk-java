@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>VMApplication providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Application }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Application }.
  */
 @SuppressWarnings("unused")
 public class VMApplication extends

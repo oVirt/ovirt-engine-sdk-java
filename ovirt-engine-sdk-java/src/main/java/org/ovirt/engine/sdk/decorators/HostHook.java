@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>HostHook providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Hook }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Hook }.
  */
 @SuppressWarnings("unused")
 public class HostHook extends

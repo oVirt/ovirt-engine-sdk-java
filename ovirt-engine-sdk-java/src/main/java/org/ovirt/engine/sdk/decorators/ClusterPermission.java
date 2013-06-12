@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>ClusterPermission providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Permission }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permission }.
  */
 @SuppressWarnings("unused")
 public class ClusterPermission extends

@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>VmPools providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.VmPools } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.VmPools }.
  */
 @SuppressWarnings("unused")
 public class VmPools extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.VmPool, 
-                            org.ovirt.engine.sdk.entities.VmPools, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.VmPool,
+                            org.ovirt.engine.sdk.entities.VmPools,
                             VmPool> {
 
     /**
@@ -144,6 +144,7 @@ public class VmPools extends
      *    vmpool.template.id|name
      *    vmpool.name
      *    [vmpool.size]
+     *    [vmpool.max_user_vms]
      *    </pre>
      *
      * @return
@@ -156,7 +157,7 @@ public class VmPools extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool) throws 
+    public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -179,6 +180,7 @@ public class VmPools extends
      *    vmpool.template.id|name
      *    vmpool.name
      *    [vmpool.size]
+     *    [vmpool.max_user_vms]
      *    </pre>
      *
      * @param expect
@@ -200,7 +202,7 @@ public class VmPools extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool, String expect, String correlationId) throws 
+    public VmPool add(org.ovirt.engine.sdk.entities.VmPool vmpool, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

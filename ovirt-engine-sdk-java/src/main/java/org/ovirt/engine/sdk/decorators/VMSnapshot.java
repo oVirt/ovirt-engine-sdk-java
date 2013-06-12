@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>VMSnapshot providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Snapshot }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Snapshot }.
  */
 @SuppressWarnings("unused")
 public class VMSnapshot extends

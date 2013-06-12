@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>DataCenterQuota providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Quota }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Quota }.
  */
 @SuppressWarnings("unused")
 public class DataCenterQuota extends

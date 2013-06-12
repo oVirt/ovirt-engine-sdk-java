@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Disks providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Disks } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Disks }.
  */
 @SuppressWarnings("unused")
 public class Disks extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Disk, 
-                            org.ovirt.engine.sdk.entities.Disks, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Disk,
+                            org.ovirt.engine.sdk.entities.Disks,
                             Disk> {
 
     /**
@@ -178,7 +178,7 @@ public class Disks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Disk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
+    public Disk add(org.ovirt.engine.sdk.entities.Disk disk) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -244,7 +244,7 @@ public class Disks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Disk add(org.ovirt.engine.sdk.entities.Disk disk, String expect, String correlationId) throws 
+    public Disk add(org.ovirt.engine.sdk.entities.Disk disk, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

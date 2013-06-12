@@ -155,7 +155,7 @@ public class VMNICs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws 
+    public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -203,7 +203,7 @@ public class VMNICs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic, String expect, String correlationId) throws 
+    public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

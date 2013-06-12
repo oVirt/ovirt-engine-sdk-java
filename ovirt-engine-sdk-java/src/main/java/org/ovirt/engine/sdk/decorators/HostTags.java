@@ -148,7 +148,7 @@ public class HostTags extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public HostTag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
+    public HostTag add(org.ovirt.engine.sdk.entities.Tag tag) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -189,7 +189,7 @@ public class HostTags extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public HostTag add(org.ovirt.engine.sdk.entities.Tag tag, String expect, String correlationId) throws 
+    public HostTag add(org.ovirt.engine.sdk.entities.Tag tag, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

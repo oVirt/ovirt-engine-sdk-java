@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>GroupRolePermit providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Permit }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permit }.
  */
 @SuppressWarnings("unused")
 public class GroupRolePermit extends

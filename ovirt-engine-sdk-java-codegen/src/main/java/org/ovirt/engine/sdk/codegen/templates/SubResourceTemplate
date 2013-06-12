@@ -16,7 +16,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>$subResourceDecoratorName$ providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.$publicEntityName$ }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.$publicEntityName$ }.
  */
 @SuppressWarnings("unused")
 public class $subResourceDecoratorName$ extends

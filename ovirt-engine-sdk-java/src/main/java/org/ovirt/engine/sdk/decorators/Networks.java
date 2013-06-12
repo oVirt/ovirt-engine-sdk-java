@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Networks providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Networks } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Networks }.
  */
 @SuppressWarnings("unused")
 public class Networks extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Network, 
-                            org.ovirt.engine.sdk.entities.Networks, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Network,
+                            org.ovirt.engine.sdk.entities.Networks,
                             Network> {
 
     /**
@@ -162,7 +162,7 @@ public class Networks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Network add(org.ovirt.engine.sdk.entities.Network network) throws 
+    public Network add(org.ovirt.engine.sdk.entities.Network network) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -212,7 +212,7 @@ public class Networks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Network add(org.ovirt.engine.sdk.entities.Network network, String expect, String correlationId) throws 
+    public Network add(org.ovirt.engine.sdk.entities.Network network, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

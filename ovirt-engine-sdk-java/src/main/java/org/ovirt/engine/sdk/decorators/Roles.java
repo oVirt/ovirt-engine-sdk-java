@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Roles providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Roles } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Roles }.
  */
 @SuppressWarnings("unused")
 public class Roles extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Role, 
-                            org.ovirt.engine.sdk.entities.Roles, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Role,
+                            org.ovirt.engine.sdk.entities.Roles,
                             Role> {
 
     /**
@@ -146,7 +146,7 @@ public class Roles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Role add(org.ovirt.engine.sdk.entities.Role role) throws 
+    public Role add(org.ovirt.engine.sdk.entities.Role role) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -190,7 +190,7 @@ public class Roles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Role add(org.ovirt.engine.sdk.entities.Role role, String expect, String correlationId) throws 
+    public Role add(org.ovirt.engine.sdk.entities.Role role, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

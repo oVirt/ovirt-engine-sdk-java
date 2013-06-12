@@ -174,7 +174,7 @@ public class UserPermissions extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public UserPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
+    public UserPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -241,7 +241,7 @@ public class UserPermissions extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public UserPermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect, String correlationId) throws 
+    public UserPermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

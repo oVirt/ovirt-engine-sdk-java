@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Users providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Users } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Users }.
  */
 @SuppressWarnings("unused")
 public class Users extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.User, 
-                            org.ovirt.engine.sdk.entities.Users, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.User,
+                            org.ovirt.engine.sdk.entities.Users,
                             User> {
 
     /**
@@ -154,7 +154,7 @@ public class Users extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public User add(org.ovirt.engine.sdk.entities.User user) throws 
+    public User add(org.ovirt.engine.sdk.entities.User user) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -196,7 +196,7 @@ public class Users extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public User add(org.ovirt.engine.sdk.entities.User user, String expect, String correlationId) throws 
+    public User add(org.ovirt.engine.sdk.entities.User user, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

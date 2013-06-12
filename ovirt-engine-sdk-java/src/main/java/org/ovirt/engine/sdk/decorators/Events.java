@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Events providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Events } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Events }.
  */
 @SuppressWarnings("unused")
 public class Events extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Event, 
-                            org.ovirt.engine.sdk.entities.Events, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Event,
+                            org.ovirt.engine.sdk.entities.Events,
                             Event> {
 
     /**
@@ -169,7 +169,7 @@ public class Events extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Event add(org.ovirt.engine.sdk.entities.Event event) throws 
+    public Event add(org.ovirt.engine.sdk.entities.Event event) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -221,7 +221,7 @@ public class Events extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Event add(org.ovirt.engine.sdk.entities.Event event, String expect, String correlationId) throws 
+    public Event add(org.ovirt.engine.sdk.entities.Event event, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

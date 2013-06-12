@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>UserRole providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Role }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Role }.
  */
 @SuppressWarnings("unused")
 public class UserRole extends

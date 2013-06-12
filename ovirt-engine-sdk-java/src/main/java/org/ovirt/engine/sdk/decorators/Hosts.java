@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Hosts providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Hosts } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Hosts }.
  */
 @SuppressWarnings("unused")
 public class Hosts extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Host, 
-                            org.ovirt.engine.sdk.entities.Hosts, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Host,
+                            org.ovirt.engine.sdk.entities.Hosts,
                             Host> {
 
     /**
@@ -168,7 +168,7 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Host add(org.ovirt.engine.sdk.entities.Host host) throws 
+    public Host add(org.ovirt.engine.sdk.entities.Host host) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -224,7 +224,7 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Host add(org.ovirt.engine.sdk.entities.Host host, String expect, String correlationId) throws 
+    public Host add(org.ovirt.engine.sdk.entities.Host host, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

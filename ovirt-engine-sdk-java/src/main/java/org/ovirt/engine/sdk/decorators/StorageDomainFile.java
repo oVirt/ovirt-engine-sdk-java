@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>StorageDomainFile providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.File }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.File }.
  */
 @SuppressWarnings("unused")
 public class StorageDomainFile extends

@@ -113,7 +113,7 @@ public class VMDiskPermissions extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMDiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
+    public VMDiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

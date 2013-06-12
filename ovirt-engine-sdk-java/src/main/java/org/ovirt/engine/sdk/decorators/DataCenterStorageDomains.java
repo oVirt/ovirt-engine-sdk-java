@@ -148,7 +148,7 @@ public class DataCenterStorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterStorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws 
+    public DataCenterStorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -189,7 +189,7 @@ public class DataCenterStorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterStorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, String expect, String correlationId) throws 
+    public DataCenterStorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

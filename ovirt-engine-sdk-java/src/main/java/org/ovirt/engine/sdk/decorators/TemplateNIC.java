@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>TemplateNIC providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.NIC }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.NIC }.
  */
 @SuppressWarnings("unused")
 public class TemplateNIC extends

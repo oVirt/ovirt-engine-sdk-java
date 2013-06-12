@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>VMs providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.VMs } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.VMs }.
  */
 @SuppressWarnings("unused")
 public class VMs extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.VM, 
-                            org.ovirt.engine.sdk.entities.VMs, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.VM,
+                            org.ovirt.engine.sdk.entities.VMs,
                             VM> {
 
     /**
@@ -228,7 +228,7 @@ public class VMs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VM add(org.ovirt.engine.sdk.entities.VM vm) throws 
+    public VM add(org.ovirt.engine.sdk.entities.VM vm) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -344,7 +344,7 @@ public class VMs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VM add(org.ovirt.engine.sdk.entities.VM vm, String correlationId, String expect) throws 
+    public VM add(org.ovirt.engine.sdk.entities.VM vm, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

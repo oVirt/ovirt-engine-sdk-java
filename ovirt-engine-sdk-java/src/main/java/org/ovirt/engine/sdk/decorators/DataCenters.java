@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>DataCenters providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.DataCenters } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.DataCenters }.
  */
 @SuppressWarnings("unused")
 public class DataCenters extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.DataCenter, 
-                            org.ovirt.engine.sdk.entities.DataCenters, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.DataCenter,
+                            org.ovirt.engine.sdk.entities.DataCenters,
                             DataCenter> {
 
     /**
@@ -158,7 +158,7 @@ public class DataCenters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter) throws 
+    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -204,7 +204,7 @@ public class DataCenters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter, String expect, String correlationId) throws 
+    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

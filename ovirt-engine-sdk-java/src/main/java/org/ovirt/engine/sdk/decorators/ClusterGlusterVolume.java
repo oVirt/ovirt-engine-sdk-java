@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>ClusterGlusterVolume providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.GlusterVolume }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.GlusterVolume }.
  */
 @SuppressWarnings("unused")
 public class ClusterGlusterVolume extends

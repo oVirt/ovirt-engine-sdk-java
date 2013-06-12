@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>DomainGroup providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Group }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Group }.
  */
 @SuppressWarnings("unused")
 public class DomainGroup extends

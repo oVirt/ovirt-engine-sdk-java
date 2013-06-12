@@ -223,7 +223,7 @@ public class HostNICs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public HostNIC add(org.ovirt.engine.sdk.entities.HostNIC hostnic) throws 
+    public HostNIC add(org.ovirt.engine.sdk.entities.HostNIC hostnic) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -267,7 +267,7 @@ public class HostNICs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public HostNIC add(org.ovirt.engine.sdk.entities.HostNIC hostnic, String expect, String correlationId) throws 
+    public HostNIC add(org.ovirt.engine.sdk.entities.HostNIC hostnic, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

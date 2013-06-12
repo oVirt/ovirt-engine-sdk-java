@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>DiskStatistic providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Statistic }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Statistic }.
  */
 @SuppressWarnings("unused")
 public class DiskStatistic extends

@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>TemplateDisk providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Disk }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Disk }.
  */
 @SuppressWarnings("unused")
 public class TemplateDisk extends

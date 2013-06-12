@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Clusters providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Clusters } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Clusters }.
  */
 @SuppressWarnings("unused")
 public class Clusters extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Cluster, 
-                            org.ovirt.engine.sdk.entities.Clusters, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Cluster,
+                            org.ovirt.engine.sdk.entities.Clusters,
                             Cluster> {
 
     /**
@@ -169,7 +169,7 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws 
+    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -226,7 +226,7 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect, String correlationId) throws 
+    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 

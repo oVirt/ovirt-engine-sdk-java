@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>DataCenterClusterGlusterVolumeGlusterBrick providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.GlusterBrick }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.GlusterBrick }.
  */
 @SuppressWarnings("unused")
 public class DataCenterClusterGlusterVolumeGlusterBrick extends

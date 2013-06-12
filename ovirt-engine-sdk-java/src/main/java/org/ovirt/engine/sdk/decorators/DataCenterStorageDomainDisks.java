@@ -186,7 +186,7 @@ public class DataCenterStorageDomainDisks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterStorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk) throws 
+    public DataCenterStorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -254,7 +254,7 @@ public class DataCenterStorageDomainDisks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterStorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, Boolean unregistered, String expect, String correlationId) throws 
+    public DataCenterStorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, Boolean unregistered, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

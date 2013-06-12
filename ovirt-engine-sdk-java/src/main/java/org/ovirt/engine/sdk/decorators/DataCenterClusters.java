@@ -163,7 +163,7 @@ public class DataCenterClusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterCluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws 
+    public DataCenterCluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -219,7 +219,7 @@ public class DataCenterClusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterCluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect, String correlationId) throws 
+    public DataCenterCluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

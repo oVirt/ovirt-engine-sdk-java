@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Capabilities providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Capabilities } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Capabilities }.
  */
 @SuppressWarnings("unused")
 public class Capabilities extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.VersionCaps, 
-                            org.ovirt.engine.sdk.entities.Capabilities, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.VersionCaps,
+                            org.ovirt.engine.sdk.entities.Capabilities,
                             VersionCaps> {
 
     /**

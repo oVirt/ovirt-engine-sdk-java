@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>Cluster providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Cluster }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Cluster }.
  */
 @SuppressWarnings("unused")
 public class Cluster extends

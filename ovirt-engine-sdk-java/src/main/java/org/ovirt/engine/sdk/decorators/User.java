@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>User providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.User }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.User }.
  */
 @SuppressWarnings("unused")
 public class User extends

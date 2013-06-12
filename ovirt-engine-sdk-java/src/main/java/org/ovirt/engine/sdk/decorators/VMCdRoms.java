@@ -148,7 +148,7 @@ public class VMCdRoms extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMCdRom add(org.ovirt.engine.sdk.entities.CdRom cdrom) throws 
+    public VMCdRom add(org.ovirt.engine.sdk.entities.CdRom cdrom) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -189,7 +189,7 @@ public class VMCdRoms extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMCdRom add(org.ovirt.engine.sdk.entities.CdRom cdrom, String expect, String correlationId) throws 
+    public VMCdRom add(org.ovirt.engine.sdk.entities.CdRom cdrom, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

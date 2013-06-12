@@ -144,7 +144,7 @@ public class DiskPermissions extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws 
+    public DiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

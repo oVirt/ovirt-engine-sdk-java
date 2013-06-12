@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>DataCenterClusterNetwork providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Network }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Network }.
  */
 @SuppressWarnings("unused")
 public class DataCenterClusterNetwork extends

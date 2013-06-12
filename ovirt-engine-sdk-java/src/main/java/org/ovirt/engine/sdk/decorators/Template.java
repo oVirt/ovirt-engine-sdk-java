@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>Template providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Template }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Template }.
  */
 @SuppressWarnings("unused")
 public class Template extends

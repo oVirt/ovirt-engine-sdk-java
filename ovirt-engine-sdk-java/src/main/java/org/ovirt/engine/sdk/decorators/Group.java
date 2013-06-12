@@ -36,7 +36,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
  * <p>Group providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Group }. 
+ * <p>to {@link org.ovirt.engine.sdk.entities.Group }.
  */
 @SuppressWarnings("unused")
 public class Group extends

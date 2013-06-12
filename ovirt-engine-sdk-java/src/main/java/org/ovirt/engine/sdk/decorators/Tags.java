@@ -40,12 +40,12 @@ import org.ovirt.engine.sdk.entities.Action;
 
 /**
  * <p>Tags providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Tags } .
+ * <p>to {@link org.ovirt.engine.sdk.entities.Tags }.
  */
 @SuppressWarnings("unused")
 public class Tags extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Tag, 
-                            org.ovirt.engine.sdk.entities.Tags, 
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Tag,
+                            org.ovirt.engine.sdk.entities.Tags,
                             Tag> {
 
     /**
@@ -145,7 +145,7 @@ public class Tags extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Tag add(org.ovirt.engine.sdk.entities.Tag tag) throws 
+    public Tag add(org.ovirt.engine.sdk.entities.Tag tag) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -184,7 +184,7 @@ public class Tags extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Tag add(org.ovirt.engine.sdk.entities.Tag tag, String correlationId) throws 
+    public Tag add(org.ovirt.engine.sdk.entities.Tag tag, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
