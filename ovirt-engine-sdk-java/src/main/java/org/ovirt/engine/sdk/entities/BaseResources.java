@@ -69,6 +69,7 @@ import javax.xml.bind.annotation.XmlType;
     Quotas.class,
     GlusterMemoryPools.class,
     GlusterVolumes.class,
+    Capabilities.class,
     Users.class,
     IPs.class,
     DataCenters.class,

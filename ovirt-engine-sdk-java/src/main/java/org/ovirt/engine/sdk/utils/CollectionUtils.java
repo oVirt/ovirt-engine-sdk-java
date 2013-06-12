@@ -36,7 +36,7 @@ public class CollectionUtils {
      */
     public static <T extends BaseResource> T getItemByName(String name, List<T> collection) {
         for (T item : collection) {
-            if (item.getName().equals(name)) {
+            if (!StringUtils.isNull(item.getName()) && item.getName().equals(name)) {
                 return item;
             }
         }

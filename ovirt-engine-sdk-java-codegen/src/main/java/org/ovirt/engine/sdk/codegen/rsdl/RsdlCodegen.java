@@ -47,6 +47,7 @@ import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.codegen.utils.ReflectionHelper;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
+import org.ovirt.engine.sdk.entities.Capabilities;
 import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.GlusterBrick;
 import org.ovirt.engine.sdk.entities.GlusterBricks;
@@ -54,6 +55,7 @@ import org.ovirt.engine.sdk.entities.HostNIC;
 import org.ovirt.engine.sdk.entities.HostNics;
 import org.ovirt.engine.sdk.entities.HttpMethod;
 import org.ovirt.engine.sdk.entities.RSDL;
+import org.ovirt.engine.sdk.entities.VersionCaps;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.ArrayUtils;
 import org.ovirt.engine.sdk.utils.StringUtils;
@@ -100,8 +102,11 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String ADD_REL = "add";
     private static final String GET_REL = "get";
 
-    private static final String[] COLLECTION2ENTITY_EXCEPTIONS = new String[] { "capabilities", "storage",
-            "versioncaps" };
+    private static final String[] COLLECTION2ENTITY_EXCEPTIONS = new String[] {
+            "capabilities",
+            "{capabilitie:id}",
+            "storage", "{storage:id}"
+    };
     private static final String[] RETURN_BODY_EXCEPTIONS = new String[] { "Response", "Responses" };
     private static final String[] ACTION_NAME_EXCEPTIONS = new String[] { "import", "export" };
 
@@ -226,34 +231,28 @@ public class RsdlCodegen extends AbstractCodegen {
                             String publicCollectionName = getPublicCollection(collection);
                             String decoratorEntityName = StringUtils.toSingular(decoratorCollectionName);
 
-                            if (!this.collectionsHolder.containsKey(decoratorCollectionName.toLowerCase())) {
-                                this.collectionsHolder.put(decoratorCollectionName.toLowerCase(),
-                                        new CollectionHolder(
-                                                decoratorCollectionName,
-                                                publicEntityName,
-                                                publicCollectionName,
-                                                decoratorEntityName,
-                                                StringUtils.toPlural(period),
-                                                collectionTemplate));
-                            }
-                            addCollectionMethod(this.collectionsHolder.get(decoratorCollectionName.toLowerCase()),
-                                    url, rel, decoratorEntityName, publicEntityName, publicCollectionName, i, dl);
+                            addRootCollection(url,
+                                    rel,
+                                    dl,
+                                    i,
+                                    period,
+                                    decoratorCollectionName,
+                                    publicEntityName,
+                                    publicCollectionName,
+                                    decoratorEntityName);
+
                         } else if (i == 2) { // root-resource
                             String resource = getRootResourceName(collectionName);
                             String decoratorResourceName = StringUtils.toUpperCase(resource);
                             String publicEntityName = getPublicEntity(StringUtils.toSingular(collectionName));
 
-                            if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
-                                this.resourcesHolder.put(resource.toLowerCase(),
-                                        new ResourceHolder(
-                                                decoratorResourceName,
-                                                publicEntityName,
-                                                resourceTemplate,
-                                                variableTemplate,
-                                                subCollectionGetterTemplate));
-                            }
-                            addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()),
-                                    url, rel, decoratorResourceName, publicEntityName, dl);
+                            addRootResource(url,
+                                    rel,
+                                    dl,
+                                    resource,
+                                    decoratorResourceName,
+                                    publicEntityName);
+
                         } else if (i % 2 != 0) { // sub-collection
                             String collection = getSubCollectionName(actualReturnType, parent, i, periods);
                             collectionName = collection;
@@ -264,50 +263,77 @@ public class RsdlCodegen extends AbstractCodegen {
                             String publicCollectionName =
                                     getPublicCollection(StringUtils.toPlural(actualReturnType));
 
-                            if (!isAction(period, rel, requestMethod)) {
-                                if (!resourceHolder.getSubcollections().containsKey(collection.toLowerCase())) {
+                            addSubCollection(url,
+                                    rel,
+                                    parent,
+                                    requestMethod,
+                                    dl,
+                                    periods,
+                                    i,
+                                    period,
+                                    collection,
+                                    resourceHolder,
+                                    decoratorEntityName,
+                                    publicEntityName,
+                                    publicCollectionName);
 
-                                    String decoratorSubCollectionName = collection;
-                                    String parentDecoratorName = parent;
-                                    resourceHolder.addSubCollection(collection.toLowerCase(),
-                                            new CollectionHolder(decoratorSubCollectionName,
-                                                    publicEntityName,
-                                                    publicCollectionName,
-                                                    parentDecoratorName,
-                                                    decoratorEntityName,
-                                                    StringUtils.toPlural(period),
-                                                    subCollectionTemplate));
-                                }
-                            } else {
-                                // TODO: use extra params (besides action) defined by RSDL
-                                addCollectionAction(rel, periods, i, period, resourceHolder, dl);
-                            }
-                            addCollectionMethod(resourceHolder.getSubcollections().get(collection.toLowerCase()),
-                                    url, rel, decoratorEntityName, publicEntityName, publicCollectionName, i, dl);
                         } else { // sub-resource
                             if (!isAction(period, rel, requestMethod)) {
                                 String resource = getSubResourceName(collectionName, parent);
                                 String subResourceDecoratorName = resource;
                                 String publicEntityName = getSubResourceEntityName(parent, collectionName);
-                                if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
-                                    this.resourcesHolder.put(resource.toLowerCase(),
-                                            new ResourceHolder(subResourceDecoratorName,
-                                                    publicEntityName,
-                                                    subResourceTemplate,
-                                                    variableTemplate,
-                                                    subCollectionGetterTemplate));
-                                }
-                                addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel,
-                                        subResourceDecoratorName, publicEntityName, dl);
+
+                                addSubResource(url,
+                                        rel,
+                                        dl,
+                                        resource,
+                                        subResourceDecoratorName,
+                                        publicEntityName);
+
                                 parent = resource;
                             } else {
                                 // TODO: use extra params (besides action) defined by RSDL
                                 addResourceAction(rel, parent, collectionName, period, dl);
                             }
                         }
-                    } else {
-                        // TODO: implement unique treatment for COLLECTION2ENTITY_EXCEPTIONS
-                        break;
+                    } else { // unique treatment for COLLECTION2ENTITY_EXCEPTIONS
+                        if (period.equals("capabilities") || parent.equalsIgnoreCase("capabilities")) {
+                            if (i == 1) { // root-collection
+                                String collection = getRootCollectionName(period);
+                                collectionName = collection;
+                                parent = StringUtils.toUpperCase(collectionName);
+                                String decoratorCollectionName = StringUtils.toUpperCase(collection);
+                                String publicEntityName = getPublicEntity(VersionCaps.class.getSimpleName());
+                                String publicCollectionName = getPublicCollection(Capabilities.class.getSimpleName());
+                                String decoratorEntityName = VersionCaps.class.getSimpleName();
+
+                                addRootCollection(url,
+                                        rel,
+                                        dl,
+                                        i,
+                                        period,
+                                        decoratorCollectionName,
+                                        publicEntityName,
+                                        publicCollectionName,
+                                        decoratorEntityName);
+
+                            } else if (i == 2) { // root-resource
+                                String resource = VersionCaps.class.getSimpleName();
+                                String decoratorResourceName = resource;
+                                String publicEntityName = getPublicEntity(resource);
+
+                                addRootResource(url,
+                                        rel,
+                                        dl,
+                                        resource,
+                                        decoratorResourceName,
+                                        publicEntityName);
+
+                            }
+                        } else {
+                            // TODO: implement unique treatment for COLLECTION2ENTITY_EXCEPTIONS
+                            break;
+                        }
                     }
                     i++;
                 }
@@ -325,6 +351,159 @@ public class RsdlCodegen extends AbstractCodegen {
         // #5 - remove collection getters/setters from the public entities
         // (as they being shadowed by the decorators getters)
         XsdCodegen.modifyGetters(getPublicAccessors());
+    }
+
+    /**
+     * Adds SubResource to the resourcesHolder
+     * 
+     * @param url
+     * @param rel
+     * @param dl
+     *            DetailedLink
+     * @param resource
+     * @param subResourceDecoratorName
+     * @param publicEntityName
+     */
+    private void addSubResource(String url,
+            String rel,
+            DetailedLink dl,
+            String resource,
+            String subResourceDecoratorName,
+            String publicEntityName) {
+        if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
+            this.resourcesHolder.put(resource.toLowerCase(),
+                    new ResourceHolder(subResourceDecoratorName,
+                            publicEntityName,
+                            subResourceTemplate,
+                            variableTemplate,
+                            subCollectionGetterTemplate));
+        }
+        addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()), url, rel,
+                subResourceDecoratorName, publicEntityName, dl);
+    }
+
+    /**
+     * adds SubCollection to the resourceHolder
+     * 
+     * @param url
+     * @param rel
+     * @param parent
+     * @param requestMethod
+     * @param dl
+     *            DetailedLink
+     * @param periods
+     * @param i
+     *            the index offset in URI
+     * @param period
+     *            the URI period
+     * @param collection
+     * @param resourceHolder
+     * @param decoratorEntityName
+     * @param publicEntityName
+     * @param publicCollectionName
+     */
+    private void addSubCollection(String url,
+            String rel,
+            String parent,
+            HttpMethod requestMethod,
+            DetailedLink dl,
+            String[] periods,
+            int i,
+            String period,
+            String collection,
+            ResourceHolder resourceHolder,
+            String decoratorEntityName,
+            String publicEntityName,
+            String publicCollectionName) {
+        if (!isAction(period, rel, requestMethod)) {
+            if (!resourceHolder.getSubcollections().containsKey(collection.toLowerCase())) {
+
+                String decoratorSubCollectionName = collection;
+                String parentDecoratorName = parent;
+                resourceHolder.addSubCollection(collection.toLowerCase(),
+                        new CollectionHolder(decoratorSubCollectionName,
+                                publicEntityName,
+                                publicCollectionName,
+                                parentDecoratorName,
+                                decoratorEntityName,
+                                StringUtils.toPlural(period),
+                                subCollectionTemplate));
+            }
+        } else {
+            // TODO: use extra params (besides action) defined by RSDL
+            addCollectionAction(rel, periods, i, period, resourceHolder, dl);
+        }
+        addCollectionMethod(resourceHolder.getSubcollections().get(collection.toLowerCase()),
+                url, rel, decoratorEntityName, publicEntityName, publicCollectionName, i, dl);
+    }
+
+    /**
+     * adds RootResource to the resourcesHolder
+     * 
+     * @param url
+     * @param rel
+     * @param dl
+     *            DetailedLink
+     * @param resource
+     * @param decoratorResourceName
+     * @param publicEntityName
+     */
+    private void addRootResource(String url,
+            String rel,
+            DetailedLink dl,
+            String resource,
+            String decoratorResourceName,
+            String publicEntityName) {
+        if (!this.resourcesHolder.containsKey(resource.toLowerCase())) {
+            this.resourcesHolder.put(resource.toLowerCase(),
+                    new ResourceHolder(
+                            decoratorResourceName,
+                            publicEntityName,
+                            resourceTemplate,
+                            variableTemplate,
+                            subCollectionGetterTemplate));
+        }
+        addResourceMethod(this.resourcesHolder.get(resource.toLowerCase()),
+                url, rel, decoratorResourceName, publicEntityName, dl);
+    }
+
+    /**
+     * adds RootCollection to the collectionsHolder
+     * 
+     * @param url
+     * @param rel
+     * @param dl
+     *            DetailedLink
+     * @param i
+     *            the index offset in URI
+     * @param period
+     *            the URI period
+     * @param decoratorCollectionName
+     * @param publicEntityName
+     * @param publicCollectionName
+     * @param decoratorEntityName
+     */
+    private void addRootCollection(String url,
+            String rel,
+            DetailedLink dl,
+            int i,
+            String period,
+            String decoratorCollectionName,
+            String publicEntityName,
+            String publicCollectionName,
+            String decoratorEntityName) {
+        if (!this.collectionsHolder.containsKey(decoratorCollectionName.toLowerCase())) {
+            this.collectionsHolder.put(decoratorCollectionName.toLowerCase(),
+                    new CollectionHolder(
+                            decoratorCollectionName,
+                            publicEntityName,
+                            publicCollectionName,
+                            decoratorEntityName,
+                            StringUtils.toPlural(period),
+                            collectionTemplate));
+        }
+        addCollectionMethod(this.collectionsHolder.get(decoratorCollectionName.toLowerCase()),
+                url, rel, decoratorEntityName, publicEntityName, publicCollectionName, i, dl);
     }
 
     /**

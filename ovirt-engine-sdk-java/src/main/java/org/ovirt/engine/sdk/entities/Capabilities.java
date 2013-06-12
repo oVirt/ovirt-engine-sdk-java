@@ -37,13 +37,13 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Capabilities">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element name="version" type="{}VersionCaps" maxOccurs="unbounded"/>
  *         &lt;element name="permits" type="{}Permits" minOccurs="0"/>
  *         &lt;element name="scheduling_policies" type="{}SchedulingPolicies" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -56,7 +56,9 @@ import javax.xml.bind.annotation.XmlType;
     "permits",
     "schedulingPolicies"
 })
-public class Capabilities {
+public class Capabilities
+    extends BaseResources
+{
 
     @XmlElement(name = "version", required = true)
     protected List<VersionCaps> versions;

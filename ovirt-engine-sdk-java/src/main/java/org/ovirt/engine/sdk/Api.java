@@ -55,6 +55,7 @@ public class Api {
     private Hosts hosts;
     private VMs vMs;
     private VmPools vmPools;
+    private Capabilities capabilities;
     private StorageDomains storageDomains;
     private Groups groups;
 
@@ -531,6 +532,19 @@ public class Api {
             this.vmPools = new VmPools(proxy);
         }
         return vmPools;
+    }
+    /**
+     * Gets the value of the Capabilities property. 
+     *
+     * @return
+     *     {@link Capabilities }
+     *
+     */
+    public synchronized Capabilities getCapabilities() {
+        if (this.capabilities == null) {
+            this.capabilities = new Capabilities(proxy);
+        }
+        return capabilities;
     }
     /**
      * Gets the value of the StorageDomains property. 
