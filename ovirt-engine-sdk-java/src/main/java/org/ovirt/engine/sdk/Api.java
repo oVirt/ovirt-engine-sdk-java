@@ -23,6 +23,7 @@ package org.ovirt.engine.sdk;
 import java.io.IOException;
 
 import org.apache.http.client.ClientProtocolException;
+import org.apache.log4j.PropertyConfigurator;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.ConnectionsPoolBuilder;
 import org.ovirt.engine.sdk.web.HttpProxy;
@@ -81,6 +82,7 @@ public class Api {
     public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError {
 
+        configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password).build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool).build();
         this.proxy = new HttpProxyBroker(httpProxy);
@@ -107,6 +109,7 @@ public class Api {
     public Api(String url, String sessionid) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError {
 
+        configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url).build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
                 .sessionid(sessionid)
@@ -139,6 +142,7 @@ public class Api {
     public Api(String url, String username, String password, boolean noHostVerification)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
+        configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .noHostVerification(noHostVerification)
                 .build();
@@ -170,6 +174,7 @@ public class Api {
     public Api(String url, String sessionid, boolean noHostVerification)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
+        configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url)
                 .noHostVerification(noHostVerification)
                 .build();
@@ -206,6 +211,7 @@ public class Api {
     public Api(String url, String username, String password, Boolean noHostVerification, Boolean filter)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
+        configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .noHostVerification(noHostVerification)
                 .build();
@@ -253,6 +259,7 @@ public class Api {
             Boolean persistentAuth, Boolean noHostVerification, Boolean filter, Boolean debug)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
 
+        configureLog4J(debug);
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .port(port)
                 .timeout(timeout)
@@ -266,6 +273,34 @@ public class Api {
                 .build();
         this.proxy = new HttpProxyBroker(httpProxy);
         initResources();
+    }
+
+    /**
+     * Configures log4j
+     */
+    private void configureLog4J() {
+        configureLog4J(Boolean.FALSE);
+    }
+
+    /**
+     * Configures log4j
+     *
+     * @param debug
+     */
+    private void configureLog4J(Boolean debug) {
+        String fileSeparator = System.getProperty("file.separator");
+        String configFile = null;
+        if (debug != null && Boolean.TRUE.equals(debug)) {
+            configFile = "log4j-verbose.properties";
+        } else {
+            configFile = "log4j-default.properties";
+        }
+        PropertyConfigurator.configure(
+                System.getProperty("user.dir") +
+                        fileSeparator +
+                        "log" +
+                        fileSeparator +
+                        configFile);
     }
 
     /**
@@ -297,15 +332,6 @@ public class Api {
      */
     public void setFilter(boolean filter) {
         this.proxy.setFilter(filter);
-    }
-
-    /**
-     * Enable/Disable debug mode (default is False)
-     *
-     * @param debug
-     */
-    public void setDebug(boolean debug) {
-        this.proxy.setDebug(debug);
     }
 
     /**
