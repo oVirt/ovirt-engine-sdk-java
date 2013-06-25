@@ -43,6 +43,7 @@ public class HostTag extends
         org.ovirt.engine.sdk.entities.Tag {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

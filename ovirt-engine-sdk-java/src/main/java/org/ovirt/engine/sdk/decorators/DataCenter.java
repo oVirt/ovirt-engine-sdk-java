@@ -43,11 +43,12 @@ public class DataCenter extends
         org.ovirt.engine.sdk.entities.DataCenter {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private DataCenterClusters dataCenterClusters;
-    private DataCenterPermissions dataCenterPermissions;
-    private DataCenterStorageDomains dataCenterStorageDomains;
-    private DataCenterQuotas dataCenterQuotas;
+    private volatile DataCenterClusters dataCenterClusters;
+    private volatile DataCenterPermissions dataCenterPermissions;
+    private volatile DataCenterStorageDomains dataCenterStorageDomains;
+    private volatile DataCenterQuotas dataCenterQuotas;
 
 
     /**
@@ -70,9 +71,13 @@ public class DataCenter extends
      * @return
      *     {@link DataCenterClusters }
      */
-    public synchronized DataCenterClusters getClusters() {
+    public DataCenterClusters getClusters() {
         if (this.dataCenterClusters == null) {
-            this.dataCenterClusters = new DataCenterClusters(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusters == null) {
+                    this.dataCenterClusters = new DataCenterClusters(proxy, this);
+                }
+            }
         }
         return dataCenterClusters;
     }
@@ -82,9 +87,13 @@ public class DataCenter extends
      * @return
      *     {@link DataCenterPermissions }
      */
-    public synchronized DataCenterPermissions getPermissions() {
+    public DataCenterPermissions getPermissions() {
         if (this.dataCenterPermissions == null) {
-            this.dataCenterPermissions = new DataCenterPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterPermissions == null) {
+                    this.dataCenterPermissions = new DataCenterPermissions(proxy, this);
+                }
+            }
         }
         return dataCenterPermissions;
     }
@@ -94,9 +103,13 @@ public class DataCenter extends
      * @return
      *     {@link DataCenterStorageDomains }
      */
-    public synchronized DataCenterStorageDomains getStorageDomains() {
+    public DataCenterStorageDomains getStorageDomains() {
         if (this.dataCenterStorageDomains == null) {
-            this.dataCenterStorageDomains = new DataCenterStorageDomains(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterStorageDomains == null) {
+                    this.dataCenterStorageDomains = new DataCenterStorageDomains(proxy, this);
+                }
+            }
         }
         return dataCenterStorageDomains;
     }
@@ -106,9 +119,13 @@ public class DataCenter extends
      * @return
      *     {@link DataCenterQuotas }
      */
-    public synchronized DataCenterQuotas getQuotas() {
+    public DataCenterQuotas getQuotas() {
         if (this.dataCenterQuotas == null) {
-            this.dataCenterQuotas = new DataCenterQuotas(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterQuotas == null) {
+                    this.dataCenterQuotas = new DataCenterQuotas(proxy, this);
+                }
+            }
         }
         return dataCenterQuotas;
     }

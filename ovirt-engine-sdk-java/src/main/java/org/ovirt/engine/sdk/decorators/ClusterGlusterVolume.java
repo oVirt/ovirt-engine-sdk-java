@@ -43,8 +43,9 @@ public class ClusterGlusterVolume extends
         org.ovirt.engine.sdk.entities.GlusterVolume {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private ClusterGlusterVolumeGlusterBricks clusterGlusterVolumeGlusterBricks;
+    private volatile ClusterGlusterVolumeGlusterBricks clusterGlusterVolumeGlusterBricks;
 
 
     /**
@@ -67,9 +68,13 @@ public class ClusterGlusterVolume extends
      * @return
      *     {@link ClusterGlusterVolumeGlusterBricks }
      */
-    public synchronized ClusterGlusterVolumeGlusterBricks getGlusterBricks() {
+    public ClusterGlusterVolumeGlusterBricks getGlusterBricks() {
         if (this.clusterGlusterVolumeGlusterBricks == null) {
-            this.clusterGlusterVolumeGlusterBricks = new ClusterGlusterVolumeGlusterBricks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.clusterGlusterVolumeGlusterBricks == null) {
+                    this.clusterGlusterVolumeGlusterBricks = new ClusterGlusterVolumeGlusterBricks(proxy, this);
+                }
+            }
         }
         return clusterGlusterVolumeGlusterBricks;
     }

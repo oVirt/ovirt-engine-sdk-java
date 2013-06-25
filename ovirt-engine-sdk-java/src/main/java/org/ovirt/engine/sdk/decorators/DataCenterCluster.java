@@ -43,10 +43,11 @@ public class DataCenterCluster extends
         org.ovirt.engine.sdk.entities.Cluster {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private DataCenterClusterPermissions dataCenterClusterPermissions;
-    private DataCenterClusterGlusterVolumes dataCenterClusterGlusterVolumes;
-    private DataCenterClusterNetworks dataCenterClusterNetworks;
+    private volatile DataCenterClusterPermissions dataCenterClusterPermissions;
+    private volatile DataCenterClusterGlusterVolumes dataCenterClusterGlusterVolumes;
+    private volatile DataCenterClusterNetworks dataCenterClusterNetworks;
 
 
     /**
@@ -69,9 +70,13 @@ public class DataCenterCluster extends
      * @return
      *     {@link DataCenterClusterPermissions }
      */
-    public synchronized DataCenterClusterPermissions getPermissions() {
+    public DataCenterClusterPermissions getPermissions() {
         if (this.dataCenterClusterPermissions == null) {
-            this.dataCenterClusterPermissions = new DataCenterClusterPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterPermissions == null) {
+                    this.dataCenterClusterPermissions = new DataCenterClusterPermissions(proxy, this);
+                }
+            }
         }
         return dataCenterClusterPermissions;
     }
@@ -81,9 +86,13 @@ public class DataCenterCluster extends
      * @return
      *     {@link DataCenterClusterGlusterVolumes }
      */
-    public synchronized DataCenterClusterGlusterVolumes getGlusterVolumes() {
+    public DataCenterClusterGlusterVolumes getGlusterVolumes() {
         if (this.dataCenterClusterGlusterVolumes == null) {
-            this.dataCenterClusterGlusterVolumes = new DataCenterClusterGlusterVolumes(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterGlusterVolumes == null) {
+                    this.dataCenterClusterGlusterVolumes = new DataCenterClusterGlusterVolumes(proxy, this);
+                }
+            }
         }
         return dataCenterClusterGlusterVolumes;
     }
@@ -93,9 +102,13 @@ public class DataCenterCluster extends
      * @return
      *     {@link DataCenterClusterNetworks }
      */
-    public synchronized DataCenterClusterNetworks getNetworks() {
+    public DataCenterClusterNetworks getNetworks() {
         if (this.dataCenterClusterNetworks == null) {
-            this.dataCenterClusterNetworks = new DataCenterClusterNetworks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterNetworks == null) {
+                    this.dataCenterClusterNetworks = new DataCenterClusterNetworks(proxy, this);
+                }
+            }
         }
         return dataCenterClusterNetworks;
     }

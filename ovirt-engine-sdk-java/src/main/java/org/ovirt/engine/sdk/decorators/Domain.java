@@ -43,9 +43,10 @@ public class Domain extends
         org.ovirt.engine.sdk.entities.Domain {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private DomainGroups domainGroups;
-    private DomainUsers domainUsers;
+    private volatile DomainGroups domainGroups;
+    private volatile DomainUsers domainUsers;
 
 
     /**
@@ -68,9 +69,13 @@ public class Domain extends
      * @return
      *     {@link DomainGroups }
      */
-    public synchronized DomainGroups getGroups() {
+    public DomainGroups getGroups() {
         if (this.domainGroups == null) {
-            this.domainGroups = new DomainGroups(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.domainGroups == null) {
+                    this.domainGroups = new DomainGroups(proxy, this);
+                }
+            }
         }
         return domainGroups;
     }
@@ -80,9 +85,13 @@ public class Domain extends
      * @return
      *     {@link DomainUsers }
      */
-    public synchronized DomainUsers getUsers() {
+    public DomainUsers getUsers() {
         if (this.domainUsers == null) {
-            this.domainUsers = new DomainUsers(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.domainUsers == null) {
+                    this.domainUsers = new DomainUsers(proxy, this);
+                }
+            }
         }
         return domainUsers;
     }

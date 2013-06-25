@@ -43,8 +43,9 @@ public class VmPool extends
         org.ovirt.engine.sdk.entities.VmPool {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private VmPoolPermissions vmPoolPermissions;
+    private volatile VmPoolPermissions vmPoolPermissions;
 
 
     /**
@@ -67,9 +68,13 @@ public class VmPool extends
      * @return
      *     {@link VmPoolPermissions }
      */
-    public synchronized VmPoolPermissions getPermissions() {
+    public VmPoolPermissions getPermissions() {
         if (this.vmPoolPermissions == null) {
-            this.vmPoolPermissions = new VmPoolPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vmPoolPermissions == null) {
+                    this.vmPoolPermissions = new VmPoolPermissions(proxy, this);
+                }
+            }
         }
         return vmPoolPermissions;
     }

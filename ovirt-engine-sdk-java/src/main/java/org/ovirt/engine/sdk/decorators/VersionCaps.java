@@ -43,6 +43,7 @@ public class VersionCaps extends
         org.ovirt.engine.sdk.entities.VersionCaps {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

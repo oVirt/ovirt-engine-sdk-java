@@ -43,6 +43,7 @@ public class DomainGroup extends
         org.ovirt.engine.sdk.entities.Group {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

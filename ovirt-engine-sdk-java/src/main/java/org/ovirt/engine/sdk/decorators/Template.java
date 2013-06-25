@@ -43,11 +43,12 @@ public class Template extends
         org.ovirt.engine.sdk.entities.Template {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private TemplateCdRoms templateCdRoms;
-    private TemplateNICs templateNICs;
-    private TemplatePermissions templatePermissions;
-    private TemplateDisks templateDisks;
+    private volatile TemplateCdRoms templateCdRoms;
+    private volatile TemplateNICs templateNICs;
+    private volatile TemplatePermissions templatePermissions;
+    private volatile TemplateDisks templateDisks;
 
 
     /**
@@ -70,9 +71,13 @@ public class Template extends
      * @return
      *     {@link TemplateCdRoms }
      */
-    public synchronized TemplateCdRoms getCdRoms() {
+    public TemplateCdRoms getCdRoms() {
         if (this.templateCdRoms == null) {
-            this.templateCdRoms = new TemplateCdRoms(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.templateCdRoms == null) {
+                    this.templateCdRoms = new TemplateCdRoms(proxy, this);
+                }
+            }
         }
         return templateCdRoms;
     }
@@ -82,9 +87,13 @@ public class Template extends
      * @return
      *     {@link TemplateNICs }
      */
-    public synchronized TemplateNICs getNics() {
+    public TemplateNICs getNics() {
         if (this.templateNICs == null) {
-            this.templateNICs = new TemplateNICs(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.templateNICs == null) {
+                    this.templateNICs = new TemplateNICs(proxy, this);
+                }
+            }
         }
         return templateNICs;
     }
@@ -94,9 +103,13 @@ public class Template extends
      * @return
      *     {@link TemplatePermissions }
      */
-    public synchronized TemplatePermissions getPermissions() {
+    public TemplatePermissions getPermissions() {
         if (this.templatePermissions == null) {
-            this.templatePermissions = new TemplatePermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.templatePermissions == null) {
+                    this.templatePermissions = new TemplatePermissions(proxy, this);
+                }
+            }
         }
         return templatePermissions;
     }
@@ -106,9 +119,13 @@ public class Template extends
      * @return
      *     {@link TemplateDisks }
      */
-    public synchronized TemplateDisks getDisks() {
+    public TemplateDisks getDisks() {
         if (this.templateDisks == null) {
-            this.templateDisks = new TemplateDisks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.templateDisks == null) {
+                    this.templateDisks = new TemplateDisks(proxy, this);
+                }
+            }
         }
         return templateDisks;
     }

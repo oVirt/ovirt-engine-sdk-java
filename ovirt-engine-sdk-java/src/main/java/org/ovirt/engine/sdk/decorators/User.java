@@ -43,10 +43,11 @@ public class User extends
         org.ovirt.engine.sdk.entities.User {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private UserRoles userRoles;
-    private UserTags userTags;
-    private UserPermissions userPermissions;
+    private volatile UserRoles userRoles;
+    private volatile UserTags userTags;
+    private volatile UserPermissions userPermissions;
 
 
     /**
@@ -69,9 +70,13 @@ public class User extends
      * @return
      *     {@link UserRoles }
      */
-    public synchronized UserRoles getRoles() {
+    public UserRoles getRoles() {
         if (this.userRoles == null) {
-            this.userRoles = new UserRoles(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.userRoles == null) {
+                    this.userRoles = new UserRoles(proxy, this);
+                }
+            }
         }
         return userRoles;
     }
@@ -81,9 +86,13 @@ public class User extends
      * @return
      *     {@link UserTags }
      */
-    public synchronized UserTags getTags() {
+    public UserTags getTags() {
         if (this.userTags == null) {
-            this.userTags = new UserTags(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.userTags == null) {
+                    this.userTags = new UserTags(proxy, this);
+                }
+            }
         }
         return userTags;
     }
@@ -93,9 +102,13 @@ public class User extends
      * @return
      *     {@link UserPermissions }
      */
-    public synchronized UserPermissions getPermissions() {
+    public UserPermissions getPermissions() {
         if (this.userPermissions == null) {
-            this.userPermissions = new UserPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.userPermissions == null) {
+                    this.userPermissions = new UserPermissions(proxy, this);
+                }
+            }
         }
         return userPermissions;
     }

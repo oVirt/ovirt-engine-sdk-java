@@ -43,8 +43,9 @@ public class DataCenterClusterGlusterVolumeGlusterBrick extends
         org.ovirt.engine.sdk.entities.GlusterBrick {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private DataCenterClusterGlusterVolumeGlusterBrickStatistics dataCenterClusterGlusterVolumeGlusterBrickStatistics;
+    private volatile DataCenterClusterGlusterVolumeGlusterBrickStatistics dataCenterClusterGlusterVolumeGlusterBrickStatistics;
 
 
     /**
@@ -67,9 +68,13 @@ public class DataCenterClusterGlusterVolumeGlusterBrick extends
      * @return
      *     {@link DataCenterClusterGlusterVolumeGlusterBrickStatistics }
      */
-    public synchronized DataCenterClusterGlusterVolumeGlusterBrickStatistics getStatistics() {
+    public DataCenterClusterGlusterVolumeGlusterBrickStatistics getStatistics() {
         if (this.dataCenterClusterGlusterVolumeGlusterBrickStatistics == null) {
-            this.dataCenterClusterGlusterVolumeGlusterBrickStatistics = new DataCenterClusterGlusterVolumeGlusterBrickStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterGlusterVolumeGlusterBrickStatistics == null) {
+                    this.dataCenterClusterGlusterVolumeGlusterBrickStatistics = new DataCenterClusterGlusterVolumeGlusterBrickStatistics(proxy, this);
+                }
+            }
         }
         return dataCenterClusterGlusterVolumeGlusterBrickStatistics;
     }

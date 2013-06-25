@@ -43,9 +43,10 @@ public class VMDisk extends
         org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private VMDiskPermissions vMDiskPermissions;
-    private VMDiskStatistics vMDiskStatistics;
+    private volatile VMDiskPermissions vMDiskPermissions;
+    private volatile VMDiskStatistics vMDiskStatistics;
 
 
     /**
@@ -68,9 +69,13 @@ public class VMDisk extends
      * @return
      *     {@link VMDiskPermissions }
      */
-    public synchronized VMDiskPermissions getPermissions() {
+    public VMDiskPermissions getPermissions() {
         if (this.vMDiskPermissions == null) {
-            this.vMDiskPermissions = new VMDiskPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMDiskPermissions == null) {
+                    this.vMDiskPermissions = new VMDiskPermissions(proxy, this);
+                }
+            }
         }
         return vMDiskPermissions;
     }
@@ -80,9 +85,13 @@ public class VMDisk extends
      * @return
      *     {@link VMDiskStatistics }
      */
-    public synchronized VMDiskStatistics getStatistics() {
+    public VMDiskStatistics getStatistics() {
         if (this.vMDiskStatistics == null) {
-            this.vMDiskStatistics = new VMDiskStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMDiskStatistics == null) {
+                    this.vMDiskStatistics = new VMDiskStatistics(proxy, this);
+                }
+            }
         }
         return vMDiskStatistics;
     }

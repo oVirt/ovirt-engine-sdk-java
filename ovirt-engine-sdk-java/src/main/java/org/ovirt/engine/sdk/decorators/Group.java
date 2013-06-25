@@ -43,10 +43,11 @@ public class Group extends
         org.ovirt.engine.sdk.entities.Group {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private GroupRoles groupRoles;
-    private GroupPermissions groupPermissions;
-    private GroupTags groupTags;
+    private volatile GroupRoles groupRoles;
+    private volatile GroupPermissions groupPermissions;
+    private volatile GroupTags groupTags;
 
 
     /**
@@ -69,9 +70,13 @@ public class Group extends
      * @return
      *     {@link GroupRoles }
      */
-    public synchronized GroupRoles getRoles() {
+    public GroupRoles getRoles() {
         if (this.groupRoles == null) {
-            this.groupRoles = new GroupRoles(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.groupRoles == null) {
+                    this.groupRoles = new GroupRoles(proxy, this);
+                }
+            }
         }
         return groupRoles;
     }
@@ -81,9 +86,13 @@ public class Group extends
      * @return
      *     {@link GroupPermissions }
      */
-    public synchronized GroupPermissions getPermissions() {
+    public GroupPermissions getPermissions() {
         if (this.groupPermissions == null) {
-            this.groupPermissions = new GroupPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.groupPermissions == null) {
+                    this.groupPermissions = new GroupPermissions(proxy, this);
+                }
+            }
         }
         return groupPermissions;
     }
@@ -93,9 +102,13 @@ public class Group extends
      * @return
      *     {@link GroupTags }
      */
-    public synchronized GroupTags getTags() {
+    public GroupTags getTags() {
         if (this.groupTags == null) {
-            this.groupTags = new GroupTags(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.groupTags == null) {
+                    this.groupTags = new GroupTags(proxy, this);
+                }
+            }
         }
         return groupTags;
     }

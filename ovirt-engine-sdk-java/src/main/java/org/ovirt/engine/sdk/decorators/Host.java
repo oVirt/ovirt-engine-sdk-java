@@ -43,12 +43,13 @@ public class Host extends
         org.ovirt.engine.sdk.entities.Host {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private HostHooks hostHooks;
-    private HostNICs hostNICs;
-    private HostTags hostTags;
-    private HostPermissions hostPermissions;
-    private HostStatistics hostStatistics;
+    private volatile HostHooks hostHooks;
+    private volatile HostNICs hostNICs;
+    private volatile HostTags hostTags;
+    private volatile HostPermissions hostPermissions;
+    private volatile HostStatistics hostStatistics;
 
 
     /**
@@ -71,9 +72,13 @@ public class Host extends
      * @return
      *     {@link HostHooks }
      */
-    public synchronized HostHooks getHooks() {
+    public HostHooks getHooks() {
         if (this.hostHooks == null) {
-            this.hostHooks = new HostHooks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.hostHooks == null) {
+                    this.hostHooks = new HostHooks(proxy, this);
+                }
+            }
         }
         return hostHooks;
     }
@@ -83,9 +88,13 @@ public class Host extends
      * @return
      *     {@link HostNICs }
      */
-    public synchronized HostNICs getHostNics() {
+    public HostNICs getHostNics() {
         if (this.hostNICs == null) {
-            this.hostNICs = new HostNICs(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.hostNICs == null) {
+                    this.hostNICs = new HostNICs(proxy, this);
+                }
+            }
         }
         return hostNICs;
     }
@@ -95,9 +104,13 @@ public class Host extends
      * @return
      *     {@link HostTags }
      */
-    public synchronized HostTags getTags() {
+    public HostTags getTags() {
         if (this.hostTags == null) {
-            this.hostTags = new HostTags(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.hostTags == null) {
+                    this.hostTags = new HostTags(proxy, this);
+                }
+            }
         }
         return hostTags;
     }
@@ -107,9 +120,13 @@ public class Host extends
      * @return
      *     {@link HostPermissions }
      */
-    public synchronized HostPermissions getPermissions() {
+    public HostPermissions getPermissions() {
         if (this.hostPermissions == null) {
-            this.hostPermissions = new HostPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.hostPermissions == null) {
+                    this.hostPermissions = new HostPermissions(proxy, this);
+                }
+            }
         }
         return hostPermissions;
     }
@@ -119,9 +136,13 @@ public class Host extends
      * @return
      *     {@link HostStatistics }
      */
-    public synchronized HostStatistics getStatistics() {
+    public HostStatistics getStatistics() {
         if (this.hostStatistics == null) {
-            this.hostStatistics = new HostStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.hostStatistics == null) {
+                    this.hostStatistics = new HostStatistics(proxy, this);
+                }
+            }
         }
         return hostStatistics;
     }

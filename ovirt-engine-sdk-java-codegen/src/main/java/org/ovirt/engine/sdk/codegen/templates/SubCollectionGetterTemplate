@@ -4,9 +4,13 @@
      * @return
      *     {@link $decoratorCollectionName$ }
      */
-    public synchronized $decoratorCollectionName$ get$publicCollecionName$() {
+    public $decoratorCollectionName$ get$publicCollecionName$() {
         if (this.$decoratorCollectionVariableName$ == null) {
-            this.$decoratorCollectionVariableName$ = new $decoratorCollectionName$(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.$decoratorCollectionVariableName$ == null) {
+                    this.$decoratorCollectionVariableName$ = new $decoratorCollectionName$(proxy, this);
+                }
+            }
         }
         return $decoratorCollectionVariableName$;
     }

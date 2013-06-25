@@ -43,6 +43,7 @@ public class TemplateDisk extends
         org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

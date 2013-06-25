@@ -43,9 +43,10 @@ public class StorageDomainDisk extends
         org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private StorageDomainDiskStatistics storageDomainDiskStatistics;
-    private StorageDomainDiskPermissions storageDomainDiskPermissions;
+    private volatile StorageDomainDiskStatistics storageDomainDiskStatistics;
+    private volatile StorageDomainDiskPermissions storageDomainDiskPermissions;
 
 
     /**
@@ -68,9 +69,13 @@ public class StorageDomainDisk extends
      * @return
      *     {@link StorageDomainDiskStatistics }
      */
-    public synchronized StorageDomainDiskStatistics getStatistics() {
+    public StorageDomainDiskStatistics getStatistics() {
         if (this.storageDomainDiskStatistics == null) {
-            this.storageDomainDiskStatistics = new StorageDomainDiskStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainDiskStatistics == null) {
+                    this.storageDomainDiskStatistics = new StorageDomainDiskStatistics(proxy, this);
+                }
+            }
         }
         return storageDomainDiskStatistics;
     }
@@ -80,9 +85,13 @@ public class StorageDomainDisk extends
      * @return
      *     {@link StorageDomainDiskPermissions }
      */
-    public synchronized StorageDomainDiskPermissions getPermissions() {
+    public StorageDomainDiskPermissions getPermissions() {
         if (this.storageDomainDiskPermissions == null) {
-            this.storageDomainDiskPermissions = new StorageDomainDiskPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainDiskPermissions == null) {
+                    this.storageDomainDiskPermissions = new StorageDomainDiskPermissions(proxy, this);
+                }
+            }
         }
         return storageDomainDiskPermissions;
     }

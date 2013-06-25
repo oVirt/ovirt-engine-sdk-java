@@ -43,6 +43,7 @@ public class VMNICStatistic extends
         org.ovirt.engine.sdk.entities.Statistic {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

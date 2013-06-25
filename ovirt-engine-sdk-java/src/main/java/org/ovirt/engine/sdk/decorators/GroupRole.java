@@ -43,8 +43,9 @@ public class GroupRole extends
         org.ovirt.engine.sdk.entities.Role {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private GroupRolePermits groupRolePermits;
+    private volatile GroupRolePermits groupRolePermits;
 
 
     /**
@@ -67,9 +68,13 @@ public class GroupRole extends
      * @return
      *     {@link GroupRolePermits }
      */
-    public synchronized GroupRolePermits getPermits() {
+    public GroupRolePermits getPermits() {
         if (this.groupRolePermits == null) {
-            this.groupRolePermits = new GroupRolePermits(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.groupRolePermits == null) {
+                    this.groupRolePermits = new GroupRolePermits(proxy, this);
+                }
+            }
         }
         return groupRolePermits;
     }

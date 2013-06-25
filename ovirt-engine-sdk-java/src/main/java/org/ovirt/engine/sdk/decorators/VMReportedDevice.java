@@ -43,6 +43,7 @@ public class VMReportedDevice extends
         org.ovirt.engine.sdk.entities.ReportedDevice {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

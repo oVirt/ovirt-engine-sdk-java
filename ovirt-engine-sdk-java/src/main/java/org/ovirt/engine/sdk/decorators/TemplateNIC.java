@@ -43,6 +43,7 @@ public class TemplateNIC extends
         org.ovirt.engine.sdk.entities.NIC {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

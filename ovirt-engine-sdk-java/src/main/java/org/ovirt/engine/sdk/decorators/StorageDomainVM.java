@@ -43,8 +43,9 @@ public class StorageDomainVM extends
         org.ovirt.engine.sdk.entities.VM {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private StorageDomainVMDisks storageDomainVMDisks;
+    private volatile StorageDomainVMDisks storageDomainVMDisks;
 
 
     /**
@@ -67,9 +68,13 @@ public class StorageDomainVM extends
      * @return
      *     {@link StorageDomainVMDisks }
      */
-    public synchronized StorageDomainVMDisks getDisks() {
+    public StorageDomainVMDisks getDisks() {
         if (this.storageDomainVMDisks == null) {
-            this.storageDomainVMDisks = new StorageDomainVMDisks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainVMDisks == null) {
+                    this.storageDomainVMDisks = new StorageDomainVMDisks(proxy, this);
+                }
+            }
         }
         return storageDomainVMDisks;
     }

@@ -43,8 +43,9 @@ public class StorageDomainTemplate extends
         org.ovirt.engine.sdk.entities.Template {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private StorageDomainTemplateDisks storageDomainTemplateDisks;
+    private volatile StorageDomainTemplateDisks storageDomainTemplateDisks;
 
 
     /**
@@ -67,9 +68,13 @@ public class StorageDomainTemplate extends
      * @return
      *     {@link StorageDomainTemplateDisks }
      */
-    public synchronized StorageDomainTemplateDisks getDisks() {
+    public StorageDomainTemplateDisks getDisks() {
         if (this.storageDomainTemplateDisks == null) {
-            this.storageDomainTemplateDisks = new StorageDomainTemplateDisks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainTemplateDisks == null) {
+                    this.storageDomainTemplateDisks = new StorageDomainTemplateDisks(proxy, this);
+                }
+            }
         }
         return storageDomainTemplateDisks;
     }

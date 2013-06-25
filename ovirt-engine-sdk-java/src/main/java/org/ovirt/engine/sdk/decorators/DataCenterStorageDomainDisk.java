@@ -43,9 +43,10 @@ public class DataCenterStorageDomainDisk extends
         org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private DataCenterStorageDomainDiskPermissions dataCenterStorageDomainDiskPermissions;
-    private DataCenterStorageDomainDiskStatistics dataCenterStorageDomainDiskStatistics;
+    private volatile DataCenterStorageDomainDiskPermissions dataCenterStorageDomainDiskPermissions;
+    private volatile DataCenterStorageDomainDiskStatistics dataCenterStorageDomainDiskStatistics;
 
 
     /**
@@ -68,9 +69,13 @@ public class DataCenterStorageDomainDisk extends
      * @return
      *     {@link DataCenterStorageDomainDiskPermissions }
      */
-    public synchronized DataCenterStorageDomainDiskPermissions getPermissions() {
+    public DataCenterStorageDomainDiskPermissions getPermissions() {
         if (this.dataCenterStorageDomainDiskPermissions == null) {
-            this.dataCenterStorageDomainDiskPermissions = new DataCenterStorageDomainDiskPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterStorageDomainDiskPermissions == null) {
+                    this.dataCenterStorageDomainDiskPermissions = new DataCenterStorageDomainDiskPermissions(proxy, this);
+                }
+            }
         }
         return dataCenterStorageDomainDiskPermissions;
     }
@@ -80,9 +85,13 @@ public class DataCenterStorageDomainDisk extends
      * @return
      *     {@link DataCenterStorageDomainDiskStatistics }
      */
-    public synchronized DataCenterStorageDomainDiskStatistics getStatistics() {
+    public DataCenterStorageDomainDiskStatistics getStatistics() {
         if (this.dataCenterStorageDomainDiskStatistics == null) {
-            this.dataCenterStorageDomainDiskStatistics = new DataCenterStorageDomainDiskStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterStorageDomainDiskStatistics == null) {
+                    this.dataCenterStorageDomainDiskStatistics = new DataCenterStorageDomainDiskStatistics(proxy, this);
+                }
+            }
         }
         return dataCenterStorageDomainDiskStatistics;
     }

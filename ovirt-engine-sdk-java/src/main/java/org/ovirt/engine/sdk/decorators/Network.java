@@ -43,8 +43,9 @@ public class Network extends
         org.ovirt.engine.sdk.entities.Network {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private NetworkPermissions networkPermissions;
+    private volatile NetworkPermissions networkPermissions;
 
 
     /**
@@ -67,9 +68,13 @@ public class Network extends
      * @return
      *     {@link NetworkPermissions }
      */
-    public synchronized NetworkPermissions getPermissions() {
+    public NetworkPermissions getPermissions() {
         if (this.networkPermissions == null) {
-            this.networkPermissions = new NetworkPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.networkPermissions == null) {
+                    this.networkPermissions = new NetworkPermissions(proxy, this);
+                }
+            }
         }
         return networkPermissions;
     }

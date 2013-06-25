@@ -43,6 +43,7 @@ public class ClusterNetwork extends
         org.ovirt.engine.sdk.entities.Network {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

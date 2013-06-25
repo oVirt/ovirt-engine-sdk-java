@@ -43,6 +43,7 @@ public class DataCenterQuota extends
         org.ovirt.engine.sdk.entities.Quota {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

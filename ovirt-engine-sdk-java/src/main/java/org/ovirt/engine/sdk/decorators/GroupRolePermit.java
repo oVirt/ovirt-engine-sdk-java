@@ -43,6 +43,7 @@ public class GroupRolePermit extends
         org.ovirt.engine.sdk.entities.Permit {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

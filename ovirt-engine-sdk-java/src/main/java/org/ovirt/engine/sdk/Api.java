@@ -40,25 +40,26 @@ import org.ovirt.engine.sdk.utils.SerializationHelper;
  */
 public class Api {
 
-    private HttpProxyBroker proxy = null;
-    private API entryPoint = null;
+    private volatile HttpProxyBroker proxy = null;
+    private volatile API entryPoint = null;
+    private final Object LOCK = new Object();
 
-    private Networks networks;
-    private Tags tags;
-    private Users users;
-    private Templates templates;
-    private Events events;
-    private Domains domains;
-    private Disks disks;
-    private Clusters clusters;
-    private DataCenters dataCenters;
-    private Roles roles;
-    private Hosts hosts;
-    private VMs vMs;
-    private VmPools vmPools;
-    private Capabilities capabilities;
-    private StorageDomains storageDomains;
-    private Groups groups;
+    private volatile Networks networks;
+    private volatile Tags tags;
+    private volatile Users users;
+    private volatile Templates templates;
+    private volatile Events events;
+    private volatile Domains domains;
+    private volatile Disks disks;
+    private volatile Clusters clusters;
+    private volatile DataCenters dataCenters;
+    private volatile Roles roles;
+    private volatile Hosts hosts;
+    private volatile VMs vMs;
+    private volatile VmPools vmPools;
+    private volatile Capabilities capabilities;
+    private volatile StorageDomains storageDomains;
+    private volatile Groups groups;
 
 
     /**
@@ -320,7 +321,7 @@ public class Api {
     /**
      * initializes resources
      */
-    private void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
+    private synchronized void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
             IOException {
         this.entryPoint = getEntryPoint();
     }
@@ -330,7 +331,7 @@ public class Api {
      *
      * @param filter
      */
-    public void setFilter(boolean filter) {
+    public synchronized void setFilter(boolean filter) {
         this.proxy.setFilter(filter);
     }
 
@@ -339,7 +340,7 @@ public class Api {
      *
      * @param persistentAuth
      */
-    public void setPersistentAuth(boolean persistentAuth) {
+    public synchronized void setPersistentAuth(boolean persistentAuth) {
         this.proxy.setPersistentAuth(persistentAuth);
     }
 
@@ -369,7 +370,7 @@ public class Api {
      *            oVirt api sessionid to authenticate the user with
      *            (used as SSO solution instead of username+password)
      */
-    public void setSessionid(String sessionid) {
+    public synchronized void setSessionid(String sessionid) {
         this.proxy.setSessionid(sessionid);
     }
 
@@ -386,7 +387,7 @@ public class Api {
      * manager/httpproxy to ensure immediate deallocation of all system
      * resources.
      */
-    public void shutdown() {
+    public synchronized void shutdown() {
         proxy.shutdown();
     }
 
@@ -397,9 +398,13 @@ public class Api {
      *     {@link Networks }
      *
      */
-    public synchronized Networks getNetworks() {
+    public Networks getNetworks() {
         if (this.networks == null) {
-            this.networks = new Networks(proxy);
+            synchronized (this.LOCK) {
+                if (this.networks == null) {
+                    this.networks = new Networks(proxy);
+                }
+            }
         }
         return networks;
     }
@@ -410,9 +415,13 @@ public class Api {
      *     {@link Tags }
      *
      */
-    public synchronized Tags getTags() {
+    public Tags getTags() {
         if (this.tags == null) {
-            this.tags = new Tags(proxy);
+            synchronized (this.LOCK) {
+                if (this.tags == null) {
+                    this.tags = new Tags(proxy);
+                }
+            }
         }
         return tags;
     }
@@ -423,9 +432,13 @@ public class Api {
      *     {@link Users }
      *
      */
-    public synchronized Users getUsers() {
+    public Users getUsers() {
         if (this.users == null) {
-            this.users = new Users(proxy);
+            synchronized (this.LOCK) {
+                if (this.users == null) {
+                    this.users = new Users(proxy);
+                }
+            }
         }
         return users;
     }
@@ -436,9 +449,13 @@ public class Api {
      *     {@link Templates }
      *
      */
-    public synchronized Templates getTemplates() {
+    public Templates getTemplates() {
         if (this.templates == null) {
-            this.templates = new Templates(proxy);
+            synchronized (this.LOCK) {
+                if (this.templates == null) {
+                    this.templates = new Templates(proxy);
+                }
+            }
         }
         return templates;
     }
@@ -449,9 +466,13 @@ public class Api {
      *     {@link Events }
      *
      */
-    public synchronized Events getEvents() {
+    public Events getEvents() {
         if (this.events == null) {
-            this.events = new Events(proxy);
+            synchronized (this.LOCK) {
+                if (this.events == null) {
+                    this.events = new Events(proxy);
+                }
+            }
         }
         return events;
     }
@@ -462,9 +483,13 @@ public class Api {
      *     {@link Domains }
      *
      */
-    public synchronized Domains getDomains() {
+    public Domains getDomains() {
         if (this.domains == null) {
-            this.domains = new Domains(proxy);
+            synchronized (this.LOCK) {
+                if (this.domains == null) {
+                    this.domains = new Domains(proxy);
+                }
+            }
         }
         return domains;
     }
@@ -475,9 +500,13 @@ public class Api {
      *     {@link Disks }
      *
      */
-    public synchronized Disks getDisks() {
+    public Disks getDisks() {
         if (this.disks == null) {
-            this.disks = new Disks(proxy);
+            synchronized (this.LOCK) {
+                if (this.disks == null) {
+                    this.disks = new Disks(proxy);
+                }
+            }
         }
         return disks;
     }
@@ -488,9 +517,13 @@ public class Api {
      *     {@link Clusters }
      *
      */
-    public synchronized Clusters getClusters() {
+    public Clusters getClusters() {
         if (this.clusters == null) {
-            this.clusters = new Clusters(proxy);
+            synchronized (this.LOCK) {
+                if (this.clusters == null) {
+                    this.clusters = new Clusters(proxy);
+                }
+            }
         }
         return clusters;
     }
@@ -501,9 +534,13 @@ public class Api {
      *     {@link DataCenters }
      *
      */
-    public synchronized DataCenters getDataCenters() {
+    public DataCenters getDataCenters() {
         if (this.dataCenters == null) {
-            this.dataCenters = new DataCenters(proxy);
+            synchronized (this.LOCK) {
+                if (this.dataCenters == null) {
+                    this.dataCenters = new DataCenters(proxy);
+                }
+            }
         }
         return dataCenters;
     }
@@ -514,9 +551,13 @@ public class Api {
      *     {@link Roles }
      *
      */
-    public synchronized Roles getRoles() {
+    public Roles getRoles() {
         if (this.roles == null) {
-            this.roles = new Roles(proxy);
+            synchronized (this.LOCK) {
+                if (this.roles == null) {
+                    this.roles = new Roles(proxy);
+                }
+            }
         }
         return roles;
     }
@@ -527,9 +568,13 @@ public class Api {
      *     {@link Hosts }
      *
      */
-    public synchronized Hosts getHosts() {
+    public Hosts getHosts() {
         if (this.hosts == null) {
-            this.hosts = new Hosts(proxy);
+            synchronized (this.LOCK) {
+                if (this.hosts == null) {
+                    this.hosts = new Hosts(proxy);
+                }
+            }
         }
         return hosts;
     }
@@ -540,9 +585,13 @@ public class Api {
      *     {@link VMs }
      *
      */
-    public synchronized VMs getVMs() {
+    public VMs getVMs() {
         if (this.vMs == null) {
-            this.vMs = new VMs(proxy);
+            synchronized (this.LOCK) {
+                if (this.vMs == null) {
+                    this.vMs = new VMs(proxy);
+                }
+            }
         }
         return vMs;
     }
@@ -553,9 +602,13 @@ public class Api {
      *     {@link VmPools }
      *
      */
-    public synchronized VmPools getVmPools() {
+    public VmPools getVmPools() {
         if (this.vmPools == null) {
-            this.vmPools = new VmPools(proxy);
+            synchronized (this.LOCK) {
+                if (this.vmPools == null) {
+                    this.vmPools = new VmPools(proxy);
+                }
+            }
         }
         return vmPools;
     }
@@ -566,9 +619,13 @@ public class Api {
      *     {@link Capabilities }
      *
      */
-    public synchronized Capabilities getCapabilities() {
+    public Capabilities getCapabilities() {
         if (this.capabilities == null) {
-            this.capabilities = new Capabilities(proxy);
+            synchronized (this.LOCK) {
+                if (this.capabilities == null) {
+                    this.capabilities = new Capabilities(proxy);
+                }
+            }
         }
         return capabilities;
     }
@@ -579,9 +636,13 @@ public class Api {
      *     {@link StorageDomains }
      *
      */
-    public synchronized StorageDomains getStorageDomains() {
+    public StorageDomains getStorageDomains() {
         if (this.storageDomains == null) {
-            this.storageDomains = new StorageDomains(proxy);
+            synchronized (this.LOCK) {
+                if (this.storageDomains == null) {
+                    this.storageDomains = new StorageDomains(proxy);
+                }
+            }
         }
         return storageDomains;
     }
@@ -592,9 +653,13 @@ public class Api {
      *     {@link Groups }
      *
      */
-    public synchronized Groups getGroups() {
+    public Groups getGroups() {
         if (this.groups == null) {
-            this.groups = new Groups(proxy);
+            synchronized (this.LOCK) {
+                if (this.groups == null) {
+                    this.groups = new Groups(proxy);
+                }
+            }
         }
         return groups;
     }
@@ -659,6 +724,24 @@ public class Api {
     public org.ovirt.engine.sdk.entities.ApiSummary getSummary() throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {
         return getEntryPoint().getSummary();
+    }
+    /**
+     * Gets the value of the Comment property.
+     *
+     * @return {@link java.lang.String }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     */
+    public java.lang.String getComment() throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException {
+        return getEntryPoint().getComment();
     }
 
 }

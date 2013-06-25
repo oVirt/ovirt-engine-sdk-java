@@ -43,9 +43,10 @@ public class Disk extends
         org.ovirt.engine.sdk.entities.Disk {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private DiskPermissions diskPermissions;
-    private DiskStatistics diskStatistics;
+    private volatile DiskPermissions diskPermissions;
+    private volatile DiskStatistics diskStatistics;
 
 
     /**
@@ -68,9 +69,13 @@ public class Disk extends
      * @return
      *     {@link DiskPermissions }
      */
-    public synchronized DiskPermissions getPermissions() {
+    public DiskPermissions getPermissions() {
         if (this.diskPermissions == null) {
-            this.diskPermissions = new DiskPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.diskPermissions == null) {
+                    this.diskPermissions = new DiskPermissions(proxy, this);
+                }
+            }
         }
         return diskPermissions;
     }
@@ -80,9 +85,13 @@ public class Disk extends
      * @return
      *     {@link DiskStatistics }
      */
-    public synchronized DiskStatistics getStatistics() {
+    public DiskStatistics getStatistics() {
         if (this.diskStatistics == null) {
-            this.diskStatistics = new DiskStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.diskStatistics == null) {
+                    this.diskStatistics = new DiskStatistics(proxy, this);
+                }
+            }
         }
         return diskStatistics;
     }

@@ -43,6 +43,7 @@ public class VMCdRom extends
         org.ovirt.engine.sdk.entities.CdRom {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

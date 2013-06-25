@@ -43,9 +43,10 @@ public class VMNIC extends
         org.ovirt.engine.sdk.entities.NIC {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private VMNICReportedDevices vMNICReportedDevices;
-    private VMNICStatistics vMNICStatistics;
+    private volatile VMNICReportedDevices vMNICReportedDevices;
+    private volatile VMNICStatistics vMNICStatistics;
 
 
     /**
@@ -68,9 +69,13 @@ public class VMNIC extends
      * @return
      *     {@link VMNICReportedDevices }
      */
-    public synchronized VMNICReportedDevices getReportedDevices() {
+    public VMNICReportedDevices getReportedDevices() {
         if (this.vMNICReportedDevices == null) {
-            this.vMNICReportedDevices = new VMNICReportedDevices(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMNICReportedDevices == null) {
+                    this.vMNICReportedDevices = new VMNICReportedDevices(proxy, this);
+                }
+            }
         }
         return vMNICReportedDevices;
     }
@@ -80,9 +85,13 @@ public class VMNIC extends
      * @return
      *     {@link VMNICStatistics }
      */
-    public synchronized VMNICStatistics getStatistics() {
+    public VMNICStatistics getStatistics() {
         if (this.vMNICStatistics == null) {
-            this.vMNICStatistics = new VMNICStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMNICStatistics == null) {
+                    this.vMNICStatistics = new VMNICStatistics(proxy, this);
+                }
+            }
         }
         return vMNICStatistics;
     }

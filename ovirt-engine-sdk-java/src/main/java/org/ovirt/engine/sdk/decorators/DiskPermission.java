@@ -43,6 +43,7 @@ public class DiskPermission extends
         org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

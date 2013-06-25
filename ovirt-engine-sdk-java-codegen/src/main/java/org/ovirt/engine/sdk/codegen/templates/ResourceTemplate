@@ -23,6 +23,7 @@ public class $decoratorResourceName$ extends
         org.ovirt.engine.sdk.entities.$publicEntityName$ {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 $subCollectionsVariables$
 

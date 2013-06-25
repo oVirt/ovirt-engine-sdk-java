@@ -43,12 +43,13 @@ public class StorageDomain extends
         org.ovirt.engine.sdk.entities.StorageDomain {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private StorageDomainPermissions storageDomainPermissions;
-    private StorageDomainVMs storageDomainVMs;
-    private StorageDomainTemplates storageDomainTemplates;
-    private StorageDomainDisks storageDomainDisks;
-    private StorageDomainFiles storageDomainFiles;
+    private volatile StorageDomainPermissions storageDomainPermissions;
+    private volatile StorageDomainVMs storageDomainVMs;
+    private volatile StorageDomainTemplates storageDomainTemplates;
+    private volatile StorageDomainDisks storageDomainDisks;
+    private volatile StorageDomainFiles storageDomainFiles;
 
 
     /**
@@ -71,9 +72,13 @@ public class StorageDomain extends
      * @return
      *     {@link StorageDomainPermissions }
      */
-    public synchronized StorageDomainPermissions getPermissions() {
+    public StorageDomainPermissions getPermissions() {
         if (this.storageDomainPermissions == null) {
-            this.storageDomainPermissions = new StorageDomainPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainPermissions == null) {
+                    this.storageDomainPermissions = new StorageDomainPermissions(proxy, this);
+                }
+            }
         }
         return storageDomainPermissions;
     }
@@ -83,9 +88,13 @@ public class StorageDomain extends
      * @return
      *     {@link StorageDomainVMs }
      */
-    public synchronized StorageDomainVMs getVMs() {
+    public StorageDomainVMs getVMs() {
         if (this.storageDomainVMs == null) {
-            this.storageDomainVMs = new StorageDomainVMs(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainVMs == null) {
+                    this.storageDomainVMs = new StorageDomainVMs(proxy, this);
+                }
+            }
         }
         return storageDomainVMs;
     }
@@ -95,9 +104,13 @@ public class StorageDomain extends
      * @return
      *     {@link StorageDomainTemplates }
      */
-    public synchronized StorageDomainTemplates getTemplates() {
+    public StorageDomainTemplates getTemplates() {
         if (this.storageDomainTemplates == null) {
-            this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainTemplates == null) {
+                    this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
+                }
+            }
         }
         return storageDomainTemplates;
     }
@@ -107,9 +120,13 @@ public class StorageDomain extends
      * @return
      *     {@link StorageDomainDisks }
      */
-    public synchronized StorageDomainDisks getDisks() {
+    public StorageDomainDisks getDisks() {
         if (this.storageDomainDisks == null) {
-            this.storageDomainDisks = new StorageDomainDisks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainDisks == null) {
+                    this.storageDomainDisks = new StorageDomainDisks(proxy, this);
+                }
+            }
         }
         return storageDomainDisks;
     }
@@ -119,9 +136,13 @@ public class StorageDomain extends
      * @return
      *     {@link StorageDomainFiles }
      */
-    public synchronized StorageDomainFiles getFiles() {
+    public StorageDomainFiles getFiles() {
         if (this.storageDomainFiles == null) {
-            this.storageDomainFiles = new StorageDomainFiles(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.storageDomainFiles == null) {
+                    this.storageDomainFiles = new StorageDomainFiles(proxy, this);
+                }
+            }
         }
         return storageDomainFiles;
     }

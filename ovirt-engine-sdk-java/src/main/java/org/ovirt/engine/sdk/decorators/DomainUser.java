@@ -43,6 +43,7 @@ public class DomainUser extends
         org.ovirt.engine.sdk.entities.User {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

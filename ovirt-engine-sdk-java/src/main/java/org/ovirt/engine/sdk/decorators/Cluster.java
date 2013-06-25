@@ -43,10 +43,11 @@ public class Cluster extends
         org.ovirt.engine.sdk.entities.Cluster {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private ClusterGlusterVolumes clusterGlusterVolumes;
-    private ClusterNetworks clusterNetworks;
-    private ClusterPermissions clusterPermissions;
+    private volatile ClusterGlusterVolumes clusterGlusterVolumes;
+    private volatile ClusterNetworks clusterNetworks;
+    private volatile ClusterPermissions clusterPermissions;
 
 
     /**
@@ -69,9 +70,13 @@ public class Cluster extends
      * @return
      *     {@link ClusterGlusterVolumes }
      */
-    public synchronized ClusterGlusterVolumes getGlusterVolumes() {
+    public ClusterGlusterVolumes getGlusterVolumes() {
         if (this.clusterGlusterVolumes == null) {
-            this.clusterGlusterVolumes = new ClusterGlusterVolumes(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.clusterGlusterVolumes == null) {
+                    this.clusterGlusterVolumes = new ClusterGlusterVolumes(proxy, this);
+                }
+            }
         }
         return clusterGlusterVolumes;
     }
@@ -81,9 +86,13 @@ public class Cluster extends
      * @return
      *     {@link ClusterNetworks }
      */
-    public synchronized ClusterNetworks getNetworks() {
+    public ClusterNetworks getNetworks() {
         if (this.clusterNetworks == null) {
-            this.clusterNetworks = new ClusterNetworks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.clusterNetworks == null) {
+                    this.clusterNetworks = new ClusterNetworks(proxy, this);
+                }
+            }
         }
         return clusterNetworks;
     }
@@ -93,9 +102,13 @@ public class Cluster extends
      * @return
      *     {@link ClusterPermissions }
      */
-    public synchronized ClusterPermissions getPermissions() {
+    public ClusterPermissions getPermissions() {
         if (this.clusterPermissions == null) {
-            this.clusterPermissions = new ClusterPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.clusterPermissions == null) {
+                    this.clusterPermissions = new ClusterPermissions(proxy, this);
+                }
+            }
         }
         return clusterPermissions;
     }

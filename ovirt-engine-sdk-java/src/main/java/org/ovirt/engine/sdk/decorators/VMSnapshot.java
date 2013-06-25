@@ -43,10 +43,11 @@ public class VMSnapshot extends
         org.ovirt.engine.sdk.entities.Snapshot {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private VMSnapshotNics vMSnapshotNics;
-    private VMSnapshotDisks vMSnapshotDisks;
-    private VMSnapshotCdRoms vMSnapshotCdRoms;
+    private volatile VMSnapshotNics vMSnapshotNics;
+    private volatile VMSnapshotDisks vMSnapshotDisks;
+    private volatile VMSnapshotCdRoms vMSnapshotCdRoms;
 
 
     /**
@@ -69,9 +70,13 @@ public class VMSnapshot extends
      * @return
      *     {@link VMSnapshotNics }
      */
-    public synchronized VMSnapshotNics getNics() {
+    public VMSnapshotNics getNics() {
         if (this.vMSnapshotNics == null) {
-            this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMSnapshotNics == null) {
+                    this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
+                }
+            }
         }
         return vMSnapshotNics;
     }
@@ -81,9 +86,13 @@ public class VMSnapshot extends
      * @return
      *     {@link VMSnapshotDisks }
      */
-    public synchronized VMSnapshotDisks getDisks() {
+    public VMSnapshotDisks getDisks() {
         if (this.vMSnapshotDisks == null) {
-            this.vMSnapshotDisks = new VMSnapshotDisks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMSnapshotDisks == null) {
+                    this.vMSnapshotDisks = new VMSnapshotDisks(proxy, this);
+                }
+            }
         }
         return vMSnapshotDisks;
     }
@@ -93,9 +102,13 @@ public class VMSnapshot extends
      * @return
      *     {@link VMSnapshotCdRoms }
      */
-    public synchronized VMSnapshotCdRoms getCdRoms() {
+    public VMSnapshotCdRoms getCdRoms() {
         if (this.vMSnapshotCdRoms == null) {
-            this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMSnapshotCdRoms == null) {
+                    this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
+                }
+            }
         }
         return vMSnapshotCdRoms;
     }

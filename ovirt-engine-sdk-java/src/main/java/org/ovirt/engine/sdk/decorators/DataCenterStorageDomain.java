@@ -43,8 +43,9 @@ public class DataCenterStorageDomain extends
         org.ovirt.engine.sdk.entities.StorageDomain {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private DataCenterStorageDomainDisks dataCenterStorageDomainDisks;
+    private volatile DataCenterStorageDomainDisks dataCenterStorageDomainDisks;
 
 
     /**
@@ -67,9 +68,13 @@ public class DataCenterStorageDomain extends
      * @return
      *     {@link DataCenterStorageDomainDisks }
      */
-    public synchronized DataCenterStorageDomainDisks getDisks() {
+    public DataCenterStorageDomainDisks getDisks() {
         if (this.dataCenterStorageDomainDisks == null) {
-            this.dataCenterStorageDomainDisks = new DataCenterStorageDomainDisks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.dataCenterStorageDomainDisks == null) {
+                    this.dataCenterStorageDomainDisks = new DataCenterStorageDomainDisks(proxy, this);
+                }
+            }
         }
         return dataCenterStorageDomainDisks;
     }

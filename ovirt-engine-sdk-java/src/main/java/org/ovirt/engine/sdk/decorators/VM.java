@@ -43,16 +43,17 @@ public class VM extends
         org.ovirt.engine.sdk.entities.VM {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private VMPermissions vMPermissions;
-    private VMReportedDevices vMReportedDevices;
-    private VMTags vMTags;
-    private VMSnapshots vMSnapshots;
-    private VMStatistics vMStatistics;
-    private VMApplications vMApplications;
-    private VMDisks vMDisks;
-    private VMNICs vMNICs;
-    private VMCdRoms vMCdRoms;
+    private volatile VMPermissions vMPermissions;
+    private volatile VMReportedDevices vMReportedDevices;
+    private volatile VMTags vMTags;
+    private volatile VMSnapshots vMSnapshots;
+    private volatile VMStatistics vMStatistics;
+    private volatile VMApplications vMApplications;
+    private volatile VMDisks vMDisks;
+    private volatile VMNICs vMNICs;
+    private volatile VMCdRoms vMCdRoms;
 
 
     /**
@@ -75,9 +76,13 @@ public class VM extends
      * @return
      *     {@link VMPermissions }
      */
-    public synchronized VMPermissions getPermissions() {
+    public VMPermissions getPermissions() {
         if (this.vMPermissions == null) {
-            this.vMPermissions = new VMPermissions(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMPermissions == null) {
+                    this.vMPermissions = new VMPermissions(proxy, this);
+                }
+            }
         }
         return vMPermissions;
     }
@@ -87,9 +92,13 @@ public class VM extends
      * @return
      *     {@link VMReportedDevices }
      */
-    public synchronized VMReportedDevices getReportedDevices() {
+    public VMReportedDevices getReportedDevices() {
         if (this.vMReportedDevices == null) {
-            this.vMReportedDevices = new VMReportedDevices(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMReportedDevices == null) {
+                    this.vMReportedDevices = new VMReportedDevices(proxy, this);
+                }
+            }
         }
         return vMReportedDevices;
     }
@@ -99,9 +108,13 @@ public class VM extends
      * @return
      *     {@link VMTags }
      */
-    public synchronized VMTags getTags() {
+    public VMTags getTags() {
         if (this.vMTags == null) {
-            this.vMTags = new VMTags(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMTags == null) {
+                    this.vMTags = new VMTags(proxy, this);
+                }
+            }
         }
         return vMTags;
     }
@@ -111,9 +124,13 @@ public class VM extends
      * @return
      *     {@link VMSnapshots }
      */
-    public synchronized VMSnapshots getSnapshots() {
+    public VMSnapshots getSnapshots() {
         if (this.vMSnapshots == null) {
-            this.vMSnapshots = new VMSnapshots(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMSnapshots == null) {
+                    this.vMSnapshots = new VMSnapshots(proxy, this);
+                }
+            }
         }
         return vMSnapshots;
     }
@@ -123,9 +140,13 @@ public class VM extends
      * @return
      *     {@link VMStatistics }
      */
-    public synchronized VMStatistics getStatistics() {
+    public VMStatistics getStatistics() {
         if (this.vMStatistics == null) {
-            this.vMStatistics = new VMStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMStatistics == null) {
+                    this.vMStatistics = new VMStatistics(proxy, this);
+                }
+            }
         }
         return vMStatistics;
     }
@@ -135,9 +156,13 @@ public class VM extends
      * @return
      *     {@link VMApplications }
      */
-    public synchronized VMApplications getApplications() {
+    public VMApplications getApplications() {
         if (this.vMApplications == null) {
-            this.vMApplications = new VMApplications(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMApplications == null) {
+                    this.vMApplications = new VMApplications(proxy, this);
+                }
+            }
         }
         return vMApplications;
     }
@@ -147,9 +172,13 @@ public class VM extends
      * @return
      *     {@link VMDisks }
      */
-    public synchronized VMDisks getDisks() {
+    public VMDisks getDisks() {
         if (this.vMDisks == null) {
-            this.vMDisks = new VMDisks(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMDisks == null) {
+                    this.vMDisks = new VMDisks(proxy, this);
+                }
+            }
         }
         return vMDisks;
     }
@@ -159,9 +188,13 @@ public class VM extends
      * @return
      *     {@link VMNICs }
      */
-    public synchronized VMNICs getNics() {
+    public VMNICs getNics() {
         if (this.vMNICs == null) {
-            this.vMNICs = new VMNICs(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMNICs == null) {
+                    this.vMNICs = new VMNICs(proxy, this);
+                }
+            }
         }
         return vMNICs;
     }
@@ -171,9 +204,13 @@ public class VM extends
      * @return
      *     {@link VMCdRoms }
      */
-    public synchronized VMCdRoms getCdRoms() {
+    public VMCdRoms getCdRoms() {
         if (this.vMCdRoms == null) {
-            this.vMCdRoms = new VMCdRoms(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.vMCdRoms == null) {
+                    this.vMCdRoms = new VMCdRoms(proxy, this);
+                }
+            }
         }
         return vMCdRoms;
     }

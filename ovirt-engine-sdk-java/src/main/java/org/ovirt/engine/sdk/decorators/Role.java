@@ -43,8 +43,9 @@ public class Role extends
         org.ovirt.engine.sdk.entities.Role {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private RolePermits rolePermits;
+    private volatile RolePermits rolePermits;
 
 
     /**
@@ -67,9 +68,13 @@ public class Role extends
      * @return
      *     {@link RolePermits }
      */
-    public synchronized RolePermits getPermits() {
+    public RolePermits getPermits() {
         if (this.rolePermits == null) {
-            this.rolePermits = new RolePermits(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.rolePermits == null) {
+                    this.rolePermits = new RolePermits(proxy, this);
+                }
+            }
         }
         return rolePermits;
     }

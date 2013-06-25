@@ -20,8 +20,9 @@ import org.ovirt.engine.sdk.utils.SerializationHelper;
  */
 public class Api {
 
-    private HttpProxyBroker proxy = null;
-    private API entryPoint = null;
+    private volatile HttpProxyBroker proxy = null;
+    private volatile API entryPoint = null;
+    private final Object LOCK = new Object();
 
 $collectionsVariables$
 
@@ -284,7 +285,7 @@ $collectionsVariables$
     /**
      * initializes resources
      */
-    private void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
+    private synchronized void initResources() throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
             IOException {
         this.entryPoint = getEntryPoint();
     }
@@ -294,7 +295,7 @@ $collectionsVariables$
      *
      * @param filter
      */
-    public void setFilter(boolean filter) {
+    public synchronized void setFilter(boolean filter) {
         this.proxy.setFilter(filter);
     }
 
@@ -303,7 +304,7 @@ $collectionsVariables$
      *
      * @param persistentAuth
      */
-    public void setPersistentAuth(boolean persistentAuth) {
+    public synchronized void setPersistentAuth(boolean persistentAuth) {
         this.proxy.setPersistentAuth(persistentAuth);
     }
 
@@ -333,7 +334,7 @@ $collectionsVariables$
      *            oVirt api sessionid to authenticate the user with
      *            (used as SSO solution instead of username+password)
      */
-    public void setSessionid(String sessionid) {
+    public synchronized void setSessionid(String sessionid) {
         this.proxy.setSessionid(sessionid);
     }
 
@@ -350,7 +351,7 @@ $collectionsVariables$
      * manager/httpproxy to ensure immediate deallocation of all system
      * resources.
      */
-    public void shutdown() {
+    public synchronized void shutdown() {
         proxy.shutdown();
     }
 

@@ -43,6 +43,7 @@ public class StorageDomainFile extends
         org.ovirt.engine.sdk.entities.File {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 

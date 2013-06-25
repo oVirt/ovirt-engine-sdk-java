@@ -43,8 +43,9 @@ public class HostNIC extends
         org.ovirt.engine.sdk.entities.HostNIC {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
-    private HostNICStatistics hostNICStatistics;
+    private volatile HostNICStatistics hostNICStatistics;
 
 
     /**
@@ -67,9 +68,13 @@ public class HostNIC extends
      * @return
      *     {@link HostNICStatistics }
      */
-    public synchronized HostNICStatistics getStatistics() {
+    public HostNICStatistics getStatistics() {
         if (this.hostNICStatistics == null) {
-            this.hostNICStatistics = new HostNICStatistics(proxy, this);
+            synchronized (this.LOCK) {
+                if (this.hostNICStatistics == null) {
+                    this.hostNICStatistics = new HostNICStatistics(proxy, this);
+                }
+            }
         }
         return hostNICStatistics;
     }

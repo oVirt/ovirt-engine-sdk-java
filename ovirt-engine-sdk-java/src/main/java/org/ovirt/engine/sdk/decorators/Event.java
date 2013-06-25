@@ -43,6 +43,7 @@ public class Event extends
         org.ovirt.engine.sdk.entities.Event {
 
     private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
 
 
 
