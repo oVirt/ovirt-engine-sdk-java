@@ -165,6 +165,7 @@ public class Disks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.sgio]
      *      [disk.storage_domains.storage_domain]
      *    </pre>
      *
@@ -222,6 +223,7 @@ public class Disks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.sgio]
      *      [disk.storage_domains.storage_domain]
      *    </pre>
      *

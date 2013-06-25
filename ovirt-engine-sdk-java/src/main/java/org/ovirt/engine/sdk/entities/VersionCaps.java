@@ -75,6 +75,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}nfs_versions" minOccurs="0"/>
  *         &lt;element ref="{}pm_proxy_types" minOccurs="0"/>
  *         &lt;element ref="{}cpu_modes" minOccurs="0"/>
+ *         &lt;element ref="{}sgio_options" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
  *         &lt;element ref="{}transport_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_states" minOccurs="0"/>
@@ -129,6 +130,7 @@ import javax.xml.bind.annotation.XmlType;
     "nfsVersions",
     "pmProxyTypes",
     "cpuModes",
+    "sgioOptions",
     "glusterVolumeTypes",
     "transportTypes",
     "glusterVolumeStates",
@@ -211,6 +213,8 @@ public class VersionCaps
     protected PmProxyTypes pmProxyTypes;
     @XmlElement(name = "cpu_modes")
     protected CpuModes cpuModes;
+    @XmlElement(name = "sgio_options")
+    protected ScsiGenericIoOptions sgioOptions;
     @XmlElement(name = "gluster_volume_types")
     protected GlusterVolumeTypes glusterVolumeTypes;
     @XmlElement(name = "transport_types")
@@ -1286,6 +1290,34 @@ public class VersionCaps
 
     public boolean isSetCpuModes() {
         return (this.cpuModes!= null);
+    }
+
+    /**
+     * Gets the value of the sgioOptions property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ScsiGenericIoOptions }
+     *     
+     */
+    public ScsiGenericIoOptions getSgioOptions() {
+        return sgioOptions;
+    }
+
+    /**
+     * Sets the value of the sgioOptions property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ScsiGenericIoOptions }
+     *     
+     */
+    public void setSgioOptions(ScsiGenericIoOptions value) {
+        this.sgioOptions = value;
+    }
+
+    public boolean isSetSgioOptions() {
+        return (this.sgioOptions!= null);
     }
 
     /**

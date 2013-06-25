@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="creation_status" type="{}Status" minOccurs="0"/>
  *         &lt;element ref="{}link" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -59,6 +60,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "BaseResource", propOrder = {
     "name",
     "description",
+    "comment",
     "creationStatus",
     "links"
 })
@@ -106,6 +108,7 @@ public class BaseResource
 
     protected String name;
     protected String description;
+    protected String comment;
     @XmlElement(name = "creation_status")
     protected Status creationStatus;
     @XmlElement(name = "link")
@@ -169,6 +172,34 @@ public class BaseResource
 
     public boolean isSetDescription() {
         return (this.description!= null);
+    }
+
+    /**
+     * Gets the value of the comment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getComment() {
+        return comment;
+    }
+
+    /**
+     * Sets the value of the comment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setComment(String value) {
+        this.comment = value;
+    }
+
+    public boolean isSetComment() {
+        return (this.comment!= null);
     }
 
     /**

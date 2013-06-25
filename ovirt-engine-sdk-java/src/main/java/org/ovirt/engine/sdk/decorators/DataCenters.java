@@ -145,6 +145,7 @@ public class DataCenters extends
      *    datacenter.version.major
      *    datacenter.version.minor
      *    [datacenter.description]
+     *    [datacenter.comment]
      *    [datacenter.storage_format]
      *    </pre>
      *
@@ -182,6 +183,7 @@ public class DataCenters extends
      *    datacenter.version.major
      *    datacenter.version.minor
      *    [datacenter.description]
+     *    [datacenter.comment]
      *    [datacenter.storage_format]
      *    </pre>
      *

@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element name="lun_storage" type="{}Storage" minOccurs="0"/>
+ *         &lt;element name="sgio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -86,7 +87,8 @@ import javax.xml.bind.annotation.XmlType;
     "statistics",
     "active",
     "quota",
-    "lunStorage"
+    "lunStorage",
+    "sgio"
 })
 public class Disk
     extends BaseDevice
@@ -121,6 +123,7 @@ public class Disk
     protected Quota quota;
     @XmlElement(name = "lun_storage")
     protected Storage lunStorage;
+    protected String sgio;
 
     /**
      * Gets the value of the alias property.
@@ -680,6 +683,34 @@ public class Disk
 
     public boolean isSetLunStorage() {
         return (this.lunStorage!= null);
+    }
+
+    /**
+     * Gets the value of the sgio property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSgio() {
+        return sgio;
+    }
+
+    /**
+     * Sets the value of the sgio property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSgio(String value) {
+        this.sgio = value;
+    }
+
+    public boolean isSetSgio() {
+        return (this.sgio!= null);
     }
 
 }

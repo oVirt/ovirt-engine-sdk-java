@@ -174,6 +174,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.sgio]
      *    </pre>
      *
      * @return
@@ -229,6 +230,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.sgio]
      *    </pre>
      *
      * @param expect

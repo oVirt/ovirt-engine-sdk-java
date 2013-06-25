@@ -203,6 +203,7 @@ public class ObjectFactory {
     private final static QName _ReportedDevice_QNAME = new QName("", "reported_device");
     private final static QName _Ip_QNAME = new QName("", "ip");
     private final static QName _VmTypes_QNAME = new QName("", "vm_types");
+    private final static QName _SgioOptions_QNAME = new QName("", "sgio_options");
     private final static QName _PmProxies_QNAME = new QName("", "pm_proxies");
     private final static QName _Vlan_QNAME = new QName("", "vlan");
     private final static QName _Cluster_QNAME = new QName("", "cluster");
@@ -1467,6 +1468,14 @@ public class ObjectFactory {
      */
     public ReportedDevice createReportedDevice() {
         return new ReportedDevice();
+    }
+
+    /**
+     * Create an instance of {@link ScsiGenericIoOptions }
+     * 
+     */
+    public ScsiGenericIoOptions createScsiGenericIoOptions() {
+        return new ScsiGenericIoOptions();
     }
 
     /**
@@ -3194,6 +3203,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "vm_types")
     public JAXBElement<VmTypes> createVmTypes(VmTypes value) {
         return new JAXBElement<VmTypes>(_VmTypes_QNAME, VmTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ScsiGenericIoOptions }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "sgio_options")
+    public JAXBElement<ScsiGenericIoOptions> createSgioOptions(ScsiGenericIoOptions value) {
+        return new JAXBElement<ScsiGenericIoOptions>(_SgioOptions_QNAME, ScsiGenericIoOptions.class, null, value);
     }
 
     /**

@@ -120,10 +120,11 @@ public class DataCenter extends
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
      *    [datacenter.name]
+     *    [datacenter.description]
+     *    [datacenter.comment]
      *    [datacenter.storage_type]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
-     *    [datacenter.description]
      *    [datacenter.storage_format]
      *    </pre>
      *

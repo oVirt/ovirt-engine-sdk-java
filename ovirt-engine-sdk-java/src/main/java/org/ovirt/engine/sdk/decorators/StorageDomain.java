@@ -136,6 +136,7 @@ public class StorageDomain extends
      *      [storagedomain.name]
      *
      *    Overload 2:
+     *      storagedomain.host.id|name
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]
      *      [storagedomain.storage.override_luns]
