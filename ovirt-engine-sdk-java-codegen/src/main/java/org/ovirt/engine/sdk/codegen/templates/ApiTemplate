@@ -3,7 +3,10 @@ package org.ovirt.engine.sdk;
 import java.io.IOException;
 
 import org.apache.http.client.ClientProtocolException;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.ConnectionsPoolBuilder;
 import org.ovirt.engine.sdk.web.HttpProxy;
@@ -253,19 +256,31 @@ $collectionsVariables$
      * @param debug
      */
     private void configureLog4J(Boolean debug) {
-        String fileSeparator = System.getProperty("file.separator");
-        String configFile = null;
+        String patternLayout = "%d %-5p [%c] %m%n";
         if (debug != null && Boolean.TRUE.equals(debug)) {
-            configFile = "log4j-verbose.properties";
+
+            Logger rootLogger = Logger.getRootLogger();
+            if (!rootLogger.getAllAppenders().hasMoreElements()) {
+                rootLogger.setLevel(Level.INFO);
+                rootLogger.addAppender(new ConsoleAppender(
+                        new PatternLayout(patternLayout)));
+
+            }
+            Logger pkgLogger =
+                    rootLogger.getLoggerRepository()
+                            .getLogger("org.apache.http");
+            pkgLogger.setLevel(Level.DEBUG);
+            pkgLogger.addAppender(new ConsoleAppender(
+                    new PatternLayout(patternLayout)));
+
         } else {
-            configFile = "log4j-default.properties";
+            Logger rootLogger = Logger.getRootLogger();
+            if (!rootLogger.getAllAppenders().hasMoreElements()) {
+                rootLogger.setLevel(Level.OFF);
+                rootLogger.addAppender(new ConsoleAppender(
+                        new PatternLayout(patternLayout)));
+            }
         }
-        PropertyConfigurator.configure(
-                System.getProperty("user.dir") +
-                        fileSeparator +
-                        "log" +
-                        fileSeparator +
-                        configFile);
     }
 
     /**
