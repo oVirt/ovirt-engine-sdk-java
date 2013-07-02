@@ -51,7 +51,7 @@ BuildRequires:  maven-source-plugin
 Requires: java
 Requires: httpcomponents-httpclient >= 4.2
 Requires: httpcomponents-httpcore
-Requires: commons-logging
+Requires: apache-commons-logging
 Requires: commons-beanutils
 Requires: commons-codec
 Requires: log4j
