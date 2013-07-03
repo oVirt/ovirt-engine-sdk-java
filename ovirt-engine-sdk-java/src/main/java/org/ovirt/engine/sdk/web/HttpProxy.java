@@ -18,6 +18,7 @@ package org.ovirt.engine.sdk.web;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.Header;
@@ -131,14 +132,35 @@ public class HttpProxy {
     }
 
     /**
+     * Removes headers with NULL value
+     * 
+     * @param headers
+     * 
+     * @return List of {@link Header} where value != null
+     */
+    private List<Header> excludeNullHeaders(List<Header> headers) {
+        if (headers != null && !headers.isEmpty()) {
+            List<Header> updated = new ArrayList<Header>();
+            for (Header header : headers) {
+                if (header.getValue() != null) {
+                    updated.add(header);
+                }
+            }
+            return updated;
+        }
+        return headers;
+    }
+
+    /**
      * Injects HTTP headers in to request
      * 
      * @param request
      * @param headers
      */
     private void injectHeaders(HttpUriRequest request, List<Header> headers) {
-        if (headers != null && !headers.isEmpty()) {
-            request.setHeaders(headers.toArray(new Header[headers.size()]));
+        List<Header> updated = excludeNullHeaders(headers);
+        if (updated != null && !updated.isEmpty()) {
+            request.setHeaders(updated.toArray(new Header[updated.size()]));
         }
 
         // inject .ctr defined static parameters
