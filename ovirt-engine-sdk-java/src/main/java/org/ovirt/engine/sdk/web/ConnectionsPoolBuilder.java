@@ -16,10 +16,19 @@
 
 package org.ovirt.engine.sdk.web;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -36,6 +45,8 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.ovirt.engine.sdk.exceptions.ProtocolException;
+import org.ovirt.engine.sdk.exceptions.SocketFactoryException;
 import org.ovirt.engine.sdk.utils.StringUtils;
 
 /**
@@ -43,9 +54,15 @@ import org.ovirt.engine.sdk.utils.StringUtils;
  */
 public class ConnectionsPoolBuilder {
 
+    private static final String DEFAULT_KEYSTORE_TRUSTSTORE = "ovirtsdk-keystore.truststore";
     private static final String BAD_PROTOCOL_ERROR = "Unsupported protocol ";
     private static final String BAD_KEY_ERROR = "SSL context initiation has failed because of key error.";
     private static final String NO_TLS_ERROR = "SSL context initiation has failed locating TLS slgorithm.";
+    private static final String KEY_STORE_ERROR = "CA certeficate keysotore initiation has failed.";
+    private static final String KEY_STORE_FILE_NOT_FOUND_ERROR = "CA certeficate keysotore was not found.";
+    private static final String CERTEFICATE_ERROR = "CA certeficate error.";
+    private static final String IO_ERROR = "I/O error occured, is your keysotore password correct?";
+    private static final String UNRECOVERABLE_KEY_ERROR = "Unrecoverable key error has occured.";
 
     private static int MAX_CONNECTIONS = 20;
     private static int MAX_CONNECTIONS_PER_HOST = 50;
@@ -66,6 +83,8 @@ public class ConnectionsPoolBuilder {
     private int port = -1;
     private int timeout = -1;
     private boolean noHostVerification = false;
+    private String keyStorePath;
+    private String keyStorePassword;
 
     private URL urlobj = null;
 
@@ -150,6 +169,24 @@ public class ConnectionsPoolBuilder {
      */
     public ConnectionsPoolBuilder ca_file(String ca_file) {
         this.ca_file = ca_file;
+        return this;
+    }
+
+    /**
+     * @param keyStorePath
+     *            path to server CA KeyStore
+     */
+    public ConnectionsPoolBuilder keyStorePath(String keyStorePath) {
+        this.keyStorePath = keyStorePath;
+        return this;
+    }
+
+    /**
+     * @param keyStorePassword
+     *            server CA KeyStore password
+     */
+    public ConnectionsPoolBuilder keyStorePassword(String keyStorePassword) {
+        this.keyStorePassword = keyStorePassword;
         return this;
     }
 
@@ -260,37 +297,63 @@ public class ConnectionsPoolBuilder {
                             port,
                             PlainSocketFactory.getSocketFactory()));
         } else if (HTTPS_PROTOCOL.equals(protocol)) {
-            SSLContext sslcontext;
             try {
-                sslcontext = SSLContext.getInstance("TLS");
-
                 if (this.noHostVerification) {
+                    SSLContext sslcontext = SSLContext.getInstance("TLS");
                     sslcontext.init(null, new TrustManager[] { noCaTrustManager }, null);
                     sf = new SSLSocketFactory(
                             sslcontext,
                             SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
                 } else {
-                    sslcontext.init(null, null, null);
-                    sf = new SSLSocketFactory(
-                            sslcontext,
-                            // This hostname verifier that works the same way as Curl and Firefox. The hostname must
-                            // match either the first CN, or any of the subject-alts. A wildcard can occur in the CN,
-                            // and in any of the subject-alts. The only difference between BrowserCompatHostnameVerifier
-                            // and StrictHostnameVerifier is that a wildcard (such as "*.foo.com") with
-                            // BrowserCompatHostnameVerifier matches all subdomains, including "a.b.foo.com".
-                            SSLSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
+                    KeyStore truststore = null;
+                    InputStream in = null;
+
+                    if (this.keyStorePath != null) {
+                        truststore = KeyStore.getInstance(KeyStore.getDefaultType());
+                        try {
+                            in = new FileInputStream(this.keyStorePath);
+                            truststore.load(
+                                    in,
+                                    this.keyStorePassword != null ?
+                                            this.keyStorePassword.toCharArray()
+                                            :
+                                            null);
+
+                        } finally {
+                            if (in != null) {
+                                in.close();
+                            }
+                        }
+                    }
+                    sf = new SSLSocketFactory(SSLSocketFactory.TLS,
+                            null,
+                            null,
+                            truststore,
+                            null,
+                            null,
+                            SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
                 }
 
                 schemeRegistry.register(
                         new Scheme(HTTPS_PROTOCOL, port, sf));
+
             } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-                throw new RuntimeException(NO_TLS_ERROR, e);
+                throw new SocketFactoryException(NO_TLS_ERROR, e);
             } catch (KeyManagementException e) {
-                throw new RuntimeException(BAD_KEY_ERROR, e);
+                throw new SocketFactoryException(BAD_KEY_ERROR, e);
+            } catch (KeyStoreException e) {
+                throw new SocketFactoryException(KEY_STORE_ERROR, e);
+            } catch (FileNotFoundException e) {
+                throw new SocketFactoryException(KEY_STORE_FILE_NOT_FOUND_ERROR, e);
+            } catch (CertificateException e) {
+                throw new SocketFactoryException(CERTEFICATE_ERROR, e);
+            } catch (IOException e) {
+                throw new SocketFactoryException(IO_ERROR, e);
+            } catch (UnrecoverableKeyException e) {
+                throw new SocketFactoryException(UNRECOVERABLE_KEY_ERROR, e);
             }
         } else {
-            throw new RuntimeException(BAD_PROTOCOL_ERROR + protocol);
+            throw new ProtocolException(BAD_PROTOCOL_ERROR + protocol);
         }
 
         return schemeRegistry;
@@ -325,6 +388,7 @@ public class ConnectionsPoolBuilder {
      * @return ConnectionsPool
      */
     public ConnectionsPool build() {
+        this.keyStorePath = resolveKeyStorePath();
         return new ConnectionsPool(
                 createDefaultHttpClient(url,
                         username,
@@ -338,6 +402,34 @@ public class ConnectionsPoolBuilder {
                 this.urlobj,
                 WAIT_IDLE_CHECK_TTL,
                 WAIT_IDLE_CLOSE_TTL);
+    }
+
+    /**
+     * Trying to resolve keyStorePath if it's not defined
+     * according to the DEFAULT_KEYSTORE_TRUSTSTORE
+     *
+     * on NX environment it may look like:
+     * /home/mpastern/.ovirtsdk/ovirtsdk-keystore.truststore
+     *
+     * @return keyStorePath or original this.keyStorePath content
+     */
+    private String resolveKeyStorePath() {
+        if (this.keyStorePath == null) {
+            String keyStorePathCandidate =
+                    System.getProperty("user.home") +
+                            File.separator + ".ovirtsdk" +
+                            File.separator + DEFAULT_KEYSTORE_TRUSTSTORE;
+
+            try {
+                if (new File(keyStorePathCandidate).exists()) {
+                    return keyStorePathCandidate;
+                }
+            } catch (SecurityException ex) {
+                ex.printStackTrace();
+                // TODO: log error when exposed logger
+            }
+        }
+        return this.keyStorePath;
     }
 
     /**
