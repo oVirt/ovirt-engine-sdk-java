@@ -135,6 +135,7 @@ public class DataCenterCluster extends
      *    [cluster.gluster_service]
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
+     *    [cluster.trusted_service]
      *    </pre>
      *
      * @return

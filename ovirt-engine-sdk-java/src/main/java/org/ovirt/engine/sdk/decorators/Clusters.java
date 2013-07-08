@@ -157,6 +157,7 @@ public class Clusters extends
      *    [cluster.gluster_service]
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
+     *    [cluster.trusted_service]
      *    </pre>
      *
      * @return
@@ -205,6 +206,7 @@ public class Clusters extends
      *    [cluster.gluster_service]
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
+     *    [cluster.trusted_service]
      *    </pre>
      *
      * @param expect

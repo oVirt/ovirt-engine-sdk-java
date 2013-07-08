@@ -48,6 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="gluster_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="threads_as_cores" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="trusted_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -68,7 +69,8 @@ import javax.xml.bind.annotation.XmlType;
     "virtService",
     "glusterService",
     "threadsAsCores",
-    "tunnelMigration"
+    "tunnelMigration",
+    "trustedService"
 })
 public class Cluster
     extends BaseResource
@@ -94,6 +96,8 @@ public class Cluster
     protected Boolean threadsAsCores;
     @XmlElement(name = "tunnel_migration")
     protected Boolean tunnelMigration;
+    @XmlElement(name = "trusted_service")
+    protected Boolean trustedService;
 
     /**
      * Gets the value of the cpu property.
@@ -401,6 +405,34 @@ public class Cluster
 
     public boolean isSetTunnelMigration() {
         return (this.tunnelMigration!= null);
+    }
+
+    /**
+     * Gets the value of the trustedService property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean getTrustedService() {
+        return trustedService;
+    }
+
+    /**
+     * Sets the value of the trustedService property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setTrustedService(Boolean value) {
+        this.trustedService = value;
+    }
+
+    public boolean isSetTrustedService() {
+        return (this.trustedService!= null);
     }
 
 }
