@@ -16,11 +16,13 @@
 
 package org.ovirt.engine.sdk.codegen.common;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
 import org.apache.http.client.ClientProtocolException;
+import org.ovirt.engine.sdk.codegen.compile.CodeCompiler;
 import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 
@@ -29,7 +31,10 @@ import org.ovirt.engine.sdk.exceptions.ServerException;
  */
 public abstract class AbstractCodegen implements ICodegen {
 
-    private String distPath;
+    private final String distPath;
+
+    private final CodeCompiler codeCompiler;
+    private boolean dontCompile = false;
 
     /**
      * @param distPath
@@ -38,20 +43,53 @@ public abstract class AbstractCodegen implements ICodegen {
     public AbstractCodegen(String distPath) {
         super();
         this.distPath = distPath;
+        this.codeCompiler = new CodeCompiler(getPackagePath());
     }
 
     /**
-     * Cleans the package and generates new code
+     * @param distPath
+     *            path to generate the code in
+     * @param dontCompile
+     *            disables compilation post gen()
+     */
+    public AbstractCodegen(String distPath, boolean dontCompile) {
+        super();
+        this.distPath = distPath;
+        this.codeCompiler = new CodeCompiler(getPackagePath());
+        this.dontCompile = dontCompile;
+    }
+
+    /**
+     * Cleans the package, generates new code and compiles it
      * 
      * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
+    @Override
     public void generate() throws ClientProtocolException,
             ServerException, IOException, JAXBException {
         doCleanPackage(this.distPath);
         doGenerate(this.distPath);
+        doCompile();
+    }
+
+    /**
+     * Compiles generated code
+     */
+    private void doCompile() {
+        if (!this.dontCompile) {
+            codeCompiler.compile();
+        }
+    }
+
+    /**
+     * @return root package path
+     */
+    private String getPackagePath() {
+        String[] split = this.distPath.split(File.separator);
+        return split[0] + File.separator + split[1];
     }
 
     /**
