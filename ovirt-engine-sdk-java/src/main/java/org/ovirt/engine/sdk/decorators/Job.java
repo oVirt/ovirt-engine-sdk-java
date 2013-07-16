@@ -22,125 +22,73 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.common.CollectionDecorator;
+import org.ovirt.engine.sdk.entities.Action;
+import org.ovirt.engine.sdk.entities.Response;
 import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
-import org.ovirt.engine.sdk.utils.UrlBuilder;
-import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
-import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>VMSnapshots providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Snapshots }.
+ * <p>Job providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Job }.
  */
 @SuppressWarnings("unused")
-public class VMSnapshots extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Snapshot,
-                            org.ovirt.engine.sdk.entities.Snapshots,
-                            VMSnapshot> {
+public class Job extends
+        org.ovirt.engine.sdk.entities.Job {
 
-    private VM parent;
+    private HttpProxyBroker proxy;
+    private final Object LOCK = new Object();
+
+    private volatile JobSteps jobSteps;
+
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent VM
      */
-    public VMSnapshots(HttpProxyBroker proxy, VM parent) {
-        super(proxy, "snapshots");
-        this.parent = parent;
+    public Job(HttpProxyBroker proxy) {
+        this.proxy = proxy;
     }
 
     /**
-     * Lists VMSnapshot objects.
+     * @return HttpProxyBroker
+     */
+    private HttpProxyBroker getProxy() {
+        return proxy;
+    }
+
+    /**
+     * Gets the value of the JobSteps property.
      *
      * @return
-     *     List of {@link VMSnapshot }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
+     *     {@link JobSteps }
      */
-    @Override
-    public List<VMSnapshot> list() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class, VMSnapshot.class);
+    public JobSteps getSteps() {
+        if (this.jobSteps == null) {
+            synchronized (this.LOCK) {
+                if (this.jobSteps == null) {
+                    this.jobSteps = new JobSteps(proxy, this);
+                }
+            }
+        }
+        return jobSteps;
     }
 
-    /**
-     * Fetches VMSnapshot object by id.
-     *
-     * @return
-     *     {@link VMSnapshot }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    @Override
-    public VMSnapshot get(UUID id) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
-    }
 
     /**
-     * Lists VMSnapshot objects.
+     * Performs clear action.
      *
-     * @param max
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link VMSnapshot }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<VMSnapshot> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
-                .add("max", max, UrlParameterType.MATRIX)
-                .build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class,
-                VMSnapshot.class, headers);
-    }
-    /**
-     * Adds Snapshot object.
-     *
-     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
-     *    <pre>
-     *    snapshot.description
-     *    [snapshot.persist_memorystate]
      *    </pre>
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link Action }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -149,9 +97,9 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
+    public Action clear(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/clear";
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
@@ -159,30 +107,22 @@ public class VMSnapshots extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, snapshot,
-                org.ovirt.engine.sdk.entities.Snapshot.class,
-                VMSnapshot.class, headers);
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Adds Snapshot object.
+     * Performs clear action.
      *
-     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    snapshot.description
-     *    [snapshot.persist_memorystate]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link Action }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -191,21 +131,86 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot, String expect, String correlationId) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
+    public Action clear(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/clear";
 
         List<Header> headers = new HttpHeaderBuilder()
-                .add("Expect", expect)
                 .add("Correlation-Id", correlationId)
                 .build();
 
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, snapshot,
-                org.ovirt.engine.sdk.entities.Snapshot.class,
-                VMSnapshot.class, headers);
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs end action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.status.state
+     *    [action.force]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action end(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/end";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs end action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.status.state
+     *    [action.force]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action end(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/end";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

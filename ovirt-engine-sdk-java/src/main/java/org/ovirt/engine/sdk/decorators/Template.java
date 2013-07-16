@@ -45,6 +45,7 @@ public class Template extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile TemplateWatchDogs templateWatchDogs;
     private volatile TemplateCdRoms templateCdRoms;
     private volatile TemplateNICs templateNICs;
     private volatile TemplatePermissions templatePermissions;
@@ -65,6 +66,22 @@ public class Template extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the TemplateWatchDogs property.
+     *
+     * @return
+     *     {@link TemplateWatchDogs }
+     */
+    public TemplateWatchDogs getWatchDogs() {
+        if (this.templateWatchDogs == null) {
+            synchronized (this.LOCK) {
+                if (this.templateWatchDogs == null) {
+                    this.templateWatchDogs = new TemplateWatchDogs(proxy, this);
+                }
+            }
+        }
+        return templateWatchDogs;
+    }
     /**
      * Gets the value of the TemplateCdRoms property.
      *

@@ -54,12 +54,14 @@ import javax.xml.bind.annotation.XmlType;
     "active"
 })
 @XmlSeeAlso({
+    Jobs.class,
     Domains.class,
     HostStorage.class,
     HostNics.class,
     ReportedDevices.class,
     Groups.class,
     StorageDomains.class,
+    Steps.class,
     Roles.class,
     Events.class,
     GlusterBricks.class,

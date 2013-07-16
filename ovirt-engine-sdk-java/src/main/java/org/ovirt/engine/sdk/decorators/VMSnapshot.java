@@ -118,6 +118,10 @@ public class VMSnapshot extends
      * Performs preview action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.restore_memory]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -144,6 +148,10 @@ public class VMSnapshot extends
      * Performs preview action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.restore_memory]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -292,6 +300,10 @@ public class VMSnapshot extends
      * Performs restore action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.restore_memory]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -318,6 +330,10 @@ public class VMSnapshot extends
      * Performs restore action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.restore_memory]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]

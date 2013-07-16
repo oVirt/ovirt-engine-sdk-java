@@ -51,6 +51,7 @@ public class VM extends
     private volatile VMSnapshots vMSnapshots;
     private volatile VMStatistics vMStatistics;
     private volatile VMApplications vMApplications;
+    private volatile VMWatchDogs vMWatchDogs;
     private volatile VMDisks vMDisks;
     private volatile VMNICs vMNICs;
     private volatile VMCdRoms vMCdRoms;
@@ -165,6 +166,22 @@ public class VM extends
             }
         }
         return vMApplications;
+    }
+    /**
+     * Gets the value of the VMWatchDogs property.
+     *
+     * @return
+     *     {@link VMWatchDogs }
+     */
+    public VMWatchDogs getWatchDogs() {
+        if (this.vMWatchDogs == null) {
+            synchronized (this.LOCK) {
+                if (this.vMWatchDogs == null) {
+                    this.vMWatchDogs = new VMWatchDogs(proxy, this);
+                }
+            }
+        }
+        return vMWatchDogs;
     }
     /**
      * Gets the value of the VMDisks property.

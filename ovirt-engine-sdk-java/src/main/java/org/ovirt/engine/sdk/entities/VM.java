@@ -75,6 +75,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}cdroms" minOccurs="0"/>
  *         &lt;element ref="{}floppies" minOccurs="0"/>
  *         &lt;element ref="{}reported_devices" minOccurs="0"/>
+ *         &lt;element ref="{}watchdogs" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -119,7 +120,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "vmPool",
     "cdroms",
     "floppies",
-    "reportedDevices"
+    "reportedDevices",
+    "watchdogs"
 })
 @XmlSeeAlso({
     Snapshot.class
@@ -177,6 +179,7 @@ public class VM
     protected Floppies floppies;
     @XmlElement(name = "reported_devices")
     protected ReportedDevices reportedDevices;
+    protected WatchDogs watchdogs;
 
     /**
      * Gets the value of the type property.
@@ -1156,6 +1159,34 @@ public class VM
 
     public boolean isSetReportedDevices() {
         return (this.reportedDevices!= null);
+    }
+
+    /**
+     * Gets the value of the watchdogs property.
+     *
+     * @return
+     *     possible object is
+     *     {@link WatchDogs }
+     *
+     */
+    public Object getWatchDogs() {
+        return watchdogs;
+    }
+
+    /**
+     * Sets the value of the watchdogs property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link WatchDogs }
+     *
+     */
+    public void setWatchdogs(WatchDogs value) {
+        this.watchdogs = value;
+    }
+
+    public boolean isSetWatchdogs() {
+        return (this.watchdogs!= null);
     }
 
 }

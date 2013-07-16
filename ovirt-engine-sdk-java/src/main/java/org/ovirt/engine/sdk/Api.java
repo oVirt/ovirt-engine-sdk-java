@@ -47,9 +47,10 @@ public class Api {
     private volatile API entryPoint = null;
     private final Object LOCK = new Object();
 
-    private volatile Networks networks;
     private volatile Tags tags;
+    private volatile Networks networks;
     private volatile Users users;
+    private volatile Jobs jobs;
     private volatile Templates templates;
     private volatile Events events;
     private volatile Domains domains;
@@ -537,23 +538,6 @@ public class Api {
     }
 
     /**
-     * Gets the value of the Networks property.
-     *
-     * @return
-     *     {@link Networks }
-     *
-     */
-    public Networks getNetworks() {
-        if (this.networks == null) {
-            synchronized (this.LOCK) {
-                if (this.networks == null) {
-                    this.networks = new Networks(proxy);
-                }
-            }
-        }
-        return networks;
-    }
-    /**
      * Gets the value of the Tags property.
      *
      * @return
@@ -571,6 +555,23 @@ public class Api {
         return tags;
     }
     /**
+     * Gets the value of the Networks property.
+     *
+     * @return
+     *     {@link Networks }
+     *
+     */
+    public Networks getNetworks() {
+        if (this.networks == null) {
+            synchronized (this.LOCK) {
+                if (this.networks == null) {
+                    this.networks = new Networks(proxy);
+                }
+            }
+        }
+        return networks;
+    }
+    /**
      * Gets the value of the Users property.
      *
      * @return
@@ -586,6 +587,23 @@ public class Api {
             }
         }
         return users;
+    }
+    /**
+     * Gets the value of the Jobs property.
+     *
+     * @return
+     *     {@link Jobs }
+     *
+     */
+    public Jobs getJobs() {
+        if (this.jobs == null) {
+            synchronized (this.LOCK) {
+                if (this.jobs == null) {
+                    this.jobs = new Jobs(proxy);
+                }
+            }
+        }
+        return jobs;
     }
     /**
      * Gets the value of the Templates property.
@@ -829,18 +847,6 @@ public class Api {
         return getEntryPoint().getTime();
     }
     /**
-     * Gets the value of the ProductInfo property.
-     *
-     * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
-     *
-     */
-    public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
-        if (this.entryPoint != null) {
-            return this.entryPoint.getProductInfo();
-        }
-        return null;
-    }
-    /**
      * Gets the value of the SpecialObjects property.
      *
      * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
@@ -849,6 +855,18 @@ public class Api {
     public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
         if (this.entryPoint != null) {
             return this.entryPoint.getSpecialObjects();
+        }
+        return null;
+    }
+    /**
+     * Gets the value of the ProductInfo property.
+     *
+     * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
+     *
+     */
+    public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
+        if (this.entryPoint != null) {
+            return this.entryPoint.getProductInfo();
         }
         return null;
     }

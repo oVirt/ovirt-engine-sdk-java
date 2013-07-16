@@ -23,22 +23,22 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for BaseDevice complex type.
+ * <p>Java class for WatchDog complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="BaseDevice">
+ * &lt;complexType name="WatchDog">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseResource">
+ *     &lt;extension base="{}BaseDevice">
  *       &lt;sequence>
- *         &lt;element ref="{}vm" minOccurs="0"/>
- *         &lt;element ref="{}template" minOccurs="0"/>
+ *         &lt;element name="model" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="action" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -48,79 +48,73 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "BaseDevice", propOrder = {
-    "vm",
-    "template"
+@XmlType(name = "WatchDog", propOrder = {
+    "model",
+    "action"
 })
-@XmlSeeAlso({
-    CdRom.class,
-    Disk.class,
-    WatchDog.class,
-    Floppy.class,
-    NIC.class
-})
-public class BaseDevice
-    extends BaseResource
+public class WatchDog
+    extends BaseDevice
 {
 
-    protected VM vm;
-    protected Template template;
+    @XmlElement(required = true)
+    protected String model;
+    @XmlElement(required = true)
+    protected String action;
 
     /**
-     * Gets the value of the vm property.
+     * Gets the value of the model property.
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link String }
      *
      */
-    public VM getVm() {
-        return vm;
+    public String getModel() {
+        return model;
     }
 
     /**
-     * Sets the value of the vm property.
+     * Sets the value of the model property.
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link String }
      *
      */
-    public void setVm(VM value) {
-        this.vm = value;
+    public void setModel(String value) {
+        this.model = value;
     }
 
-    public boolean isSetVm() {
-        return (this.vm!= null);
+    public boolean isSetModel() {
+        return (this.model!= null);
     }
 
     /**
-     * Gets the value of the template property.
+     * Gets the value of the action property.
      *
      * @return
      *     possible object is
-     *     {@link Template }
+     *     {@link String }
      *
      */
-    public Template getTemplate() {
-        return template;
+    public String getAction() {
+        return action;
     }
 
     /**
-     * Sets the value of the template property.
+     * Sets the value of the action property.
      *
      * @param value
      *     allowed object is
-     *     {@link Template }
+     *     {@link String }
      *
      */
-    public void setTemplate(Template value) {
-        this.template = value;
+    public void setAction(String value) {
+        this.action = value;
     }
 
-    public boolean isSetTemplate() {
-        return (this.template!= null);
+    public boolean isSetAction() {
+        return (this.action!= null);
     }
 
 }
-

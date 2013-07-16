@@ -72,6 +72,7 @@ import javax.xml.bind.annotation.XmlType;
     Feature.class,
     Template.class,
     Host.class,
+    Job.class,
     Header.class,
     SpecialObjects.class,
     Statistic.class,
@@ -99,6 +100,7 @@ import javax.xml.bind.annotation.XmlType;
     Cluster.class,
     Group.class,
     User.class,
+    Step.class,
     Storage.class,
     BaseDevice.class
 })

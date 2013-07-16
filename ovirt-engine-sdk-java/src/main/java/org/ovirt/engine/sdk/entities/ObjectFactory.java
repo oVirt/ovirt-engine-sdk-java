@@ -45,6 +45,7 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _Summary_QNAME = new QName("", "summary");
+    private final static QName _Jobs_QNAME = new QName("", "jobs");
     private final static QName _Tag_QNAME = new QName("", "tag");
     private final static QName _Domains_QNAME = new QName("", "domains");
     private final static QName _HardwareInformation_QNAME = new QName("", "hardware_information");
@@ -68,6 +69,8 @@ public class ObjectFactory {
     private final static QName _Template_QNAME = new QName("", "template");
     private final static QName _IpVersions_QNAME = new QName("", "ip_versions");
     private final static QName _Host_QNAME = new QName("", "host");
+    private final static QName _Job_QNAME = new QName("", "job");
+    private final static QName _Steps_QNAME = new QName("", "steps");
     private final static QName _Disks_QNAME = new QName("", "disks");
     private final static QName _Header_QNAME = new QName("", "header");
     private final static QName _StorageFormats_QNAME = new QName("", "storage_formats");
@@ -77,6 +80,7 @@ public class ObjectFactory {
     private final static QName _Roles_QNAME = new QName("", "roles");
     private final static QName _PowerManagementStates_QNAME = new QName("", "power_management_states");
     private final static QName _CustomProperties_QNAME = new QName("", "custom_properties");
+    private final static QName _Watchdogs_QNAME = new QName("", "watchdogs");
     private final static QName _Nics_QNAME = new QName("", "nics");
     private final static QName _TemplateStates_QNAME = new QName("", "template_states");
     private final static QName _Creation_QNAME = new QName("", "creation");
@@ -87,9 +91,9 @@ public class ObjectFactory {
     private final static QName _VmStates_QNAME = new QName("", "vm_states");
     private final static QName _Events_QNAME = new QName("", "events");
     private final static QName _Link_QNAME = new QName("", "link");
-    private final static QName _Mac_QNAME = new QName("", "mac");
-    private final static QName _DetailedLinks_QNAME = new QName("", "detailedLinks");
     private final static QName _Usb_QNAME = new QName("", "usb");
+    private final static QName _DetailedLinks_QNAME = new QName("", "detailedLinks");
+    private final static QName _Mac_QNAME = new QName("", "mac");
     private final static QName _HostNic_QNAME = new QName("", "host_nic");
     private final static QName _DataCenterStates_QNAME = new QName("", "data_center_states");
     private final static QName _Version_QNAME = new QName("", "version");
@@ -114,6 +118,7 @@ public class ObjectFactory {
     private final static QName _Snapshot_QNAME = new QName("", "snapshot");
     private final static QName _KeyValuePair_QNAME = new QName("", "keyValuePair");
     private final static QName _Slaves_QNAME = new QName("", "slaves");
+    private final static QName _WatchdogModels_QNAME = new QName("", "watchdog_models");
     private final static QName _GlusterVolumeTypes_QNAME = new QName("", "gluster_volume_types");
     private final static QName _Fault_QNAME = new QName("", "fault");
     private final static QName _PowerManagement_QNAME = new QName("", "power_management");
@@ -161,8 +166,10 @@ public class ObjectFactory {
     private final static QName _Display_QNAME = new QName("", "display");
     private final static QName _Agent_QNAME = new QName("", "agent");
     private final static QName _ReportedDeviceTypes_QNAME = new QName("", "reported_device_types");
+    private final static QName _Watchdog_QNAME = new QName("", "watchdog");
     private final static QName _Url_QNAME = new QName("", "url");
     private final static QName _Floppy_QNAME = new QName("", "floppy");
+    private final static QName _StepTypes_QNAME = new QName("", "step_types");
     private final static QName _Clusters_QNAME = new QName("", "clusters");
     private final static QName _CpuModes_QNAME = new QName("", "cpu_modes");
     private final static QName _Usages_QNAME = new QName("", "usages");
@@ -204,6 +211,7 @@ public class ObjectFactory {
     private final static QName _Ip_QNAME = new QName("", "ip");
     private final static QName _VmTypes_QNAME = new QName("", "vm_types");
     private final static QName _SgioOptions_QNAME = new QName("", "sgio_options");
+    private final static QName _WatchdogActions_QNAME = new QName("", "watchdog_actions");
     private final static QName _PmProxies_QNAME = new QName("", "pm_proxies");
     private final static QName _Vlan_QNAME = new QName("", "vlan");
     private final static QName _Cluster_QNAME = new QName("", "cluster");
@@ -212,6 +220,7 @@ public class ObjectFactory {
     private final static QName _Vmpools_QNAME = new QName("", "vmpools");
     private final static QName _Group_QNAME = new QName("", "group");
     private final static QName _User_QNAME = new QName("", "user");
+    private final static QName _Step_QNAME = new QName("", "step");
     private final static QName _TransparentHugepages_QNAME = new QName("", "transparent_hugepages");
     private final static QName _Storage_QNAME = new QName("", "storage");
 
@@ -228,6 +237,14 @@ public class ObjectFactory {
      */
     public ApiSummary createApiSummary() {
         return new ApiSummary();
+    }
+
+    /**
+     * Create an instance of {@link Jobs }
+     *
+     */
+    public Jobs createJobs() {
+        return new Jobs();
     }
 
     /**
@@ -415,6 +432,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Job }
+     *
+     */
+    public Job createJob() {
+        return new Job();
+    }
+
+    /**
+     * Create an instance of {@link Steps }
+     *
+     */
+    public Steps createSteps() {
+        return new Steps();
+    }
+
+    /**
      * Create an instance of {@link Disks }
      *
      */
@@ -484,6 +517,14 @@ public class ObjectFactory {
      */
     public CustomProperties createCustomProperties() {
         return new CustomProperties();
+    }
+
+    /**
+     * Create an instance of {@link WatchDogs }
+     *
+     */
+    public WatchDogs createWatchDogs() {
+        return new WatchDogs();
     }
 
     /**
@@ -780,6 +821,14 @@ public class ObjectFactory {
      */
     public Slaves createSlaves() {
         return new Slaves();
+    }
+
+    /**
+     * Create an instance of {@link WatchdogModels }
+     *
+     */
+    public WatchdogModels createWatchdogModels() {
+        return new WatchdogModels();
     }
 
     /**
@@ -1167,11 +1216,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WatchDog }
+     *
+     */
+    public WatchDog createWatchDog() {
+        return new WatchDog();
+    }
+
+    /**
      * Create an instance of {@link Floppy }
      *
      */
     public Floppy createFloppy() {
         return new Floppy();
+    }
+
+    /**
+     * Create an instance of {@link StepTypes }
+     *
+     */
+    public StepTypes createStepTypes() {
+        return new StepTypes();
     }
 
     /**
@@ -1495,6 +1560,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WatchdogActions }
+     *
+     */
+    public WatchdogActions createWatchdogActions() {
+        return new WatchdogActions();
+    }
+
+    /**
      * Create an instance of {@link PmProxies }
      *
      */
@@ -1556,6 +1629,14 @@ public class ObjectFactory {
      */
     public User createUser() {
         return new User();
+    }
+
+    /**
+     * Create an instance of {@link Step }
+     *
+     */
+    public Step createStep() {
+        return new Step();
     }
 
     /**
@@ -1784,6 +1865,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Jobs }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "jobs")
+    public JAXBElement<Jobs> createJobs(Jobs value) {
+        return new JAXBElement<Jobs>(_Jobs_QNAME, Jobs.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Tag }{@code >}}
      *
      */
@@ -1991,6 +2081,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Job }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "job")
+    public JAXBElement<Job> createJob(Job value) {
+        return new JAXBElement<Job>(_Job_QNAME, Job.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Steps }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "steps")
+    public JAXBElement<Steps> createSteps(Steps value) {
+        return new JAXBElement<Steps>(_Steps_QNAME, Steps.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Disks }{@code >}}
      *
      */
@@ -2069,6 +2177,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "custom_properties")
     public JAXBElement<CustomProperties> createCustomProperties(CustomProperties value) {
         return new JAXBElement<CustomProperties>(_CustomProperties_QNAME, CustomProperties.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WatchDogs }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "watchdogs")
+    public JAXBElement<WatchDogs> createWatchdogs(WatchDogs value) {
+        return new JAXBElement<WatchDogs>(_Watchdogs_QNAME, WatchDogs.class, null, value);
     }
 
     /**
@@ -2162,12 +2279,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MAC }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Usb }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "mac")
-    public JAXBElement<MAC> createMac(MAC value) {
-        return new JAXBElement<MAC>(_Mac_QNAME, MAC.class, null, value);
+    @XmlElementDecl(namespace = "", name = "usb")
+    public JAXBElement<Usb> createUsb(Usb value) {
+        return new JAXBElement<Usb>(_Usb_QNAME, Usb.class, null, value);
     }
 
     /**
@@ -2180,12 +2297,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Usb }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MAC }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "usb")
-    public JAXBElement<Usb> createUsb(Usb value) {
-        return new JAXBElement<Usb>(_Usb_QNAME, Usb.class, null, value);
+    @XmlElementDecl(namespace = "", name = "mac")
+    public JAXBElement<MAC> createMac(MAC value) {
+        return new JAXBElement<MAC>(_Mac_QNAME, MAC.class, null, value);
     }
 
     /**
@@ -2402,6 +2519,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "slaves")
     public JAXBElement<Slaves> createSlaves(Slaves value) {
         return new JAXBElement<Slaves>(_Slaves_QNAME, Slaves.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WatchdogModels }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "watchdog_models")
+    public JAXBElement<WatchdogModels> createWatchdogModels(WatchdogModels value) {
+        return new JAXBElement<WatchdogModels>(_WatchdogModels_QNAME, WatchdogModels.class, null, value);
     }
 
     /**
@@ -2828,6 +2954,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WatchDog }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "watchdog")
+    public JAXBElement<WatchDog> createWatchdog(WatchDog value) {
+        return new JAXBElement<WatchDog>(_Watchdog_QNAME, WatchDog.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Url }{@code >}}
      *
      */
@@ -2843,6 +2978,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "floppy")
     public JAXBElement<Floppy> createFloppy(Floppy value) {
         return new JAXBElement<Floppy>(_Floppy_QNAME, Floppy.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StepTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "step_types")
+    public JAXBElement<StepTypes> createStepTypes(StepTypes value) {
+        return new JAXBElement<StepTypes>(_StepTypes_QNAME, StepTypes.class, null, value);
     }
 
     /**
@@ -3215,6 +3359,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WatchdogActions }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "watchdog_actions")
+    public JAXBElement<WatchdogActions> createWatchdogActions(WatchdogActions value) {
+        return new JAXBElement<WatchdogActions>(_WatchdogActions_QNAME, WatchdogActions.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PmProxies }{@code >}}
      *
      */
@@ -3284,6 +3437,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "user")
     public JAXBElement<User> createUser(User value) {
         return new JAXBElement<User>(_User_QNAME, User.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Step }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "step")
+    public JAXBElement<Step> createStep(Step value) {
+        return new JAXBElement<Step>(_Step_QNAME, Step.class, null, value);
     }
 
     /**

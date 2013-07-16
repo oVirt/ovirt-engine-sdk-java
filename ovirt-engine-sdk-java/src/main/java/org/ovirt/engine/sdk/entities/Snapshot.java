@@ -42,6 +42,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}vm" minOccurs="0"/>
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="snapshot_status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="persist_memorystate" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -54,7 +55,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "Snapshot", propOrder = {
     "vm",
     "date",
-    "snapshotStatus"
+    "snapshotStatus",
+    "persistMemorystate"
 })
 public class Snapshot
     extends VM
@@ -65,6 +67,8 @@ public class Snapshot
     protected XMLGregorianCalendar date;
     @XmlElement(name = "snapshot_status")
     protected String snapshotStatus;
+    @XmlElement(name = "persist_memorystate")
+    protected Boolean persistMemorystate;
 
     /**
      * Gets the value of the vm property.
@@ -148,6 +152,34 @@ public class Snapshot
 
     public boolean isSetSnapshotStatus() {
         return (this.snapshotStatus!= null);
+    }
+
+    /**
+     * Gets the value of the persistMemorystate property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getPersistMemorystate() {
+        return persistMemorystate;
+    }
+
+    /**
+     * Sets the value of the persistMemorystate property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setPersistMemorystate(Boolean value) {
+        this.persistMemorystate = value;
+    }
+
+    public boolean isSetPersistMemorystate() {
+        return (this.persistMemorystate!= null);
     }
 
 }

@@ -39,31 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>VMSnapshots providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Snapshots }.
+ * <p>JobSteps providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Steps }.
  */
 @SuppressWarnings("unused")
-public class VMSnapshots extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Snapshot,
-                            org.ovirt.engine.sdk.entities.Snapshots,
-                            VMSnapshot> {
+public class JobSteps extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Step,
+                            org.ovirt.engine.sdk.entities.Steps,
+                            JobStep> {
 
-    private VM parent;
+    private Job parent;
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent VM
+     * @param parent Job
      */
-    public VMSnapshots(HttpProxyBroker proxy, VM parent) {
-        super(proxy, "snapshots");
+    public JobSteps(HttpProxyBroker proxy, Job parent) {
+        super(proxy, "steps");
         this.parent = parent;
     }
 
     /**
-     * Lists VMSnapshot objects.
+     * Lists JobStep objects.
      *
      * @return
-     *     List of {@link VMSnapshot }
+     *     List of {@link JobStep }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +73,17 @@ public class VMSnapshots extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<VMSnapshot> list() throws ClientProtocolException,
+    public List<JobStep> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class, VMSnapshot.class);
+        return list(url, org.ovirt.engine.sdk.entities.Steps.class, JobStep.class);
     }
 
     /**
-     * Fetches VMSnapshot object by id.
+     * Fetches JobStep object by id.
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link JobStep }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,14 +93,14 @@ public class VMSnapshots extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMSnapshot get(UUID id) throws ClientProtocolException,
+    public JobStep get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Step.class, JobStep.class);
     }
 
     /**
-     * Lists VMSnapshot objects.
+     * Lists JobStep objects.
      *
      * @param max
      *    <pre>
@@ -108,7 +108,7 @@ public class VMSnapshots extends
      *    </pre>
      *
      *
-     * @return List of {@link VMSnapshot }
+     * @return List of {@link JobStep }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -117,7 +117,7 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<VMSnapshot> list(Integer max) throws ClientProtocolException,
+    public List<JobStep> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         List<Header> headers = new HttpHeaderBuilder()
@@ -127,20 +127,23 @@ public class VMSnapshots extends
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
 
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class,
-                VMSnapshot.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.Steps.class,
+                JobStep.class, headers);
     }
     /**
-     * Adds Snapshot object.
+     * Adds Step object.
      *
-     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
+     * @param step {@link org.ovirt.engine.sdk.entities.Step}
      *    <pre>
-     *    snapshot.description
-     *    [snapshot.persist_memorystate]
+     *    step.type
+     *    step.description
+     *    step.status.state
+     *    [step.job.id]
+     *    [step.parent_step.id]
      *    </pre>
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link JobStep }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -149,7 +152,7 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot) throws
+    public JobStep add(org.ovirt.engine.sdk.entities.Step step) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -159,17 +162,20 @@ public class VMSnapshots extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, snapshot,
-                org.ovirt.engine.sdk.entities.Snapshot.class,
-                VMSnapshot.class, headers);
+        return getProxy().add(url, step,
+                org.ovirt.engine.sdk.entities.Step.class,
+                JobStep.class, headers);
     }
     /**
-     * Adds Snapshot object.
+     * Adds Step object.
      *
-     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
+     * @param step {@link org.ovirt.engine.sdk.entities.Step}
      *    <pre>
-     *    snapshot.description
-     *    [snapshot.persist_memorystate]
+     *    step.type
+     *    step.description
+     *    step.status.state
+     *    [step.job.id]
+     *    [step.parent_step.id]
      *    </pre>
      *
      * @param expect
@@ -182,7 +188,7 @@ public class VMSnapshots extends
      *    </pre>
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link JobStep }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -191,7 +197,7 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot, String expect, String correlationId) throws
+    public JobStep add(org.ovirt.engine.sdk.entities.Step step, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -203,9 +209,9 @@ public class VMSnapshots extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, snapshot,
-                org.ovirt.engine.sdk.entities.Snapshot.class,
-                VMSnapshot.class, headers);
+        return getProxy().add(url, step,
+                org.ovirt.engine.sdk.entities.Step.class,
+                JobStep.class, headers);
     }
 
 }

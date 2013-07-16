@@ -79,6 +79,8 @@ import javax.xml.bind.annotation.XmlType;
     "brick",
     "detach",
     "clone",
+    "restoreMemory",
+    "succeeded",
     "status",
     "fault",
     "iscsiTargets",
@@ -122,6 +124,9 @@ public class Action
     protected GlusterBrick brick;
     protected Boolean detach;
     protected Boolean clone;
+    @XmlElement(name = "restore_memory")
+    protected Boolean restoreMemory;
+    protected Boolean succeeded;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -827,6 +832,62 @@ public class Action
 
     public boolean isSetClone() {
         return (this.clone!= null);
+    }
+
+    /**
+     * Gets the value of the restoreMemory property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getRestoreMemory() {
+        return restoreMemory;
+    }
+
+    /**
+     * Sets the value of the restoreMemory property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setRestoreMemory(Boolean value) {
+        this.restoreMemory = value;
+    }
+
+    public boolean isSetRestoreMemory() {
+        return (this.restoreMemory!= null);
+    }
+
+    /**
+     * Gets the value of the succeeded property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getSucceeded() {
+        return succeeded;
+    }
+
+    /**
+     * Sets the value of the succeeded property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setSucceeded(Boolean value) {
+        this.succeeded = value;
+    }
+
+    public boolean isSetSucceeded() {
+        return (this.succeeded!= null);
     }
 
     /**

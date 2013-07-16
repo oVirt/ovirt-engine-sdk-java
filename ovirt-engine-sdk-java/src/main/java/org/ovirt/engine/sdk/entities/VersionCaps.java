@@ -76,6 +76,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}pm_proxy_types" minOccurs="0"/>
  *         &lt;element ref="{}cpu_modes" minOccurs="0"/>
  *         &lt;element ref="{}sgio_options" minOccurs="0"/>
+ *         &lt;element ref="{}watchdog_models" minOccurs="0"/>
+ *         &lt;element ref="{}watchdog_actions" minOccurs="0"/>
+ *         &lt;element ref="{}step_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
  *         &lt;element ref="{}transport_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_states" minOccurs="0"/>
@@ -131,6 +134,9 @@ import javax.xml.bind.annotation.XmlType;
     "pmProxyTypes",
     "cpuModes",
     "sgioOptions",
+    "watchdogModels",
+    "watchdogActions",
+    "stepTypes",
     "glusterVolumeTypes",
     "transportTypes",
     "glusterVolumeStates",
@@ -215,6 +221,12 @@ public class VersionCaps
     protected CpuModes cpuModes;
     @XmlElement(name = "sgio_options")
     protected ScsiGenericIoOptions sgioOptions;
+    @XmlElement(name = "watchdog_models")
+    protected WatchdogModels watchdogModels;
+    @XmlElement(name = "watchdog_actions")
+    protected WatchdogActions watchdogActions;
+    @XmlElement(name = "step_types")
+    protected StepTypes stepTypes;
     @XmlElement(name = "gluster_volume_types")
     protected GlusterVolumeTypes glusterVolumeTypes;
     @XmlElement(name = "transport_types")
@@ -1318,6 +1330,90 @@ public class VersionCaps
 
     public boolean isSetSgioOptions() {
         return (this.sgioOptions!= null);
+    }
+
+    /**
+     * Gets the value of the watchdogModels property.
+     *
+     * @return
+     *     possible object is
+     *     {@link WatchdogModels }
+     *
+     */
+    public WatchdogModels getWatchdogModels() {
+        return watchdogModels;
+    }
+
+    /**
+     * Sets the value of the watchdogModels property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link WatchdogModels }
+     *
+     */
+    public void setWatchdogModels(WatchdogModels value) {
+        this.watchdogModels = value;
+    }
+
+    public boolean isSetWatchdogModels() {
+        return (this.watchdogModels!= null);
+    }
+
+    /**
+     * Gets the value of the watchdogActions property.
+     *
+     * @return
+     *     possible object is
+     *     {@link WatchdogActions }
+     *
+     */
+    public WatchdogActions getWatchdogActions() {
+        return watchdogActions;
+    }
+
+    /**
+     * Sets the value of the watchdogActions property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link WatchdogActions }
+     *
+     */
+    public void setWatchdogActions(WatchdogActions value) {
+        this.watchdogActions = value;
+    }
+
+    public boolean isSetWatchdogActions() {
+        return (this.watchdogActions!= null);
+    }
+
+    /**
+     * Gets the value of the stepTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link StepTypes }
+     *
+     */
+    public StepTypes getStepTypes() {
+        return stepTypes;
+    }
+
+    /**
+     * Sets the value of the stepTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link StepTypes }
+     *
+     */
+    public void setStepTypes(StepTypes value) {
+        this.stepTypes = value;
+    }
+
+    public boolean isSetStepTypes() {
+        return (this.stepTypes!= null);
     }
 
     /**
