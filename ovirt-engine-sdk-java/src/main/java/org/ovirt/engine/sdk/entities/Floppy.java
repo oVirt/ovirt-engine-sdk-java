@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Floppy complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Floppy">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Floppy", propOrder = {
@@ -59,11 +59,11 @@ public class Floppy
 
     /**
      * Gets the value of the file property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link File }
-     *     
+     *
      */
     public File getFile() {
         return file;
@@ -71,11 +71,11 @@ public class Floppy
 
     /**
      * Sets the value of the file property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link File }
-     *     
+     *
      */
     public void setFile(File value) {
         this.file = value;

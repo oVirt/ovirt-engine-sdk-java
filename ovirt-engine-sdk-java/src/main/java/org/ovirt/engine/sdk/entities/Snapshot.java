@@ -31,9 +31,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for Snapshot complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Snapshot">
  *   &lt;complexContent>
@@ -47,8 +47,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Snapshot", propOrder = {
@@ -68,11 +68,11 @@ public class Snapshot
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -80,11 +80,11 @@ public class Snapshot
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;
@@ -96,11 +96,11 @@ public class Snapshot
 
     /**
      * Gets the value of the date property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public XMLGregorianCalendar getDate() {
         return date;
@@ -108,11 +108,11 @@ public class Snapshot
 
     /**
      * Sets the value of the date property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public void setDate(XMLGregorianCalendar value) {
         this.date = value;
@@ -124,11 +124,11 @@ public class Snapshot
 
     /**
      * Gets the value of the snapshotStatus property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getSnapshotStatus() {
         return snapshotStatus;
@@ -136,11 +136,11 @@ public class Snapshot
 
     /**
      * Sets the value of the snapshotStatus property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setSnapshotStatus(String value) {
         this.snapshotStatus = value;

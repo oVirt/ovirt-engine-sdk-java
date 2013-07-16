@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for VmPool complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="VmPool">
  *   &lt;complexContent>
@@ -47,8 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VmPool", propOrder = {
@@ -72,11 +72,11 @@ public class VmPool
 
     /**
      * Gets the value of the size property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getSize() {
         return size;
@@ -84,11 +84,11 @@ public class VmPool
 
     /**
      * Sets the value of the size property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setSize(Integer value) {
         this.size = value;
@@ -100,11 +100,11 @@ public class VmPool
 
     /**
      * Gets the value of the cluster property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Cluster }
-     *     
+     *
      */
     public Cluster getCluster() {
         return cluster;
@@ -112,11 +112,11 @@ public class VmPool
 
     /**
      * Sets the value of the cluster property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Cluster }
-     *     
+     *
      */
     public void setCluster(Cluster value) {
         this.cluster = value;
@@ -128,11 +128,11 @@ public class VmPool
 
     /**
      * Gets the value of the template property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Template }
-     *     
+     *
      */
     public Template getTemplate() {
         return template;
@@ -140,11 +140,11 @@ public class VmPool
 
     /**
      * Sets the value of the template property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Template }
-     *     
+     *
      */
     public void setTemplate(Template value) {
         this.template = value;
@@ -156,11 +156,11 @@ public class VmPool
 
     /**
      * Gets the value of the prestartedVms property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPrestartedVms() {
         return prestartedVms;
@@ -168,11 +168,11 @@ public class VmPool
 
     /**
      * Sets the value of the prestartedVms property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPrestartedVms(Integer value) {
         this.prestartedVms = value;
@@ -184,11 +184,11 @@ public class VmPool
 
     /**
      * Gets the value of the maxUserVms property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMaxUserVms() {
         return maxUserVms;
@@ -196,11 +196,11 @@ public class VmPool
 
     /**
      * Sets the value of the maxUserVms property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMaxUserVms(Integer value) {
         this.maxUserVms = value;

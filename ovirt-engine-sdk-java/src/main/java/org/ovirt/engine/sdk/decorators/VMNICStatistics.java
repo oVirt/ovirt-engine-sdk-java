@@ -81,7 +81,7 @@ public class VMNICStatistics extends
 
     /**
      * Fetches VMNICStatistic object by id.
-     * 
+     *
      * @return
      *     {@link VMNICStatistic }
      *

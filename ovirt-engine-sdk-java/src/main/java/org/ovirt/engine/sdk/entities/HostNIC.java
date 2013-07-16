@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for HostNIC complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="HostNIC">
  *   &lt;complexContent>
@@ -57,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HostNIC", propOrder = {
@@ -104,11 +104,11 @@ public class HostNIC
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -116,11 +116,11 @@ public class HostNIC
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;
@@ -132,11 +132,11 @@ public class HostNIC
 
     /**
      * Gets the value of the network property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Network }
-     *     
+     *
      */
     public Network getNetwork() {
         return network;
@@ -144,11 +144,11 @@ public class HostNIC
 
     /**
      * Sets the value of the network property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Network }
-     *     
+     *
      */
     public void setNetwork(Network value) {
         this.network = value;
@@ -160,11 +160,11 @@ public class HostNIC
 
     /**
      * Gets the value of the mac property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link MAC }
-     *     
+     *
      */
     public MAC getMac() {
         return mac;
@@ -172,11 +172,11 @@ public class HostNIC
 
     /**
      * Sets the value of the mac property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link MAC }
-     *     
+     *
      */
     public void setMac(MAC value) {
         this.mac = value;
@@ -188,11 +188,11 @@ public class HostNIC
 
     /**
      * Gets the value of the ip property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link IP }
-     *     
+     *
      */
     public IP getIp() {
         return ip;
@@ -200,11 +200,11 @@ public class HostNIC
 
     /**
      * Sets the value of the ip property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link IP }
-     *     
+     *
      */
     public void setIp(IP value) {
         this.ip = value;
@@ -216,11 +216,11 @@ public class HostNIC
 
     /**
      * Gets the value of the vlan property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VLAN }
-     *     
+     *
      */
     public VLAN getVlan() {
         return vlan;
@@ -228,11 +228,11 @@ public class HostNIC
 
     /**
      * Sets the value of the vlan property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VLAN }
-     *     
+     *
      */
     public void setVlan(VLAN value) {
         this.vlan = value;
@@ -244,11 +244,11 @@ public class HostNIC
 
     /**
      * Gets the value of the bonding property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Bonding }
-     *     
+     *
      */
     public Bonding getBonding() {
         return bonding;
@@ -256,11 +256,11 @@ public class HostNIC
 
     /**
      * Sets the value of the bonding property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Bonding }
-     *     
+     *
      */
     public void setBonding(Bonding value) {
         this.bonding = value;
@@ -272,11 +272,11 @@ public class HostNIC
 
     /**
      * Gets the value of the bootProtocol property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getBootProtocol() {
         return bootProtocol;
@@ -284,11 +284,11 @@ public class HostNIC
 
     /**
      * Sets the value of the bootProtocol property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setBootProtocol(String value) {
         this.bootProtocol = value;
@@ -300,11 +300,11 @@ public class HostNIC
 
     /**
      * Gets the value of the statistics property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Statistics }
-     *     
+     *
      */
     public Object getStatistics() {
         return statistics;
@@ -312,11 +312,11 @@ public class HostNIC
 
     /**
      * Sets the value of the statistics property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Statistics }
-     *     
+     *
      */
     public void setStatistics(Statistics value) {
         this.statistics = value;
@@ -328,11 +328,11 @@ public class HostNIC
 
     /**
      * Gets the value of the checkConnectivity property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getCheckConnectivity() {
         return checkConnectivity;
@@ -340,11 +340,11 @@ public class HostNIC
 
     /**
      * Sets the value of the checkConnectivity property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setCheckConnectivity(Boolean value) {
         this.checkConnectivity = value;
@@ -356,11 +356,11 @@ public class HostNIC
 
     /**
      * Gets the value of the speed property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getSpeed() {
         return speed;
@@ -368,11 +368,11 @@ public class HostNIC
 
     /**
      * Sets the value of the speed property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setSpeed(Long value) {
         this.speed = value;
@@ -384,11 +384,11 @@ public class HostNIC
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -396,11 +396,11 @@ public class HostNIC
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -412,11 +412,11 @@ public class HostNIC
 
     /**
      * Gets the value of the mtu property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMtu() {
         return mtu;
@@ -424,11 +424,11 @@ public class HostNIC
 
     /**
      * Sets the value of the mtu property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMtu(Integer value) {
         this.mtu = value;
@@ -440,11 +440,11 @@ public class HostNIC
 
     /**
      * Gets the value of the bridged property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getBridged() {
         return bridged;
@@ -452,11 +452,11 @@ public class HostNIC
 
     /**
      * Sets the value of the bridged property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setBridged(Boolean value) {
         this.bridged = value;
@@ -468,11 +468,11 @@ public class HostNIC
 
     /**
      * Gets the value of the customConfiguration property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getCustomConfiguration() {
         return customConfiguration;
@@ -480,11 +480,11 @@ public class HostNIC
 
     /**
      * Sets the value of the customConfiguration property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setCustomConfiguration(Boolean value) {
         this.customConfiguration = value;
@@ -496,11 +496,11 @@ public class HostNIC
 
     /**
      * Gets the value of the overrideConfiguration property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getOverrideConfiguration() {
         return overrideConfiguration;
@@ -508,11 +508,11 @@ public class HostNIC
 
     /**
      * Sets the value of the overrideConfiguration property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setOverrideConfiguration(Boolean value) {
         this.overrideConfiguration = value;

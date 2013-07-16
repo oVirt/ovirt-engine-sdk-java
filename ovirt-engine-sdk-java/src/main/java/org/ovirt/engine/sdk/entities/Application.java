@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Application complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Application">
  *   &lt;complexContent>
@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Application", propOrder = {
@@ -57,11 +57,11 @@ public class Application
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -69,11 +69,11 @@ public class Application
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;

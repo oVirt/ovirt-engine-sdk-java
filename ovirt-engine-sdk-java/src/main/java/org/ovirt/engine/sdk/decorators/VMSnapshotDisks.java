@@ -81,7 +81,7 @@ public class VMSnapshotDisks extends
 
     /**
      * Fetches VMSnapshotDisk object by id.
-     * 
+     *
      * @return
      *     {@link VMSnapshotDisk }
      *

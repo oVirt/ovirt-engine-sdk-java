@@ -81,7 +81,7 @@ public class VMApplications extends
 
     /**
      * Fetches VMApplication object by id.
-     * 
+     *
      * @return
      *     {@link VMApplication }
      *

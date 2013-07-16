@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CPU complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CPU">
  *   &lt;complexContent>
@@ -51,8 +51,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CPU", propOrder = {
@@ -77,11 +77,11 @@ public class CPU {
 
     /**
      * Gets the value of the topology property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CpuTopology }
-     *     
+     *
      */
     public CpuTopology getTopology() {
         return topology;
@@ -89,11 +89,11 @@ public class CPU {
 
     /**
      * Sets the value of the topology property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CpuTopology }
-     *     
+     *
      */
     public void setTopology(CpuTopology value) {
         this.topology = value;
@@ -105,11 +105,11 @@ public class CPU {
 
     /**
      * Gets the value of the level property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getLevel() {
         return level;
@@ -117,11 +117,11 @@ public class CPU {
 
     /**
      * Sets the value of the level property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setLevel(Integer value) {
         this.level = value;
@@ -133,11 +133,11 @@ public class CPU {
 
     /**
      * Gets the value of the name property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getName() {
         return name;
@@ -145,11 +145,11 @@ public class CPU {
 
     /**
      * Sets the value of the name property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setName(String value) {
         this.name = value;
@@ -161,11 +161,11 @@ public class CPU {
 
     /**
      * Gets the value of the speed property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public BigDecimal getSpeed() {
         return speed;
@@ -173,11 +173,11 @@ public class CPU {
 
     /**
      * Sets the value of the speed property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public void setSpeed(BigDecimal value) {
         this.speed = value;
@@ -189,11 +189,11 @@ public class CPU {
 
     /**
      * Gets the value of the cpuTune property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CpuTune }
-     *     
+     *
      */
     public CpuTune getCpuTune() {
         return cpuTune;
@@ -201,11 +201,11 @@ public class CPU {
 
     /**
      * Sets the value of the cpuTune property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CpuTune }
-     *     
+     *
      */
     public void setCpuTune(CpuTune value) {
         this.cpuTune = value;
@@ -217,11 +217,11 @@ public class CPU {
 
     /**
      * Gets the value of the mode property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMode() {
         return mode;
@@ -229,11 +229,11 @@ public class CPU {
 
     /**
      * Sets the value of the mode property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMode(String value) {
         this.mode = value;
@@ -245,11 +245,11 @@ public class CPU {
 
     /**
      * Gets the value of the id property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getId() {
         return id;
@@ -257,11 +257,11 @@ public class CPU {
 
     /**
      * Sets the value of the id property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setId(String value) {
         this.id = value;

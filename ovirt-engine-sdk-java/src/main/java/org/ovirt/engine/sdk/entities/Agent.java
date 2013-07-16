@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Agent complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Agent">
  *   &lt;complexContent>
@@ -49,8 +49,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Agent", propOrder = {
@@ -74,11 +74,11 @@ public class Agent {
 
     /**
      * Gets the value of the address property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAddress() {
         return address;
@@ -86,11 +86,11 @@ public class Agent {
 
     /**
      * Sets the value of the address property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAddress(String value) {
         this.address = value;
@@ -102,11 +102,11 @@ public class Agent {
 
     /**
      * Gets the value of the username property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getUsername() {
         return username;
@@ -114,11 +114,11 @@ public class Agent {
 
     /**
      * Sets the value of the username property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setUsername(String value) {
         this.username = value;
@@ -130,11 +130,11 @@ public class Agent {
 
     /**
      * Gets the value of the password property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getPassword() {
         return password;
@@ -142,11 +142,11 @@ public class Agent {
 
     /**
      * Sets the value of the password property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setPassword(String value) {
         this.password = value;
@@ -158,11 +158,11 @@ public class Agent {
 
     /**
      * Gets the value of the options property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Options }
-     *     
+     *
      */
     public Options getOptions() {
         return options;
@@ -170,11 +170,11 @@ public class Agent {
 
     /**
      * Sets the value of the options property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Options }
-     *     
+     *
      */
     public void setOptions(Options value) {
         this.options = value;
@@ -186,11 +186,11 @@ public class Agent {
 
     /**
      * Gets the value of the concurrent property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getConcurrent() {
         return concurrent;
@@ -198,11 +198,11 @@ public class Agent {
 
     /**
      * Sets the value of the concurrent property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setConcurrent(Boolean value) {
         this.concurrent = value;
@@ -214,11 +214,11 @@ public class Agent {
 
     /**
      * Gets the value of the order property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getOrder() {
         return order;
@@ -226,11 +226,11 @@ public class Agent {
 
     /**
      * Sets the value of the order property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setOrder(Integer value) {
         this.order = value;
@@ -242,11 +242,11 @@ public class Agent {
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -254,11 +254,11 @@ public class Agent {
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;

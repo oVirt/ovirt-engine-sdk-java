@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Fault complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Fault">
  *   &lt;complexContent>
@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Fault", propOrder = {
@@ -61,11 +61,11 @@ public class Fault {
 
     /**
      * Gets the value of the reason property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getReason() {
         return reason;
@@ -73,11 +73,11 @@ public class Fault {
 
     /**
      * Sets the value of the reason property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setReason(String value) {
         this.reason = value;
@@ -89,11 +89,11 @@ public class Fault {
 
     /**
      * Gets the value of the detail property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDetail() {
         return detail;
@@ -101,11 +101,11 @@ public class Fault {
 
     /**
      * Sets the value of the detail property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDetail(String value) {
         this.detail = value;

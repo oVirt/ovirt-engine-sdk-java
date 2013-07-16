@@ -81,7 +81,7 @@ public class TemplatePermissions extends
 
     /**
      * Fetches TemplatePermission object by id.
-     * 
+     *
      * @return
      *     {@link TemplatePermission }
      *

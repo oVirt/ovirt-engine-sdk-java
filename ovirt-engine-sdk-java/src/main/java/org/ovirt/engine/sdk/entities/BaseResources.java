@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for BaseResources complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="BaseResources">
  *   &lt;complexContent>
@@ -45,8 +45,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BaseResources", propOrder = {
@@ -99,11 +99,11 @@ public class BaseResources
 
     /**
      * Gets the value of the total property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getTotal() {
         return total;
@@ -111,11 +111,11 @@ public class BaseResources
 
     /**
      * Sets the value of the total property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setTotal(Long value) {
         this.total = value;
@@ -127,11 +127,11 @@ public class BaseResources
 
     /**
      * Gets the value of the active property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getActive() {
         return active;
@@ -139,11 +139,11 @@ public class BaseResources
 
     /**
      * Sets the value of the active property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setActive(Long value) {
         this.active = value;

@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for RSDL complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="RSDL">
  *   &lt;complexContent>
@@ -49,8 +49,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RSDL", propOrder = {
@@ -74,11 +74,11 @@ public class RSDL {
 
     /**
      * Gets the value of the description property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDescription() {
         return description;
@@ -86,11 +86,11 @@ public class RSDL {
 
     /**
      * Sets the value of the description property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDescription(String value) {
         this.description = value;
@@ -102,11 +102,11 @@ public class RSDL {
 
     /**
      * Gets the value of the version property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Version }
-     *     
+     *
      */
     public Version getVersion() {
         return version;
@@ -114,11 +114,11 @@ public class RSDL {
 
     /**
      * Sets the value of the version property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Version }
-     *     
+     *
      */
     public void setVersion(Version value) {
         this.version = value;
@@ -130,11 +130,11 @@ public class RSDL {
 
     /**
      * Gets the value of the schema property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Schema }
-     *     
+     *
      */
     public Schema getSchema() {
         return schema;
@@ -142,11 +142,11 @@ public class RSDL {
 
     /**
      * Sets the value of the schema property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Schema }
-     *     
+     *
      */
     public void setSchema(Schema value) {
         this.schema = value;
@@ -158,11 +158,11 @@ public class RSDL {
 
     /**
      * Gets the value of the general property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GeneralMetadata }
-     *     
+     *
      */
     public GeneralMetadata getGeneral() {
         return general;
@@ -170,11 +170,11 @@ public class RSDL {
 
     /**
      * Sets the value of the general property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GeneralMetadata }
-     *     
+     *
      */
     public void setGeneral(GeneralMetadata value) {
         this.general = value;
@@ -186,11 +186,11 @@ public class RSDL {
 
     /**
      * Gets the value of the links property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DetailedLinks }
-     *     
+     *
      */
     public DetailedLinks getLinks() {
         return links;
@@ -198,11 +198,11 @@ public class RSDL {
 
     /**
      * Sets the value of the links property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DetailedLinks }
-     *     
+     *
      */
     public void setLinks(DetailedLinks value) {
         this.links = value;
@@ -214,11 +214,11 @@ public class RSDL {
 
     /**
      * Gets the value of the href property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getHref() {
         return href;
@@ -226,11 +226,11 @@ public class RSDL {
 
     /**
      * Sets the value of the href property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setHref(String value) {
         this.href = value;
@@ -242,11 +242,11 @@ public class RSDL {
 
     /**
      * Gets the value of the rel property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getRel() {
         return rel;
@@ -254,11 +254,11 @@ public class RSDL {
 
     /**
      * Sets the value of the rel property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setRel(String value) {
         this.rel = value;

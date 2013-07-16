@@ -81,7 +81,7 @@ public class VmPoolPermissions extends
 
     /**
      * Fetches VmPoolPermission object by id.
-     * 
+     *
      * @return
      *     {@link VmPoolPermission }
      *

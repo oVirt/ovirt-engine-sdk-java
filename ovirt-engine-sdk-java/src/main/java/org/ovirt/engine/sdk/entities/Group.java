@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Group complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Group">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Group", propOrder = {
@@ -60,11 +60,11 @@ public class Group
 
     /**
      * Gets the value of the domain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Domain }
-     *     
+     *
      */
     public Domain getDomain() {
         return domain;
@@ -72,11 +72,11 @@ public class Group
 
     /**
      * Sets the value of the domain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Domain }
-     *     
+     *
      */
     public void setDomain(Domain value) {
         this.domain = value;
@@ -88,11 +88,11 @@ public class Group
 
     /**
      * Gets the value of the roles property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Roles }
-     *     
+     *
      */
     public Object getRoles() {
         return roles;
@@ -100,11 +100,11 @@ public class Group
 
     /**
      * Sets the value of the roles property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Roles }
-     *     
+     *
      */
     public void setRoles(Roles value) {
         this.roles = value;

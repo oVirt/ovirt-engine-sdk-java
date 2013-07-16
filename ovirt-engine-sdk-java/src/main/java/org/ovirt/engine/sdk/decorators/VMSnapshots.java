@@ -81,7 +81,7 @@ public class VMSnapshots extends
 
     /**
      * Fetches VMSnapshot object by id.
-     * 
+     *
      * @return
      *     {@link VMSnapshot }
      *

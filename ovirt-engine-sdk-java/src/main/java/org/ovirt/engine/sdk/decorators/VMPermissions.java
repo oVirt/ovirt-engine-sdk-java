@@ -81,7 +81,7 @@ public class VMPermissions extends
 
     /**
      * Fetches VMPermission object by id.
-     * 
+     *
      * @return
      *     {@link VMPermission }
      *

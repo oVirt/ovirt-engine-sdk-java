@@ -81,7 +81,7 @@ public class UserRoles extends
 
     /**
      * Fetches UserRole object by id.
-     * 
+     *
      * @return
      *     {@link UserRole }
      *

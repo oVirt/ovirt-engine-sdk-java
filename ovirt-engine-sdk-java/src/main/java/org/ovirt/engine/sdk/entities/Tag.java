@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Tag complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Tag">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Tag", propOrder = {
@@ -69,11 +69,11 @@ public class Tag
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -81,11 +81,11 @@ public class Tag
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;
@@ -97,11 +97,11 @@ public class Tag
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -109,11 +109,11 @@ public class Tag
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;
@@ -125,11 +125,11 @@ public class Tag
 
     /**
      * Gets the value of the user property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link User }
-     *     
+     *
      */
     public User getUser() {
         return user;
@@ -137,11 +137,11 @@ public class Tag
 
     /**
      * Sets the value of the user property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link User }
-     *     
+     *
      */
     public void setUser(User value) {
         this.user = value;
@@ -153,11 +153,11 @@ public class Tag
 
     /**
      * Gets the value of the group property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Group }
-     *     
+     *
      */
     public Group getGroup() {
         return group;
@@ -165,11 +165,11 @@ public class Tag
 
     /**
      * Sets the value of the group property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Group }
-     *     
+     *
      */
     public void setGroup(Group value) {
         this.group = value;
@@ -181,11 +181,11 @@ public class Tag
 
     /**
      * Gets the value of the parent property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TagParent }
-     *     
+     *
      */
     public TagParent getParent() {
         return parent;
@@ -193,11 +193,11 @@ public class Tag
 
     /**
      * Sets the value of the parent property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TagParent }
-     *     
+     *
      */
     public void setParent(TagParent value) {
         this.parent = value;

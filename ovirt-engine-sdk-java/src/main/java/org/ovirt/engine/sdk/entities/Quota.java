@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Quota complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Quota">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Quota", propOrder = {
@@ -68,11 +68,11 @@ public class Quota
 
     /**
      * Gets the value of the dataCenter property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public DataCenter getDataCenter() {
         return dataCenter;
@@ -80,11 +80,11 @@ public class Quota
 
     /**
      * Sets the value of the dataCenter property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public void setDataCenter(DataCenter value) {
         this.dataCenter = value;
@@ -96,11 +96,11 @@ public class Quota
 
     /**
      * Gets the value of the vms property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VMs }
-     *     
+     *
      */
     public VMs getVms() {
         return vms;
@@ -108,11 +108,11 @@ public class Quota
 
     /**
      * Sets the value of the vms property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VMs }
-     *     
+     *
      */
     public void setVms(VMs value) {
         this.vms = value;
@@ -124,11 +124,11 @@ public class Quota
 
     /**
      * Gets the value of the disks property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Disks }
-     *     
+     *
      */
     public Disks getDisks() {
         return disks;
@@ -136,11 +136,11 @@ public class Quota
 
     /**
      * Sets the value of the disks property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Disks }
-     *     
+     *
      */
     public void setDisks(Disks value) {
         this.disks = value;
@@ -152,11 +152,11 @@ public class Quota
 
     /**
      * Gets the value of the users property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Users }
-     *     
+     *
      */
     public Users getUsers() {
         return users;
@@ -164,11 +164,11 @@ public class Quota
 
     /**
      * Sets the value of the users property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Users }
-     *     
+     *
      */
     public void setUsers(Users value) {
         this.users = value;

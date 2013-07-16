@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for VersionCaps complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="VersionCaps">
  *   &lt;complexContent>
@@ -87,8 +87,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VersionCaps", propOrder = {
@@ -230,11 +230,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the current property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getCurrent() {
         return current;
@@ -242,11 +242,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the current property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setCurrent(Boolean value) {
         this.current = value;
@@ -258,11 +258,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the features property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Features }
-     *     
+     *
      */
     public Features getFeatures() {
         return features;
@@ -270,11 +270,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the features property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Features }
-     *     
+     *
      */
     public void setFeatures(Features value) {
         this.features = value;
@@ -286,11 +286,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the cpus property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CPUs }
-     *     
+     *
      */
     public CPUs getCpus() {
         return cpus;
@@ -298,11 +298,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the cpus property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CPUs }
-     *     
+     *
      */
     public void setCpus(CPUs value) {
         this.cpus = value;
@@ -314,11 +314,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the powerManagers property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PowerManagers }
-     *     
+     *
      */
     public PowerManagers getPowerManagers() {
         return powerManagers;
@@ -326,11 +326,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the powerManagers property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PowerManagers }
-     *     
+     *
      */
     public void setPowerManagers(PowerManagers value) {
         this.powerManagers = value;
@@ -342,11 +342,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the fenceTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link FenceTypes }
-     *     
+     *
      */
     public FenceTypes getFenceTypes() {
         return fenceTypes;
@@ -354,11 +354,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the fenceTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link FenceTypes }
-     *     
+     *
      */
     public void setFenceTypes(FenceTypes value) {
         this.fenceTypes = value;
@@ -370,11 +370,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the storageTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageTypes }
-     *     
+     *
      */
     public StorageTypes getStorageTypes() {
         return storageTypes;
@@ -382,11 +382,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the storageTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageTypes }
-     *     
+     *
      */
     public void setStorageTypes(StorageTypes value) {
         this.storageTypes = value;
@@ -398,11 +398,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the storageDomainTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomainTypes }
-     *     
+     *
      */
     public StorageDomainTypes getStorageDomainTypes() {
         return storageDomainTypes;
@@ -410,11 +410,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the storageDomainTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomainTypes }
-     *     
+     *
      */
     public void setStorageDomainTypes(StorageDomainTypes value) {
         this.storageDomainTypes = value;
@@ -426,11 +426,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the vmTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmTypes }
-     *     
+     *
      */
     public VmTypes getVmTypes() {
         return vmTypes;
@@ -438,11 +438,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the vmTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmTypes }
-     *     
+     *
      */
     public void setVmTypes(VmTypes value) {
         this.vmTypes = value;
@@ -454,11 +454,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the bootDevices property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link BootDevices }
-     *     
+     *
      */
     public BootDevices getBootDevices() {
         return bootDevices;
@@ -466,11 +466,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the bootDevices property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link BootDevices }
-     *     
+     *
      */
     public void setBootDevices(BootDevices value) {
         this.bootDevices = value;
@@ -482,11 +482,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the displayTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DisplayTypes }
-     *     
+     *
      */
     public DisplayTypes getDisplayTypes() {
         return displayTypes;
@@ -494,11 +494,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the displayTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DisplayTypes }
-     *     
+     *
      */
     public void setDisplayTypes(DisplayTypes value) {
         this.displayTypes = value;
@@ -510,11 +510,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the nicInterfaces property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link NicInterfaces }
-     *     
+     *
      */
     public NicInterfaces getNicInterfaces() {
         return nicInterfaces;
@@ -522,11 +522,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the nicInterfaces property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link NicInterfaces }
-     *     
+     *
      */
     public void setNicInterfaces(NicInterfaces value) {
         this.nicInterfaces = value;
@@ -538,11 +538,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the osTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link OsTypes }
-     *     
+     *
      */
     public OsTypes getOsTypes() {
         return osTypes;
@@ -550,11 +550,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the osTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link OsTypes }
-     *     
+     *
      */
     public void setOsTypes(OsTypes value) {
         this.osTypes = value;
@@ -566,11 +566,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the diskFormats property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DiskFormats }
-     *     
+     *
      */
     public DiskFormats getDiskFormats() {
         return diskFormats;
@@ -578,11 +578,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the diskFormats property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DiskFormats }
-     *     
+     *
      */
     public void setDiskFormats(DiskFormats value) {
         this.diskFormats = value;
@@ -594,11 +594,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the diskInterfaces property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DiskInterfaces }
-     *     
+     *
      */
     public DiskInterfaces getDiskInterfaces() {
         return diskInterfaces;
@@ -606,11 +606,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the diskInterfaces property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DiskInterfaces }
-     *     
+     *
      */
     public void setDiskInterfaces(DiskInterfaces value) {
         this.diskInterfaces = value;
@@ -622,11 +622,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the vmAffinities property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmAffinities }
-     *     
+     *
      */
     public VmAffinities getVmAffinities() {
         return vmAffinities;
@@ -634,11 +634,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the vmAffinities property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmAffinities }
-     *     
+     *
      */
     public void setVmAffinities(VmAffinities value) {
         this.vmAffinities = value;
@@ -650,11 +650,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the customProperties property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CustomProperties }
-     *     
+     *
      */
     public CustomProperties getCustomProperties() {
         return customProperties;
@@ -662,11 +662,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the customProperties property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CustomProperties }
-     *     
+     *
      */
     public void setCustomProperties(CustomProperties value) {
         this.customProperties = value;
@@ -678,11 +678,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the bootProtocols property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link BootProtocols }
-     *     
+     *
      */
     public BootProtocols getBootProtocols() {
         return bootProtocols;
@@ -690,11 +690,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the bootProtocols property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link BootProtocols }
-     *     
+     *
      */
     public void setBootProtocols(BootProtocols value) {
         this.bootProtocols = value;
@@ -706,11 +706,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the errorHandling property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ErrorHandlingOptions }
-     *     
+     *
      */
     public ErrorHandlingOptions getErrorHandling() {
         return errorHandling;
@@ -718,11 +718,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the errorHandling property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ErrorHandlingOptions }
-     *     
+     *
      */
     public void setErrorHandling(ErrorHandlingOptions value) {
         this.errorHandling = value;
@@ -734,11 +734,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the storageFormats property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageFormats }
-     *     
+     *
      */
     public StorageFormats getStorageFormats() {
         return storageFormats;
@@ -746,11 +746,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the storageFormats property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageFormats }
-     *     
+     *
      */
     public void setStorageFormats(StorageFormats value) {
         this.storageFormats = value;
@@ -762,11 +762,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the creationStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CreationStates }
-     *     
+     *
      */
     public CreationStates getCreationStates() {
         return creationStates;
@@ -774,11 +774,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the creationStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CreationStates }
-     *     
+     *
      */
     public void setCreationStates(CreationStates value) {
         this.creationStates = value;
@@ -790,11 +790,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the powerManagementStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PowerManagementStates }
-     *     
+     *
      */
     public PowerManagementStates getPowerManagementStates() {
         return powerManagementStates;
@@ -802,11 +802,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the powerManagementStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PowerManagementStates }
-     *     
+     *
      */
     public void setPowerManagementStates(PowerManagementStates value) {
         this.powerManagementStates = value;
@@ -818,11 +818,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the hostStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HostStates }
-     *     
+     *
      */
     public HostStates getHostStates() {
         return hostStates;
@@ -830,11 +830,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the hostStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HostStates }
-     *     
+     *
      */
     public void setHostStates(HostStates value) {
         this.hostStates = value;
@@ -846,11 +846,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the hostNonOperationalDetails property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HostNonOperationalDetails }
-     *     
+     *
      */
     public HostNonOperationalDetails getHostNonOperationalDetails() {
         return hostNonOperationalDetails;
@@ -858,11 +858,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the hostNonOperationalDetails property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HostNonOperationalDetails }
-     *     
+     *
      */
     public void setHostNonOperationalDetails(HostNonOperationalDetails value) {
         this.hostNonOperationalDetails = value;
@@ -874,11 +874,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the networkStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link NetworkStates }
-     *     
+     *
      */
     public NetworkStates getNetworkStates() {
         return networkStates;
@@ -886,11 +886,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the networkStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link NetworkStates }
-     *     
+     *
      */
     public void setNetworkStates(NetworkStates value) {
         this.networkStates = value;
@@ -902,11 +902,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the storageDomainStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomainStates }
-     *     
+     *
      */
     public StorageDomainStates getStorageDomainStates() {
         return storageDomainStates;
@@ -914,11 +914,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the storageDomainStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomainStates }
-     *     
+     *
      */
     public void setStorageDomainStates(StorageDomainStates value) {
         this.storageDomainStates = value;
@@ -930,11 +930,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the templateStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TemplateStates }
-     *     
+     *
      */
     public TemplateStates getTemplateStates() {
         return templateStates;
@@ -942,11 +942,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the templateStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TemplateStates }
-     *     
+     *
      */
     public void setTemplateStates(TemplateStates value) {
         this.templateStates = value;
@@ -958,11 +958,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the vmStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmStates }
-     *     
+     *
      */
     public VmStates getVmStates() {
         return vmStates;
@@ -970,11 +970,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the vmStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmStates }
-     *     
+     *
      */
     public void setVmStates(VmStates value) {
         this.vmStates = value;
@@ -986,11 +986,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the vmPauseDetails property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmPauseDetails }
-     *     
+     *
      */
     public VmPauseDetails getVmPauseDetails() {
         return vmPauseDetails;
@@ -998,11 +998,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the vmPauseDetails property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmPauseDetails }
-     *     
+     *
      */
     public void setVmPauseDetails(VmPauseDetails value) {
         this.vmPauseDetails = value;
@@ -1014,11 +1014,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the diskStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DiskStates }
-     *     
+     *
      */
     public DiskStates getDiskStates() {
         return diskStates;
@@ -1026,11 +1026,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the diskStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DiskStates }
-     *     
+     *
      */
     public void setDiskStates(DiskStates value) {
         this.diskStates = value;
@@ -1042,11 +1042,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the hostNicStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HostNICStates }
-     *     
+     *
      */
     public HostNICStates getHostNicStates() {
         return hostNicStates;
@@ -1054,11 +1054,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the hostNicStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HostNICStates }
-     *     
+     *
      */
     public void setHostNicStates(HostNICStates value) {
         this.hostNicStates = value;
@@ -1070,11 +1070,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the dataCenterStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DataCenterStates }
-     *     
+     *
      */
     public DataCenterStates getDataCenterStates() {
         return dataCenterStates;
@@ -1082,11 +1082,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the dataCenterStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DataCenterStates }
-     *     
+     *
      */
     public void setDataCenterStates(DataCenterStates value) {
         this.dataCenterStates = value;
@@ -1098,11 +1098,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the vmDeviceTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmDeviceTypes }
-     *     
+     *
      */
     public VmDeviceTypes getVmDeviceTypes() {
         return vmDeviceTypes;
@@ -1110,11 +1110,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the vmDeviceTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmDeviceTypes }
-     *     
+     *
      */
     public void setVmDeviceTypes(VmDeviceTypes value) {
         this.vmDeviceTypes = value;
@@ -1126,11 +1126,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the permits property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Permits }
-     *     
+     *
      */
     public Permits getPermits() {
         return permits;
@@ -1138,11 +1138,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the permits property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Permits }
-     *     
+     *
      */
     public void setPermits(Permits value) {
         this.permits = value;
@@ -1154,11 +1154,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the schedulingPolicies property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SchedulingPolicies }
-     *     
+     *
      */
     public SchedulingPolicies getSchedulingPolicies() {
         return schedulingPolicies;
@@ -1166,11 +1166,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the schedulingPolicies property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SchedulingPolicies }
-     *     
+     *
      */
     public void setSchedulingPolicies(SchedulingPolicies value) {
         this.schedulingPolicies = value;
@@ -1182,11 +1182,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the usages property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Usages }
-     *     
+     *
      */
     public Usages getUsages() {
         return usages;
@@ -1194,11 +1194,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the usages property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Usages }
-     *     
+     *
      */
     public void setUsages(Usages value) {
         this.usages = value;
@@ -1210,11 +1210,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the nfsVersions property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link NfsVersions }
-     *     
+     *
      */
     public NfsVersions getNfsVersions() {
         return nfsVersions;
@@ -1222,11 +1222,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the nfsVersions property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link NfsVersions }
-     *     
+     *
      */
     public void setNfsVersions(NfsVersions value) {
         this.nfsVersions = value;
@@ -1238,11 +1238,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the pmProxyTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PmProxyTypes }
-     *     
+     *
      */
     public PmProxyTypes getPmProxyTypes() {
         return pmProxyTypes;
@@ -1250,11 +1250,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the pmProxyTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PmProxyTypes }
-     *     
+     *
      */
     public void setPmProxyTypes(PmProxyTypes value) {
         this.pmProxyTypes = value;
@@ -1266,11 +1266,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the cpuModes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CpuModes }
-     *     
+     *
      */
     public CpuModes getCpuModes() {
         return cpuModes;
@@ -1278,11 +1278,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the cpuModes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CpuModes }
-     *     
+     *
      */
     public void setCpuModes(CpuModes value) {
         this.cpuModes = value;
@@ -1294,11 +1294,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the sgioOptions property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ScsiGenericIoOptions }
-     *     
+     *
      */
     public ScsiGenericIoOptions getSgioOptions() {
         return sgioOptions;
@@ -1306,11 +1306,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the sgioOptions property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ScsiGenericIoOptions }
-     *     
+     *
      */
     public void setSgioOptions(ScsiGenericIoOptions value) {
         this.sgioOptions = value;
@@ -1322,11 +1322,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the glusterVolumeTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterVolumeTypes }
-     *     
+     *
      */
     public GlusterVolumeTypes getGlusterVolumeTypes() {
         return glusterVolumeTypes;
@@ -1334,11 +1334,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the glusterVolumeTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterVolumeTypes }
-     *     
+     *
      */
     public void setGlusterVolumeTypes(GlusterVolumeTypes value) {
         this.glusterVolumeTypes = value;
@@ -1350,11 +1350,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the transportTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TransportTypes }
-     *     
+     *
      */
     public TransportTypes getTransportTypes() {
         return transportTypes;
@@ -1362,11 +1362,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the transportTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TransportTypes }
-     *     
+     *
      */
     public void setTransportTypes(TransportTypes value) {
         this.transportTypes = value;
@@ -1378,11 +1378,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the glusterVolumeStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterStates }
-     *     
+     *
      */
     public GlusterStates getGlusterVolumeStates() {
         return glusterVolumeStates;
@@ -1390,11 +1390,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the glusterVolumeStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterStates }
-     *     
+     *
      */
     public void setGlusterVolumeStates(GlusterStates value) {
         this.glusterVolumeStates = value;
@@ -1406,11 +1406,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the brickStates property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterStates }
-     *     
+     *
      */
     public GlusterStates getBrickStates() {
         return brickStates;
@@ -1418,11 +1418,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the brickStates property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterStates }
-     *     
+     *
      */
     public void setBrickStates(GlusterStates value) {
         this.brickStates = value;
@@ -1434,11 +1434,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the reportedDeviceTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ReportedDeviceTypes }
-     *     
+     *
      */
     public ReportedDeviceTypes getReportedDeviceTypes() {
         return reportedDeviceTypes;
@@ -1446,11 +1446,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the reportedDeviceTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ReportedDeviceTypes }
-     *     
+     *
      */
     public void setReportedDeviceTypes(ReportedDeviceTypes value) {
         this.reportedDeviceTypes = value;
@@ -1462,11 +1462,11 @@ public class VersionCaps
 
     /**
      * Gets the value of the ipVersions property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link IpVersions }
-     *     
+     *
      */
     public IpVersions getIpVersions() {
         return ipVersions;
@@ -1474,11 +1474,11 @@ public class VersionCaps
 
     /**
      * Sets the value of the ipVersions property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link IpVersions }
-     *     
+     *
      */
     public void setIpVersions(IpVersions value) {
         this.ipVersions = value;

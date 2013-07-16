@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for DataCenter complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="DataCenter">
  *   &lt;complexContent>
@@ -47,8 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DataCenter", propOrder = {
@@ -73,11 +73,11 @@ public class DataCenter
 
     /**
      * Gets the value of the storageType property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getStorageType() {
         return storageType;
@@ -85,11 +85,11 @@ public class DataCenter
 
     /**
      * Sets the value of the storageType property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setStorageType(String value) {
         this.storageType = value;
@@ -101,11 +101,11 @@ public class DataCenter
 
     /**
      * Gets the value of the storageFormat property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getStorageFormat() {
         return storageFormat;
@@ -113,11 +113,11 @@ public class DataCenter
 
     /**
      * Sets the value of the storageFormat property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setStorageFormat(String value) {
         this.storageFormat = value;
@@ -129,11 +129,11 @@ public class DataCenter
 
     /**
      * Gets the value of the version property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Version }
-     *     
+     *
      */
     public Version getVersion() {
         return version;
@@ -141,11 +141,11 @@ public class DataCenter
 
     /**
      * Sets the value of the version property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Version }
-     *     
+     *
      */
     public void setVersion(Version value) {
         this.version = value;
@@ -157,11 +157,11 @@ public class DataCenter
 
     /**
      * Gets the value of the supportedVersions property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SupportedVersions }
-     *     
+     *
      */
     public SupportedVersions getSupportedVersions() {
         return supportedVersions;
@@ -169,11 +169,11 @@ public class DataCenter
 
     /**
      * Sets the value of the supportedVersions property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SupportedVersions }
-     *     
+     *
      */
     public void setSupportedVersions(SupportedVersions value) {
         this.supportedVersions = value;
@@ -185,11 +185,11 @@ public class DataCenter
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -197,11 +197,11 @@ public class DataCenter
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;

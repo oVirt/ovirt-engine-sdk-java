@@ -81,7 +81,7 @@ public class VMNICs extends
 
     /**
      * Fetches VMNIC object by id.
-     * 
+     *
      * @return
      *     {@link VMNIC }
      *

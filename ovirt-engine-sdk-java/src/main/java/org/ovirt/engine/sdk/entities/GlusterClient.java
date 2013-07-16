@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GlusterClient complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="GlusterClient">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GlusterClient", propOrder = {
@@ -69,11 +69,11 @@ public class GlusterClient {
 
     /**
      * Gets the value of the hostName property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getHostName() {
         return hostName;
@@ -81,11 +81,11 @@ public class GlusterClient {
 
     /**
      * Sets the value of the hostName property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setHostName(String value) {
         this.hostName = value;
@@ -97,11 +97,11 @@ public class GlusterClient {
 
     /**
      * Gets the value of the clientPort property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getClientPort() {
         return clientPort;
@@ -109,11 +109,11 @@ public class GlusterClient {
 
     /**
      * Sets the value of the clientPort property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setClientPort(Integer value) {
         this.clientPort = value;
@@ -125,11 +125,11 @@ public class GlusterClient {
 
     /**
      * Gets the value of the bytesRead property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getBytesRead() {
         return bytesRead;
@@ -137,11 +137,11 @@ public class GlusterClient {
 
     /**
      * Sets the value of the bytesRead property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setBytesRead(Integer value) {
         this.bytesRead = value;
@@ -153,11 +153,11 @@ public class GlusterClient {
 
     /**
      * Gets the value of the bytesWritten property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getBytesWritten() {
         return bytesWritten;
@@ -165,11 +165,11 @@ public class GlusterClient {
 
     /**
      * Sets the value of the bytesWritten property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setBytesWritten(Integer value) {
         this.bytesWritten = value;

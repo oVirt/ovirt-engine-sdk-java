@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Permission complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Permission">
  *   &lt;complexContent>
@@ -53,8 +53,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Permission", propOrder = {
@@ -90,11 +90,11 @@ public class Permission
 
     /**
      * Gets the value of the role property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Role }
-     *     
+     *
      */
     public Role getRole() {
         return role;
@@ -102,11 +102,11 @@ public class Permission
 
     /**
      * Sets the value of the role property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Role }
-     *     
+     *
      */
     public void setRole(Role value) {
         this.role = value;
@@ -118,11 +118,11 @@ public class Permission
 
     /**
      * Gets the value of the user property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link User }
-     *     
+     *
      */
     public User getUser() {
         return user;
@@ -130,11 +130,11 @@ public class Permission
 
     /**
      * Sets the value of the user property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link User }
-     *     
+     *
      */
     public void setUser(User value) {
         this.user = value;
@@ -146,11 +146,11 @@ public class Permission
 
     /**
      * Gets the value of the group property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Group }
-     *     
+     *
      */
     public Group getGroup() {
         return group;
@@ -158,11 +158,11 @@ public class Permission
 
     /**
      * Sets the value of the group property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Group }
-     *     
+     *
      */
     public void setGroup(Group value) {
         this.group = value;
@@ -174,11 +174,11 @@ public class Permission
 
     /**
      * Gets the value of the dataCenter property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public DataCenter getDataCenter() {
         return dataCenter;
@@ -186,11 +186,11 @@ public class Permission
 
     /**
      * Sets the value of the dataCenter property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public void setDataCenter(DataCenter value) {
         this.dataCenter = value;
@@ -202,11 +202,11 @@ public class Permission
 
     /**
      * Gets the value of the cluster property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Cluster }
-     *     
+     *
      */
     public Cluster getCluster() {
         return cluster;
@@ -214,11 +214,11 @@ public class Permission
 
     /**
      * Sets the value of the cluster property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Cluster }
-     *     
+     *
      */
     public void setCluster(Cluster value) {
         this.cluster = value;
@@ -230,11 +230,11 @@ public class Permission
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -242,11 +242,11 @@ public class Permission
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;
@@ -258,11 +258,11 @@ public class Permission
 
     /**
      * Gets the value of the storageDomain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public StorageDomain getStorageDomain() {
         return storageDomain;
@@ -270,11 +270,11 @@ public class Permission
 
     /**
      * Sets the value of the storageDomain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public void setStorageDomain(StorageDomain value) {
         this.storageDomain = value;
@@ -286,11 +286,11 @@ public class Permission
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -298,11 +298,11 @@ public class Permission
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;
@@ -314,11 +314,11 @@ public class Permission
 
     /**
      * Gets the value of the vmpool property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmPool }
-     *     
+     *
      */
     public VmPool getVmpool() {
         return vmpool;
@@ -326,11 +326,11 @@ public class Permission
 
     /**
      * Sets the value of the vmpool property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmPool }
-     *     
+     *
      */
     public void setVmpool(VmPool value) {
         this.vmpool = value;
@@ -342,11 +342,11 @@ public class Permission
 
     /**
      * Gets the value of the template property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Template }
-     *     
+     *
      */
     public Template getTemplate() {
         return template;
@@ -354,11 +354,11 @@ public class Permission
 
     /**
      * Sets the value of the template property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Template }
-     *     
+     *
      */
     public void setTemplate(Template value) {
         this.template = value;
@@ -370,11 +370,11 @@ public class Permission
 
     /**
      * Gets the value of the disk property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Disk }
-     *     
+     *
      */
     public Disk getDisk() {
         return disk;
@@ -382,11 +382,11 @@ public class Permission
 
     /**
      * Sets the value of the disk property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Disk }
-     *     
+     *
      */
     public void setDisk(Disk value) {
         this.disk = value;

@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Capabilities complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Capabilities">
  *   &lt;complexContent>
@@ -47,8 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Capabilities", propOrder = {
@@ -68,25 +68,25 @@ public class Capabilities
 
     /**
      * Gets the value of the versions property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the versions property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getVersions().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link VersionCaps }
-     * 
-     * 
+     *
+     *
      */
     public List<VersionCaps> getVersions() {
         if (versions == null) {
@@ -105,11 +105,11 @@ public class Capabilities
 
     /**
      * Gets the value of the permits property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Permits }
-     *     
+     *
      */
     public Permits getPermits() {
         return permits;
@@ -117,11 +117,11 @@ public class Capabilities
 
     /**
      * Sets the value of the permits property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Permits }
-     *     
+     *
      */
     public void setPermits(Permits value) {
         this.permits = value;
@@ -133,11 +133,11 @@ public class Capabilities
 
     /**
      * Gets the value of the schedulingPolicies property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SchedulingPolicies }
-     *     
+     *
      */
     public SchedulingPolicies getSchedulingPolicies() {
         return schedulingPolicies;
@@ -145,11 +145,11 @@ public class Capabilities
 
     /**
      * Sets the value of the schedulingPolicies property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SchedulingPolicies }
-     *     
+     *
      */
     public void setSchedulingPolicies(SchedulingPolicies value) {
         this.schedulingPolicies = value;

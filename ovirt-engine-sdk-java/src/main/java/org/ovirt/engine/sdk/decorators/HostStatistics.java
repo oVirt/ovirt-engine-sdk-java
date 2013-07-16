@@ -81,7 +81,7 @@ public class HostStatistics extends
 
     /**
      * Fetches HostStatistic object by id.
-     * 
+     *
      * @return
      *     {@link HostStatistic }
      *

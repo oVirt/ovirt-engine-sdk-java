@@ -81,7 +81,7 @@ public class DataCenterStorageDomainDisks extends
 
     /**
      * Fetches DataCenterStorageDomainDisk object by id.
-     * 
+     *
      * @return
      *     {@link DataCenterStorageDomainDisk }
      *

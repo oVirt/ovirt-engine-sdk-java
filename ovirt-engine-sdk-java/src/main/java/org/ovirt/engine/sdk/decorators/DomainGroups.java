@@ -81,7 +81,7 @@ public class DomainGroups extends
 
     /**
      * Fetches DomainGroup object by id.
-     * 
+     *
      * @return
      *     {@link DomainGroup }
      *

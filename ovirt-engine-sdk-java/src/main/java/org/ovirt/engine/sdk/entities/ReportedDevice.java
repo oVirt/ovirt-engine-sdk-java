@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for ReportedDevice complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ReportedDevice">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReportedDevice", propOrder = {
@@ -68,11 +68,11 @@ public class ReportedDevice
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -80,11 +80,11 @@ public class ReportedDevice
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -96,11 +96,11 @@ public class ReportedDevice
 
     /**
      * Gets the value of the mac property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link MAC }
-     *     
+     *
      */
     public MAC getMac() {
         return mac;
@@ -108,11 +108,11 @@ public class ReportedDevice
 
     /**
      * Sets the value of the mac property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link MAC }
-     *     
+     *
      */
     public void setMac(MAC value) {
         this.mac = value;
@@ -124,11 +124,11 @@ public class ReportedDevice
 
     /**
      * Gets the value of the ips property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link IPs }
-     *     
+     *
      */
     public IPs getIps() {
         return ips;
@@ -136,11 +136,11 @@ public class ReportedDevice
 
     /**
      * Sets the value of the ips property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link IPs }
-     *     
+     *
      */
     public void setIps(IPs value) {
         this.ips = value;
@@ -152,11 +152,11 @@ public class ReportedDevice
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -164,11 +164,11 @@ public class ReportedDevice
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;

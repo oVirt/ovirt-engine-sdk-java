@@ -81,7 +81,7 @@ public class HostNICs extends
 
     /**
      * Fetches HostNIC object by id.
-     * 
+     *
      * @return
      *     {@link HostNIC }
      *

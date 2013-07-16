@@ -81,7 +81,7 @@ public class TemplateNICs extends
 
     /**
      * Fetches TemplateNIC object by id.
-     * 
+     *
      * @return
      *     {@link TemplateNIC }
      *

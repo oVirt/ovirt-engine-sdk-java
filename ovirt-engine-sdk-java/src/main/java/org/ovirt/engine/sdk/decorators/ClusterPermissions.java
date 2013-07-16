@@ -81,7 +81,7 @@ public class ClusterPermissions extends
 
     /**
      * Fetches ClusterPermission object by id.
-     * 
+     *
      * @return
      *     {@link ClusterPermission }
      *

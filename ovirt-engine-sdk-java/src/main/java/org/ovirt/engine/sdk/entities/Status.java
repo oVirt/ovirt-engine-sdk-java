@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Status complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Status">
  *   &lt;complexContent>
@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Status", propOrder = {
@@ -60,11 +60,11 @@ public class Status {
 
     /**
      * Gets the value of the state property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getState() {
         return state;
@@ -72,11 +72,11 @@ public class Status {
 
     /**
      * Sets the value of the state property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setState(String value) {
         this.state = value;
@@ -88,11 +88,11 @@ public class Status {
 
     /**
      * Gets the value of the detail property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDetail() {
         return detail;
@@ -100,11 +100,11 @@ public class Status {
 
     /**
      * Sets the value of the detail property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDetail(String value) {
         this.detail = value;

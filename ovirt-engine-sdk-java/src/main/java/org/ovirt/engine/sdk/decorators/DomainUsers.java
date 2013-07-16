@@ -81,7 +81,7 @@ public class DomainUsers extends
 
     /**
      * Fetches DomainUser object by id.
-     * 
+     *
      * @return
      *     {@link DomainUser }
      *

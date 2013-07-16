@@ -32,9 +32,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Storage complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Storage">
  *   &lt;complexContent>
@@ -51,8 +51,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Storage", propOrder = {
@@ -98,11 +98,11 @@ public class Storage
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -110,11 +110,11 @@ public class Storage
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -126,11 +126,11 @@ public class Storage
 
     /**
      * Gets the value of the address property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAddress() {
         return address;
@@ -138,11 +138,11 @@ public class Storage
 
     /**
      * Sets the value of the address property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAddress(String value) {
         this.address = value;
@@ -154,11 +154,11 @@ public class Storage
 
     /**
      * Gets the value of the path property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getPath() {
         return path;
@@ -166,11 +166,11 @@ public class Storage
 
     /**
      * Sets the value of the path property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setPath(String value) {
         this.path = value;
@@ -182,11 +182,11 @@ public class Storage
 
     /**
      * Gets the value of the mountOptions property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMountOptions() {
         return mountOptions;
@@ -194,11 +194,11 @@ public class Storage
 
     /**
      * Sets the value of the mountOptions property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMountOptions(String value) {
         this.mountOptions = value;
@@ -210,11 +210,11 @@ public class Storage
 
     /**
      * Gets the value of the vfsType property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getVfsType() {
         return vfsType;
@@ -222,11 +222,11 @@ public class Storage
 
     /**
      * Sets the value of the vfsType property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setVfsType(String value) {
         this.vfsType = value;
@@ -238,11 +238,11 @@ public class Storage
 
     /**
      * Gets the value of the nfsVersion property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getNfsVersion() {
         return nfsVersion;
@@ -250,11 +250,11 @@ public class Storage
 
     /**
      * Sets the value of the nfsVersion property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setNfsVersion(String value) {
         this.nfsVersion = value;
@@ -266,11 +266,11 @@ public class Storage
 
     /**
      * Gets the value of the nfsTimeo property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getNfsTimeo() {
         return nfsTimeo;
@@ -278,11 +278,11 @@ public class Storage
 
     /**
      * Sets the value of the nfsTimeo property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setNfsTimeo(Integer value) {
         this.nfsTimeo = value;
@@ -294,11 +294,11 @@ public class Storage
 
     /**
      * Gets the value of the nfsRetrans property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getNfsRetrans() {
         return nfsRetrans;
@@ -306,11 +306,11 @@ public class Storage
 
     /**
      * Sets the value of the nfsRetrans property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setNfsRetrans(Integer value) {
         this.nfsRetrans = value;
@@ -322,25 +322,25 @@ public class Storage
 
     /**
      * Gets the value of the logicalUnits property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the logicalUnits property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getLogicalUnits().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link LogicalUnit }
-     * 
-     * 
+     *
+     *
      */
     public List<LogicalUnit> getLogicalUnits() {
         if (logicalUnits == null) {
@@ -359,11 +359,11 @@ public class Storage
 
     /**
      * Gets the value of the volumeGroup property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VolumeGroup }
-     *     
+     *
      */
     public VolumeGroup getVolumeGroup() {
         return volumeGroup;
@@ -371,11 +371,11 @@ public class Storage
 
     /**
      * Sets the value of the volumeGroup property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VolumeGroup }
-     *     
+     *
      */
     public void setVolumeGroup(VolumeGroup value) {
         this.volumeGroup = value;
@@ -387,11 +387,11 @@ public class Storage
 
     /**
      * Gets the value of the overrideLuns property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getOverrideLuns() {
         return overrideLuns;
@@ -399,11 +399,11 @@ public class Storage
 
     /**
      * Sets the value of the overrideLuns property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setOverrideLuns(Boolean value) {
         this.overrideLuns = value;
@@ -415,11 +415,11 @@ public class Storage
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -427,11 +427,11 @@ public class Storage
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;

@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for SchedulingPolicy complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="SchedulingPolicy">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SchedulingPolicy", propOrder = {
@@ -58,11 +58,11 @@ public class SchedulingPolicy {
 
     /**
      * Gets the value of the policy property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getPolicy() {
         return policy;
@@ -70,11 +70,11 @@ public class SchedulingPolicy {
 
     /**
      * Sets the value of the policy property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setPolicy(String value) {
         this.policy = value;
@@ -86,11 +86,11 @@ public class SchedulingPolicy {
 
     /**
      * Gets the value of the thresholds property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SchedulingPolicyThresholds }
-     *     
+     *
      */
     public SchedulingPolicyThresholds getThresholds() {
         return thresholds;
@@ -98,11 +98,11 @@ public class SchedulingPolicy {
 
     /**
      * Sets the value of the thresholds property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SchedulingPolicyThresholds }
-     *     
+     *
      */
     public void setThresholds(SchedulingPolicyThresholds value) {
         this.thresholds = value;

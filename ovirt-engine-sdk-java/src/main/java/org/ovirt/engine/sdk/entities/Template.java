@@ -31,9 +31,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for Template complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Template">
  *   &lt;complexContent>
@@ -62,8 +62,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Template", propOrder = {
@@ -117,11 +117,11 @@ public class Template
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -129,11 +129,11 @@ public class Template
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;
@@ -145,11 +145,11 @@ public class Template
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -157,11 +157,11 @@ public class Template
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -173,11 +173,11 @@ public class Template
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -185,11 +185,11 @@ public class Template
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -201,11 +201,11 @@ public class Template
 
     /**
      * Gets the value of the memory property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getMemory() {
         return memory;
@@ -213,11 +213,11 @@ public class Template
 
     /**
      * Sets the value of the memory property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setMemory(Long value) {
         this.memory = value;
@@ -229,11 +229,11 @@ public class Template
 
     /**
      * Gets the value of the cpu property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CPU }
-     *     
+     *
      */
     public CPU getCpu() {
         return cpu;
@@ -241,11 +241,11 @@ public class Template
 
     /**
      * Sets the value of the cpu property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CPU }
-     *     
+     *
      */
     public void setCpu(CPU value) {
         this.cpu = value;
@@ -257,11 +257,11 @@ public class Template
 
     /**
      * Gets the value of the os property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link OperatingSystem }
-     *     
+     *
      */
     public OperatingSystem getOs() {
         return os;
@@ -269,11 +269,11 @@ public class Template
 
     /**
      * Sets the value of the os property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link OperatingSystem }
-     *     
+     *
      */
     public void setOs(OperatingSystem value) {
         this.os = value;
@@ -285,11 +285,11 @@ public class Template
 
     /**
      * Gets the value of the cluster property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Cluster }
-     *     
+     *
      */
     public Cluster getCluster() {
         return cluster;
@@ -297,11 +297,11 @@ public class Template
 
     /**
      * Sets the value of the cluster property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Cluster }
-     *     
+     *
      */
     public void setCluster(Cluster value) {
         this.cluster = value;
@@ -313,11 +313,11 @@ public class Template
 
     /**
      * Gets the value of the storageDomain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public StorageDomain getStorageDomain() {
         return storageDomain;
@@ -325,11 +325,11 @@ public class Template
 
     /**
      * Sets the value of the storageDomain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public void setStorageDomain(StorageDomain value) {
         this.storageDomain = value;
@@ -341,11 +341,11 @@ public class Template
 
     /**
      * Gets the value of the creationTime property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public XMLGregorianCalendar getCreationTime() {
         return creationTime;
@@ -353,11 +353,11 @@ public class Template
 
     /**
      * Sets the value of the creationTime property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public void setCreationTime(XMLGregorianCalendar value) {
         this.creationTime = value;
@@ -369,11 +369,11 @@ public class Template
 
     /**
      * Gets the value of the origin property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getOrigin() {
         return origin;
@@ -381,11 +381,11 @@ public class Template
 
     /**
      * Sets the value of the origin property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setOrigin(String value) {
         this.origin = value;
@@ -397,11 +397,11 @@ public class Template
 
     /**
      * Gets the value of the highAvailability property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HighAvailability }
-     *     
+     *
      */
     public HighAvailability getHighAvailability() {
         return highAvailability;
@@ -409,11 +409,11 @@ public class Template
 
     /**
      * Sets the value of the highAvailability property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HighAvailability }
-     *     
+     *
      */
     public void setHighAvailability(HighAvailability value) {
         this.highAvailability = value;
@@ -425,11 +425,11 @@ public class Template
 
     /**
      * Gets the value of the display property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Display }
-     *     
+     *
      */
     public Display getDisplay() {
         return display;
@@ -437,11 +437,11 @@ public class Template
 
     /**
      * Sets the value of the display property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Display }
-     *     
+     *
      */
     public void setDisplay(Display value) {
         this.display = value;
@@ -453,11 +453,11 @@ public class Template
 
     /**
      * Gets the value of the stateless property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getStateless() {
         return stateless;
@@ -465,11 +465,11 @@ public class Template
 
     /**
      * Sets the value of the stateless property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setStateless(Boolean value) {
         this.stateless = value;
@@ -481,11 +481,11 @@ public class Template
 
     /**
      * Gets the value of the deleteProtected property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getDeleteProtected() {
         return deleteProtected;
@@ -493,11 +493,11 @@ public class Template
 
     /**
      * Sets the value of the deleteProtected property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setDeleteProtected(Boolean value) {
         this.deleteProtected = value;
@@ -509,11 +509,11 @@ public class Template
 
     /**
      * Gets the value of the timezone property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getTimezone() {
         return timezone;
@@ -521,11 +521,11 @@ public class Template
 
     /**
      * Sets the value of the timezone property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setTimezone(String value) {
         this.timezone = value;
@@ -537,11 +537,11 @@ public class Template
 
     /**
      * Gets the value of the domain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Domain }
-     *     
+     *
      */
     public Domain getDomain() {
         return domain;
@@ -549,11 +549,11 @@ public class Template
 
     /**
      * Sets the value of the domain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Domain }
-     *     
+     *
      */
     public void setDomain(Domain value) {
         this.domain = value;
@@ -565,11 +565,11 @@ public class Template
 
     /**
      * Gets the value of the usb property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Usb }
-     *     
+     *
      */
     public Usb getUsb() {
         return usb;
@@ -577,11 +577,11 @@ public class Template
 
     /**
      * Sets the value of the usb property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Usb }
-     *     
+     *
      */
     public void setUsb(Usb value) {
         this.usb = value;
@@ -593,11 +593,11 @@ public class Template
 
     /**
      * Gets the value of the tunnelMigration property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getTunnelMigration() {
         return tunnelMigration;
@@ -605,11 +605,11 @@ public class Template
 
     /**
      * Sets the value of the tunnelMigration property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setTunnelMigration(Boolean value) {
         this.tunnelMigration = value;

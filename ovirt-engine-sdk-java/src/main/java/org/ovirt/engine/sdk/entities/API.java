@@ -31,9 +31,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for API complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="API">
  *   &lt;complexContent>
@@ -48,8 +48,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "API", propOrder = {
@@ -72,11 +72,11 @@ public class API
 
     /**
      * Gets the value of the specialObjects property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SpecialObjects }
-     *     
+     *
      */
     public SpecialObjects getSpecialObjects() {
         return specialObjects;
@@ -84,11 +84,11 @@ public class API
 
     /**
      * Sets the value of the specialObjects property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SpecialObjects }
-     *     
+     *
      */
     public void setSpecialObjects(SpecialObjects value) {
         this.specialObjects = value;
@@ -100,11 +100,11 @@ public class API
 
     /**
      * Gets the value of the productInfo property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ProductInfo }
-     *     
+     *
      */
     public ProductInfo getProductInfo() {
         return productInfo;
@@ -112,11 +112,11 @@ public class API
 
     /**
      * Sets the value of the productInfo property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ProductInfo }
-     *     
+     *
      */
     public void setProductInfo(ProductInfo value) {
         this.productInfo = value;
@@ -128,11 +128,11 @@ public class API
 
     /**
      * Gets the value of the summary property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ApiSummary }
-     *     
+     *
      */
     public ApiSummary getSummary() {
         return summary;
@@ -140,11 +140,11 @@ public class API
 
     /**
      * Sets the value of the summary property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ApiSummary }
-     *     
+     *
      */
     public void setSummary(ApiSummary value) {
         this.summary = value;
@@ -156,11 +156,11 @@ public class API
 
     /**
      * Gets the value of the time property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public XMLGregorianCalendar getTime() {
         return time;
@@ -168,11 +168,11 @@ public class API
 
     /**
      * Sets the value of the time property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public void setTime(XMLGregorianCalendar value) {
         this.time = value;

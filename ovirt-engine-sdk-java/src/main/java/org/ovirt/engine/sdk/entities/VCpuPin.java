@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for VCpuPin complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="VCpuPin">
  *   &lt;complexContent>
@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VCpuPin")
@@ -56,7 +56,7 @@ public class VCpuPin {
 
     /**
      * Gets the value of the vcpu property.
-     * 
+     *
      */
     public int getVcpu() {
         return vcpu;
@@ -64,7 +64,7 @@ public class VCpuPin {
 
     /**
      * Sets the value of the vcpu property.
-     * 
+     *
      */
     public void setVcpu(int value) {
         this.vcpu = value;
@@ -76,11 +76,11 @@ public class VCpuPin {
 
     /**
      * Gets the value of the cpuSet property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getCpuSet() {
         return cpuSet;
@@ -88,11 +88,11 @@ public class VCpuPin {
 
     /**
      * Sets the value of the cpuSet property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setCpuSet(String value) {
         this.cpuSet = value;

@@ -81,7 +81,7 @@ public class HostTags extends
 
     /**
      * Fetches HostTag object by id.
-     * 
+     *
      * @return
      *     {@link HostTag }
      *

@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Role complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Role">
  *   &lt;complexContent>
@@ -45,8 +45,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Role", propOrder = {
@@ -66,11 +66,11 @@ public class Role
 
     /**
      * Gets the value of the mutable property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getMutable() {
         return mutable;
@@ -78,11 +78,11 @@ public class Role
 
     /**
      * Sets the value of the mutable property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setMutable(Boolean value) {
         this.mutable = value;
@@ -94,11 +94,11 @@ public class Role
 
     /**
      * Gets the value of the administrative property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getAdministrative() {
         return administrative;
@@ -106,11 +106,11 @@ public class Role
 
     /**
      * Sets the value of the administrative property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setAdministrative(Boolean value) {
         this.administrative = value;
@@ -122,11 +122,11 @@ public class Role
 
     /**
      * Gets the value of the user property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link User }
-     *     
+     *
      */
     public User getUser() {
         return user;
@@ -134,11 +134,11 @@ public class Role
 
     /**
      * Sets the value of the user property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link User }
-     *     
+     *
      */
     public void setUser(User value) {
         this.user = value;
@@ -150,11 +150,11 @@ public class Role
 
     /**
      * Gets the value of the permits property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Permits }
-     *     
+     *
      */
     public Object getPermits() {
         return permits;
@@ -162,11 +162,11 @@ public class Role
 
     /**
      * Sets the value of the permits property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Permits }
-     *     
+     *
      */
     public void setPermits(Permits value) {
         this.permits = value;

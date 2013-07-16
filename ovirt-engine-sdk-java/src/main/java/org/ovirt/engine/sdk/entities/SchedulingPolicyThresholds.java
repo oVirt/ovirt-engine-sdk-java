@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for SchedulingPolicyThresholds complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="SchedulingPolicyThresholds">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SchedulingPolicyThresholds")
@@ -59,11 +59,11 @@ public class SchedulingPolicyThresholds {
 
     /**
      * Gets the value of the low property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getLow() {
         return low;
@@ -71,11 +71,11 @@ public class SchedulingPolicyThresholds {
 
     /**
      * Sets the value of the low property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setLow(Integer value) {
         this.low = value;
@@ -83,11 +83,11 @@ public class SchedulingPolicyThresholds {
 
     /**
      * Gets the value of the high property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getHigh() {
         return high;
@@ -95,11 +95,11 @@ public class SchedulingPolicyThresholds {
 
     /**
      * Sets the value of the high property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setHigh(Integer value) {
         this.high = value;
@@ -107,11 +107,11 @@ public class SchedulingPolicyThresholds {
 
     /**
      * Gets the value of the duration property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getDuration() {
         return duration;
@@ -119,11 +119,11 @@ public class SchedulingPolicyThresholds {
 
     /**
      * Sets the value of the duration property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setDuration(Integer value) {
         this.duration = value;

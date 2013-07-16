@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for HighAvailability complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="HighAvailability">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HighAvailability", propOrder = {
@@ -58,11 +58,11 @@ public class HighAvailability {
 
     /**
      * Gets the value of the enabled property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getEnabled() {
         return enabled;
@@ -70,11 +70,11 @@ public class HighAvailability {
 
     /**
      * Sets the value of the enabled property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setEnabled(Boolean value) {
         this.enabled = value;
@@ -86,11 +86,11 @@ public class HighAvailability {
 
     /**
      * Gets the value of the priority property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPriority() {
         return priority;
@@ -98,11 +98,11 @@ public class HighAvailability {
 
     /**
      * Sets the value of the priority property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPriority(Integer value) {
         this.priority = value;

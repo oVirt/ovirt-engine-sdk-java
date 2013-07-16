@@ -81,7 +81,7 @@ public class VMSnapshotNics extends
 
     /**
      * Fetches VMSnapshotNIC object by id.
-     * 
+     *
      * @return
      *     {@link VMSnapshotNIC }
      *

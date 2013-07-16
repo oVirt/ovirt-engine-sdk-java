@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GlusterMemoryPool complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="GlusterMemoryPool">
  *   &lt;complexContent>
@@ -50,8 +50,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GlusterMemoryPool", propOrder = {
@@ -84,11 +84,11 @@ public class GlusterMemoryPool {
 
     /**
      * Gets the value of the name property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getName() {
         return name;
@@ -96,11 +96,11 @@ public class GlusterMemoryPool {
 
     /**
      * Sets the value of the name property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setName(String value) {
         this.name = value;
@@ -112,11 +112,11 @@ public class GlusterMemoryPool {
 
     /**
      * Gets the value of the hotCount property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getHotCount() {
         return hotCount;
@@ -124,11 +124,11 @@ public class GlusterMemoryPool {
 
     /**
      * Sets the value of the hotCount property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setHotCount(Integer value) {
         this.hotCount = value;
@@ -140,11 +140,11 @@ public class GlusterMemoryPool {
 
     /**
      * Gets the value of the coldCount property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getColdCount() {
         return coldCount;
@@ -152,11 +152,11 @@ public class GlusterMemoryPool {
 
     /**
      * Sets the value of the coldCount property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setColdCount(Integer value) {
         this.coldCount = value;
@@ -168,11 +168,11 @@ public class GlusterMemoryPool {
 
     /**
      * Gets the value of the paddedSize property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPaddedSize() {
         return paddedSize;
@@ -180,11 +180,11 @@ public class GlusterMemoryPool {
 
     /**
      * Sets the value of the paddedSize property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPaddedSize(Integer value) {
         this.paddedSize = value;
@@ -196,11 +196,11 @@ public class GlusterMemoryPool {
 
     /**
      * Gets the value of the allocCount property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getAllocCount() {
         return allocCount;
@@ -208,11 +208,11 @@ public class GlusterMemoryPool {
 
     /**
      * Sets the value of the allocCount property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setAllocCount(Integer value) {
         this.allocCount = value;
@@ -224,11 +224,11 @@ public class GlusterMemoryPool {
 
     /**
      * Gets the value of the maxAlloc property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMaxAlloc() {
         return maxAlloc;
@@ -236,11 +236,11 @@ public class GlusterMemoryPool {
 
     /**
      * Sets the value of the maxAlloc property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMaxAlloc(Integer value) {
         this.maxAlloc = value;
@@ -252,11 +252,11 @@ public class GlusterMemoryPool {
 
     /**
      * Gets the value of the poolMisses property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPoolMisses() {
         return poolMisses;
@@ -264,11 +264,11 @@ public class GlusterMemoryPool {
 
     /**
      * Sets the value of the poolMisses property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPoolMisses(Integer value) {
         this.poolMisses = value;
@@ -280,11 +280,11 @@ public class GlusterMemoryPool {
 
     /**
      * Gets the value of the maxStdalloc property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMaxStdalloc() {
         return maxStdalloc;
@@ -292,11 +292,11 @@ public class GlusterMemoryPool {
 
     /**
      * Sets the value of the maxStdalloc property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMaxStdalloc(Integer value) {
         this.maxStdalloc = value;

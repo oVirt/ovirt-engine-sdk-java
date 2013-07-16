@@ -81,7 +81,7 @@ public class HostNICStatistics extends
 
     /**
      * Fetches HostNICStatistic object by id.
-     * 
+     *
      * @return
      *     {@link HostNICStatistic }
      *

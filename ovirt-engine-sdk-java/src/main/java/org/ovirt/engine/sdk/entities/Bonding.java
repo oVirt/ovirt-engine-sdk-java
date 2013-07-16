@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Bonding complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Bonding">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Bonding", propOrder = {
@@ -58,11 +58,11 @@ public class Bonding {
 
     /**
      * Gets the value of the options property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Options }
-     *     
+     *
      */
     public Options getOptions() {
         return options;
@@ -70,11 +70,11 @@ public class Bonding {
 
     /**
      * Sets the value of the options property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Options }
-     *     
+     *
      */
     public void setOptions(Options value) {
         this.options = value;
@@ -86,11 +86,11 @@ public class Bonding {
 
     /**
      * Gets the value of the slaves property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Slaves }
-     *     
+     *
      */
     public Slaves getSlaves() {
         return slaves;
@@ -98,11 +98,11 @@ public class Bonding {
 
     /**
      * Sets the value of the slaves property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Slaves }
-     *     
+     *
      */
     public void setSlaves(Slaves value) {
         this.slaves = value;

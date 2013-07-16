@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Statistic complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Statistic">
  *   &lt;complexContent>
@@ -51,8 +51,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Statistic", propOrder = {
@@ -86,11 +86,11 @@ public class Statistic
 
     /**
      * Gets the value of the values property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Values }
-     *     
+     *
      */
     public Values getValues() {
         return values;
@@ -98,11 +98,11 @@ public class Statistic
 
     /**
      * Sets the value of the values property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Values }
-     *     
+     *
      */
     public void setValues(Values value) {
         this.values = value;
@@ -114,11 +114,11 @@ public class Statistic
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StatisticType }
-     *     
+     *
      */
     public StatisticType getType() {
         return type;
@@ -126,11 +126,11 @@ public class Statistic
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StatisticType }
-     *     
+     *
      */
     public void setType(StatisticType value) {
         this.type = value;
@@ -142,11 +142,11 @@ public class Statistic
 
     /**
      * Gets the value of the unit property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StatisticUnit }
-     *     
+     *
      */
     public StatisticUnit getUnit() {
         return unit;
@@ -154,11 +154,11 @@ public class Statistic
 
     /**
      * Sets the value of the unit property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StatisticUnit }
-     *     
+     *
      */
     public void setUnit(StatisticUnit value) {
         this.unit = value;
@@ -170,11 +170,11 @@ public class Statistic
 
     /**
      * Gets the value of the disk property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Disk }
-     *     
+     *
      */
     public Disk getDisk() {
         return disk;
@@ -182,11 +182,11 @@ public class Statistic
 
     /**
      * Sets the value of the disk property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Disk }
-     *     
+     *
      */
     public void setDisk(Disk value) {
         this.disk = value;
@@ -198,11 +198,11 @@ public class Statistic
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -210,11 +210,11 @@ public class Statistic
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;
@@ -226,11 +226,11 @@ public class Statistic
 
     /**
      * Gets the value of the hostNic property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HostNIC }
-     *     
+     *
      */
     public HostNIC getHostNic() {
         return hostNic;
@@ -238,11 +238,11 @@ public class Statistic
 
     /**
      * Sets the value of the hostNic property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HostNIC }
-     *     
+     *
      */
     public void setHostNic(HostNIC value) {
         this.hostNic = value;
@@ -254,11 +254,11 @@ public class Statistic
 
     /**
      * Gets the value of the nic property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link NIC }
-     *     
+     *
      */
     public NIC getNic() {
         return nic;
@@ -266,11 +266,11 @@ public class Statistic
 
     /**
      * Sets the value of the nic property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link NIC }
-     *     
+     *
      */
     public void setNic(NIC value) {
         this.nic = value;
@@ -282,11 +282,11 @@ public class Statistic
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -294,11 +294,11 @@ public class Statistic
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;
@@ -310,11 +310,11 @@ public class Statistic
 
     /**
      * Gets the value of the brick property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterBrick }
-     *     
+     *
      */
     public GlusterBrick getBrick() {
         return brick;
@@ -322,11 +322,11 @@ public class Statistic
 
     /**
      * Sets the value of the brick property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterBrick }
-     *     
+     *
      */
     public void setBrick(GlusterBrick value) {
         this.brick = value;

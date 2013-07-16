@@ -81,7 +81,7 @@ public class StorageDomainVMDisks extends
 
     /**
      * Fetches StorageDomainVMDisk object by id.
-     * 
+     *
      * @return
      *     {@link StorageDomainVMDisk }
      *

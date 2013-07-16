@@ -81,7 +81,7 @@ public class VMReportedDevices extends
 
     /**
      * Fetches VMReportedDevice object by id.
-     * 
+     *
      * @return
      *     {@link VMReportedDevice }
      *

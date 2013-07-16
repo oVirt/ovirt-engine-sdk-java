@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GlusterBrick complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="GlusterBrick">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GlusterBrick", propOrder = {
@@ -70,11 +70,11 @@ public class GlusterBrick
 
     /**
      * Gets the value of the glusterVolume property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterVolume }
-     *     
+     *
      */
     public GlusterVolume getGlusterVolume() {
         return glusterVolume;
@@ -82,11 +82,11 @@ public class GlusterBrick
 
     /**
      * Sets the value of the glusterVolume property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterVolume }
-     *     
+     *
      */
     public void setGlusterVolume(GlusterVolume value) {
         this.glusterVolume = value;
@@ -98,11 +98,11 @@ public class GlusterBrick
 
     /**
      * Gets the value of the serverId property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getServerId() {
         return serverId;
@@ -110,11 +110,11 @@ public class GlusterBrick
 
     /**
      * Sets the value of the serverId property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setServerId(String value) {
         this.serverId = value;
@@ -126,11 +126,11 @@ public class GlusterBrick
 
     /**
      * Gets the value of the brickDir property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getBrickDir() {
         return brickDir;
@@ -138,11 +138,11 @@ public class GlusterBrick
 
     /**
      * Sets the value of the brickDir property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setBrickDir(String value) {
         this.brickDir = value;
@@ -154,11 +154,11 @@ public class GlusterBrick
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -166,11 +166,11 @@ public class GlusterBrick
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;

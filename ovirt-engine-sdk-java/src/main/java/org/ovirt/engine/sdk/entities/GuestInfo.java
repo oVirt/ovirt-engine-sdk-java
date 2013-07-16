@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GuestInfo complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="GuestInfo">
  *   &lt;complexContent>
@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GuestInfo", propOrder = {
@@ -55,11 +55,11 @@ public class GuestInfo {
 
     /**
      * Gets the value of the ips property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link IPs }
-     *     
+     *
      */
     public IPs getIps() {
         return ips;
@@ -67,11 +67,11 @@ public class GuestInfo {
 
     /**
      * Sets the value of the ips property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link IPs }
-     *     
+     *
      */
     public void setIps(IPs value) {
         this.ips = value;

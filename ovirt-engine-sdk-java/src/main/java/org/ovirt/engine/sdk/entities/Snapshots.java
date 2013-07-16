@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Snapshots complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Snapshots">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Snapshots", propOrder = {
@@ -65,25 +65,25 @@ public class Snapshots
 
     /**
      * Gets the value of the snapshots property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the snapshots property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getSnapshots().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Snapshot }
-     * 
-     * 
+     *
+     *
      */
     public List<Snapshot> getSnapshots() {
         if (snapshots == null) {
@@ -102,11 +102,11 @@ public class Snapshots
 
     /**
      * Gets the value of the collapseSnapshots property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getCollapseSnapshots() {
         return collapseSnapshots;
@@ -114,11 +114,11 @@ public class Snapshots
 
     /**
      * Sets the value of the collapseSnapshots property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setCollapseSnapshots(Boolean value) {
         this.collapseSnapshots = value;

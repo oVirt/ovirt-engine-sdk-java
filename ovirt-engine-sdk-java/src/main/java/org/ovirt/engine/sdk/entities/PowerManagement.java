@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for PowerManagement complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="PowerManagement">
  *   &lt;complexContent>
@@ -52,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PowerManagement", propOrder = {
@@ -82,11 +82,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the enabled property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getEnabled() {
         return enabled;
@@ -94,11 +94,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the enabled property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setEnabled(Boolean value) {
         this.enabled = value;
@@ -110,11 +110,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the address property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAddress() {
         return address;
@@ -122,11 +122,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the address property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAddress(String value) {
         this.address = value;
@@ -138,11 +138,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the username property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getUsername() {
         return username;
@@ -150,11 +150,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the username property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setUsername(String value) {
         this.username = value;
@@ -166,11 +166,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the password property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getPassword() {
         return password;
@@ -178,11 +178,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the password property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setPassword(String value) {
         this.password = value;
@@ -194,11 +194,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the options property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Options }
-     *     
+     *
      */
     public Options getOptions() {
         return options;
@@ -206,11 +206,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the options property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Options }
-     *     
+     *
      */
     public void setOptions(Options value) {
         this.options = value;
@@ -222,11 +222,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -234,11 +234,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -250,11 +250,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the pmProxies property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PmProxies }
-     *     
+     *
      */
     public PmProxies getPmProxies() {
         return pmProxies;
@@ -262,11 +262,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the pmProxies property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PmProxies }
-     *     
+     *
      */
     public void setPmProxies(PmProxies value) {
         this.pmProxies = value;
@@ -278,11 +278,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the agents property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Agents }
-     *     
+     *
      */
     public Agents getAgents() {
         return agents;
@@ -290,11 +290,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the agents property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Agents }
-     *     
+     *
      */
     public void setAgents(Agents value) {
         this.agents = value;
@@ -306,11 +306,11 @@ public class PowerManagement {
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -318,11 +318,11 @@ public class PowerManagement {
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;

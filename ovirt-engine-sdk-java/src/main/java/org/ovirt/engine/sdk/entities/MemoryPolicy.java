@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for MemoryPolicy complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="MemoryPolicy">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MemoryPolicy", propOrder = {
@@ -67,11 +67,11 @@ public class MemoryPolicy {
 
     /**
      * Gets the value of the guaranteed property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getGuaranteed() {
         return guaranteed;
@@ -79,11 +79,11 @@ public class MemoryPolicy {
 
     /**
      * Sets the value of the guaranteed property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setGuaranteed(Long value) {
         this.guaranteed = value;
@@ -95,11 +95,11 @@ public class MemoryPolicy {
 
     /**
      * Gets the value of the ballooning property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getBallooning() {
         return ballooning;
@@ -107,11 +107,11 @@ public class MemoryPolicy {
 
     /**
      * Sets the value of the ballooning property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setBallooning(Boolean value) {
         this.ballooning = value;
@@ -123,11 +123,11 @@ public class MemoryPolicy {
 
     /**
      * Gets the value of the overCommit property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link MemoryOverCommit }
-     *     
+     *
      */
     public MemoryOverCommit getOverCommit() {
         return overCommit;
@@ -135,11 +135,11 @@ public class MemoryPolicy {
 
     /**
      * Sets the value of the overCommit property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link MemoryOverCommit }
-     *     
+     *
      */
     public void setOverCommit(MemoryOverCommit value) {
         this.overCommit = value;
@@ -151,11 +151,11 @@ public class MemoryPolicy {
 
     /**
      * Gets the value of the transparentHugepages property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TransparentHugePages }
-     *     
+     *
      */
     public TransparentHugePages getTransparentHugepages() {
         return transparentHugepages;
@@ -163,11 +163,11 @@ public class MemoryPolicy {
 
     /**
      * Sets the value of the transparentHugepages property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TransparentHugePages }
-     *     
+     *
      */
     public void setTransparentHugepages(TransparentHugePages value) {
         this.transparentHugepages = value;

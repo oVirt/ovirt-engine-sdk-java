@@ -81,7 +81,7 @@ public class HostPermissions extends
 
     /**
      * Fetches HostPermission object by id.
-     * 
+     *
      * @return
      *     {@link HostPermission }
      *

@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Certificate complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Certificate">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Certificate", propOrder = {
@@ -58,11 +58,11 @@ public class Certificate {
 
     /**
      * Gets the value of the organization property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getOrganization() {
         return organization;
@@ -70,11 +70,11 @@ public class Certificate {
 
     /**
      * Sets the value of the organization property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setOrganization(String value) {
         this.organization = value;
@@ -86,11 +86,11 @@ public class Certificate {
 
     /**
      * Gets the value of the subject property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getSubject() {
         return subject;
@@ -98,11 +98,11 @@ public class Certificate {
 
     /**
      * Sets the value of the subject property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setSubject(String value) {
         this.subject = value;

@@ -81,7 +81,7 @@ public class VMTags extends
 
     /**
      * Fetches VMTag object by id.
-     * 
+     *
      * @return
      *     {@link VMTag }
      *

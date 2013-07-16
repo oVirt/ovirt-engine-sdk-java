@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for BaseDevice complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="BaseDevice">
  *   &lt;complexContent>
@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BaseDevice", propOrder = {
@@ -67,11 +67,11 @@ public class BaseDevice
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -79,11 +79,11 @@ public class BaseDevice
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;
@@ -95,11 +95,11 @@ public class BaseDevice
 
     /**
      * Gets the value of the template property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Template }
-     *     
+     *
      */
     public Template getTemplate() {
         return template;
@@ -107,11 +107,11 @@ public class BaseDevice
 
     /**
      * Sets the value of the template property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Template }
-     *     
+     *
      */
     public void setTemplate(Template value) {
         this.template = value;

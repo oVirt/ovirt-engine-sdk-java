@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Parameter complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Parameter">
  *   &lt;complexContent>
@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Parameter", propOrder = {
@@ -73,11 +73,11 @@ public class Parameter
 
     /**
      * Gets the value of the value property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getValue() {
         return value;
@@ -85,11 +85,11 @@ public class Parameter
 
     /**
      * Sets the value of the value property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setValue(String value) {
         this.value = value;
@@ -101,11 +101,11 @@ public class Parameter
 
     /**
      * Gets the value of the parametersSet property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ParametersSet }
-     *     
+     *
      */
     public ParametersSet getParametersSet() {
         return parametersSet;
@@ -113,11 +113,11 @@ public class Parameter
 
     /**
      * Sets the value of the parametersSet property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ParametersSet }
-     *     
+     *
      */
     public void setParametersSet(ParametersSet value) {
         this.parametersSet = value;
@@ -129,11 +129,11 @@ public class Parameter
 
     /**
      * Gets the value of the required property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getRequired() {
         return required;
@@ -141,11 +141,11 @@ public class Parameter
 
     /**
      * Sets the value of the required property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setRequired(Boolean value) {
         this.required = value;
@@ -153,11 +153,11 @@ public class Parameter
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -165,11 +165,11 @@ public class Parameter
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -181,11 +181,11 @@ public class Parameter
 
     /**
      * Gets the value of the context property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getContext() {
         return context;
@@ -193,11 +193,11 @@ public class Parameter
 
     /**
      * Sets the value of the context property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setContext(String value) {
         this.context = value;

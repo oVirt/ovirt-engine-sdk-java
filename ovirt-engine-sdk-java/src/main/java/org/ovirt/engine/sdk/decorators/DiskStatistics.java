@@ -81,7 +81,7 @@ public class DiskStatistics extends
 
     /**
      * Fetches DiskStatistic object by id.
-     * 
+     *
      * @return
      *     {@link DiskStatistic }
      *

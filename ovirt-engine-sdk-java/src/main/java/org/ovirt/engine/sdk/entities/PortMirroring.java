@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for PortMirroring complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="PortMirroring">
  *   &lt;complexContent>
@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PortMirroring", propOrder = {
@@ -55,11 +55,11 @@ public class PortMirroring {
 
     /**
      * Gets the value of the networks property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Networks }
-     *     
+     *
      */
     public Networks getNetworks() {
         return networks;
@@ -67,11 +67,11 @@ public class PortMirroring {
 
     /**
      * Sets the value of the networks property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Networks }
-     *     
+     *
      */
     public void setNetworks(Networks value) {
         this.networks = value;

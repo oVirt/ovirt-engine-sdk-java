@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for HardwareInformation complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="HardwareInformation">
  *   &lt;complexContent>
@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HardwareInformation", propOrder = {
@@ -73,11 +73,11 @@ public class HardwareInformation {
 
     /**
      * Gets the value of the manufacturer property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getManufacturer() {
         return manufacturer;
@@ -85,11 +85,11 @@ public class HardwareInformation {
 
     /**
      * Sets the value of the manufacturer property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setManufacturer(String value) {
         this.manufacturer = value;
@@ -101,11 +101,11 @@ public class HardwareInformation {
 
     /**
      * Gets the value of the version property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getVersion() {
         return version;
@@ -113,11 +113,11 @@ public class HardwareInformation {
 
     /**
      * Sets the value of the version property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setVersion(String value) {
         this.version = value;
@@ -129,11 +129,11 @@ public class HardwareInformation {
 
     /**
      * Gets the value of the serialNumber property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getSerialNumber() {
         return serialNumber;
@@ -141,11 +141,11 @@ public class HardwareInformation {
 
     /**
      * Sets the value of the serialNumber property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setSerialNumber(String value) {
         this.serialNumber = value;
@@ -157,11 +157,11 @@ public class HardwareInformation {
 
     /**
      * Gets the value of the productName property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getProductName() {
         return productName;
@@ -169,11 +169,11 @@ public class HardwareInformation {
 
     /**
      * Sets the value of the productName property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setProductName(String value) {
         this.productName = value;
@@ -185,11 +185,11 @@ public class HardwareInformation {
 
     /**
      * Gets the value of the uuid property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getUuid() {
         return uuid;
@@ -197,11 +197,11 @@ public class HardwareInformation {
 
     /**
      * Sets the value of the uuid property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setUuid(String value) {
         this.uuid = value;
@@ -213,11 +213,11 @@ public class HardwareInformation {
 
     /**
      * Gets the value of the family property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getFamily() {
         return family;
@@ -225,11 +225,11 @@ public class HardwareInformation {
 
     /**
      * Sets the value of the family property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setFamily(String value) {
         this.family = value;

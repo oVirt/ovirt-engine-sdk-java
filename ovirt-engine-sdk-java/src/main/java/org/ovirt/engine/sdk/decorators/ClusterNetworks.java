@@ -81,7 +81,7 @@ public class ClusterNetworks extends
 
     /**
      * Fetches ClusterNetwork object by id.
-     * 
+     *
      * @return
      *     {@link ClusterNetwork }
      *

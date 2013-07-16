@@ -81,7 +81,7 @@ public class VMStatistics extends
 
     /**
      * Fetches VMStatistic object by id.
-     * 
+     *
      * @return
      *     {@link VMStatistic }
      *

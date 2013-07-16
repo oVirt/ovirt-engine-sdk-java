@@ -81,7 +81,7 @@ public class NetworkPermissions extends
 
     /**
      * Fetches NetworkPermission object by id.
-     * 
+     *
      * @return
      *     {@link NetworkPermission }
      *

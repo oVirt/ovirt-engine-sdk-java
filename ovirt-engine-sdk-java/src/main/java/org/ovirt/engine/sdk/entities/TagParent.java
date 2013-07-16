@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for TagParent complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TagParent">
  *   &lt;complexContent>
@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TagParent", propOrder = {
@@ -55,11 +55,11 @@ public class TagParent {
 
     /**
      * Gets the value of the tag property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Tag }
-     *     
+     *
      */
     public Tag getTag() {
         return tag;
@@ -67,11 +67,11 @@ public class TagParent {
 
     /**
      * Sets the value of the tag property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Tag }
-     *     
+     *
      */
     public void setTag(Tag value) {
         this.tag = value;

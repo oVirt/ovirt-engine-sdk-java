@@ -81,7 +81,7 @@ public class VMDisks extends
 
     /**
      * Fetches VMDisk object by id.
-     * 
+     *
      * @return
      *     {@link VMDisk }
      *

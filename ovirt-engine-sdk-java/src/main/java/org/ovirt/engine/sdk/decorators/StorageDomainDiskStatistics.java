@@ -81,7 +81,7 @@ public class StorageDomainDiskStatistics extends
 
     /**
      * Fetches StorageDomainDiskStatistic object by id.
-     * 
+     *
      * @return
      *     {@link StorageDomainDiskStatistic }
      *

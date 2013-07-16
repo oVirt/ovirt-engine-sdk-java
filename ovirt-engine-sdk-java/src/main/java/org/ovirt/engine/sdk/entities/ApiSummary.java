@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for ApiSummary complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ApiSummary">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ApiSummary", propOrder = {
@@ -67,11 +67,11 @@ public class ApiSummary {
 
     /**
      * Gets the value of the vMs property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VMs }
-     *     
+     *
      */
     public VMs getVMs() {
         return vMs;
@@ -79,11 +79,11 @@ public class ApiSummary {
 
     /**
      * Sets the value of the vMs property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VMs }
-     *     
+     *
      */
     public void setVMs(VMs value) {
         this.vMs = value;
@@ -95,11 +95,11 @@ public class ApiSummary {
 
     /**
      * Gets the value of the hosts property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Hosts }
-     *     
+     *
      */
     public Hosts getHosts() {
         return hosts;
@@ -107,11 +107,11 @@ public class ApiSummary {
 
     /**
      * Sets the value of the hosts property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Hosts }
-     *     
+     *
      */
     public void setHosts(Hosts value) {
         this.hosts = value;
@@ -123,11 +123,11 @@ public class ApiSummary {
 
     /**
      * Gets the value of the users property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Users }
-     *     
+     *
      */
     public Users getUsers() {
         return users;
@@ -135,11 +135,11 @@ public class ApiSummary {
 
     /**
      * Sets the value of the users property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Users }
-     *     
+     *
      */
     public void setUsers(Users value) {
         this.users = value;
@@ -151,11 +151,11 @@ public class ApiSummary {
 
     /**
      * Gets the value of the storageDomains property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomains }
-     *     
+     *
      */
     public StorageDomains getStorageDomains() {
         return storageDomains;
@@ -163,11 +163,11 @@ public class ApiSummary {
 
     /**
      * Sets the value of the storageDomains property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomains }
-     *     
+     *
      */
     public void setStorageDomains(StorageDomains value) {
         this.storageDomains = value;

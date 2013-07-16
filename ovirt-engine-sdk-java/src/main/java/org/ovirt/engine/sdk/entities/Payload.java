@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Payload complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Payload">
  *   &lt;complexContent>
@@ -45,8 +45,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Payload", propOrder = {
@@ -61,11 +61,11 @@ public class Payload {
 
     /**
      * Gets the value of the file property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PayloadFile }
-     *     
+     *
      */
     public PayloadFile getFile() {
         return file;
@@ -73,11 +73,11 @@ public class Payload {
 
     /**
      * Sets the value of the file property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PayloadFile }
-     *     
+     *
      */
     public void setFile(PayloadFile value) {
         this.file = value;
@@ -89,11 +89,11 @@ public class Payload {
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -101,11 +101,11 @@ public class Payload {
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;

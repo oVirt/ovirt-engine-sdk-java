@@ -81,7 +81,7 @@ public class GroupRolePermits extends
 
     /**
      * Fetches GroupRolePermit object by id.
-     * 
+     *
      * @return
      *     {@link GroupRolePermit }
      *

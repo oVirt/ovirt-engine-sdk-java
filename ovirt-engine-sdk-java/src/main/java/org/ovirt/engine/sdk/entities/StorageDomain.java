@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for StorageDomain complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="StorageDomain">
  *   &lt;complexContent>
@@ -54,8 +54,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "StorageDomain", propOrder = {
@@ -93,11 +93,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the dataCenter property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public DataCenter getDataCenter() {
         return dataCenter;
@@ -105,11 +105,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the dataCenter property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public void setDataCenter(DataCenter value) {
         this.dataCenter = value;
@@ -121,11 +121,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -133,11 +133,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -149,11 +149,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -161,11 +161,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -177,11 +177,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the master property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getMaster() {
         return master;
@@ -189,11 +189,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the master property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setMaster(Boolean value) {
         this.master = value;
@@ -205,11 +205,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the storage property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Storage }
-     *     
+     *
      */
     public Storage getStorage() {
         return storage;
@@ -217,11 +217,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the storage property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Storage }
-     *     
+     *
      */
     public void setStorage(Storage value) {
         this.storage = value;
@@ -233,11 +233,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -245,11 +245,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;
@@ -261,11 +261,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the format property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getFormat() {
         return format;
@@ -273,11 +273,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the format property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setFormat(Boolean value) {
         this.format = value;
@@ -289,11 +289,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the destroy property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getDestroy() {
         return destroy;
@@ -301,11 +301,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the destroy property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setDestroy(Boolean value) {
         this.destroy = value;
@@ -317,11 +317,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the available property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getAvailable() {
         return available;
@@ -329,11 +329,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the available property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setAvailable(Long value) {
         this.available = value;
@@ -345,11 +345,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the used property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getUsed() {
         return used;
@@ -357,11 +357,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the used property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setUsed(Long value) {
         this.used = value;
@@ -373,11 +373,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the committed property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getCommitted() {
         return committed;
@@ -385,11 +385,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the committed property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setCommitted(Long value) {
         this.committed = value;
@@ -401,11 +401,11 @@ public class StorageDomain
 
     /**
      * Gets the value of the storageFormat property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getStorageFormat() {
         return storageFormat;
@@ -413,11 +413,11 @@ public class StorageDomain
 
     /**
      * Sets the value of the storageFormat property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setStorageFormat(String value) {
         this.storageFormat = value;

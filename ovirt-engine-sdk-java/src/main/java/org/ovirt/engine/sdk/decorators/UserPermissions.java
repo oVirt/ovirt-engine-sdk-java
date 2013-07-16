@@ -81,7 +81,7 @@ public class UserPermissions extends
 
     /**
      * Fetches UserPermission object by id.
-     * 
+     *
      * @return
      *     {@link UserPermission }
      *

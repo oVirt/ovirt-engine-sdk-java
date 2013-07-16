@@ -81,7 +81,7 @@ public class VMDiskStatistics extends
 
     /**
      * Fetches VMDiskStatistic object by id.
-     * 
+     *
      * @return
      *     {@link VMDiskStatistic }
      *

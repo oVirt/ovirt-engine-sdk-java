@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Cluster complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Cluster">
  *   &lt;complexContent>
@@ -54,8 +54,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Cluster", propOrder = {
@@ -101,11 +101,11 @@ public class Cluster
 
     /**
      * Gets the value of the cpu property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CPU }
-     *     
+     *
      */
     public CPU getCpu() {
         return cpu;
@@ -113,11 +113,11 @@ public class Cluster
 
     /**
      * Sets the value of the cpu property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CPU }
-     *     
+     *
      */
     public void setCpu(CPU value) {
         this.cpu = value;
@@ -129,11 +129,11 @@ public class Cluster
 
     /**
      * Gets the value of the dataCenter property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public DataCenter getDataCenter() {
         return dataCenter;
@@ -141,11 +141,11 @@ public class Cluster
 
     /**
      * Sets the value of the dataCenter property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public void setDataCenter(DataCenter value) {
         this.dataCenter = value;
@@ -157,11 +157,11 @@ public class Cluster
 
     /**
      * Gets the value of the memoryPolicy property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link MemoryPolicy }
-     *     
+     *
      */
     public MemoryPolicy getMemoryPolicy() {
         return memoryPolicy;
@@ -169,11 +169,11 @@ public class Cluster
 
     /**
      * Sets the value of the memoryPolicy property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link MemoryPolicy }
-     *     
+     *
      */
     public void setMemoryPolicy(MemoryPolicy value) {
         this.memoryPolicy = value;
@@ -185,11 +185,11 @@ public class Cluster
 
     /**
      * Gets the value of the schedulingPolicy property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SchedulingPolicy }
-     *     
+     *
      */
     public SchedulingPolicy getSchedulingPolicy() {
         return schedulingPolicy;
@@ -197,11 +197,11 @@ public class Cluster
 
     /**
      * Sets the value of the schedulingPolicy property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SchedulingPolicy }
-     *     
+     *
      */
     public void setSchedulingPolicy(SchedulingPolicy value) {
         this.schedulingPolicy = value;
@@ -213,11 +213,11 @@ public class Cluster
 
     /**
      * Gets the value of the version property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Version }
-     *     
+     *
      */
     public Version getVersion() {
         return version;
@@ -225,11 +225,11 @@ public class Cluster
 
     /**
      * Sets the value of the version property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Version }
-     *     
+     *
      */
     public void setVersion(Version value) {
         this.version = value;
@@ -241,11 +241,11 @@ public class Cluster
 
     /**
      * Gets the value of the supportedVersions property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SupportedVersions }
-     *     
+     *
      */
     public SupportedVersions getSupportedVersions() {
         return supportedVersions;
@@ -253,11 +253,11 @@ public class Cluster
 
     /**
      * Sets the value of the supportedVersions property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SupportedVersions }
-     *     
+     *
      */
     public void setSupportedVersions(SupportedVersions value) {
         this.supportedVersions = value;
@@ -269,11 +269,11 @@ public class Cluster
 
     /**
      * Gets the value of the errorHandling property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ErrorHandling }
-     *     
+     *
      */
     public ErrorHandling getErrorHandling() {
         return errorHandling;
@@ -281,11 +281,11 @@ public class Cluster
 
     /**
      * Sets the value of the errorHandling property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ErrorHandling }
-     *     
+     *
      */
     public void setErrorHandling(ErrorHandling value) {
         this.errorHandling = value;
@@ -297,11 +297,11 @@ public class Cluster
 
     /**
      * Gets the value of the virtService property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getVirtService() {
         return virtService;
@@ -309,11 +309,11 @@ public class Cluster
 
     /**
      * Sets the value of the virtService property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setVirtService(Boolean value) {
         this.virtService = value;
@@ -325,11 +325,11 @@ public class Cluster
 
     /**
      * Gets the value of the glusterService property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getGlusterService() {
         return glusterService;
@@ -337,11 +337,11 @@ public class Cluster
 
     /**
      * Sets the value of the glusterService property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setGlusterService(Boolean value) {
         this.glusterService = value;
@@ -353,11 +353,11 @@ public class Cluster
 
     /**
      * Gets the value of the threadsAsCores property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getThreadsAsCores() {
         return threadsAsCores;
@@ -365,11 +365,11 @@ public class Cluster
 
     /**
      * Sets the value of the threadsAsCores property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setThreadsAsCores(Boolean value) {
         this.threadsAsCores = value;
@@ -381,11 +381,11 @@ public class Cluster
 
     /**
      * Gets the value of the tunnelMigration property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getTunnelMigration() {
         return tunnelMigration;
@@ -393,11 +393,11 @@ public class Cluster
 
     /**
      * Sets the value of the tunnelMigration property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setTunnelMigration(Boolean value) {
         this.tunnelMigration = value;
@@ -409,11 +409,11 @@ public class Cluster
 
     /**
      * Gets the value of the trustedService property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getTrustedService() {
         return trustedService;
@@ -421,11 +421,11 @@ public class Cluster
 
     /**
      * Sets the value of the trustedService property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setTrustedService(Boolean value) {
         this.trustedService = value;

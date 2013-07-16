@@ -32,9 +32,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for VM complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="VM">
  *   &lt;complexContent>
@@ -80,8 +80,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VM", propOrder = {
@@ -180,11 +180,11 @@ public class VM
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -192,11 +192,11 @@ public class VM
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -208,11 +208,11 @@ public class VM
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -220,11 +220,11 @@ public class VM
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -236,11 +236,11 @@ public class VM
 
     /**
      * Gets the value of the memory property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getMemory() {
         return memory;
@@ -248,11 +248,11 @@ public class VM
 
     /**
      * Sets the value of the memory property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setMemory(Long value) {
         this.memory = value;
@@ -264,11 +264,11 @@ public class VM
 
     /**
      * Gets the value of the cpu property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CPU }
-     *     
+     *
      */
     public CPU getCpu() {
         return cpu;
@@ -276,11 +276,11 @@ public class VM
 
     /**
      * Sets the value of the cpu property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CPU }
-     *     
+     *
      */
     public void setCpu(CPU value) {
         this.cpu = value;
@@ -292,11 +292,11 @@ public class VM
 
     /**
      * Gets the value of the os property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link OperatingSystem }
-     *     
+     *
      */
     public OperatingSystem getOs() {
         return os;
@@ -304,11 +304,11 @@ public class VM
 
     /**
      * Sets the value of the os property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link OperatingSystem }
-     *     
+     *
      */
     public void setOs(OperatingSystem value) {
         this.os = value;
@@ -320,11 +320,11 @@ public class VM
 
     /**
      * Gets the value of the highAvailability property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HighAvailability }
-     *     
+     *
      */
     public HighAvailability getHighAvailability() {
         return highAvailability;
@@ -332,11 +332,11 @@ public class VM
 
     /**
      * Sets the value of the highAvailability property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HighAvailability }
-     *     
+     *
      */
     public void setHighAvailability(HighAvailability value) {
         this.highAvailability = value;
@@ -348,11 +348,11 @@ public class VM
 
     /**
      * Gets the value of the display property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Display }
-     *     
+     *
      */
     public Display getDisplay() {
         return display;
@@ -360,11 +360,11 @@ public class VM
 
     /**
      * Sets the value of the display property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Display }
-     *     
+     *
      */
     public void setDisplay(Display value) {
         this.display = value;
@@ -376,11 +376,11 @@ public class VM
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -388,11 +388,11 @@ public class VM
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;
@@ -404,11 +404,11 @@ public class VM
 
     /**
      * Gets the value of the cluster property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Cluster }
-     *     
+     *
      */
     public Cluster getCluster() {
         return cluster;
@@ -416,11 +416,11 @@ public class VM
 
     /**
      * Sets the value of the cluster property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Cluster }
-     *     
+     *
      */
     public void setCluster(Cluster value) {
         this.cluster = value;
@@ -432,11 +432,11 @@ public class VM
 
     /**
      * Gets the value of the template property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Template }
-     *     
+     *
      */
     public Template getTemplate() {
         return template;
@@ -444,11 +444,11 @@ public class VM
 
     /**
      * Sets the value of the template property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Template }
-     *     
+     *
      */
     public void setTemplate(Template value) {
         this.template = value;
@@ -460,11 +460,11 @@ public class VM
 
     /**
      * Gets the value of the storageDomain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public StorageDomain getStorageDomain() {
         return storageDomain;
@@ -472,11 +472,11 @@ public class VM
 
     /**
      * Sets the value of the storageDomain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public void setStorageDomain(StorageDomain value) {
         this.storageDomain = value;
@@ -488,11 +488,11 @@ public class VM
 
     /**
      * Gets the value of the startTime property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public XMLGregorianCalendar getStartTime() {
         return startTime;
@@ -500,11 +500,11 @@ public class VM
 
     /**
      * Sets the value of the startTime property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public void setStartTime(XMLGregorianCalendar value) {
         this.startTime = value;
@@ -516,11 +516,11 @@ public class VM
 
     /**
      * Gets the value of the creationTime property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public XMLGregorianCalendar getCreationTime() {
         return creationTime;
@@ -528,11 +528,11 @@ public class VM
 
     /**
      * Sets the value of the creationTime property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public void setCreationTime(XMLGregorianCalendar value) {
         this.creationTime = value;
@@ -544,11 +544,11 @@ public class VM
 
     /**
      * Gets the value of the origin property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getOrigin() {
         return origin;
@@ -556,11 +556,11 @@ public class VM
 
     /**
      * Sets the value of the origin property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setOrigin(String value) {
         this.origin = value;
@@ -572,11 +572,11 @@ public class VM
 
     /**
      * Gets the value of the stateless property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getStateless() {
         return stateless;
@@ -584,11 +584,11 @@ public class VM
 
     /**
      * Sets the value of the stateless property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setStateless(Boolean value) {
         this.stateless = value;
@@ -600,11 +600,11 @@ public class VM
 
     /**
      * Gets the value of the deleteProtected property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getDeleteProtected() {
         return deleteProtected;
@@ -612,11 +612,11 @@ public class VM
 
     /**
      * Sets the value of the deleteProtected property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setDeleteProtected(Boolean value) {
         this.deleteProtected = value;
@@ -628,11 +628,11 @@ public class VM
 
     /**
      * Gets the value of the timezone property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getTimezone() {
         return timezone;
@@ -640,11 +640,11 @@ public class VM
 
     /**
      * Sets the value of the timezone property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setTimezone(String value) {
         this.timezone = value;
@@ -656,11 +656,11 @@ public class VM
 
     /**
      * Gets the value of the domain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Domain }
-     *     
+     *
      */
     public Domain getDomain() {
         return domain;
@@ -668,11 +668,11 @@ public class VM
 
     /**
      * Sets the value of the domain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Domain }
-     *     
+     *
      */
     public void setDomain(Domain value) {
         this.domain = value;
@@ -684,11 +684,11 @@ public class VM
 
     /**
      * Gets the value of the customProperties property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CustomProperties }
-     *     
+     *
      */
     public CustomProperties getCustomProperties() {
         return customProperties;
@@ -696,11 +696,11 @@ public class VM
 
     /**
      * Sets the value of the customProperties property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CustomProperties }
-     *     
+     *
      */
     public void setCustomProperties(CustomProperties value) {
         this.customProperties = value;
@@ -712,11 +712,11 @@ public class VM
 
     /**
      * Gets the value of the payloads property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Payloads }
-     *     
+     *
      */
     public Payloads getPayloads() {
         return payloads;
@@ -724,11 +724,11 @@ public class VM
 
     /**
      * Sets the value of the payloads property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Payloads }
-     *     
+     *
      */
     public void setPayloads(Payloads value) {
         this.payloads = value;
@@ -740,11 +740,11 @@ public class VM
 
     /**
      * Gets the value of the statistics property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Statistics }
-     *     
+     *
      */
     public Object getStatistics() {
         return statistics;
@@ -752,11 +752,11 @@ public class VM
 
     /**
      * Sets the value of the statistics property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Statistics }
-     *     
+     *
      */
     public void setStatistics(Statistics value) {
         this.statistics = value;
@@ -768,11 +768,11 @@ public class VM
 
     /**
      * Gets the value of the disks property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Disks }
-     *     
+     *
      */
     public Object getDisks() {
         return disks;
@@ -780,11 +780,11 @@ public class VM
 
     /**
      * Sets the value of the disks property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Disks }
-     *     
+     *
      */
     public void setDisks(Disks value) {
         this.disks = value;
@@ -796,11 +796,11 @@ public class VM
 
     /**
      * Gets the value of the nics property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Nics }
-     *     
+     *
      */
     public Object getNics() {
         return nics;
@@ -808,11 +808,11 @@ public class VM
 
     /**
      * Sets the value of the nics property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Nics }
-     *     
+     *
      */
     public void setNics(Nics value) {
         this.nics = value;
@@ -824,11 +824,11 @@ public class VM
 
     /**
      * Gets the value of the tags property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Tags }
-     *     
+     *
      */
     public Object getTags() {
         return tags;
@@ -836,11 +836,11 @@ public class VM
 
     /**
      * Sets the value of the tags property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Tags }
-     *     
+     *
      */
     public void setTags(Tags value) {
         this.tags = value;
@@ -852,11 +852,11 @@ public class VM
 
     /**
      * Gets the value of the snapshots property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Snapshots }
-     *     
+     *
      */
     public Object getSnapshots() {
         return snapshots;
@@ -864,11 +864,11 @@ public class VM
 
     /**
      * Sets the value of the snapshots property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Snapshots }
-     *     
+     *
      */
     public void setSnapshots(Snapshots value) {
         this.snapshots = value;
@@ -880,11 +880,11 @@ public class VM
 
     /**
      * Gets the value of the placementPolicy property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmPlacementPolicy }
-     *     
+     *
      */
     public VmPlacementPolicy getPlacementPolicy() {
         return placementPolicy;
@@ -892,11 +892,11 @@ public class VM
 
     /**
      * Sets the value of the placementPolicy property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmPlacementPolicy }
-     *     
+     *
      */
     public void setPlacementPolicy(VmPlacementPolicy value) {
         this.placementPolicy = value;
@@ -908,11 +908,11 @@ public class VM
 
     /**
      * Gets the value of the memoryPolicy property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link MemoryPolicy }
-     *     
+     *
      */
     public MemoryPolicy getMemoryPolicy() {
         return memoryPolicy;
@@ -920,11 +920,11 @@ public class VM
 
     /**
      * Sets the value of the memoryPolicy property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link MemoryPolicy }
-     *     
+     *
      */
     public void setMemoryPolicy(MemoryPolicy value) {
         this.memoryPolicy = value;
@@ -936,11 +936,11 @@ public class VM
 
     /**
      * Gets the value of the guestInfo property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GuestInfo }
-     *     
+     *
      */
     public GuestInfo getGuestInfo() {
         return guestInfo;
@@ -948,11 +948,11 @@ public class VM
 
     /**
      * Sets the value of the guestInfo property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GuestInfo }
-     *     
+     *
      */
     public void setGuestInfo(GuestInfo value) {
         this.guestInfo = value;
@@ -964,11 +964,11 @@ public class VM
 
     /**
      * Gets the value of the quota property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Quota }
-     *     
+     *
      */
     public Quota getQuota() {
         return quota;
@@ -976,11 +976,11 @@ public class VM
 
     /**
      * Sets the value of the quota property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Quota }
-     *     
+     *
      */
     public void setQuota(Quota value) {
         this.quota = value;
@@ -992,11 +992,11 @@ public class VM
 
     /**
      * Gets the value of the usb property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Usb }
-     *     
+     *
      */
     public Usb getUsb() {
         return usb;
@@ -1004,11 +1004,11 @@ public class VM
 
     /**
      * Sets the value of the usb property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Usb }
-     *     
+     *
      */
     public void setUsb(Usb value) {
         this.usb = value;
@@ -1020,11 +1020,11 @@ public class VM
 
     /**
      * Gets the value of the tunnelMigration property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getTunnelMigration() {
         return tunnelMigration;
@@ -1032,11 +1032,11 @@ public class VM
 
     /**
      * Sets the value of the tunnelMigration property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setTunnelMigration(Boolean value) {
         this.tunnelMigration = value;
@@ -1048,11 +1048,11 @@ public class VM
 
     /**
      * Gets the value of the vmPool property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmPool }
-     *     
+     *
      */
     public VmPool getVmPool() {
         return vmPool;
@@ -1060,11 +1060,11 @@ public class VM
 
     /**
      * Sets the value of the vmPool property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmPool }
-     *     
+     *
      */
     public void setVmPool(VmPool value) {
         this.vmPool = value;
@@ -1076,11 +1076,11 @@ public class VM
 
     /**
      * Gets the value of the cdroms property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CdRoms }
-     *     
+     *
      */
     public Object getCdRoms() {
         return cdroms;
@@ -1088,11 +1088,11 @@ public class VM
 
     /**
      * Sets the value of the cdroms property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CdRoms }
-     *     
+     *
      */
     public void setCdroms(CdRoms value) {
         this.cdroms = value;
@@ -1104,11 +1104,11 @@ public class VM
 
     /**
      * Gets the value of the floppies property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Floppies }
-     *     
+     *
      */
     public Floppies getFloppies() {
         return floppies;
@@ -1116,11 +1116,11 @@ public class VM
 
     /**
      * Sets the value of the floppies property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Floppies }
-     *     
+     *
      */
     public void setFloppies(Floppies value) {
         this.floppies = value;
@@ -1132,11 +1132,11 @@ public class VM
 
     /**
      * Gets the value of the reportedDevices property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ReportedDevices }
-     *     
+     *
      */
     public Object getReportedDevices() {
         return reportedDevices;
@@ -1144,11 +1144,11 @@ public class VM
 
     /**
      * Sets the value of the reportedDevices property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ReportedDevices }
-     *     
+     *
      */
     public void setReportedDevices(ReportedDevices value) {
         this.reportedDevices = value;

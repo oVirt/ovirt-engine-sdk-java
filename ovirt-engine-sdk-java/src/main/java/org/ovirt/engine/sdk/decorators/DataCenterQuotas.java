@@ -81,7 +81,7 @@ public class DataCenterQuotas extends
 
     /**
      * Fetches DataCenterQuota object by id.
-     * 
+     *
      * @return
      *     {@link DataCenterQuota }
      *

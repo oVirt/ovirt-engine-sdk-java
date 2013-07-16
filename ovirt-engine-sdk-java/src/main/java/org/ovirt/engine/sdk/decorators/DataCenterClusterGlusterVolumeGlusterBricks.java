@@ -81,7 +81,7 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
 
     /**
      * Fetches DataCenterClusterGlusterVolumeGlusterBrick object by id.
-     * 
+     *
      * @return
      *     {@link DataCenterClusterGlusterVolumeGlusterBrick }
      *

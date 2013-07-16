@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CdRom complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CdRom">
  *   &lt;complexContent>
@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CdRom", propOrder = {
@@ -57,11 +57,11 @@ public class CdRom
 
     /**
      * Gets the value of the file property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link File }
-     *     
+     *
      */
     public File getFile() {
         return file;
@@ -69,11 +69,11 @@ public class CdRom
 
     /**
      * Sets the value of the file property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link File }
-     *     
+     *
      */
     public void setFile(File value) {
         this.file = value;

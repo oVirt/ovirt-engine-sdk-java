@@ -31,9 +31,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for Event complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Event">
  *   &lt;complexContent>
@@ -59,8 +59,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Event", propOrder = {
@@ -109,11 +109,11 @@ public class Event
 
     /**
      * Gets the value of the code property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getCode() {
         return code;
@@ -121,11 +121,11 @@ public class Event
 
     /**
      * Sets the value of the code property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setCode(Integer value) {
         this.code = value;
@@ -137,11 +137,11 @@ public class Event
 
     /**
      * Gets the value of the severity property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getSeverity() {
         return severity;
@@ -149,11 +149,11 @@ public class Event
 
     /**
      * Sets the value of the severity property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setSeverity(String value) {
         this.severity = value;
@@ -165,11 +165,11 @@ public class Event
 
     /**
      * Gets the value of the time property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public XMLGregorianCalendar getTime() {
         return time;
@@ -177,11 +177,11 @@ public class Event
 
     /**
      * Sets the value of the time property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *     
+     *
      */
     public void setTime(XMLGregorianCalendar value) {
         this.time = value;
@@ -193,11 +193,11 @@ public class Event
 
     /**
      * Gets the value of the correlationId property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getCorrelationId() {
         return correlationId;
@@ -205,11 +205,11 @@ public class Event
 
     /**
      * Sets the value of the correlationId property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setCorrelationId(String value) {
         this.correlationId = value;
@@ -221,11 +221,11 @@ public class Event
 
     /**
      * Gets the value of the user property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link User }
-     *     
+     *
      */
     public User getUser() {
         return user;
@@ -233,11 +233,11 @@ public class Event
 
     /**
      * Sets the value of the user property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link User }
-     *     
+     *
      */
     public void setUser(User value) {
         this.user = value;
@@ -249,11 +249,11 @@ public class Event
 
     /**
      * Gets the value of the vm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VM }
-     *     
+     *
      */
     public VM getVm() {
         return vm;
@@ -261,11 +261,11 @@ public class Event
 
     /**
      * Sets the value of the vm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VM }
-     *     
+     *
      */
     public void setVm(VM value) {
         this.vm = value;
@@ -277,11 +277,11 @@ public class Event
 
     /**
      * Gets the value of the storageDomain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public StorageDomain getStorageDomain() {
         return storageDomain;
@@ -289,11 +289,11 @@ public class Event
 
     /**
      * Sets the value of the storageDomain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public void setStorageDomain(StorageDomain value) {
         this.storageDomain = value;
@@ -305,11 +305,11 @@ public class Event
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -317,11 +317,11 @@ public class Event
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;
@@ -333,11 +333,11 @@ public class Event
 
     /**
      * Gets the value of the template property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Template }
-     *     
+     *
      */
     public Template getTemplate() {
         return template;
@@ -345,11 +345,11 @@ public class Event
 
     /**
      * Sets the value of the template property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Template }
-     *     
+     *
      */
     public void setTemplate(Template value) {
         this.template = value;
@@ -361,11 +361,11 @@ public class Event
 
     /**
      * Gets the value of the cluster property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Cluster }
-     *     
+     *
      */
     public Cluster getCluster() {
         return cluster;
@@ -373,11 +373,11 @@ public class Event
 
     /**
      * Sets the value of the cluster property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Cluster }
-     *     
+     *
      */
     public void setCluster(Cluster value) {
         this.cluster = value;
@@ -389,11 +389,11 @@ public class Event
 
     /**
      * Gets the value of the dataCenter property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public DataCenter getDataCenter() {
         return dataCenter;
@@ -401,11 +401,11 @@ public class Event
 
     /**
      * Sets the value of the dataCenter property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public void setDataCenter(DataCenter value) {
         this.dataCenter = value;
@@ -417,11 +417,11 @@ public class Event
 
     /**
      * Gets the value of the origin property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getOrigin() {
         return origin;
@@ -429,11 +429,11 @@ public class Event
 
     /**
      * Sets the value of the origin property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setOrigin(String value) {
         this.origin = value;
@@ -445,11 +445,11 @@ public class Event
 
     /**
      * Gets the value of the customId property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getCustomId() {
         return customId;
@@ -457,11 +457,11 @@ public class Event
 
     /**
      * Sets the value of the customId property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setCustomId(Integer value) {
         this.customId = value;
@@ -473,11 +473,11 @@ public class Event
 
     /**
      * Gets the value of the floodRate property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getFloodRate() {
         return floodRate;
@@ -485,11 +485,11 @@ public class Event
 
     /**
      * Sets the value of the floodRate property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setFloodRate(Integer value) {
         this.floodRate = value;
@@ -501,11 +501,11 @@ public class Event
 
     /**
      * Gets the value of the customData property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getCustomData() {
         return customData;
@@ -513,11 +513,11 @@ public class Event
 
     /**
      * Sets the value of the customData property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setCustomData(String value) {
         this.customData = value;

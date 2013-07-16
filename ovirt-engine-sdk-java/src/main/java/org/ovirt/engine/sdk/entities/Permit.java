@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Permit complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Permit">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Permit", propOrder = {
@@ -60,7 +60,7 @@ public class Permit
 
     /**
      * Gets the value of the administrative property.
-     * 
+     *
      */
     public boolean isAdministrative() {
         return administrative;
@@ -68,7 +68,7 @@ public class Permit
 
     /**
      * Sets the value of the administrative property.
-     * 
+     *
      */
     public void setAdministrative(boolean value) {
         this.administrative = value;
@@ -80,11 +80,11 @@ public class Permit
 
     /**
      * Gets the value of the role property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Role }
-     *     
+     *
      */
     public Role getRole() {
         return role;
@@ -92,11 +92,11 @@ public class Permit
 
     /**
      * Sets the value of the role property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Role }
-     *     
+     *
      */
     public void setRole(Role value) {
         this.role = value;

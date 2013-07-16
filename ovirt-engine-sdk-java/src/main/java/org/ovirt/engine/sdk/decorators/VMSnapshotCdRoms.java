@@ -81,7 +81,7 @@ public class VMSnapshotCdRoms extends
 
     /**
      * Fetches VMSnapshotCdRom object by id.
-     * 
+     *
      * @return
      *     {@link VMSnapshotCdRom }
      *

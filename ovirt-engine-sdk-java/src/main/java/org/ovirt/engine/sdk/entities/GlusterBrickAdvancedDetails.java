@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GlusterBrickAdvancedDetails complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="GlusterBrickAdvancedDetails">
  *   &lt;complexContent>
@@ -50,8 +50,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GlusterBrickAdvancedDetails", propOrder = {
@@ -84,11 +84,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Gets the value of the port property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPort() {
         return port;
@@ -96,11 +96,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Sets the value of the port property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPort(Integer value) {
         this.port = value;
@@ -112,11 +112,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Gets the value of the pid property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPid() {
         return pid;
@@ -124,11 +124,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Sets the value of the pid property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPid(Integer value) {
         this.pid = value;
@@ -140,11 +140,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Gets the value of the device property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDevice() {
         return device;
@@ -152,11 +152,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Sets the value of the device property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDevice(String value) {
         this.device = value;
@@ -168,11 +168,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Gets the value of the mntOptions property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMntOptions() {
         return mntOptions;
@@ -180,11 +180,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Sets the value of the mntOptions property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMntOptions(String value) {
         this.mntOptions = value;
@@ -196,11 +196,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Gets the value of the fsName property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getFsName() {
         return fsName;
@@ -208,11 +208,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Sets the value of the fsName property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setFsName(String value) {
         this.fsName = value;
@@ -224,11 +224,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Gets the value of the glusterClients property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterClients }
-     *     
+     *
      */
     public GlusterClients getGlusterClients() {
         return glusterClients;
@@ -236,11 +236,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Sets the value of the glusterClients property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterClients }
-     *     
+     *
      */
     public void setGlusterClients(GlusterClients value) {
         this.glusterClients = value;
@@ -252,11 +252,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Gets the value of the memoryPools property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterMemoryPools }
-     *     
+     *
      */
     public GlusterMemoryPools getMemoryPools() {
         return memoryPools;
@@ -264,11 +264,11 @@ public class GlusterBrickAdvancedDetails
 
     /**
      * Sets the value of the memoryPools property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterMemoryPools }
-     *     
+     *
      */
     public void setMemoryPools(GlusterMemoryPools value) {
         this.memoryPools = value;

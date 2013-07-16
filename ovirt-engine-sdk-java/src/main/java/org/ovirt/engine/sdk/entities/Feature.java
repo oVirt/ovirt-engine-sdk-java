@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Feature complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Feature">
  *   &lt;complexContent>
@@ -52,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Feature", propOrder = {
@@ -90,11 +90,11 @@ public class Feature
 
     /**
      * Gets the value of the transparentHugepages property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TransparentHugePages }
-     *     
+     *
      */
     public TransparentHugePages getTransparentHugepages() {
         return transparentHugepages;
@@ -102,11 +102,11 @@ public class Feature
 
     /**
      * Sets the value of the transparentHugepages property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TransparentHugePages }
-     *     
+     *
      */
     public void setTransparentHugepages(TransparentHugePages value) {
         this.transparentHugepages = value;
@@ -118,11 +118,11 @@ public class Feature
 
     /**
      * Gets the value of the glusterVolumes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterVolumes }
-     *     
+     *
      */
     public GlusterVolumes getGlusterVolumes() {
         return glusterVolumes;
@@ -130,11 +130,11 @@ public class Feature
 
     /**
      * Sets the value of the glusterVolumes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterVolumes }
-     *     
+     *
      */
     public void setGlusterVolumes(GlusterVolumes value) {
         this.glusterVolumes = value;
@@ -146,11 +146,11 @@ public class Feature
 
     /**
      * Gets the value of the vmDeviceTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmDeviceTypes }
-     *     
+     *
      */
     public VmDeviceTypes getVmDeviceTypes() {
         return vmDeviceTypes;
@@ -158,11 +158,11 @@ public class Feature
 
     /**
      * Sets the value of the vmDeviceTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmDeviceTypes }
-     *     
+     *
      */
     public void setVmDeviceTypes(VmDeviceTypes value) {
         this.vmDeviceTypes = value;
@@ -174,11 +174,11 @@ public class Feature
 
     /**
      * Gets the value of the storageTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageTypes }
-     *     
+     *
      */
     public StorageTypes getStorageTypes() {
         return storageTypes;
@@ -186,11 +186,11 @@ public class Feature
 
     /**
      * Sets the value of the storageTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageTypes }
-     *     
+     *
      */
     public void setStorageTypes(StorageTypes value) {
         this.storageTypes = value;
@@ -202,11 +202,11 @@ public class Feature
 
     /**
      * Gets the value of the storageDomain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public StorageDomain getStorageDomain() {
         return storageDomain;
@@ -214,11 +214,11 @@ public class Feature
 
     /**
      * Sets the value of the storageDomain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public void setStorageDomain(StorageDomain value) {
         this.storageDomain = value;
@@ -230,11 +230,11 @@ public class Feature
 
     /**
      * Gets the value of the nic property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link NIC }
-     *     
+     *
      */
     public NIC getNic() {
         return nic;
@@ -242,11 +242,11 @@ public class Feature
 
     /**
      * Sets the value of the nic property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link NIC }
-     *     
+     *
      */
     public void setNic(NIC value) {
         this.nic = value;
@@ -258,11 +258,11 @@ public class Feature
 
     /**
      * Gets the value of the api property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link API }
-     *     
+     *
      */
     public API getApi() {
         return api;
@@ -270,11 +270,11 @@ public class Feature
 
     /**
      * Sets the value of the api property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link API }
-     *     
+     *
      */
     public void setApi(API value) {
         this.api = value;
@@ -286,11 +286,11 @@ public class Feature
 
     /**
      * Gets the value of the host property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Host }
-     *     
+     *
      */
     public Host getHost() {
         return host;
@@ -298,11 +298,11 @@ public class Feature
 
     /**
      * Sets the value of the host property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Host }
-     *     
+     *
      */
     public void setHost(Host value) {
         this.host = value;
@@ -314,11 +314,11 @@ public class Feature
 
     /**
      * Gets the value of the url property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Url }
-     *     
+     *
      */
     public Url getUrl() {
         return url;
@@ -326,11 +326,11 @@ public class Feature
 
     /**
      * Sets the value of the url property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Url }
-     *     
+     *
      */
     public void setUrl(Url value) {
         this.url = value;
@@ -342,11 +342,11 @@ public class Feature
 
     /**
      * Gets the value of the headers property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Headers }
-     *     
+     *
      */
     public Headers getHeaders() {
         return headers;
@@ -354,11 +354,11 @@ public class Feature
 
     /**
      * Sets the value of the headers property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Headers }
-     *     
+     *
      */
     public void setHeaders(Headers value) {
         this.headers = value;

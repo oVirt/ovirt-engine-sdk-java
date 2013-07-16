@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Request complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Request">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Request", propOrder = {
@@ -66,11 +66,11 @@ public class Request {
 
     /**
      * Gets the value of the httpMethod property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HttpMethod }
-     *     
+     *
      */
     public HttpMethod getHttpMethod() {
         return httpMethod;
@@ -78,11 +78,11 @@ public class Request {
 
     /**
      * Sets the value of the httpMethod property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HttpMethod }
-     *     
+     *
      */
     public void setHttpMethod(HttpMethod value) {
         this.httpMethod = value;
@@ -94,11 +94,11 @@ public class Request {
 
     /**
      * Gets the value of the headers property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Headers }
-     *     
+     *
      */
     public Headers getHeaders() {
         return headers;
@@ -106,11 +106,11 @@ public class Request {
 
     /**
      * Sets the value of the headers property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Headers }
-     *     
+     *
      */
     public void setHeaders(Headers value) {
         this.headers = value;
@@ -122,11 +122,11 @@ public class Request {
 
     /**
      * Gets the value of the url property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Url }
-     *     
+     *
      */
     public Url getUrl() {
         return url;
@@ -134,11 +134,11 @@ public class Request {
 
     /**
      * Sets the value of the url property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Url }
-     *     
+     *
      */
     public void setUrl(Url value) {
         this.url = value;
@@ -150,11 +150,11 @@ public class Request {
 
     /**
      * Gets the value of the body property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Body }
-     *     
+     *
      */
     public Body getBody() {
         return body;
@@ -162,11 +162,11 @@ public class Request {
 
     /**
      * Sets the value of the body property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Body }
-     *     
+     *
      */
     public void setBody(Body value) {
         this.body = value;

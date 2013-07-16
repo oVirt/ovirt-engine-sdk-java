@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Disk complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Disk">
  *   &lt;complexContent>
@@ -63,8 +63,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Disk", propOrder = {
@@ -127,11 +127,11 @@ public class Disk
 
     /**
      * Gets the value of the alias property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAlias() {
         return alias;
@@ -139,11 +139,11 @@ public class Disk
 
     /**
      * Sets the value of the alias property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAlias(String value) {
         this.alias = value;
@@ -155,11 +155,11 @@ public class Disk
 
     /**
      * Gets the value of the imageId property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getImageId() {
         return imageId;
@@ -167,11 +167,11 @@ public class Disk
 
     /**
      * Sets the value of the imageId property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setImageId(String value) {
         this.imageId = value;
@@ -183,11 +183,11 @@ public class Disk
 
     /**
      * Gets the value of the storageDomain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public StorageDomain getStorageDomain() {
         return storageDomain;
@@ -195,11 +195,11 @@ public class Disk
 
     /**
      * Sets the value of the storageDomain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomain }
-     *     
+     *
      */
     public void setStorageDomain(StorageDomain value) {
         this.storageDomain = value;
@@ -211,11 +211,11 @@ public class Disk
 
     /**
      * Gets the value of the storageDomains property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageDomains }
-     *     
+     *
      */
     public StorageDomains getStorageDomains() {
         return storageDomains;
@@ -223,11 +223,11 @@ public class Disk
 
     /**
      * Sets the value of the storageDomains property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageDomains }
-     *     
+     *
      */
     public void setStorageDomains(StorageDomains value) {
         this.storageDomains = value;
@@ -239,11 +239,11 @@ public class Disk
 
     /**
      * Gets the value of the size property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getSize() {
         return size;
@@ -251,11 +251,11 @@ public class Disk
 
     /**
      * Sets the value of the size property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setSize(Long value) {
         this.size = value;
@@ -267,11 +267,11 @@ public class Disk
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -279,11 +279,11 @@ public class Disk
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -295,11 +295,11 @@ public class Disk
 
     /**
      * Gets the value of the provisionedSize property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getProvisionedSize() {
         return provisionedSize;
@@ -307,11 +307,11 @@ public class Disk
 
     /**
      * Sets the value of the provisionedSize property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setProvisionedSize(Long value) {
         this.provisionedSize = value;
@@ -323,11 +323,11 @@ public class Disk
 
     /**
      * Gets the value of the actualSize property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getActualSize() {
         return actualSize;
@@ -335,11 +335,11 @@ public class Disk
 
     /**
      * Sets the value of the actualSize property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setActualSize(Long value) {
         this.actualSize = value;
@@ -351,11 +351,11 @@ public class Disk
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -363,11 +363,11 @@ public class Disk
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -379,11 +379,11 @@ public class Disk
 
     /**
      * Gets the value of the interface property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getInterface() {
         return _interface;
@@ -391,11 +391,11 @@ public class Disk
 
     /**
      * Sets the value of the interface property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setInterface(String value) {
         this._interface = value;
@@ -407,11 +407,11 @@ public class Disk
 
     /**
      * Gets the value of the format property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getFormat() {
         return format;
@@ -419,11 +419,11 @@ public class Disk
 
     /**
      * Sets the value of the format property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setFormat(String value) {
         this.format = value;
@@ -435,11 +435,11 @@ public class Disk
 
     /**
      * Gets the value of the sparse property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getSparse() {
         return sparse;
@@ -447,11 +447,11 @@ public class Disk
 
     /**
      * Sets the value of the sparse property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setSparse(Boolean value) {
         this.sparse = value;
@@ -463,11 +463,11 @@ public class Disk
 
     /**
      * Gets the value of the bootable property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getBootable() {
         return bootable;
@@ -475,11 +475,11 @@ public class Disk
 
     /**
      * Sets the value of the bootable property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setBootable(Boolean value) {
         this.bootable = value;
@@ -491,11 +491,11 @@ public class Disk
 
     /**
      * Gets the value of the shareable property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getShareable() {
         return shareable;
@@ -503,11 +503,11 @@ public class Disk
 
     /**
      * Sets the value of the shareable property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setShareable(Boolean value) {
         this.shareable = value;
@@ -519,11 +519,11 @@ public class Disk
 
     /**
      * Gets the value of the wipeAfterDelete property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getWipeAfterDelete() {
         return wipeAfterDelete;
@@ -531,11 +531,11 @@ public class Disk
 
     /**
      * Sets the value of the wipeAfterDelete property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setWipeAfterDelete(Boolean value) {
         this.wipeAfterDelete = value;
@@ -547,11 +547,11 @@ public class Disk
 
     /**
      * Gets the value of the propagateErrors property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getPropagateErrors() {
         return propagateErrors;
@@ -559,11 +559,11 @@ public class Disk
 
     /**
      * Sets the value of the propagateErrors property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setPropagateErrors(Boolean value) {
         this.propagateErrors = value;
@@ -575,11 +575,11 @@ public class Disk
 
     /**
      * Gets the value of the statistics property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Statistics }
-     *     
+     *
      */
     public Object getStatistics() {
         return statistics;
@@ -587,11 +587,11 @@ public class Disk
 
     /**
      * Sets the value of the statistics property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Statistics }
-     *     
+     *
      */
     public void setStatistics(Statistics value) {
         this.statistics = value;
@@ -603,11 +603,11 @@ public class Disk
 
     /**
      * Gets the value of the active property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getActive() {
         return active;
@@ -615,11 +615,11 @@ public class Disk
 
     /**
      * Sets the value of the active property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setActive(Boolean value) {
         this.active = value;
@@ -631,11 +631,11 @@ public class Disk
 
     /**
      * Gets the value of the quota property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Quota }
-     *     
+     *
      */
     public Quota getQuota() {
         return quota;
@@ -643,11 +643,11 @@ public class Disk
 
     /**
      * Sets the value of the quota property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Quota }
-     *     
+     *
      */
     public void setQuota(Quota value) {
         this.quota = value;
@@ -659,11 +659,11 @@ public class Disk
 
     /**
      * Gets the value of the lunStorage property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Storage }
-     *     
+     *
      */
     public Storage getLunStorage() {
         return lunStorage;
@@ -671,11 +671,11 @@ public class Disk
 
     /**
      * Sets the value of the lunStorage property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Storage }
-     *     
+     *
      */
     public void setLunStorage(Storage value) {
         this.lunStorage = value;
@@ -687,11 +687,11 @@ public class Disk
 
     /**
      * Gets the value of the sgio property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getSgio() {
         return sgio;
@@ -699,11 +699,11 @@ public class Disk
 
     /**
      * Sets the value of the sgio property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setSgio(String value) {
         this.sgio = value;

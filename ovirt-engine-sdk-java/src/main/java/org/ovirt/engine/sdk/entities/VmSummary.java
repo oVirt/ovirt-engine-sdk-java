@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for VmSummary complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="VmSummary">
  *   &lt;complexContent>
@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VmSummary", propOrder = {
@@ -61,11 +61,11 @@ public class VmSummary {
 
     /**
      * Gets the value of the active property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getActive() {
         return active;
@@ -73,11 +73,11 @@ public class VmSummary {
 
     /**
      * Sets the value of the active property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setActive(Integer value) {
         this.active = value;
@@ -89,11 +89,11 @@ public class VmSummary {
 
     /**
      * Gets the value of the migrating property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMigrating() {
         return migrating;
@@ -101,11 +101,11 @@ public class VmSummary {
 
     /**
      * Sets the value of the migrating property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMigrating(Integer value) {
         this.migrating = value;
@@ -117,11 +117,11 @@ public class VmSummary {
 
     /**
      * Gets the value of the total property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getTotal() {
         return total;
@@ -129,11 +129,11 @@ public class VmSummary {
 
     /**
      * Sets the value of the total property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setTotal(Integer value) {
         this.total = value;

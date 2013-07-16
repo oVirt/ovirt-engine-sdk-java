@@ -32,9 +32,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GlusterBricks complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="GlusterBricks">
  *   &lt;complexContent>
@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GlusterBricks", propOrder = {
@@ -72,11 +72,11 @@ public class GlusterBricks
 
     /**
      * Gets the value of the replicaCount property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getReplicaCount() {
         return replicaCount;
@@ -84,11 +84,11 @@ public class GlusterBricks
 
     /**
      * Sets the value of the replicaCount property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setReplicaCount(Integer value) {
         this.replicaCount = value;
@@ -100,11 +100,11 @@ public class GlusterBricks
 
     /**
      * Gets the value of the stripeCount property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getStripeCount() {
         return stripeCount;
@@ -112,11 +112,11 @@ public class GlusterBricks
 
     /**
      * Sets the value of the stripeCount property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setStripeCount(Integer value) {
         this.stripeCount = value;
@@ -128,25 +128,25 @@ public class GlusterBricks
 
     /**
      * Gets the value of the glusterBricks property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the glusterBricks property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getGlusterBricks().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link GlusterBrick }
-     * 
-     * 
+     *
+     *
      */
     public List<GlusterBrick> getGlusterBricks() {
         if (glusterBricks == null) {

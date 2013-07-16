@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for ProductInfo complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ProductInfo">
  *   &lt;complexContent>
@@ -45,8 +45,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProductInfo", propOrder = {
@@ -65,11 +65,11 @@ public class ProductInfo
 
     /**
      * Gets the value of the vendor property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getVendor() {
         return vendor;
@@ -77,11 +77,11 @@ public class ProductInfo
 
     /**
      * Sets the value of the vendor property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setVendor(String value) {
         this.vendor = value;
@@ -93,11 +93,11 @@ public class ProductInfo
 
     /**
      * Gets the value of the version property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Version }
-     *     
+     *
      */
     public Version getVersion() {
         return version;
@@ -105,11 +105,11 @@ public class ProductInfo
 
     /**
      * Sets the value of the version property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Version }
-     *     
+     *
      */
     public void setVersion(Version value) {
         this.version = value;
@@ -121,11 +121,11 @@ public class ProductInfo
 
     /**
      * Gets the value of the fullVersion property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getFullVersion() {
         return fullVersion;
@@ -133,11 +133,11 @@ public class ProductInfo
 
     /**
      * Sets the value of the fullVersion property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setFullVersion(String value) {
         this.fullVersion = value;

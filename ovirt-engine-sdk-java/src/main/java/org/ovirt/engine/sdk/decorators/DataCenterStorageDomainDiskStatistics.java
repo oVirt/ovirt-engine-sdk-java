@@ -81,7 +81,7 @@ public class DataCenterStorageDomainDiskStatistics extends
 
     /**
      * Fetches DataCenterStorageDomainDiskStatistic object by id.
-     * 
+     *
      * @return
      *     {@link DataCenterStorageDomainDiskStatistic }
      *

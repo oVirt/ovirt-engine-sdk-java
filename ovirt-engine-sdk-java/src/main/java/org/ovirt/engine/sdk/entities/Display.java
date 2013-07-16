@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Display complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Display">
  *   &lt;complexContent>
@@ -52,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Display", propOrder = {
@@ -87,11 +87,11 @@ public class Display {
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -99,11 +99,11 @@ public class Display {
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -115,11 +115,11 @@ public class Display {
 
     /**
      * Gets the value of the address property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAddress() {
         return address;
@@ -127,11 +127,11 @@ public class Display {
 
     /**
      * Sets the value of the address property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAddress(String value) {
         this.address = value;
@@ -143,11 +143,11 @@ public class Display {
 
     /**
      * Gets the value of the port property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPort() {
         return port;
@@ -155,11 +155,11 @@ public class Display {
 
     /**
      * Sets the value of the port property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPort(Integer value) {
         this.port = value;
@@ -171,11 +171,11 @@ public class Display {
 
     /**
      * Gets the value of the securePort property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getSecurePort() {
         return securePort;
@@ -183,11 +183,11 @@ public class Display {
 
     /**
      * Sets the value of the securePort property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setSecurePort(Integer value) {
         this.securePort = value;
@@ -199,11 +199,11 @@ public class Display {
 
     /**
      * Gets the value of the monitors property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMonitors() {
         return monitors;
@@ -211,11 +211,11 @@ public class Display {
 
     /**
      * Sets the value of the monitors property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMonitors(Integer value) {
         this.monitors = value;
@@ -227,11 +227,11 @@ public class Display {
 
     /**
      * Gets the value of the allowOverride property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getAllowOverride() {
         return allowOverride;
@@ -239,11 +239,11 @@ public class Display {
 
     /**
      * Sets the value of the allowOverride property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setAllowOverride(Boolean value) {
         this.allowOverride = value;
@@ -255,11 +255,11 @@ public class Display {
 
     /**
      * Gets the value of the certificate property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Certificate }
-     *     
+     *
      */
     public Certificate getCertificate() {
         return certificate;
@@ -267,11 +267,11 @@ public class Display {
 
     /**
      * Sets the value of the certificate property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Certificate }
-     *     
+     *
      */
     public void setCertificate(Certificate value) {
         this.certificate = value;
@@ -283,11 +283,11 @@ public class Display {
 
     /**
      * Gets the value of the smartcardEnabled property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getSmartcardEnabled() {
         return smartcardEnabled;
@@ -295,11 +295,11 @@ public class Display {
 
     /**
      * Sets the value of the smartcardEnabled property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setSmartcardEnabled(Boolean value) {
         this.smartcardEnabled = value;
@@ -311,11 +311,11 @@ public class Display {
 
     /**
      * Gets the value of the keyboardLayout property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getKeyboardLayout() {
         return keyboardLayout;
@@ -323,11 +323,11 @@ public class Display {
 
     /**
      * Sets the value of the keyboardLayout property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setKeyboardLayout(String value) {
         this.keyboardLayout = value;

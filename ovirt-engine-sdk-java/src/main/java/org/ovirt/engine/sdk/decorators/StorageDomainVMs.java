@@ -81,7 +81,7 @@ public class StorageDomainVMs extends
 
     /**
      * Fetches StorageDomainVM object by id.
-     * 
+     *
      * @return
      *     {@link StorageDomainVM }
      *

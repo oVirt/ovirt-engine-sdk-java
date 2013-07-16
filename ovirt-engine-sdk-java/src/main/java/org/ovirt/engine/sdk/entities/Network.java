@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Network complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Network">
  *   &lt;complexContent>
@@ -52,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Network", propOrder = {
@@ -86,11 +86,11 @@ public class Network
 
     /**
      * Gets the value of the dataCenter property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public DataCenter getDataCenter() {
         return dataCenter;
@@ -98,11 +98,11 @@ public class Network
 
     /**
      * Sets the value of the dataCenter property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link DataCenter }
-     *     
+     *
      */
     public void setDataCenter(DataCenter value) {
         this.dataCenter = value;
@@ -114,11 +114,11 @@ public class Network
 
     /**
      * Gets the value of the cluster property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Cluster }
-     *     
+     *
      */
     public Cluster getCluster() {
         return cluster;
@@ -126,11 +126,11 @@ public class Network
 
     /**
      * Sets the value of the cluster property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Cluster }
-     *     
+     *
      */
     public void setCluster(Cluster value) {
         this.cluster = value;
@@ -142,11 +142,11 @@ public class Network
 
     /**
      * Gets the value of the ip property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link IP }
-     *     
+     *
      */
     public IP getIp() {
         return ip;
@@ -154,11 +154,11 @@ public class Network
 
     /**
      * Sets the value of the ip property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link IP }
-     *     
+     *
      */
     public void setIp(IP value) {
         this.ip = value;
@@ -170,11 +170,11 @@ public class Network
 
     /**
      * Gets the value of the vlan property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VLAN }
-     *     
+     *
      */
     public VLAN getVlan() {
         return vlan;
@@ -182,11 +182,11 @@ public class Network
 
     /**
      * Sets the value of the vlan property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VLAN }
-     *     
+     *
      */
     public void setVlan(VLAN value) {
         this.vlan = value;
@@ -198,11 +198,11 @@ public class Network
 
     /**
      * Gets the value of the stp property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getStp() {
         return stp;
@@ -210,11 +210,11 @@ public class Network
 
     /**
      * Sets the value of the stp property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setStp(Boolean value) {
         this.stp = value;
@@ -226,11 +226,11 @@ public class Network
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -238,11 +238,11 @@ public class Network
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -254,11 +254,11 @@ public class Network
 
     /**
      * Gets the value of the display property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getDisplay() {
         return display;
@@ -266,11 +266,11 @@ public class Network
 
     /**
      * Sets the value of the display property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setDisplay(Boolean value) {
         this.display = value;
@@ -282,11 +282,11 @@ public class Network
 
     /**
      * Gets the value of the mtu property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMtu() {
         return mtu;
@@ -294,11 +294,11 @@ public class Network
 
     /**
      * Sets the value of the mtu property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMtu(Integer value) {
         this.mtu = value;
@@ -310,11 +310,11 @@ public class Network
 
     /**
      * Gets the value of the usages property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Usages }
-     *     
+     *
      */
     public Usages getUsages() {
         return usages;
@@ -322,11 +322,11 @@ public class Network
 
     /**
      * Sets the value of the usages property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Usages }
-     *     
+     *
      */
     public void setUsages(Usages value) {
         this.usages = value;
@@ -338,11 +338,11 @@ public class Network
 
     /**
      * Gets the value of the required property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getRequired() {
         return required;
@@ -350,11 +350,11 @@ public class Network
 
     /**
      * Sets the value of the required property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setRequired(Boolean value) {
         this.required = value;

@@ -81,7 +81,7 @@ public class VMNICReportedDevices extends
 
     /**
      * Fetches VMNICReportedDevice object by id.
-     * 
+     *
      * @return
      *     {@link VMNICReportedDevice }
      *

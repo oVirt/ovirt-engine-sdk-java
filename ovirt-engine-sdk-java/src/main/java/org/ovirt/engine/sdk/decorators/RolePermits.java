@@ -81,7 +81,7 @@ public class RolePermits extends
 
     /**
      * Fetches RolePermit object by id.
-     * 
+     *
      * @return
      *     {@link RolePermit }
      *

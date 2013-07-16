@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for ActionableResource complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ActionableResource">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ActionableResource", propOrder = {
@@ -60,11 +60,11 @@ public class ActionableResource {
 
     /**
      * Gets the value of the actions property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Actions }
-     *     
+     *
      */
     public Actions getActions() {
         return actions;
@@ -72,11 +72,11 @@ public class ActionableResource {
 
     /**
      * Sets the value of the actions property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Actions }
-     *     
+     *
      */
     public void setActions(Actions value) {
         this.actions = value;

@@ -81,7 +81,7 @@ public class StorageDomainTemplates extends
 
     /**
      * Fetches StorageDomainTemplate object by id.
-     * 
+     *
      * @return
      *     {@link StorageDomainTemplate }
      *

@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CpuTopology complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CpuTopology">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CpuTopology")
@@ -59,11 +59,11 @@ public class CpuTopology {
 
     /**
      * Gets the value of the sockets property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getSockets() {
         return sockets;
@@ -71,11 +71,11 @@ public class CpuTopology {
 
     /**
      * Sets the value of the sockets property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setSockets(Integer value) {
         this.sockets = value;
@@ -83,11 +83,11 @@ public class CpuTopology {
 
     /**
      * Gets the value of the cores property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getCores() {
         return cores;
@@ -95,11 +95,11 @@ public class CpuTopology {
 
     /**
      * Sets the value of the cores property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setCores(Integer value) {
         this.cores = value;
@@ -107,11 +107,11 @@ public class CpuTopology {
 
     /**
      * Gets the value of the threads property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getThreads() {
         return threads;
@@ -119,11 +119,11 @@ public class CpuTopology {
 
     /**
      * Sets the value of the threads property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setThreads(Integer value) {
         this.threads = value;

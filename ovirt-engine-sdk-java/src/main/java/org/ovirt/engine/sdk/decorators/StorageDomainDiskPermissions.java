@@ -81,7 +81,7 @@ public class StorageDomainDiskPermissions extends
 
     /**
      * Fetches StorageDomainDiskPermission object by id.
-     * 
+     *
      * @return
      *     {@link StorageDomainDiskPermission }
      *

@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for DetailedLink complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="DetailedLink">
  *   &lt;complexContent>
@@ -45,8 +45,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DetailedLink", propOrder = {
@@ -67,11 +67,11 @@ public class DetailedLink
 
     /**
      * Gets the value of the request property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Request }
-     *     
+     *
      */
     public Request getRequest() {
         return request;
@@ -79,11 +79,11 @@ public class DetailedLink
 
     /**
      * Sets the value of the request property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Request }
-     *     
+     *
      */
     public void setRequest(Request value) {
         this.request = value;
@@ -95,11 +95,11 @@ public class DetailedLink
 
     /**
      * Gets the value of the response property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Response }
-     *     
+     *
      */
     public Response getResponse() {
         return response;
@@ -107,11 +107,11 @@ public class DetailedLink
 
     /**
      * Sets the value of the response property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Response }
-     *     
+     *
      */
     public void setResponse(Response value) {
         this.response = value;
@@ -123,11 +123,11 @@ public class DetailedLink
 
     /**
      * Gets the value of the linkCapabilities property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link LinkCapabilities }
-     *     
+     *
      */
     public LinkCapabilities getLinkCapabilities() {
         return linkCapabilities;
@@ -135,11 +135,11 @@ public class DetailedLink
 
     /**
      * Sets the value of the linkCapabilities property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link LinkCapabilities }
-     *     
+     *
      */
     public void setLinkCapabilities(LinkCapabilities value) {
         this.linkCapabilities = value;

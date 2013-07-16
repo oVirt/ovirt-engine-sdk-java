@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for User complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="User">
  *   &lt;complexContent>
@@ -51,8 +51,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "User", propOrder = {
@@ -85,11 +85,11 @@ public class User
 
     /**
      * Gets the value of the domain property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Domain }
-     *     
+     *
      */
     public Domain getDomain() {
         return domain;
@@ -97,11 +97,11 @@ public class User
 
     /**
      * Sets the value of the domain property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Domain }
-     *     
+     *
      */
     public void setDomain(Domain value) {
         this.domain = value;
@@ -113,11 +113,11 @@ public class User
 
     /**
      * Gets the value of the department property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDepartment() {
         return department;
@@ -125,11 +125,11 @@ public class User
 
     /**
      * Sets the value of the department property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDepartment(String value) {
         this.department = value;
@@ -141,11 +141,11 @@ public class User
 
     /**
      * Gets the value of the loggedIn property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getLoggedIn() {
         return loggedIn;
@@ -153,11 +153,11 @@ public class User
 
     /**
      * Sets the value of the loggedIn property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setLoggedIn(Boolean value) {
         this.loggedIn = value;
@@ -169,11 +169,11 @@ public class User
 
     /**
      * Gets the value of the lastName property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getLastName() {
         return lastName;
@@ -181,11 +181,11 @@ public class User
 
     /**
      * Sets the value of the lastName property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setLastName(String value) {
         this.lastName = value;
@@ -197,11 +197,11 @@ public class User
 
     /**
      * Gets the value of the userName property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getUserName() {
         return userName;
@@ -209,11 +209,11 @@ public class User
 
     /**
      * Sets the value of the userName property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setUserName(String value) {
         this.userName = value;
@@ -225,11 +225,11 @@ public class User
 
     /**
      * Gets the value of the password property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getPassword() {
         return password;
@@ -237,11 +237,11 @@ public class User
 
     /**
      * Sets the value of the password property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setPassword(String value) {
         this.password = value;
@@ -253,11 +253,11 @@ public class User
 
     /**
      * Gets the value of the email property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getEmail() {
         return email;
@@ -265,11 +265,11 @@ public class User
 
     /**
      * Sets the value of the email property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setEmail(String value) {
         this.email = value;
@@ -281,11 +281,11 @@ public class User
 
     /**
      * Gets the value of the roles property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Roles }
-     *     
+     *
      */
     public Object getRoles() {
         return roles;
@@ -293,11 +293,11 @@ public class User
 
     /**
      * Sets the value of the roles property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Roles }
-     *     
+     *
      */
     public void setRoles(Roles value) {
         this.roles = value;
@@ -309,11 +309,11 @@ public class User
 
     /**
      * Gets the value of the groups property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Groups }
-     *     
+     *
      */
     public Groups getGroups() {
         return groups;
@@ -321,11 +321,11 @@ public class User
 
     /**
      * Sets the value of the groups property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Groups }
-     *     
+     *
      */
     public void setGroups(Groups value) {
         this.groups = value;

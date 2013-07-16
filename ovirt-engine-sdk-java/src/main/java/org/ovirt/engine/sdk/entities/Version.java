@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Version complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Version">
  *   &lt;complexContent>
@@ -47,8 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Version")
@@ -76,11 +76,11 @@ public class Version
 
     /**
      * Gets the value of the major property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMajor() {
         return major;
@@ -88,11 +88,11 @@ public class Version
 
     /**
      * Sets the value of the major property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMajor(Integer value) {
         this.major = value;
@@ -100,11 +100,11 @@ public class Version
 
     /**
      * Gets the value of the minor property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getMinor() {
         return minor;
@@ -112,11 +112,11 @@ public class Version
 
     /**
      * Sets the value of the minor property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setMinor(Integer value) {
         this.minor = value;
@@ -124,11 +124,11 @@ public class Version
 
     /**
      * Gets the value of the build property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getBuild() {
         return build;
@@ -136,11 +136,11 @@ public class Version
 
     /**
      * Sets the value of the build property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setBuild(Integer value) {
         this.build = value;
@@ -148,11 +148,11 @@ public class Version
 
     /**
      * Gets the value of the revision property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getRevision() {
         return revision;
@@ -160,11 +160,11 @@ public class Version
 
     /**
      * Sets the value of the revision property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setRevision(Integer value) {
         this.revision = value;
@@ -172,11 +172,11 @@ public class Version
 
     /**
      * Gets the value of the fullVersion property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getFullVersion() {
         return fullVersion;
@@ -184,11 +184,11 @@ public class Version
 
     /**
      * Sets the value of the fullVersion property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setFullVersion(String value) {
         this.fullVersion = value;

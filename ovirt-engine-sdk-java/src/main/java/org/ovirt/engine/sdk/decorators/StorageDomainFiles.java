@@ -81,7 +81,7 @@ public class StorageDomainFiles extends
 
     /**
      * Fetches StorageDomainFile object by id.
-     * 
+     *
      * @return
      *     {@link StorageDomainFile }
      *

@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GlusterBrickMemoryInfo complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="GlusterBrickMemoryInfo">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GlusterBrickMemoryInfo", propOrder = {
@@ -57,11 +57,11 @@ public class GlusterBrickMemoryInfo {
 
     /**
      * Gets the value of the memoryPools property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterMemoryPools }
-     *     
+     *
      */
     public GlusterMemoryPools getMemoryPools() {
         return memoryPools;
@@ -69,11 +69,11 @@ public class GlusterBrickMemoryInfo {
 
     /**
      * Sets the value of the memoryPools property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterMemoryPools }
-     *     
+     *
      */
     public void setMemoryPools(GlusterMemoryPools value) {
         this.memoryPools = value;

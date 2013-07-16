@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for OperatingSystem complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="OperatingSystem">
  *   &lt;complexContent>
@@ -50,8 +50,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OperatingSystem", propOrder = {
@@ -73,25 +73,25 @@ public class OperatingSystem {
 
     /**
      * Gets the value of the boot property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the boot property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getBoot().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Boot }
-     * 
-     * 
+     *
+     *
      */
     public List<Boot> getBoot() {
         if (boot == null) {
@@ -110,11 +110,11 @@ public class OperatingSystem {
 
     /**
      * Gets the value of the kernel property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getKernel() {
         return kernel;
@@ -122,11 +122,11 @@ public class OperatingSystem {
 
     /**
      * Sets the value of the kernel property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setKernel(String value) {
         this.kernel = value;
@@ -138,11 +138,11 @@ public class OperatingSystem {
 
     /**
      * Gets the value of the initrd property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getInitrd() {
         return initrd;
@@ -150,11 +150,11 @@ public class OperatingSystem {
 
     /**
      * Sets the value of the initrd property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setInitrd(String value) {
         this.initrd = value;
@@ -166,11 +166,11 @@ public class OperatingSystem {
 
     /**
      * Gets the value of the cmdline property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getCmdline() {
         return cmdline;
@@ -178,11 +178,11 @@ public class OperatingSystem {
 
     /**
      * Sets the value of the cmdline property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setCmdline(String value) {
         this.cmdline = value;
@@ -194,11 +194,11 @@ public class OperatingSystem {
 
     /**
      * Gets the value of the version property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Version }
-     *     
+     *
      */
     public Version getVersion() {
         return version;
@@ -206,11 +206,11 @@ public class OperatingSystem {
 
     /**
      * Sets the value of the version property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Version }
-     *     
+     *
      */
     public void setVersion(Version value) {
         this.version = value;
@@ -222,11 +222,11 @@ public class OperatingSystem {
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -234,11 +234,11 @@ public class OperatingSystem {
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;

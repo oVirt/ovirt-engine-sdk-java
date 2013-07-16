@@ -81,7 +81,7 @@ public class StorageDomainTemplateDisks extends
 
     /**
      * Fetches StorageDomainTemplateDisk object by id.
-     * 
+     *
      * @return
      *     {@link StorageDomainTemplateDisk }
      *

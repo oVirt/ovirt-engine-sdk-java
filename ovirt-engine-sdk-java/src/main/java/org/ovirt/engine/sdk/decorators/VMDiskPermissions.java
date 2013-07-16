@@ -81,7 +81,7 @@ public class VMDiskPermissions extends
 
     /**
      * Fetches VMDiskPermission object by id.
-     * 
+     *
      * @return
      *     {@link VMDiskPermission }
      *

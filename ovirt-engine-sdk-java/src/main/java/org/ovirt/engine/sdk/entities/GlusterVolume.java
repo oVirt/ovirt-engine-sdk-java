@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for GlusterVolume complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="GlusterVolume">
  *   &lt;complexContent>
@@ -51,8 +51,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GlusterVolume", propOrder = {
@@ -86,11 +86,11 @@ public class GlusterVolume
 
     /**
      * Gets the value of the cluster property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Cluster }
-     *     
+     *
      */
     public Cluster getCluster() {
         return cluster;
@@ -98,11 +98,11 @@ public class GlusterVolume
 
     /**
      * Sets the value of the cluster property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Cluster }
-     *     
+     *
      */
     public void setCluster(Cluster value) {
         this.cluster = value;
@@ -114,11 +114,11 @@ public class GlusterVolume
 
     /**
      * Gets the value of the volumeType property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getVolumeType() {
         return volumeType;
@@ -126,11 +126,11 @@ public class GlusterVolume
 
     /**
      * Sets the value of the volumeType property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setVolumeType(String value) {
         this.volumeType = value;
@@ -142,11 +142,11 @@ public class GlusterVolume
 
     /**
      * Gets the value of the transportTypes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TransportTypes }
-     *     
+     *
      */
     public TransportTypes getTransportTypes() {
         return transportTypes;
@@ -154,11 +154,11 @@ public class GlusterVolume
 
     /**
      * Sets the value of the transportTypes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TransportTypes }
-     *     
+     *
      */
     public void setTransportTypes(TransportTypes value) {
         this.transportTypes = value;
@@ -170,11 +170,11 @@ public class GlusterVolume
 
     /**
      * Gets the value of the replicaCount property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getReplicaCount() {
         return replicaCount;
@@ -182,11 +182,11 @@ public class GlusterVolume
 
     /**
      * Sets the value of the replicaCount property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setReplicaCount(Integer value) {
         this.replicaCount = value;
@@ -198,11 +198,11 @@ public class GlusterVolume
 
     /**
      * Gets the value of the stripeCount property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getStripeCount() {
         return stripeCount;
@@ -210,11 +210,11 @@ public class GlusterVolume
 
     /**
      * Sets the value of the stripeCount property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setStripeCount(Integer value) {
         this.stripeCount = value;
@@ -226,11 +226,11 @@ public class GlusterVolume
 
     /**
      * Gets the value of the bricks property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link GlusterBricks }
-     *     
+     *
      */
     public GlusterBricks getBricks() {
         return bricks;
@@ -238,11 +238,11 @@ public class GlusterVolume
 
     /**
      * Sets the value of the bricks property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link GlusterBricks }
-     *     
+     *
      */
     public void setBricks(GlusterBricks value) {
         this.bricks = value;
@@ -254,11 +254,11 @@ public class GlusterVolume
 
     /**
      * Gets the value of the options property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Options }
-     *     
+     *
      */
     public Options getOptions() {
         return options;
@@ -266,11 +266,11 @@ public class GlusterVolume
 
     /**
      * Sets the value of the options property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Options }
-     *     
+     *
      */
     public void setOptions(Options value) {
         this.options = value;
@@ -282,11 +282,11 @@ public class GlusterVolume
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -294,11 +294,11 @@ public class GlusterVolume
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;

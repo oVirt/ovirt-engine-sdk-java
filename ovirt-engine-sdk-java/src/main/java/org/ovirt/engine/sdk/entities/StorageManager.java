@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlValue;
 
 /**
  * <p>Java class for StorageManager complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="StorageManager">
  *   &lt;simpleContent>
@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlValue;
  *   &lt;/simpleContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "StorageManager", propOrder = {
@@ -58,7 +58,7 @@ public class StorageManager {
 
     /**
      * Gets the value of the value property.
-     * 
+     *
      */
     public boolean isValue() {
         return value;
@@ -66,7 +66,7 @@ public class StorageManager {
 
     /**
      * Sets the value of the value property.
-     * 
+     *
      */
     public void setValue(boolean value) {
         this.value = value;
@@ -78,11 +78,11 @@ public class StorageManager {
 
     /**
      * Gets the value of the priority property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPriority() {
         return priority;
@@ -90,11 +90,11 @@ public class StorageManager {
 
     /**
      * Sets the value of the priority property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPriority(Integer value) {
         this.priority = value;

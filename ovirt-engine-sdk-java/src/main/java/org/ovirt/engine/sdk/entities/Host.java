@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Host complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Host">
  *   &lt;complexContent>
@@ -68,8 +68,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Host", propOrder = {
@@ -141,11 +141,11 @@ public class Host
 
     /**
      * Gets the value of the address property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAddress() {
         return address;
@@ -153,11 +153,11 @@ public class Host
 
     /**
      * Sets the value of the address property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAddress(String value) {
         this.address = value;
@@ -169,11 +169,11 @@ public class Host
 
     /**
      * Gets the value of the certificate property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Certificate }
-     *     
+     *
      */
     public Certificate getCertificate() {
         return certificate;
@@ -181,11 +181,11 @@ public class Host
 
     /**
      * Sets the value of the certificate property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Certificate }
-     *     
+     *
      */
     public void setCertificate(Certificate value) {
         this.certificate = value;
@@ -197,11 +197,11 @@ public class Host
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -209,11 +209,11 @@ public class Host
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -225,11 +225,11 @@ public class Host
 
     /**
      * Gets the value of the cluster property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Cluster }
-     *     
+     *
      */
     public Cluster getCluster() {
         return cluster;
@@ -237,11 +237,11 @@ public class Host
 
     /**
      * Sets the value of the cluster property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Cluster }
-     *     
+     *
      */
     public void setCluster(Cluster value) {
         this.cluster = value;
@@ -253,11 +253,11 @@ public class Host
 
     /**
      * Gets the value of the port property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public Integer getPort() {
         return port;
@@ -265,11 +265,11 @@ public class Host
 
     /**
      * Sets the value of the port property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setPort(Integer value) {
         this.port = value;
@@ -281,11 +281,11 @@ public class Host
 
     /**
      * Gets the value of the type property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getType() {
         return type;
@@ -293,11 +293,11 @@ public class Host
 
     /**
      * Sets the value of the type property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setType(String value) {
         this.type = value;
@@ -309,11 +309,11 @@ public class Host
 
     /**
      * Gets the value of the storageManager property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link StorageManager }
-     *     
+     *
      */
     public StorageManager getStorageManager() {
         return storageManager;
@@ -321,11 +321,11 @@ public class Host
 
     /**
      * Sets the value of the storageManager property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link StorageManager }
-     *     
+     *
      */
     public void setStorageManager(StorageManager value) {
         this.storageManager = value;
@@ -337,11 +337,11 @@ public class Host
 
     /**
      * Gets the value of the version property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Version }
-     *     
+     *
      */
     public Version getVersion() {
         return version;
@@ -349,11 +349,11 @@ public class Host
 
     /**
      * Sets the value of the version property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Version }
-     *     
+     *
      */
     public void setVersion(Version value) {
         this.version = value;
@@ -365,11 +365,11 @@ public class Host
 
     /**
      * Gets the value of the hardwareInformation property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link HardwareInformation }
-     *     
+     *
      */
     public HardwareInformation getHardwareInformation() {
         return hardwareInformation;
@@ -377,11 +377,11 @@ public class Host
 
     /**
      * Sets the value of the hardwareInformation property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link HardwareInformation }
-     *     
+     *
      */
     public void setHardwareInformation(HardwareInformation value) {
         this.hardwareInformation = value;
@@ -393,11 +393,11 @@ public class Host
 
     /**
      * Gets the value of the powerManagement property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PowerManagement }
-     *     
+     *
      */
     public PowerManagement getPowerManagement() {
         return powerManagement;
@@ -405,11 +405,11 @@ public class Host
 
     /**
      * Sets the value of the powerManagement property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PowerManagement }
-     *     
+     *
      */
     public void setPowerManagement(PowerManagement value) {
         this.powerManagement = value;
@@ -421,11 +421,11 @@ public class Host
 
     /**
      * Gets the value of the ksm property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link KSM }
-     *     
+     *
      */
     public KSM getKsm() {
         return ksm;
@@ -433,11 +433,11 @@ public class Host
 
     /**
      * Sets the value of the ksm property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link KSM }
-     *     
+     *
      */
     public void setKsm(KSM value) {
         this.ksm = value;
@@ -449,11 +449,11 @@ public class Host
 
     /**
      * Gets the value of the transparentHugepages property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TransparentHugePages }
-     *     
+     *
      */
     public TransparentHugePages getTransparentHugepages() {
         return transparentHugepages;
@@ -461,11 +461,11 @@ public class Host
 
     /**
      * Sets the value of the transparentHugepages property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TransparentHugePages }
-     *     
+     *
      */
     public void setTransparentHugepages(TransparentHugePages value) {
         this.transparentHugepages = value;
@@ -477,11 +477,11 @@ public class Host
 
     /**
      * Gets the value of the iscsi property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link IscsiDetails }
-     *     
+     *
      */
     public IscsiDetails getIscsi() {
         return iscsi;
@@ -489,11 +489,11 @@ public class Host
 
     /**
      * Sets the value of the iscsi property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link IscsiDetails }
-     *     
+     *
      */
     public void setIscsi(IscsiDetails value) {
         this.iscsi = value;
@@ -505,11 +505,11 @@ public class Host
 
     /**
      * Gets the value of the rootPassword property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getRootPassword() {
         return rootPassword;
@@ -517,11 +517,11 @@ public class Host
 
     /**
      * Sets the value of the rootPassword property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setRootPassword(String value) {
         this.rootPassword = value;
@@ -533,11 +533,11 @@ public class Host
 
     /**
      * Gets the value of the statistics property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Statistics }
-     *     
+     *
      */
     public Object getStatistics() {
         return statistics;
@@ -545,11 +545,11 @@ public class Host
 
     /**
      * Sets the value of the statistics property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Statistics }
-     *     
+     *
      */
     public void setStatistics(Statistics value) {
         this.statistics = value;
@@ -561,11 +561,11 @@ public class Host
 
     /**
      * Gets the value of the cpu property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CPU }
-     *     
+     *
      */
     public CPU getCpu() {
         return cpu;
@@ -573,11 +573,11 @@ public class Host
 
     /**
      * Sets the value of the cpu property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CPU }
-     *     
+     *
      */
     public void setCpu(CPU value) {
         this.cpu = value;
@@ -589,11 +589,11 @@ public class Host
 
     /**
      * Gets the value of the memory property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getMemory() {
         return memory;
@@ -601,11 +601,11 @@ public class Host
 
     /**
      * Sets the value of the memory property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setMemory(Long value) {
         this.memory = value;
@@ -617,11 +617,11 @@ public class Host
 
     /**
      * Gets the value of the maxSchedulingMemory property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Long }
-     *     
+     *
      */
     public Long getMaxSchedulingMemory() {
         return maxSchedulingMemory;
@@ -629,11 +629,11 @@ public class Host
 
     /**
      * Sets the value of the maxSchedulingMemory property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Long }
-     *     
+     *
      */
     public void setMaxSchedulingMemory(Long value) {
         this.maxSchedulingMemory = value;
@@ -645,11 +645,11 @@ public class Host
 
     /**
      * Gets the value of the summary property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link VmSummary }
-     *     
+     *
      */
     public VmSummary getSummary() {
         return summary;
@@ -657,11 +657,11 @@ public class Host
 
     /**
      * Sets the value of the summary property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link VmSummary }
-     *     
+     *
      */
     public void setSummary(VmSummary value) {
         this.summary = value;
@@ -673,11 +673,11 @@ public class Host
 
     /**
      * Gets the value of the overrideIptables property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getOverrideIptables() {
         return overrideIptables;
@@ -685,11 +685,11 @@ public class Host
 
     /**
      * Sets the value of the overrideIptables property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setOverrideIptables(Boolean value) {
         this.overrideIptables = value;
@@ -701,11 +701,11 @@ public class Host
 
     /**
      * Gets the value of the rebootAfterInstallation property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getRebootAfterInstallation() {
         return rebootAfterInstallation;
@@ -713,11 +713,11 @@ public class Host
 
     /**
      * Sets the value of the rebootAfterInstallation property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setRebootAfterInstallation(Boolean value) {
         this.rebootAfterInstallation = value;
@@ -729,11 +729,11 @@ public class Host
 
     /**
      * Gets the value of the os property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link OperatingSystem }
-     *     
+     *
      */
     public OperatingSystem getOs() {
         return os;
@@ -741,11 +741,11 @@ public class Host
 
     /**
      * Sets the value of the os property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link OperatingSystem }
-     *     
+     *
      */
     public void setOs(OperatingSystem value) {
         this.os = value;
@@ -757,11 +757,11 @@ public class Host
 
     /**
      * Gets the value of the hooks property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Hooks }
-     *     
+     *
      */
     public Object getHooks() {
         return hooks;
@@ -769,11 +769,11 @@ public class Host
 
     /**
      * Sets the value of the hooks property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Hooks }
-     *     
+     *
      */
     public void setHooks(Hooks value) {
         this.hooks = value;
@@ -785,11 +785,11 @@ public class Host
 
     /**
      * Gets the value of the libvirtVersion property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Version }
-     *     
+     *
      */
     public Version getLibvirtVersion() {
         return libvirtVersion;
@@ -797,11 +797,11 @@ public class Host
 
     /**
      * Sets the value of the libvirtVersion property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Version }
-     *     
+     *
      */
     public void setLibvirtVersion(Version value) {
         this.libvirtVersion = value;
@@ -813,11 +813,11 @@ public class Host
 
     /**
      * Gets the value of the display property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Display }
-     *     
+     *
      */
     public Display getDisplay() {
         return display;
@@ -825,11 +825,11 @@ public class Host
 
     /**
      * Sets the value of the display property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Display }
-     *     
+     *
      */
     public void setDisplay(Display value) {
         this.display = value;

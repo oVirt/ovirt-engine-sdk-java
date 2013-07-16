@@ -29,9 +29,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for NIC complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="NIC">
  *   &lt;complexContent>
@@ -52,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NIC", propOrder = {
@@ -89,11 +89,11 @@ public class NIC
 
     /**
      * Gets the value of the network property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Network }
-     *     
+     *
      */
     public Network getNetwork() {
         return network;
@@ -101,11 +101,11 @@ public class NIC
 
     /**
      * Sets the value of the network property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Network }
-     *     
+     *
      */
     public void setNetwork(Network value) {
         this.network = value;
@@ -117,11 +117,11 @@ public class NIC
 
     /**
      * Gets the value of the linked property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getLinked() {
         return linked;
@@ -129,11 +129,11 @@ public class NIC
 
     /**
      * Sets the value of the linked property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setLinked(Boolean value) {
         this.linked = value;
@@ -145,11 +145,11 @@ public class NIC
 
     /**
      * Gets the value of the interface property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getInterface() {
         return _interface;
@@ -157,11 +157,11 @@ public class NIC
 
     /**
      * Sets the value of the interface property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setInterface(String value) {
         this._interface = value;
@@ -173,11 +173,11 @@ public class NIC
 
     /**
      * Gets the value of the mac property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link MAC }
-     *     
+     *
      */
     public MAC getMac() {
         return mac;
@@ -185,11 +185,11 @@ public class NIC
 
     /**
      * Sets the value of the mac property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link MAC }
-     *     
+     *
      */
     public void setMac(MAC value) {
         this.mac = value;
@@ -201,11 +201,11 @@ public class NIC
 
     /**
      * Gets the value of the statistics property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Statistics }
-     *     
+     *
      */
     public Object getStatistics() {
         return statistics;
@@ -213,11 +213,11 @@ public class NIC
 
     /**
      * Sets the value of the statistics property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Statistics }
-     *     
+     *
      */
     public void setStatistics(Statistics value) {
         this.statistics = value;
@@ -229,11 +229,11 @@ public class NIC
 
     /**
      * Gets the value of the active property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getActive() {
         return active;
@@ -241,11 +241,11 @@ public class NIC
 
     /**
      * Sets the value of the active property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setActive(Boolean value) {
         this.active = value;
@@ -257,11 +257,11 @@ public class NIC
 
     /**
      * Gets the value of the plugged property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean getPlugged() {
         return plugged;
@@ -269,11 +269,11 @@ public class NIC
 
     /**
      * Sets the value of the plugged property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setPlugged(Boolean value) {
         this.plugged = value;
@@ -285,11 +285,11 @@ public class NIC
 
     /**
      * Gets the value of the portMirroring property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link PortMirroring }
-     *     
+     *
      */
     public PortMirroring getPortMirroring() {
         return portMirroring;
@@ -297,11 +297,11 @@ public class NIC
 
     /**
      * Sets the value of the portMirroring property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link PortMirroring }
-     *     
+     *
      */
     public void setPortMirroring(PortMirroring value) {
         this.portMirroring = value;
@@ -313,11 +313,11 @@ public class NIC
 
     /**
      * Gets the value of the reportedDevices property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ReportedDevices }
-     *     
+     *
      */
     public Object getReportedDevices() {
         return reportedDevices;
@@ -325,11 +325,11 @@ public class NIC
 
     /**
      * Sets the value of the reportedDevices property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ReportedDevices }
-     *     
+     *
      */
     public void setReportedDevices(ReportedDevices value) {
         this.reportedDevices = value;
@@ -341,11 +341,11 @@ public class NIC
 
     /**
      * Gets the value of the customProperties property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CustomProperties }
-     *     
+     *
      */
     public CustomProperties getCustomProperties() {
         return customProperties;
@@ -353,11 +353,11 @@ public class NIC
 
     /**
      * Sets the value of the customProperties property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CustomProperties }
-     *     
+     *
      */
     public void setCustomProperties(CustomProperties value) {
         this.customProperties = value;

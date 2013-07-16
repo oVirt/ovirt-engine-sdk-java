@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Creation complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Creation">
  *   &lt;complexContent>
@@ -43,8 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Creation", propOrder = {
@@ -60,11 +60,11 @@ public class Creation
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Status }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -72,11 +72,11 @@ public class Creation
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Status }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -88,11 +88,11 @@ public class Creation
 
     /**
      * Gets the value of the fault property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Fault }
-     *     
+     *
      */
     public Fault getFault() {
         return fault;
@@ -100,11 +100,11 @@ public class Creation
 
     /**
      * Sets the value of the fault property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Fault }
-     *     
+     *
      */
     public void setFault(Fault value) {
         this.fault = value;

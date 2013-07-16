@@ -35,10 +35,10 @@ public class FileUtils {
 
     /**
      * Deletes all files in given directory
-     * 
+     *
      * @param directory
      *            directory to clean
-     * 
+     *
      * @return sucess/failure
      */
     public static boolean deleteAllFiles(String directory) {
@@ -51,10 +51,10 @@ public class FileUtils {
 
     /**
      * Deletes given file
-     * 
+     *
      * @param fileName
      *            file to delete
-     * 
+     *
      * @return boolean
      */
     public static boolean delete(String fileName) {
@@ -63,10 +63,10 @@ public class FileUtils {
 
     /**
      * Deletes given file
-     * 
+     *
      * @param file
      *            file to delete
-     * 
+     *
      * @return boolean
      */
     public static boolean delete(File file) {
@@ -75,12 +75,12 @@ public class FileUtils {
 
     /**
      * Renames file
-     * 
+     *
      * @param file
      *            File to rename
      * @param name
      *            new file name
-     * 
+     *
      * @return boolean
      */
     public static boolean rename(File file, String name) {
@@ -89,9 +89,9 @@ public class FileUtils {
 
     /**
      * List all files in given directory
-     * 
+     *
      * @param directory
-     * 
+     *
      * @return File[]
      */
     public static File[] list(String directory) {
@@ -109,34 +109,46 @@ public class FileUtils {
      * @throws FileNotFoundException
      */
     public static String getFileContent(String path) throws FileNotFoundException {
-        return getFileContent(path, true);
+        return getFileContent(path, true, true);
     }
 
     /**
      * Reads file content
-     * 
+     *
      * @param path
      *            file path to read from
      * @param appendNewLine
      *            append new line to the end of the file
-     * 
+     * @param removeTrailingWhitespace
+     *            removes trailing whitespaces
+     *
      * @return file content
-     * 
+     *
      * @throws FileNotFoundException
      */
-    public static String getFileContent(String path, boolean appendNewLine) throws FileNotFoundException {
+    public static String getFileContent(String path, boolean appendNewLine,
+            boolean removeTrailingWhitespace) throws FileNotFoundException {
         StringBuilder text = new StringBuilder();
         Scanner scanner = new Scanner(new FileInputStream(path), ENCODING);
 
         try {
             while (scanner.hasNextLine()) {
                 if (scanner.hasNextLine()) {
-                    text.append(scanner.nextLine() + NEW_LINE);
+                    text.append(
+                            removeTrailingWhitespaces(
+                                    scanner.nextLine(),
+                                    removeTrailingWhitespace) + NEW_LINE);
                 } else {
                     if (appendNewLine) {
-                        text.append(scanner.nextLine() + NEW_LINE);
+                        text.append(
+                                removeTrailingWhitespaces(
+                                        scanner.nextLine(),
+                                        removeTrailingWhitespace) + NEW_LINE);
                     } else {
-                        text.append(scanner.nextLine());
+                        text.append(
+                                removeTrailingWhitespaces(
+                                        scanner.nextLine(),
+                                        removeTrailingWhitespace));
                     }
                 }
             }
@@ -149,20 +161,50 @@ public class FileUtils {
     }
 
     /**
+     * removes trailing whitespaces
+     *
+     * @param string
+     *            the string to process
+     *
+     * @return string with no trailing whitespaces
+     */
+    private static String removeTrailingWhitespaces(String string, boolean remove) {
+        return remove && string != null ? string.replaceAll("\\s+$", "") : string;
+    }
+
+    /**
      * Reads file content
-     * 
+     *
      * @return file content as list of strings
-     * 
+     *
      * @throws FileNotFoundException
      */
-    public static List<String> getFileContentAsList(String path) throws FileNotFoundException {
+    public static List<String> getFileContentAsList(String path)
+            throws FileNotFoundException {
+        return getFileContentAsList(path, true);
+    }
+
+    /**
+     * Reads file content
+     *
+     * @return file content as list of strings
+     * @param removeTrailingWhitespace
+     *            removes trailing whitespaces
+     *
+     * @throws FileNotFoundException
+     */
+    public static List<String> getFileContentAsList(String path, boolean removeTrailingWhitespace)
+            throws FileNotFoundException {
         List<String> strings = new ArrayList<String>();
         String NL = System.getProperty(LINE_SEPARATOR);
         Scanner scanner = new Scanner(new FileInputStream(path), ENCODING);
 
         try {
             while (scanner.hasNextLine()) {
-                strings.add(scanner.nextLine() + NL);
+                strings.add(
+                        removeTrailingWhitespaces(
+                                scanner.nextLine(),
+                                removeTrailingWhitespace) + NL);
             }
         } finally {
             if (scanner != null) {
@@ -174,7 +216,7 @@ public class FileUtils {
 
     /**
      * Stores file
-     * 
+     *
      * @param filePath
      *            file path
      * @param content
