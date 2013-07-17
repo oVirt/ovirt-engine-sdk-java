@@ -35,6 +35,7 @@ BuildRequires:  jpackage-utils
 %if %{require_java_dep}
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-commons-compress
+BuildRequires:  httpcomponents-client >= 4.2
 BuildRequires:  junit
 BuildRequires:  xerces-j2
 %endif
@@ -49,8 +50,7 @@ BuildRequires:  maven-source-plugin
 %endif
 
 Requires: java
-Requires: httpcomponents-httpclient >= 4.2
-Requires: httpcomponents-httpcore
+Requires: httpcomponents-client >= 4.2
 Requires: apache-commons-logging
 Requires: commons-beanutils
 Requires: commons-codec
