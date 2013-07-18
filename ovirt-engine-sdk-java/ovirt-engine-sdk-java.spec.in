@@ -53,7 +53,7 @@ BuildRequires:  maven-source-plugin
 Requires: java
 Requires: httpcomponents-client >= 4.2
 Requires: apache-commons-logging
-Requires: commons-beanutils
+Requires: apache-commons-beanutils
 Requires: commons-codec
 Requires: log4j
 
