@@ -59,7 +59,6 @@
         </dependency>
 	</dependencies>
 	<build>
-        <pluginManagement>
             <plugins>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -95,6 +94,7 @@
                   <version>${javadoc.plugin.version}</version>
                   <configuration>
                     <show>public</show>
+                    <aggregate>true</aggregate>
                     <source>1.6</source>
                     <quiet>true</quiet>
                     <bottom>Copyright © 2010 Red Hat, Inc - released under the Apache License Version 2.0</bottom>
@@ -103,7 +103,7 @@
                   </configuration>
                   <executions>
                     <execution>
-                        <id>attach-javadoc</id>
+                        <id>maven-javadoc-plugin</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>jar</goal>
@@ -184,7 +184,7 @@
                         </execution>
                     </executions>
                 </plugin>
-                <plugin>
+                <!-- plugin>
                   <artifactId>maven-checkstyle-plugin</artifactId>
                   <version>2.6</version>
                   <dependencies>
@@ -207,9 +207,8 @@
                       </goals>
                     </execution>
                   </executions>
-                </plugin>
+                </plugin-->
             </plugins>
-        </pluginManagement>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
