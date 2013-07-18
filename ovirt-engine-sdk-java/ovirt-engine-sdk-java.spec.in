@@ -38,6 +38,7 @@ BuildRequires:  apache-commons-compress
 BuildRequires:  httpcomponents-client >= 4.2
 BuildRequires:  junit
 BuildRequires:  xerces-j2
+BuildRequires:  maven-local
 %endif
 
 %if %{require_maven}
