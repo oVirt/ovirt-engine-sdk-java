@@ -21,7 +21,7 @@
 Name:           ovirt-engine-sdk-java
 Version:        %{package_version}
 Release:        0.1%{?dist}
-Summary:        oVirt Engine Java Software Development Kit
+Summary:        oVirt Engine Software Development Kit (Java)
 Group:          Development/Libraries
 License:        ASL 2.0
 URL:            http://ovirt.org
