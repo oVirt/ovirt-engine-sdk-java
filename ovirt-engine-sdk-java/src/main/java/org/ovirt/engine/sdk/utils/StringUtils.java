@@ -27,7 +27,7 @@ public class StringUtils {
      */
     public static String removeBrackets(String txt) {
         if (txt != null && txt.length() >= 1 && txt.startsWith("[") && txt.endsWith("]")) {
-            return txt.substring(1, txt.length() - 2);
+            return txt.substring(1, txt.length() - 1);
         }
         return txt;
     }
