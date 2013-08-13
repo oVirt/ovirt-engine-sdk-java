@@ -39,31 +39,27 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>VMSnapshots providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Snapshots }.
+ * <p>StorageConnections providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageConnections }.
  */
 @SuppressWarnings("unused")
-public class VMSnapshots extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Snapshot,
-                            org.ovirt.engine.sdk.entities.Snapshots,
-                            VMSnapshot> {
-
-    private VM parent;
+public class StorageConnections extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.StorageConnection,
+                            org.ovirt.engine.sdk.entities.StorageConnections,
+                            StorageConnection> {
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent VM
      */
-    public VMSnapshots(HttpProxyBroker proxy, VM parent) {
-        super(proxy, "snapshots");
-        this.parent = parent;
+    public StorageConnections(HttpProxyBroker proxy) {
+        super(proxy, "storageconnections");
     }
 
     /**
-     * Lists VMSnapshot objects.
+     * Lists StorageConnection objects.
      *
      * @return
-     *     List of {@link VMSnapshot }
+     *     List of {@link StorageConnection }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +69,16 @@ public class VMSnapshots extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<VMSnapshot> list() throws ClientProtocolException,
+    public List<StorageConnection> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class, VMSnapshot.class);
+        String url = SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.StorageConnections.class, StorageConnection.class);
     }
 
     /**
-     * Fetches VMSnapshot object by id.
+     * Fetches StorageConnection object by id.
      *
-     * @return
-     *     {@link VMSnapshot }
+     * @return {@link StorageConnection }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,59 +88,47 @@ public class VMSnapshots extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMSnapshot get(UUID id) throws ClientProtocolException,
+    public StorageConnection get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
+        String url = SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageConnection.class, StorageConnection.class);
     }
 
     /**
-     * Lists VMSnapshot objects.
+     * Adds StorageConnection object.
      *
-     * @param allContent
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
      *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
+     *    Overload 1:
+     *      storage_connection.address
+     *      storage_connection.type
+     *      storage_connection.iqn
+     *      storage_connection.port
+     *      [storage_connection.username]
+     *      [storage_connection.password]
      *
+     *    Overload 2:
+     *      storage_connection.address
+     *      storage_connection.type
+     *      storage_connection.path
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.nfs_retrans]
      *
-     * @return List of {@link VMSnapshot }
+     *    Overload 3:
+     *      storage_connection.type
+     *      storage_connection.path
+     *      storage_connection.vfs_type
+     *      [storage_connection.address]
+     *      [storage_connection.mount_options]
      *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<VMSnapshot> list(Integer max, String allContent) throws ClientProtocolException,
-            ServerException, IOException {
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("All-Content", allContent)
-                .build();
-
-        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
-                .add("max", max, UrlParameterType.MATRIX)
-                .build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class,
-                VMSnapshot.class, headers);
-    }
-    /**
-     * Adds Snapshot object.
-     *
-     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
-     *    <pre>
-     *    snapshot.description
-     *    [snapshot.persist_memorystate]
+     *    Overload 4:
+     *      storage_connection.type
+     *      storage_connection.path
      *    </pre>
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link StorageConnection }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -154,9 +137,9 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot) throws
+    public StorageConnection add(org.ovirt.engine.sdk.entities.StorageConnection storageconnection) throws
             ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
+        String url = SLASH + getName();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
@@ -164,17 +147,41 @@ public class VMSnapshots extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, snapshot,
-                org.ovirt.engine.sdk.entities.Snapshot.class,
-                VMSnapshot.class, headers);
+        return getProxy().add(url, storageconnection,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageConnection.class, headers);
     }
     /**
-     * Adds Snapshot object.
+     * Adds StorageConnection object.
      *
-     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
      *    <pre>
-     *    snapshot.description
-     *    [snapshot.persist_memorystate]
+     *    Overload 1:
+     *      storage_connection.address
+     *      storage_connection.type
+     *      storage_connection.iqn
+     *      storage_connection.port
+     *      [storage_connection.username]
+     *      [storage_connection.password]
+     *
+     *    Overload 2:
+     *      storage_connection.address
+     *      storage_connection.type
+     *      storage_connection.path
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.nfs_retrans]
+     *
+     *    Overload 3:
+     *      storage_connection.type
+     *      storage_connection.path
+     *      storage_connection.vfs_type
+     *      [storage_connection.address]
+     *      [storage_connection.mount_options]
+     *
+     *    Overload 4:
+     *      storage_connection.type
+     *      storage_connection.path
      *    </pre>
      *
      * @param expect
@@ -187,7 +194,7 @@ public class VMSnapshots extends
      *    </pre>
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link StorageConnection }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -196,9 +203,9 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot, String expect, String correlationId) throws
+    public StorageConnection add(org.ovirt.engine.sdk.entities.StorageConnection storageconnection, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
+        String url = SLASH + getName();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .add("Expect", expect)
@@ -208,9 +215,9 @@ public class VMSnapshots extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, snapshot,
-                org.ovirt.engine.sdk.entities.Snapshot.class,
-                VMSnapshot.class, headers);
+        return getProxy().add(url, storageconnection,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageConnection.class, headers);
     }
 
 }

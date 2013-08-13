@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element ref="{}parameters_set" minOccurs="0"/>
+ *         &lt;element name="deprecated" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -54,7 +55,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Parameter", propOrder = {
     "value",
-    "parametersSet"
+    "parametersSet",
+    "deprecated"
 })
 public class Parameter
     extends BaseResource
@@ -64,6 +66,7 @@ public class Parameter
     protected String value;
     @XmlElement(name = "parameters_set")
     protected ParametersSet parametersSet;
+    protected Boolean deprecated;
     @XmlAttribute(name = "required")
     protected Boolean required;
     @XmlAttribute(name = "type")
@@ -125,6 +128,34 @@ public class Parameter
 
     public boolean isSetParametersSet() {
         return (this.parametersSet!= null);
+    }
+
+    /**
+     * Gets the value of the deprecated property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getDeprecated() {
+        return deprecated;
+    }
+
+    /**
+     * Sets the value of the deprecated property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setDeprecated(Boolean value) {
+        this.deprecated = value;
+    }
+
+    public boolean isSetDeprecated() {
+        return (this.deprecated!= null);
     }
 
     /**

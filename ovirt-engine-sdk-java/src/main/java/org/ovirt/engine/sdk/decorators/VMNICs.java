@@ -135,14 +135,22 @@ public class VMNICs extends
      *
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
-     *    nic.name
-     *    [nic.network.id|name]
-     *    [nic.linked]
-     *    [nic.mac.address]
-     *    [nic.interface]
-     *    [nic.port_mirroring.networks.network]
-     *    [nic.plugged]
-     *    [nic.custom_properties.custom_property]
+     *    Overload 1:
+     *      [nic.vnic_profile.id]
+     *      [nic.linked]
+     *      [nic.name]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.plugged]
+     *
+     *    Overload 2:
+     *      nic.name
+     *      [nic.network.id|name]
+     *      [nic.linked]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.port_mirroring.networks.network]
+     *      [nic.plugged]
      *    </pre>
      *
      * @return
@@ -174,14 +182,22 @@ public class VMNICs extends
      *
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
-     *    nic.name
-     *    [nic.network.id|name]
-     *    [nic.linked]
-     *    [nic.mac.address]
-     *    [nic.interface]
-     *    [nic.port_mirroring.networks.network]
-     *    [nic.plugged]
-     *    [nic.custom_properties.custom_property]
+     *    Overload 1:
+     *      [nic.vnic_profile.id]
+     *      [nic.linked]
+     *      [nic.name]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.plugged]
+     *
+     *    Overload 2:
+     *      nic.name
+     *      [nic.network.id|name]
+     *      [nic.linked]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.port_mirroring.networks.network]
+     *      [nic.plugged]
      *    </pre>
      *
      * @param expect

@@ -59,6 +59,7 @@ import javax.xml.bind.annotation.XmlType;
     "host",
     "network",
     "rootPassword",
+    "ssh",
     "image",
     "fenceType",
     "ticket",
@@ -97,6 +98,7 @@ public class Action
     protected Network network;
     @XmlElement(name = "root_password")
     protected String rootPassword;
+    protected SSH ssh;
     protected String image;
     @XmlElement(name = "fence_type")
     protected String fenceType;
@@ -272,6 +274,34 @@ public class Action
 
     public boolean isSetRootPassword() {
         return (this.rootPassword!= null);
+    }
+
+    /**
+     * Gets the value of the ssh property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SSH }
+     *
+     */
+    public SSH getSsh() {
+        return ssh;
+    }
+
+    /**
+     * Sets the value of the ssh property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SSH }
+     *
+     */
+    public void setSsh(SSH value) {
+        this.ssh = value;
+    }
+
+    public boolean isSetSsh() {
+        return (this.ssh!= null);
     }
 
     /**

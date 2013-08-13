@@ -23,25 +23,24 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Header complex type.
+ * <p>Java class for VnicProfile complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Header">
+ * &lt;complexType name="VnicProfile">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="deprecated" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}network"/>
+ *         &lt;element name="port_mirroring" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}custom_properties" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -50,99 +49,104 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Header", propOrder = {
-    "value",
-    "deprecated"
+@XmlType(name = "VnicProfile", propOrder = {
+    "network",
+    "portMirroring",
+    "customProperties"
 })
-public class Header
+public class VnicProfile
     extends BaseResource
 {
 
     @XmlElement(required = true)
-    protected String value;
-    protected Boolean deprecated;
-    @XmlAttribute(name = "required")
-    protected Boolean required;
+    protected Network network;
+    @XmlElement(name = "port_mirroring")
+    protected Boolean portMirroring;
+    @XmlElement(name = "custom_properties")
+    protected CustomProperties customProperties;
 
     /**
-     * Gets the value of the value property.
+     * Gets the value of the network property.
      *
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Network }
      *
      */
-    public String getValue() {
-        return value;
+    public Network getNetwork() {
+        return network;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets the value of the network property.
      *
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Network }
      *
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setNetwork(Network value) {
+        this.network = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
+    public boolean isSetNetwork() {
+        return (this.network!= null);
     }
 
     /**
-     * Gets the value of the deprecated property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getDeprecated() {
-        return deprecated;
-    }
-
-    /**
-     * Sets the value of the deprecated property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setDeprecated(Boolean value) {
-        this.deprecated = value;
-    }
-
-    public boolean isSetDeprecated() {
-        return (this.deprecated!= null);
-    }
-
-    /**
-     * Gets the value of the required property.
+     * Gets the value of the portMirroring property.
      *
      * @return
      *     possible object is
      *     {@link Boolean }
      *
      */
-    public Boolean getRequired() {
-        return required;
+    public Boolean getPortMirroring() {
+        return portMirroring;
     }
 
     /**
-     * Sets the value of the required property.
+     * Sets the value of the portMirroring property.
      *
      * @param value
      *     allowed object is
      *     {@link Boolean }
      *
      */
-    public void setRequired(Boolean value) {
-        this.required = value;
+    public void setPortMirroring(Boolean value) {
+        this.portMirroring = value;
+    }
+
+    public boolean isSetPortMirroring() {
+        return (this.portMirroring!= null);
+    }
+
+    /**
+     * Gets the value of the customProperties property.
+     *
+     * @return
+     *     possible object is
+     *     {@link CustomProperties }
+     *
+     */
+    public CustomProperties getCustomProperties() {
+        return customProperties;
+    }
+
+    /**
+     * Sets the value of the customProperties property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link CustomProperties }
+     *
+     */
+    public void setCustomProperties(CustomProperties value) {
+        this.customProperties = value;
+    }
+
+    public boolean isSetCustomProperties() {
+        return (this.customProperties!= null);
     }
 
 }
-

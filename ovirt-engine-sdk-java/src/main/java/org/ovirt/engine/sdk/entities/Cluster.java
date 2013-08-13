@@ -49,6 +49,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="threads_as_cores" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="trusted_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="ballooning_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -70,7 +71,8 @@ import javax.xml.bind.annotation.XmlType;
     "glusterService",
     "threadsAsCores",
     "tunnelMigration",
-    "trustedService"
+    "trustedService",
+    "ballooningEnabled"
 })
 public class Cluster
     extends BaseResource
@@ -98,6 +100,8 @@ public class Cluster
     protected Boolean tunnelMigration;
     @XmlElement(name = "trusted_service")
     protected Boolean trustedService;
+    @XmlElement(name = "ballooning_enabled")
+    protected Boolean ballooningEnabled;
 
     /**
      * Gets the value of the cpu property.
@@ -433,6 +437,34 @@ public class Cluster
 
     public boolean isSetTrustedService() {
         return (this.trustedService!= null);
+    }
+
+    /**
+     * Gets the value of the ballooningEnabled property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getBallooningEnabled() {
+        return ballooningEnabled;
+    }
+
+    /**
+     * Sets the value of the ballooningEnabled property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setBallooningEnabled(Boolean value) {
+        this.ballooningEnabled = value;
+    }
+
+    public boolean isSetBallooningEnabled() {
+        return (this.ballooningEnabled!= null);
     }
 
 }

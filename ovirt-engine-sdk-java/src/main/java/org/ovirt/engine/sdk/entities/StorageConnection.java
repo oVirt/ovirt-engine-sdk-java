@@ -21,8 +21,6 @@
 
 package org.ovirt.engine.sdk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -31,19 +29,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Storage complex type.
+ * <p>Java class for StorageConnection complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Storage">
+ * &lt;complexType name="StorageConnection">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;group ref="{}BaseStorageConnection"/>
  *         &lt;choice>
- *           &lt;group ref="{}NfsStorage"/>
- *           &lt;group ref="{}IscsiStorage"/>
+ *           &lt;group ref="{}FileStorageConnection"/>
  *           &lt;group ref="{}IscsiStorageConnection"/>
  *         &lt;/choice>
  *         &lt;element ref="{}host" minOccurs="0"/>
@@ -56,7 +53,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Storage", propOrder = {
+@XmlType(name = "StorageConnection", propOrder = {
     "address",
     "type",
     "path",
@@ -65,9 +62,6 @@ import javax.xml.bind.annotation.XmlType;
     "nfsVersion",
     "nfsTimeo",
     "nfsRetrans",
-    "logicalUnits",
-    "volumeGroup",
-    "overrideLuns",
     "port",
     "target",
     "username",
@@ -75,7 +69,7 @@ import javax.xml.bind.annotation.XmlType;
     "portal",
     "host"
 })
-public class Storage
+public class StorageConnection
     extends BaseResource
 {
 
@@ -94,12 +88,6 @@ public class Storage
     @XmlElement(name = "nfs_retrans")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer nfsRetrans;
-    @XmlElement(name = "logical_unit")
-    protected List<LogicalUnit> logicalUnits;
-    @XmlElement(name = "volume_group")
-    protected VolumeGroup volumeGroup;
-    @XmlElement(name = "override_luns")
-    protected Boolean overrideLuns;
     @XmlSchemaType(name = "unsignedShort")
     protected Integer port;
     protected String target;
@@ -333,99 +321,6 @@ public class Storage
     }
 
     /**
-     * Gets the value of the logicalUnits property.
-     *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the logicalUnits property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLogicalUnits().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link LogicalUnit }
-     *
-     *
-     */
-    public List<LogicalUnit> getLogicalUnits() {
-        if (logicalUnits == null) {
-            logicalUnits = new ArrayList<LogicalUnit>();
-        }
-        return this.logicalUnits;
-    }
-
-    public boolean isSetLogicalUnits() {
-        return ((this.logicalUnits!= null)&&(!this.logicalUnits.isEmpty()));
-    }
-
-    public void unsetLogicalUnits() {
-        this.logicalUnits = null;
-    }
-
-    /**
-     * Gets the value of the volumeGroup property.
-     *
-     * @return
-     *     possible object is
-     *     {@link VolumeGroup }
-     *
-     */
-    public VolumeGroup getVolumeGroup() {
-        return volumeGroup;
-    }
-
-    /**
-     * Sets the value of the volumeGroup property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link VolumeGroup }
-     *
-     */
-    public void setVolumeGroup(VolumeGroup value) {
-        this.volumeGroup = value;
-    }
-
-    public boolean isSetVolumeGroup() {
-        return (this.volumeGroup!= null);
-    }
-
-    /**
-     * Gets the value of the overrideLuns property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getOverrideLuns() {
-        return overrideLuns;
-    }
-
-    /**
-     * Sets the value of the overrideLuns property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setOverrideLuns(Boolean value) {
-        this.overrideLuns = value;
-    }
-
-    public boolean isSetOverrideLuns() {
-        return (this.overrideLuns!= null);
-    }
-
-    /**
      * Gets the value of the port property.
      *
      * @return
@@ -594,4 +489,3 @@ public class Storage
     }
 
 }
-

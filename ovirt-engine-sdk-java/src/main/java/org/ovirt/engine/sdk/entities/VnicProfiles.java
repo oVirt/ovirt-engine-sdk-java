@@ -30,17 +30,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Permissions complex type.
+ * <p>Java class for VnicProfiles complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Permissions">
+ * &lt;complexType name="VnicProfiles">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
- *         &lt;element ref="{}permission" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="clone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}vnic_profile" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -50,81 +49,51 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Permissions", propOrder = {
-    "permissions",
-    "clone"
+@XmlType(name = "VnicProfiles", propOrder = {
+    "vnicProfiles"
 })
-public class Permissions
+public class VnicProfiles
     extends BaseResources
 {
 
-    @XmlElement(name = "permission")
-    protected List<Permission> permissions;
-    protected Boolean clone;
+    @XmlElement(name = "vnic_profile")
+    protected List<VnicProfile> vnicProfiles;
 
     /**
-     * Gets the value of the permissions property.
+     * Gets the value of the vnicProfiles property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the permissions property.
+     * This is why there is not a <CODE>set</CODE> method for the vnicProfiles property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPermissions().add(newItem);
+     *    getVnicProfiles().add(newItem);
      * </pre>
      *
      *
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Permission }
+     * {@link VnicProfile }
      *
      *
      */
-    public List<Permission> getPermissions() {
-        if (permissions == null) {
-            permissions = new ArrayList<Permission>();
+    public List<VnicProfile> getVnicProfiles() {
+        if (vnicProfiles == null) {
+            vnicProfiles = new ArrayList<VnicProfile>();
         }
-        return this.permissions;
+        return this.vnicProfiles;
     }
 
-    public boolean isSetPermissions() {
-        return ((this.permissions!= null)&&(!this.permissions.isEmpty()));
+    public boolean isSetVnicProfiles() {
+        return ((this.vnicProfiles!= null)&&(!this.vnicProfiles.isEmpty()));
     }
 
-    public void unsetPermissions() {
-        this.permissions = null;
-    }
-
-    /**
-     * Gets the value of the clone property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getClone() {
-        return clone;
-    }
-
-    /**
-     * Sets the value of the clone property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setClone(Boolean value) {
-        this.clone = value;
-    }
-
-    public boolean isSetClone() {
-        return (this.clone!= null);
+    public void unsetVnicProfiles() {
+        this.vnicProfiles = null;
     }
 
 }

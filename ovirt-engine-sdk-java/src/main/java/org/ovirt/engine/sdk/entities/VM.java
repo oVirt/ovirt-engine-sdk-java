@@ -44,6 +44,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element name="memory" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="cpu" type="{}CPU" minOccurs="0"/>
+ *         &lt;element name="cpu_shares" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
  *         &lt;element name="high_availability" type="{}HighAvailability" minOccurs="0"/>
  *         &lt;element name="display" type="{}Display" minOccurs="0"/>
@@ -56,12 +57,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="origin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element name="custom_properties" type="{}CustomProperties" minOccurs="0"/>
  *         &lt;element name="payloads" type="{}Payloads" minOccurs="0"/>
  *         &lt;element name="statistics" type="{}Statistics" minOccurs="0"/>
  *         &lt;element name="disks" type="{}Disks" minOccurs="0"/>
+ *         &lt;element ref="{}initialization" minOccurs="0"/>
  *         &lt;element name="nics" type="{}Nics" minOccurs="0"/>
  *         &lt;element name="tags" type="{}Tags" minOccurs="0"/>
  *         &lt;element name="snapshots" type="{}Snapshots" minOccurs="0"/>
@@ -71,6 +74,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}permissions" minOccurs="0"/>
  *         &lt;element ref="{}vmpool" minOccurs="0"/>
  *         &lt;element ref="{}cdroms" minOccurs="0"/>
  *         &lt;element ref="{}floppies" minOccurs="0"/>
@@ -90,6 +94,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "status",
     "memory",
     "cpu",
+    "cpuShares",
     "os",
     "highAvailability",
     "display",
@@ -102,12 +107,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "origin",
     "stateless",
     "deleteProtected",
+    "console",
     "timezone",
     "domain",
     "customProperties",
     "payloads",
     "statistics",
     "disks",
+    "initialization",
     "nics",
     "tags",
     "snapshots",
@@ -117,6 +124,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "quota",
     "usb",
     "tunnelMigration",
+    "permissions",
     "vmPool",
     "cdroms",
     "floppies",
@@ -134,6 +142,8 @@ public class VM
     protected Status status;
     protected Long memory;
     protected CPU cpu;
+    @XmlElement(name = "cpu_shares")
+    protected Integer cpuShares;
     protected OperatingSystem os;
     @XmlElement(name = "high_availability")
     protected HighAvailability highAvailability;
@@ -153,6 +163,7 @@ public class VM
     protected Boolean stateless;
     @XmlElement(name = "delete_protected")
     protected Boolean deleteProtected;
+    protected Console console;
     protected String timezone;
     protected Domain domain;
     @XmlElement(name = "custom_properties")
@@ -160,6 +171,7 @@ public class VM
     protected Payloads payloads;
     protected Statistics statistics;
     protected Disks disks;
+    protected Initialization initialization;
     protected Nics nics;
     protected Tags tags;
     protected Snapshots snapshots;
@@ -173,6 +185,7 @@ public class VM
     protected Usb usb;
     @XmlElement(name = "tunnel_migration")
     protected Boolean tunnelMigration;
+    protected Permissions permissions;
     @XmlElement(name = "vmpool")
     protected VmPool vmPool;
     protected CdRoms cdroms;
@@ -291,6 +304,34 @@ public class VM
 
     public boolean isSetCpu() {
         return (this.cpu!= null);
+    }
+
+    /**
+     * Gets the value of the cpuShares property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getCpuShares() {
+        return cpuShares;
+    }
+
+    /**
+     * Sets the value of the cpuShares property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setCpuShares(Integer value) {
+        this.cpuShares = value;
+    }
+
+    public boolean isSetCpuShares() {
+        return (this.cpuShares!= null);
     }
 
     /**
@@ -630,6 +671,34 @@ public class VM
     }
 
     /**
+     * Gets the value of the console property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Console }
+     *
+     */
+    public Console getConsole() {
+        return console;
+    }
+
+    /**
+     * Sets the value of the console property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Console }
+     *
+     */
+    public void setConsole(Console value) {
+        this.console = value;
+    }
+
+    public boolean isSetConsole() {
+        return (this.console!= null);
+    }
+
+    /**
      * Gets the value of the timezone property.
      *
      * @return
@@ -795,6 +864,34 @@ public class VM
 
     public boolean isSetDisks() {
         return (this.disks!= null);
+    }
+
+    /**
+     * Gets the value of the initialization property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Initialization }
+     *
+     */
+    public Initialization getInitialization() {
+        return initialization;
+    }
+
+    /**
+     * Sets the value of the initialization property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Initialization }
+     *
+     */
+    public void setInitialization(Initialization value) {
+        this.initialization = value;
+    }
+
+    public boolean isSetInitialization() {
+        return (this.initialization!= null);
     }
 
     /**
@@ -1047,6 +1144,34 @@ public class VM
 
     public boolean isSetTunnelMigration() {
         return (this.tunnelMigration!= null);
+    }
+
+    /**
+     * Gets the value of the permissions property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Permissions }
+     *
+     */
+    public Object getPermissions() {
+        return permissions;
+    }
+
+    /**
+     * Sets the value of the permissions property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Permissions }
+     *
+     */
+    public void setPermissions(Permissions value) {
+        this.permissions = value;
+    }
+
+    public boolean isSetPermissions() {
+        return (this.permissions!= null);
     }
 
     /**

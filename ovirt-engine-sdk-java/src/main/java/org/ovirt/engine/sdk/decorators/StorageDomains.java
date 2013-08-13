@@ -148,6 +148,7 @@ public class StorageDomains extends
      *      storagedomain.storage.address
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]
+     *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
      *
@@ -159,6 +160,7 @@ public class StorageDomains extends
      *      storagedomain.storage.address
      *      storagedomain.storage.path
      *      [storagedomain.name]
+     *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
      *    Overload 3:
@@ -168,6 +170,7 @@ public class StorageDomains extends
      *      storagedomain.format
      *      storagedomain.storage.path
      *      [storagedomain.name]
+     *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
      *    Overload 4:
@@ -178,6 +181,7 @@ public class StorageDomains extends
      *      storagedomain.storage.path
      *      storagedomain.storage.vfs_type
      *      [storagedomain.name]
+     *      [storagedomain.comment]
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
@@ -220,6 +224,7 @@ public class StorageDomains extends
      *      storagedomain.storage.address
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]
+     *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
      *
@@ -231,6 +236,7 @@ public class StorageDomains extends
      *      storagedomain.storage.address
      *      storagedomain.storage.path
      *      [storagedomain.name]
+     *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
      *    Overload 3:
@@ -240,6 +246,7 @@ public class StorageDomains extends
      *      storagedomain.format
      *      storagedomain.storage.path
      *      [storagedomain.name]
+     *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
      *    Overload 4:
@@ -250,6 +257,7 @@ public class StorageDomains extends
      *      storagedomain.storage.path
      *      storagedomain.storage.vfs_type
      *      [storagedomain.name]
+     *      [storagedomain.comment]
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]

@@ -88,6 +88,7 @@ public class VmPool extends
      *    [vmpool.cluster.id|name]
      *    [vmpool.template.id|name]
      *    [vmpool.name]
+     *    [vmpool.comment]
      *    [vmpool.size]
      *    [vmpool.max_user_vms]
      *    </pre>

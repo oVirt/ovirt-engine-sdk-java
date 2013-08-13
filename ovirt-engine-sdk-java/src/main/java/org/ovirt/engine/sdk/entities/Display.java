@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="port" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="secure_port" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="monitors" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="single_qxl_pci" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="allow_override" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}certificate" minOccurs="0"/>
  *         &lt;element name="smartcard_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -62,6 +63,7 @@ import javax.xml.bind.annotation.XmlType;
     "port",
     "securePort",
     "monitors",
+    "singleQxlPci",
     "allowOverride",
     "certificate",
     "smartcardEnabled",
@@ -77,6 +79,8 @@ public class Display {
     @XmlSchemaType(name = "unsignedShort")
     protected Integer securePort;
     protected Integer monitors;
+    @XmlElement(name = "single_qxl_pci")
+    protected Boolean singleQxlPci;
     @XmlElement(name = "allow_override")
     protected Boolean allowOverride;
     protected Certificate certificate;
@@ -223,6 +227,34 @@ public class Display {
 
     public boolean isSetMonitors() {
         return (this.monitors!= null);
+    }
+
+    /**
+     * Gets the value of the singleQxlPci property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getSingleQxlPci() {
+        return singleQxlPci;
+    }
+
+    /**
+     * Sets the value of the singleQxlPci property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setSingleQxlPci(Boolean value) {
+        this.singleQxlPci = value;
+    }
+
+    public boolean isSetSingleQxlPci() {
+        return (this.singleQxlPci!= null);
     }
 
     /**

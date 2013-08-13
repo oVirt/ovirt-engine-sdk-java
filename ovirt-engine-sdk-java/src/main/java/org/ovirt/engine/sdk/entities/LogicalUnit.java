@@ -51,16 +51,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LogicalUnit", propOrder = {
-    "address",
     "port",
     "target",
     "username",
     "password",
+    "portal",
+    "address",
     "serial",
     "vendorId",
     "productId",
     "lunMapping",
-    "portal",
     "size",
     "paths",
     "status",
@@ -70,12 +70,13 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class LogicalUnit {
 
-    protected String address;
     @XmlSchemaType(name = "unsignedShort")
     protected Integer port;
     protected String target;
     protected String username;
     protected String password;
+    protected String portal;
+    protected String address;
     protected String serial;
     @XmlElement(name = "vendor_id")
     protected String vendorId;
@@ -83,7 +84,6 @@ public class LogicalUnit {
     protected String productId;
     @XmlElement(name = "lun_mapping")
     protected Integer lunMapping;
-    protected String portal;
     protected Long size;
     protected Integer paths;
     protected String status;
@@ -95,34 +95,6 @@ public class LogicalUnit {
     protected String diskId;
     @XmlAttribute(name = "id")
     protected String id;
-
-    /**
-     * Gets the value of the address property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the value of the address property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setAddress(String value) {
-        this.address = value;
-    }
-
-    public boolean isSetAddress() {
-        return (this.address!= null);
-    }
 
     /**
      * Gets the value of the port property.
@@ -237,6 +209,62 @@ public class LogicalUnit {
     }
 
     /**
+     * Gets the value of the portal property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getPortal() {
+        return portal;
+    }
+
+    /**
+     * Sets the value of the portal property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setPortal(String value) {
+        this.portal = value;
+    }
+
+    public boolean isSetPortal() {
+        return (this.portal!= null);
+    }
+
+    /**
+     * Gets the value of the address property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * Sets the value of the address property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setAddress(String value) {
+        this.address = value;
+    }
+
+    public boolean isSetAddress() {
+        return (this.address!= null);
+    }
+
+    /**
      * Gets the value of the serial property.
      *
      * @return
@@ -346,34 +374,6 @@ public class LogicalUnit {
 
     public boolean isSetLunMapping() {
         return (this.lunMapping!= null);
-    }
-
-    /**
-     * Gets the value of the portal property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getPortal() {
-        return portal;
-    }
-
-    /**
-     * Sets the value of the portal property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setPortal(String value) {
-        this.portal = value;
-    }
-
-    public boolean isSetPortal() {
-        return (this.portal!= null);
     }
 
     /**

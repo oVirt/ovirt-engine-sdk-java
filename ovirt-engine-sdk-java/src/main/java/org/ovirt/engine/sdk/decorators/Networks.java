@@ -143,6 +143,7 @@ public class Networks extends
      *    network.data_center.id|name
      *    network.name
      *    [network.description]
+     *    [network.comment]
      *    [network.vlan.id]
      *    [network.ip.address]
      *    [network.ip.gateway]
@@ -150,6 +151,7 @@ public class Networks extends
      *    [network.display]
      *    [network.stp]
      *    [network.mtu]
+     *    [network.profile_required]
      *    </pre>
      *
      * @return
@@ -184,6 +186,7 @@ public class Networks extends
      *    network.data_center.id|name
      *    network.name
      *    [network.description]
+     *    [network.comment]
      *    [network.vlan.id]
      *    [network.ip.address]
      *    [network.ip.gateway]
@@ -191,6 +194,7 @@ public class Networks extends
      *    [network.display]
      *    [network.stp]
      *    [network.mtu]
+     *    [network.profile_required]
      *    </pre>
      *
      * @param expect

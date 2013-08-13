@@ -35,24 +35,22 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>Network providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Network }.
+ * <p>NetworkVnicProfile providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.VnicProfile }.
  */
 @SuppressWarnings("unused")
-public class Network extends
-        org.ovirt.engine.sdk.entities.Network {
+public class NetworkVnicProfile extends
+        org.ovirt.engine.sdk.entities.VnicProfile {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile NetworkPermissions networkPermissions;
-    private volatile NetworkVnicProfiles networkVnicProfiles;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public Network(HttpProxyBroker proxy) {
+    public NetworkVnicProfile(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -63,72 +61,8 @@ public class Network extends
         return proxy;
     }
 
-    /**
-     * Gets the value of the NetworkPermissions property.
-     *
-     * @return
-     *     {@link NetworkPermissions }
-     */
-    public NetworkPermissions getPermissions() {
-        if (this.networkPermissions == null) {
-            synchronized (this.LOCK) {
-                if (this.networkPermissions == null) {
-                    this.networkPermissions = new NetworkPermissions(proxy, this);
-                }
-            }
-        }
-        return networkPermissions;
-    }
-    /**
-     * Gets the value of the NetworkVnicProfiles property.
-     *
-     * @return
-     *     {@link NetworkVnicProfiles }
-     */
-    public NetworkVnicProfiles getVnicProfiles() {
-        if (this.networkVnicProfiles == null) {
-            synchronized (this.LOCK) {
-                if (this.networkVnicProfiles == null) {
-                    this.networkVnicProfiles = new NetworkVnicProfiles(proxy, this);
-                }
-            }
-        }
-        return networkVnicProfiles;
-    }
 
 
-    /**
-     * Updates Network object.
-     *
-     * @param network {@link org.ovirt.engine.sdk.entities.Network}
-     *    <pre>
-     *    [network.name]
-     *    [network.description]
-     *    [network.comment]
-     *    [network.vlan.id]
-     *    [network.ip.address]
-     *    [network.ip.gateway]
-     *    [network.ip.netmask]
-     *    [network.display]
-     *    [network.stp]
-     *    [network.mtu]
-     *    </pre>
-     *
-     * @return
-     *     {@link Network }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Network update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Network.class, Network.class);
-    }
     /**
      * Deletes object.
      *

@@ -30,19 +30,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Permissions complex type.
+ * <p>Java class for ConfigurationTypes complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Permissions">
+ * &lt;complexType name="ConfigurationTypes">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseResources">
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}permission" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="clone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="configuration_type" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/extension>
+ *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -50,81 +49,49 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Permissions", propOrder = {
-    "permissions",
-    "clone"
+@XmlType(name = "ConfigurationTypes", propOrder = {
+    "configurationTypes"
 })
-public class Permissions
-    extends BaseResources
-{
+public class ConfigurationTypes {
 
-    @XmlElement(name = "permission")
-    protected List<Permission> permissions;
-    protected Boolean clone;
+    @XmlElement(name = "configuration_type")
+    protected List<String> configurationTypes;
 
     /**
-     * Gets the value of the permissions property.
+     * Gets the value of the configurationTypes property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the permissions property.
+     * This is why there is not a <CODE>set</CODE> method for the configurationTypes property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPermissions().add(newItem);
+     *    getConfigurationTypes().add(newItem);
      * </pre>
      *
      *
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Permission }
+     * {@link String }
      *
      *
      */
-    public List<Permission> getPermissions() {
-        if (permissions == null) {
-            permissions = new ArrayList<Permission>();
+    public List<String> getConfigurationTypes() {
+        if (configurationTypes == null) {
+            configurationTypes = new ArrayList<String>();
         }
-        return this.permissions;
+        return this.configurationTypes;
     }
 
-    public boolean isSetPermissions() {
-        return ((this.permissions!= null)&&(!this.permissions.isEmpty()));
+    public boolean isSetConfigurationTypes() {
+        return ((this.configurationTypes!= null)&&(!this.configurationTypes.isEmpty()));
     }
 
-    public void unsetPermissions() {
-        this.permissions = null;
-    }
-
-    /**
-     * Gets the value of the clone property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getClone() {
-        return clone;
-    }
-
-    /**
-     * Sets the value of the clone property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setClone(Boolean value) {
-        this.clone = value;
-    }
-
-    public boolean isSetClone() {
-        return (this.clone!= null);
+    public void unsetConfigurationTypes() {
+        this.configurationTypes = null;
     }
 
 }

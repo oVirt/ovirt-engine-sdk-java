@@ -146,6 +146,7 @@ public class Clusters extends
      *    cluster.version.minor
      *    cluster.cpu.id
      *    [cluster.description]
+     *    [cluster.comment]
      *    [cluster.memory_policy.overcommit.percent]
      *    [cluster.memory_policy.transparent_hugepages.enabled]
      *    [cluster.scheduling_policy.policy]
@@ -158,6 +159,7 @@ public class Clusters extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ballooning_enabled]
      *    </pre>
      *
      * @return
@@ -195,6 +197,7 @@ public class Clusters extends
      *    cluster.version.minor
      *    cluster.cpu.id
      *    [cluster.description]
+     *    [cluster.comment]
      *    [cluster.memory_policy.overcommit.percent]
      *    [cluster.memory_policy.transparent_hugepages.enabled]
      *    [cluster.scheduling_policy.policy]
@@ -207,6 +210,7 @@ public class Clusters extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ballooning_enabled]
      *    </pre>
      *
      * @param expect

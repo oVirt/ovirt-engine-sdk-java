@@ -35,25 +35,23 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>DataCenterCluster providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Cluster }.
+ * <p>VnicProfile providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.VnicProfile }.
  */
 @SuppressWarnings("unused")
-public class DataCenterCluster extends
-        org.ovirt.engine.sdk.entities.Cluster {
+public class VnicProfile extends
+        org.ovirt.engine.sdk.entities.VnicProfile {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile DataCenterClusterPermissions dataCenterClusterPermissions;
-    private volatile DataCenterClusterGlusterVolumes dataCenterClusterGlusterVolumes;
-    private volatile DataCenterClusterNetworks dataCenterClusterNetworks;
+    private volatile VnicProfilePermissions vnicProfilePermissions;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public DataCenterCluster(HttpProxyBroker proxy) {
+    public VnicProfile(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -65,82 +63,36 @@ public class DataCenterCluster extends
     }
 
     /**
-     * Gets the value of the DataCenterClusterPermissions property.
+     * Gets the value of the VnicProfilePermissions property.
      *
      * @return
-     *     {@link DataCenterClusterPermissions }
+     *     {@link VnicProfilePermissions }
      */
-    public DataCenterClusterPermissions getPermissions() {
-        if (this.dataCenterClusterPermissions == null) {
+    public VnicProfilePermissions getPermissions() {
+        if (this.vnicProfilePermissions == null) {
             synchronized (this.LOCK) {
-                if (this.dataCenterClusterPermissions == null) {
-                    this.dataCenterClusterPermissions = new DataCenterClusterPermissions(proxy, this);
+                if (this.vnicProfilePermissions == null) {
+                    this.vnicProfilePermissions = new VnicProfilePermissions(proxy, this);
                 }
             }
         }
-        return dataCenterClusterPermissions;
-    }
-    /**
-     * Gets the value of the DataCenterClusterGlusterVolumes property.
-     *
-     * @return
-     *     {@link DataCenterClusterGlusterVolumes }
-     */
-    public DataCenterClusterGlusterVolumes getGlusterVolumes() {
-        if (this.dataCenterClusterGlusterVolumes == null) {
-            synchronized (this.LOCK) {
-                if (this.dataCenterClusterGlusterVolumes == null) {
-                    this.dataCenterClusterGlusterVolumes = new DataCenterClusterGlusterVolumes(proxy, this);
-                }
-            }
-        }
-        return dataCenterClusterGlusterVolumes;
-    }
-    /**
-     * Gets the value of the DataCenterClusterNetworks property.
-     *
-     * @return
-     *     {@link DataCenterClusterNetworks }
-     */
-    public DataCenterClusterNetworks getNetworks() {
-        if (this.dataCenterClusterNetworks == null) {
-            synchronized (this.LOCK) {
-                if (this.dataCenterClusterNetworks == null) {
-                    this.dataCenterClusterNetworks = new DataCenterClusterNetworks(proxy, this);
-                }
-            }
-        }
-        return dataCenterClusterNetworks;
+        return vnicProfilePermissions;
     }
 
 
     /**
-     * Updates DataCenterCluster object.
+     * Updates VnicProfile object.
      *
-     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     * @param vnicprofile {@link org.ovirt.engine.sdk.entities.VnicProfile}
      *    <pre>
-     *    [cluster.name]
-     *    [cluster.description]
-     *    [cluster.cpu.id]
-     *    [cluster.version.major]
-     *    [cluster.version.minor]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.trusted_service]
-     *    [cluster.ballooning_enabled]
+     *    [vnicprofile.name]
+     *    [vnicprofile.description]
+     *    [vnicprofile.port_mirroring]
+     *    [vnicprofile.custom_properties.custom_property]
      *    </pre>
      *
      * @return
-     *     {@link DataCenterCluster }
+     *     {@link VnicProfile }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -149,10 +101,10 @@ public class DataCenterCluster extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterCluster update() throws ClientProtocolException,
+    public VnicProfile update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Cluster.class, DataCenterCluster.class);
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VnicProfile.class, VnicProfile.class);
     }
     /**
      * Deletes object.

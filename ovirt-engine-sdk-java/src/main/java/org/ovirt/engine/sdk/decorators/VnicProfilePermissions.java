@@ -39,31 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>VMSnapshots providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Snapshots }.
+ * <p>VnicProfilePermissions providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permissions }.
  */
 @SuppressWarnings("unused")
-public class VMSnapshots extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Snapshot,
-                            org.ovirt.engine.sdk.entities.Snapshots,
-                            VMSnapshot> {
+public class VnicProfilePermissions extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Permission,
+                            org.ovirt.engine.sdk.entities.Permissions,
+                            VnicProfilePermission> {
 
-    private VM parent;
+    private VnicProfile parent;
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent VM
+     * @param parent VnicProfile
      */
-    public VMSnapshots(HttpProxyBroker proxy, VM parent) {
-        super(proxy, "snapshots");
+    public VnicProfilePermissions(HttpProxyBroker proxy, VnicProfile parent) {
+        super(proxy, "permissions");
         this.parent = parent;
     }
 
     /**
-     * Lists VMSnapshot objects.
+     * Lists VnicProfilePermission objects.
      *
      * @return
-     *     List of {@link VMSnapshot }
+     *     List of {@link VnicProfilePermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +73,17 @@ public class VMSnapshots extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<VMSnapshot> list() throws ClientProtocolException,
+    public List<VnicProfilePermission> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class, VMSnapshot.class);
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class, VnicProfilePermission.class);
     }
 
     /**
-     * Fetches VMSnapshot object by id.
+     * Fetches VnicProfilePermission object by id.
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link VnicProfilePermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,26 +93,22 @@ public class VMSnapshots extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMSnapshot get(UUID id) throws ClientProtocolException,
+    public VnicProfilePermission get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Permission.class, VnicProfilePermission.class);
     }
 
     /**
-     * Lists VMSnapshot objects.
+     * Lists VnicProfilePermission objects.
      *
-     * @param allContent
-     *    <pre>
-     *    [true|false]
-     *    </pre>
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
      *
      *
-     * @return List of {@link VMSnapshot }
+     * @return List of {@link VnicProfilePermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -121,31 +117,35 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<VMSnapshot> list(Integer max, String allContent) throws ClientProtocolException,
+    public List<VnicProfilePermission> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         List<Header> headers = new HttpHeaderBuilder()
-                .add("All-Content", allContent)
                 .build();
 
         String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
 
-        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class,
-                VMSnapshot.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                VnicProfilePermission.class, headers);
     }
     /**
-     * Adds Snapshot object.
+     * Adds Permission object.
      *
-     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
-     *    snapshot.description
-     *    [snapshot.persist_memorystate]
+     *    Overload 1:
+     *      permission.user.id
+     *      permission.role.id
+     *
+     *    Overload 2:
+     *      permission.group.id
+     *      permission.role.id
      *    </pre>
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link VnicProfilePermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -154,7 +154,7 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot) throws
+    public VnicProfilePermission add(org.ovirt.engine.sdk.entities.Permission permission) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -164,17 +164,22 @@ public class VMSnapshots extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, snapshot,
-                org.ovirt.engine.sdk.entities.Snapshot.class,
-                VMSnapshot.class, headers);
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                VnicProfilePermission.class, headers);
     }
     /**
-     * Adds Snapshot object.
+     * Adds Permission object.
      *
-     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
-     *    snapshot.description
-     *    [snapshot.persist_memorystate]
+     *    Overload 1:
+     *      permission.user.id
+     *      permission.role.id
+     *
+     *    Overload 2:
+     *      permission.group.id
+     *      permission.role.id
      *    </pre>
      *
      * @param expect
@@ -187,7 +192,7 @@ public class VMSnapshots extends
      *    </pre>
      *
      * @return
-     *     {@link VMSnapshot }
+     *     {@link VnicProfilePermission }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -196,7 +201,7 @@ public class VMSnapshots extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot, String expect, String correlationId) throws
+    public VnicProfilePermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -208,9 +213,9 @@ public class VMSnapshots extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, snapshot,
-                org.ovirt.engine.sdk.entities.Snapshot.class,
-                VMSnapshot.class, headers);
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                VnicProfilePermission.class, headers);
     }
 
 }

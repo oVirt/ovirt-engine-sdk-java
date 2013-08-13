@@ -52,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}transparent_hugepages" minOccurs="0"/>
  *         &lt;element name="iscsi" type="{}IscsiDetails" minOccurs="0"/>
  *         &lt;element name="root_password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element ref="{}ssh" minOccurs="0"/>
  *         &lt;element name="statistics" type="{}Statistics" minOccurs="0"/>
  *         &lt;element ref="{}cpu" minOccurs="0"/>
  *         &lt;element name="memory" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -87,6 +88,7 @@ import javax.xml.bind.annotation.XmlType;
     "transparentHugepages",
     "iscsi",
     "rootPassword",
+    "ssh",
     "statistics",
     "cpu",
     "memory",
@@ -123,6 +125,7 @@ public class Host
     protected IscsiDetails iscsi;
     @XmlElement(name = "root_password")
     protected String rootPassword;
+    protected SSH ssh;
     protected Statistics statistics;
     protected CPU cpu;
     protected Long memory;
@@ -529,6 +532,34 @@ public class Host
 
     public boolean isSetRootPassword() {
         return (this.rootPassword!= null);
+    }
+
+    /**
+     * Gets the value of the ssh property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SSH }
+     *
+     */
+    public SSH getSsh() {
+        return ssh;
+    }
+
+    /**
+     * Sets the value of the ssh property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SSH }
+     *
+     */
+    public void setSsh(SSH value) {
+        this.ssh = value;
+    }
+
+    public boolean isSetSsh() {
+        return (this.ssh!= null);
     }
 
     /**

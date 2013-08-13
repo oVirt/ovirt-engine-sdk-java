@@ -55,14 +55,16 @@ public class Api {
     private volatile Events events;
     private volatile Domains domains;
     private volatile Disks disks;
+    private volatile VnicProfiles vnicProfiles;
     private volatile Clusters clusters;
     private volatile DataCenters dataCenters;
     private volatile Roles roles;
     private volatile Hosts hosts;
     private volatile VMs vMs;
+    private volatile StorageConnections storageConnections;
     private volatile VmPools vmPools;
-    private volatile Capabilities capabilities;
     private volatile StorageDomains storageDomains;
+    private volatile Capabilities capabilities;
     private volatile Groups groups;
 
 
@@ -674,6 +676,23 @@ public class Api {
         return disks;
     }
     /**
+     * Gets the value of the VnicProfiles property.
+     *
+     * @return
+     *     {@link VnicProfiles }
+     *
+     */
+    public VnicProfiles getVnicProfiles() {
+        if (this.vnicProfiles == null) {
+            synchronized (this.LOCK) {
+                if (this.vnicProfiles == null) {
+                    this.vnicProfiles = new VnicProfiles(proxy);
+                }
+            }
+        }
+        return vnicProfiles;
+    }
+    /**
      * Gets the value of the Clusters property.
      *
      * @return
@@ -759,6 +778,23 @@ public class Api {
         return vMs;
     }
     /**
+     * Gets the value of the StorageConnections property.
+     *
+     * @return
+     *     {@link StorageConnections }
+     *
+     */
+    public StorageConnections getStorageConnections() {
+        if (this.storageConnections == null) {
+            synchronized (this.LOCK) {
+                if (this.storageConnections == null) {
+                    this.storageConnections = new StorageConnections(proxy);
+                }
+            }
+        }
+        return storageConnections;
+    }
+    /**
      * Gets the value of the VmPools property.
      *
      * @return
@@ -776,23 +812,6 @@ public class Api {
         return vmPools;
     }
     /**
-     * Gets the value of the Capabilities property.
-     *
-     * @return
-     *     {@link Capabilities }
-     *
-     */
-    public Capabilities getCapabilities() {
-        if (this.capabilities == null) {
-            synchronized (this.LOCK) {
-                if (this.capabilities == null) {
-                    this.capabilities = new Capabilities(proxy);
-                }
-            }
-        }
-        return capabilities;
-    }
-    /**
      * Gets the value of the StorageDomains property.
      *
      * @return
@@ -808,6 +827,23 @@ public class Api {
             }
         }
         return storageDomains;
+    }
+    /**
+     * Gets the value of the Capabilities property.
+     *
+     * @return
+     *     {@link Capabilities }
+     *
+     */
+    public Capabilities getCapabilities() {
+        if (this.capabilities == null) {
+            synchronized (this.LOCK) {
+                if (this.capabilities == null) {
+                    this.capabilities = new Capabilities(proxy);
+                }
+            }
+        }
+        return capabilities;
     }
     /**
      * Gets the value of the Groups property.
@@ -847,18 +883,6 @@ public class Api {
         return getEntryPoint().getTime();
     }
     /**
-     * Gets the value of the SpecialObjects property.
-     *
-     * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
-     *
-     */
-    public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
-        if (this.entryPoint != null) {
-            return this.entryPoint.getSpecialObjects();
-        }
-        return null;
-    }
-    /**
      * Gets the value of the ProductInfo property.
      *
      * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
@@ -867,6 +891,18 @@ public class Api {
     public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
         if (this.entryPoint != null) {
             return this.entryPoint.getProductInfo();
+        }
+        return null;
+    }
+    /**
+     * Gets the value of the SpecialObjects property.
+     *
+     * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
+     *
+     */
+    public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
+        if (this.entryPoint != null) {
+            return this.entryPoint.getSpecialObjects();
         }
         return null;
     }

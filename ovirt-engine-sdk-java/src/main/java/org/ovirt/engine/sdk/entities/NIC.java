@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="plugged" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}port_mirroring" minOccurs="0"/>
  *         &lt;element ref="{}reported_devices" minOccurs="0"/>
- *         &lt;element ref="{}custom_properties" minOccurs="0"/>
+ *         &lt;element ref="{}vnic_profile" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -66,7 +66,7 @@ import javax.xml.bind.annotation.XmlType;
     "plugged",
     "portMirroring",
     "reportedDevices",
-    "customProperties"
+    "vnicProfile"
 })
 public class NIC
     extends BaseDevice
@@ -84,8 +84,8 @@ public class NIC
     protected PortMirroring portMirroring;
     @XmlElement(name = "reported_devices")
     protected ReportedDevices reportedDevices;
-    @XmlElement(name = "custom_properties")
-    protected CustomProperties customProperties;
+    @XmlElement(name = "vnic_profile")
+    protected VnicProfile vnicProfile;
 
     /**
      * Gets the value of the network property.
@@ -340,31 +340,31 @@ public class NIC
     }
 
     /**
-     * Gets the value of the customProperties property.
+     * Gets the value of the vnicProfile property.
      *
      * @return
      *     possible object is
-     *     {@link CustomProperties }
+     *     {@link VnicProfile }
      *
      */
-    public CustomProperties getCustomProperties() {
-        return customProperties;
+    public VnicProfile getVnicProfile() {
+        return vnicProfile;
     }
 
     /**
-     * Sets the value of the customProperties property.
+     * Sets the value of the vnicProfile property.
      *
      * @param value
      *     allowed object is
-     *     {@link CustomProperties }
+     *     {@link VnicProfile }
      *
      */
-    public void setCustomProperties(CustomProperties value) {
-        this.customProperties = value;
+    public void setVnicProfile(VnicProfile value) {
+        this.vnicProfile = value;
     }
 
-    public boolean isSetCustomProperties() {
-        return (this.customProperties!= null);
+    public boolean isSetVnicProfile() {
+        return (this.vnicProfile!= null);
     }
 
 }

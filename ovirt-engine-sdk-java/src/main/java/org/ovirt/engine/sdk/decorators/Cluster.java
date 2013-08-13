@@ -121,6 +121,7 @@ public class Cluster extends
      *    <pre>
      *    [cluster.name]
      *    [cluster.description]
+     *    [cluster.comment]
      *    [cluster.data_center.id]
      *    [cluster.cpu.id]
      *    [cluster.version.major]
@@ -136,6 +137,7 @@ public class Cluster extends
      *    [cluster.gluster_service]
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
+     *    [cluster.ballooning_enabled]
      *    </pre>
      *
      * @return

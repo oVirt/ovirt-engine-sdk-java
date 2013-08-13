@@ -137,7 +137,6 @@ public class JobSteps extends
      *    <pre>
      *    step.type
      *    step.description
-     *    step.status.state
      *    [step.job.id]
      *    [step.parent_step.id]
      *    </pre>
@@ -173,7 +172,6 @@ public class JobSteps extends
      *    <pre>
      *    step.type
      *    step.description
-     *    step.status.state
      *    [step.job.id]
      *    [step.parent_step.id]
      *    </pre>

@@ -61,6 +61,7 @@ import javax.xml.bind.annotation.XmlType;
     ReportedDevices.class,
     Groups.class,
     StorageDomains.class,
+    StorageConnections.class,
     Steps.class,
     Roles.class,
     Events.class,
@@ -86,6 +87,7 @@ import javax.xml.bind.annotation.XmlType;
     Permits.class,
     GlusterClients.class,
     Hooks.class,
+    VnicProfiles.class,
     Statistics.class,
     VmPools.class,
     BaseDevices.class

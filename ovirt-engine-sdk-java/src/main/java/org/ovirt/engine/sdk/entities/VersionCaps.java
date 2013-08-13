@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}power_managers" minOccurs="0"/>
  *         &lt;element ref="{}fence_types" minOccurs="0"/>
  *         &lt;element ref="{}storage_types" minOccurs="0"/>
+ *         &lt;element ref="{}configuration_types" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain_types" minOccurs="0"/>
  *         &lt;element ref="{}vm_types" minOccurs="0"/>
  *         &lt;element ref="{}boot_devices" minOccurs="0"/>
@@ -78,6 +79,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}sgio_options" minOccurs="0"/>
  *         &lt;element ref="{}watchdog_models" minOccurs="0"/>
  *         &lt;element ref="{}watchdog_actions" minOccurs="0"/>
+ *         &lt;element ref="{}authentication_methods" minOccurs="0"/>
  *         &lt;element ref="{}step_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
  *         &lt;element ref="{}transport_types" minOccurs="0"/>
@@ -101,6 +103,7 @@ import javax.xml.bind.annotation.XmlType;
     "powerManagers",
     "fenceTypes",
     "storageTypes",
+    "configurationTypes",
     "storageDomainTypes",
     "vmTypes",
     "bootDevices",
@@ -136,6 +139,7 @@ import javax.xml.bind.annotation.XmlType;
     "sgioOptions",
     "watchdogModels",
     "watchdogActions",
+    "authenticationMethods",
     "stepTypes",
     "glusterVolumeTypes",
     "transportTypes",
@@ -157,6 +161,8 @@ public class VersionCaps
     protected FenceTypes fenceTypes;
     @XmlElement(name = "storage_types")
     protected StorageTypes storageTypes;
+    @XmlElement(name = "configuration_types")
+    protected ConfigurationTypes configurationTypes;
     @XmlElement(name = "storage_domain_types")
     protected StorageDomainTypes storageDomainTypes;
     @XmlElement(name = "vm_types")
@@ -225,6 +231,8 @@ public class VersionCaps
     protected WatchdogModels watchdogModels;
     @XmlElement(name = "watchdog_actions")
     protected WatchdogActions watchdogActions;
+    @XmlElement(name = "authentication_methods")
+    protected AuthenticationMethod authenticationMethods;
     @XmlElement(name = "step_types")
     protected StepTypes stepTypes;
     @XmlElement(name = "gluster_volume_types")
@@ -406,6 +414,34 @@ public class VersionCaps
 
     public boolean isSetStorageTypes() {
         return (this.storageTypes!= null);
+    }
+
+    /**
+     * Gets the value of the configurationTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link ConfigurationTypes }
+     *
+     */
+    public ConfigurationTypes getConfigurationTypes() {
+        return configurationTypes;
+    }
+
+    /**
+     * Sets the value of the configurationTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ConfigurationTypes }
+     *
+     */
+    public void setConfigurationTypes(ConfigurationTypes value) {
+        this.configurationTypes = value;
+    }
+
+    public boolean isSetConfigurationTypes() {
+        return (this.configurationTypes!= null);
     }
 
     /**
@@ -1386,6 +1422,34 @@ public class VersionCaps
 
     public boolean isSetWatchdogActions() {
         return (this.watchdogActions!= null);
+    }
+
+    /**
+     * Gets the value of the authenticationMethods property.
+     *
+     * @return
+     *     possible object is
+     *     {@link AuthenticationMethod }
+     *
+     */
+    public AuthenticationMethod getAuthenticationMethods() {
+        return authenticationMethods;
+    }
+
+    /**
+     * Sets the value of the authenticationMethods property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link AuthenticationMethod }
+     *
+     */
+    public void setAuthenticationMethods(AuthenticationMethod value) {
+        this.authenticationMethods = value;
+    }
+
+    public boolean isSetAuthenticationMethods() {
+        return (this.authenticationMethods!= null);
     }
 
     /**

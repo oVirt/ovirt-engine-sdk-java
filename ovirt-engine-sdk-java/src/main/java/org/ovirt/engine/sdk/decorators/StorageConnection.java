@@ -35,28 +35,22 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>StorageDomain providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.StorageDomain }.
+ * <p>StorageConnection providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageConnection }.
  */
 @SuppressWarnings("unused")
-public class StorageDomain extends
-        org.ovirt.engine.sdk.entities.StorageDomain {
+public class StorageConnection extends
+        org.ovirt.engine.sdk.entities.StorageConnection {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile StorageDomainPermissions storageDomainPermissions;
-    private volatile StorageDomainVMs storageDomainVMs;
-    private volatile StorageDomainTemplates storageDomainTemplates;
-    private volatile StorageDomainStorageConnections storageDomainStorageConnections;
-    private volatile StorageDomainDisks storageDomainDisks;
-    private volatile StorageDomainFiles storageDomainFiles;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public StorageDomain(HttpProxyBroker proxy) {
+    public StorageConnection(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -67,122 +61,39 @@ public class StorageDomain extends
         return proxy;
     }
 
-    /**
-     * Gets the value of the StorageDomainPermissions property.
-     *
-     * @return
-     *     {@link StorageDomainPermissions }
-     */
-    public StorageDomainPermissions getPermissions() {
-        if (this.storageDomainPermissions == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainPermissions == null) {
-                    this.storageDomainPermissions = new StorageDomainPermissions(proxy, this);
-                }
-            }
-        }
-        return storageDomainPermissions;
-    }
-    /**
-     * Gets the value of the StorageDomainVMs property.
-     *
-     * @return
-     *     {@link StorageDomainVMs }
-     */
-    public StorageDomainVMs getVMs() {
-        if (this.storageDomainVMs == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainVMs == null) {
-                    this.storageDomainVMs = new StorageDomainVMs(proxy, this);
-                }
-            }
-        }
-        return storageDomainVMs;
-    }
-    /**
-     * Gets the value of the StorageDomainTemplates property.
-     *
-     * @return
-     *     {@link StorageDomainTemplates }
-     */
-    public StorageDomainTemplates getTemplates() {
-        if (this.storageDomainTemplates == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainTemplates == null) {
-                    this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
-                }
-            }
-        }
-        return storageDomainTemplates;
-    }
-    /**
-     * Gets the value of the StorageDomainStorageConnections property.
-     *
-     * @return
-     *     {@link StorageDomainStorageConnections }
-     */
-    public StorageDomainStorageConnections getStorageConnections() {
-        if (this.storageDomainStorageConnections == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainStorageConnections == null) {
-                    this.storageDomainStorageConnections = new StorageDomainStorageConnections(proxy, this);
-                }
-            }
-        }
-        return storageDomainStorageConnections;
-    }
-    /**
-     * Gets the value of the StorageDomainDisks property.
-     *
-     * @return
-     *     {@link StorageDomainDisks }
-     */
-    public StorageDomainDisks getDisks() {
-        if (this.storageDomainDisks == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainDisks == null) {
-                    this.storageDomainDisks = new StorageDomainDisks(proxy, this);
-                }
-            }
-        }
-        return storageDomainDisks;
-    }
-    /**
-     * Gets the value of the StorageDomainFiles property.
-     *
-     * @return
-     *     {@link StorageDomainFiles }
-     */
-    public StorageDomainFiles getFiles() {
-        if (this.storageDomainFiles == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainFiles == null) {
-                    this.storageDomainFiles = new StorageDomainFiles(proxy, this);
-                }
-            }
-        }
-        return storageDomainFiles;
-    }
 
 
     /**
-     * Updates StorageDomain object.
+     * Updates StorageConnection object.
      *
-     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
      *    <pre>
      *    Overload 1:
-     *      [storagedomain.name]
+     *      [storage_connection.port]
+     *      [storage_connection.username]
+     *      [storage_connection.password]
+     *      [storage_connection.iqn]
+     *      [storage_connection.address]
      *
      *    Overload 2:
-     *      storagedomain.host.id|name
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
-     *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.nfs_retrans]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 3:
+     *      [storage_connection.mount_options]
+     *      [storage_connection.vfs_type]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 4:
+     *      [storage_connection.path]
      *    </pre>
      *
      * @return
-     *     {@link StorageDomain }
+     *     {@link StorageConnection }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -191,10 +102,10 @@ public class StorageDomain extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomain update() throws ClientProtocolException,
+    public StorageConnection update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
+        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.StorageConnection.class, StorageConnection.class);
     }
     /**
      * Deletes object.
@@ -260,10 +171,9 @@ public class StorageDomain extends
     /**
      * Deletes object.
      *
-     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     * @param host {@link org.ovirt.engine.sdk.entities.Host}
      *    <pre>
-     *    storagedomain.host.id|name
-     *    [storagedomain.format]
+     *    [host.id|name]
      *    </pre>
      *
      * @param correlationId
@@ -285,7 +195,7 @@ public class StorageDomain extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, Boolean async, String correlationId) throws ClientProtocolException,
+    public Response delete(org.ovirt.engine.sdk.entities.Host host, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -297,8 +207,8 @@ public class StorageDomain extends
                 .add("async", async, UrlParameterType.MATRIX)
                 .build();
 
-        return getProxy().delete(url, storagedomain,
-                org.ovirt.engine.sdk.entities.StorageDomain.class, Response.class, headers);
+        return getProxy().delete(url, host,
+                org.ovirt.engine.sdk.entities.Host.class, Response.class, headers);
     }
 
 }

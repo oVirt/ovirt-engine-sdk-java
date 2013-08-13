@@ -22,71 +22,93 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.entities.Action;
-import org.ovirt.engine.sdk.entities.Response;
+import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>TemplateNIC providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.NIC }.
+ * <p>StorageDomainStorageConnections providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageConnections }.
  */
 @SuppressWarnings("unused")
-public class TemplateNIC extends
-        org.ovirt.engine.sdk.entities.NIC {
+public class StorageDomainStorageConnections extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.StorageConnection,
+                            org.ovirt.engine.sdk.entities.StorageConnections,
+                            StorageDomainStorageConnection> {
 
-    private HttpProxyBroker proxy;
-    private final Object LOCK = new Object();
-
-
+    private StorageDomain parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent StorageDomain
      */
-    public TemplateNIC(HttpProxyBroker proxy) {
-        this.proxy = proxy;
+    public StorageDomainStorageConnections(HttpProxyBroker proxy, StorageDomain parent) {
+        super(proxy, "storageconnections");
+        this.parent = parent;
     }
 
     /**
-     * @return HttpProxyBroker
-     */
-    private HttpProxyBroker getProxy() {
-        return proxy;
-    }
-
-
-
-    /**
-     * Updates TemplateNIC object.
+     * Lists StorageDomainStorageConnection objects.
      *
-     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     * @return
+     *     List of {@link StorageDomainStorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public List<StorageDomainStorageConnection> list() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.StorageConnections.class, StorageDomainStorageConnection.class);
+    }
+
+    /**
+     * Fetches StorageDomainStorageConnection object by id.
+     *
+     * @return
+     *     {@link StorageDomainStorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public StorageDomainStorageConnection get(UUID id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageConnection.class, StorageDomainStorageConnection.class);
+    }
+
+    /**
+     * Lists StorageDomainStorageConnection objects.
+     *
+     * @param max
      *    <pre>
-     *    Overload 1:
-     *      [nic.vnic_profile.id]
-     *      [nic.linked]
-     *      [nic.name]
-     *      [nic.mac.address]
-     *      [nic.interface]
-     *      [nic.plugged]
-     *
-     *    Overload 2:
-     *      [nic.network.id|name]
-     *      [nic.linked]
-     *      [nic.name]
-     *      [nic.mac.address]
-     *      [nic.interface]
-     *      [nic.port_mirroring.networks.network]
+     *    [max results]
      *    </pre>
      *
-     * @return
-     *     {@link TemplateNIC }
+     *
+     * @return List of {@link StorageDomainStorageConnection }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -95,71 +117,18 @@ public class TemplateNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public TemplateNIC update() throws ClientProtocolException,
+    public List<StorageDomainStorageConnection> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, TemplateNIC.class);
-    }
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
 
-        url = new UrlBuilder(url)
+        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
+                .add("max", max, UrlParameterType.MATRIX)
                 .build();
 
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
-
-        url = new UrlBuilder(url)
-                .add("async", async, UrlParameterType.MATRIX)
-                .build();
-
-        return getProxy().delete(url, Response.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.StorageConnections.class,
+                StorageDomainStorageConnection.class, headers);
     }
 
 }

@@ -153,8 +153,13 @@ public class Host extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    [action.root_password]
-     *    [action.image]
+     *    Overload 1:
+     *      [action.root_password]
+     *      [action.image]
+     *
+     *    Overload 2:
+     *      [action.ssh.password]
+     *      [action.image]
      *    </pre>
      *
      * @return
@@ -184,8 +189,13 @@ public class Host extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    [action.root_password]
-     *    [action.image]
+     *    Overload 1:
+     *      [action.root_password]
+     *      [action.image]
+     *
+     *    Overload 2:
+     *      [action.ssh.password]
+     *      [action.image]
      *    </pre>
      *
      * @param correlationId
@@ -279,21 +289,44 @@ public class Host extends
      *
      * @param host {@link org.ovirt.engine.sdk.entities.Host}
      *    <pre>
-     *    [host.name]
-     *    [host.address]
-     *    [host.root_password]
-     *    [host.display.address]
-     *    [host.cluster.id|name]
-     *    [host.port]
-     *    [host.storage_manager.priority]
-     *    [host.power_management.type]
-     *    [host.power_management.enabled]
-     *    [host.power_management.address]
-     *    [host.power_management.username]
-     *    [host.power_management.password]
-     *    [host.power_management.options.option]
-     *    [host.power_management.pm_proxy]
-     *    [host.power_management.agents.agent]
+     *    Overload 1:
+     *      [host.name]
+     *      [host.comment]
+     *      [host.address]
+     *      [host.root_password]
+     *      [host.display.address]
+     *      [host.cluster.id|name]
+     *      [host.port]
+     *      [host.storage_manager.priority]
+     *      [host.power_management.type]
+     *      [host.power_management.enabled]
+     *      [host.power_management.address]
+     *      [host.power_management.username]
+     *      [host.power_management.password]
+     *      [host.power_management.options.option]
+     *      [host.power_management.pm_proxy]
+     *      [host.power_management.agents.agent]
+     *
+     *    Overload 2:
+     *      [host.name]
+     *      [host.comment]
+     *      [host.address]
+     *      [host.ssh.password]
+     *      [host.ssh.port]
+     *      [host.ssh.fingerprint]
+     *      [host.ssh.authentication_type]
+     *      [host.display.address]
+     *      [host.cluster.id|name]
+     *      [host.port]
+     *      [host.storage_manager.priority]
+     *      [host.power_management.type]
+     *      [host.power_management.enabled]
+     *      [host.power_management.address]
+     *      [host.power_management.username]
+     *      [host.power_management.password]
+     *      [host.power_management.options.option]
+     *      [host.power_management.pm_proxy]
+     *      [host.power_management.agents.agent]
      *    </pre>
      *
      * @return
@@ -571,6 +604,64 @@ public class Host extends
     public Action iscsilogin(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/iscsilogin";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs forceselectspm action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action forceselectspm(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/forceselectspm";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs forceselectspm action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action forceselectspm(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/forceselectspm";
 
         List<Header> headers = new HttpHeaderBuilder()
                 .add("Correlation-Id", correlationId)

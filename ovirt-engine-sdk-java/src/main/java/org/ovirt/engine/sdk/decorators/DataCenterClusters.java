@@ -151,6 +151,7 @@ public class DataCenterClusters extends
      *    [cluster.gluster_service]
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
+     *    [cluster.ballooning_enabled]
      *    </pre>
      *
      * @return
@@ -198,6 +199,7 @@ public class DataCenterClusters extends
      *    [cluster.gluster_service]
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
+     *    [cluster.ballooning_enabled]
      *    </pre>
      *
      * @param expect

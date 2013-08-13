@@ -21,6 +21,8 @@
 
 package org.ovirt.engine.sdk.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -38,7 +40,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="file" type="{}PayloadFile"/>
+ *         &lt;element name="file" type="{}PayloadFile" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="volume_id" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -50,41 +53,80 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Payload", propOrder = {
-    "file"
+    "file",
+    "volumeId"
 })
 public class Payload {
 
-    @XmlElement(required = true)
-    protected PayloadFile file;
+    protected List<PayloadFile> file;
+    @XmlElement(name = "volume_id", required = true)
+    protected String volumeId;
     @XmlAttribute(name = "type")
     protected String type;
 
     /**
      * Gets the value of the file property.
      *
-     * @return
-     *     possible object is
-     *     {@link PayloadFile }
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the file property.
+     *
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFile().add(newItem);
+     * </pre>
+     *
+     *
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link PayloadFile }
+     *
      *
      */
-    public PayloadFile getFile() {
-        return file;
-    }
-
-    /**
-     * Sets the value of the file property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link PayloadFile }
-     *
-     */
-    public void setFile(PayloadFile value) {
-        this.file = value;
+    public List<PayloadFile> getFile() {
+        if (file == null) {
+            file = new ArrayList<PayloadFile>();
+        }
+        return this.file;
     }
 
     public boolean isSetFile() {
-        return (this.file!= null);
+        return ((this.file!= null)&&(!this.file.isEmpty()));
+    }
+
+    public void unsetFile() {
+        this.file = null;
+    }
+
+    /**
+     * Gets the value of the volumeId property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getVolumeId() {
+        return volumeId;
+    }
+
+    /**
+     * Sets the value of the volumeId property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setVolumeId(String value) {
+        this.volumeId = value;
+    }
+
+    public boolean isSetVolumeId() {
+        return (this.volumeId!= null);
     }
 
     /**

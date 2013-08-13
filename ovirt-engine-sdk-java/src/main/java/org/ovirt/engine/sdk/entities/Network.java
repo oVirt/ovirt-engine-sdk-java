@@ -47,6 +47,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="mtu" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}usages" minOccurs="0"/>
  *         &lt;element name="required" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="profile_required" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -66,7 +67,8 @@ import javax.xml.bind.annotation.XmlType;
     "display",
     "mtu",
     "usages",
-    "required"
+    "required",
+    "profileRequired"
 })
 public class Network
     extends BaseResource
@@ -83,6 +85,8 @@ public class Network
     protected Integer mtu;
     protected Usages usages;
     protected Boolean required;
+    @XmlElement(name = "profile_required")
+    protected Boolean profileRequired;
 
     /**
      * Gets the value of the dataCenter property.
@@ -362,6 +366,34 @@ public class Network
 
     public boolean isSetRequired() {
         return (this.required!= null);
+    }
+
+    /**
+     * Gets the value of the profileRequired property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getProfileRequired() {
+        return profileRequired;
+    }
+
+    /**
+     * Sets the value of the profileRequired property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setProfileRequired(Boolean value) {
+        this.profileRequired = value;
+    }
+
+    public boolean isSetProfileRequired() {
+        return (this.profileRequired!= null);
     }
 
 }

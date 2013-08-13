@@ -30,19 +30,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Permissions complex type.
+ * <p>Java class for AuthenticationMethod complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Permissions">
+ * &lt;complexType name="AuthenticationMethod">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseResources">
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}permission" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="clone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="authentication_method" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/extension>
+ *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -50,81 +49,49 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Permissions", propOrder = {
-    "permissions",
-    "clone"
+@XmlType(name = "AuthenticationMethod", propOrder = {
+    "authenticationMethod"
 })
-public class Permissions
-    extends BaseResources
-{
+public class AuthenticationMethod {
 
-    @XmlElement(name = "permission")
-    protected List<Permission> permissions;
-    protected Boolean clone;
+    @XmlElement(name = "authentication_method")
+    protected List<String> authenticationMethod;
 
     /**
-     * Gets the value of the permissions property.
+     * Gets the value of the authenticationMethod property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the permissions property.
+     * This is why there is not a <CODE>set</CODE> method for the authenticationMethod property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPermissions().add(newItem);
+     *    getAuthenticationMethod().add(newItem);
      * </pre>
      *
      *
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Permission }
+     * {@link String }
      *
      *
      */
-    public List<Permission> getPermissions() {
-        if (permissions == null) {
-            permissions = new ArrayList<Permission>();
+    public List<String> getAuthenticationMethod() {
+        if (authenticationMethod == null) {
+            authenticationMethod = new ArrayList<String>();
         }
-        return this.permissions;
+        return this.authenticationMethod;
     }
 
-    public boolean isSetPermissions() {
-        return ((this.permissions!= null)&&(!this.permissions.isEmpty()));
+    public boolean isSetAuthenticationMethod() {
+        return ((this.authenticationMethod!= null)&&(!this.authenticationMethod.isEmpty()));
     }
 
-    public void unsetPermissions() {
-        this.permissions = null;
-    }
-
-    /**
-     * Gets the value of the clone property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getClone() {
-        return clone;
-    }
-
-    /**
-     * Sets the value of the clone property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setClone(Boolean value) {
-        this.clone = value;
-    }
-
-    public boolean isSetClone() {
-        return (this.clone!= null);
+    public void unsetAuthenticationMethod() {
+        this.authenticationMethod = null;
     }
 
 }

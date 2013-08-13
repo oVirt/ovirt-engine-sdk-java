@@ -44,6 +44,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element name="memory" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="cpu" type="{}CPU" minOccurs="0"/>
+ *         &lt;element name="cpu_shares" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
  *         &lt;element ref="{}cluster" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain" minOccurs="0"/>
@@ -53,10 +54,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="display" type="{}Display" minOccurs="0"/>
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}permissions" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -72,6 +75,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "status",
     "memory",
     "cpu",
+    "cpuShares",
     "os",
     "cluster",
     "storageDomain",
@@ -81,10 +85,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "display",
     "stateless",
     "deleteProtected",
+    "console",
     "timezone",
     "domain",
     "usb",
-    "tunnelMigration"
+    "tunnelMigration",
+    "permissions"
 })
 public class Template
     extends BaseResource
@@ -95,6 +101,8 @@ public class Template
     protected Status status;
     protected Long memory;
     protected CPU cpu;
+    @XmlElement(name = "cpu_shares")
+    protected Integer cpuShares;
     protected OperatingSystem os;
     protected Cluster cluster;
     @XmlElement(name = "storage_domain")
@@ -109,11 +117,13 @@ public class Template
     protected Boolean stateless;
     @XmlElement(name = "delete_protected")
     protected Boolean deleteProtected;
+    protected Console console;
     protected String timezone;
     protected Domain domain;
     protected Usb usb;
     @XmlElement(name = "tunnel_migration")
     protected Boolean tunnelMigration;
+    protected Permissions permissions;
 
     /**
      * Gets the value of the vm property.
@@ -253,6 +263,34 @@ public class Template
 
     public boolean isSetCpu() {
         return (this.cpu!= null);
+    }
+
+    /**
+     * Gets the value of the cpuShares property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getCpuShares() {
+        return cpuShares;
+    }
+
+    /**
+     * Sets the value of the cpuShares property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setCpuShares(Integer value) {
+        this.cpuShares = value;
+    }
+
+    public boolean isSetCpuShares() {
+        return (this.cpuShares!= null);
     }
 
     /**
@@ -508,6 +546,34 @@ public class Template
     }
 
     /**
+     * Gets the value of the console property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Console }
+     *
+     */
+    public Console getConsole() {
+        return console;
+    }
+
+    /**
+     * Sets the value of the console property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Console }
+     *
+     */
+    public void setConsole(Console value) {
+        this.console = value;
+    }
+
+    public boolean isSetConsole() {
+        return (this.console!= null);
+    }
+
+    /**
      * Gets the value of the timezone property.
      *
      * @return
@@ -617,6 +683,34 @@ public class Template
 
     public boolean isSetTunnelMigration() {
         return (this.tunnelMigration!= null);
+    }
+
+    /**
+     * Gets the value of the permissions property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Permissions }
+     *
+     */
+    public Object getPermissions() {
+        return permissions;
+    }
+
+    /**
+     * Sets the value of the permissions property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Permissions }
+     *
+     */
+    public void setPermissions(Permissions value) {
+        this.permissions = value;
+    }
+
+    public boolean isSetPermissions() {
+        return (this.permissions!= null);
     }
 
 }
