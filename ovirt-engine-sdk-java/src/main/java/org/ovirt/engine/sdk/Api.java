@@ -41,7 +41,7 @@ import org.ovirt.engine.sdk.utils.SerializationHelper;
 /**
  * oVirt virtualization Java SDK.
  */
-public class Api {
+public class Api implements AutoCloseable {
 
     private volatile HttpProxyBroker proxy = null;
     private volatile API entryPoint = null;
@@ -537,6 +537,16 @@ public class Api {
      */
     public synchronized void shutdown() {
         proxy.shutdown();
+    }
+
+    /**
+     * Closes this resource, relinquishing any underlying resources.
+     * This method is invoked automatically on objects managed by the
+     * try-with-resources statement.
+     */
+    @Override
+    public void close() throws Exception {
+        shutdown();
     }
 
     /**
