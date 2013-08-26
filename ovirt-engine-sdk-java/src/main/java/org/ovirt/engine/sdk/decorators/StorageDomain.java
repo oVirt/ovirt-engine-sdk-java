@@ -50,6 +50,7 @@ public class StorageDomain extends
     private volatile StorageDomainTemplates storageDomainTemplates;
     private volatile StorageDomainStorageConnections storageDomainStorageConnections;
     private volatile StorageDomainDisks storageDomainDisks;
+    private volatile StorageDomainImages storageDomainImages;
     private volatile StorageDomainFiles storageDomainFiles;
 
 
@@ -146,6 +147,22 @@ public class StorageDomain extends
             }
         }
         return storageDomainDisks;
+    }
+    /**
+     * Gets the value of the StorageDomainImages property.
+     *
+     * @return
+     *     {@link StorageDomainImages }
+     */
+    public StorageDomainImages getImages() {
+        if (this.storageDomainImages == null) {
+            synchronized (this.LOCK) {
+                if (this.storageDomainImages == null) {
+                    this.storageDomainImages = new StorageDomainImages(proxy, this);
+                }
+            }
+        }
+        return storageDomainImages;
     }
     /**
      * Gets the value of the StorageDomainFiles property.

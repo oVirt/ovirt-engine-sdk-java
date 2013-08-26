@@ -45,6 +45,7 @@ public class Cluster extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile ClusterGlusterHooks clusterGlusterHooks;
     private volatile ClusterGlusterVolumes clusterGlusterVolumes;
     private volatile ClusterNetworks clusterNetworks;
     private volatile ClusterPermissions clusterPermissions;
@@ -64,6 +65,22 @@ public class Cluster extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the ClusterGlusterHooks property.
+     *
+     * @return
+     *     {@link ClusterGlusterHooks }
+     */
+    public ClusterGlusterHooks getGlusterHooks() {
+        if (this.clusterGlusterHooks == null) {
+            synchronized (this.LOCK) {
+                if (this.clusterGlusterHooks == null) {
+                    this.clusterGlusterHooks = new ClusterGlusterHooks(proxy, this);
+                }
+            }
+        }
+        return clusterGlusterHooks;
+    }
     /**
      * Gets the value of the ClusterGlusterVolumes property.
      *

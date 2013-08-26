@@ -35,12 +35,12 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>VMWatchDog providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.WatchDog }.
+ * <p>DataCenterClusterGlusterHook providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.GlusterHook }.
  */
 @SuppressWarnings("unused")
-public class VMWatchDog extends
-        org.ovirt.engine.sdk.entities.WatchDog {
+public class DataCenterClusterGlusterHook extends
+        org.ovirt.engine.sdk.entities.GlusterHook {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
@@ -50,7 +50,7 @@ public class VMWatchDog extends
     /**
      * @param proxy HttpProxyBroker
      */
-    public VMWatchDog(HttpProxyBroker proxy) {
+    public DataCenterClusterGlusterHook(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -64,16 +64,11 @@ public class VMWatchDog extends
 
 
     /**
-     * Updates VMWatchDog object.
+     * Performs resolve action.
      *
-     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
-     *    <pre>
-     *    [watchdog.action]
-     *    [watchdog.model]
-     *    </pre>
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
-     *     {@link VMWatchDog }
+     *     {@link Action }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -82,10 +77,43 @@ public class VMWatchDog extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMWatchDog update() throws ClientProtocolException,
+    public Action resolve(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.WatchDog.class, VMWatchDog.class);
+        String url = this.getHref() + "/resolve";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs enable action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action enable(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/enable";
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Deletes object.
@@ -113,19 +141,11 @@ public class VMWatchDog extends
         return getProxy().delete(url, Response.class, headers);
     }
     /**
-     * Deletes object.
+     * Performs disable action.
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
-     *     {@link Response }
+     *     {@link Action }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -134,19 +154,17 @@ public class VMWatchDog extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+    public Action disable(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
+        String url = this.getHref() + "/disable";
 
         List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
                 .build();
 
         url = new UrlBuilder(url)
-                .add("async", async, UrlParameterType.MATRIX)
                 .build();
 
-        return getProxy().delete(url, Response.class, headers);
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

@@ -21,22 +21,25 @@
 
 package org.ovirt.engine.sdk.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for BaseDevices complex type.
+ * <p>Java class for Images complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="BaseDevices">
+ * &lt;complexType name="Images">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
+ *         &lt;element ref="{}image" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -46,18 +49,52 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "BaseDevices")
-@XmlSeeAlso({
-    Floppies.class,
-    Nics.class,
-    CdRoms.class,
-    Disks.class,
-    WatchDogs.class
+@XmlType(name = "Images", propOrder = {
+    "images"
 })
-public class BaseDevices
+public class Images
     extends BaseResources
 {
 
+    @XmlElement(name = "image")
+    protected List<Image> images;
+
+    /**
+     * Gets the value of the images property.
+     *
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the images property.
+     *
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getImages().add(newItem);
+     * </pre>
+     *
+     *
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Image }
+     *
+     *
+     */
+    public List<Image> getImages() {
+        if (images == null) {
+            images = new ArrayList<Image>();
+        }
+        return this.images;
+    }
+
+    public boolean isSetImages() {
+        return ((this.images!= null)&&(!this.images.isEmpty()));
+    }
+
+    public void unsetImages() {
+        this.images = null;
+    }
 
 }
 

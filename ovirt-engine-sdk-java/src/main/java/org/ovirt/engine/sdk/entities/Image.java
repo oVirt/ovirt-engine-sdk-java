@@ -23,21 +23,18 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for BaseDevices complex type.
+ * <p>Java class for Image complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="BaseDevices">
+ * &lt;complexType name="Image">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseResources">
- *       &lt;sequence>
- *       &lt;/sequence>
+ *     &lt;extension base="{}BaseResource">
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -46,18 +43,10 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "BaseDevices")
-@XmlSeeAlso({
-    Floppies.class,
-    Nics.class,
-    CdRoms.class,
-    Disks.class,
-    WatchDogs.class
-})
-public class BaseDevices
-    extends BaseResources
+@XmlType(name = "Image")
+public class Image
+    extends BaseResource
 {
 
 
 }
-

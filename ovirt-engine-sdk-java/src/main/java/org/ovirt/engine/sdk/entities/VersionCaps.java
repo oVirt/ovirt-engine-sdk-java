@@ -87,6 +87,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}brick_states" minOccurs="0"/>
  *         &lt;element ref="{}reported_device_types" minOccurs="0"/>
  *         &lt;element ref="{}ip_versions" minOccurs="0"/>
+ *         &lt;element ref="{}snapshot_statuses" minOccurs="0"/>
+ *         &lt;element ref="{}content_types" minOccurs="0"/>
+ *         &lt;element ref="{}hook_states" minOccurs="0"/>
+ *         &lt;element ref="{}stages" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -146,7 +150,11 @@ import javax.xml.bind.annotation.XmlType;
     "glusterVolumeStates",
     "brickStates",
     "reportedDeviceTypes",
-    "ipVersions"
+    "ipVersions",
+    "snapshotStatuses",
+    "contentTypes",
+    "hookStates",
+    "stages"
 })
 public class VersionCaps
     extends Version
@@ -247,6 +255,13 @@ public class VersionCaps
     protected ReportedDeviceTypes reportedDeviceTypes;
     @XmlElement(name = "ip_versions")
     protected IpVersions ipVersions;
+    @XmlElement(name = "snapshot_statuses")
+    protected SnapshotStatuses snapshotStatuses;
+    @XmlElement(name = "content_types")
+    protected ContentTypes contentTypes;
+    @XmlElement(name = "hook_states")
+    protected HookStates hookStates;
+    protected Stages stages;
 
     /**
      * Gets the value of the current property.
@@ -1646,6 +1661,118 @@ public class VersionCaps
 
     public boolean isSetIpVersions() {
         return (this.ipVersions!= null);
+    }
+
+    /**
+     * Gets the value of the snapshotStatuses property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SnapshotStatuses }
+     *
+     */
+    public SnapshotStatuses getSnapshotStatuses() {
+        return snapshotStatuses;
+    }
+
+    /**
+     * Sets the value of the snapshotStatuses property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SnapshotStatuses }
+     *
+     */
+    public void setSnapshotStatuses(SnapshotStatuses value) {
+        this.snapshotStatuses = value;
+    }
+
+    public boolean isSetSnapshotStatuses() {
+        return (this.snapshotStatuses!= null);
+    }
+
+    /**
+     * Gets the value of the contentTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link ContentTypes }
+     *
+     */
+    public ContentTypes getContentTypes() {
+        return contentTypes;
+    }
+
+    /**
+     * Sets the value of the contentTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ContentTypes }
+     *
+     */
+    public void setContentTypes(ContentTypes value) {
+        this.contentTypes = value;
+    }
+
+    public boolean isSetContentTypes() {
+        return (this.contentTypes!= null);
+    }
+
+    /**
+     * Gets the value of the hookStates property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HookStates }
+     *
+     */
+    public HookStates getHookStates() {
+        return hookStates;
+    }
+
+    /**
+     * Sets the value of the hookStates property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HookStates }
+     *
+     */
+    public void setHookStates(HookStates value) {
+        this.hookStates = value;
+    }
+
+    public boolean isSetHookStates() {
+        return (this.hookStates!= null);
+    }
+
+    /**
+     * Gets the value of the stages property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Stages }
+     *
+     */
+    public Stages getStages() {
+        return stages;
+    }
+
+    /**
+     * Sets the value of the stages property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Stages }
+     *
+     */
+    public void setStages(Stages value) {
+        this.stages = value;
+    }
+
+    public boolean isSetStages() {
+        return (this.stages!= null);
     }
 
 }

@@ -82,6 +82,7 @@ import javax.xml.bind.annotation.XmlType;
     "clone",
     "restoreMemory",
     "succeeded",
+    "resolutionType",
     "status",
     "fault",
     "iscsiTargets",
@@ -129,6 +130,8 @@ public class Action
     @XmlElement(name = "restore_memory")
     protected Boolean restoreMemory;
     protected Boolean succeeded;
+    @XmlElement(name = "resolution_type")
+    protected String resolutionType;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -918,6 +921,34 @@ public class Action
 
     public boolean isSetSucceeded() {
         return (this.succeeded!= null);
+    }
+
+    /**
+     * Gets the value of the resolutionType property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getResolutionType() {
+        return resolutionType;
+    }
+
+    /**
+     * Sets the value of the resolutionType property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setResolutionType(String value) {
+        this.resolutionType = value;
+    }
+
+    public boolean isSetResolutionType() {
+        return (this.resolutionType!= null);
     }
 
     /**

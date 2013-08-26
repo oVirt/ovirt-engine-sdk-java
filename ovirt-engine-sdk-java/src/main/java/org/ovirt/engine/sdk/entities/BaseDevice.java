@@ -54,8 +54,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     CdRom.class,
-    Disk.class,
     WatchDog.class,
+    Disk.class,
     Floppy.class,
     NIC.class
 })

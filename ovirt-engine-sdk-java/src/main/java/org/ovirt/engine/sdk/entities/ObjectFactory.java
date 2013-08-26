@@ -45,194 +45,204 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _Summary_QNAME = new QName("", "summary");
-    private final static QName _Jobs_QNAME = new QName("", "jobs");
-    private final static QName _Tag_QNAME = new QName("", "tag");
-    private final static QName _Domains_QNAME = new QName("", "domains");
     private final static QName _HardwareInformation_QNAME = new QName("", "hardware_information");
-    private final static QName _Payload_QNAME = new QName("", "payload");
+    private final static QName _SnapshotStatuses_QNAME = new QName("", "snapshot_statuses");
     private final static QName _ConfigurationTypes_QNAME = new QName("", "configuration_types");
     private final static QName _Schema_QNAME = new QName("", "schema");
-    private final static QName _Certificate_QNAME = new QName("", "certificate");
     private final static QName _CreationStates_QNAME = new QName("", "creation_states");
-    private final static QName _HostNics_QNAME = new QName("", "host_nics");
-    private final static QName _HostStorage_QNAME = new QName("", "host_storage");
     private final static QName _Floppies_QNAME = new QName("", "floppies");
-    private final static QName _Rsdl_QNAME = new QName("", "rsdl");
     private final static QName _ReportedDevices_QNAME = new QName("", "reported_devices");
+    private final static QName _Rsdl_QNAME = new QName("", "rsdl");
     private final static QName _Event_QNAME = new QName("", "event");
-    private final static QName _File_QNAME = new QName("", "file");
     private final static QName _Features_QNAME = new QName("", "features");
     private final static QName _Role_QNAME = new QName("", "role");
     private final static QName _Feature_QNAME = new QName("", "feature");
-    private final static QName _StorageTypes_QNAME = new QName("", "storage_types");
-    private final static QName _Groups_QNAME = new QName("", "groups");
-    private final static QName _StorageDomains_QNAME = new QName("", "storage_domains");
     private final static QName _Template_QNAME = new QName("", "template");
     private final static QName _IpVersions_QNAME = new QName("", "ip_versions");
     private final static QName _Host_QNAME = new QName("", "host");
-    private final static QName _StorageConnections_QNAME = new QName("", "storage_connections");
-    private final static QName _Job_QNAME = new QName("", "job");
-    private final static QName _Steps_QNAME = new QName("", "steps");
+    private final static QName _Image_QNAME = new QName("", "image");
     private final static QName _AuthenticationMethods_QNAME = new QName("", "authentication_methods");
-    private final static QName _Disks_QNAME = new QName("", "disks");
     private final static QName _Header_QNAME = new QName("", "header");
-    private final static QName _StorageFormats_QNAME = new QName("", "storage_formats");
-    private final static QName _Statistic_QNAME = new QName("", "statistic");
-    private final static QName _SpecialObjects_QNAME = new QName("", "special_objects");
     private final static QName _Initialization_QNAME = new QName("", "initialization");
+    private final static QName _SpecialObjects_QNAME = new QName("", "special_objects");
+    private final static QName _Statistic_QNAME = new QName("", "statistic");
     private final static QName _VmDeviceTypes_QNAME = new QName("", "vm_device_types");
     private final static QName _Roles_QNAME = new QName("", "roles");
     private final static QName _PowerManagementStates_QNAME = new QName("", "power_management_states");
-    private final static QName _CustomProperties_QNAME = new QName("", "custom_properties");
-    private final static QName _Watchdogs_QNAME = new QName("", "watchdogs");
     private final static QName _Nics_QNAME = new QName("", "nics");
     private final static QName _TemplateStates_QNAME = new QName("", "template_states");
-    private final static QName _Creation_QNAME = new QName("", "creation");
     private final static QName _OsTypes_QNAME = new QName("", "os_types");
     private final static QName _Vm_QNAME = new QName("", "vm");
     private final static QName _StorageDomainStates_QNAME = new QName("", "storage_domain_states");
-    private final static QName _VmStates_QNAME = new QName("", "vm_states");
-    private final static QName _PowerManagers_QNAME = new QName("", "power_managers");
     private final static QName _Events_QNAME = new QName("", "events");
-    private final static QName _Link_QNAME = new QName("", "link");
-    private final static QName _Usb_QNAME = new QName("", "usb");
     private final static QName _DetailedLinks_QNAME = new QName("", "detailedLinks");
     private final static QName _Mac_QNAME = new QName("", "mac");
+    private final static QName _Usb_QNAME = new QName("", "usb");
     private final static QName _HostNic_QNAME = new QName("", "host_nic");
-    private final static QName _DataCenterStates_QNAME = new QName("", "data_center_states");
-    private final static QName _Version_QNAME = new QName("", "version");
-    private final static QName _VcpuPin_QNAME = new QName("", "vcpu_pin");
-    private final static QName _Cpus_QNAME = new QName("", "cpus");
-    private final static QName _BrickDetails_QNAME = new QName("", "brick_details");
-    private final static QName _DiskStates_QNAME = new QName("", "disk_states");
-    private final static QName _HostNonOperationalDetails_QNAME = new QName("", "host_non_operational_details");
     private final static QName _Domain_QNAME = new QName("", "domain");
     private final static QName _Payloads_QNAME = new QName("", "payloads");
-    private final static QName _Api_QNAME = new QName("", "api");
     private final static QName _Bricks_QNAME = new QName("", "bricks");
     private final static QName _Snapshots_QNAME = new QName("", "snapshots");
-    private final static QName _GlusterClient_QNAME = new QName("", "gluster_client");
-    private final static QName _Ksm_QNAME = new QName("", "ksm");
-    private final static QName _Options_QNAME = new QName("", "options");
     private final static QName _Tags_QNAME = new QName("", "tags");
     private final static QName _Cdroms_QNAME = new QName("", "cdroms");
-    private final static QName _Files_QNAME = new QName("", "files");
     private final static QName _Quotas_QNAME = new QName("", "quotas");
     private final static QName _MemoryPools_QNAME = new QName("", "memory_pools");
-    private final static QName _Snapshot_QNAME = new QName("", "snapshot");
+    private final static QName _ContentTypes_QNAME = new QName("", "content_types");
     private final static QName _KeyValuePair_QNAME = new QName("", "keyValuePair");
     private final static QName _Slaves_QNAME = new QName("", "slaves");
-    private final static QName _WatchdogModels_QNAME = new QName("", "watchdog_models");
-    private final static QName _GlusterVolumeTypes_QNAME = new QName("", "gluster_volume_types");
     private final static QName _Fault_QNAME = new QName("", "fault");
-    private final static QName _PowerManagement_QNAME = new QName("", "power_management");
     private final static QName _VmAffinities_QNAME = new QName("", "vm_affinities");
     private final static QName _GlusterVolumes_QNAME = new QName("", "gluster_volumes");
     private final static QName _Cdrom_QNAME = new QName("", "cdrom");
     private final static QName _DetailedLink_QNAME = new QName("", "detailedLink");
     private final static QName _ErrorHandling_QNAME = new QName("", "error_handling");
-    private final static QName _Capabilities_QNAME = new QName("", "capabilities");
     private final static QName _Configuration_QNAME = new QName("", "configuration");
     private final static QName _ProductInfo_QNAME = new QName("", "product_info");
-    private final static QName _Headers_QNAME = new QName("", "headers");
     private final static QName _Body_QNAME = new QName("", "body");
-    private final static QName _Users_QNAME = new QName("", "users");
     private final static QName _ParametersSet_QNAME = new QName("", "parameters_set");
-    private final static QName _PayloadFile_QNAME = new QName("", "payload_file");
     private final static QName _Ips_QNAME = new QName("", "ips");
     private final static QName _BootDevices_QNAME = new QName("", "boot_devices");
-    private final static QName _Permit_QNAME = new QName("", "permit");
-    private final static QName _Disk_QNAME = new QName("", "disk");
-    private final static QName _VnicProfile_QNAME = new QName("", "vnic_profile");
     private final static QName _Bonding_QNAME = new QName("", "bonding");
-    private final static QName _DataCenters_QNAME = new QName("", "data_centers");
     private final static QName _Ssh_QNAME = new QName("", "ssh");
     private final static QName _StorageDomain_QNAME = new QName("", "storage_domain");
     private final static QName _Values_QNAME = new QName("", "values");
     private final static QName _HostStates_QNAME = new QName("", "host_states");
-    private final static QName _Request_QNAME = new QName("", "request");
-    private final static QName _Permissions_QNAME = new QName("", "permissions");
     private final static QName _Hosts_QNAME = new QName("", "hosts");
+    private final static QName _Permissions_QNAME = new QName("", "permissions");
+    private final static QName _DataCenter_QNAME = new QName("", "data_center");
+    private final static QName _Networks_QNAME = new QName("", "networks");
+    private final static QName _Hook_QNAME = new QName("", "hook");
+    private final static QName _PortMirroring_QNAME = new QName("", "port_mirroring");
+    private final static QName _Templates_QNAME = new QName("", "templates");
+    private final static QName _Cpu_QNAME = new QName("", "cpu");
+    private final static QName _Display_QNAME = new QName("", "display");
+    private final static QName _Agent_QNAME = new QName("", "agent");
+    private final static QName _Url_QNAME = new QName("", "url");
+    private final static QName _Watchdog_QNAME = new QName("", "watchdog");
+    private final static QName _StepTypes_QNAME = new QName("", "step_types");
+    private final static QName _MemoryPool_QNAME = new QName("", "memory_pool");
+    private final static QName _GlusterVolumeStates_QNAME = new QName("", "gluster_volume_states");
+    private final static QName _Usages_QNAME = new QName("", "usages");
+    private final static QName _GlusterClients_QNAME = new QName("", "gluster_clients");
+    private final static QName _PmProxyTypes_QNAME = new QName("", "pm_proxy_types");
+    private final static QName _LinkCapabilities_QNAME = new QName("", "linkCapabilities");
+    private final static QName _Brick_QNAME = new QName("", "brick");
+    private final static QName _GlusterVolume_QNAME = new QName("", "gluster_volume");
+    private final static QName _LogicalUnit_QNAME = new QName("", "logical_unit");
+    private final static QName _Statistics_QNAME = new QName("", "statistics");
+    private final static QName _Response_QNAME = new QName("", "response");
+    private final static QName _StorageConnection_QNAME = new QName("", "storage_connection");
+    private final static QName _PmProxy_QNAME = new QName("", "pm_proxy");
+    private final static QName _StorageManager_QNAME = new QName("", "storage_manager");
+    private final static QName _BootProtocols_QNAME = new QName("", "boot_protocols");
+    private final static QName _CpuTune_QNAME = new QName("", "cpu_tune");
+    private final static QName _ReportedDevice_QNAME = new QName("", "reported_device");
+    private final static QName _Stages_QNAME = new QName("", "stages");
+    private final static QName _VmTypes_QNAME = new QName("", "vm_types");
+    private final static QName _Vlan_QNAME = new QName("", "vlan");
+    private final static QName _Vmpools_QNAME = new QName("", "vmpools");
+    private final static QName _Jobs_QNAME = new QName("", "jobs");
+    private final static QName _Tag_QNAME = new QName("", "tag");
+    private final static QName _Domains_QNAME = new QName("", "domains");
+    private final static QName _Payload_QNAME = new QName("", "payload");
+    private final static QName _Certificate_QNAME = new QName("", "certificate");
+    private final static QName _HostNics_QNAME = new QName("", "host_nics");
+    private final static QName _HostStorage_QNAME = new QName("", "host_storage");
+    private final static QName _File_QNAME = new QName("", "file");
+    private final static QName _Groups_QNAME = new QName("", "groups");
+    private final static QName _StorageTypes_QNAME = new QName("", "storage_types");
+    private final static QName _StorageDomains_QNAME = new QName("", "storage_domains");
+    private final static QName _StorageConnections_QNAME = new QName("", "storage_connections");
+    private final static QName _Job_QNAME = new QName("", "job");
+    private final static QName _Steps_QNAME = new QName("", "steps");
+    private final static QName _Disks_QNAME = new QName("", "disks");
+    private final static QName _StorageFormats_QNAME = new QName("", "storage_formats");
+    private final static QName _CustomProperties_QNAME = new QName("", "custom_properties");
+    private final static QName _Watchdogs_QNAME = new QName("", "watchdogs");
+    private final static QName _Creation_QNAME = new QName("", "creation");
+    private final static QName _PowerManagers_QNAME = new QName("", "power_managers");
+    private final static QName _VmStates_QNAME = new QName("", "vm_states");
+    private final static QName _Link_QNAME = new QName("", "link");
+    private final static QName _DataCenterStates_QNAME = new QName("", "data_center_states");
+    private final static QName _Version_QNAME = new QName("", "version");
+    private final static QName _VcpuPin_QNAME = new QName("", "vcpu_pin");
+    private final static QName _Cpus_QNAME = new QName("", "cpus");
+    private final static QName _BrickDetails_QNAME = new QName("", "brick_details");
+    private final static QName _HostNonOperationalDetails_QNAME = new QName("", "host_non_operational_details");
+    private final static QName _DiskStates_QNAME = new QName("", "disk_states");
+    private final static QName _Api_QNAME = new QName("", "api");
+    private final static QName _Glusterhooks_QNAME = new QName("", "glusterhooks");
+    private final static QName _Ksm_QNAME = new QName("", "ksm");
+    private final static QName _GlusterClient_QNAME = new QName("", "gluster_client");
+    private final static QName _Options_QNAME = new QName("", "options");
+    private final static QName _Files_QNAME = new QName("", "files");
+    private final static QName _Snapshot_QNAME = new QName("", "snapshot");
+    private final static QName _WatchdogModels_QNAME = new QName("", "watchdog_models");
+    private final static QName _GlusterVolumeTypes_QNAME = new QName("", "gluster_volume_types");
+    private final static QName _PowerManagement_QNAME = new QName("", "power_management");
+    private final static QName _Capabilities_QNAME = new QName("", "capabilities");
+    private final static QName _GlusterHook_QNAME = new QName("", "gluster_hook");
+    private final static QName _Headers_QNAME = new QName("", "headers");
+    private final static QName _Users_QNAME = new QName("", "users");
+    private final static QName _PayloadFile_QNAME = new QName("", "payload_file");
+    private final static QName _Permit_QNAME = new QName("", "permit");
+    private final static QName _Disk_QNAME = new QName("", "disk");
+    private final static QName _VnicProfile_QNAME = new QName("", "vnic_profile");
+    private final static QName _DataCenters_QNAME = new QName("", "data_centers");
+    private final static QName _Request_QNAME = new QName("", "request");
     private final static QName _Value_QNAME = new QName("", "value");
     private final static QName _Action_QNAME = new QName("", "action");
     private final static QName _Vms_QNAME = new QName("", "vms");
     private final static QName _Applications_QNAME = new QName("", "applications");
-    private final static QName _DataCenter_QNAME = new QName("", "data_center");
     private final static QName _SchedulingPolicies_QNAME = new QName("", "scheduling_policies");
     private final static QName _TransportTypes_QNAME = new QName("", "transport_types");
-    private final static QName _Networks_QNAME = new QName("", "networks");
     private final static QName _NetworkStates_QNAME = new QName("", "network_states");
-    private final static QName _Hook_QNAME = new QName("", "hook");
     private final static QName _PreviewVms_QNAME = new QName("", "preview_vms");
-    private final static QName _PortMirroring_QNAME = new QName("", "port_mirroring");
-    private final static QName _Templates_QNAME = new QName("", "templates");
     private final static QName _Status_QNAME = new QName("", "status");
-    private final static QName _Cpu_QNAME = new QName("", "cpu");
     private final static QName _Permission_QNAME = new QName("", "permission");
     private final static QName _FenceTypes_QNAME = new QName("", "fence_types");
-    private final static QName _Display_QNAME = new QName("", "display");
-    private final static QName _Agent_QNAME = new QName("", "agent");
     private final static QName _ReportedDeviceTypes_QNAME = new QName("", "reported_device_types");
-    private final static QName _Watchdog_QNAME = new QName("", "watchdog");
-    private final static QName _Url_QNAME = new QName("", "url");
     private final static QName _Floppy_QNAME = new QName("", "floppy");
-    private final static QName _StepTypes_QNAME = new QName("", "step_types");
     private final static QName _Console_QNAME = new QName("", "console");
     private final static QName _Clusters_QNAME = new QName("", "clusters");
+    private final static QName _ServerHooks_QNAME = new QName("", "server_hooks");
     private final static QName _CpuModes_QNAME = new QName("", "cpu_modes");
-    private final static QName _Usages_QNAME = new QName("", "usages");
-    private final static QName _GlusterVolumeStates_QNAME = new QName("", "gluster_volume_states");
-    private final static QName _MemoryPool_QNAME = new QName("", "memory_pool");
+    private final static QName _Images_QNAME = new QName("", "images");
     private final static QName _Permits_QNAME = new QName("", "permits");
-    private final static QName _PmProxyTypes_QNAME = new QName("", "pm_proxy_types");
-    private final static QName _GlusterClients_QNAME = new QName("", "gluster_clients");
     private final static QName _GeneralMetadata_QNAME = new QName("", "general_metadata");
     private final static QName _StorageDomainTypes_QNAME = new QName("", "storage_domain_types");
     private final static QName _DiskFormats_QNAME = new QName("", "disk_formats");
-    private final static QName _LinkCapabilities_QNAME = new QName("", "linkCapabilities");
     private final static QName _Hooks_QNAME = new QName("", "hooks");
     private final static QName _Agents_QNAME = new QName("", "agents");
     private final static QName _NfsVersions_QNAME = new QName("", "nfs_versions");
-    private final static QName _Brick_QNAME = new QName("", "brick");
-    private final static QName _LogicalUnit_QNAME = new QName("", "logical_unit");
-    private final static QName _GlusterVolume_QNAME = new QName("", "gluster_volume");
     private final static QName _VnicProfiles_QNAME = new QName("", "vnic_profiles");
     private final static QName _Vmpool_QNAME = new QName("", "vmpool");
     private final static QName _Network_QNAME = new QName("", "network");
-    private final static QName _Statistics_QNAME = new QName("", "statistics");
-    private final static QName _Response_QNAME = new QName("", "response");
     private final static QName _BrickMemoryinfo_QNAME = new QName("", "brick_memoryinfo");
     private final static QName _Quota_QNAME = new QName("", "quota");
     private final static QName _Parameter_QNAME = new QName("", "parameter");
     private final static QName _NicInterfaces_QNAME = new QName("", "nic_interfaces");
-    private final static QName _StorageConnection_QNAME = new QName("", "storage_connection");
-    private final static QName _PmProxy_QNAME = new QName("", "pm_proxy");
-    private final static QName _StorageManager_QNAME = new QName("", "storage_manager");
+    private final static QName _HookStates_QNAME = new QName("", "hook_states");
     private final static QName _DisplayTypes_QNAME = new QName("", "display_types");
     private final static QName _DiskInterfaces_QNAME = new QName("", "disk_interfaces");
-    private final static QName _BootProtocols_QNAME = new QName("", "boot_protocols");
     private final static QName _HostNicStates_QNAME = new QName("", "host_nic_states");
     private final static QName _BrickStates_QNAME = new QName("", "brick_states");
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
-    private final static QName _CpuTune_QNAME = new QName("", "cpu_tune");
     private final static QName _Application_QNAME = new QName("", "application");
     private final static QName _Nic_QNAME = new QName("", "nic");
-    private final static QName _ReportedDevice_QNAME = new QName("", "reported_device");
     private final static QName _Ip_QNAME = new QName("", "ip");
     private final static QName _SgioOptions_QNAME = new QName("", "sgio_options");
-    private final static QName _VmTypes_QNAME = new QName("", "vm_types");
+    private final static QName _ServerHook_QNAME = new QName("", "server_hook");
     private final static QName _WatchdogActions_QNAME = new QName("", "watchdog_actions");
     private final static QName _PmProxies_QNAME = new QName("", "pm_proxies");
-    private final static QName _Vlan_QNAME = new QName("", "vlan");
-    private final static QName _Cluster_QNAME = new QName("", "cluster");
     private final static QName _VmPauseDetails_QNAME = new QName("", "vm_pause_details");
+    private final static QName _Cluster_QNAME = new QName("", "cluster");
     private final static QName _VolumeGroup_QNAME = new QName("", "volume_group");
-    private final static QName _Vmpools_QNAME = new QName("", "vmpools");
     private final static QName _Group_QNAME = new QName("", "group");
     private final static QName _User_QNAME = new QName("", "user");
     private final static QName _Step_QNAME = new QName("", "step");
-    private final static QName _TransparentHugepages_QNAME = new QName("", "transparent_hugepages");
     private final static QName _Storage_QNAME = new QName("", "storage");
+    private final static QName _TransparentHugepages_QNAME = new QName("", "transparent_hugepages");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.ovirt.engine.sdk.entities
@@ -250,30 +260,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Jobs }
-     *
-     */
-    public Jobs createJobs() {
-        return new Jobs();
-    }
-
-    /**
-     * Create an instance of {@link Tag }
-     *
-     */
-    public Tag createTag() {
-        return new Tag();
-    }
-
-    /**
-     * Create an instance of {@link Domains }
-     *
-     */
-    public Domains createDomains() {
-        return new Domains();
-    }
-
-    /**
      * Create an instance of {@link HardwareInformation }
      *
      */
@@ -282,11 +268,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Payload }
+     * Create an instance of {@link SnapshotStatuses }
      *
      */
-    public Payload createPayload() {
-        return new Payload();
+    public SnapshotStatuses createSnapshotStatuses() {
+        return new SnapshotStatuses();
     }
 
     /**
@@ -306,35 +292,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HostStorage }
-     *
-     */
-    public HostStorage createHostStorage() {
-        return new HostStorage();
-    }
-
-    /**
-     * Create an instance of {@link HostNics }
-     *
-     */
-    public HostNics createHostNics() {
-        return new HostNics();
-    }
-
-    /**
      * Create an instance of {@link CreationStates }
      *
      */
     public CreationStates createCreationStates() {
         return new CreationStates();
-    }
-
-    /**
-     * Create an instance of {@link Certificate }
-     *
-     */
-    public Certificate createCertificate() {
-        return new Certificate();
     }
 
     /**
@@ -346,14 +308,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RSDL }
-     *
-     */
-    public RSDL createRSDL() {
-        return new RSDL();
-    }
-
-    /**
      * Create an instance of {@link ReportedDevices }
      *
      */
@@ -362,19 +316,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RSDL }
+     *
+     */
+    public RSDL createRSDL() {
+        return new RSDL();
+    }
+
+    /**
      * Create an instance of {@link Event }
      *
      */
     public Event createEvent() {
         return new Event();
-    }
-
-    /**
-     * Create an instance of {@link File }
-     *
-     */
-    public File createFile() {
-        return new File();
     }
 
     /**
@@ -402,30 +356,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StorageTypes }
-     *
-     */
-    public StorageTypes createStorageTypes() {
-        return new StorageTypes();
-    }
-
-    /**
-     * Create an instance of {@link Groups }
-     *
-     */
-    public Groups createGroups() {
-        return new Groups();
-    }
-
-    /**
-     * Create an instance of {@link StorageDomains }
-     *
-     */
-    public StorageDomains createStorageDomains() {
-        return new StorageDomains();
-    }
-
-    /**
      * Create an instance of {@link Template }
      *
      */
@@ -447,6 +377,742 @@ public class ObjectFactory {
      */
     public Host createHost() {
         return new Host();
+    }
+
+    /**
+     * Create an instance of {@link Image }
+     *
+     */
+    public Image createImage() {
+        return new Image();
+    }
+
+    /**
+     * Create an instance of {@link AuthenticationMethod }
+     *
+     */
+    public AuthenticationMethod createAuthenticationMethod() {
+        return new AuthenticationMethod();
+    }
+
+    /**
+     * Create an instance of {@link Header }
+     *
+     */
+    public Header createHeader() {
+        return new Header();
+    }
+
+    /**
+     * Create an instance of {@link Statistic }
+     *
+     */
+    public Statistic createStatistic() {
+        return new Statistic();
+    }
+
+    /**
+     * Create an instance of {@link SpecialObjects }
+     *
+     */
+    public SpecialObjects createSpecialObjects() {
+        return new SpecialObjects();
+    }
+
+    /**
+     * Create an instance of {@link Initialization }
+     *
+     */
+    public Initialization createInitialization() {
+        return new Initialization();
+    }
+
+    /**
+     * Create an instance of {@link VmDeviceTypes }
+     *
+     */
+    public VmDeviceTypes createVmDeviceTypes() {
+        return new VmDeviceTypes();
+    }
+
+    /**
+     * Create an instance of {@link Roles }
+     *
+     */
+    public Roles createRoles() {
+        return new Roles();
+    }
+
+    /**
+     * Create an instance of {@link PowerManagementStates }
+     *
+     */
+    public PowerManagementStates createPowerManagementStates() {
+        return new PowerManagementStates();
+    }
+
+    /**
+     * Create an instance of {@link Nics }
+     *
+     */
+    public Nics createNics() {
+        return new Nics();
+    }
+
+    /**
+     * Create an instance of {@link TemplateStates }
+     *
+     */
+    public TemplateStates createTemplateStates() {
+        return new TemplateStates();
+    }
+
+    /**
+     * Create an instance of {@link OsTypes }
+     *
+     */
+    public OsTypes createOsTypes() {
+        return new OsTypes();
+    }
+
+    /**
+     * Create an instance of {@link VM }
+     *
+     */
+    public VM createVM() {
+        return new VM();
+    }
+
+    /**
+     * Create an instance of {@link StorageDomainStates }
+     *
+     */
+    public StorageDomainStates createStorageDomainStates() {
+        return new StorageDomainStates();
+    }
+
+    /**
+     * Create an instance of {@link Events }
+     *
+     */
+    public Events createEvents() {
+        return new Events();
+    }
+
+    /**
+     * Create an instance of {@link DetailedLinks }
+     *
+     */
+    public DetailedLinks createDetailedLinks() {
+        return new DetailedLinks();
+    }
+
+    /**
+     * Create an instance of {@link MAC }
+     *
+     */
+    public MAC createMAC() {
+        return new MAC();
+    }
+
+    /**
+     * Create an instance of {@link Usb }
+     *
+     */
+    public Usb createUsb() {
+        return new Usb();
+    }
+
+    /**
+     * Create an instance of {@link HostNIC }
+     *
+     */
+    public HostNIC createHostNIC() {
+        return new HostNIC();
+    }
+
+    /**
+     * Create an instance of {@link Domain }
+     *
+     */
+    public Domain createDomain() {
+        return new Domain();
+    }
+
+    /**
+     * Create an instance of {@link Payloads }
+     *
+     */
+    public Payloads createPayloads() {
+        return new Payloads();
+    }
+
+    /**
+     * Create an instance of {@link GlusterBricks }
+     *
+     */
+    public GlusterBricks createGlusterBricks() {
+        return new GlusterBricks();
+    }
+
+    /**
+     * Create an instance of {@link Snapshots }
+     *
+     */
+    public Snapshots createSnapshots() {
+        return new Snapshots();
+    }
+
+    /**
+     * Create an instance of {@link Tags }
+     *
+     */
+    public Tags createTags() {
+        return new Tags();
+    }
+
+    /**
+     * Create an instance of {@link CdRoms }
+     *
+     */
+    public CdRoms createCdRoms() {
+        return new CdRoms();
+    }
+
+    /**
+     * Create an instance of {@link Quotas }
+     *
+     */
+    public Quotas createQuotas() {
+        return new Quotas();
+    }
+
+    /**
+     * Create an instance of {@link GlusterMemoryPools }
+     *
+     */
+    public GlusterMemoryPools createGlusterMemoryPools() {
+        return new GlusterMemoryPools();
+    }
+
+    /**
+     * Create an instance of {@link ContentTypes }
+     *
+     */
+    public ContentTypes createContentTypes() {
+        return new ContentTypes();
+    }
+
+    /**
+     * Create an instance of {@link KeyValuePair }
+     *
+     */
+    public KeyValuePair createKeyValuePair() {
+        return new KeyValuePair();
+    }
+
+    /**
+     * Create an instance of {@link Slaves }
+     *
+     */
+    public Slaves createSlaves() {
+        return new Slaves();
+    }
+
+    /**
+     * Create an instance of {@link Fault }
+     *
+     */
+    public Fault createFault() {
+        return new Fault();
+    }
+
+    /**
+     * Create an instance of {@link VmAffinities }
+     *
+     */
+    public VmAffinities createVmAffinities() {
+        return new VmAffinities();
+    }
+
+    /**
+     * Create an instance of {@link DetailedLink }
+     *
+     */
+    public DetailedLink createDetailedLink() {
+        return new DetailedLink();
+    }
+
+    /**
+     * Create an instance of {@link CdRom }
+     *
+     */
+    public CdRom createCdRom() {
+        return new CdRom();
+    }
+
+    /**
+     * Create an instance of {@link GlusterVolumes }
+     *
+     */
+    public GlusterVolumes createGlusterVolumes() {
+        return new GlusterVolumes();
+    }
+
+    /**
+     * Create an instance of {@link ErrorHandlingOptions }
+     *
+     */
+    public ErrorHandlingOptions createErrorHandlingOptions() {
+        return new ErrorHandlingOptions();
+    }
+
+    /**
+     * Create an instance of {@link ProductInfo }
+     *
+     */
+    public ProductInfo createProductInfo() {
+        return new ProductInfo();
+    }
+
+    /**
+     * Create an instance of {@link Configuration }
+     *
+     */
+    public Configuration createConfiguration() {
+        return new Configuration();
+    }
+
+    /**
+     * Create an instance of {@link Body }
+     *
+     */
+    public Body createBody() {
+        return new Body();
+    }
+
+    /**
+     * Create an instance of {@link ParametersSet }
+     *
+     */
+    public ParametersSet createParametersSet() {
+        return new ParametersSet();
+    }
+
+    /**
+     * Create an instance of {@link BootDevices }
+     *
+     */
+    public BootDevices createBootDevices() {
+        return new BootDevices();
+    }
+
+    /**
+     * Create an instance of {@link IPs }
+     *
+     */
+    public IPs createIPs() {
+        return new IPs();
+    }
+
+    /**
+     * Create an instance of {@link Bonding }
+     *
+     */
+    public Bonding createBonding() {
+        return new Bonding();
+    }
+
+    /**
+     * Create an instance of {@link SSH }
+     *
+     */
+    public SSH createSSH() {
+        return new SSH();
+    }
+
+    /**
+     * Create an instance of {@link StorageDomain }
+     *
+     */
+    public StorageDomain createStorageDomain() {
+        return new StorageDomain();
+    }
+
+    /**
+     * Create an instance of {@link Values }
+     *
+     */
+    public Values createValues() {
+        return new Values();
+    }
+
+    /**
+     * Create an instance of {@link HostStates }
+     *
+     */
+    public HostStates createHostStates() {
+        return new HostStates();
+    }
+
+    /**
+     * Create an instance of {@link Permissions }
+     *
+     */
+    public Permissions createPermissions() {
+        return new Permissions();
+    }
+
+    /**
+     * Create an instance of {@link Hosts }
+     *
+     */
+    public Hosts createHosts() {
+        return new Hosts();
+    }
+
+    /**
+     * Create an instance of {@link DataCenter }
+     *
+     */
+    public DataCenter createDataCenter() {
+        return new DataCenter();
+    }
+
+    /**
+     * Create an instance of {@link Networks }
+     *
+     */
+    public Networks createNetworks() {
+        return new Networks();
+    }
+
+    /**
+     * Create an instance of {@link Hook }
+     *
+     */
+    public Hook createHook() {
+        return new Hook();
+    }
+
+    /**
+     * Create an instance of {@link PortMirroring }
+     *
+     */
+    public PortMirroring createPortMirroring() {
+        return new PortMirroring();
+    }
+
+    /**
+     * Create an instance of {@link Templates }
+     *
+     */
+    public Templates createTemplates() {
+        return new Templates();
+    }
+
+    /**
+     * Create an instance of {@link CPU }
+     *
+     */
+    public CPU createCPU() {
+        return new CPU();
+    }
+
+    /**
+     * Create an instance of {@link Display }
+     *
+     */
+    public Display createDisplay() {
+        return new Display();
+    }
+
+    /**
+     * Create an instance of {@link Agent }
+     *
+     */
+    public Agent createAgent() {
+        return new Agent();
+    }
+
+    /**
+     * Create an instance of {@link WatchDog }
+     *
+     */
+    public WatchDog createWatchDog() {
+        return new WatchDog();
+    }
+
+    /**
+     * Create an instance of {@link Url }
+     *
+     */
+    public Url createUrl() {
+        return new Url();
+    }
+
+    /**
+     * Create an instance of {@link StepTypes }
+     *
+     */
+    public StepTypes createStepTypes() {
+        return new StepTypes();
+    }
+
+    /**
+     * Create an instance of {@link Usages }
+     *
+     */
+    public Usages createUsages() {
+        return new Usages();
+    }
+
+    /**
+     * Create an instance of {@link GlusterStates }
+     *
+     */
+    public GlusterStates createGlusterStates() {
+        return new GlusterStates();
+    }
+
+    /**
+     * Create an instance of {@link GlusterMemoryPool }
+     *
+     */
+    public GlusterMemoryPool createGlusterMemoryPool() {
+        return new GlusterMemoryPool();
+    }
+
+    /**
+     * Create an instance of {@link PmProxyTypes }
+     *
+     */
+    public PmProxyTypes createPmProxyTypes() {
+        return new PmProxyTypes();
+    }
+
+    /**
+     * Create an instance of {@link GlusterClients }
+     *
+     */
+    public GlusterClients createGlusterClients() {
+        return new GlusterClients();
+    }
+
+    /**
+     * Create an instance of {@link LinkCapabilities }
+     *
+     */
+    public LinkCapabilities createLinkCapabilities() {
+        return new LinkCapabilities();
+    }
+
+    /**
+     * Create an instance of {@link GlusterBrick }
+     *
+     */
+    public GlusterBrick createGlusterBrick() {
+        return new GlusterBrick();
+    }
+
+    /**
+     * Create an instance of {@link LogicalUnit }
+     *
+     */
+    public LogicalUnit createLogicalUnit() {
+        return new LogicalUnit();
+    }
+
+    /**
+     * Create an instance of {@link GlusterVolume }
+     *
+     */
+    public GlusterVolume createGlusterVolume() {
+        return new GlusterVolume();
+    }
+
+    /**
+     * Create an instance of {@link Statistics }
+     *
+     */
+    public Statistics createStatistics() {
+        return new Statistics();
+    }
+
+    /**
+     * Create an instance of {@link Response }
+     *
+     */
+    public Response createResponse() {
+        return new Response();
+    }
+
+    /**
+     * Create an instance of {@link PmProxy }
+     *
+     */
+    public PmProxy createPmProxy() {
+        return new PmProxy();
+    }
+
+    /**
+     * Create an instance of {@link StorageConnection }
+     *
+     */
+    public StorageConnection createStorageConnection() {
+        return new StorageConnection();
+    }
+
+    /**
+     * Create an instance of {@link StorageManager }
+     *
+     */
+    public StorageManager createStorageManager() {
+        return new StorageManager();
+    }
+
+    /**
+     * Create an instance of {@link BootProtocols }
+     *
+     */
+    public BootProtocols createBootProtocols() {
+        return new BootProtocols();
+    }
+
+    /**
+     * Create an instance of {@link CpuTune }
+     *
+     */
+    public CpuTune createCpuTune() {
+        return new CpuTune();
+    }
+
+    /**
+     * Create an instance of {@link ReportedDevice }
+     *
+     */
+    public ReportedDevice createReportedDevice() {
+        return new ReportedDevice();
+    }
+
+    /**
+     * Create an instance of {@link Stages }
+     *
+     */
+    public Stages createStages() {
+        return new Stages();
+    }
+
+    /**
+     * Create an instance of {@link VmTypes }
+     *
+     */
+    public VmTypes createVmTypes() {
+        return new VmTypes();
+    }
+
+    /**
+     * Create an instance of {@link VLAN }
+     *
+     */
+    public VLAN createVLAN() {
+        return new VLAN();
+    }
+
+    /**
+     * Create an instance of {@link VmPools }
+     *
+     */
+    public VmPools createVmPools() {
+        return new VmPools();
+    }
+
+    /**
+     * Create an instance of {@link Jobs }
+     *
+     */
+    public Jobs createJobs() {
+        return new Jobs();
+    }
+
+    /**
+     * Create an instance of {@link Tag }
+     *
+     */
+    public Tag createTag() {
+        return new Tag();
+    }
+
+    /**
+     * Create an instance of {@link Domains }
+     *
+     */
+    public Domains createDomains() {
+        return new Domains();
+    }
+
+    /**
+     * Create an instance of {@link Payload }
+     *
+     */
+    public Payload createPayload() {
+        return new Payload();
+    }
+
+    /**
+     * Create an instance of {@link Certificate }
+     *
+     */
+    public Certificate createCertificate() {
+        return new Certificate();
+    }
+
+    /**
+     * Create an instance of {@link HostNics }
+     *
+     */
+    public HostNics createHostNics() {
+        return new HostNics();
+    }
+
+    /**
+     * Create an instance of {@link HostStorage }
+     *
+     */
+    public HostStorage createHostStorage() {
+        return new HostStorage();
+    }
+
+    /**
+     * Create an instance of {@link File }
+     *
+     */
+    public File createFile() {
+        return new File();
+    }
+
+    /**
+     * Create an instance of {@link Groups }
+     *
+     */
+    public Groups createGroups() {
+        return new Groups();
+    }
+
+    /**
+     * Create an instance of {@link StorageTypes }
+     *
+     */
+    public StorageTypes createStorageTypes() {
+        return new StorageTypes();
+    }
+
+    /**
+     * Create an instance of {@link StorageDomains }
+     *
+     */
+    public StorageDomains createStorageDomains() {
+        return new StorageDomains();
     }
 
     /**
@@ -474,14 +1140,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuthenticationMethod }
-     *
-     */
-    public AuthenticationMethod createAuthenticationMethod() {
-        return new AuthenticationMethod();
-    }
-
-    /**
      * Create an instance of {@link Disks }
      *
      */
@@ -490,67 +1148,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Header }
-     *
-     */
-    public Header createHeader() {
-        return new Header();
-    }
-
-    /**
      * Create an instance of {@link StorageFormats }
      *
      */
     public StorageFormats createStorageFormats() {
         return new StorageFormats();
-    }
-
-    /**
-     * Create an instance of {@link Initialization }
-     *
-     */
-    public Initialization createInitialization() {
-        return new Initialization();
-    }
-
-    /**
-     * Create an instance of {@link SpecialObjects }
-     *
-     */
-    public SpecialObjects createSpecialObjects() {
-        return new SpecialObjects();
-    }
-
-    /**
-     * Create an instance of {@link Statistic }
-     *
-     */
-    public Statistic createStatistic() {
-        return new Statistic();
-    }
-
-    /**
-     * Create an instance of {@link VmDeviceTypes }
-     *
-     */
-    public VmDeviceTypes createVmDeviceTypes() {
-        return new VmDeviceTypes();
-    }
-
-    /**
-     * Create an instance of {@link PowerManagementStates }
-     *
-     */
-    public PowerManagementStates createPowerManagementStates() {
-        return new PowerManagementStates();
-    }
-
-    /**
-     * Create an instance of {@link Roles }
-     *
-     */
-    public Roles createRoles() {
-        return new Roles();
     }
 
     /**
@@ -570,59 +1172,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Nics }
-     *
-     */
-    public Nics createNics() {
-        return new Nics();
-    }
-
-    /**
-     * Create an instance of {@link TemplateStates }
-     *
-     */
-    public TemplateStates createTemplateStates() {
-        return new TemplateStates();
-    }
-
-    /**
-     * Create an instance of {@link VM }
-     *
-     */
-    public VM createVM() {
-        return new VM();
-    }
-
-    /**
-     * Create an instance of {@link OsTypes }
-     *
-     */
-    public OsTypes createOsTypes() {
-        return new OsTypes();
-    }
-
-    /**
      * Create an instance of {@link Creation }
      *
      */
     public Creation createCreation() {
         return new Creation();
-    }
-
-    /**
-     * Create an instance of {@link StorageDomainStates }
-     *
-     */
-    public StorageDomainStates createStorageDomainStates() {
-        return new StorageDomainStates();
-    }
-
-    /**
-     * Create an instance of {@link VmStates }
-     *
-     */
-    public VmStates createVmStates() {
-        return new VmStates();
     }
 
     /**
@@ -634,11 +1188,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Events }
+     * Create an instance of {@link VmStates }
      *
      */
-    public Events createEvents() {
-        return new Events();
+    public VmStates createVmStates() {
+        return new VmStates();
     }
 
     /**
@@ -647,38 +1201,6 @@ public class ObjectFactory {
      */
     public Link createLink() {
         return new Link();
-    }
-
-    /**
-     * Create an instance of {@link Usb }
-     *
-     */
-    public Usb createUsb() {
-        return new Usb();
-    }
-
-    /**
-     * Create an instance of {@link DetailedLinks }
-     *
-     */
-    public DetailedLinks createDetailedLinks() {
-        return new DetailedLinks();
-    }
-
-    /**
-     * Create an instance of {@link MAC }
-     *
-     */
-    public MAC createMAC() {
-        return new MAC();
-    }
-
-    /**
-     * Create an instance of {@link HostNIC }
-     *
-     */
-    public HostNIC createHostNIC() {
-        return new HostNIC();
     }
 
     /**
@@ -722,14 +1244,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DiskStates }
-     *
-     */
-    public DiskStates createDiskStates() {
-        return new DiskStates();
-    }
-
-    /**
      * Create an instance of {@link HostNonOperationalDetails }
      *
      */
@@ -738,19 +1252,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Domain }
+     * Create an instance of {@link DiskStates }
      *
      */
-    public Domain createDomain() {
-        return new Domain();
-    }
-
-    /**
-     * Create an instance of {@link Payloads }
-     *
-     */
-    public Payloads createPayloads() {
-        return new Payloads();
+    public DiskStates createDiskStates() {
+        return new DiskStates();
     }
 
     /**
@@ -762,27 +1268,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GlusterBricks }
+     * Create an instance of {@link GlusterHooks }
      *
      */
-    public GlusterBricks createGlusterBricks() {
-        return new GlusterBricks();
-    }
-
-    /**
-     * Create an instance of {@link Snapshots }
-     *
-     */
-    public Snapshots createSnapshots() {
-        return new Snapshots();
-    }
-
-    /**
-     * Create an instance of {@link GlusterClient }
-     *
-     */
-    public GlusterClient createGlusterClient() {
-        return new GlusterClient();
+    public GlusterHooks createGlusterHooks() {
+        return new GlusterHooks();
     }
 
     /**
@@ -794,27 +1284,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GlusterClient }
+     *
+     */
+    public GlusterClient createGlusterClient() {
+        return new GlusterClient();
+    }
+
+    /**
      * Create an instance of {@link Options }
      *
      */
     public Options createOptions() {
         return new Options();
-    }
-
-    /**
-     * Create an instance of {@link Tags }
-     *
-     */
-    public Tags createTags() {
-        return new Tags();
-    }
-
-    /**
-     * Create an instance of {@link CdRoms }
-     *
-     */
-    public CdRoms createCdRoms() {
-        return new CdRoms();
     }
 
     /**
@@ -826,43 +1308,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Quotas }
-     *
-     */
-    public Quotas createQuotas() {
-        return new Quotas();
-    }
-
-    /**
-     * Create an instance of {@link GlusterMemoryPools }
-     *
-     */
-    public GlusterMemoryPools createGlusterMemoryPools() {
-        return new GlusterMemoryPools();
-    }
-
-    /**
      * Create an instance of {@link Snapshot }
      *
      */
     public Snapshot createSnapshot() {
         return new Snapshot();
-    }
-
-    /**
-     * Create an instance of {@link KeyValuePair }
-     *
-     */
-    public KeyValuePair createKeyValuePair() {
-        return new KeyValuePair();
-    }
-
-    /**
-     * Create an instance of {@link Slaves }
-     *
-     */
-    public Slaves createSlaves() {
-        return new Slaves();
     }
 
     /**
@@ -882,59 +1332,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Fault }
-     *
-     */
-    public Fault createFault() {
-        return new Fault();
-    }
-
-    /**
      * Create an instance of {@link PowerManagement }
      *
      */
     public PowerManagement createPowerManagement() {
         return new PowerManagement();
-    }
-
-    /**
-     * Create an instance of {@link VmAffinities }
-     *
-     */
-    public VmAffinities createVmAffinities() {
-        return new VmAffinities();
-    }
-
-    /**
-     * Create an instance of {@link GlusterVolumes }
-     *
-     */
-    public GlusterVolumes createGlusterVolumes() {
-        return new GlusterVolumes();
-    }
-
-    /**
-     * Create an instance of {@link CdRom }
-     *
-     */
-    public CdRom createCdRom() {
-        return new CdRom();
-    }
-
-    /**
-     * Create an instance of {@link DetailedLink }
-     *
-     */
-    public DetailedLink createDetailedLink() {
-        return new DetailedLink();
-    }
-
-    /**
-     * Create an instance of {@link ErrorHandlingOptions }
-     *
-     */
-    public ErrorHandlingOptions createErrorHandlingOptions() {
-        return new ErrorHandlingOptions();
     }
 
     /**
@@ -946,19 +1348,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Configuration }
+     * Create an instance of {@link GlusterHook }
      *
      */
-    public Configuration createConfiguration() {
-        return new Configuration();
-    }
-
-    /**
-     * Create an instance of {@link ProductInfo }
-     *
-     */
-    public ProductInfo createProductInfo() {
-        return new ProductInfo();
+    public GlusterHook createGlusterHook() {
+        return new GlusterHook();
     }
 
     /**
@@ -970,27 +1364,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Body }
-     *
-     */
-    public Body createBody() {
-        return new Body();
-    }
-
-    /**
      * Create an instance of {@link Users }
      *
      */
     public Users createUsers() {
         return new Users();
-    }
-
-    /**
-     * Create an instance of {@link ParametersSet }
-     *
-     */
-    public ParametersSet createParametersSet() {
-        return new ParametersSet();
     }
 
     /**
@@ -1002,30 +1380,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BootDevices }
-     *
-     */
-    public BootDevices createBootDevices() {
-        return new BootDevices();
-    }
-
-    /**
-     * Create an instance of {@link IPs }
-     *
-     */
-    public IPs createIPs() {
-        return new IPs();
-    }
-
-    /**
-     * Create an instance of {@link Disk }
-     *
-     */
-    public Disk createDisk() {
-        return new Disk();
-    }
-
-    /**
      * Create an instance of {@link Permit }
      *
      */
@@ -1034,11 +1388,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Bonding }
+     * Create an instance of {@link Disk }
      *
      */
-    public Bonding createBonding() {
-        return new Bonding();
+    public Disk createDisk() {
+        return new Disk();
     }
 
     /**
@@ -1058,51 +1412,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SSH }
-     *
-     */
-    public SSH createSSH() {
-        return new SSH();
-    }
-
-    /**
-     * Create an instance of {@link StorageDomain }
-     *
-     */
-    public StorageDomain createStorageDomain() {
-        return new StorageDomain();
-    }
-
-    /**
-     * Create an instance of {@link Values }
-     *
-     */
-    public Values createValues() {
-        return new Values();
-    }
-
-    /**
-     * Create an instance of {@link HostStates }
-     *
-     */
-    public HostStates createHostStates() {
-        return new HostStates();
-    }
-
-    /**
      * Create an instance of {@link Request }
      *
      */
     public Request createRequest() {
         return new Request();
-    }
-
-    /**
-     * Create an instance of {@link Action }
-     *
-     */
-    public Action createAction() {
-        return new Action();
     }
 
     /**
@@ -1114,19 +1428,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Hosts }
+     * Create an instance of {@link Action }
      *
      */
-    public Hosts createHosts() {
-        return new Hosts();
-    }
-
-    /**
-     * Create an instance of {@link Permissions }
-     *
-     */
-    public Permissions createPermissions() {
-        return new Permissions();
+    public Action createAction() {
+        return new Action();
     }
 
     /**
@@ -1143,14 +1449,6 @@ public class ObjectFactory {
      */
     public Applications createApplications() {
         return new Applications();
-    }
-
-    /**
-     * Create an instance of {@link DataCenter }
-     *
-     */
-    public DataCenter createDataCenter() {
-        return new DataCenter();
     }
 
     /**
@@ -1178,43 +1476,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Networks }
-     *
-     */
-    public Networks createNetworks() {
-        return new Networks();
-    }
-
-    /**
      * Create an instance of {@link PreviewVMs }
      *
      */
     public PreviewVMs createPreviewVMs() {
         return new PreviewVMs();
-    }
-
-    /**
-     * Create an instance of {@link Hook }
-     *
-     */
-    public Hook createHook() {
-        return new Hook();
-    }
-
-    /**
-     * Create an instance of {@link PortMirroring }
-     *
-     */
-    public PortMirroring createPortMirroring() {
-        return new PortMirroring();
-    }
-
-    /**
-     * Create an instance of {@link Templates }
-     *
-     */
-    public Templates createTemplates() {
-        return new Templates();
     }
 
     /**
@@ -1226,19 +1492,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CPU }
+     * Create an instance of {@link Permission }
      *
      */
-    public CPU createCPU() {
-        return new CPU();
-    }
-
-    /**
-     * Create an instance of {@link Display }
-     *
-     */
-    public Display createDisplay() {
-        return new Display();
+    public Permission createPermission() {
+        return new Permission();
     }
 
     /**
@@ -1250,14 +1508,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Permission }
-     *
-     */
-    public Permission createPermission() {
-        return new Permission();
-    }
-
-    /**
      * Create an instance of {@link ReportedDeviceTypes }
      *
      */
@@ -1266,43 +1516,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Agent }
-     *
-     */
-    public Agent createAgent() {
-        return new Agent();
-    }
-
-    /**
-     * Create an instance of {@link Url }
-     *
-     */
-    public Url createUrl() {
-        return new Url();
-    }
-
-    /**
-     * Create an instance of {@link WatchDog }
-     *
-     */
-    public WatchDog createWatchDog() {
-        return new WatchDog();
-    }
-
-    /**
      * Create an instance of {@link Floppy }
      *
      */
     public Floppy createFloppy() {
         return new Floppy();
-    }
-
-    /**
-     * Create an instance of {@link StepTypes }
-     *
-     */
-    public StepTypes createStepTypes() {
-        return new StepTypes();
     }
 
     /**
@@ -1322,6 +1540,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GlusterServerHooks }
+     *
+     */
+    public GlusterServerHooks createGlusterServerHooks() {
+        return new GlusterServerHooks();
+    }
+
+    /**
      * Create an instance of {@link CpuModes }
      *
      */
@@ -1330,27 +1556,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GlusterMemoryPool }
+     * Create an instance of {@link Images }
      *
      */
-    public GlusterMemoryPool createGlusterMemoryPool() {
-        return new GlusterMemoryPool();
-    }
-
-    /**
-     * Create an instance of {@link GlusterStates }
-     *
-     */
-    public GlusterStates createGlusterStates() {
-        return new GlusterStates();
-    }
-
-    /**
-     * Create an instance of {@link Usages }
-     *
-     */
-    public Usages createUsages() {
-        return new Usages();
+    public Images createImages() {
+        return new Images();
     }
 
     /**
@@ -1362,35 +1572,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GlusterClients }
-     *
-     */
-    public GlusterClients createGlusterClients() {
-        return new GlusterClients();
-    }
-
-    /**
-     * Create an instance of {@link PmProxyTypes }
-     *
-     */
-    public PmProxyTypes createPmProxyTypes() {
-        return new PmProxyTypes();
-    }
-
-    /**
      * Create an instance of {@link GeneralMetadata }
      *
      */
     public GeneralMetadata createGeneralMetadata() {
         return new GeneralMetadata();
-    }
-
-    /**
-     * Create an instance of {@link DiskFormats }
-     *
-     */
-    public DiskFormats createDiskFormats() {
-        return new DiskFormats();
     }
 
     /**
@@ -1402,11 +1588,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LinkCapabilities }
+     * Create an instance of {@link DiskFormats }
      *
      */
-    public LinkCapabilities createLinkCapabilities() {
-        return new LinkCapabilities();
+    public DiskFormats createDiskFormats() {
+        return new DiskFormats();
     }
 
     /**
@@ -1418,11 +1604,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GlusterBrick }
+     * Create an instance of {@link Agents }
      *
      */
-    public GlusterBrick createGlusterBrick() {
-        return new GlusterBrick();
+    public Agents createAgents() {
+        return new Agents();
     }
 
     /**
@@ -1434,27 +1620,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Agents }
+     * Create an instance of {@link VnicProfiles }
      *
      */
-    public Agents createAgents() {
-        return new Agents();
-    }
-
-    /**
-     * Create an instance of {@link GlusterVolume }
-     *
-     */
-    public GlusterVolume createGlusterVolume() {
-        return new GlusterVolume();
-    }
-
-    /**
-     * Create an instance of {@link LogicalUnit }
-     *
-     */
-    public LogicalUnit createLogicalUnit() {
-        return new LogicalUnit();
+    public VnicProfiles createVnicProfiles() {
+        return new VnicProfiles();
     }
 
     /**
@@ -1466,35 +1636,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VnicProfiles }
-     *
-     */
-    public VnicProfiles createVnicProfiles() {
-        return new VnicProfiles();
-    }
-
-    /**
      * Create an instance of {@link Network }
      *
      */
     public Network createNetwork() {
         return new Network();
-    }
-
-    /**
-     * Create an instance of {@link Statistics }
-     *
-     */
-    public Statistics createStatistics() {
-        return new Statistics();
-    }
-
-    /**
-     * Create an instance of {@link Response }
-     *
-     */
-    public Response createResponse() {
-        return new Response();
     }
 
     /**
@@ -1530,19 +1676,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PmProxy }
+     * Create an instance of {@link HookStates }
      *
      */
-    public PmProxy createPmProxy() {
-        return new PmProxy();
-    }
-
-    /**
-     * Create an instance of {@link StorageConnection }
-     *
-     */
-    public StorageConnection createStorageConnection() {
-        return new StorageConnection();
+    public HookStates createHookStates() {
+        return new HookStates();
     }
 
     /**
@@ -1554,30 +1692,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StorageManager }
-     *
-     */
-    public StorageManager createStorageManager() {
-        return new StorageManager();
-    }
-
-    /**
-     * Create an instance of {@link HostNICStates }
-     *
-     */
-    public HostNICStates createHostNICStates() {
-        return new HostNICStates();
-    }
-
-    /**
-     * Create an instance of {@link BootProtocols }
-     *
-     */
-    public BootProtocols createBootProtocols() {
-        return new BootProtocols();
-    }
-
-    /**
      * Create an instance of {@link DiskInterfaces }
      *
      */
@@ -1586,11 +1700,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CpuTune }
+     * Create an instance of {@link HostNICStates }
      *
      */
-    public CpuTune createCpuTune() {
-        return new CpuTune();
+    public HostNICStates createHostNICStates() {
+        return new HostNICStates();
     }
 
     /**
@@ -1618,19 +1732,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReportedDevice }
+     * Create an instance of {@link IP }
      *
      */
-    public ReportedDevice createReportedDevice() {
-        return new ReportedDevice();
-    }
-
-    /**
-     * Create an instance of {@link VmTypes }
-     *
-     */
-    public VmTypes createVmTypes() {
-        return new VmTypes();
+    public IP createIP() {
+        return new IP();
     }
 
     /**
@@ -1642,11 +1748,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IP }
+     * Create an instance of {@link GlusterServerHook }
      *
      */
-    public IP createIP() {
-        return new IP();
+    public GlusterServerHook createGlusterServerHook() {
+        return new GlusterServerHook();
     }
 
     /**
@@ -1666,14 +1772,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VmPauseDetails }
-     *
-     */
-    public VmPauseDetails createVmPauseDetails() {
-        return new VmPauseDetails();
-    }
-
-    /**
      * Create an instance of {@link Cluster }
      *
      */
@@ -1682,11 +1780,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VLAN }
+     * Create an instance of {@link VmPauseDetails }
      *
      */
-    public VLAN createVLAN() {
-        return new VLAN();
+    public VmPauseDetails createVmPauseDetails() {
+        return new VmPauseDetails();
     }
 
     /**
@@ -1695,14 +1793,6 @@ public class ObjectFactory {
      */
     public VolumeGroup createVolumeGroup() {
         return new VolumeGroup();
-    }
-
-    /**
-     * Create an instance of {@link VmPools }
-     *
-     */
-    public VmPools createVmPools() {
-        return new VmPools();
     }
 
     /**
@@ -1730,19 +1820,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Storage }
-     *
-     */
-    public Storage createStorage() {
-        return new Storage();
-    }
-
-    /**
      * Create an instance of {@link TransparentHugePages }
      *
      */
     public TransparentHugePages createTransparentHugePages() {
         return new TransparentHugePages();
+    }
+
+    /**
+     * Create an instance of {@link Storage }
+     *
+     */
+    public Storage createStorage() {
+        return new Storage();
     }
 
     /**
@@ -1955,33 +2045,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Jobs }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "jobs")
-    public JAXBElement<Jobs> createJobs(Jobs value) {
-        return new JAXBElement<Jobs>(_Jobs_QNAME, Jobs.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Tag }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "tag")
-    public JAXBElement<Tag> createTag(Tag value) {
-        return new JAXBElement<Tag>(_Tag_QNAME, Tag.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Domains }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "domains")
-    public JAXBElement<Domains> createDomains(Domains value) {
-        return new JAXBElement<Domains>(_Domains_QNAME, Domains.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link HardwareInformation }{@code >}}
      *
      */
@@ -1991,12 +2054,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Payload }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SnapshotStatuses }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "payload")
-    public JAXBElement<Payload> createPayload(Payload value) {
-        return new JAXBElement<Payload>(_Payload_QNAME, Payload.class, null, value);
+    @XmlElementDecl(namespace = "", name = "snapshot_statuses")
+    public JAXBElement<SnapshotStatuses> createSnapshotStatuses(SnapshotStatuses value) {
+        return new JAXBElement<SnapshotStatuses>(_SnapshotStatuses_QNAME, SnapshotStatuses.class, null, value);
     }
 
     /**
@@ -2018,39 +2081,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Certificate }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "certificate")
-    public JAXBElement<Certificate> createCertificate(Certificate value) {
-        return new JAXBElement<Certificate>(_Certificate_QNAME, Certificate.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CreationStates }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "creation_states")
     public JAXBElement<CreationStates> createCreationStates(CreationStates value) {
         return new JAXBElement<CreationStates>(_CreationStates_QNAME, CreationStates.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HostNics }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "host_nics")
-    public JAXBElement<HostNics> createHostNics(HostNics value) {
-        return new JAXBElement<HostNics>(_HostNics_QNAME, HostNics.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HostStorage }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "host_storage")
-    public JAXBElement<HostStorage> createHostStorage(HostStorage value) {
-        return new JAXBElement<HostStorage>(_HostStorage_QNAME, HostStorage.class, null, value);
     }
 
     /**
@@ -2063,15 +2099,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RSDL }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "rsdl")
-    public JAXBElement<RSDL> createRsdl(RSDL value) {
-        return new JAXBElement<RSDL>(_Rsdl_QNAME, RSDL.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReportedDevices }{@code >}}
      *
      */
@@ -2081,21 +2108,21 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RSDL }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "rsdl")
+    public JAXBElement<RSDL> createRsdl(RSDL value) {
+        return new JAXBElement<RSDL>(_Rsdl_QNAME, RSDL.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Event }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "event")
     public JAXBElement<Event> createEvent(Event value) {
         return new JAXBElement<Event>(_Event_QNAME, Event.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link File }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "file")
-    public JAXBElement<File> createFile(File value) {
-        return new JAXBElement<File>(_File_QNAME, File.class, null, value);
     }
 
     /**
@@ -2126,33 +2153,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StorageTypes }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "storage_types")
-    public JAXBElement<StorageTypes> createStorageTypes(StorageTypes value) {
-        return new JAXBElement<StorageTypes>(_StorageTypes_QNAME, StorageTypes.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Groups }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "groups")
-    public JAXBElement<Groups> createGroups(Groups value) {
-        return new JAXBElement<Groups>(_Groups_QNAME, Groups.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StorageDomains }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "storage_domains")
-    public JAXBElement<StorageDomains> createStorageDomains(StorageDomains value) {
-        return new JAXBElement<StorageDomains>(_StorageDomains_QNAME, StorageDomains.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Template }{@code >}}
      *
      */
@@ -2180,30 +2180,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StorageConnections }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Image }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "storage_connections")
-    public JAXBElement<StorageConnections> createStorageConnections(StorageConnections value) {
-        return new JAXBElement<StorageConnections>(_StorageConnections_QNAME, StorageConnections.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Job }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "job")
-    public JAXBElement<Job> createJob(Job value) {
-        return new JAXBElement<Job>(_Job_QNAME, Job.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Steps }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "steps")
-    public JAXBElement<Steps> createSteps(Steps value) {
-        return new JAXBElement<Steps>(_Steps_QNAME, Steps.class, null, value);
+    @XmlElementDecl(namespace = "", name = "image")
+    public JAXBElement<Image> createImage(Image value) {
+        return new JAXBElement<Image>(_Image_QNAME, Image.class, null, value);
     }
 
     /**
@@ -2216,15 +2198,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Disks }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "disks")
-    public JAXBElement<Disks> createDisks(Disks value) {
-        return new JAXBElement<Disks>(_Disks_QNAME, Disks.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Header }{@code >}}
      *
      */
@@ -2234,21 +2207,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StorageFormats }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Initialization }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "storage_formats")
-    public JAXBElement<StorageFormats> createStorageFormats(StorageFormats value) {
-        return new JAXBElement<StorageFormats>(_StorageFormats_QNAME, StorageFormats.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Statistic }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "statistic")
-    public JAXBElement<Statistic> createStatistic(Statistic value) {
-        return new JAXBElement<Statistic>(_Statistic_QNAME, Statistic.class, null, value);
+    @XmlElementDecl(namespace = "", name = "initialization")
+    public JAXBElement<Initialization> createInitialization(Initialization value) {
+        return new JAXBElement<Initialization>(_Initialization_QNAME, Initialization.class, null, value);
     }
 
     /**
@@ -2261,12 +2225,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Initialization }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Statistic }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "initialization")
-    public JAXBElement<Initialization> createInitialization(Initialization value) {
-        return new JAXBElement<Initialization>(_Initialization_QNAME, Initialization.class, null, value);
+    @XmlElementDecl(namespace = "", name = "statistic")
+    public JAXBElement<Statistic> createStatistic(Statistic value) {
+        return new JAXBElement<Statistic>(_Statistic_QNAME, Statistic.class, null, value);
     }
 
     /**
@@ -2297,24 +2261,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CustomProperties }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "custom_properties")
-    public JAXBElement<CustomProperties> createCustomProperties(CustomProperties value) {
-        return new JAXBElement<CustomProperties>(_CustomProperties_QNAME, CustomProperties.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WatchDogs }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "watchdogs")
-    public JAXBElement<WatchDogs> createWatchdogs(WatchDogs value) {
-        return new JAXBElement<WatchDogs>(_Watchdogs_QNAME, WatchDogs.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Nics }{@code >}}
      *
      */
@@ -2330,15 +2276,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "template_states")
     public JAXBElement<TemplateStates> createTemplateStates(TemplateStates value) {
         return new JAXBElement<TemplateStates>(_TemplateStates_QNAME, TemplateStates.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Creation }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "creation")
-    public JAXBElement<Creation> createCreation(Creation value) {
-        return new JAXBElement<Creation>(_Creation_QNAME, Creation.class, null, value);
     }
 
     /**
@@ -2369,48 +2306,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VmStates }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "vm_states")
-    public JAXBElement<VmStates> createVmStates(VmStates value) {
-        return new JAXBElement<VmStates>(_VmStates_QNAME, VmStates.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PowerManagers }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "power_managers")
-    public JAXBElement<PowerManagers> createPowerManagers(PowerManagers value) {
-        return new JAXBElement<PowerManagers>(_PowerManagers_QNAME, PowerManagers.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Events }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "events")
     public JAXBElement<Events> createEvents(Events value) {
         return new JAXBElement<Events>(_Events_QNAME, Events.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Link }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "link")
-    public JAXBElement<Link> createLink(Link value) {
-        return new JAXBElement<Link>(_Link_QNAME, Link.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Usb }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "usb")
-    public JAXBElement<Usb> createUsb(Usb value) {
-        return new JAXBElement<Usb>(_Usb_QNAME, Usb.class, null, value);
     }
 
     /**
@@ -2432,75 +2333,21 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Usb }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "usb")
+    public JAXBElement<Usb> createUsb(Usb value) {
+        return new JAXBElement<Usb>(_Usb_QNAME, Usb.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link HostNIC }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "host_nic")
     public JAXBElement<HostNIC> createHostNic(HostNIC value) {
         return new JAXBElement<HostNIC>(_HostNic_QNAME, HostNIC.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataCenterStates }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "data_center_states")
-    public JAXBElement<DataCenterStates> createDataCenterStates(DataCenterStates value) {
-        return new JAXBElement<DataCenterStates>(_DataCenterStates_QNAME, DataCenterStates.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VersionCaps }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "version")
-    public JAXBElement<VersionCaps> createVersion(VersionCaps value) {
-        return new JAXBElement<VersionCaps>(_Version_QNAME, VersionCaps.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VCpuPin }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "vcpu_pin")
-    public JAXBElement<VCpuPin> createVcpuPin(VCpuPin value) {
-        return new JAXBElement<VCpuPin>(_VcpuPin_QNAME, VCpuPin.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CPUs }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "cpus")
-    public JAXBElement<CPUs> createCpus(CPUs value) {
-        return new JAXBElement<CPUs>(_Cpus_QNAME, CPUs.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterBrickAdvancedDetails }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "brick_details")
-    public JAXBElement<GlusterBrickAdvancedDetails> createBrickDetails(GlusterBrickAdvancedDetails value) {
-        return new JAXBElement<GlusterBrickAdvancedDetails>(_BrickDetails_QNAME, GlusterBrickAdvancedDetails.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DiskStates }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "disk_states")
-    public JAXBElement<DiskStates> createDiskStates(DiskStates value) {
-        return new JAXBElement<DiskStates>(_DiskStates_QNAME, DiskStates.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HostNonOperationalDetails }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "host_non_operational_details")
-    public JAXBElement<HostNonOperationalDetails> createHostNonOperationalDetails(HostNonOperationalDetails value) {
-        return new JAXBElement<HostNonOperationalDetails>(_HostNonOperationalDetails_QNAME, HostNonOperationalDetails.class, null, value);
     }
 
     /**
@@ -2522,15 +2369,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link API }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "api")
-    public JAXBElement<API> createApi(API value) {
-        return new JAXBElement<API>(_Api_QNAME, API.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GlusterBricks }{@code >}}
      *
      */
@@ -2546,33 +2384,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "snapshots")
     public JAXBElement<Snapshots> createSnapshots(Snapshots value) {
         return new JAXBElement<Snapshots>(_Snapshots_QNAME, Snapshots.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterClient }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "gluster_client")
-    public JAXBElement<GlusterClient> createGlusterClient(GlusterClient value) {
-        return new JAXBElement<GlusterClient>(_GlusterClient_QNAME, GlusterClient.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link KSM }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "ksm")
-    public JAXBElement<KSM> createKsm(KSM value) {
-        return new JAXBElement<KSM>(_Ksm_QNAME, KSM.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Options }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "options")
-    public JAXBElement<Options> createOptions(Options value) {
-        return new JAXBElement<Options>(_Options_QNAME, Options.class, null, value);
     }
 
     /**
@@ -2594,15 +2405,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Files }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "files")
-    public JAXBElement<Files> createFiles(Files value) {
-        return new JAXBElement<Files>(_Files_QNAME, Files.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Quotas }{@code >}}
      *
      */
@@ -2621,12 +2423,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Snapshot }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ContentTypes }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "snapshot")
-    public JAXBElement<Snapshot> createSnapshot(Snapshot value) {
-        return new JAXBElement<Snapshot>(_Snapshot_QNAME, Snapshot.class, null, value);
+    @XmlElementDecl(namespace = "", name = "content_types")
+    public JAXBElement<ContentTypes> createContentTypes(ContentTypes value) {
+        return new JAXBElement<ContentTypes>(_ContentTypes_QNAME, ContentTypes.class, null, value);
     }
 
     /**
@@ -2648,39 +2450,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WatchdogModels }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "watchdog_models")
-    public JAXBElement<WatchdogModels> createWatchdogModels(WatchdogModels value) {
-        return new JAXBElement<WatchdogModels>(_WatchdogModels_QNAME, WatchdogModels.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterVolumeTypes }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "gluster_volume_types")
-    public JAXBElement<GlusterVolumeTypes> createGlusterVolumeTypes(GlusterVolumeTypes value) {
-        return new JAXBElement<GlusterVolumeTypes>(_GlusterVolumeTypes_QNAME, GlusterVolumeTypes.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Fault }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "fault")
     public JAXBElement<Fault> createFault(Fault value) {
         return new JAXBElement<Fault>(_Fault_QNAME, Fault.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PowerManagement }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "power_management")
-    public JAXBElement<PowerManagement> createPowerManagement(PowerManagement value) {
-        return new JAXBElement<PowerManagement>(_PowerManagement_QNAME, PowerManagement.class, null, value);
     }
 
     /**
@@ -2729,15 +2504,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Capabilities }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "capabilities")
-    public JAXBElement<Capabilities> createCapabilities(Capabilities value) {
-        return new JAXBElement<Capabilities>(_Capabilities_QNAME, Capabilities.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Configuration }{@code >}}
      *
      */
@@ -2756,15 +2522,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Headers }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "headers")
-    public JAXBElement<Headers> createHeaders(Headers value) {
-        return new JAXBElement<Headers>(_Headers_QNAME, Headers.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Body }{@code >}}
      *
      */
@@ -2774,30 +2531,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Users }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "users")
-    public JAXBElement<Users> createUsers(Users value) {
-        return new JAXBElement<Users>(_Users_QNAME, Users.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ParametersSet }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "parameters_set")
     public JAXBElement<ParametersSet> createParametersSet(ParametersSet value) {
         return new JAXBElement<ParametersSet>(_ParametersSet_QNAME, ParametersSet.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PayloadFile }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "payload_file")
-    public JAXBElement<PayloadFile> createPayloadFile(PayloadFile value) {
-        return new JAXBElement<PayloadFile>(_PayloadFile_QNAME, PayloadFile.class, null, value);
     }
 
     /**
@@ -2819,48 +2558,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Permit }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "permit")
-    public JAXBElement<Permit> createPermit(Permit value) {
-        return new JAXBElement<Permit>(_Permit_QNAME, Permit.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Disk }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "disk")
-    public JAXBElement<Disk> createDisk(Disk value) {
-        return new JAXBElement<Disk>(_Disk_QNAME, Disk.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VnicProfile }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "vnic_profile")
-    public JAXBElement<VnicProfile> createVnicProfile(VnicProfile value) {
-        return new JAXBElement<VnicProfile>(_VnicProfile_QNAME, VnicProfile.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Bonding }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "bonding")
     public JAXBElement<Bonding> createBonding(Bonding value) {
         return new JAXBElement<Bonding>(_Bonding_QNAME, Bonding.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataCenters }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "data_centers")
-    public JAXBElement<DataCenters> createDataCenters(DataCenters value) {
-        return new JAXBElement<DataCenters>(_DataCenters_QNAME, DataCenters.class, null, value);
     }
 
     /**
@@ -2900,12 +2603,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Request }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Hosts }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "request")
-    public JAXBElement<Request> createRequest(Request value) {
-        return new JAXBElement<Request>(_Request_QNAME, Request.class, null, value);
+    @XmlElementDecl(namespace = "", name = "hosts")
+    public JAXBElement<Hosts> createHosts(Hosts value) {
+        return new JAXBElement<Hosts>(_Hosts_QNAME, Hosts.class, null, value);
     }
 
     /**
@@ -2918,12 +2621,732 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Hosts }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataCenter }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "hosts")
-    public JAXBElement<Hosts> createHosts(Hosts value) {
-        return new JAXBElement<Hosts>(_Hosts_QNAME, Hosts.class, null, value);
+    @XmlElementDecl(namespace = "", name = "data_center")
+    public JAXBElement<DataCenter> createDataCenter(DataCenter value) {
+        return new JAXBElement<DataCenter>(_DataCenter_QNAME, DataCenter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Networks }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "networks")
+    public JAXBElement<Networks> createNetworks(Networks value) {
+        return new JAXBElement<Networks>(_Networks_QNAME, Networks.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Hook }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "hook")
+    public JAXBElement<Hook> createHook(Hook value) {
+        return new JAXBElement<Hook>(_Hook_QNAME, Hook.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PortMirroring }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "port_mirroring")
+    public JAXBElement<PortMirroring> createPortMirroring(PortMirroring value) {
+        return new JAXBElement<PortMirroring>(_PortMirroring_QNAME, PortMirroring.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Templates }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "templates")
+    public JAXBElement<Templates> createTemplates(Templates value) {
+        return new JAXBElement<Templates>(_Templates_QNAME, Templates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CPU }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "cpu")
+    public JAXBElement<CPU> createCpu(CPU value) {
+        return new JAXBElement<CPU>(_Cpu_QNAME, CPU.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Display }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "display")
+    public JAXBElement<Display> createDisplay(Display value) {
+        return new JAXBElement<Display>(_Display_QNAME, Display.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Agent }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "agent")
+    public JAXBElement<Agent> createAgent(Agent value) {
+        return new JAXBElement<Agent>(_Agent_QNAME, Agent.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Url }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "url")
+    public JAXBElement<Url> createUrl(Url value) {
+        return new JAXBElement<Url>(_Url_QNAME, Url.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WatchDog }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "watchdog")
+    public JAXBElement<WatchDog> createWatchdog(WatchDog value) {
+        return new JAXBElement<WatchDog>(_Watchdog_QNAME, WatchDog.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StepTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "step_types")
+    public JAXBElement<StepTypes> createStepTypes(StepTypes value) {
+        return new JAXBElement<StepTypes>(_StepTypes_QNAME, StepTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterMemoryPool }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "memory_pool")
+    public JAXBElement<GlusterMemoryPool> createMemoryPool(GlusterMemoryPool value) {
+        return new JAXBElement<GlusterMemoryPool>(_MemoryPool_QNAME, GlusterMemoryPool.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterStates }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "gluster_volume_states")
+    public JAXBElement<GlusterStates> createGlusterVolumeStates(GlusterStates value) {
+        return new JAXBElement<GlusterStates>(_GlusterVolumeStates_QNAME, GlusterStates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Usages }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "usages")
+    public JAXBElement<Usages> createUsages(Usages value) {
+        return new JAXBElement<Usages>(_Usages_QNAME, Usages.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterClients }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "gluster_clients")
+    public JAXBElement<GlusterClients> createGlusterClients(GlusterClients value) {
+        return new JAXBElement<GlusterClients>(_GlusterClients_QNAME, GlusterClients.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PmProxyTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "pm_proxy_types")
+    public JAXBElement<PmProxyTypes> createPmProxyTypes(PmProxyTypes value) {
+        return new JAXBElement<PmProxyTypes>(_PmProxyTypes_QNAME, PmProxyTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LinkCapabilities }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "linkCapabilities")
+    public JAXBElement<LinkCapabilities> createLinkCapabilities(LinkCapabilities value) {
+        return new JAXBElement<LinkCapabilities>(_LinkCapabilities_QNAME, LinkCapabilities.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterBrick }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "brick")
+    public JAXBElement<GlusterBrick> createBrick(GlusterBrick value) {
+        return new JAXBElement<GlusterBrick>(_Brick_QNAME, GlusterBrick.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterVolume }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "gluster_volume")
+    public JAXBElement<GlusterVolume> createGlusterVolume(GlusterVolume value) {
+        return new JAXBElement<GlusterVolume>(_GlusterVolume_QNAME, GlusterVolume.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogicalUnit }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "logical_unit")
+    public JAXBElement<LogicalUnit> createLogicalUnit(LogicalUnit value) {
+        return new JAXBElement<LogicalUnit>(_LogicalUnit_QNAME, LogicalUnit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Statistics }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "statistics")
+    public JAXBElement<Statistics> createStatistics(Statistics value) {
+        return new JAXBElement<Statistics>(_Statistics_QNAME, Statistics.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Response }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "response")
+    public JAXBElement<Response> createResponse(Response value) {
+        return new JAXBElement<Response>(_Response_QNAME, Response.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageConnection }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_connection")
+    public JAXBElement<StorageConnection> createStorageConnection(StorageConnection value) {
+        return new JAXBElement<StorageConnection>(_StorageConnection_QNAME, StorageConnection.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PmProxy }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "pm_proxy")
+    public JAXBElement<PmProxy> createPmProxy(PmProxy value) {
+        return new JAXBElement<PmProxy>(_PmProxy_QNAME, PmProxy.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageManager }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_manager")
+    public JAXBElement<StorageManager> createStorageManager(StorageManager value) {
+        return new JAXBElement<StorageManager>(_StorageManager_QNAME, StorageManager.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BootProtocols }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "boot_protocols")
+    public JAXBElement<BootProtocols> createBootProtocols(BootProtocols value) {
+        return new JAXBElement<BootProtocols>(_BootProtocols_QNAME, BootProtocols.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CpuTune }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "cpu_tune")
+    public JAXBElement<CpuTune> createCpuTune(CpuTune value) {
+        return new JAXBElement<CpuTune>(_CpuTune_QNAME, CpuTune.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReportedDevice }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "reported_device")
+    public JAXBElement<ReportedDevice> createReportedDevice(ReportedDevice value) {
+        return new JAXBElement<ReportedDevice>(_ReportedDevice_QNAME, ReportedDevice.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Stages }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "stages")
+    public JAXBElement<Stages> createStages(Stages value) {
+        return new JAXBElement<Stages>(_Stages_QNAME, Stages.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VmTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vm_types")
+    public JAXBElement<VmTypes> createVmTypes(VmTypes value) {
+        return new JAXBElement<VmTypes>(_VmTypes_QNAME, VmTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VLAN }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vlan")
+    public JAXBElement<VLAN> createVlan(VLAN value) {
+        return new JAXBElement<VLAN>(_Vlan_QNAME, VLAN.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VmPools }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vmpools")
+    public JAXBElement<VmPools> createVmpools(VmPools value) {
+        return new JAXBElement<VmPools>(_Vmpools_QNAME, VmPools.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Jobs }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "jobs")
+    public JAXBElement<Jobs> createJobs(Jobs value) {
+        return new JAXBElement<Jobs>(_Jobs_QNAME, Jobs.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Tag }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "tag")
+    public JAXBElement<Tag> createTag(Tag value) {
+        return new JAXBElement<Tag>(_Tag_QNAME, Tag.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Domains }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "domains")
+    public JAXBElement<Domains> createDomains(Domains value) {
+        return new JAXBElement<Domains>(_Domains_QNAME, Domains.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Payload }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "payload")
+    public JAXBElement<Payload> createPayload(Payload value) {
+        return new JAXBElement<Payload>(_Payload_QNAME, Payload.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Certificate }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "certificate")
+    public JAXBElement<Certificate> createCertificate(Certificate value) {
+        return new JAXBElement<Certificate>(_Certificate_QNAME, Certificate.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostNics }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "host_nics")
+    public JAXBElement<HostNics> createHostNics(HostNics value) {
+        return new JAXBElement<HostNics>(_HostNics_QNAME, HostNics.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostStorage }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "host_storage")
+    public JAXBElement<HostStorage> createHostStorage(HostStorage value) {
+        return new JAXBElement<HostStorage>(_HostStorage_QNAME, HostStorage.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link File }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "file")
+    public JAXBElement<File> createFile(File value) {
+        return new JAXBElement<File>(_File_QNAME, File.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Groups }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "groups")
+    public JAXBElement<Groups> createGroups(Groups value) {
+        return new JAXBElement<Groups>(_Groups_QNAME, Groups.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_types")
+    public JAXBElement<StorageTypes> createStorageTypes(StorageTypes value) {
+        return new JAXBElement<StorageTypes>(_StorageTypes_QNAME, StorageTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageDomains }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_domains")
+    public JAXBElement<StorageDomains> createStorageDomains(StorageDomains value) {
+        return new JAXBElement<StorageDomains>(_StorageDomains_QNAME, StorageDomains.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageConnections }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_connections")
+    public JAXBElement<StorageConnections> createStorageConnections(StorageConnections value) {
+        return new JAXBElement<StorageConnections>(_StorageConnections_QNAME, StorageConnections.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Job }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "job")
+    public JAXBElement<Job> createJob(Job value) {
+        return new JAXBElement<Job>(_Job_QNAME, Job.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Steps }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "steps")
+    public JAXBElement<Steps> createSteps(Steps value) {
+        return new JAXBElement<Steps>(_Steps_QNAME, Steps.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Disks }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "disks")
+    public JAXBElement<Disks> createDisks(Disks value) {
+        return new JAXBElement<Disks>(_Disks_QNAME, Disks.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageFormats }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_formats")
+    public JAXBElement<StorageFormats> createStorageFormats(StorageFormats value) {
+        return new JAXBElement<StorageFormats>(_StorageFormats_QNAME, StorageFormats.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CustomProperties }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "custom_properties")
+    public JAXBElement<CustomProperties> createCustomProperties(CustomProperties value) {
+        return new JAXBElement<CustomProperties>(_CustomProperties_QNAME, CustomProperties.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WatchDogs }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "watchdogs")
+    public JAXBElement<WatchDogs> createWatchdogs(WatchDogs value) {
+        return new JAXBElement<WatchDogs>(_Watchdogs_QNAME, WatchDogs.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Creation }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "creation")
+    public JAXBElement<Creation> createCreation(Creation value) {
+        return new JAXBElement<Creation>(_Creation_QNAME, Creation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PowerManagers }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "power_managers")
+    public JAXBElement<PowerManagers> createPowerManagers(PowerManagers value) {
+        return new JAXBElement<PowerManagers>(_PowerManagers_QNAME, PowerManagers.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VmStates }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vm_states")
+    public JAXBElement<VmStates> createVmStates(VmStates value) {
+        return new JAXBElement<VmStates>(_VmStates_QNAME, VmStates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Link }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "link")
+    public JAXBElement<Link> createLink(Link value) {
+        return new JAXBElement<Link>(_Link_QNAME, Link.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataCenterStates }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "data_center_states")
+    public JAXBElement<DataCenterStates> createDataCenterStates(DataCenterStates value) {
+        return new JAXBElement<DataCenterStates>(_DataCenterStates_QNAME, DataCenterStates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VersionCaps }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "version")
+    public JAXBElement<VersionCaps> createVersion(VersionCaps value) {
+        return new JAXBElement<VersionCaps>(_Version_QNAME, VersionCaps.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VCpuPin }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vcpu_pin")
+    public JAXBElement<VCpuPin> createVcpuPin(VCpuPin value) {
+        return new JAXBElement<VCpuPin>(_VcpuPin_QNAME, VCpuPin.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CPUs }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "cpus")
+    public JAXBElement<CPUs> createCpus(CPUs value) {
+        return new JAXBElement<CPUs>(_Cpus_QNAME, CPUs.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterBrickAdvancedDetails }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "brick_details")
+    public JAXBElement<GlusterBrickAdvancedDetails> createBrickDetails(GlusterBrickAdvancedDetails value) {
+        return new JAXBElement<GlusterBrickAdvancedDetails>(_BrickDetails_QNAME, GlusterBrickAdvancedDetails.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostNonOperationalDetails }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "host_non_operational_details")
+    public JAXBElement<HostNonOperationalDetails> createHostNonOperationalDetails(HostNonOperationalDetails value) {
+        return new JAXBElement<HostNonOperationalDetails>(_HostNonOperationalDetails_QNAME, HostNonOperationalDetails.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiskStates }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "disk_states")
+    public JAXBElement<DiskStates> createDiskStates(DiskStates value) {
+        return new JAXBElement<DiskStates>(_DiskStates_QNAME, DiskStates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link API }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "api")
+    public JAXBElement<API> createApi(API value) {
+        return new JAXBElement<API>(_Api_QNAME, API.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterHooks }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "glusterhooks")
+    public JAXBElement<GlusterHooks> createGlusterhooks(GlusterHooks value) {
+        return new JAXBElement<GlusterHooks>(_Glusterhooks_QNAME, GlusterHooks.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KSM }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "ksm")
+    public JAXBElement<KSM> createKsm(KSM value) {
+        return new JAXBElement<KSM>(_Ksm_QNAME, KSM.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterClient }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "gluster_client")
+    public JAXBElement<GlusterClient> createGlusterClient(GlusterClient value) {
+        return new JAXBElement<GlusterClient>(_GlusterClient_QNAME, GlusterClient.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Options }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "options")
+    public JAXBElement<Options> createOptions(Options value) {
+        return new JAXBElement<Options>(_Options_QNAME, Options.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Files }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "files")
+    public JAXBElement<Files> createFiles(Files value) {
+        return new JAXBElement<Files>(_Files_QNAME, Files.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Snapshot }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "snapshot")
+    public JAXBElement<Snapshot> createSnapshot(Snapshot value) {
+        return new JAXBElement<Snapshot>(_Snapshot_QNAME, Snapshot.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link WatchdogModels }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "watchdog_models")
+    public JAXBElement<WatchdogModels> createWatchdogModels(WatchdogModels value) {
+        return new JAXBElement<WatchdogModels>(_WatchdogModels_QNAME, WatchdogModels.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterVolumeTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "gluster_volume_types")
+    public JAXBElement<GlusterVolumeTypes> createGlusterVolumeTypes(GlusterVolumeTypes value) {
+        return new JAXBElement<GlusterVolumeTypes>(_GlusterVolumeTypes_QNAME, GlusterVolumeTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PowerManagement }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "power_management")
+    public JAXBElement<PowerManagement> createPowerManagement(PowerManagement value) {
+        return new JAXBElement<PowerManagement>(_PowerManagement_QNAME, PowerManagement.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Capabilities }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "capabilities")
+    public JAXBElement<Capabilities> createCapabilities(Capabilities value) {
+        return new JAXBElement<Capabilities>(_Capabilities_QNAME, Capabilities.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterHook }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "gluster_hook")
+    public JAXBElement<GlusterHook> createGlusterHook(GlusterHook value) {
+        return new JAXBElement<GlusterHook>(_GlusterHook_QNAME, GlusterHook.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Headers }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "headers")
+    public JAXBElement<Headers> createHeaders(Headers value) {
+        return new JAXBElement<Headers>(_Headers_QNAME, Headers.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Users }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "users")
+    public JAXBElement<Users> createUsers(Users value) {
+        return new JAXBElement<Users>(_Users_QNAME, Users.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PayloadFile }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "payload_file")
+    public JAXBElement<PayloadFile> createPayloadFile(PayloadFile value) {
+        return new JAXBElement<PayloadFile>(_PayloadFile_QNAME, PayloadFile.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Permit }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "permit")
+    public JAXBElement<Permit> createPermit(Permit value) {
+        return new JAXBElement<Permit>(_Permit_QNAME, Permit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Disk }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "disk")
+    public JAXBElement<Disk> createDisk(Disk value) {
+        return new JAXBElement<Disk>(_Disk_QNAME, Disk.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VnicProfile }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vnic_profile")
+    public JAXBElement<VnicProfile> createVnicProfile(VnicProfile value) {
+        return new JAXBElement<VnicProfile>(_VnicProfile_QNAME, VnicProfile.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataCenters }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "data_centers")
+    public JAXBElement<DataCenters> createDataCenters(DataCenters value) {
+        return new JAXBElement<DataCenters>(_DataCenters_QNAME, DataCenters.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Request }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "request")
+    public JAXBElement<Request> createRequest(Request value) {
+        return new JAXBElement<Request>(_Request_QNAME, Request.class, null, value);
     }
 
     /**
@@ -2963,15 +3386,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataCenter }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "data_center")
-    public JAXBElement<DataCenter> createDataCenter(DataCenter value) {
-        return new JAXBElement<DataCenter>(_DataCenter_QNAME, DataCenter.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SchedulingPolicies }{@code >}}
      *
      */
@@ -2990,30 +3404,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Networks }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "networks")
-    public JAXBElement<Networks> createNetworks(Networks value) {
-        return new JAXBElement<Networks>(_Networks_QNAME, Networks.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NetworkStates }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "network_states")
     public JAXBElement<NetworkStates> createNetworkStates(NetworkStates value) {
         return new JAXBElement<NetworkStates>(_NetworkStates_QNAME, NetworkStates.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Hook }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "hook")
-    public JAXBElement<Hook> createHook(Hook value) {
-        return new JAXBElement<Hook>(_Hook_QNAME, Hook.class, null, value);
     }
 
     /**
@@ -3026,39 +3422,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PortMirroring }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "port_mirroring")
-    public JAXBElement<PortMirroring> createPortMirroring(PortMirroring value) {
-        return new JAXBElement<PortMirroring>(_PortMirroring_QNAME, PortMirroring.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Templates }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "templates")
-    public JAXBElement<Templates> createTemplates(Templates value) {
-        return new JAXBElement<Templates>(_Templates_QNAME, Templates.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Status }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "status")
     public JAXBElement<Status> createStatus(Status value) {
         return new JAXBElement<Status>(_Status_QNAME, Status.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CPU }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "cpu")
-    public JAXBElement<CPU> createCpu(CPU value) {
-        return new JAXBElement<CPU>(_Cpu_QNAME, CPU.class, null, value);
     }
 
     /**
@@ -3080,24 +3449,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Display }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "display")
-    public JAXBElement<Display> createDisplay(Display value) {
-        return new JAXBElement<Display>(_Display_QNAME, Display.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Agent }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "agent")
-    public JAXBElement<Agent> createAgent(Agent value) {
-        return new JAXBElement<Agent>(_Agent_QNAME, Agent.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReportedDeviceTypes }{@code >}}
      *
      */
@@ -3107,39 +3458,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WatchDog }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "watchdog")
-    public JAXBElement<WatchDog> createWatchdog(WatchDog value) {
-        return new JAXBElement<WatchDog>(_Watchdog_QNAME, WatchDog.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Url }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "url")
-    public JAXBElement<Url> createUrl(Url value) {
-        return new JAXBElement<Url>(_Url_QNAME, Url.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Floppy }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "floppy")
     public JAXBElement<Floppy> createFloppy(Floppy value) {
         return new JAXBElement<Floppy>(_Floppy_QNAME, Floppy.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StepTypes }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "step_types")
-    public JAXBElement<StepTypes> createStepTypes(StepTypes value) {
-        return new JAXBElement<StepTypes>(_StepTypes_QNAME, StepTypes.class, null, value);
     }
 
     /**
@@ -3161,6 +3485,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterServerHooks }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "server_hooks")
+    public JAXBElement<GlusterServerHooks> createServerHooks(GlusterServerHooks value) {
+        return new JAXBElement<GlusterServerHooks>(_ServerHooks_QNAME, GlusterServerHooks.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CpuModes }{@code >}}
      *
      */
@@ -3170,30 +3503,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Usages }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Images }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "usages")
-    public JAXBElement<Usages> createUsages(Usages value) {
-        return new JAXBElement<Usages>(_Usages_QNAME, Usages.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterStates }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "gluster_volume_states")
-    public JAXBElement<GlusterStates> createGlusterVolumeStates(GlusterStates value) {
-        return new JAXBElement<GlusterStates>(_GlusterVolumeStates_QNAME, GlusterStates.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterMemoryPool }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "memory_pool")
-    public JAXBElement<GlusterMemoryPool> createMemoryPool(GlusterMemoryPool value) {
-        return new JAXBElement<GlusterMemoryPool>(_MemoryPool_QNAME, GlusterMemoryPool.class, null, value);
+    @XmlElementDecl(namespace = "", name = "images")
+    public JAXBElement<Images> createImages(Images value) {
+        return new JAXBElement<Images>(_Images_QNAME, Images.class, null, value);
     }
 
     /**
@@ -3203,24 +3518,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "permits")
     public JAXBElement<Permits> createPermits(Permits value) {
         return new JAXBElement<Permits>(_Permits_QNAME, Permits.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PmProxyTypes }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "pm_proxy_types")
-    public JAXBElement<PmProxyTypes> createPmProxyTypes(PmProxyTypes value) {
-        return new JAXBElement<PmProxyTypes>(_PmProxyTypes_QNAME, PmProxyTypes.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterClients }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "gluster_clients")
-    public JAXBElement<GlusterClients> createGlusterClients(GlusterClients value) {
-        return new JAXBElement<GlusterClients>(_GlusterClients_QNAME, GlusterClients.class, null, value);
     }
 
     /**
@@ -3251,15 +3548,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LinkCapabilities }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "linkCapabilities")
-    public JAXBElement<LinkCapabilities> createLinkCapabilities(LinkCapabilities value) {
-        return new JAXBElement<LinkCapabilities>(_LinkCapabilities_QNAME, LinkCapabilities.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Hooks }{@code >}}
      *
      */
@@ -3287,33 +3575,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterBrick }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "brick")
-    public JAXBElement<GlusterBrick> createBrick(GlusterBrick value) {
-        return new JAXBElement<GlusterBrick>(_Brick_QNAME, GlusterBrick.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogicalUnit }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "logical_unit")
-    public JAXBElement<LogicalUnit> createLogicalUnit(LogicalUnit value) {
-        return new JAXBElement<LogicalUnit>(_LogicalUnit_QNAME, LogicalUnit.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterVolume }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "gluster_volume")
-    public JAXBElement<GlusterVolume> createGlusterVolume(GlusterVolume value) {
-        return new JAXBElement<GlusterVolume>(_GlusterVolume_QNAME, GlusterVolume.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link VnicProfiles }{@code >}}
      *
      */
@@ -3338,24 +3599,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "network")
     public JAXBElement<Network> createNetwork(Network value) {
         return new JAXBElement<Network>(_Network_QNAME, Network.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Statistics }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "statistics")
-    public JAXBElement<Statistics> createStatistics(Statistics value) {
-        return new JAXBElement<Statistics>(_Statistics_QNAME, Statistics.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Response }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "response")
-    public JAXBElement<Response> createResponse(Response value) {
-        return new JAXBElement<Response>(_Response_QNAME, Response.class, null, value);
     }
 
     /**
@@ -3395,30 +3638,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StorageConnection }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link HookStates }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "storage_connection")
-    public JAXBElement<StorageConnection> createStorageConnection(StorageConnection value) {
-        return new JAXBElement<StorageConnection>(_StorageConnection_QNAME, StorageConnection.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PmProxy }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "pm_proxy")
-    public JAXBElement<PmProxy> createPmProxy(PmProxy value) {
-        return new JAXBElement<PmProxy>(_PmProxy_QNAME, PmProxy.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StorageManager }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "storage_manager")
-    public JAXBElement<StorageManager> createStorageManager(StorageManager value) {
-        return new JAXBElement<StorageManager>(_StorageManager_QNAME, StorageManager.class, null, value);
+    @XmlElementDecl(namespace = "", name = "hook_states")
+    public JAXBElement<HookStates> createHookStates(HookStates value) {
+        return new JAXBElement<HookStates>(_HookStates_QNAME, HookStates.class, null, value);
     }
 
     /**
@@ -3437,15 +3662,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "disk_interfaces")
     public JAXBElement<DiskInterfaces> createDiskInterfaces(DiskInterfaces value) {
         return new JAXBElement<DiskInterfaces>(_DiskInterfaces_QNAME, DiskInterfaces.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BootProtocols }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "boot_protocols")
-    public JAXBElement<BootProtocols> createBootProtocols(BootProtocols value) {
-        return new JAXBElement<BootProtocols>(_BootProtocols_QNAME, BootProtocols.class, null, value);
     }
 
     /**
@@ -3476,15 +3692,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CpuTune }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "cpu_tune")
-    public JAXBElement<CpuTune> createCpuTune(CpuTune value) {
-        return new JAXBElement<CpuTune>(_CpuTune_QNAME, CpuTune.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Application }{@code >}}
      *
      */
@@ -3500,15 +3707,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "nic")
     public JAXBElement<NIC> createNic(NIC value) {
         return new JAXBElement<NIC>(_Nic_QNAME, NIC.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReportedDevice }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "reported_device")
-    public JAXBElement<ReportedDevice> createReportedDevice(ReportedDevice value) {
-        return new JAXBElement<ReportedDevice>(_ReportedDevice_QNAME, ReportedDevice.class, null, value);
     }
 
     /**
@@ -3530,12 +3728,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VmTypes }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterServerHook }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "vm_types")
-    public JAXBElement<VmTypes> createVmTypes(VmTypes value) {
-        return new JAXBElement<VmTypes>(_VmTypes_QNAME, VmTypes.class, null, value);
+    @XmlElementDecl(namespace = "", name = "server_hook")
+    public JAXBElement<GlusterServerHook> createServerHook(GlusterServerHook value) {
+        return new JAXBElement<GlusterServerHook>(_ServerHook_QNAME, GlusterServerHook.class, null, value);
     }
 
     /**
@@ -3557,12 +3755,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VLAN }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VmPauseDetails }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "vlan")
-    public JAXBElement<VLAN> createVlan(VLAN value) {
-        return new JAXBElement<VLAN>(_Vlan_QNAME, VLAN.class, null, value);
+    @XmlElementDecl(namespace = "", name = "vm_pause_details")
+    public JAXBElement<VmPauseDetails> createVmPauseDetails(VmPauseDetails value) {
+        return new JAXBElement<VmPauseDetails>(_VmPauseDetails_QNAME, VmPauseDetails.class, null, value);
     }
 
     /**
@@ -3575,30 +3773,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VmPauseDetails }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "vm_pause_details")
-    public JAXBElement<VmPauseDetails> createVmPauseDetails(VmPauseDetails value) {
-        return new JAXBElement<VmPauseDetails>(_VmPauseDetails_QNAME, VmPauseDetails.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link VolumeGroup }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "volume_group")
     public JAXBElement<VolumeGroup> createVolumeGroup(VolumeGroup value) {
         return new JAXBElement<VolumeGroup>(_VolumeGroup_QNAME, VolumeGroup.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VmPools }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "vmpools")
-    public JAXBElement<VmPools> createVmpools(VmPools value) {
-        return new JAXBElement<VmPools>(_Vmpools_QNAME, VmPools.class, null, value);
     }
 
     /**
@@ -3629,21 +3809,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TransparentHugePages }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "transparent_hugepages")
-    public JAXBElement<TransparentHugePages> createTransparentHugepages(TransparentHugePages value) {
-        return new JAXBElement<TransparentHugePages>(_TransparentHugepages_QNAME, TransparentHugePages.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Storage }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "storage")
     public JAXBElement<Storage> createStorage(Storage value) {
         return new JAXBElement<Storage>(_Storage_QNAME, Storage.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TransparentHugePages }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "transparent_hugepages")
+    public JAXBElement<TransparentHugePages> createTransparentHugepages(TransparentHugePages value) {
+        return new JAXBElement<TransparentHugePages>(_TransparentHugepages_QNAME, TransparentHugePages.class, null, value);
     }
 
 }

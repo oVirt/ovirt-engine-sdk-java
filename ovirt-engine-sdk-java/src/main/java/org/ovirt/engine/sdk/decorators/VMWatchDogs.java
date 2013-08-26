@@ -130,6 +130,83 @@ public class VMWatchDogs extends
         return list(url, org.ovirt.engine.sdk.entities.WatchDogs.class,
                 VMWatchDog.class, headers);
     }
+    /**
+     * Adds WatchDog object.
+     *
+     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     *    <pre>
+     *    watchdog.action
+     *    watchdog.model
+     *    </pre>
+     *
+     * @return
+     *     {@link VMWatchDog }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMWatchDog add(org.ovirt.engine.sdk.entities.WatchDog watchdog) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, watchdog,
+                org.ovirt.engine.sdk.entities.WatchDog.class,
+                VMWatchDog.class, headers);
+    }
+    /**
+     * Adds WatchDog object.
+     *
+     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     *    <pre>
+     *    watchdog.action
+     *    watchdog.model
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMWatchDog }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMWatchDog add(org.ovirt.engine.sdk.entities.WatchDog watchdog, String expect, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, watchdog,
+                org.ovirt.engine.sdk.entities.WatchDog.class,
+                VMWatchDog.class, headers);
+    }
 
 }
 

@@ -22,58 +22,93 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.entities.Action;
-import org.ovirt.engine.sdk.entities.Response;
+import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>VMWatchDog providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.WatchDog }.
+ * <p>StorageDomainImages providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Images }.
  */
 @SuppressWarnings("unused")
-public class VMWatchDog extends
-        org.ovirt.engine.sdk.entities.WatchDog {
+public class StorageDomainImages extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Image,
+                            org.ovirt.engine.sdk.entities.Images,
+                            StorageDomainImage> {
 
-    private HttpProxyBroker proxy;
-    private final Object LOCK = new Object();
-
-
+    private StorageDomain parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent StorageDomain
      */
-    public VMWatchDog(HttpProxyBroker proxy) {
-        this.proxy = proxy;
+    public StorageDomainImages(HttpProxyBroker proxy, StorageDomain parent) {
+        super(proxy, "images");
+        this.parent = parent;
     }
 
     /**
-     * @return HttpProxyBroker
-     */
-    private HttpProxyBroker getProxy() {
-        return proxy;
-    }
-
-
-
-    /**
-     * Updates VMWatchDog object.
+     * Lists StorageDomainImage objects.
      *
-     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     * @return
+     *     List of {@link StorageDomainImage }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public List<StorageDomainImage> list() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.Images.class, StorageDomainImage.class);
+    }
+
+    /**
+     * Fetches StorageDomainImage object by id.
+     *
+     * @return
+     *     {@link StorageDomainImage }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public StorageDomainImage get(UUID id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Image.class, StorageDomainImage.class);
+    }
+
+    /**
+     * Lists StorageDomainImage objects.
+     *
+     * @param max
      *    <pre>
-     *    [watchdog.action]
-     *    [watchdog.model]
+     *    [max results]
      *    </pre>
      *
-     * @return
-     *     {@link VMWatchDog }
+     *
+     * @return List of {@link StorageDomainImage }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -82,71 +117,18 @@ public class VMWatchDog extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMWatchDog update() throws ClientProtocolException,
+    public List<StorageDomainImage> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.WatchDog.class, VMWatchDog.class);
-    }
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
 
-        url = new UrlBuilder(url)
+        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
+                .add("max", max, UrlParameterType.MATRIX)
                 .build();
 
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
-
-        url = new UrlBuilder(url)
-                .add("async", async, UrlParameterType.MATRIX)
-                .build();
-
-        return getProxy().delete(url, Response.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.Images.class,
+                StorageDomainImage.class, headers);
     }
 
 }

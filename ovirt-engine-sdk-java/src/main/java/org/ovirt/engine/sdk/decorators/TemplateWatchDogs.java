@@ -99,6 +99,34 @@ public class TemplateWatchDogs extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.WatchDog.class, TemplateWatchDog.class);
     }
 
+    /**
+     * Adds WatchDog object.
+     *
+     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     * @return
+     *     {@link TemplateWatchDog }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public TemplateWatchDog add(org.ovirt.engine.sdk.entities.WatchDog watchdog) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, watchdog,
+                org.ovirt.engine.sdk.entities.WatchDog.class,
+                TemplateWatchDog.class, headers);
+    }
 
 }
 

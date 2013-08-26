@@ -22,53 +22,48 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.entities.Action;
-import org.ovirt.engine.sdk.entities.Response;
+import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>TemplateWatchDog providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.WatchDog }.
+ * <p>DataCenterClusterGlusterHooks providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.GlusterHooks }.
  */
 @SuppressWarnings("unused")
-public class TemplateWatchDog extends
-        org.ovirt.engine.sdk.entities.WatchDog {
+public class DataCenterClusterGlusterHooks extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.GlusterHook,
+                            org.ovirt.engine.sdk.entities.GlusterHooks,
+                            DataCenterClusterGlusterHook> {
 
-    private HttpProxyBroker proxy;
-    private final Object LOCK = new Object();
-
-
+    private DataCenterCluster parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent DataCenterCluster
      */
-    public TemplateWatchDog(HttpProxyBroker proxy) {
-        this.proxy = proxy;
+    public DataCenterClusterGlusterHooks(HttpProxyBroker proxy, DataCenterCluster parent) {
+        super(proxy, "glusterhooks");
+        this.parent = parent;
     }
 
     /**
-     * @return HttpProxyBroker
-     */
-    private HttpProxyBroker getProxy() {
-        return proxy;
-    }
-
-
-
-    /**
-     * Updates TemplateWatchDog object.
+     * Lists DataCenterClusterGlusterHook objects.
      *
-     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
      * @return
-     *     {@link TemplateWatchDog }
+     *     List of {@link DataCenterClusterGlusterHook }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -77,16 +72,18 @@ public class TemplateWatchDog extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public TemplateWatchDog update() throws ClientProtocolException,
+    @Override
+    public List<DataCenterClusterGlusterHook> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.WatchDog.class, TemplateWatchDog.class);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.GlusterHooks.class, DataCenterClusterGlusterHook.class);
     }
+
     /**
-     * Deletes object.
+     * Fetches DataCenterClusterGlusterHook object by id.
      *
      * @return
-     *     {@link Response }
+     *     {@link DataCenterClusterGlusterHook }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -95,18 +92,13 @@ public class TemplateWatchDog extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete() throws ClientProtocolException,
+    @Override
+    public DataCenterClusterGlusterHook get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().delete(url, Response.class, headers);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterHook.class, DataCenterClusterGlusterHook.class);
     }
+
 
 }
 

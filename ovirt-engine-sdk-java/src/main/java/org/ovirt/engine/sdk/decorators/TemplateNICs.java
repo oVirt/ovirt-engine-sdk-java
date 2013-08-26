@@ -136,9 +136,9 @@ public class TemplateNICs extends
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
      *    Overload 1:
+     *      nic.name
      *      [nic.vnic_profile.id]
      *      [nic.linked]
-     *      [nic.name]
      *      [nic.mac.address]
      *      [nic.interface]
      *      [nic.plugged]
@@ -182,9 +182,9 @@ public class TemplateNICs extends
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
      *    Overload 1:
+     *      nic.name
      *      [nic.vnic_profile.id]
      *      [nic.linked]
-     *      [nic.name]
      *      [nic.mac.address]
      *      [nic.interface]
      *      [nic.plugged]

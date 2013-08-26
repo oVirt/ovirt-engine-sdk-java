@@ -46,6 +46,7 @@ public class DataCenterCluster extends
     private final Object LOCK = new Object();
 
     private volatile DataCenterClusterPermissions dataCenterClusterPermissions;
+    private volatile DataCenterClusterGlusterHooks dataCenterClusterGlusterHooks;
     private volatile DataCenterClusterGlusterVolumes dataCenterClusterGlusterVolumes;
     private volatile DataCenterClusterNetworks dataCenterClusterNetworks;
 
@@ -79,6 +80,22 @@ public class DataCenterCluster extends
             }
         }
         return dataCenterClusterPermissions;
+    }
+    /**
+     * Gets the value of the DataCenterClusterGlusterHooks property.
+     *
+     * @return
+     *     {@link DataCenterClusterGlusterHooks }
+     */
+    public DataCenterClusterGlusterHooks getGlusterHooks() {
+        if (this.dataCenterClusterGlusterHooks == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterGlusterHooks == null) {
+                    this.dataCenterClusterGlusterHooks = new DataCenterClusterGlusterHooks(proxy, this);
+                }
+            }
+        }
+        return dataCenterClusterGlusterHooks;
     }
     /**
      * Gets the value of the DataCenterClusterGlusterVolumes property.
