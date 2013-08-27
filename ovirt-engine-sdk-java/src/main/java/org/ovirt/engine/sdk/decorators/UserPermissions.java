@@ -136,30 +136,58 @@ public class UserPermissions extends
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new tole permission for
+     *      the user on the data center
+     *
      *      permission.role.id
      *      permission.data_center.id
      *
      *    Overload 2:
+     *
+     *      add a new tole permission for
+     *      the user on the cluster
+     *
      *      permission.role.id
      *      permission.cluster.id
      *
      *    Overload 3:
+     *
+     *      add a new tole permission for
+     *      the user on the host
+     *
      *      permission.role.id
      *      permission.host.id
      *
      *    Overload 4:
+     *
+     *      add a new tole permission for
+     *      the user on the storage domain
+     *
      *      permission.role.id
      *      permission.storage_domain.id
      *
      *    Overload 5:
+     *
+     *      add a new tole permission for
+     *      the user on the vm
+     *
      *      permission.role.id
      *      permission.vm.id
      *
      *    Overload 6:
+     *
+     *      add a new tole permission for
+     *      the user on the vm pool
+     *
      *      permission.role.id
      *      permission.vmpool.id
      *
      *    Overload 7:
+     *
+     *      add a new tole permission for
+     *      the user on the template
+     *
      *      permission.role.id
      *      permission.template.id
      *    </pre>
@@ -194,30 +222,58 @@ public class UserPermissions extends
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new tole permission for
+     *      the user on the data center
+     *
      *      permission.role.id
      *      permission.data_center.id
      *
      *    Overload 2:
+     *
+     *      add a new tole permission for
+     *      the user on the cluster
+     *
      *      permission.role.id
      *      permission.cluster.id
      *
      *    Overload 3:
+     *
+     *      add a new tole permission for
+     *      the user on the host
+     *
      *      permission.role.id
      *      permission.host.id
      *
      *    Overload 4:
+     *
+     *      add a new tole permission for
+     *      the user on the storage domain
+     *
      *      permission.role.id
      *      permission.storage_domain.id
      *
      *    Overload 5:
+     *
+     *      add a new tole permission for
+     *      the user on the vm
+     *
      *      permission.role.id
      *      permission.vm.id
      *
      *    Overload 6:
+     *
+     *      add a new tole permission for
+     *      the user on the vm pool
+     *
      *      permission.role.id
      *      permission.vmpool.id
      *
      *    Overload 7:
+     *
+     *      add a new tole permission for
+     *      the user on the template
+     *
      *      permission.role.id
      *      permission.template.id
      *    </pre>

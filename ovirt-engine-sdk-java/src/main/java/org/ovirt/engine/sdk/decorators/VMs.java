@@ -141,6 +141,10 @@ public class VMs extends
      * @param vm {@link org.ovirt.engine.sdk.entities.VM}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a virtual machine to the
+     *      system from scratch
+     *
      *      vm.name
      *      vm.template.id|name
      *      vm.cluster.id|name
@@ -187,6 +191,11 @@ public class VMs extends
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *
      *    Overload 2:
+     *
+     *      add a virtual machine to the
+     *      system by cloning from a
+     *      snapshot
+     *
      *      vm.name
      *      vm.template.id|name
      *      vm.cluster.id|name
@@ -229,6 +238,13 @@ public class VMs extends
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *
      *    Overload 3:
+     *
+     *      add a virtual machine to the
+     *      system from a configuration -
+     *      requires the configuration
+     *      type and the configuration
+     *      data
+     *
      *      vm.initialization.configuration.type
      *      vm.initialization.configuration.data
      *      [vm.name]
@@ -302,6 +318,10 @@ public class VMs extends
      * @param vm {@link org.ovirt.engine.sdk.entities.VM}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a virtual machine to the
+     *      system from scratch
+     *
      *      vm.name
      *      vm.template.id|name
      *      vm.cluster.id|name
@@ -348,6 +368,11 @@ public class VMs extends
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *
      *    Overload 2:
+     *
+     *      add a virtual machine to the
+     *      system by cloning from a
+     *      snapshot
+     *
      *      vm.name
      *      vm.template.id|name
      *      vm.cluster.id|name
@@ -390,6 +415,13 @@ public class VMs extends
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *
      *    Overload 3:
+     *
+     *      add a virtual machine to the
+     *      system from a configuration -
+     *      requires the configuration
+     *      type and the configuration
+     *      data
+     *
      *      vm.initialization.configuration.type
      *      vm.initialization.configuration.data
      *      [vm.name]

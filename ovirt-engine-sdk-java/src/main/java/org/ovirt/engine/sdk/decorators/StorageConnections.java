@@ -100,6 +100,10 @@ public class StorageConnections extends
      * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a iSCSI storage connection
+     *      to the system
+     *
      *      storage_connection.address
      *      storage_connection.type
      *      storage_connection.iqn
@@ -108,6 +112,9 @@ public class StorageConnections extends
      *      [storage_connection.password]
      *
      *    Overload 2:
+     *
+     *      add a nfs storage connection to the system
+     *
      *      storage_connection.address
      *      storage_connection.type
      *      storage_connection.path
@@ -116,6 +123,9 @@ public class StorageConnections extends
      *      [storage_connection.nfs_retrans]
      *
      *    Overload 3:
+     *
+     *      add a vfs storage connection to the system
+     *
      *      storage_connection.type
      *      storage_connection.path
      *      storage_connection.vfs_type
@@ -123,6 +133,10 @@ public class StorageConnections extends
      *      [storage_connection.mount_options]
      *
      *    Overload 4:
+     *
+     *      add a local storage connection
+     *      to the system
+     *
      *      storage_connection.type
      *      storage_connection.path
      *    </pre>
@@ -157,6 +171,10 @@ public class StorageConnections extends
      * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a iSCSI storage connection
+     *      to the system
+     *
      *      storage_connection.address
      *      storage_connection.type
      *      storage_connection.iqn
@@ -165,6 +183,9 @@ public class StorageConnections extends
      *      [storage_connection.password]
      *
      *    Overload 2:
+     *
+     *      add a nfs storage connection to the system
+     *
      *      storage_connection.address
      *      storage_connection.type
      *      storage_connection.path
@@ -173,6 +194,9 @@ public class StorageConnections extends
      *      [storage_connection.nfs_retrans]
      *
      *    Overload 3:
+     *
+     *      add a vfs storage connection to the system
+     *
      *      storage_connection.type
      *      storage_connection.path
      *      storage_connection.vfs_type
@@ -180,6 +204,10 @@ public class StorageConnections extends
      *      [storage_connection.mount_options]
      *
      *    Overload 4:
+     *
+     *      add a local storage connection
+     *      to the system
+     *
      *      storage_connection.type
      *      storage_connection.path
      *    </pre>

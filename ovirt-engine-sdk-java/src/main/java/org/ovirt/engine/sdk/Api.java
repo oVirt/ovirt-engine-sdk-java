@@ -893,18 +893,6 @@ public class Api implements AutoCloseable {
         return getEntryPoint().getTime();
     }
     /**
-     * Gets the value of the SpecialObjects property.
-     *
-     * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
-     *
-     */
-    public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
-        if (this.entryPoint != null) {
-            return this.entryPoint.getSpecialObjects();
-        }
-        return null;
-    }
-    /**
      * Gets the value of the ProductInfo property.
      *
      * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
@@ -913,6 +901,18 @@ public class Api implements AutoCloseable {
     public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
         if (this.entryPoint != null) {
             return this.entryPoint.getProductInfo();
+        }
+        return null;
+    }
+    /**
+     * Gets the value of the SpecialObjects property.
+     *
+     * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
+     *
+     */
+    public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
+        if (this.entryPoint != null) {
+            return this.entryPoint.getSpecialObjects();
         }
         return null;
     }

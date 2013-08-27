@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}DetailedLink">
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -48,15 +47,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GeneralMetadata", propOrder = {
-    "name",
-    "description"
+    "name"
 })
 public class GeneralMetadata
     extends DetailedLink
 {
 
     protected String name;
-    protected String description;
 
     /**
      * Gets the value of the name property.
@@ -84,34 +81,6 @@ public class GeneralMetadata
 
     public boolean isSetName() {
         return (this.name!= null);
-    }
-
-    /**
-     * Gets the value of the description property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Sets the value of the description property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
-
-    public boolean isSetDescription() {
-        return (this.description!= null);
     }
 
 }

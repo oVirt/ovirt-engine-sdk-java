@@ -136,10 +136,17 @@ public class TemplatePermissions extends
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new user level
+     *      permission on the template
+     *
      *      permission.user.id
      *      permission.role.id
      *
      *    Overload 2:
+     *
+     *      add a new role permission on the template
+     *
      *      permission.role.id
      *      permission.group.id
      *    </pre>
@@ -174,10 +181,17 @@ public class TemplatePermissions extends
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new user level
+     *      permission on the template
+     *
      *      permission.user.id
      *      permission.role.id
      *
      *    Overload 2:
+     *
+     *      add a new role permission on the template
+     *
      *      permission.role.id
      *      permission.group.id
      *    </pre>

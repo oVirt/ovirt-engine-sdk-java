@@ -105,10 +105,18 @@ public class DataCenterPermissions extends
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new user level
+     *      permission on the data center
+     *
      *      permission.user.id
      *      permission.role.id
      *
      *    Overload 2:
+     *
+     *      add a new role permission on
+     *      the data center
+     *
      *      permission.role.id
      *      permission.group.id
      *    </pre>
@@ -143,10 +151,18 @@ public class DataCenterPermissions extends
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new user level
+     *      permission on the data center
+     *
      *      permission.user.id
      *      permission.role.id
      *
      *    Overload 2:
+     *
+     *      add a new role permission on
+     *      the data center
+     *
      *      permission.role.id
      *      permission.group.id
      *    </pre>

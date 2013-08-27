@@ -188,9 +188,15 @@ public class StorageDomain extends
      * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
      *    <pre>
      *    Overload 1:
+     *
+     *      update the storage domain
+     *
      *      [storagedomain.name]
      *
      *    Overload 2:
+     *
+     *      update the storage domain
+     *
      *      storagedomain.host.id|name
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]

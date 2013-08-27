@@ -16,6 +16,9 @@
 
 package org.ovirt.engine.sdk.codegen.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Provides String related services
  */
@@ -87,5 +90,72 @@ public class StringUtils {
             }
         }
         return buffer.toString();
+    }
+
+    /**
+     * Combines strings appending suffix
+     * 
+     * @param source
+     *            source to combine to
+     * @param suffix
+     *            suffix to add to every line (except last one)
+     * @param strings
+     *            strings to combine
+     * @return
+     */
+    public static String combineWithSuffix(String source, String suffix, String... strings) {
+        StringBuffer buffer = new StringBuffer(source);
+        if (strings != null) {
+            for (String str : strings) {
+                buffer.append(str);
+                buffer.append(suffix);
+            }
+        }
+        String result = buffer.toString();
+        return result.substring(0, result.lastIndexOf(suffix));
+    }
+
+    /**
+     * Cuts the given string in to the List of strings according to the defined string length
+     * 
+     * @param str
+     *            string to format
+     * @param lengh
+     *            max string length
+     * @param linePrefix
+     *            new string prefix
+     * @param splitBy
+     *            the string to split by
+     * 
+     * @return List of strings
+     */
+    public static List<String> formatLength(String str, int length, String linePrefix, String splitBy) {
+        List<String> strings = new ArrayList<String>();
+
+        if (str.length() > length) {
+            String[] portions = str.split(" ");
+            String newString = "";
+            for (int i = 0; i < portions.length; i++) {
+                if ((linePrefix + newString + portions[i]).length() <= length) {
+                    newString += (portions[i] + splitBy);
+                    if (i + 1 == portions.length) {
+                        strings.add(linePrefix +
+                                newString.substring(0, newString.lastIndexOf(splitBy)));
+                    }
+                } else {
+                    strings.add(linePrefix +
+                            newString.substring(0, newString.lastIndexOf(splitBy)));
+                    newString = portions[i] + splitBy;
+                    if (i + 1 == portions.length) {
+                        strings.add(linePrefix +
+                                newString.substring(0, newString.lastIndexOf(splitBy)));
+                    }
+                }
+            }
+        } else {
+            strings.add(linePrefix + str);
+        }
+
+        return strings;
     }
 }

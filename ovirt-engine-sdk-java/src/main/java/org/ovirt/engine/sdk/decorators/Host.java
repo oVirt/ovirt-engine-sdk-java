@@ -154,10 +154,25 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    Overload 1:
+     *
+     *      install vdsm and other
+     *      packages required to get the
+     *      host ready to be used in the
+     *      engine providing the root
+     *      password. This has been
+     *      deprecated
+     *
      *      [action.root_password]
      *      [action.image]
      *
      *    Overload 2:
+     *
+     *      install vdsm and other
+     *      packages required to get the
+     *      host ready to be used in the
+     *      engine providing thre ssh
+     *      password
+     *
      *      [action.ssh.password]
      *      [action.image]
      *    </pre>
@@ -190,10 +205,25 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    Overload 1:
+     *
+     *      install vdsm and other
+     *      packages required to get the
+     *      host ready to be used in the
+     *      engine providing the root
+     *      password. This has been
+     *      deprecated
+     *
      *      [action.root_password]
      *      [action.image]
      *
      *    Overload 2:
+     *
+     *      install vdsm and other
+     *      packages required to get the
+     *      host ready to be used in the
+     *      engine providing thre ssh
+     *      password
+     *
      *      [action.ssh.password]
      *      [action.image]
      *    </pre>
@@ -290,6 +320,12 @@ public class Host extends
      * @param host {@link org.ovirt.engine.sdk.entities.Host}
      *    <pre>
      *    Overload 1:
+     *
+     *      update the specified host in
+     *      the system. This is deprecated
+     *      and is provided only for
+     *      backwards compatibility
+     *
      *      [host.name]
      *      [host.comment]
      *      [host.address]
@@ -308,6 +344,9 @@ public class Host extends
      *      [host.power_management.agents.agent]
      *
      *    Overload 2:
+     *
+     *      update the specified host in the system
+     *
      *      [host.name]
      *      [host.comment]
      *      [host.address]

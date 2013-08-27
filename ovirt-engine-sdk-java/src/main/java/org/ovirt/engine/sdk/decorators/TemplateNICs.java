@@ -136,6 +136,12 @@ public class TemplateNICs extends
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new network interface
+     *      card to the template using a
+     *      virtual network interface card
+     *      profile
+     *
      *      nic.name
      *      [nic.vnic_profile.id]
      *      [nic.linked]
@@ -144,6 +150,13 @@ public class TemplateNICs extends
      *      [nic.plugged]
      *
      *    Overload 2:
+     *
+     *      add a new network interface
+     *      card to the template using a
+     *      network with optional port
+     *      mirroring options. This has
+     *      been deprecated
+     *
      *      nic.name
      *      [nic.network.id|name]
      *      [nic.linked]
@@ -182,6 +195,12 @@ public class TemplateNICs extends
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new network interface
+     *      card to the template using a
+     *      virtual network interface card
+     *      profile
+     *
      *      nic.name
      *      [nic.vnic_profile.id]
      *      [nic.linked]
@@ -190,6 +209,13 @@ public class TemplateNICs extends
      *      [nic.plugged]
      *
      *    Overload 2:
+     *
+     *      add a new network interface
+     *      card to the template using a
+     *      network with optional port
+     *      mirroring options. This has
+     *      been deprecated
+     *
      *      nic.name
      *      [nic.network.id|name]
      *      [nic.linked]

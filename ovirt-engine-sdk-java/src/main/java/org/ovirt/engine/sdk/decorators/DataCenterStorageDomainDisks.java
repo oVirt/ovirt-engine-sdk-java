@@ -151,6 +151,13 @@ public class DataCenterStorageDomainDisks extends
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new disk with the
+     *      specified size to the storage
+     *      domain in the data center,
+     *      allocating space from the
+     *      storage domain
+     *
      *      provisioned_size
      *      disk.interface
      *      disk.format
@@ -164,6 +171,11 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *
      *    Overload 2:
+     *
+     *      add a new lun disk to the
+     *      storage domain in the data
+     *      center
+     *
      *      disk.interface
      *      disk.format
      *      disk.lun_storage.type
@@ -207,6 +219,13 @@ public class DataCenterStorageDomainDisks extends
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new disk with the
+     *      specified size to the storage
+     *      domain in the data center,
+     *      allocating space from the
+     *      storage domain
+     *
      *      provisioned_size
      *      disk.interface
      *      disk.format
@@ -220,6 +239,11 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *
      *    Overload 2:
+     *
+     *      add a new lun disk to the
+     *      storage domain in the data
+     *      center
+     *
      *      disk.interface
      *      disk.format
      *      disk.lun_storage.type

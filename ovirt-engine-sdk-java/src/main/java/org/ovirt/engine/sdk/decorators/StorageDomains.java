@@ -141,6 +141,10 @@ public class StorageDomains extends
      * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new storage domain to
+     *      the system using a direct lun
+     *
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
@@ -153,6 +157,11 @@ public class StorageDomains extends
      *      [storagedomain.storage_format]
      *
      *    Overload 2:
+     *
+     *      add a new storage domain to
+     *      the system using the storage
+     *      on the given host and path
+     *
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
@@ -164,6 +173,12 @@ public class StorageDomains extends
      *      [storagedomain.storage_format]
      *
      *    Overload 3:
+     *
+     *      add a new storage domain to
+     *      the system using the storage
+     *      on the localhost at the given
+     *      path
+     *
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
@@ -174,6 +189,11 @@ public class StorageDomains extends
      *      [storagedomain.storage_format]
      *
      *    Overload 4:
+     *
+     *      add a new storage domain to
+     *      the system using the gluster
+     *      or posixfs storage
+     *
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
@@ -217,6 +237,10 @@ public class StorageDomains extends
      * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new storage domain to
+     *      the system using a direct lun
+     *
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
@@ -229,6 +253,11 @@ public class StorageDomains extends
      *      [storagedomain.storage_format]
      *
      *    Overload 2:
+     *
+     *      add a new storage domain to
+     *      the system using the storage
+     *      on the given host and path
+     *
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
@@ -240,6 +269,12 @@ public class StorageDomains extends
      *      [storagedomain.storage_format]
      *
      *    Overload 3:
+     *
+     *      add a new storage domain to
+     *      the system using the storage
+     *      on the localhost at the given
+     *      path
+     *
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
@@ -250,6 +285,11 @@ public class StorageDomains extends
      *      [storagedomain.storage_format]
      *
      *    Overload 4:
+     *
+     *      add a new storage domain to
+     *      the system using the gluster
+     *      or posixfs storage
+     *
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type

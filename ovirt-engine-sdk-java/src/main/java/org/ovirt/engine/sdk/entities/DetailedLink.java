@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}Link">
  *       &lt;sequence>
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}request" minOccurs="0"/>
  *         &lt;element ref="{}response" minOccurs="0"/>
  *         &lt;element ref="{}linkCapabilities" minOccurs="0"/>
@@ -50,6 +51,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DetailedLink", propOrder = {
+    "description",
     "request",
     "response",
     "linkCapabilities"
@@ -61,9 +63,38 @@ public class DetailedLink
     extends Link
 {
 
+    protected String description;
     protected Request request;
     protected Response response;
     protected LinkCapabilities linkCapabilities;
+
+    /**
+     * Gets the value of the description property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the value of the description property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setDescription(String value) {
+        this.description = value;
+    }
+
+    public boolean isSetDescription() {
+        return (this.description!= null);
+    }
 
     /**
      * Gets the value of the request property.

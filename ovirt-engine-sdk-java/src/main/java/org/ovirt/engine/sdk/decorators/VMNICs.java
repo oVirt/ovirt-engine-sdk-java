@@ -136,6 +136,11 @@ public class VMNICs extends
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new network interface to
+     *      the given virtual machine with
+     *      vnic profile id
+     *
      *      nic.name
      *      [nic.vnic_profile.id]
      *      [nic.linked]
@@ -144,6 +149,11 @@ public class VMNICs extends
      *      [nic.plugged]
      *
      *    Overload 2:
+     *
+     *      add a new network interface to
+     *      the given virtual machine with
+     *      port mirroring options
+     *
      *      nic.name
      *      [nic.network.id|name]
      *      [nic.linked]
@@ -183,6 +193,11 @@ public class VMNICs extends
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new network interface to
+     *      the given virtual machine with
+     *      vnic profile id
+     *
      *      nic.name
      *      [nic.vnic_profile.id]
      *      [nic.linked]
@@ -191,6 +206,11 @@ public class VMNICs extends
      *      [nic.plugged]
      *
      *    Overload 2:
+     *
+     *      add a new network interface to
+     *      the given virtual machine with
+     *      port mirroring options
+     *
      *      nic.name
      *      [nic.network.id|name]
      *      [nic.linked]

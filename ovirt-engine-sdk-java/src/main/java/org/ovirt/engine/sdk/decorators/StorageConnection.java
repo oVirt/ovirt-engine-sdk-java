@@ -69,6 +69,11 @@ public class StorageConnection extends
      * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
      *    <pre>
      *    Overload 1:
+     *
+     *      update the specified iSCSI
+     *      storage connection in the
+     *      system
+     *
      *      [storage_connection.port]
      *      [storage_connection.username]
      *      [storage_connection.password]
@@ -76,6 +81,11 @@ public class StorageConnection extends
      *      [storage_connection.address]
      *
      *    Overload 2:
+     *
+     *      update the specified nfs
+     *      storage connection in the
+     *      system
+     *
      *      [storage_connection.nfs_timeo]
      *      [storage_connection.nfs_version]
      *      [storage_connection.nfs_retrans]
@@ -83,12 +93,22 @@ public class StorageConnection extends
      *      [storage_connection.path]
      *
      *    Overload 3:
+     *
+     *      update the specified vfs
+     *      storage connection in the
+     *      system
+     *
      *      [storage_connection.mount_options]
      *      [storage_connection.vfs_type]
      *      [storage_connection.address]
      *      [storage_connection.path]
      *
      *    Overload 4:
+     *
+     *      update the specified local
+     *      storage connection in the
+     *      system
+     *
      *      [storage_connection.path]
      *    </pre>
      *

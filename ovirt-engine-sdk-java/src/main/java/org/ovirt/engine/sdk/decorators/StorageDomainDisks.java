@@ -151,6 +151,12 @@ public class StorageDomainDisks extends
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new disk to the storage
+     *      domain with the specified size
+     *      allocating space from the
+     *      storage domain
+     *
      *      provisioned_size
      *      disk.interface
      *      disk.format
@@ -164,6 +170,9 @@ public class StorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *
      *    Overload 2:
+     *
+     *      add a new lun disk to the storage domain
+     *
      *      disk.interface
      *      disk.format
      *      disk.lun_storage.type
@@ -207,6 +216,12 @@ public class StorageDomainDisks extends
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new disk to the storage
+     *      domain with the specified size
+     *      allocating space from the
+     *      storage domain
+     *
      *      provisioned_size
      *      disk.interface
      *      disk.format
@@ -220,6 +235,9 @@ public class StorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *
      *    Overload 2:
+     *
+     *      add a new lun disk to the storage domain
+     *
      *      disk.interface
      *      disk.format
      *      disk.lun_storage.type

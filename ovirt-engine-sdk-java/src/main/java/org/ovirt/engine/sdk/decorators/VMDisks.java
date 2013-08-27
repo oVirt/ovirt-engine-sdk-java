@@ -136,6 +136,11 @@ public class VMDisks extends
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new disk to the virtual
+     *      machine allocating space from
+     *      the storage domain
+     *
      *      provisioned_size
      *      disk.interface
      *      disk.format
@@ -150,6 +155,13 @@ public class VMDisks extends
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
+     *
+     *      add a new direct lun disk to
+     *      the virtual machine, this
+     *      operation does not require
+     *      size but needs lun connection
+     *      details
+     *
      *      disk.interface
      *      disk.format
      *      disk.lun_storage.type
@@ -164,6 +176,9 @@ public class VMDisks extends
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 3:
+     *
+     *      attach a disk to the virtual machine
+     *
      *      disk.id
      *      [disk.active]
      *    </pre>
@@ -198,6 +213,11 @@ public class VMDisks extends
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new disk to the virtual
+     *      machine allocating space from
+     *      the storage domain
+     *
      *      provisioned_size
      *      disk.interface
      *      disk.format
@@ -212,6 +232,13 @@ public class VMDisks extends
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
+     *
+     *      add a new direct lun disk to
+     *      the virtual machine, this
+     *      operation does not require
+     *      size but needs lun connection
+     *      details
+     *
      *      disk.interface
      *      disk.format
      *      disk.lun_storage.type
@@ -226,6 +253,9 @@ public class VMDisks extends
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 3:
+     *
+     *      attach a disk to the virtual machine
+     *
      *      disk.id
      *      [disk.active]
      *    </pre>

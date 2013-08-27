@@ -161,6 +161,10 @@ public class VMNIC extends
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
      *    <pre>
      *    Overload 1:
+     *
+     *      update the network interface
+     *      for the given virtual machine
+     *
      *      [nic.vnic_profile.id]
      *      [nic.linked]
      *      [nic.name]
@@ -169,6 +173,11 @@ public class VMNIC extends
      *      [nic.plugged]
      *
      *    Overload 2:
+     *
+     *      update the network interface
+     *      for the given virtual machine
+     *      with port mirroring options
+     *
      *      [nic.network.id|name]
      *      [nic.linked]
      *      [nic.name]

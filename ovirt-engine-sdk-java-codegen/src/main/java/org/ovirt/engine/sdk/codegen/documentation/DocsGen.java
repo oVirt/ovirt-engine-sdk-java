@@ -16,8 +16,11 @@
 
 package org.ovirt.engine.sdk.codegen.documentation;
 
+import java.util.List;
+
 import org.ovirt.engine.sdk.codegen.common.IDocCodegen;
 import org.ovirt.engine.sdk.codegen.utils.FormatUtils;
+import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 import org.ovirt.engine.sdk.codegen.utils.UrlUtils;
 import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Header;
@@ -30,6 +33,7 @@ import org.ovirt.engine.sdk.utils.ArrayUtils;
  */
 public class DocsGen implements IDocCodegen {
 
+    private static final int DOC_LENGH = 42;
     private static final String BREACKS_OPEN = "[";
     private static final String BREACKS_CLOSE = "]";
     private static final String NEW_LINE = "\n";
@@ -38,6 +42,7 @@ public class DocsGen implements IDocCodegen {
     private static final String OVERLOAD = "Overload ";
     private static final String OVERLOAD_OFFSET = "  ";
     private static final String PREFIX = "     *";
+    private static final String SPACE = " ";
     private static final String PARAM_DETAILS_OFFSET = "    ";
     private static final String AT = "@param ";
     private static final String PARAM = PREFIX + " " + AT;
@@ -68,6 +73,7 @@ public class DocsGen implements IDocCodegen {
                 int i = 1;
                 for (ParametersSet ps : detailedLink.getRequest().getBody().getParametersSets()) {
                     docParams.append(NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + OVERLOAD + i + ":" + NEW_LINE);
+                    addParameterSetDescription(docParams, ps);
                     for (Parameter param : ps.getParameters()) {
                         if (param.getRequired() != null && param.getRequired().equals(Boolean.TRUE)) {
                             docParams.append(PREFIX + PARAM_DETAILS_OFFSET + OVERLOAD_OFFSET + param.getName()
@@ -145,6 +151,7 @@ public class DocsGen implements IDocCodegen {
                 int i = 1;
                 for (ParametersSet ps : detailedLink.getRequest().getUrl().getParametersSets()) {
                     docParams.append(NEW_LINE + PREFIX + OVERLOAD + i + ": " + NEW_LINE);
+                    addParameterSetDescription(docParams, ps);
                     for (Parameter param : ps.getParameters()) {
                         if (param.getRequired() != null && param.getRequired().equals(Boolean.TRUE)) {
                             docParams.append(PARAM + FormatUtils.toJava(param.getName()) +
@@ -185,6 +192,34 @@ public class DocsGen implements IDocCodegen {
         }
 
         return docParams.toString();
+    }
+
+    /**
+     * Adds ParameterSet description if avaliable
+     * 
+     * @param docParams
+     *            params to add to
+     * @param ps
+     *            ParametersSet to describe
+     */
+    private static void addParameterSetDescription(StringBuffer docParams, ParametersSet ps) {
+        if (ps.isSetDescription()) {
+            List<String> descriptions = StringUtils.formatLength(
+                    ps.getDescription(),
+                    DOC_LENGH,
+                    PREFIX + PARAM_DETAILS_OFFSET + OVERLOAD_OFFSET,
+                    SPACE);
+
+            String description = StringUtils.combineWithSuffix(
+                    "",
+                    NEW_LINE,
+                    descriptions.toArray(new String[descriptions.size()]));
+
+            docParams.append(
+                    PREFIX + NEW_LINE +
+                            description +
+                            NEW_LINE + PREFIX + NEW_LINE);
+        }
     }
 
     @Override

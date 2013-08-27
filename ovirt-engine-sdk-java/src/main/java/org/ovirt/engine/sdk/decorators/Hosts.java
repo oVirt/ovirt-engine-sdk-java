@@ -141,6 +141,13 @@ public class Hosts extends
      * @param host {@link org.ovirt.engine.sdk.entities.Host}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new host to the system
+     *      providing the host root
+     *      password. This has been
+     *      deprecated and provided for
+     *      backwards compatibility
+     *
      *      host.name
      *      host.address
      *      host.root_password
@@ -161,6 +168,11 @@ public class Hosts extends
      *      [host.override_iptables]
      *
      *    Overload 2:
+     *
+     *      add a new host to the system
+     *      providing the ssh password or
+     *      fingerprint
+     *
      *      host.name
      *      host.address
      *      host.ssh.password
@@ -214,6 +226,13 @@ public class Hosts extends
      * @param host {@link org.ovirt.engine.sdk.entities.Host}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new host to the system
+     *      providing the host root
+     *      password. This has been
+     *      deprecated and provided for
+     *      backwards compatibility
+     *
      *      host.name
      *      host.address
      *      host.root_password
@@ -234,6 +253,11 @@ public class Hosts extends
      *      [host.override_iptables]
      *
      *    Overload 2:
+     *
+     *      add a new host to the system
+     *      providing the ssh password or
+     *      fingerprint
+     *
      *      host.name
      *      host.address
      *      host.ssh.password

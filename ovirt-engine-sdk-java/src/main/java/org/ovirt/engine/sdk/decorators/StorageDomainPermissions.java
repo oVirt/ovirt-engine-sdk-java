@@ -136,10 +136,20 @@ public class StorageDomainPermissions extends
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new user level
+     *      permission on the storage
+     *      domain
+     *
      *      permission.user.id
      *      permission.role.id
      *
      *    Overload 2:
+     *
+     *      add a new group level
+     *      permission on the storage
+     *      domain
+     *
      *      permission.role.id
      *      permission.group.id
      *    </pre>
@@ -174,10 +184,20 @@ public class StorageDomainPermissions extends
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new user level
+     *      permission on the storage
+     *      domain
+     *
      *      permission.user.id
      *      permission.role.id
      *
      *    Overload 2:
+     *
+     *      add a new group level
+     *      permission on the storage
+     *      domain
+     *
      *      permission.role.id
      *      permission.group.id
      *    </pre>

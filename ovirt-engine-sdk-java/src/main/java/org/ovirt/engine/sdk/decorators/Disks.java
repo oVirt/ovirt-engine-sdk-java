@@ -141,6 +141,12 @@ public class Disks extends
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new disk the system with
+     *      specified size, space will be
+     *      allocated from the storage
+     *      domain for the disk
+     *
      *      provisioned_size
      *      disk.interface
      *      disk.format
@@ -155,6 +161,12 @@ public class Disks extends
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
+     *
+     *      add a new lun disk the system,
+     *      this operation does not
+     *      require size but requires lun
+     *      connection details
+     *
      *      disk.interface
      *      disk.format
      *      disk.lun_storage.type
@@ -199,6 +211,12 @@ public class Disks extends
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
      *    Overload 1:
+     *
+     *      add a new disk the system with
+     *      specified size, space will be
+     *      allocated from the storage
+     *      domain for the disk
+     *
      *      provisioned_size
      *      disk.interface
      *      disk.format
@@ -213,6 +231,12 @@ public class Disks extends
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
+     *
+     *      add a new lun disk the system,
+     *      this operation does not
+     *      require size but requires lun
+     *      connection details
+     *
      *      disk.interface
      *      disk.format
      *      disk.lun_storage.type
