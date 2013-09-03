@@ -130,6 +130,81 @@ public class StorageDomainStorageConnections extends
         return list(url, org.ovirt.engine.sdk.entities.StorageConnections.class,
                 StorageDomainStorageConnection.class, headers);
     }
+    /**
+     * Adds StorageConnection object.
+     *
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *    <pre>
+     *    storageconnection.id
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageDomainStorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomainStorageConnection add(org.ovirt.engine.sdk.entities.StorageConnection storageconnection) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, storageconnection,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageDomainStorageConnection.class, headers);
+    }
+    /**
+     * Adds StorageConnection object.
+     *
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *    <pre>
+     *    storageconnection.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageDomainStorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomainStorageConnection add(org.ovirt.engine.sdk.entities.StorageConnection storageconnection, String expect, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Expect", expect)
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().add(url, storageconnection,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageDomainStorageConnection.class, headers);
+    }
 
 }
 
