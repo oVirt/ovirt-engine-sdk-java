@@ -1,5 +1,5 @@
-%global     package_version 1.0.0.15
-%global     package_maven_version 1.0.0.15-1
+%global     package_version 1.0.0.16
+%global     package_maven_version 1.0.0.16-1
 %global     _javadocname javadoc
 
 %if 0%{?fedora}
@@ -105,6 +105,9 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 %{_javadocdir}/%{name}
 
 %changelog
+* Tue  Sep 3 2013 Michael Pasternak <mpastern@redhat.com> - 1.0.0.16-1
+- mvn compile with jdk 1.7
+
 * Tue  Sep 3 2013 Michael Pasternak <mpastern@redhat.com> - 1.0.0.15-1
 - added StorageDomainStorageConnection.delete() signature
 - added StorageDomainStorageConnection.delete(Boolean async) signature
