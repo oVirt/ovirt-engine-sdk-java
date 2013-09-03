@@ -1,5 +1,5 @@
-%global     package_version 1.0.0.14
-%global     package_maven_version 1.0.0.14-1
+%global     package_version 1.0.0.15
+%global     package_maven_version 1.0.0.15-1
 %global     _javadocname javadoc
 
 %if 0%{?fedora}
@@ -105,6 +105,19 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 %{_javadocdir}/%{name}
 
 %changelog
+* Tue  Sep 3 2013 Michael Pasternak <mpastern@redhat.com> - 1.0.0.15-1
+- added StorageDomainStorageConnection.delete() signature
+- added StorageDomainStorageConnection.delete(Boolean async) signature
+- added StorageDomainStorageConnections.add(StorageConnection storageconnection) signature
+- added StorageDomainStorageConnections.add(StorageConnection storageconnection,
+                                            String expect, String correlationId) signature
+- add ParameterSet descriptions
+- implement AutoCloseable interface
+- in Cluster added glusterhooks (ClusterGlusterHooks) sub-collection
+- in DataCenterCluster added glusterhooks (DataCenterClusterGlusterhooks)
+  sub-collection
+- in StorageDomain added images (StorageDomainImages) sub-collection
+
 * Tue  Aug 13 2013 Michael Pasternak <mpastern@redhat.com> - 1.0.0.14-1
 - added VnicProfiles root-collection
 - to network added VnicProfiles sub-collection
