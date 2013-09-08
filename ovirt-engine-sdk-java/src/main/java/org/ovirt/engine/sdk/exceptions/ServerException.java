@@ -41,6 +41,13 @@ public class ServerException extends OvirtSdkException {
     private String detail;
 
     /**
+     * Constructs an <code>ServerException</code> without a detail message.
+     */
+    public ServerException() {
+        super();
+    }
+
+    /**
      * @param response
      *            HttpResponse response
      */

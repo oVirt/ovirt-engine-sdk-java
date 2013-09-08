@@ -24,6 +24,15 @@ public abstract class OvirtSdkRuntimeException extends RuntimeException {
     private static final long serialVersionUID = -6243028486635352502L;
 
     /**
+     * Constructs a new OvirtSdkRuntimeException with {@code null} as its detail message.
+     * The cause is not initialized, and may subsequently be initialized by
+     * a call to {@link #initCause}.
+     */
+    public OvirtSdkRuntimeException() {
+        super();
+    }
+
+    /**
      * @param message
      *            exception message
      */

@@ -11,6 +11,13 @@ public class ProtocolException extends OvirtSdkRuntimeException {
     private static final long serialVersionUID = 6566413883513675015L;
 
     /**
+     * Constructs an <code>ProtocolException</code> without a detail message.
+     */
+    public ProtocolException() {
+        super();
+    }
+
+    /**
      * @param message
      *            exception message
      * @param cause

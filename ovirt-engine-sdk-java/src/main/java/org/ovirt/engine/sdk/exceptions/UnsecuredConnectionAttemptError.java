@@ -26,6 +26,9 @@ public class UnsecuredConnectionAttemptError extends OvirtSdkException {
             "No response returned from the server. If you're using HTTP protocol\n" +
                     "against a SSL secured server, then try using HTTPS instead.";
 
+    /**
+     * Constructs an <code>UnsecuredConnectionAttemptError</code> with a default message.
+     */
     public UnsecuredConnectionAttemptError() {
         super(MESSAGE);
     }

@@ -8,6 +8,13 @@ public class MarshallingException extends OvirtSdkRuntimeException {
     private static final long serialVersionUID = -7751946172143424807L;
 
     /**
+     * Constructs an <code>MarshallingException</code> without a detail message.
+     */
+    public MarshallingException() {
+        super();
+    }
+
+    /**
      * @param message
      *            exception message
      * @param cause

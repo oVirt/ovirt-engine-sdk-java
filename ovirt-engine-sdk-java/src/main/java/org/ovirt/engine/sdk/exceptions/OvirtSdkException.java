@@ -23,6 +23,15 @@ public abstract class OvirtSdkException extends Exception {
     private static final long serialVersionUID = -5983358219123325129L;
 
     /**
+     * Constructs a new OvirtSdkException with {@code null} as its detail message.
+     * The cause is not initialized, and may subsequently be initialized by
+     * a call to {@link #initCause}.
+     */
+    public OvirtSdkException() {
+        super();
+    }
+
+    /**
      * @param message
      *            exception message
      */
