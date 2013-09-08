@@ -21,7 +21,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.xml.bind.JAXBException;
 
-import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
@@ -54,7 +54,7 @@ public class Mapper {
                 dstobj = to.newInstance();
             }
             if (dstobj != null) {
-                BeanUtils.copyProperties(dstobj, from);
+                PropertyUtils.copyProperties(dstobj, from);
                 excludeExceptions(dstobj);
             }
         } catch (InstantiationException e) {
@@ -84,10 +84,11 @@ public class Mapper {
      * 
      * @throws IllegalAccessException
      * @throws InvocationTargetException
+     * @throws NoSuchMethodException
      */
-    private static <T> void excludeExceptions(T dstobj) throws IllegalAccessException, InvocationTargetException {
+    private static <T> void excludeExceptions(T dstobj) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         for (String field : MAPPING_EXCEPTIONS) {
-            BeanUtils.setProperty(dstobj, field, null);
+            PropertyUtils.setProperty(dstobj, field, null);
         }
     }
 
