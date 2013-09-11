@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="vcpu_pin" type="{}VCpuPin" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}vcpu_pin" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -50,26 +50,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CpuTune", propOrder = {
-    "vcpuPin"
+    "vCpuPin"
 })
 public class CpuTune {
 
     @XmlElement(name = "vcpu_pin")
-    protected List<VCpuPin> vcpuPin;
+    protected List<VCpuPin> vCpuPin;
 
     /**
-     * Gets the value of the vcpuPin property.
+     * Gets the value of the vCpuPin property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the vcpuPin property.
+     * This is why there is not a <CODE>set</CODE> method for the vCpuPin property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getVcpuPin().add(newItem);
+     *    getVCpuPin().add(newItem);
      * </pre>
      *
      *
@@ -79,19 +79,19 @@ public class CpuTune {
      *
      *
      */
-    public List<VCpuPin> getVcpuPin() {
-        if (vcpuPin == null) {
-            vcpuPin = new ArrayList<VCpuPin>();
+    public List<VCpuPin> getVCpuPin() {
+        if (vCpuPin == null) {
+            vCpuPin = new ArrayList<VCpuPin>();
         }
-        return this.vcpuPin;
+        return this.vCpuPin;
     }
 
-    public boolean isSetVcpuPin() {
-        return ((this.vcpuPin!= null)&&(!this.vcpuPin.isEmpty()));
+    public boolean isSetVCpuPin() {
+        return ((this.vCpuPin!= null)&&(!this.vCpuPin.isEmpty()));
     }
 
-    public void unsetVcpuPin() {
-        this.vcpuPin = null;
+    public void unsetVCpuPin() {
+        this.vCpuPin = null;
     }
 
 }
