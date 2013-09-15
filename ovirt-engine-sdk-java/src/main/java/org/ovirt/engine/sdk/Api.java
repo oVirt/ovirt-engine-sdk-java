@@ -86,8 +86,8 @@ public class Api implements AutoCloseable {
      *             Signals that attempt of connecting to SSL secured site using
      *             HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password) throws ClientProtocolException, ServerException,
-            IOException, UnsecuredConnectionAttemptError {
+    public Api(String url, String username, String password) throws ClientProtocolException,
+            ServerException, IOException, UnsecuredConnectionAttemptError {
 
         configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password).build();
@@ -154,8 +154,9 @@ public class Api implements AutoCloseable {
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, String keyStorePath, String keyStorePassword, Boolean filter)
-            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+    public Api(String url, String username, String password, String keyStorePath,
+            String keyStorePassword, Boolean filter) throws ClientProtocolException,
+            ServerException, UnsecuredConnectionAttemptError, IOException {
 
         configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
@@ -220,7 +221,8 @@ public class Api implements AutoCloseable {
      *             using HTTP protocol has occurred.
      */
     public Api(String url, String username, String password, boolean noHostVerification)
-            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
+            IOException {
 
         configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
@@ -252,7 +254,8 @@ public class Api implements AutoCloseable {
      *             using HTTP protocol has occurred.
      */
     public Api(String url, String sessionid, boolean noHostVerification)
-            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
+            IOException {
 
         configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url)
@@ -288,8 +291,9 @@ public class Api implements AutoCloseable {
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, Boolean noHostVerification, Boolean filter)
-            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+    public Api(String url, String username, String password, Boolean noHostVerification,
+            Boolean filter) throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException {
 
         configureLog4J();
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
@@ -314,8 +318,8 @@ public class Api implements AutoCloseable {
      *            (used as SSO solution instead of username+password)
      * @param port
      *            oVirt api port
-     * @param timeout
-     *            request timeout
+     * @param requestTimeout
+     *            request timeout (preserved for future use)
      * @param persistentAuth
      *            disable persistent authentication (will be used auth. per request)
      * @param noHostVerification
@@ -335,14 +339,15 @@ public class Api implements AutoCloseable {
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, String sessionid, Integer port, Integer timeout,
-            Boolean persistentAuth, Boolean noHostVerification, Boolean filter, Boolean debug)
-            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+    public Api(String url, String username, String password, String sessionid, Integer port,
+            Integer requestTimeout, Boolean persistentAuth, Boolean noHostVerification,
+            Boolean filter, Boolean debug) throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException {
 
         configureLog4J(debug);
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .port(port)
-                .timeout(timeout)
+                .requestTimeout(requestTimeout)
                 .noHostVerification(noHostVerification)
                 .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
@@ -367,8 +372,67 @@ public class Api implements AutoCloseable {
      *            (used as SSO solution instead of username+password)
      * @param port
      *            oVirt api port
-     * @param timeout
-     *            request timeout
+     * @param requestTimeout
+     *            request timeout (preserved for future use)
+     * @param sessionTimeout
+     *            authentication session inactivity timeout
+     * @param persistentAuth
+     *            disable persistent authentication (will be used auth. per request)
+     * @param noHostVerification
+     *            turns hostname verification off
+     * @param filter
+     *            enables filtering based on user's permissions
+     * @param debug
+     *            enables debug mode
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site
+     *             using HTTP protocol has occurred.
+     */
+    public Api(String url, String username, String password, String sessionid, Integer port,
+            Integer requestTimeout, Integer sessionTimeout, Boolean persistentAuth,
+            Boolean noHostVerification, Boolean filter, Boolean debug) throws ClientProtocolException,
+            ServerException, UnsecuredConnectionAttemptError, IOException {
+
+        configureLog4J(debug);
+        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
+                .port(port)
+                .requestTimeout(requestTimeout)
+                .sessionTimeout(sessionTimeout)
+                .noHostVerification(noHostVerification)
+                .build();
+        HttpProxy httpProxy = new HttpProxyBuilder(pool)
+                .sessionid(sessionid)
+                .persistentAuth(persistentAuth)
+                .filter(filter)
+                .debug(debug)
+                .build();
+        this.proxy = new HttpProxyBroker(httpProxy);
+        initResources();
+    }
+
+    /**
+     * @param url
+     *            oVirt api url
+     * @param username
+     *            oVirt api username
+     * @param password
+     *            oVirt api password
+     * @param sessionid
+     *            oVirt api sessionid to authenticate the user with
+     *            (used as SSO solution instead of username+password)
+     * @param port
+     *            oVirt api port
+     * @param requestTimeout
+     *            request timeout (preserved for future use)
+     * @param sessionTimeout
+     *            authentication session inactivity timeout
      * @param persistentAuth
      *            disable persistent authentication
      *            (will be used auth. per request)
@@ -391,14 +455,17 @@ public class Api implements AutoCloseable {
      *             Signals that attempt of connecting to SSL secured
      *             site using HTTP protocol has occurred.
      */
-    public Api(String url, String username, String password, String sessionid, Integer port, Integer timeout,
-            Boolean persistentAuth, String keyStorePath, String keyStorePassword, Boolean filter, Boolean debug)
-            throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError, IOException {
+    public Api(String url, String username, String password, String sessionid,
+            Integer port, Integer requestTimeout, Integer sessionTimeout,
+            Boolean persistentAuth, String keyStorePath, String keyStorePassword,
+            Boolean filter, Boolean debug) throws ClientProtocolException,
+            ServerException, UnsecuredConnectionAttemptError, IOException {
 
         configureLog4J(debug);
         ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
                 .port(port)
-                .timeout(timeout)
+                .requestTimeout(requestTimeout)
+                .sessionTimeout(sessionTimeout)
                 .keyStorePath(keyStorePath)
                 .keyStorePassword(keyStorePassword)
                 .build();
@@ -893,18 +960,6 @@ public class Api implements AutoCloseable {
         return getEntryPoint().getTime();
     }
     /**
-     * Gets the value of the ProductInfo property.
-     *
-     * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
-     *
-     */
-    public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
-        if (this.entryPoint != null) {
-            return this.entryPoint.getProductInfo();
-        }
-        return null;
-    }
-    /**
      * Gets the value of the SpecialObjects property.
      *
      * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
@@ -913,6 +968,18 @@ public class Api implements AutoCloseable {
     public org.ovirt.engine.sdk.entities.SpecialObjects getSpecialObjects() {
         if (this.entryPoint != null) {
             return this.entryPoint.getSpecialObjects();
+        }
+        return null;
+    }
+    /**
+     * Gets the value of the ProductInfo property.
+     *
+     * @return {@link org.ovirt.engine.sdk.entities.ProductInfo }
+     *
+     */
+    public org.ovirt.engine.sdk.entities.ProductInfo getProductInfo() {
+        if (this.entryPoint != null) {
+            return this.entryPoint.getProductInfo();
         }
         return null;
     }

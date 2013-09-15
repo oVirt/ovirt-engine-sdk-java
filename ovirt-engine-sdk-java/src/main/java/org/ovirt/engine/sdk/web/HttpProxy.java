@@ -39,14 +39,14 @@ import org.ovirt.engine.sdk.utils.StringUtils;
  */
 public class HttpProxy {
 
+    private static final String SESSION_TTL_HEADER = "Session-TTL";
     private static final String COOKIE_HEADER = "Cookie";
     private static final String CONTENT_TYPE_HEADER = "Content-type";
     private static final String PERSISTENT_AUTH_HEADER_CONTENT = "persistent-auth";
     private static final String PERSISTENT_AUTH_HEADER = "Prefer";
     private static final String FILTER_HEADER = "Filter";
     private static final String STATIC_HEADERS[] = new String[] { "Content-type:application/xml" };
-
-    private static int BAD_REQUEST = 400;
+    private static final int BAD_REQUEST = 400;
 
     private ConnectionsPool pool;
     private List<Header> staticHeaders;
@@ -191,6 +191,12 @@ public class HttpProxy {
             if (!StringUtils.isNulOrEmpty(this.sessionid)) {
                 request.addHeader(COOKIE_HEADER, this.sessionid);
             }
+
+            // inject authentication session inactivity timeout
+            if (this.pool.getSessionTimeout() != null) {
+                request.addHeader(SESSION_TTL_HEADER,
+                        String.valueOf(this.pool.getSessionTimeout()));
+            }
         }
     }
 
@@ -257,8 +263,9 @@ public class HttpProxy {
     }
 
     /**
-     * When HttpProxy instance is no longer needed, shut down the connection
-     * manager to ensure immediate deallocation of all system resources.
+     * When HttpProxy instance is no longer needed, shut down
+     * the connection manager to ensure immediate deallocation of
+     * all system resources.
      */
     public void shutdown() {
         this.pool.shutdown();

@@ -45,6 +45,9 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.ovirt.engine.sdk.exceptions.ProtocolException;
 import org.ovirt.engine.sdk.exceptions.SocketFactoryException;
 import org.ovirt.engine.sdk.utils.StringUtils;
@@ -81,7 +84,8 @@ public class ConnectionsPoolBuilder {
     private String cert_file;
     private String ca_file;
     private int port = -1;
-    private int timeout = -1;
+    private Integer requestTimeout;
+    private Integer sessionTimeout;
     private boolean noHostVerification = false;
     private String keyStorePath;
     private String keyStorePassword;
@@ -203,12 +207,23 @@ public class ConnectionsPoolBuilder {
     }
 
     /**
-     * @param timeout
+     * @param requestTimeout
      *            request timeout
      */
-    public ConnectionsPoolBuilder timeout(Integer timeout) {
-        if (timeout != null) {
-            this.timeout = timeout.intValue();
+    public ConnectionsPoolBuilder requestTimeout(Integer requestTimeout) {
+        if (requestTimeout != null) {
+            this.requestTimeout = requestTimeout;
+        }
+        return this;
+    }
+
+    /**
+     * @param sessionTimeout
+     *            authentication session inactivity timeout
+     */
+    public ConnectionsPoolBuilder sessionTimeout(Integer sessionTimeout) {
+        if (sessionTimeout != null) {
+            this.sessionTimeout = sessionTimeout;
         }
         return this;
     }
@@ -226,7 +241,7 @@ public class ConnectionsPoolBuilder {
 
     /**
      * Creates DefaultHttpClient
-     * 
+     *
      * @param url
      * @param username
      * @param password
@@ -234,17 +249,23 @@ public class ConnectionsPoolBuilder {
      * @param cert_file
      * @param ca_file
      * @param port
-     * @param timeout
-     * 
+     * @param requestTimeout
+     *
      * @return {@link DefaultHttpClient}
      */
     private DefaultHttpClient createDefaultHttpClient(String url, String username, String password, String key_file,
-            String cert_file, String ca_file, Integer port, Integer timeout) {
+            String cert_file, String ca_file, Integer port, Integer requestTimeout) {
 
         int port_ = getPort(url, port);
 
         DefaultHttpClient client =
                 new DefaultHttpClient(createPoolingClientConnectionManager(url, port_));
+
+        if (requestTimeout != null && requestTimeout.intValue() != -1) {
+            HttpParams httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpParams, requestTimeout.intValue());
+            DefaultHttpClient.setDefaultHttpParams(httpParams);
+        }
 
         if (!StringUtils.isNulOrEmpty(username))
             client.getCredentialsProvider().setCredentials(
@@ -258,10 +279,10 @@ public class ConnectionsPoolBuilder {
 
     /**
      * Creates PoolingClientConnectionManager
-     * 
+     *
      * @param url
      * @param port
-     * 
+     *
      * @return {@link ClientConnectionManager}
      */
     private ClientConnectionManager createPoolingClientConnectionManager(String url, int port) {
@@ -280,10 +301,10 @@ public class ConnectionsPoolBuilder {
 
     /**
      * Creates SchemeRegistry
-     * 
+     *
      * @param url
      * @param port
-     * 
+     *
      * @return {@link SchemeRegistry}
      */
     private SchemeRegistry createSchemeRegistry(String url, int port) {
@@ -384,7 +405,7 @@ public class ConnectionsPoolBuilder {
 
     /**
      * Builds ConnectionPool
-     * 
+     *
      * @return ConnectionsPool
      */
     public ConnectionsPool build() {
@@ -397,9 +418,10 @@ public class ConnectionsPoolBuilder {
                         cert_file,
                         ca_file,
                         port,
-                        timeout
+                        requestTimeout
                 ),
                 this.urlobj,
+                this.sessionTimeout,
                 WAIT_IDLE_CHECK_TTL,
                 WAIT_IDLE_CLOSE_TTL);
     }
@@ -433,7 +455,8 @@ public class ConnectionsPoolBuilder {
     }
 
     /**
-     * This TrustManager used to ignore CA cert validation and should not be used unless user explicitly asks to ignore
+     * This TrustManager used to ignore CA cert validation
+     * and should not be used unless user explicitly asks to ignore
      * host identity validation.
      */
     X509TrustManager noCaTrustManager = new X509TrustManager() {
