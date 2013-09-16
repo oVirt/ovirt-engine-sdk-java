@@ -348,7 +348,96 @@ public class VM extends
     public VM update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VM.class, VM.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VM.class,
+                VM.class,
+                headers);
+    }
+    /**
+     * Updates VM object.
+     *
+     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
+     *    <pre>
+     *    [vm.name]
+     *    [vm.cluster.id|name]
+     *    [vm.timezone]
+     *    [vm.os.boot]
+     *    [vm.custom_properties.custom_property]
+     *    [vm.os.type]
+     *    [vm.usb.enabled]
+     *    [vm.usb.type]
+     *    [vm.type]
+     *    [vm.os.initRd]
+     *    [vm.display.monitors]
+     *    [vm.display.single_qxl_pci]
+     *    [vm.display.type]
+     *    [vm.display.allow_override]
+     *    [vm.display.smartcard_enabled]
+     *    [vm.display.keyboard_layout]
+     *    [vm.os.cmdline]
+     *    [vm.cpu.mode]
+     *    [vm.cpu.topology.cores]
+     *    [vm.cpu_shares]
+     *    [vm.memory]
+     *    [vm.high_availability.priority]
+     *    [vm.high_availability.enabled]
+     *    [vm.domain.name]
+     *    [vm.description]
+     *    [vm.comment]
+     *    [vm.stateless]
+     *    [vm.delete_protected]
+     *    [vm.console.enabled]
+     *    [vm.cpu.topology.sockets]
+     *    [vm.placement_policy.affinity]
+     *    [vm.placement_policy.host.id|name]
+     *    [vm.origin]
+     *    [vm.os.kernel]
+     *    [vm.tunnel_migration]
+     *    [vm.payloads.payload]
+     *    [vm.cpu.cpu_tune.vcpu_pin]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VM update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VM.class,
+                VM.class,
+                headers);
     }
     /**
      * Performs stop action.

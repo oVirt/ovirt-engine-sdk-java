@@ -28,7 +28,6 @@ import org.ovirt.engine.sdk.entities.ParametersSet;
  */
 public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
 
-    private static final String DOC_SEPARATOR = "     *";
     private static DeleteMethodWithBodyTemplate deleteMethodWithBodyTemplate;
 
     public DeleteMethodTemplate() {
@@ -73,10 +72,10 @@ public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
         StringTemplateWrapper templateWrapper =
                 new StringTemplateWrapper(super.getTemplate());
 
-        if (methodExtraParamsDef.startsWith(", ") && methodExtraParamsDef.length() > 2) {
-            methodExtraParamsDef =
-                    methodExtraParamsDef.substring(2, methodExtraParamsDef.length());
-        }
+        // remove leading comma
+        methodExtraParamsDef = StringUtils.removeLeadingString(
+                methodExtraParamsDef,
+                ", ");
 
         templateWrapper.set("docParams", docParams);
         templateWrapper.set("methodExtraParamsDef", methodExtraParamsDef);

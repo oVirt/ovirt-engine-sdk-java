@@ -30,6 +30,7 @@ import org.ovirt.engine.sdk.utils.ArrayUtils;
  */
 public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
     private static final String XSD_STRING_TYPE = "xs:string";
+    protected static final String DOC_SEPARATOR = "     *";
 
     private static HeaderBuilderParameterTemplate headerBuilderParameterTemplate;
     private static ExtraMethodParameterTemplate extraMethodParameterTemplate;

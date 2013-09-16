@@ -200,7 +200,91 @@ public class Template extends
     public Template update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Template.class, Template.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Template.class,
+                Template.class,
+                headers);
+    }
+    /**
+     * Updates Template object.
+     *
+     * @param template {@link org.ovirt.engine.sdk.entities.Template}
+     *    <pre>
+     *    [template.name]
+     *    [template.memory]
+     *    [template.cpu.topology.cores]
+     *    [template.high_availability.enabled]
+     *    [template.os.cmdline]
+     *    [template.origin]
+     *    [template.high_availability.priority]
+     *    [template.timezone]
+     *    [template.domain.name]
+     *    [template.type]
+     *    [template.stateless]
+     *    [template.delete_protected]
+     *    [template.console.enabled]
+     *    [template.placement_policy.affinity]
+     *    [template.description]
+     *    [template.comment]
+     *    [template.custom_properties.custom_property]
+     *    [template.os.type]
+     *    [template.os.boot]
+     *    [template.cpu.topology.sockets]
+     *    [template.cpu_shares]
+     *    [template.os.kernel]
+     *    [template.display.type]
+     *    [template.display.monitors]
+     *    [vm.display.single_qxl_pci]
+     *    [template.display.allow_override]
+     *    [template.display.smartcard_enabled]
+     *    [template.display.keyboard_layout]
+     *    [template.os.initRd]
+     *    [template.usb.enabled]
+     *    [template.usb.type]
+     *    [template.tunnel_migration]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Template update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Template.class,
+                Template.class,
+                headers);
     }
     /**
      * Performs exportTemplate action.

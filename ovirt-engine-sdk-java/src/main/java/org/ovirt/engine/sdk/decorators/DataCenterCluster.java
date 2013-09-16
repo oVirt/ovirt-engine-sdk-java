@@ -169,7 +169,77 @@ public class DataCenterCluster extends
     public DataCenterCluster update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Cluster.class, DataCenterCluster.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                DataCenterCluster.class,
+                headers);
+    }
+    /**
+     * Updates DataCenterCluster object.
+     *
+     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     *    <pre>
+     *    [cluster.name]
+     *    [cluster.description]
+     *    [cluster.cpu.id]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.policy]
+     *    [cluster.scheduling_policy.thresholds.low]
+     *    [cluster.scheduling_policy.thresholds.high]
+     *    [cluster.scheduling_policy.thresholds.duration]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.virt_service]
+     *    [cluster.gluster_service]
+     *    [cluster.threads_as_cores]
+     *    [cluster.tunnel_migration]
+     *    [cluster.trusted_service]
+     *    [cluster.ballooning_enabled]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenterCluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterCluster update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                DataCenterCluster.class,
+                headers);
     }
     /**
      * Deletes object.

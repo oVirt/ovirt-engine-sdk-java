@@ -11,8 +11,20 @@ $docParams$
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public $decoratorName$ update() throws ClientProtocolException,
+    public $decoratorName$ update($methodExtraParamsDef$) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorName$.class);
+
+        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
+                .build();
+
+        url = new UrlBuilder(url)$urlParamsToBuild$
+                .build();
+
+        return getProxy().update(
+                url, 
+                this,
+                org.ovirt.engine.sdk.entities.$publicEntityName$.class,
+                $decoratorName$.class,
+                headers);
     }

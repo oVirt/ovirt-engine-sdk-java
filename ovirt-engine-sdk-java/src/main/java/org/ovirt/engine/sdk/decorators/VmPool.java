@@ -106,7 +106,65 @@ public class VmPool extends
     public VmPool update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VmPool.class, VmPool.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VmPool.class,
+                VmPool.class,
+                headers);
+    }
+    /**
+     * Updates VmPool object.
+     *
+     * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
+     *    <pre>
+     *    [vmpool.cluster.id|name]
+     *    [vmpool.template.id|name]
+     *    [vmpool.name]
+     *    [vmpool.comment]
+     *    [vmpool.size]
+     *    [vmpool.max_user_vms]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VmPool }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VmPool update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VmPool.class,
+                VmPool.class,
+                headers);
     }
     /**
      * Performs allocatevm action.

@@ -170,7 +170,78 @@ public class Cluster extends
     public Cluster update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                Cluster.class,
+                headers);
+    }
+    /**
+     * Updates Cluster object.
+     *
+     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     *    <pre>
+     *    [cluster.name]
+     *    [cluster.description]
+     *    [cluster.comment]
+     *    [cluster.data_center.id]
+     *    [cluster.cpu.id]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.policy]
+     *    [cluster.scheduling_policy.thresholds.low]
+     *    [cluster.scheduling_policy.thresholds.high]
+     *    [cluster.scheduling_policy.thresholds.duration]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.virt_service]
+     *    [cluster.gluster_service]
+     *    [cluster.threads_as_cores]
+     *    [cluster.tunnel_migration]
+     *    [cluster.ballooning_enabled]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Cluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Cluster update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                Cluster.class,
+                headers);
     }
     /**
      * Deletes object.

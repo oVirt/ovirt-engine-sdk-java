@@ -104,7 +104,63 @@ public class VnicProfile extends
     public VnicProfile update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.VnicProfile.class, VnicProfile.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VnicProfile.class,
+                VnicProfile.class,
+                headers);
+    }
+    /**
+     * Updates VnicProfile object.
+     *
+     * @param vnicprofile {@link org.ovirt.engine.sdk.entities.VnicProfile}
+     *    <pre>
+     *    [vnicprofile.name]
+     *    [vnicprofile.description]
+     *    [vnicprofile.port_mirroring]
+     *    [vnicprofile.custom_properties.custom_property]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VnicProfile }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VnicProfile update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VnicProfile.class,
+                VnicProfile.class,
+                headers);
     }
     /**
      * Deletes object.

@@ -185,7 +185,69 @@ public class VMDisk extends
     public VMDisk update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Disk.class, VMDisk.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                VMDisk.class,
+                headers);
+    }
+    /**
+     * Updates VMDisk object.
+     *
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    [size]
+     *    [provisioned_size]
+     *    [disk.interface]
+     *    [disk.format]
+     *    [disk.sparse]
+     *    [disk.bootable]
+     *    [disk.shareable]
+     *    [disk.propagate_errors]
+     *    [disk.wipe_after_delete]
+     *    [disk.sgio]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMDisk update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                VMDisk.class,
+                headers);
     }
     /**
      * Deletes object.

@@ -127,7 +127,69 @@ public class Network extends
     public Network update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.Network.class, Network.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                Network.class,
+                headers);
+    }
+    /**
+     * Updates Network object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    [network.name]
+     *    [network.description]
+     *    [network.comment]
+     *    [network.vlan.id]
+     *    [network.ip.address]
+     *    [network.ip.gateway]
+     *    [network.ip.netmask]
+     *    [network.display]
+     *    [network.stp]
+     *    [network.mtu]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Network }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Network update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                Network.class,
+                headers);
     }
     /**
      * Deletes object.

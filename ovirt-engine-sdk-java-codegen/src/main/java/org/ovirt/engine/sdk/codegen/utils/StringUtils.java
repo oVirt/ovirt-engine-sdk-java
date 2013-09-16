@@ -74,6 +74,29 @@ public class StringUtils {
     }
 
     /**
+     * Removes leading string
+     * 
+     * @param string
+     *            string to process
+     * @param string
+     *            leading string to remove
+     * 
+     * @return string with no leadingString
+     */
+    public static String removeLeadingString(String string, String leadingString) {
+        if (string != null && leadingString != null) {
+            if (string.startsWith(leadingString)) {
+                if (string.length() > leadingString.length()) {
+                    string = string.substring(leadingString.length());
+                } else {
+                    string = new String("");
+                }
+            }
+        }
+        return string;
+    }
+
+    /**
      * Combines strings
      * 
      * @param source

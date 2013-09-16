@@ -200,7 +200,84 @@ public class VMNIC extends
     public VMNIC update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.NIC.class, VMNIC.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.NIC.class,
+                VMNIC.class,
+                headers);
+    }
+    /**
+     * Updates VMNIC object.
+     *
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the network interface
+     *      for the given virtual machine
+     *
+     *      [nic.vnic_profile.id]
+     *      [nic.linked]
+     *      [nic.name]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.plugged]
+     *
+     *    Overload 2:
+     *
+     *      update the network interface
+     *      for the given virtual machine
+     *      with port mirroring options
+     *
+     *      [nic.network.id|name]
+     *      [nic.linked]
+     *      [nic.name]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.port_mirroring.networks.network]
+     *      [nic.plugged]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMNIC update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.NIC.class,
+                VMNIC.class,
+                headers);
     }
     /**
      * Deletes object.

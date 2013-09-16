@@ -84,7 +84,70 @@ public class VMCdRom extends
     public VMCdRom update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.CdRom.class, VMCdRom.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.CdRom.class,
+                VMCdRom.class,
+                headers);
+    }
+    /**
+     * Updates VMCdRom object.
+     *
+     * @param cdrom {@link org.ovirt.engine.sdk.entities.CdRom}
+     *    <pre>
+     *    [cdrom.file.id]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param current
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMCdRom }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMCdRom update(Boolean async, Boolean current, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .add("async", async, UrlParameterType.MATRIX)
+                .add("current", current, UrlParameterType.MATRIX)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.CdRom.class,
+                VMCdRom.class,
+                headers);
     }
     /**
      * Deletes object.

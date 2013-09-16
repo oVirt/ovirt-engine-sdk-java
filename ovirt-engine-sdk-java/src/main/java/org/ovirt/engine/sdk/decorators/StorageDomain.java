@@ -217,7 +217,79 @@ public class StorageDomain extends
     public StorageDomain update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageDomain.class,
+                StorageDomain.class,
+                headers);
+    }
+    /**
+     * Updates StorageDomain object.
+     *
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the storage domain
+     *
+     *      [storagedomain.name]
+     *
+     *    Overload 2:
+     *
+     *      update the storage domain
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.storage.logical_unit
+     *      [storagedomain.name]
+     *      [storagedomain.comment]
+     *      [storagedomain.storage.override_luns]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomain update(Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .add("async", async, UrlParameterType.MATRIX)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageDomain.class,
+                StorageDomain.class,
+                headers);
     }
     /**
      * Deletes object.

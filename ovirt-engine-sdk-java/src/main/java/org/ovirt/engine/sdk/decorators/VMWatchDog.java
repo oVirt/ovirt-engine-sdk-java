@@ -85,7 +85,61 @@ public class VMWatchDog extends
     public VMWatchDog update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.WatchDog.class, VMWatchDog.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.WatchDog.class,
+                VMWatchDog.class,
+                headers);
+    }
+    /**
+     * Updates VMWatchDog object.
+     *
+     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     *    <pre>
+     *    [watchdog.action]
+     *    [watchdog.model]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMWatchDog }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMWatchDog update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.WatchDog.class,
+                VMWatchDog.class,
+                headers);
     }
     /**
      * Deletes object.

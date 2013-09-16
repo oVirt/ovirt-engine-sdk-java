@@ -80,7 +80,19 @@ public class TemplateWatchDog extends
     public TemplateWatchDog update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.WatchDog.class, TemplateWatchDog.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.WatchDog.class,
+                TemplateWatchDog.class,
+                headers);
     }
     /**
      * Deletes object.

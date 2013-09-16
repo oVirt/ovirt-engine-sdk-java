@@ -727,7 +727,8 @@ public class RsdlCodegen extends AbstractCodegen {
                 resourceHolder.addMethod(UPDATE_REL,
                         this.updateMethodTemplate.getTemplate(decoratorName,
                                 publicEntityName,
-                                docParams));
+                                docParams,
+                                detailedLink));
             }
         }
     }

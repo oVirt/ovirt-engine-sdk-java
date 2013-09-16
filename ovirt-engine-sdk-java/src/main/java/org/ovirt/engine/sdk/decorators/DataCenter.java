@@ -158,7 +158,66 @@ public class DataCenter extends
     public DataCenter update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
-        return getProxy().update(url, this, org.ovirt.engine.sdk.entities.DataCenter.class, DataCenter.class);
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class,
+                headers);
+    }
+    /**
+     * Updates DataCenter object.
+     *
+     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
+     *    <pre>
+     *    [datacenter.name]
+     *    [datacenter.description]
+     *    [datacenter.comment]
+     *    [datacenter.storage_type]
+     *    [datacenter.version.major]
+     *    [datacenter.version.minor]
+     *    [datacenter.storage_format]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenter update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        List<Header> headers = new HttpHeaderBuilder()
+                .add("Correlation-Id", correlationId)
+                .build();
+
+        url = new UrlBuilder(url)
+                .build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class,
+                headers);
     }
     /**
      * Deletes object.
