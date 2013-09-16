@@ -60,16 +60,10 @@ public class Mapper {
         } catch (InstantiationException e) {
             // TODO: log error
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            // TODO: log error
-            e.printStackTrace();
+        } catch (IllegalAccessException | NoSuchMethodException |
+                InvocationTargetException e) {
+            // do nothing (PropertyUtils exceptions treatment #1007266)
         } catch (IllegalArgumentException e) {
-            // TODO: log error
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            // TODO: log error
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
             // TODO: log error
             e.printStackTrace();
         }
@@ -81,14 +75,15 @@ public class Mapper {
      * Excludes mapping exceptions
      * 
      * @param dstobj
-     * 
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException
-     * @throws NoSuchMethodException
      */
-    private static <T> void excludeExceptions(T dstobj) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    private static <T> void excludeExceptions(T dstobj) {
         for (String field : MAPPING_EXCEPTIONS) {
-            PropertyUtils.setProperty(dstobj, field, null);
+            try {
+                PropertyUtils.setProperty(dstobj, field, null);
+            } catch (IllegalAccessException | InvocationTargetException |
+                    NoSuchMethodException e) {
+                // do nothing (PropertyUtils exceptions treatment #1007266)
+            }
         }
     }
 
