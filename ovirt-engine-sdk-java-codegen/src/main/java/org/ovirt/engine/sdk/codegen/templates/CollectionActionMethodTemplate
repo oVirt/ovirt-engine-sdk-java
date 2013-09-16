@@ -13,7 +13,8 @@ $docParams$
      */
     public Action $methodName$(Action action$methodExtraParamsDef$) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + "$actionName$";
+        String url = this.parent.getHref() + SLASH + getName() +
+                     SLASH +  "$actionName$";
 
         List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
                 .build();

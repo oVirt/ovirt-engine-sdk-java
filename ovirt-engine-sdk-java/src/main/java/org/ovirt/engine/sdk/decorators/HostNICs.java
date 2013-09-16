@@ -122,7 +122,8 @@ public class HostNICs extends
      */
     public Action setupnetworks(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + "setupnetworks";
+        String url = this.parent.getHref() + SLASH + getName() +
+                     SLASH +  "setupnetworks";
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
@@ -160,7 +161,8 @@ public class HostNICs extends
      */
     public Action setupnetworks(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + "setupnetworks";
+        String url = this.parent.getHref() + SLASH + getName() +
+                     SLASH +  "setupnetworks";
 
         List<Header> headers = new HttpHeaderBuilder()
                 .add("Correlation-Id", correlationId)
