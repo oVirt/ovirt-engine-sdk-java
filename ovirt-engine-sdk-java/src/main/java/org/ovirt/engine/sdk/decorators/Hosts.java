@@ -175,12 +175,13 @@ public class Hosts extends
      *
      *      host.name
      *      host.address
-     *      host.ssh.password
      *      host.cluster.id|name
      *      [host.comment]
      *      [host.ssh.port]
      *      [host.ssh.fingerprint]
-     *      [host.ssh.authentication_type]
+     *      [host.ssh.authentication_method]
+     *      [host.ssh.user.user_name]
+     *      [host.ssh.user.password]
      *      [host.port]
      *      [host.display.address]
      *      [host.storage_manager.priority]
@@ -260,12 +261,13 @@ public class Hosts extends
      *
      *      host.name
      *      host.address
-     *      host.ssh.password
      *      host.cluster.id|name
      *      [host.comment]
      *      [host.ssh.port]
      *      [host.ssh.fingerprint]
-     *      [host.ssh.authentication_type]
+     *      [host.ssh.authentication_method]
+     *      [host.ssh.user.user_name]
+     *      [host.ssh.user.password]
      *      [host.port]
      *      [host.display.address]
      *      [host.storage_manager.priority]

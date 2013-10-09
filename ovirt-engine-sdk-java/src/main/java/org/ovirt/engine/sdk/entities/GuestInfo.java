@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}ips" minOccurs="0"/>
+ *         &lt;element name="fqdn" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,11 +48,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GuestInfo", propOrder = {
-    "ips"
+    "ips",
+    "fqdn"
 })
 public class GuestInfo {
 
     protected IPs ips;
+    protected String fqdn;
 
     /**
      * Gets the value of the ips property.
@@ -79,6 +82,34 @@ public class GuestInfo {
 
     public boolean isSetIps() {
         return (this.ips!= null);
+    }
+
+    /**
+     * Gets the value of the fqdn property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getFqdn() {
+        return fqdn;
+    }
+
+    /**
+     * Sets the value of the fqdn property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setFqdn(String value) {
+        this.fqdn = value;
+    }
+
+    public boolean isSetFqdn() {
+        return (this.fqdn!= null);
     }
 
 }
