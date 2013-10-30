@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
+ *         &lt;element name="content" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain" minOccurs="0"/>
  *       &lt;/sequence>
@@ -49,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "File", propOrder = {
+    "content",
     "type",
     "storageDomain"
 })
@@ -56,9 +58,39 @@ public class File
     extends BaseResource
 {
 
+    @XmlElement(required = true)
+    protected String content;
     protected String type;
     @XmlElement(name = "storage_domain")
     protected StorageDomain storageDomain;
+
+    /**
+     * Gets the value of the content property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * Sets the value of the content property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setContent(String value) {
+        this.content = value;
+    }
+
+    public boolean isSetContent() {
+        return (this.content!= null);
+    }
 
     /**
      * Gets the value of the type property.

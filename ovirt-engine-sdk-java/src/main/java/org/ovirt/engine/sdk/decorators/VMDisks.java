@@ -181,6 +181,15 @@ public class VMDisks extends
      *
      *      disk.id
      *      [disk.active]
+     *
+     *    Overload 4:
+     *
+     *      attach a disk snapshot to the
+     *      virtual machine
+     *
+     *      disk.id
+     *      disk.snapshot.id
+     *      [disk.active]
      *    </pre>
      *
      * @return
@@ -257,6 +266,15 @@ public class VMDisks extends
      *      attach a disk to the virtual machine
      *
      *      disk.id
+     *      [disk.active]
+     *
+     *    Overload 4:
+     *
+     *      attach a disk snapshot to the
+     *      virtual machine
+     *
+     *      disk.id
+     *      disk.snapshot.id
      *      [disk.active]
      *    </pre>
      *

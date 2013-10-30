@@ -173,7 +173,11 @@ public class Host extends
      *      engine providing thre ssh
      *      password
      *
-     *      [action.ssh.password]
+     *      [action.ssh.port]
+     *      [action.ssh.fingerprint]
+     *      [action.ssh.authentication_method]
+     *      [action.ssh.user.user_name]
+     *      [action.ssh.user.password]
      *      [action.image]
      *    </pre>
      *
@@ -224,7 +228,11 @@ public class Host extends
      *      engine providing thre ssh
      *      password
      *
-     *      [action.ssh.password]
+     *      [action.ssh.port]
+     *      [action.ssh.fingerprint]
+     *      [action.ssh.authentication_method]
+     *      [action.ssh.user.user_name]
+     *      [action.ssh.user.password]
      *      [action.image]
      *    </pre>
      *

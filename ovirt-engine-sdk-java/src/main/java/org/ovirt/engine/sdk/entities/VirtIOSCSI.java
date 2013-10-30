@@ -24,23 +24,19 @@ package org.ovirt.engine.sdk.entities;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for PayloadFile complex type.
+ * <p>Java class for VirtIO_SCSI complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="PayloadFile">
+ * &lt;complexType name="VirtIO_SCSI">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="content" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/sequence>
- *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -49,66 +45,42 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PayloadFile", propOrder = {
-    "content"
-})
-public class PayloadFile {
+@XmlType(name = "VirtIO_SCSI")
+public class VirtIOSCSI {
 
-    @XmlElement(required = true)
-    protected String content;
-    @XmlAttribute(name = "name")
-    protected String name;
+    @XmlAttribute(name = "enabled")
+    protected Boolean enabled;
 
     /**
-     * Gets the value of the content property.
+     * Gets the value of the enabled property.
      *
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Boolean }
      *
      */
-    public String getContent() {
-        return content;
+    public boolean getEnabled() {
+        return enabled;
     }
 
     /**
-     * Sets the value of the content property.
+     * Sets the value of the enabled property.
      *
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Boolean }
      *
      */
-    public void setContent(String value) {
-        this.content = value;
+    public void setEnabled(boolean value) {
+        this.enabled = value;
     }
 
-    public boolean isSetContent() {
-        return (this.content!= null);
+    public boolean isSetEnabled() {
+        return (this.enabled!= null);
     }
 
-    /**
-     * Gets the value of the name property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the value of the name property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setName(String value) {
-        this.name = value;
+    public void unsetEnabled() {
+        this.enabled = null;
     }
 
 }

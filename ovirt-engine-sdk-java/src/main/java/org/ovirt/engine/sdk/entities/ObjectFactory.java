@@ -69,6 +69,7 @@ public class ObjectFactory {
     private final static QName _VmDeviceTypes_QNAME = new QName("", "vm_device_types");
     private final static QName _Roles_QNAME = new QName("", "roles");
     private final static QName _PowerManagementStates_QNAME = new QName("", "power_management_states");
+    private final static QName _VirtioScsi_QNAME = new QName("", "virtio_scsi");
     private final static QName _Nics_QNAME = new QName("", "nics");
     private final static QName _TemplateStates_QNAME = new QName("", "template_states");
     private final static QName _OsTypes_QNAME = new QName("", "os_types");
@@ -184,7 +185,6 @@ public class ObjectFactory {
     private final static QName _GlusterHook_QNAME = new QName("", "gluster_hook");
     private final static QName _Headers_QNAME = new QName("", "headers");
     private final static QName _Users_QNAME = new QName("", "users");
-    private final static QName _PayloadFile_QNAME = new QName("", "payload_file");
     private final static QName _Permit_QNAME = new QName("", "permit");
     private final static QName _Disk_QNAME = new QName("", "disk");
     private final static QName _VnicProfile_QNAME = new QName("", "vnic_profile");
@@ -230,8 +230,8 @@ public class ObjectFactory {
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
     private final static QName _Application_QNAME = new QName("", "application");
     private final static QName _Nic_QNAME = new QName("", "nic");
-    private final static QName _Ip_QNAME = new QName("", "ip");
     private final static QName _SgioOptions_QNAME = new QName("", "sgio_options");
+    private final static QName _Ip_QNAME = new QName("", "ip");
     private final static QName _ServerHook_QNAME = new QName("", "server_hook");
     private final static QName _WatchdogActions_QNAME = new QName("", "watchdog_actions");
     private final static QName _PmProxies_QNAME = new QName("", "pm_proxies");
@@ -449,6 +449,14 @@ public class ObjectFactory {
      */
     public PowerManagementStates createPowerManagementStates() {
         return new PowerManagementStates();
+    }
+
+    /**
+     * Create an instance of {@link VirtIOSCSI }
+     *
+     */
+    public VirtIOSCSI createVirtIOSCSI() {
+        return new VirtIOSCSI();
     }
 
     /**
@@ -1372,14 +1380,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PayloadFile }
-     *
-     */
-    public PayloadFile createPayloadFile() {
-        return new PayloadFile();
-    }
-
-    /**
      * Create an instance of {@link Permit }
      *
      */
@@ -1732,19 +1732,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IP }
-     *
-     */
-    public IP createIP() {
-        return new IP();
-    }
-
-    /**
      * Create an instance of {@link ScsiGenericIoOptions }
      *
      */
     public ScsiGenericIoOptions createScsiGenericIoOptions() {
         return new ScsiGenericIoOptions();
+    }
+
+    /**
+     * Create an instance of {@link IP }
+     *
+     */
+    public IP createIP() {
+        return new IP();
     }
 
     /**
@@ -2258,6 +2258,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "power_management_states")
     public JAXBElement<PowerManagementStates> createPowerManagementStates(PowerManagementStates value) {
         return new JAXBElement<PowerManagementStates>(_PowerManagementStates_QNAME, PowerManagementStates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VirtIOSCSI }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "virtio_scsi")
+    public JAXBElement<VirtIOSCSI> createVirtioScsi(VirtIOSCSI value) {
+        return new JAXBElement<VirtIOSCSI>(_VirtioScsi_QNAME, VirtIOSCSI.class, null, value);
     }
 
     /**
@@ -3296,15 +3305,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PayloadFile }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "payload_file")
-    public JAXBElement<PayloadFile> createPayloadFile(PayloadFile value) {
-        return new JAXBElement<PayloadFile>(_PayloadFile_QNAME, PayloadFile.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Permit }{@code >}}
      *
      */
@@ -3710,21 +3710,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IP }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "ip")
-    public JAXBElement<IP> createIp(IP value) {
-        return new JAXBElement<IP>(_Ip_QNAME, IP.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ScsiGenericIoOptions }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "sgio_options")
     public JAXBElement<ScsiGenericIoOptions> createSgioOptions(ScsiGenericIoOptions value) {
         return new JAXBElement<ScsiGenericIoOptions>(_SgioOptions_QNAME, ScsiGenericIoOptions.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IP }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "ip")
+    public JAXBElement<IP> createIp(IP value) {
+        return new JAXBElement<IP>(_Ip_QNAME, IP.class, null, value);
     }
 
     /**

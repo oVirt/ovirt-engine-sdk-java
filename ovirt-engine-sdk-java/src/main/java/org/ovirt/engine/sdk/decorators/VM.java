@@ -331,6 +331,7 @@ public class VM extends
      *    [vm.origin]
      *    [vm.os.kernel]
      *    [vm.tunnel_migration]
+     *    [vm.virtio_scsi.enabled]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
      *    </pre>
@@ -402,6 +403,7 @@ public class VM extends
      *    [vm.origin]
      *    [vm.os.kernel]
      *    [vm.tunnel_migration]
+     *    [vm.virtio_scsi.enabled]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
      *    </pre>

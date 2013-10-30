@@ -21,8 +21,6 @@
 
 package org.ovirt.engine.sdk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -40,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="file" type="{}PayloadFile" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}files"/>
  *         &lt;element name="volume_id" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -53,52 +51,44 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Payload", propOrder = {
-    "file",
+    "files",
     "volumeId"
 })
 public class Payload {
 
-    protected List<PayloadFile> file;
+    @XmlElement(required = true)
+    protected Files files;
     @XmlElement(name = "volume_id", required = true)
     protected String volumeId;
     @XmlAttribute(name = "type")
     protected String type;
 
     /**
-     * Gets the value of the file property.
+     * Gets the value of the files property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the file property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getFile().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PayloadFile }
-     *
+     * @return
+     *     possible object is
+     *     {@link Files }
      *
      */
-    public List<PayloadFile> getFile() {
-        if (file == null) {
-            file = new ArrayList<PayloadFile>();
-        }
-        return this.file;
+    public Files getFiles() {
+        return files;
     }
 
-    public boolean isSetFile() {
-        return ((this.file!= null)&&(!this.file.isEmpty()));
+    /**
+     * Sets the value of the files property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Files }
+     *
+     */
+    public void setFiles(Files value) {
+        this.files = value;
     }
 
-    public void unsetFile() {
-        this.file = null;
+    public boolean isSetFiles() {
+        return (this.files!= null);
     }
 
     /**
