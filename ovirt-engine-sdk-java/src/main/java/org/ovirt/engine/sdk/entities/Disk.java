@@ -58,6 +58,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element name="lun_storage" type="{}Storage" minOccurs="0"/>
  *         &lt;element name="sgio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element ref="{}snapshot" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -88,7 +89,8 @@ import javax.xml.bind.annotation.XmlType;
     "active",
     "quota",
     "lunStorage",
-    "sgio"
+    "sgio",
+    "snapshot"
 })
 public class Disk
     extends BaseDevice
@@ -124,6 +126,7 @@ public class Disk
     @XmlElement(name = "lun_storage")
     protected Storage lunStorage;
     protected String sgio;
+    protected Snapshot snapshot;
 
     /**
      * Gets the value of the alias property.
@@ -711,6 +714,34 @@ public class Disk
 
     public boolean isSetSgio() {
         return (this.sgio!= null);
+    }
+
+    /**
+     * Gets the value of the snapshot property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Snapshot }
+     *
+     */
+    public Snapshot getSnapshot() {
+        return snapshot;
+    }
+
+    /**
+     * Sets the value of the snapshot property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Snapshot }
+     *
+     */
+    public void setSnapshot(Snapshot value) {
+        this.snapshot = value;
+    }
+
+    public boolean isSetSnapshot() {
+        return (this.snapshot!= null);
     }
 
 }

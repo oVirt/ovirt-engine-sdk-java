@@ -185,6 +185,7 @@ public class Template extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.virtio_scsi.enabled]
      *    </pre>
      *
      * @return
@@ -251,6 +252,7 @@ public class Template extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.virtio_scsi.enabled]
      *    </pre>
      *
      * @param correlationId

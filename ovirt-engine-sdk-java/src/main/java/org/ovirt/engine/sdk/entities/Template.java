@@ -59,6 +59,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}virtio_scsi" minOccurs="0"/>
  *         &lt;element ref="{}permissions" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -90,6 +91,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "domain",
     "usb",
     "tunnelMigration",
+    "virtioScsi",
     "permissions"
 })
 public class Template
@@ -123,6 +125,8 @@ public class Template
     protected Usb usb;
     @XmlElement(name = "tunnel_migration")
     protected Boolean tunnelMigration;
+    @XmlElement(name = "virtio_scsi")
+    protected VirtIOSCSI virtioScsi;
     protected Permissions permissions;
 
     /**
@@ -683,6 +687,34 @@ public class Template
 
     public boolean isSetTunnelMigration() {
         return (this.tunnelMigration!= null);
+    }
+
+    /**
+     * Gets the value of the virtioScsi property.
+     *
+     * @return
+     *     possible object is
+     *     {@link VirtIOSCSI }
+     *
+     */
+    public VirtIOSCSI getVirtioScsi() {
+        return virtioScsi;
+    }
+
+    /**
+     * Sets the value of the virtioScsi property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VirtIOSCSI }
+     *
+     */
+    public void setVirtioScsi(VirtIOSCSI value) {
+        this.virtioScsi = value;
+    }
+
+    public boolean isSetVirtioScsi() {
+        return (this.virtioScsi!= null);
     }
 
     /**
