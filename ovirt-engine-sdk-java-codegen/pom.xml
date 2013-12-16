@@ -20,6 +20,11 @@
 	</properties>
 	<dependencies>
         <dependency>
+            <groupId>org.ovirt.engine.sdk</groupId>
+            <artifactId>ovirt-engine-sdk-java</artifactId>
+            <version>1.0.0.18-1</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
