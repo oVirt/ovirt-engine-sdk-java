@@ -95,7 +95,7 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String WINDOWS_DECORATORS_PATH =
             "..\\ovirt-engine-sdk-java\\src\\main\\java\\org\\ovirt\\engine\\sdk\\decorators\\";
     private static final String SLASH = "/";
-    private static final String ROOT_URL = "/api/";
+    private static final String ROOT_URL = "/ovirt-engine/api/";
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
     private static final String DELETE_REL = "delete";
     private static final String UPDATE_REL = "update";

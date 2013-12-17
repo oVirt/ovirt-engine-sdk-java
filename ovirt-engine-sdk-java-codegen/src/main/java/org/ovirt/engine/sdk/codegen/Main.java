@@ -33,7 +33,7 @@ import org.ovirt.engine.sdk.web.HttpProxyBuilder;
  */
 public class Main {
 
-    private static final String API_URL = "http://localhost:8080/api";
+    private static final String API_URL = "http://localhost:8080/ovirt-engine/api";
     private static final String USER = "admin@internal";
     private static final String PASSWORD = "letmein!";
 
