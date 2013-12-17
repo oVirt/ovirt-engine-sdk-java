@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="INTEGER"/>
  *     &lt;enumeration value="DECIMAL"/>
+ *     &lt;enumeration value="STRING"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -45,7 +46,8 @@ import javax.xml.bind.annotation.XmlType;
 public enum ValueType {
 
     INTEGER,
-    DECIMAL;
+    DECIMAL,
+    STRING;
 
     public String value() {
         return name();

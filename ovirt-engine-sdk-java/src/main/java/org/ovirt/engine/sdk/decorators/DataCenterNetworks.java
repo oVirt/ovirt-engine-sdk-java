@@ -39,14 +39,14 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>DataCenterClusters providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Clusters }.
+ * <p>DataCenterNetworks providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Networks }.
  */
 @SuppressWarnings("unused")
-public class DataCenterClusters extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Cluster,
-                            org.ovirt.engine.sdk.entities.Clusters,
-                            DataCenterCluster> {
+public class DataCenterNetworks extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Network,
+                            org.ovirt.engine.sdk.entities.Networks,
+                            DataCenterNetwork> {
 
     private DataCenter parent;
 
@@ -54,16 +54,16 @@ public class DataCenterClusters extends
      * @param proxy HttpProxyBroker
      * @param parent DataCenter
      */
-    public DataCenterClusters(HttpProxyBroker proxy, DataCenter parent) {
-        super(proxy, "clusters");
+    public DataCenterNetworks(HttpProxyBroker proxy, DataCenter parent) {
+        super(proxy, "networks");
         this.parent = parent;
     }
 
     /**
-     * Lists DataCenterCluster objects.
+     * Lists DataCenterNetwork objects.
      *
      * @return
-     *     List of {@link DataCenterCluster }
+     *     List of {@link DataCenterNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +73,17 @@ public class DataCenterClusters extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<DataCenterCluster> list() throws ClientProtocolException,
+    public List<DataCenterNetwork> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Clusters.class, DataCenterCluster.class);
+        return list(url, org.ovirt.engine.sdk.entities.Networks.class, DataCenterNetwork.class);
     }
 
     /**
-     * Fetches DataCenterCluster object by id.
+     * Fetches DataCenterNetwork object by id.
      *
      * @return
-     *     {@link DataCenterCluster }
+     *     {@link DataCenterNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,14 +93,14 @@ public class DataCenterClusters extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public DataCenterCluster get(UUID id) throws ClientProtocolException,
+    public DataCenterNetwork get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Cluster.class, DataCenterCluster.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, DataCenterNetwork.class);
     }
 
     /**
-     * Lists DataCenterCluster objects.
+     * Lists DataCenterNetwork objects.
      *
      * @param max
      *    <pre>
@@ -108,7 +108,7 @@ public class DataCenterClusters extends
      *    </pre>
      *
      *
-     * @return List of {@link DataCenterCluster }
+     * @return List of {@link DataCenterNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -117,7 +117,7 @@ public class DataCenterClusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<DataCenterCluster> list(Integer max) throws ClientProtocolException,
+    public List<DataCenterNetwork> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         List<Header> headers = new HttpHeaderBuilder()
@@ -127,36 +127,19 @@ public class DataCenterClusters extends
                 .add("max", max, UrlParameterType.MATRIX)
                 .build();
 
-        return list(url, org.ovirt.engine.sdk.entities.Clusters.class,
-                DataCenterCluster.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.Networks.class,
+                DataCenterNetwork.class, headers);
     }
     /**
-     * Adds Cluster object.
+     * Adds Network object.
      *
-     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
-     *    cluster.name
-     *    cluster.version.major
-     *    cluster.version.minor
-     *    cluster.cpu.id
-     *    [cluster.description]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.ballooning_enabled]
-     *    [cluster.cpu.architecture]
+     *    network.id|name
      *    </pre>
      *
      * @return
-     *     {@link DataCenterCluster }
+     *     {@link DataCenterNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -165,7 +148,7 @@ public class DataCenterClusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterCluster add(org.ovirt.engine.sdk.entities.Cluster cluster) throws
+    public DataCenterNetwork add(org.ovirt.engine.sdk.entities.Network network) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -175,33 +158,16 @@ public class DataCenterClusters extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, cluster,
-                org.ovirt.engine.sdk.entities.Cluster.class,
-                DataCenterCluster.class, headers);
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterNetwork.class, headers);
     }
     /**
-     * Adds Cluster object.
+     * Adds Network object.
      *
-     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
-     *    cluster.name
-     *    cluster.version.major
-     *    cluster.version.minor
-     *    cluster.cpu.id
-     *    [cluster.description]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.ballooning_enabled]
-     *    [cluster.cpu.architecture]
+     *    network.id|name
      *    </pre>
      *
      * @param expect
@@ -214,7 +180,7 @@ public class DataCenterClusters extends
      *    </pre>
      *
      * @return
-     *     {@link DataCenterCluster }
+     *     {@link DataCenterNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -223,7 +189,7 @@ public class DataCenterClusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterCluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect, String correlationId) throws
+    public DataCenterNetwork add(org.ovirt.engine.sdk.entities.Network network, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -235,9 +201,9 @@ public class DataCenterClusters extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().add(url, cluster,
-                org.ovirt.engine.sdk.entities.Cluster.class,
-                DataCenterCluster.class, headers);
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterNetwork.class, headers);
     }
 
 }

@@ -55,6 +55,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="propagate_errors" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="statistics" type="{}Statistics" minOccurs="0"/>
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="read_only" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element name="lun_storage" type="{}Storage" minOccurs="0"/>
  *         &lt;element name="sgio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -87,6 +88,7 @@ import javax.xml.bind.annotation.XmlType;
     "propagateErrors",
     "statistics",
     "active",
+    "readOnly",
     "quota",
     "lunStorage",
     "sgio",
@@ -122,6 +124,8 @@ public class Disk
     protected Boolean propagateErrors;
     protected Statistics statistics;
     protected Boolean active;
+    @XmlElement(name = "read_only")
+    protected Boolean readOnly;
     protected Quota quota;
     @XmlElement(name = "lun_storage")
     protected Storage lunStorage;
@@ -630,6 +634,34 @@ public class Disk
 
     public boolean isSetActive() {
         return (this.active!= null);
+    }
+
+    /**
+     * Gets the value of the readOnly property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getReadOnly() {
+        return readOnly;
+    }
+
+    /**
+     * Sets the value of the readOnly property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setReadOnly(Boolean value) {
+        this.readOnly = value;
+    }
+
+    public boolean isSetReadOnly() {
+        return (this.readOnly!= null);
     }
 
     /**

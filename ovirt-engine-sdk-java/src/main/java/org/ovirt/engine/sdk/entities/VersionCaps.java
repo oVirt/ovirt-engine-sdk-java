@@ -81,6 +81,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}watchdog_actions" minOccurs="0"/>
  *         &lt;element ref="{}authentication_methods" minOccurs="0"/>
  *         &lt;element ref="{}step_types" minOccurs="0"/>
+ *         &lt;element ref="{}payload_encodings" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
  *         &lt;element ref="{}transport_types" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_states" minOccurs="0"/>
@@ -145,6 +146,7 @@ import javax.xml.bind.annotation.XmlType;
     "watchdogActions",
     "authenticationMethods",
     "stepTypes",
+    "payloadEncodings",
     "glusterVolumeTypes",
     "transportTypes",
     "glusterVolumeStates",
@@ -243,6 +245,8 @@ public class VersionCaps
     protected AuthenticationMethod authenticationMethods;
     @XmlElement(name = "step_types")
     protected StepTypes stepTypes;
+    @XmlElement(name = "payload_encodings")
+    protected PayloadEncodings payloadEncodings;
     @XmlElement(name = "gluster_volume_types")
     protected GlusterVolumeTypes glusterVolumeTypes;
     @XmlElement(name = "transport_types")
@@ -1493,6 +1497,34 @@ public class VersionCaps
 
     public boolean isSetStepTypes() {
         return (this.stepTypes!= null);
+    }
+
+    /**
+     * Gets the value of the payloadEncodings property.
+     *
+     * @return
+     *     possible object is
+     *     {@link PayloadEncodings }
+     *
+     */
+    public PayloadEncodings getPayloadEncodings() {
+        return payloadEncodings;
+    }
+
+    /**
+     * Sets the value of the payloadEncodings property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link PayloadEncodings }
+     *
+     */
+    public void setPayloadEncodings(PayloadEncodings value) {
+        this.payloadEncodings = value;
+    }
+
+    public boolean isSetPayloadEncodings() {
+        return (this.payloadEncodings!= null);
     }
 
     /**

@@ -45,6 +45,7 @@ public class JobStep extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile JobStepStatistics jobStepStatistics;
 
 
     /**
@@ -61,6 +62,22 @@ public class JobStep extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the JobStepStatistics property.
+     *
+     * @return
+     *     {@link JobStepStatistics }
+     */
+    public JobStepStatistics getStatistics() {
+        if (this.jobStepStatistics == null) {
+            synchronized (this.LOCK) {
+                if (this.jobStepStatistics == null) {
+                    this.jobStepStatistics = new JobStepStatistics(proxy, this);
+                }
+            }
+        }
+        return jobStepStatistics;
+    }
 
 
     /**

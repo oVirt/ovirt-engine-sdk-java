@@ -83,6 +83,8 @@ import javax.xml.bind.annotation.XmlType;
     "restoreMemory",
     "succeeded",
     "resolutionType",
+    "bricks",
+    "job",
     "status",
     "fault",
     "iscsiTargets",
@@ -132,6 +134,8 @@ public class Action
     protected Boolean succeeded;
     @XmlElement(name = "resolution_type")
     protected String resolutionType;
+    protected GlusterBricks bricks;
+    protected Job job;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -949,6 +953,62 @@ public class Action
 
     public boolean isSetResolutionType() {
         return (this.resolutionType!= null);
+    }
+
+    /**
+     * Gets the value of the bricks property.
+     *
+     * @return
+     *     possible object is
+     *     {@link GlusterBricks }
+     *
+     */
+    public GlusterBricks getBricks() {
+        return bricks;
+    }
+
+    /**
+     * Sets the value of the bricks property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link GlusterBricks }
+     *
+     */
+    public void setBricks(GlusterBricks value) {
+        this.bricks = value;
+    }
+
+    public boolean isSetBricks() {
+        return (this.bricks!= null);
+    }
+
+    /**
+     * Gets the value of the job property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Job }
+     *
+     */
+    public Job getJob() {
+        return job;
+    }
+
+    /**
+     * Sets the value of the job property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Job }
+     *
+     */
+    public void setJob(Job value) {
+        this.job = value;
+    }
+
+    public boolean isSetJob() {
+        return (this.job!= null);
     }
 
     /**

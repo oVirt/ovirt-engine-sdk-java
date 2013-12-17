@@ -133,9 +133,9 @@ public class GroupRoles extends
     /**
      * Adds Role object.
      *
-     * @param role {@link org.ovirt.engine.sdk.entities.Role}
+     * @param permit {@link org.ovirt.engine.sdk.entities.Permit}
      *    <pre>
-     *    role.id
+     *    permit.id|name
      *    </pre>
      *
      * @return
@@ -165,9 +165,9 @@ public class GroupRoles extends
     /**
      * Adds Role object.
      *
-     * @param role {@link org.ovirt.engine.sdk.entities.Role}
+     * @param permit {@link org.ovirt.engine.sdk.entities.Permit}
      *    <pre>
-     *    role.id
+     *    permit.id|name
      *    </pre>
      *
      * @param expect

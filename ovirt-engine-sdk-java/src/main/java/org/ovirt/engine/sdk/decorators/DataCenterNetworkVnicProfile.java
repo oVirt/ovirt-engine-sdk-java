@@ -35,23 +35,23 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>NetworkVnicProfile providing relation and functional services
+ * <p>DataCenterNetworkVnicProfile providing relation and functional services
  * <p>to {@link org.ovirt.engine.sdk.entities.VnicProfile }.
  */
 @SuppressWarnings("unused")
-public class NetworkVnicProfile extends
+public class DataCenterNetworkVnicProfile extends
         org.ovirt.engine.sdk.entities.VnicProfile {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile NetworkVnicProfilePermissions networkVnicProfilePermissions;
+    private volatile DataCenterNetworkVnicProfilePermissions dataCenterNetworkVnicProfilePermissions;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public NetworkVnicProfile(HttpProxyBroker proxy) {
+    public DataCenterNetworkVnicProfile(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -63,20 +63,20 @@ public class NetworkVnicProfile extends
     }
 
     /**
-     * Gets the value of the NetworkVnicProfilePermissions property.
+     * Gets the value of the DataCenterNetworkVnicProfilePermissions property.
      *
      * @return
-     *     {@link NetworkVnicProfilePermissions }
+     *     {@link DataCenterNetworkVnicProfilePermissions }
      */
-    public NetworkVnicProfilePermissions getPermissions() {
-        if (this.networkVnicProfilePermissions == null) {
+    public DataCenterNetworkVnicProfilePermissions getPermissions() {
+        if (this.dataCenterNetworkVnicProfilePermissions == null) {
             synchronized (this.LOCK) {
-                if (this.networkVnicProfilePermissions == null) {
-                    this.networkVnicProfilePermissions = new NetworkVnicProfilePermissions(proxy, this);
+                if (this.dataCenterNetworkVnicProfilePermissions == null) {
+                    this.dataCenterNetworkVnicProfilePermissions = new DataCenterNetworkVnicProfilePermissions(proxy, this);
                 }
             }
         }
-        return networkVnicProfilePermissions;
+        return dataCenterNetworkVnicProfilePermissions;
     }
 
 
@@ -101,42 +101,6 @@ public class NetworkVnicProfile extends
                 .build();
 
         url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
-
-        url = new UrlBuilder(url)
-                .add("async", async, UrlParameterType.MATRIX)
                 .build();
 
         return getProxy().delete(url, Response.class, headers);

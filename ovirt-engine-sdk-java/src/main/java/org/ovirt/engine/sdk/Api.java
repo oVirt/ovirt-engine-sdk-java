@@ -60,6 +60,7 @@ public class Api implements AutoCloseable {
     private volatile DataCenters dataCenters;
     private volatile Roles roles;
     private volatile Hosts hosts;
+    private volatile Permissions permissions;
     private volatile VMs vMs;
     private volatile StorageConnections storageConnections;
     private volatile VmPools vmPools;
@@ -838,6 +839,23 @@ public class Api implements AutoCloseable {
         return hosts;
     }
     /**
+     * Gets the value of the Permissions property.
+     *
+     * @return
+     *     {@link Permissions }
+     *
+     */
+    public Permissions getPermissions() {
+        if (this.permissions == null) {
+            synchronized (this.LOCK) {
+                if (this.permissions == null) {
+                    this.permissions = new Permissions(proxy);
+                }
+            }
+        }
+        return permissions;
+    }
+    /**
      * Gets the value of the VMs property.
      *
      * @return
@@ -960,6 +978,24 @@ public class Api implements AutoCloseable {
         return getEntryPoint().getTime();
     }
     /**
+     * Gets the value of the Summary property.
+     *
+     * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     */
+    public org.ovirt.engine.sdk.entities.ApiSummary getSummary() throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException {
+        return getEntryPoint().getSummary();
+    }
+    /**
      * Gets the value of the SpecialObjects property.
      *
      * @return {@link org.ovirt.engine.sdk.entities.SpecialObjects }
@@ -982,24 +1018,6 @@ public class Api implements AutoCloseable {
             return this.entryPoint.getProductInfo();
         }
         return null;
-    }
-    /**
-     * Gets the value of the Summary property.
-     *
-     * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     * @throws UnsecuredConnectionAttemptError
-     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
-     */
-    public org.ovirt.engine.sdk.entities.ApiSummary getSummary() throws ClientProtocolException, ServerException,
-            UnsecuredConnectionAttemptError, IOException {
-        return getEntryPoint().getSummary();
     }
     /**
      * Gets the value of the Comment property.

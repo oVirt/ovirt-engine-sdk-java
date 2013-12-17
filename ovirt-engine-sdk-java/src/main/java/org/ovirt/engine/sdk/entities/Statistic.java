@@ -46,6 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}nic" minOccurs="0"/>
  *         &lt;element ref="{}vm" minOccurs="0"/>
  *         &lt;element ref="{}brick" minOccurs="0"/>
+ *         &lt;element ref="{}step" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -64,7 +65,8 @@ import javax.xml.bind.annotation.XmlType;
     "hostNic",
     "nic",
     "vm",
-    "brick"
+    "brick",
+    "step"
 })
 public class Statistic
     extends BaseResource
@@ -83,6 +85,7 @@ public class Statistic
     protected NIC nic;
     protected VM vm;
     protected GlusterBrick brick;
+    protected Step step;
 
     /**
      * Gets the value of the values property.
@@ -334,6 +337,34 @@ public class Statistic
 
     public boolean isSetBrick() {
         return (this.brick!= null);
+    }
+
+    /**
+     * Gets the value of the step property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Step }
+     *
+     */
+    public Step getStep() {
+        return step;
+    }
+
+    /**
+     * Sets the value of the step property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Step }
+     *
+     */
+    public void setStep(Step value) {
+        this.step = value;
+    }
+
+    public boolean isSetStep() {
+        return (this.step!= null);
     }
 
 }

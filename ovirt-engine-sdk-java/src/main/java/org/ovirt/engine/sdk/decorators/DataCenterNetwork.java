@@ -35,25 +35,24 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>VMSnapshot providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Snapshot }.
+ * <p>DataCenterNetwork providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Network }.
  */
 @SuppressWarnings("unused")
-public class VMSnapshot extends
-        org.ovirt.engine.sdk.entities.Snapshot {
+public class DataCenterNetwork extends
+        org.ovirt.engine.sdk.entities.Network {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile VMSnapshotNics vMSnapshotNics;
-    private volatile VMSnapshotDisks vMSnapshotDisks;
-    private volatile VMSnapshotCdRoms vMSnapshotCdRoms;
+    private volatile DataCenterNetworkPermissions dataCenterNetworkPermissions;
+    private volatile DataCenterNetworkVnicProfiles dataCenterNetworkVnicProfiles;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public VMSnapshot(HttpProxyBroker proxy) {
+    public DataCenterNetwork(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -65,65 +64,50 @@ public class VMSnapshot extends
     }
 
     /**
-     * Gets the value of the VMSnapshotNics property.
+     * Gets the value of the DataCenterNetworkPermissions property.
      *
      * @return
-     *     {@link VMSnapshotNics }
+     *     {@link DataCenterNetworkPermissions }
      */
-    public VMSnapshotNics getNics() {
-        if (this.vMSnapshotNics == null) {
+    public DataCenterNetworkPermissions getPermissions() {
+        if (this.dataCenterNetworkPermissions == null) {
             synchronized (this.LOCK) {
-                if (this.vMSnapshotNics == null) {
-                    this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
+                if (this.dataCenterNetworkPermissions == null) {
+                    this.dataCenterNetworkPermissions = new DataCenterNetworkPermissions(proxy, this);
                 }
             }
         }
-        return vMSnapshotNics;
+        return dataCenterNetworkPermissions;
     }
     /**
-     * Gets the value of the VMSnapshotDisks property.
+     * Gets the value of the DataCenterNetworkVnicProfiles property.
      *
      * @return
-     *     {@link VMSnapshotDisks }
+     *     {@link DataCenterNetworkVnicProfiles }
      */
-    public VMSnapshotDisks getDisks() {
-        if (this.vMSnapshotDisks == null) {
+    public DataCenterNetworkVnicProfiles getVnicProfiles() {
+        if (this.dataCenterNetworkVnicProfiles == null) {
             synchronized (this.LOCK) {
-                if (this.vMSnapshotDisks == null) {
-                    this.vMSnapshotDisks = new VMSnapshotDisks(proxy, this);
+                if (this.dataCenterNetworkVnicProfiles == null) {
+                    this.dataCenterNetworkVnicProfiles = new DataCenterNetworkVnicProfiles(proxy, this);
                 }
             }
         }
-        return vMSnapshotDisks;
-    }
-    /**
-     * Gets the value of the VMSnapshotCdRoms property.
-     *
-     * @return
-     *     {@link VMSnapshotCdRoms }
-     */
-    public VMSnapshotCdRoms getCdRoms() {
-        if (this.vMSnapshotCdRoms == null) {
-            synchronized (this.LOCK) {
-                if (this.vMSnapshotCdRoms == null) {
-                    this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
-                }
-            }
-        }
-        return vMSnapshotCdRoms;
+        return dataCenterNetworkVnicProfiles;
     }
 
 
     /**
-     * Performs restore action.
+     * Updates DataCenterNetwork object.
      *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
-     *    [action.restore_memory]
+     *    [network.display]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @return
-     *     {@link Action }
+     *     {@link DataCenterNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -132,9 +116,9 @@ public class VMSnapshot extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action restore(Action action) throws ClientProtocolException,
+    public DataCenterNetwork update() throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/restore";
+        String url = this.getHref();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .build();
@@ -142,14 +126,20 @@ public class VMSnapshot extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().action(url, action, Action.class, Action.class, headers);
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterNetwork.class,
+                headers);
     }
     /**
-     * Performs restore action.
+     * Updates DataCenterNetwork object.
      *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
-     *    [action.restore_memory]
+     *    [network.display]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @param correlationId
@@ -158,7 +148,7 @@ public class VMSnapshot extends
      *    </pre>
      *
      * @return
-     *     {@link Action }
+     *     {@link DataCenterNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -167,9 +157,9 @@ public class VMSnapshot extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action restore(Action action, String correlationId) throws ClientProtocolException,
+    public DataCenterNetwork update(String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/restore";
+        String url = this.getHref();
 
         List<Header> headers = new HttpHeaderBuilder()
                 .add("Correlation-Id", correlationId)
@@ -178,7 +168,12 @@ public class VMSnapshot extends
         url = new UrlBuilder(url)
                 .build();
 
-        return getProxy().action(url, action, Action.class, Action.class, headers);
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterNetwork.class,
+                headers);
     }
     /**
      * Deletes object.

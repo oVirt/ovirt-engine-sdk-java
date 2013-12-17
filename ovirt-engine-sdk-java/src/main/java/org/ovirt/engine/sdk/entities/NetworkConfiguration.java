@@ -23,23 +23,23 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Image complex type.
+ * <p>Java class for NetworkConfiguration complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Image">
+ * &lt;complexType name="NetworkConfiguration">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseResource">
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}storage_domain" minOccurs="0"/>
+ *         &lt;element ref="{}nics" minOccurs="0"/>
+ *         &lt;element ref="{}dns" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/extension>
+ *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -47,42 +47,70 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Image", propOrder = {
-    "storageDomain"
+@XmlType(name = "NetworkConfiguration", propOrder = {
+    "nics",
+    "dns"
 })
-public class Image
-    extends BaseResource
-{
+public class NetworkConfiguration {
 
-    @XmlElement(name = "storage_domain")
-    protected StorageDomain storageDomain;
+    protected Nics nics;
+    protected DNS dns;
 
     /**
-     * Gets the value of the storageDomain property.
+     * Gets the value of the nics property.
      *
      * @return
      *     possible object is
-     *     {@link StorageDomain }
+     *     {@link Nics }
      *
      */
-    public StorageDomain getStorageDomain() {
-        return storageDomain;
+    public Nics getNics() {
+        return nics;
     }
 
     /**
-     * Sets the value of the storageDomain property.
+     * Sets the value of the nics property.
      *
      * @param value
      *     allowed object is
-     *     {@link StorageDomain }
+     *     {@link Nics }
      *
      */
-    public void setStorageDomain(StorageDomain value) {
-        this.storageDomain = value;
+    public void setNics(Nics value) {
+        this.nics = value;
     }
 
-    public boolean isSetStorageDomain() {
-        return (this.storageDomain!= null);
+    public boolean isSetNics() {
+        return (this.nics!= null);
+    }
+
+    /**
+     * Gets the value of the dns property.
+     *
+     * @return
+     *     possible object is
+     *     {@link DNS }
+     *
+     */
+    public DNS getDns() {
+        return dns;
+    }
+
+    /**
+     * Sets the value of the dns property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link DNS }
+     *
+     */
+    public void setDns(DNS value) {
+        this.dns = value;
+    }
+
+    public boolean isSetDns() {
+        return (this.dns!= null);
     }
 
 }
+

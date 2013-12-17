@@ -35,23 +35,22 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>NetworkVnicProfile providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.VnicProfile }.
+ * <p>DataCenterNetworkPermission providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permission }.
  */
 @SuppressWarnings("unused")
-public class NetworkVnicProfile extends
-        org.ovirt.engine.sdk.entities.VnicProfile {
+public class DataCenterNetworkPermission extends
+        org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile NetworkVnicProfilePermissions networkVnicProfilePermissions;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public NetworkVnicProfile(HttpProxyBroker proxy) {
+    public DataCenterNetworkPermission(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -62,22 +61,6 @@ public class NetworkVnicProfile extends
         return proxy;
     }
 
-    /**
-     * Gets the value of the NetworkVnicProfilePermissions property.
-     *
-     * @return
-     *     {@link NetworkVnicProfilePermissions }
-     */
-    public NetworkVnicProfilePermissions getPermissions() {
-        if (this.networkVnicProfilePermissions == null) {
-            synchronized (this.LOCK) {
-                if (this.networkVnicProfilePermissions == null) {
-                    this.networkVnicProfilePermissions = new NetworkVnicProfilePermissions(proxy, this);
-                }
-            }
-        }
-        return networkVnicProfilePermissions;
-    }
 
 
     /**
@@ -101,42 +84,6 @@ public class NetworkVnicProfile extends
                 .build();
 
         url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
-
-        url = new UrlBuilder(url)
-                .add("async", async, UrlParameterType.MATRIX)
                 .build();
 
         return getProxy().delete(url, Response.class, headers);

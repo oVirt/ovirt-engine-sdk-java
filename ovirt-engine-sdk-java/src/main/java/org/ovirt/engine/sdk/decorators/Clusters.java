@@ -160,6 +160,7 @@ public class Clusters extends
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
      *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
      *    </pre>
      *
      * @return
@@ -211,6 +212,7 @@ public class Clusters extends
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
      *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
      *    </pre>
      *
      * @param expect

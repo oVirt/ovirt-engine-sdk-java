@@ -101,10 +101,6 @@ public class Disk extends
      * Performs exportDisk action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    storagedomain.id|name
-     *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -120,42 +116,6 @@ public class Disk extends
         String url = this.getHref() + "/export";
 
         List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs exportDisk action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    storagedomain.id|name
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action exportDisk(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/export";
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
                 .build();
 
         url = new UrlBuilder(url)

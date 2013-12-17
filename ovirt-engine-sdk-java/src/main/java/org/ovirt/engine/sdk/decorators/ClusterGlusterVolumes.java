@@ -195,6 +195,10 @@ public class ClusterGlusterVolumes extends
      *    <pre>
      *    [any string]
      *    </pre>
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      * @return
      *     {@link ClusterGlusterVolume }
@@ -206,7 +210,7 @@ public class ClusterGlusterVolumes extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public ClusterGlusterVolume add(org.ovirt.engine.sdk.entities.GlusterVolume glustervolume, String expect, String correlationId) throws
+    public ClusterGlusterVolume add(org.ovirt.engine.sdk.entities.GlusterVolume glustervolume, Boolean force, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -216,6 +220,7 @@ public class ClusterGlusterVolumes extends
                 .build();
 
         url = new UrlBuilder(url)
+                .add("force", force, UrlParameterType.MATRIX)
                 .build();
 
         return getProxy().add(url, glustervolume,

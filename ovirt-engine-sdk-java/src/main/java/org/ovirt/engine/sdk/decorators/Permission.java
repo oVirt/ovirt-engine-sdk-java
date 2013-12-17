@@ -35,23 +35,22 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>NetworkVnicProfile providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.VnicProfile }.
+ * <p>Permission providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Permission }.
  */
 @SuppressWarnings("unused")
-public class NetworkVnicProfile extends
-        org.ovirt.engine.sdk.entities.VnicProfile {
+public class Permission extends
+        org.ovirt.engine.sdk.entities.Permission {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile NetworkVnicProfilePermissions networkVnicProfilePermissions;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public NetworkVnicProfile(HttpProxyBroker proxy) {
+    public Permission(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -62,22 +61,6 @@ public class NetworkVnicProfile extends
         return proxy;
     }
 
-    /**
-     * Gets the value of the NetworkVnicProfilePermissions property.
-     *
-     * @return
-     *     {@link NetworkVnicProfilePermissions }
-     */
-    public NetworkVnicProfilePermissions getPermissions() {
-        if (this.networkVnicProfilePermissions == null) {
-            synchronized (this.LOCK) {
-                if (this.networkVnicProfilePermissions == null) {
-                    this.networkVnicProfilePermissions = new NetworkVnicProfilePermissions(proxy, this);
-                }
-            }
-        }
-        return networkVnicProfilePermissions;
-    }
 
 
     /**

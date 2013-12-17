@@ -154,6 +154,7 @@ public class DataCenterCluster extends
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
      *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
      *    </pre>
      *
      * @return
@@ -206,6 +207,7 @@ public class DataCenterCluster extends
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
      *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
      *    </pre>
      *
      * @param correlationId

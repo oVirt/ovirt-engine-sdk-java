@@ -45,6 +45,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="speed" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="cpu_tune" type="{}CpuTune" minOccurs="0"/>
  *         &lt;element name="mode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="architecture" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -61,7 +62,8 @@ import javax.xml.bind.annotation.XmlType;
     "name",
     "speed",
     "cpuTune",
-    "mode"
+    "mode",
+    "architecture"
 })
 public class CPU {
 
@@ -72,6 +74,7 @@ public class CPU {
     @XmlElement(name = "cpu_tune")
     protected CpuTune cpuTune;
     protected String mode;
+    protected String architecture;
     @XmlAttribute(name = "id")
     protected String id;
 
@@ -241,6 +244,34 @@ public class CPU {
 
     public boolean isSetMode() {
         return (this.mode!= null);
+    }
+
+    /**
+     * Gets the value of the architecture property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getArchitecture() {
+        return architecture;
+    }
+
+    /**
+     * Sets the value of the architecture property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setArchitecture(String value) {
+        this.architecture = value;
+    }
+
+    public boolean isSetArchitecture() {
+        return (this.architecture!= null);
     }
 
     /**

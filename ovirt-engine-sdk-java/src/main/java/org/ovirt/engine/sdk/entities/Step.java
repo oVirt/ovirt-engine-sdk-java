@@ -47,6 +47,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="start_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="end_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="external" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="external_type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -64,7 +65,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "status",
     "startTime",
     "endTime",
-    "external"
+    "external",
+    "externalType"
 })
 public class Step
     extends BaseResource
@@ -83,6 +85,8 @@ public class Step
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar endTime;
     protected Boolean external;
+    @XmlElement(name = "external_type")
+    protected String externalType;
 
     /**
      * Gets the value of the parentStep property.
@@ -306,6 +310,34 @@ public class Step
 
     public boolean isSetExternal() {
         return (this.external!= null);
+    }
+
+    /**
+     * Gets the value of the externalType property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getExternalType() {
+        return externalType;
+    }
+
+    /**
+     * Sets the value of the externalType property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setExternalType(String value) {
+        this.externalType = value;
+    }
+
+    public boolean isSetExternalType() {
+        return (this.externalType!= null);
     }
 
 }

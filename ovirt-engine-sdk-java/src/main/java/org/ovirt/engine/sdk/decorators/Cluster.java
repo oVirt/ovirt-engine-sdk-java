@@ -155,6 +155,7 @@ public class Cluster extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
      *    </pre>
      *
      * @return
@@ -208,6 +209,7 @@ public class Cluster extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
      *    </pre>
      *
      * @param correlationId

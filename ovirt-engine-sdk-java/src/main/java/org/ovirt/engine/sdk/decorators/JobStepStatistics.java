@@ -22,69 +22,48 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.entities.Action;
-import org.ovirt.engine.sdk.entities.Response;
+import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>NetworkVnicProfile providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.VnicProfile }.
+ * <p>JobStepStatistics providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Statistics }.
  */
 @SuppressWarnings("unused")
-public class NetworkVnicProfile extends
-        org.ovirt.engine.sdk.entities.VnicProfile {
+public class JobStepStatistics extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Statistic,
+                            org.ovirt.engine.sdk.entities.Statistics,
+                            JobStepStatistic> {
 
-    private HttpProxyBroker proxy;
-    private final Object LOCK = new Object();
-
-    private volatile NetworkVnicProfilePermissions networkVnicProfilePermissions;
-
+    private JobStep parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent JobStep
      */
-    public NetworkVnicProfile(HttpProxyBroker proxy) {
-        this.proxy = proxy;
+    public JobStepStatistics(HttpProxyBroker proxy, JobStep parent) {
+        super(proxy, "statistics");
+        this.parent = parent;
     }
 
     /**
-     * @return HttpProxyBroker
-     */
-    private HttpProxyBroker getProxy() {
-        return proxy;
-    }
-
-    /**
-     * Gets the value of the NetworkVnicProfilePermissions property.
+     * Lists JobStepStatistic objects.
      *
      * @return
-     *     {@link NetworkVnicProfilePermissions }
-     */
-    public NetworkVnicProfilePermissions getPermissions() {
-        if (this.networkVnicProfilePermissions == null) {
-            synchronized (this.LOCK) {
-                if (this.networkVnicProfilePermissions == null) {
-                    this.networkVnicProfilePermissions = new NetworkVnicProfilePermissions(proxy, this);
-                }
-            }
-        }
-        return networkVnicProfilePermissions;
-    }
-
-
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
+     *     List of {@link JobStepStatistic }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,32 +72,18 @@ public class NetworkVnicProfile extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete() throws ClientProtocolException,
+    @Override
+    public List<JobStepStatistic> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
-
-        url = new UrlBuilder(url)
-                .build();
-
-        return getProxy().delete(url, Response.class, headers);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class, JobStepStatistic.class);
     }
+
     /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
+     * Fetches JobStepStatistic object by id.
      *
      * @return
-     *     {@link Response }
+     *     {@link JobStepStatistic }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -127,19 +92,43 @@ public class NetworkVnicProfile extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+    @Override
+    public JobStepStatistic get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, JobStepStatistic.class);
+    }
+
+    /**
+     * Lists JobStepStatistic objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link JobStepStatistic }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<JobStepStatistic> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
 
         List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
                 .build();
 
-        url = new UrlBuilder(url)
-                .add("async", async, UrlParameterType.MATRIX)
+        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
+                .add("max", max, UrlParameterType.MATRIX)
                 .build();
 
-        return getProxy().delete(url, Response.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.Statistics.class,
+                JobStepStatistic.class, headers);
     }
 
 }

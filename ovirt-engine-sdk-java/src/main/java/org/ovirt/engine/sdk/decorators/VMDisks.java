@@ -181,6 +181,7 @@ public class VMDisks extends
      *
      *      disk.id
      *      [disk.active]
+     *      [disk.read_only]
      *
      *    Overload 4:
      *
@@ -267,6 +268,7 @@ public class VMDisks extends
      *
      *      disk.id
      *      [disk.active]
+     *      [disk.read_only]
      *
      *    Overload 4:
      *

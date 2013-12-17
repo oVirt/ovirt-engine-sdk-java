@@ -170,6 +170,8 @@ public class VMDisk extends
      *    [disk.propagate_errors]
      *    [disk.wipe_after_delete]
      *    [disk.sgio]
+     *    [disk.read_only]
+     *    [description]
      *    </pre>
      *
      * @return
@@ -214,6 +216,8 @@ public class VMDisk extends
      *    [disk.propagate_errors]
      *    [disk.wipe_after_delete]
      *    [disk.sgio]
+     *    [disk.read_only]
+     *    [description]
      *    </pre>
      *
      * @param correlationId

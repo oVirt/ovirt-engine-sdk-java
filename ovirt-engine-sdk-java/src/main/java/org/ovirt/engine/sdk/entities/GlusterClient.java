@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="host_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="client_port" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="bytes_read" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="bytes_written" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="bytes_read" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="bytes_written" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -63,9 +63,9 @@ public class GlusterClient {
     @XmlElement(name = "client_port")
     protected Integer clientPort;
     @XmlElement(name = "bytes_read")
-    protected Integer bytesRead;
+    protected Long bytesRead;
     @XmlElement(name = "bytes_written")
-    protected Integer bytesWritten;
+    protected Long bytesWritten;
 
     /**
      * Gets the value of the hostName property.
@@ -128,10 +128,10 @@ public class GlusterClient {
      *
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Long }
      *
      */
-    public Integer getBytesRead() {
+    public Long getBytesRead() {
         return bytesRead;
     }
 
@@ -140,10 +140,10 @@ public class GlusterClient {
      *
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Long }
      *
      */
-    public void setBytesRead(Integer value) {
+    public void setBytesRead(Long value) {
         this.bytesRead = value;
     }
 
@@ -156,10 +156,10 @@ public class GlusterClient {
      *
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Long }
      *
      */
-    public Integer getBytesWritten() {
+    public Long getBytesWritten() {
         return bytesWritten;
     }
 
@@ -168,10 +168,10 @@ public class GlusterClient {
      *
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Long }
      *
      */
-    public void setBytesWritten(Integer value) {
+    public void setBytesWritten(Long value) {
         this.bytesWritten = value;
     }
 
