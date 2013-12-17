@@ -1,5 +1,5 @@
-%global     package_version 4.0.0.1
-%global     package_maven_version 4.0.0.1-1
+%global     package_version 3.4.0.1
+%global     package_maven_version 3.4.0.1-1
 %global     _javadocname javadoc
 
 %if 0%{?fedora}
@@ -105,7 +105,7 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 %{_javadocdir}/%{name}
 
 %changelog
-* Tue  Dec 17 2013 Michael Pasternak <mpastern@redhat.com> - 4.0.0.1-1
+* Tue  Dec 17 2013 Michael Pasternak <mpastern@redhat.com> - 3.4.0.1-1
 - to vms.add() added [action.vm.initialization.cloud-init]
 - to NIC added OnBoot/BootProtocol properties
 - to VersionCaps added a list of supported payload-encodings
