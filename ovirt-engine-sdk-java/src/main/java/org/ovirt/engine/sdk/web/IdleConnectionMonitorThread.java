@@ -26,23 +26,23 @@ public class IdleConnectionMonitorThread extends Thread {
 
     private final ClientConnectionManager connMgr;
     private volatile boolean shutdown;
-    long wait_ttl;
-    long close_ttl;
+    long waitTtl;
+    long closeTtl;
 
     /**
      * 
      * @param connMgr
      *            ClientConnectionManager to watch at
-     * @param wait_ttl
+     * @param waitTtl
      *            work cycle
-     * @param close_ttl
+     * @param closeTtl
      *            close ttl
      */
-    public IdleConnectionMonitorThread(ClientConnectionManager connMgr, long wait_ttl, long close_ttl) {
+    public IdleConnectionMonitorThread(ClientConnectionManager connMgr, long waitTtl, long closeTtl) {
         super();
         this.connMgr = connMgr;
-        this.wait_ttl = wait_ttl;
-        this.close_ttl = close_ttl;
+        this.waitTtl = waitTtl;
+        this.closeTtl = closeTtl;
     }
 
     @Override
@@ -50,9 +50,9 @@ public class IdleConnectionMonitorThread extends Thread {
         try {
             while (!shutdown) {
                 synchronized (this) {
-                    wait(this.wait_ttl);
+                    wait(this.waitTtl);
                     connMgr.closeExpiredConnections();
-                    connMgr.closeIdleConnections(this.close_ttl, TimeUnit.SECONDS);
+                    connMgr.closeIdleConnections(this.closeTtl, TimeUnit.SECONDS);
                 }
             }
         } catch (InterruptedException ex) {
