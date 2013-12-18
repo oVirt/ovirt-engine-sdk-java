@@ -59,12 +59,12 @@ public class ConnectionsPool {
      *            oVirt API url
      * @param sessionTimeout
      *            authentication session inactivity timeout
-     * @param idleCheckTTL
+     * @param checkTtL
      *            idle connections check TTL
-     * @param closeCloseTTl
+     * @param closeTtl
      *            idle connections close TTL
      */
-    public ConnectionsPool(DefaultHttpClient client, URL url, Integer sessionTimeout, long idleCheckTTL, long closeCloseTTl) {
+    public ConnectionsPool(DefaultHttpClient client, URL url, Integer sessionTimeout, long checkTtL, long closeTtl) {
         this.client = client;
         this.cookieStore = this.client.getCookieStore();
         this.url = url;
@@ -73,8 +73,8 @@ public class ConnectionsPool {
         idleConnectionsWatchdog =
                 new IdleConnectionMonitorThread(
                         this.client.getConnectionManager(),
-                        idleCheckTTL,
-                        closeCloseTTl);
+                        checkTtL,
+                        closeTtl);
         idleConnectionsWatchdog.start();
     }
 
