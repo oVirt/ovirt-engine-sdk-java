@@ -95,7 +95,6 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String WINDOWS_DECORATORS_PATH =
             "..\\ovirt-engine-sdk-java\\src\\main\\java\\org\\ovirt\\engine\\sdk\\decorators\\";
     private static final String SLASH = "/";
-    private static final String ROOT_URL = "/ovirt-engine/api/";
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
     private static final String DELETE_REL = "delete";
     private static final String UPDATE_REL = "update";
@@ -200,6 +199,9 @@ public class RsdlCodegen extends AbstractCodegen {
         String url, rel, requestBodyType, responseBodyType, parent, collectionName, actualReturnType;
         HttpMethod requestMethod;
 
+        // #0 - get the root URL
+        String rootUrl = httpProxy.getRoot();
+
         // #1 - fetch RSDL
         RSDL rsdl = fetchRsdl();
 
@@ -207,7 +209,13 @@ public class RsdlCodegen extends AbstractCodegen {
         if (rsdl != null) {
             for (DetailedLink dl : rsdl.getLinks().getLinks()) {
 
-                url = dl.getHref().replace(ROOT_URL, "");
+                // Get the URL of the resource and make it relative, removing the root URL of the application and any
+                // additional leading slash:
+                url = dl.getHref().replace(rootUrl, "");
+                while (url.startsWith(SLASH)) {
+                    url = url.substring(SLASH.length());
+                }
+
                 rel = dl.getRel();
                 requestBodyType = dl.getRequest().getBody().getType();
                 requestMethod = dl.getRequest().getHttpMethod();
