@@ -28,13 +28,13 @@ import org.ovirt.engine.sdk.entities.KeyValuePair;
  */
 public class HttpHeaderBuilder {
 
-    private List<HttpHeaderParsameter> params;
+    private List<HttpHeaderParameter> params;
 
     /**
      * Providing Http Header building services
      */
     public HttpHeaderBuilder() {
-        this.params = new ArrayList<HttpHeaderParsameter>();
+        this.params = new ArrayList<HttpHeaderParameter>();
     }
 
     /**
@@ -43,7 +43,7 @@ public class HttpHeaderBuilder {
      * @param headers
      *            headers to use as template
      */
-    public HttpHeaderBuilder(List<HttpHeaderParsameter> headers) {
+    public HttpHeaderBuilder(List<HttpHeaderParameter> headers) {
         this.params = headers;
     }
 
@@ -58,7 +58,7 @@ public class HttpHeaderBuilder {
      * @return HttpHeaderBuilder
      */
     public HttpHeaderBuilder add(String key, Object value) {
-        this.params.add(new HttpHeaderParsameter(key, value != null ?
+        this.params.add(new HttpHeaderParameter(key, value != null ?
                 String.valueOf(value)
                 :
                 null));
@@ -75,7 +75,7 @@ public class HttpHeaderBuilder {
      * @return HttpHeaderBuilder
      */
     public HttpHeaderBuilder add(String key) {
-        this.params.add(new HttpHeaderParsameter(key, null));
+        this.params.add(new HttpHeaderParameter(key, null));
         return this;
     }
 
@@ -86,7 +86,7 @@ public class HttpHeaderBuilder {
      */
     public List<Header> build() {
         List<Header> headers = new ArrayList<Header>();
-        for (HttpHeaderParsameter param : this.params) {
+        for (HttpHeaderParameter param : this.params) {
             headers.add(new BasicHeader(param.getKey(), param.getValue()));
         }
         return headers;
@@ -95,7 +95,7 @@ public class HttpHeaderBuilder {
     /**
      * Http Header parameter decorator
      */
-    private static class HttpHeaderParsameter extends KeyValuePair {
+    private static class HttpHeaderParameter extends KeyValuePair {
 
         /**
          * @param key
@@ -103,7 +103,7 @@ public class HttpHeaderBuilder {
          * @param value
          *            URL parameter value
          */
-        public HttpHeaderParsameter(String key, String value) {
+        public HttpHeaderParameter(String key, String value) {
             super();
             this.setKey(key);
             this.setValue(value);

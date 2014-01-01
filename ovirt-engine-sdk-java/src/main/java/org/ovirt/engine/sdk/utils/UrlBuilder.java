@@ -28,7 +28,7 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 public class UrlBuilder {
 
     private String url;
-    private List<UrlParsameter> params;
+    private List<UrlParameter> params;
 
     /**
      * Providing URL building services
@@ -38,7 +38,7 @@ public class UrlBuilder {
      */
     public UrlBuilder(String url) {
         this.url = url;
-        this.params = new ArrayList<UrlParsameter>();
+        this.params = new ArrayList<UrlParameter>();
     }
 
     /**
@@ -54,7 +54,7 @@ public class UrlBuilder {
      * @return UrlBuilder
      */
     public UrlBuilder add(String key, Object value, UrlParameterType type) {
-        this.params.add(new UrlParsameter(key, value != null ? String.valueOf(value) : null, type));
+        this.params.add(new UrlParameter(key, value != null ? String.valueOf(value) : null, type));
         return this;
     }
 
@@ -69,7 +69,7 @@ public class UrlBuilder {
      * @return UrlBuilder
      */
     public UrlBuilder add(String key, UrlParameterType type) {
-        this.params.add(new UrlParsameter(key, null, type));
+        this.params.add(new UrlParameter(key, null, type));
         return this;
     }
 
@@ -81,7 +81,7 @@ public class UrlBuilder {
     public String build() {
         StringBuffer matrixParams = new StringBuffer();
         StringBuffer queryParams = new StringBuffer();
-        for (UrlParsameter urlParam : this.params) {
+        for (UrlParameter urlParam : this.params) {
             if (urlParam.getValue() != null) {
                 switch (urlParam.getType()) {
                 case MATRIX:
@@ -99,7 +99,7 @@ public class UrlBuilder {
     /**
      * URL parameter decorator
      */
-    private static class UrlParsameter extends KeyValuePair {
+    private static class UrlParameter extends KeyValuePair {
         private UrlParameterType type;
 
         /**
@@ -110,7 +110,7 @@ public class UrlBuilder {
          * @param type
          *            URL parameter type
          */
-        public UrlParsameter(String key, String value, UrlParameterType type) {
+        public UrlParameter(String key, String value, UrlParameterType type) {
             super();
             this.setKey(key);
             this.setValue(value);
