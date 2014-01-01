@@ -1,1 +1,3 @@
-                .add("$realUrlParamName$", $urlParamName$, UrlParameterType.$urlParamType$)
+        if ($urlParamName$ != null) {
+            urlBuilder.add("$realUrlParamName$", $urlParamName$, UrlParameterType.$urlParamType$);
+        }

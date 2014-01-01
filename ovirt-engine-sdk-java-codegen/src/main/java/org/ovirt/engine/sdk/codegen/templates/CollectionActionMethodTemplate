@@ -16,11 +16,11 @@ $docParams$
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "$actionName$";
 
-        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();$headersToBuild$
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)$urlParamsToBuild$
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);$urlParamsToBuild$
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }

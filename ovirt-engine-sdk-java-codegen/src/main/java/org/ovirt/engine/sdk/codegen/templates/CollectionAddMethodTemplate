@@ -15,11 +15,11 @@ $docParams$
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();$headersToBuild$
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)$urlParamsToBuild$
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);$urlParamsToBuild$
+        url = urlBuilder.build();
 
         return getProxy().add(url, $publicEntityNameLowerCase$,
                 org.ovirt.engine.sdk.entities.$publicEntityName$.class,
