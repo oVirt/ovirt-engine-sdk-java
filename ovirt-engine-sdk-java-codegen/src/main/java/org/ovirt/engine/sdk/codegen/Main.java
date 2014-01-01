@@ -20,7 +20,6 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
-import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.rsdl.RsdlCodegen;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.exceptions.ServerException;
@@ -37,8 +36,7 @@ public class Main {
     private static final String USER = "admin@internal";
     private static final String PASSWORD = "letmein!";
 
-    public static void main(String[] args) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+    public static void main(String[] args) throws ServerException, IOException, JAXBException {
 
         HttpProxyBroker httpProxyBroker = new HttpProxyBroker(
                 new HttpProxyBuilder(

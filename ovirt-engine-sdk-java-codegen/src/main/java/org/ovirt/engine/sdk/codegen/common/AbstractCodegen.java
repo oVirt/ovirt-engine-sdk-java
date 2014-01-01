@@ -21,7 +21,6 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
-import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.compile.CodeCompiler;
 import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 import org.ovirt.engine.sdk.exceptions.ServerException;
@@ -62,14 +61,12 @@ public abstract class AbstractCodegen implements ICodegen {
     /**
      * Cleans the package, generates new code and compiles it
      * 
-     * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
     @Override
-    public void generate() throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+    public void generate() throws ServerException, IOException, JAXBException {
         doCleanPackage(this.distPath);
         doGenerate(this.distPath);
         doCompile();
@@ -98,13 +95,11 @@ public abstract class AbstractCodegen implements ICodegen {
      * @param distPath
      *            directory to generates the code at
      * 
-     * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
-    protected abstract void doGenerate(String distPath) throws ClientProtocolException,
-            ServerException, IOException, JAXBException;
+    protected abstract void doGenerate(String distPath) throws ServerException, IOException, JAXBException;
 
     /**
      * Delete all files in given directory

@@ -22,7 +22,6 @@ import java.util.Map;
 
 import javax.xml.bind.JAXBException;
 
-import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.templates.ApiTemplate;
@@ -91,7 +90,7 @@ public class ApiCodegen extends AbstractCodegen {
      * Generates SDK entry point class
      */
     @Override
-    protected void doGenerate(String distPath) throws ClientProtocolException, ServerException, IOException,
+    protected void doGenerate(String distPath) throws ServerException, IOException,
             JAXBException {
         String collectionsVariables = produceCollectionVariables();
         String collectionsGetters = produceCollectionGetters();
@@ -110,9 +109,8 @@ public class ApiCodegen extends AbstractCodegen {
      * 
      * @throws IOException
      * @throws ServerException
-     * @throws ClientProtocolException
      */
-    private String produceRootMethods() throws ClientProtocolException, ServerException, IOException {
+    private String produceRootMethods() throws ServerException, IOException {
         String rootMethods = "";
 
         String[] exceptions =

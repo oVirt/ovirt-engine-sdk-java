@@ -24,7 +24,6 @@ import java.util.Map;
 
 import javax.xml.bind.JAXBException;
 
-import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
@@ -186,15 +185,13 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param distPath
      *            directory to generates the code at
      * 
-     * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
     @SuppressWarnings("unused")
     @Override
-    protected void doGenerate(String distPath) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+    protected void doGenerate(String distPath) throws ServerException, IOException, JAXBException {
 
         String url, rel, requestBodyType, responseBodyType, parent, collectionName, actualReturnType;
         HttpMethod requestMethod;
@@ -967,12 +964,11 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return RSDL
      * 
-     * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
-    private RSDL fetchRsdl() throws ClientProtocolException, ServerException, IOException, JAXBException {
+    private RSDL fetchRsdl() throws ServerException, IOException, JAXBException {
         return httpProxy.get(RSDL_URL, RSDL.class);
     }
 }

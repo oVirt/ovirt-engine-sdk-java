@@ -20,18 +20,15 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
-import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 
 public interface ICodegen {
     /**
      * Cleans the package and generates the code
      * 
-     * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
-    abstract void generate() throws ClientProtocolException,
-            ServerException, IOException, JAXBException;
+    abstract void generate() throws ServerException, IOException, JAXBException;
 }

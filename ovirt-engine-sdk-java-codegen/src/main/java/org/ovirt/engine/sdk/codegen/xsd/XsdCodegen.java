@@ -28,7 +28,6 @@ import java.util.Map;
 
 import javax.xml.bind.JAXBException;
 
-import org.apache.http.client.ClientProtocolException;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.templates.CopyrightTemplate;
 import org.ovirt.engine.sdk.codegen.utils.FileUtils;
@@ -72,14 +71,12 @@ public class XsdCodegen extends AbstractCodegen {
      * @param distPath
      *            directory to generates the code at
      * 
-     * @throws ClientProtocolException
      * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
     @Override
-    public void doGenerate(String distPath) throws ClientProtocolException,
-            ServerException, IOException, JAXBException {
+    public void doGenerate(String distPath) throws ServerException, IOException, JAXBException {
 
         String xjcOutput = null;
 
