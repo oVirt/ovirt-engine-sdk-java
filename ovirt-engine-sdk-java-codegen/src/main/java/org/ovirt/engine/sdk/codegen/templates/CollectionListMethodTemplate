@@ -14,11 +14,11 @@ $docParams$
     public List<$decoratorName$> list($methodExtraParamsDef$) throws ClientProtocolException,
             ServerException, IOException {
 
-        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();$headersToBuild$
+        List<Header> headers = headersBuilder.build();
 
-        String url = new UrlBuilder(SLASH + getName())$urlParamsToBuild$
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());$urlParamsToBuild$
+        String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.$publicCollectionName$.class,
                 $decoratorName$.class, headers);

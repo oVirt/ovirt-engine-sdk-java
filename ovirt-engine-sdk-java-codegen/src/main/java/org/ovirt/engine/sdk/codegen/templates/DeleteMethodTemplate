@@ -15,11 +15,11 @@ $docParams$
             ServerException, IOException {
         String url = this.getHref();
 
-        List<Header> headers = new HttpHeaderBuilder()$headersToBuild$
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();$headersToBuild$
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)$urlParamsToBuild$
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);$urlParamsToBuild$
+        url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
     }
