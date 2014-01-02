@@ -31,16 +31,44 @@ import org.ovirt.engine.sdk.web.HttpProxyBuilder;
  * oVirt ovirt-engine-sdk-java codegen suite
  */
 public class Main {
-
-    private static final String API_URL = "http://localhost:8080/ovirt-engine/api";
-    private static final String USER = "admin@internal";
-    private static final String PASSWORD = "letmein!";
+    private static final String DEFAULT_URL = "http://localhost:8080/ovirt-engine/api";
+    private static final String DEFAULT_USER = "admin@internal";
+    private static final String DEFAULT_PASSWORD = "letmein!";
 
     public static void main(String[] args) throws ServerException, IOException, JAXBException {
+        // Parse the command line parameters:
+        String url = DEFAULT_URL;
+        String user = DEFAULT_USER;
+        String password = DEFAULT_PASSWORD;
+        for (int i = 0; i < args.length; i++) {
+            switch (args[i]) {
+            case "--url":
+                i++;
+                if (i < args.length) {
+                    url = args[i];
+                }
+                break;
+            case "--user":
+                i++;
+                if (i < args.length) {
+                    user = args[i];
+                }
+                break;
+            case "--password":
+                i++;
+                if (i < args.length) {
+                    password = args[i];
+                }
+                break;
+            default:
+                System.err.println("Unknown command line parameter \"" + args[i] + "\".");
+                System.exit(1);
+            }
+        }
 
         HttpProxyBroker httpProxyBroker = new HttpProxyBroker(
                 new HttpProxyBuilder(
-                        new ConnectionsPoolBuilder(API_URL, USER, PASSWORD).build()
+                        new ConnectionsPoolBuilder(url, user, password).build()
                 ).build());
 
         // #1 - generate api entities from the XSD schema
