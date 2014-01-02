@@ -23,6 +23,7 @@ import javax.xml.bind.JAXBException;
 import org.ovirt.engine.sdk.codegen.rsdl.RsdlCodegen;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.web.ConnectionsPool;
 import org.ovirt.engine.sdk.web.ConnectionsPoolBuilder;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.HttpProxyBuilder;
@@ -66,10 +67,14 @@ public class Main {
             }
         }
 
+        // Create a connection pool that allows us to connect to SSL protected servers without verificating the host
+        // name, as this verification is an unnecessary complication for the code generator:
+        ConnectionsPool pool = new ConnectionsPoolBuilder(url, user, password)
+            .noHostVerification(true)
+            .build();
+
         HttpProxyBroker httpProxyBroker = new HttpProxyBroker(
-                new HttpProxyBuilder(
-                        new ConnectionsPoolBuilder(url, user, password).build()
-                ).build());
+                new HttpProxyBuilder(pool).build());
 
         // #1 - generate api entities from the XSD schema
         new XsdCodegen(httpProxyBroker).generate();
