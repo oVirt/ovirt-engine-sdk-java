@@ -31,7 +31,6 @@ import org.ovirt.engine.sdk.codegen.templates.RootResourceStaticTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 import org.ovirt.engine.sdk.entities.API;
-import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.ArrayUtils;
 import org.ovirt.engine.sdk.utils.StringUtils;
 
@@ -90,8 +89,7 @@ public class ApiCodegen extends AbstractCodegen {
      * Generates SDK entry point class
      */
     @Override
-    protected void doGenerate(String distPath) throws ServerException, IOException,
-            JAXBException {
+    protected void doGenerate(String distPath) throws IOException, JAXBException {
         String collectionsVariables = produceCollectionVariables();
         String collectionsGetters = produceCollectionGetters();
         String rootMethods = produceRootMethods();
@@ -108,9 +106,8 @@ public class ApiCodegen extends AbstractCodegen {
      * @return /api resource methods
      * 
      * @throws IOException
-     * @throws ServerException
      */
-    private String produceRootMethods() throws ServerException, IOException {
+    private String produceRootMethods() throws IOException {
         String rootMethods = "";
 
         String[] exceptions =

@@ -21,7 +21,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,15 +31,11 @@ import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.templates.CopyrightTemplate;
 import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
-import org.ovirt.engine.sdk.exceptions.ServerException;
-import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * Provides XSD schema related services
  */
 public class XsdCodegen extends AbstractCodegen {
-
-    private static final String SCHEMA_URL = "?schema";
 
     private static final String WINDOWS_XJC_PATH = "%java_home%\\bin\\xjc";
     private static final String NX_XJC_PATH = "xjc";
@@ -49,20 +44,18 @@ public class XsdCodegen extends AbstractCodegen {
     private static final String NX_ENTITIES_PATH = "../ovirt-engine-sdk-java/src/main/java/";
 
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
-    private static final String SCHEMA_FILE_NAME = "api.xsd";
     private static final String XJC_FLAGS = " -extension -no-header -enableIntrospection ";
 
     private static final String copyrightTemplate = new CopyrightTemplate().getTemplate();
 
-    private HttpProxyBroker httpProxy;
-
     /**
-     * @param httpProxy
+     * The location of the XSD file.
      */
-    public XsdCodegen(HttpProxyBroker httpProxy) {
-        super(getEntitiesPath());
+    private String xsdPath;
 
-        this.httpProxy = httpProxy;
+    public XsdCodegen(String xsdPath) {
+        super(getEntitiesPath());
+        this.xsdPath = xsdPath;
     }
 
     /**
@@ -71,23 +64,20 @@ public class XsdCodegen extends AbstractCodegen {
      * @param distPath
      *            directory to generates the code at
      * 
-     * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
     @Override
-    public void doGenerate(String distPath) throws ServerException, IOException, JAXBException {
+    public void doGenerate(String distPath) throws IOException, JAXBException {
 
         String xjcOutput = null;
 
-        fetchScema(this.httpProxy);
-
         if (OsUtil.isWindows()) {
             xjcOutput = runCommand(WINDOWS_XJC_PATH + " -d " + distPath +
-                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + SCHEMA_FILE_NAME);
+                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + xsdPath);
         } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
             xjcOutput = runCommand(NX_XJC_PATH + " -d " + distPath +
-                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + SCHEMA_FILE_NAME);
+                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + xsdPath);
         } else {
             throw new RuntimeException("unsupported OS.");
         }
@@ -95,24 +85,6 @@ public class XsdCodegen extends AbstractCodegen {
         if (xjcOutput == null ||
                 !xjcOutput.startsWith("parsing a schema...compiling a schema...")) {
             throw new RuntimeException("xjc codegen failed: " + xjcOutput);
-        }
-    }
-
-    private void fetchScema(HttpProxyBroker httpProxy) throws ServerException,
-            JAXBException, IOException {
-        PrintWriter out = null;
-        String schema = httpProxy.get(SCHEMA_URL);
-        if (schema != null && !schema.equals("")) {
-            try {
-                out = new PrintWriter(SCHEMA_FILE_NAME);
-                out.println(schema);
-            } finally {
-                if (out != null) {
-                    out.close();
-                }
-            }
-        } else {
-            throw new RuntimeException("xsd schema download failed.");
         }
     }
 
@@ -290,5 +262,10 @@ public class XsdCodegen extends AbstractCodegen {
             // TODO: Log error
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) throws JAXBException, IOException {
+        XsdCodegen generator = new XsdCodegen(args[0]);
+        generator.generate();
     }
 }

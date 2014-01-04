@@ -27,6 +27,3 @@ target
 *.iml
 .idea
 *.prefs
-
-# downloaded XSD schema
-api.xsd

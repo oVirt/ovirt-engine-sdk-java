@@ -16,13 +16,19 @@
 
 package org.ovirt.engine.sdk.codegen.rsdl;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
 
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
@@ -55,17 +61,18 @@ import org.ovirt.engine.sdk.entities.HostNics;
 import org.ovirt.engine.sdk.entities.HttpMethod;
 import org.ovirt.engine.sdk.entities.RSDL;
 import org.ovirt.engine.sdk.entities.VersionCaps;
-import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.utils.ArrayUtils;
 import org.ovirt.engine.sdk.utils.StringUtils;
-import org.ovirt.engine.sdk.web.HttpProxyBroker;
 
 /**
  * Provides RSDL related codegen capabilities
  */
 public class RsdlCodegen extends AbstractCodegen {
+    /**
+     * The location of the RSDL file.
+     */
+    private String rsdlPath;
 
-    private HttpProxyBroker httpProxy;
     private Map<String, Class<?>> entitiesMap;
 
     private CollectionTemplate collectionTemplate;
@@ -88,7 +95,6 @@ public class RsdlCodegen extends AbstractCodegen {
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
 
-    private static final String RSDL_URL = "?rsdl";
     private static final String NX_DECORATORS_PATH =
             "../ovirt-engine-sdk-java/src/main/java/org/ovirt/engine/sdk/decorators/";
     private static final String WINDOWS_DECORATORS_PATH =
@@ -108,10 +114,14 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String[] RETURN_BODY_EXCEPTIONS = new String[] { "Response", "Responses" };
     private static final String[] ACTION_NAME_EXCEPTIONS = new String[] { "import", "export" };
 
-    public RsdlCodegen(HttpProxyBroker httpProxy) {
+    /**
+     * Create a code generator for the decorator classes.
+     *
+     * @param rsdlPath the path of the file containing the RSDL document
+     */
+    public RsdlCodegen(String rsdlPath) {
         super(getDecoratorsPath());
-
-        this.httpProxy = httpProxy;
+        this.rsdlPath = rsdlPath;
 
         this.collectionTemplate = new CollectionTemplate();
         this.resourceTemplate = new ResourceTemplate();
@@ -185,56 +195,135 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param distPath
      *            directory to generates the code at
      * 
-     * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
     @SuppressWarnings("unused")
     @Override
-    protected void doGenerate(String distPath) throws ServerException, IOException, JAXBException {
+    protected void doGenerate(String distPath) throws IOException, JAXBException {
 
         String url, rel, requestBodyType, responseBodyType, parent, collectionName, actualReturnType;
         HttpMethod requestMethod;
 
-        // #0 - get the root URL
-        String rootUrl = httpProxy.getRoot();
+        // #1 - load RSDL
+        RSDL rsdl = loadRsdl(rsdlPath);
 
-        // #1 - fetch RSDL
-        RSDL rsdl = fetchRsdl();
+        // The root element of the RSDL document contains the following:
+        //
+        //   <rsdl href="/api?rsdl" ...
+        //
+        // Here we extract from the href the root URL of the API, as it is needed later to make relative other links
+        // that appear in the RSDL document.
+        String rootUrl = rsdl.getHref().replace("?rsdl", "");
 
         // #2 - walk RSDL
-        if (rsdl != null) {
-            for (DetailedLink dl : rsdl.getLinks().getLinks()) {
+        for (DetailedLink dl : rsdl.getLinks().getLinks()) {
 
-                // Get the URL of the resource and make it relative, removing the root URL of the application and any
-                // additional leading slash:
-                url = dl.getHref().replace(rootUrl, "");
-                while (url.startsWith(SLASH)) {
-                    url = url.substring(SLASH.length());
-                }
+            // Get the URL of the resource and make it relative, removing the root URL of the application and any
+            // additional leading slash:
+            url = dl.getHref().replace(rootUrl, "");
+            while (url.startsWith(SLASH)) {
+                url = url.substring(SLASH.length());
+            }
 
-                rel = dl.getRel();
-                requestBodyType = dl.getRequest().getBody().getType();
-                requestMethod = dl.getRequest().getHttpMethod();
-                responseBodyType = getResponseBodyType(dl);
+            rel = dl.getRel();
+            requestBodyType = dl.getRequest().getBody().getType();
+            requestMethod = dl.getRequest().getHttpMethod();
+            responseBodyType = getResponseBodyType(dl);
 
-                String[] periods = url.split(SLASH);
-                parent = "";
-                collectionName = "";
+            String[] periods = url.split(SLASH);
+            parent = "";
+            collectionName = "";
 
-                int i = 1;
-                for (String period : periods) {
-                    actualReturnType = getActualReturnType(responseBodyType, period, i, periods);
+            int i = 1;
+            for (String period : periods) {
+                actualReturnType = getActualReturnType(responseBodyType, period, i, periods);
 
-                    if (!ArrayUtils.contains(COLLECTION2ENTITY_EXCEPTIONS, period)) {
+                if (!ArrayUtils.contains(COLLECTION2ENTITY_EXCEPTIONS, period)) {
+                    if (i == 1) { // root-collection
+                        String collection = getRootCollectionName(period);
+                        collectionName = collection;
+                        parent = StringUtils.toUpperCase(StringUtils.toSingular(collection));
+                        String decoratorCollectionName = StringUtils.toUpperCase(collection);
+                        String publicEntityName = getPublicEntity(StringUtils.toSingular(collection));
+                        String publicCollectionName = getPublicCollection(collection);
+                        String decoratorEntityName = StringUtils.toSingular(decoratorCollectionName);
+
+                        addRootCollection(url,
+                                rel,
+                                dl,
+                                i,
+                                period,
+                                decoratorCollectionName,
+                                publicEntityName,
+                                publicCollectionName,
+                                decoratorEntityName);
+
+                    } else if (i == 2) { // root-resource
+                        String resource = getRootResourceName(collectionName);
+                        String decoratorResourceName = StringUtils.toUpperCase(resource);
+                        String publicEntityName = getPublicEntity(StringUtils.toSingular(collectionName));
+
+                        addRootResource(url,
+                                rel,
+                                dl,
+                                resource,
+                                decoratorResourceName,
+                                publicEntityName);
+
+                    } else if (i % 2 != 0) { // sub-collection
+                        String collection = getSubCollectionName(actualReturnType, parent, i, periods);
+                        collectionName = collection;
+                        ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
+                        String decoratorEntityName = getSubResourceName(collectionName, parent);
+                        String publicEntityName =
+                                getSubCollectionEntityName(rel, actualReturnType, requestMethod, periods, i, period);
+                        String publicCollectionName =
+                                getPublicCollection(StringUtils.toPlural(actualReturnType));
+
+                        addSubCollection(url,
+                                rel,
+                                parent,
+                                requestMethod,
+                                dl,
+                                periods,
+                                i,
+                                period,
+                                collection,
+                                resourceHolder,
+                                decoratorEntityName,
+                                publicEntityName,
+                                publicCollectionName);
+
+                    } else { // sub-resource
+                        if (!isAction(period, rel, requestMethod)) {
+                            String resource = getSubResourceName(collectionName, parent);
+                            String subResourceDecoratorName = resource;
+                            String publicEntityName = getSubResourceEntityName(parent, collectionName);
+
+                            addSubResource(url,
+                                    rel,
+                                    dl,
+                                    resource,
+                                    subResourceDecoratorName,
+                                    publicEntityName);
+
+                            parent = resource;
+                        } else {
+                            // TODO: use extra params (besides action) defined by RSDL
+                            addResourceAction(rel, parent, collectionName, period, dl);
+                        }
+                    }
+                } else { // unique treatment for COLLECTION2ENTITY_EXCEPTIONS
+                    if (period.equals("capabilities") || parent.equalsIgnoreCase("capabilities")) {
                         if (i == 1) { // root-collection
                             String collection = getRootCollectionName(period);
                             collectionName = collection;
-                            parent = StringUtils.toUpperCase(StringUtils.toSingular(collection));
+                            parent = StringUtils.toUpperCase(collectionName);
                             String decoratorCollectionName = StringUtils.toUpperCase(collection);
-                            String publicEntityName = getPublicEntity(StringUtils.toSingular(collection));
-                            String publicCollectionName = getPublicCollection(collection);
-                            String decoratorEntityName = StringUtils.toSingular(decoratorCollectionName);
+                            String publicEntityName = getPublicEntity(VersionCaps.class.getSimpleName());
+                            String publicCollectionName = getPublicCollection(Capabilities.class.getSimpleName());
+                            String decoratorEntityName = VersionCaps.class.getSimpleName();
 
                             addRootCollection(url,
                                     rel,
@@ -247,9 +336,9 @@ public class RsdlCodegen extends AbstractCodegen {
                                     decoratorEntityName);
 
                         } else if (i == 2) { // root-resource
-                            String resource = getRootResourceName(collectionName);
-                            String decoratorResourceName = StringUtils.toUpperCase(resource);
-                            String publicEntityName = getPublicEntity(StringUtils.toSingular(collectionName));
+                            String resource = VersionCaps.class.getSimpleName();
+                            String decoratorResourceName = resource;
+                            String publicEntityName = getPublicEntity(resource);
 
                             addRootResource(url,
                                     rel,
@@ -258,93 +347,14 @@ public class RsdlCodegen extends AbstractCodegen {
                                     decoratorResourceName,
                                     publicEntityName);
 
-                        } else if (i % 2 != 0) { // sub-collection
-                            String collection = getSubCollectionName(actualReturnType, parent, i, periods);
-                            collectionName = collection;
-                            ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
-                            String decoratorEntityName = getSubResourceName(collectionName, parent);
-                            String publicEntityName =
-                                    getSubCollectionEntityName(rel, actualReturnType, requestMethod, periods, i, period);
-                            String publicCollectionName =
-                                    getPublicCollection(StringUtils.toPlural(actualReturnType));
-
-                            addSubCollection(url,
-                                    rel,
-                                    parent,
-                                    requestMethod,
-                                    dl,
-                                    periods,
-                                    i,
-                                    period,
-                                    collection,
-                                    resourceHolder,
-                                    decoratorEntityName,
-                                    publicEntityName,
-                                    publicCollectionName);
-
-                        } else { // sub-resource
-                            if (!isAction(period, rel, requestMethod)) {
-                                String resource = getSubResourceName(collectionName, parent);
-                                String subResourceDecoratorName = resource;
-                                String publicEntityName = getSubResourceEntityName(parent, collectionName);
-
-                                addSubResource(url,
-                                        rel,
-                                        dl,
-                                        resource,
-                                        subResourceDecoratorName,
-                                        publicEntityName);
-
-                                parent = resource;
-                            } else {
-                                // TODO: use extra params (besides action) defined by RSDL
-                                addResourceAction(rel, parent, collectionName, period, dl);
-                            }
                         }
-                    } else { // unique treatment for COLLECTION2ENTITY_EXCEPTIONS
-                        if (period.equals("capabilities") || parent.equalsIgnoreCase("capabilities")) {
-                            if (i == 1) { // root-collection
-                                String collection = getRootCollectionName(period);
-                                collectionName = collection;
-                                parent = StringUtils.toUpperCase(collectionName);
-                                String decoratorCollectionName = StringUtils.toUpperCase(collection);
-                                String publicEntityName = getPublicEntity(VersionCaps.class.getSimpleName());
-                                String publicCollectionName = getPublicCollection(Capabilities.class.getSimpleName());
-                                String decoratorEntityName = VersionCaps.class.getSimpleName();
-
-                                addRootCollection(url,
-                                        rel,
-                                        dl,
-                                        i,
-                                        period,
-                                        decoratorCollectionName,
-                                        publicEntityName,
-                                        publicCollectionName,
-                                        decoratorEntityName);
-
-                            } else if (i == 2) { // root-resource
-                                String resource = VersionCaps.class.getSimpleName();
-                                String decoratorResourceName = resource;
-                                String publicEntityName = getPublicEntity(resource);
-
-                                addRootResource(url,
-                                        rel,
-                                        dl,
-                                        resource,
-                                        decoratorResourceName,
-                                        publicEntityName);
-
-                            }
-                        } else {
-                            // TODO: implement unique treatment for COLLECTION2ENTITY_EXCEPTIONS
-                            break;
-                        }
+                    } else {
+                        // TODO: implement unique treatment for COLLECTION2ENTITY_EXCEPTIONS
+                        break;
                     }
-                    i++;
                 }
+                i++;
             }
-        } else {
-            throw new RuntimeException("RSDL download failed.");
         }
 
         // #3 - Persist content
@@ -960,15 +970,18 @@ public class RsdlCodegen extends AbstractCodegen {
     }
 
     /**
-     * Fetches RSDL descriptor
-     * 
+     * Loads the RSDL from a file.
+     *
+     * @param rsdlPath the path of the file containing the RDSL document
      * @return RSDL
-     * 
-     * @throws ServerException
      * @throws IOException
      * @throws JAXBException
      */
-    private RSDL fetchRsdl() throws ServerException, IOException, JAXBException {
-        return httpProxy.get(RSDL_URL, RSDL.class);
+    private RSDL loadRsdl(String rsdlPath) throws IOException, JAXBException {
+        JAXBContext context = JAXBContext.newInstance(RSDL.class);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        Source source = new StreamSource(new File(rsdlPath));
+        JAXBElement<RSDL> element = unmarshaller.unmarshal(source, RSDL.class);
+        return element.getValue();
     }
 }
