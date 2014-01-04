@@ -23,7 +23,16 @@
   </licenses>
 
   <properties>
+
+    <!-- Make sure that we always compile with UTF-8 encoding: -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Default values used when retrieving the XML schema and the RSDL from
+         a live engine: -->
+    <api.url>https://localhost/ovirt-engine/api</api.url>
+    <api.user>admin@internal</api.user>
+    <api.password>letmein!</api.password>
+
   </properties>
 
   <dependencies>
@@ -73,5 +82,66 @@
     </plugins>
 
   </build>
+
+  <profiles>
+
+    <!-- This profile is used to download the XML schema and the RSDL from a
+         live engine and update local copies. To run it use the validate phase
+         and enable the profile:
+
+         mvn validate -Pupdate-metadata
+
+         After doing this remember to add update the files in the source
+         control system. -->
+    <profile>
+      <id>update-metadata</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <executions>
+              <execution>
+                <id>update-schema</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <executable>wget</executable>
+                  <arguments>
+                    <argument>--http-user=${api.user}</argument>
+                    <argument>--http-password=${api.password}</argument>
+                    <argument>--no-check-certificate</argument>
+                    <argument>--output-document=${basedir}/src/main/resources/api.xsd</argument>
+                    <argument>${api.url}?schema</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+              <execution>
+                <id>update-rsdl</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <executable>wget</executable>
+                  <arguments>
+                    <argument>--http-user=${api.user}</argument>
+                    <argument>--http-password=${api.password}</argument>
+                    <argument>--no-check-certificate</argument>
+                    <argument>--output-document=${basedir}/src/main/resources/api.rsdl</argument>
+                    <argument>${api.url}?rsdl</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
 
 </project>
