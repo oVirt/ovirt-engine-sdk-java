@@ -59,7 +59,7 @@ public class Main {
         new XsdCodegen(xsdPath).generate();
 
         // #2 - generate api entities decorators by RSDL and SDK entry point
-        new RsdlCodegen(rsdlPath).generate();
+        new RsdlCodegen(xsdPath, rsdlPath).generate();
 
         // #3 - exit
         System.exit(0);
