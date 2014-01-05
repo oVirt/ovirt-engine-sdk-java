@@ -142,6 +142,45 @@
       </build>
     </profile>
 
+    <!-- This profile is used to regenerate the SDK from the XML schema and
+         the RSDL documents. To run it use the validate phase and enable the
+         profile:
+
+         mvn validate -Pupdate-code
+
+         After generating the code remember to add the modifications to the
+         source code control system. -->
+    <profile>
+      <id>update-code</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <executions>
+              <execution>
+                <id>update-code</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>java</goal>
+                </goals>
+                <configuration>
+                  <mainClass>org.ovirt.engine.sdk.codegen.Main</mainClass>
+                  <arguments>
+                    <argument>--xsd</argument>
+                    <argument>${basedir}/src/main/resources/api.xsd</argument>
+                    <argument>--rsdl</argument>
+                    <argument>${basedir}/src/main/resources/api.rsdl</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
   </profiles>
 
 </project>
