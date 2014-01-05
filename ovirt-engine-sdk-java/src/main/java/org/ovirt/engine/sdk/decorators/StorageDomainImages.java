@@ -120,12 +120,14 @@ public class StorageDomainImages extends
     public List<StorageDomainImage> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
-                .add("max", max, UrlParameterType.MATRIX)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Images.class,
                 StorageDomainImage.class, headers);

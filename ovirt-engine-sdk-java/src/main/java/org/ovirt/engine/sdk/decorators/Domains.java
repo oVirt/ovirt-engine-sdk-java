@@ -115,12 +115,14 @@ public class Domains extends
     public List<Domain> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        String url = new UrlBuilder(SLASH + getName())
-                .add("max", max, UrlParameterType.MATRIX)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Domains.class,
                 Domain.class, headers);

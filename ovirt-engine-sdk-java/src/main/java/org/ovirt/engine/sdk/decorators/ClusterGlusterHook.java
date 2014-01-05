@@ -86,11 +86,11 @@ public class ClusterGlusterHook extends
             ServerException, IOException {
         String url = this.getHref() + "/resolve";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
@@ -122,12 +122,14 @@ public class ClusterGlusterHook extends
             ServerException, IOException {
         String url = this.getHref() + "/resolve";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
@@ -152,11 +154,11 @@ public class ClusterGlusterHook extends
             ServerException, IOException {
         String url = this.getHref() + "/enable";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
@@ -186,12 +188,14 @@ public class ClusterGlusterHook extends
             ServerException, IOException {
         String url = this.getHref() + "/enable";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
@@ -212,11 +216,11 @@ public class ClusterGlusterHook extends
             ServerException, IOException {
         String url = this.getHref();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
     }
@@ -246,13 +250,17 @@ public class ClusterGlusterHook extends
             ServerException, IOException {
         String url = this.getHref();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .add("async", async, UrlParameterType.MATRIX)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
     }
@@ -277,11 +285,11 @@ public class ClusterGlusterHook extends
             ServerException, IOException {
         String url = this.getHref() + "/disable";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
@@ -311,12 +319,14 @@ public class ClusterGlusterHook extends
             ServerException, IOException {
         String url = this.getHref() + "/disable";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Correlation-Id", correlationId)
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }

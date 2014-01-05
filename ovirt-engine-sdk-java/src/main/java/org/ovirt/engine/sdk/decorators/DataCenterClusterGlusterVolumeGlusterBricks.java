@@ -118,11 +118,11 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "activate";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
@@ -145,11 +145,11 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "stopmigrate";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
@@ -172,11 +172,11 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "migrate";
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
@@ -198,11 +198,11 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, glusterbrick,
                 org.ovirt.engine.sdk.entities.GlusterBrick.class,
