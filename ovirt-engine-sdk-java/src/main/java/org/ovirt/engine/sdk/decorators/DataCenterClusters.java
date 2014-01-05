@@ -153,6 +153,7 @@ public class DataCenterClusters extends
      *    [cluster.tunnel_migration]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
      *    </pre>
      *
      * @return
@@ -202,6 +203,7 @@ public class DataCenterClusters extends
      *    [cluster.tunnel_migration]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
      *    </pre>
      *
      * @param expect

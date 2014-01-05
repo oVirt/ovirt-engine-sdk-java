@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="trusted_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="ballooning_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}display" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -72,7 +73,8 @@ import javax.xml.bind.annotation.XmlType;
     "threadsAsCores",
     "tunnelMigration",
     "trustedService",
-    "ballooningEnabled"
+    "ballooningEnabled",
+    "display"
 })
 public class Cluster
     extends BaseResource
@@ -102,6 +104,7 @@ public class Cluster
     protected Boolean trustedService;
     @XmlElement(name = "ballooning_enabled")
     protected Boolean ballooningEnabled;
+    protected Display display;
 
     /**
      * Gets the value of the cpu property.
@@ -465,6 +468,34 @@ public class Cluster
 
     public boolean isSetBallooningEnabled() {
         return (this.ballooningEnabled!= null);
+    }
+
+    /**
+     * Gets the value of the display property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Display }
+     *
+     */
+    public Display getDisplay() {
+        return display;
+    }
+
+    /**
+     * Sets the value of the display property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Display }
+     *
+     */
+    public void setDisplay(Display value) {
+        this.display = value;
+    }
+
+    public boolean isSetDisplay() {
+        return (this.display!= null);
     }
 
 }

@@ -155,6 +155,7 @@ public class DataCenterCluster extends
      *    [cluster.trusted_service]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
      *    </pre>
      *
      * @return
@@ -208,6 +209,7 @@ public class DataCenterCluster extends
      *    [cluster.trusted_service]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
      *    </pre>
      *
      * @param correlationId

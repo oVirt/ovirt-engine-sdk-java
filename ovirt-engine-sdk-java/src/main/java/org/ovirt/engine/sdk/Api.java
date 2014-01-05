@@ -960,24 +960,6 @@ public class Api implements AutoCloseable {
 
 
     /**
-     * Gets the value of the Time property.
-     *
-     * @return {@link javax.xml.datatype.XMLGregorianCalendar }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     * @throws UnsecuredConnectionAttemptError
-     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
-     */
-    public javax.xml.datatype.XMLGregorianCalendar getTime() throws ClientProtocolException, ServerException,
-            UnsecuredConnectionAttemptError, IOException {
-        return getEntryPoint().getTime();
-    }
-    /**
      * Gets the value of the Summary property.
      *
      * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
@@ -1018,6 +1000,24 @@ public class Api implements AutoCloseable {
             return this.entryPoint.getProductInfo();
         }
         return null;
+    }
+    /**
+     * Gets the value of the Time property.
+     *
+     * @return {@link javax.xml.datatype.XMLGregorianCalendar }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     * @throws UnsecuredConnectionAttemptError
+     *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
+     */
+    public javax.xml.datatype.XMLGregorianCalendar getTime() throws ClientProtocolException, ServerException,
+            UnsecuredConnectionAttemptError, IOException {
+        return getEntryPoint().getTime();
     }
     /**
      * Gets the value of the Comment property.

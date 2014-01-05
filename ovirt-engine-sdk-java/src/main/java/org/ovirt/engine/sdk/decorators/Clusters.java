@@ -161,6 +161,7 @@ public class Clusters extends
      *    [cluster.trusted_service]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
      *    </pre>
      *
      * @return
@@ -213,6 +214,7 @@ public class Clusters extends
      *    [cluster.trusted_service]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
      *    </pre>
      *
      * @param expect

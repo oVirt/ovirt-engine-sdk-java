@@ -91,6 +91,7 @@ public class VmPool extends
      *    [vmpool.comment]
      *    [vmpool.size]
      *    [vmpool.max_user_vms]
+     *    [vmpool.display.proxy]
      *    </pre>
      *
      * @return
@@ -131,6 +132,7 @@ public class VmPool extends
      *    [vmpool.comment]
      *    [vmpool.size]
      *    [vmpool.max_user_vms]
+     *    [vmpool.display.proxy]
      *    </pre>
      *
      * @param correlationId

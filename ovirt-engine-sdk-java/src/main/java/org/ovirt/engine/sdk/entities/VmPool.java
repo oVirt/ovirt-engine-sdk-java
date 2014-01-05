@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}template" minOccurs="0"/>
  *         &lt;element name="prestarted_vms" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="max_user_vms" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element ref="{}display" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -56,7 +57,8 @@ import javax.xml.bind.annotation.XmlType;
     "cluster",
     "template",
     "prestartedVms",
-    "maxUserVms"
+    "maxUserVms",
+    "display"
 })
 public class VmPool
     extends BaseResource
@@ -69,6 +71,7 @@ public class VmPool
     protected Integer prestartedVms;
     @XmlElement(name = "max_user_vms")
     protected Integer maxUserVms;
+    protected Display display;
 
     /**
      * Gets the value of the size property.
@@ -208,6 +211,34 @@ public class VmPool
 
     public boolean isSetMaxUserVms() {
         return (this.maxUserVms!= null);
+    }
+
+    /**
+     * Gets the value of the display property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Display }
+     *
+     */
+    public Display getDisplay() {
+        return display;
+    }
+
+    /**
+     * Sets the value of the display property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Display }
+     *
+     */
+    public void setDisplay(Display value) {
+        this.display = value;
+    }
+
+    public boolean isSetDisplay() {
+        return (this.display!= null);
     }
 
 }

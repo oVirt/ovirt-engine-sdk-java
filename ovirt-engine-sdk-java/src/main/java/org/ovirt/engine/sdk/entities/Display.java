@@ -48,6 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}certificate" minOccurs="0"/>
  *         &lt;element name="smartcard_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="keyboard_layout" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="proxy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -67,7 +68,8 @@ import javax.xml.bind.annotation.XmlType;
     "allowOverride",
     "certificate",
     "smartcardEnabled",
-    "keyboardLayout"
+    "keyboardLayout",
+    "proxy"
 })
 public class Display {
 
@@ -88,6 +90,7 @@ public class Display {
     protected Boolean smartcardEnabled;
     @XmlElement(name = "keyboard_layout")
     protected String keyboardLayout;
+    protected String proxy;
 
     /**
      * Gets the value of the type property.
@@ -367,6 +370,34 @@ public class Display {
 
     public boolean isSetKeyboardLayout() {
         return (this.keyboardLayout!= null);
+    }
+
+    /**
+     * Gets the value of the proxy property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getProxy() {
+        return proxy;
+    }
+
+    /**
+     * Sets the value of the proxy property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setProxy(String value) {
+        this.proxy = value;
+    }
+
+    public boolean isSetProxy() {
+        return (this.proxy!= null);
     }
 
 }
