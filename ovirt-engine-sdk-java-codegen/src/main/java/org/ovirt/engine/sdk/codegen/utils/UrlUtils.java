@@ -16,8 +16,6 @@
 
 package org.ovirt.engine.sdk.codegen.utils;
 
-import org.ovirt.engine.sdk.web.UrlParameterType;
-
 /**
  * Provides URL related services
  */
@@ -33,9 +31,9 @@ public class UrlUtils {
      */
     public static String toParamType(final String context) {
         if (context.equals("query")) {
-            return UrlParameterType.QUERY.toString();
+            return "QUERY";
         } else if (context.equals("matrix")) {
-            return UrlParameterType.MATRIX.toString();
+            return "MATRIX";
         }
         throw new RuntimeException("Unsupported url parameter type \"" + context + "\".");
     }

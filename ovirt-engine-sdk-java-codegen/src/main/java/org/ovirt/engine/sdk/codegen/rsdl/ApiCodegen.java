@@ -29,10 +29,10 @@ import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.RootResourceDynamicTemplate;
 import org.ovirt.engine.sdk.codegen.templates.RootResourceStaticTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
+import org.ovirt.engine.sdk.codegen.utils.ArrayUtils;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
+import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 import org.ovirt.engine.sdk.entities.API;
-import org.ovirt.engine.sdk.utils.ArrayUtils;
-import org.ovirt.engine.sdk.utils.StringUtils;
 
 /**
  * Provides SDK entry point codegen capabilities
@@ -114,8 +114,7 @@ public class ApiCodegen extends AbstractCodegen {
                 new String[] { "Actions", "Href", "Links", "ExtensionType",
                         "CreationStatus", "Id", "Name", "Description", "Class" };
 
-        String[] staticMethods =
-                new String[] { "SpecialObjects", "ProductInfo" };
+        String[] staticMethods = new String[] { "SpecialObjects", "ProductInfo" };
 
         for (Method method : API.class.getMethods()) {
             String simpleMethodName = method.getName().replace("get", "");

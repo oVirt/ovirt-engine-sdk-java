@@ -23,7 +23,7 @@ import org.ovirt.engine.sdk.codegen.utils.UrlUtils;
 import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Header;
 import org.ovirt.engine.sdk.entities.Parameter;
-import org.ovirt.engine.sdk.utils.ArrayUtils;
+import org.ovirt.engine.sdk.codegen.utils.ArrayUtils;
 
 /**
  * Abstract Overloadable-Template class
