@@ -38,12 +38,6 @@
   <dependencies>
 
     <dependency>
-      <groupId>org.ovirt.engine.sdk</groupId>
-      <artifactId>ovirt-engine-sdk-java</artifactId>
-      <version>1.0.0.18-1</version>
-    </dependency>
-
-    <dependency>
       <groupId>com.sun.xsom</groupId>
       <artifactId>xsom</artifactId>
       <version>20110809</version>
@@ -76,6 +70,24 @@
         <configuration>
           <source>1.7</source>
           <target>1.7</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb22-plugin</artifactId>
+        <version>0.8.1</version>
+        <executions>
+          <execution>
+            <id>generate-entities</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <generatePackage>org.ovirt.engine.sdk.entities</generatePackage>
+          <extension>true</extension>
         </configuration>
       </plugin>
 

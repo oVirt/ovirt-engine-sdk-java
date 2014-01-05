@@ -181,4 +181,45 @@ public class StringUtils {
 
         return strings;
     }
+
+    /**
+     * Wraps to LowerCase first char in candidate
+     *
+     * @param candidate
+     *
+     * @return candidate
+     */
+    public static String toLowerCase(String candidate) {
+        if (candidate.length() >= 1)
+            return Character.toLowerCase(candidate.charAt(0)) + candidate.substring(1);
+        return candidate;
+    }
+
+    /**
+     * Converts string to singular form
+     *
+     * @param candidate
+     *
+     * @return singular string
+     */
+    public static String toSingular(String candidate) {
+        if (candidate.length() >= 1 && candidate.endsWith("s")) {
+            return candidate.substring(0, candidate.length() - 1);
+        }
+        return candidate;
+    }
+
+    /**
+     * Converts string to plural form
+     *
+     * @param candidate
+     *
+     * @return plural string
+     */
+    public static String toPlural(String candidate) {
+        if (candidate.length() >= 1 && !candidate.endsWith("s")) {
+            return candidate + "s";
+        }
+        return candidate;
+    }
 }

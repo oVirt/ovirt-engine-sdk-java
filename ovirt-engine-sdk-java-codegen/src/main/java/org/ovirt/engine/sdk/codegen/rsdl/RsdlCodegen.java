@@ -60,8 +60,8 @@ import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.HttpMethod;
 import org.ovirt.engine.sdk.entities.RSDL;
 import org.ovirt.engine.sdk.entities.VersionCaps;
-import org.ovirt.engine.sdk.utils.ArrayUtils;
-import org.ovirt.engine.sdk.utils.StringUtils;
+import org.ovirt.engine.sdk.codegen.utils.ArrayUtils;
+import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 
 /**
  * Provides RSDL related codegen capabilities

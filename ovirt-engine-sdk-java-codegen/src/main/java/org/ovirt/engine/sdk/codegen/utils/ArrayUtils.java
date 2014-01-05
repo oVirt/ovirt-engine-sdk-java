@@ -14,16 +14,28 @@
 // limitations under the License.
 //
 
-package org.ovirt.engine.sdk.codegen.common;
+package org.ovirt.engine.sdk.codegen.utils;
 
-import org.ovirt.engine.sdk.entities.DetailedLink;
-
-public interface IDocCodegen {
+/**
+ * Provides array services
+ */
+public class ArrayUtils {
     /**
-     * Generates the doc string
+     * Checkes if candidate in arr
      *
-     * @param dl
-     *            DetailedLink
+     * @param arr
+     *            array to look at
+     * @param candidate
+     *            candidate to check
+     *
+     * @return True if candidate in array
      */
-    abstract String generate(DetailedLink dl);
+    public static <T> boolean contains(T[] arr, T candidate) {
+        for (T item : arr) {
+            if (item.equals(candidate)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

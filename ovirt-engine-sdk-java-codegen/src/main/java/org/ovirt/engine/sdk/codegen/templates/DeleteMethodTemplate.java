@@ -103,8 +103,8 @@ public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
         StringBuffer templateBuff = new StringBuffer();
 
         if (dl.isSetRequest() && dl.getRequest().isSetBody() && dl.getRequest().getBody().isSetType() && !
-                dl.getRequest().getBody().getType().equals("") && dl.getRequest().getBody().getRequired() != null
-                && dl.getRequest().getBody().getRequired().equals(Boolean.TRUE)) {
+                dl.getRequest().getBody().getType().equals("") && dl.getRequest().getBody().isRequired() != null
+                && dl.getRequest().getBody().isRequired().equals(Boolean.TRUE)) {
             // add delete() with body overload (body is mandatory)
             templateBuff.append(deleteMethodWithBodyTemplate.getTemplate(docParams, dl));
         } else {
@@ -144,10 +144,10 @@ public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
             // add delete() with body overload (body is optional)
             if (dl.isSetRequest() && dl.getRequest().isSetBody() && dl.getRequest().getBody().isSetType()
                     && !dl.getRequest().getBody().getType().equals("")
-                    && ((dl.getRequest().getBody().getRequired() != null
-                    && !dl.getRequest().getBody().getRequired().equals(Boolean.TRUE))
+                    && ((dl.getRequest().getBody().isRequired() != null
+                    && !dl.getRequest().getBody().isRequired().equals(Boolean.TRUE))
                     ||
-                    dl.getRequest().getBody().getRequired() == null)) {
+                    dl.getRequest().getBody().isRequired() == null)) {
                 templateBuff.append(deleteMethodWithBodyTemplate.getTemplate(docParams, dl));
             }
         }

@@ -20,7 +20,7 @@ import org.ovirt.engine.sdk.codegen.templates.SubCollectionGetterTemplate;
 import org.ovirt.engine.sdk.codegen.templates.ResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
-import org.ovirt.engine.sdk.utils.StringUtils;
+import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 
 /**
  * Holds sub-resources

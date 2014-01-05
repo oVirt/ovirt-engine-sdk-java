@@ -16,8 +16,6 @@
 
 package org.ovirt.engine.sdk.codegen.utils;
 
-import org.ovirt.engine.sdk.utils.StringUtils;
-
 /**
  * Provides format related services
  */
