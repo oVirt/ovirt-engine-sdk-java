@@ -62,7 +62,7 @@ public class ApiCodegen extends AbstractCodegen {
     public ApiCodegen(Map<String, CollectionHolder> collectionsHolder,
             VariableTemplate variableTemplate,
             CollectionGetterTemplate collectionGetterTemplate) {
-        super(getApiPath(), true);
+        super(getApiPath());
         this.apiTemplate = new ApiTemplate();
         this.rootResourceStaticTemplate = new RootResourceStaticTemplate();
         this.rootResourceDynamicTemplate = new RootResourceDynamicTemplate();

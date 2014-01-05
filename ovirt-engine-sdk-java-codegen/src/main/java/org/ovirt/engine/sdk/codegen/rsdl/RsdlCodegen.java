@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +31,9 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 
+import com.sun.xml.xsom.XSComplexType;
+import com.sun.xml.xsom.XSSchemaSet;
+import com.sun.xml.xsom.parser.XSOMParser;
 import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
@@ -50,14 +54,9 @@ import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.UpdateMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.OsUtil;
-import org.ovirt.engine.sdk.codegen.utils.ReflectionHelper;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.entities.Capabilities;
 import org.ovirt.engine.sdk.entities.DetailedLink;
-import org.ovirt.engine.sdk.entities.GlusterBrick;
-import org.ovirt.engine.sdk.entities.GlusterBricks;
-import org.ovirt.engine.sdk.entities.HostNIC;
-import org.ovirt.engine.sdk.entities.HostNics;
 import org.ovirt.engine.sdk.entities.HttpMethod;
 import org.ovirt.engine.sdk.entities.RSDL;
 import org.ovirt.engine.sdk.entities.VersionCaps;
@@ -69,11 +68,20 @@ import org.ovirt.engine.sdk.utils.StringUtils;
  */
 public class RsdlCodegen extends AbstractCodegen {
     /**
+     * The location of the XSD file.
+     */
+    private String xsdPath;
+
+    /**
      * The location of the RSDL file.
      */
     private String rsdlPath;
 
-    private Map<String, Class<?>> entitiesMap;
+    /**
+     * This maps contains the mapping between entities as described in the RSDL and the names of the Java classes that
+     * represent those entities.
+     */
+    private Map<String, String> entitiesMap;
 
     private CollectionTemplate collectionTemplate;
     private ResourceTemplate resourceTemplate;
@@ -100,7 +108,6 @@ public class RsdlCodegen extends AbstractCodegen {
     private static final String WINDOWS_DECORATORS_PATH =
             "..\\ovirt-engine-sdk-java\\src\\main\\java\\org\\ovirt\\engine\\sdk\\decorators\\";
     private static final String SLASH = "/";
-    private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
     private static final String DELETE_REL = "delete";
     private static final String UPDATE_REL = "update";
     private static final String ADD_REL = "add";
@@ -119,8 +126,9 @@ public class RsdlCodegen extends AbstractCodegen {
      *
      * @param rsdlPath the path of the file containing the RSDL document
      */
-    public RsdlCodegen(String rsdlPath) {
+    public RsdlCodegen(String xsdPath, String rsdlPath) {
         super(getDecoratorsPath());
+        this.xsdPath = xsdPath;
         this.rsdlPath = rsdlPath;
 
         this.collectionTemplate = new CollectionTemplate();
@@ -146,25 +154,30 @@ public class RsdlCodegen extends AbstractCodegen {
     }
 
     /**
-     * Maps entity to clazz.SimpleName
+     * Maps RSDL entity name to Java class name.
      * 
      * @return EntitiesMap
      */
-    private Map<String, Class<?>> getEntitiesMap() {
-        List<Class<?>> classes = new ArrayList<Class<?>>();
-        Map<String, Class<?>> map = new HashMap<String, Class<?>>();
+    private Map<String, String> getEntitiesMap() {
+        Map<String, String> map = new HashMap<>();
+
+        // Load the XML schema:
+        XSOMParser parser = new XSOMParser();
+        XSSchemaSet schema;
         try {
-            classes = ReflectionHelper.getClasses(ENTITIES_PACKAGE);
-        } catch (ClassNotFoundException e) {
-            // TODO: Log error
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO: Log error
-            e.printStackTrace();
+            parser.parse(new File(xsdPath));
+            schema = parser.getResult();
+        }
+        catch (Exception exception) {
+            throw new RuntimeException("Can't parse XML schema \"" + xsdPath + "\".", exception);
         }
 
-        for (Class<?> clazz : classes) {
-            map.put(clazz.getSimpleName().toLowerCase(), clazz);
+        // For each complex type add an entry to the entities map:
+        Iterator<XSComplexType> types = schema.iterateComplexTypes();
+        while (types.hasNext()) {
+            XSComplexType type = types.next();
+            String name = type.getName();
+            map.put(name.toLowerCase(), name);
         }
 
         return addExceptions(map);
@@ -178,13 +191,13 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return updated map
      */
-    private Map<String, Class<?>> addExceptions(Map<String, Class<?>> map) {
+    private Map<String, String> addExceptions(Map<String, String> map) {
         // FIXME: Fix this on server side or fond a way locating exceptions programatically
 
-        map.put("brick", GlusterBrick.class);
-        map.put("bricks", GlusterBricks.class);
-        map.put("hostnic", HostNIC.class);
-        map.put("hostnics", HostNics.class);
+        map.put("brick", "GlusterBrick");
+        map.put("bricks", "GlusterBricks");
+        map.put("hostnic", "HostNIC");
+        map.put("hostnics", "HostNics");
 
         return map;
     }
@@ -907,7 +920,7 @@ public class RsdlCodegen extends AbstractCodegen {
      */
     private String getPublicCollection(String collectionName) {
         if (this.entitiesMap.containsKey(collectionName.toLowerCase())) {
-            return this.entitiesMap.get(collectionName.toLowerCase()).getSimpleName();
+            return this.entitiesMap.get(collectionName.toLowerCase());
         }
         return null;
     }
@@ -935,7 +948,7 @@ public class RsdlCodegen extends AbstractCodegen {
      */
     private String getPublicEntity(String entityName) {
         if (this.entitiesMap.containsKey(entityName.toLowerCase())) {
-            return this.entitiesMap.get(entityName.toLowerCase()).getSimpleName();
+            return this.entitiesMap.get(entityName.toLowerCase());
         }
         throw new RuntimeException("Public entity \"" + entityName + "\" fetch has failed.");
     }

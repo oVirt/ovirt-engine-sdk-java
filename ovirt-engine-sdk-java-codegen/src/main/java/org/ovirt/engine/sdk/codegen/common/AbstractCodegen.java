@@ -16,12 +16,10 @@
 
 package org.ovirt.engine.sdk.codegen.common;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
-import org.ovirt.engine.sdk.codegen.compile.CodeCompiler;
 import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 
 /**
@@ -31,9 +29,6 @@ public abstract class AbstractCodegen implements ICodegen {
 
     private final String distPath;
 
-    private final CodeCompiler codeCompiler;
-    private boolean dontCompile = false;
-
     /**
      * @param distPath
      *            path to generate the code in
@@ -41,20 +36,6 @@ public abstract class AbstractCodegen implements ICodegen {
     public AbstractCodegen(String distPath) {
         super();
         this.distPath = distPath;
-        this.codeCompiler = new CodeCompiler(getPackagePath());
-    }
-
-    /**
-     * @param distPath
-     *            path to generate the code in
-     * @param dontCompile
-     *            disables compilation post gen()
-     */
-    public AbstractCodegen(String distPath, boolean dontCompile) {
-        super();
-        this.distPath = distPath;
-        this.codeCompiler = new CodeCompiler(getPackagePath());
-        this.dontCompile = dontCompile;
     }
 
     /**
@@ -67,24 +48,6 @@ public abstract class AbstractCodegen implements ICodegen {
     public void generate() throws IOException, JAXBException {
         doCleanPackage(this.distPath);
         doGenerate(this.distPath);
-        doCompile();
-    }
-
-    /**
-     * Compiles generated code
-     */
-    private void doCompile() {
-        if (!this.dontCompile) {
-            codeCompiler.compile();
-        }
-    }
-
-    /**
-     * @return root package path
-     */
-    private String getPackagePath() {
-        String[] split = this.distPath.split(File.separator);
-        return split[0] + File.separator + split[1];
     }
 
     /**
@@ -106,13 +69,6 @@ public abstract class AbstractCodegen implements ICodegen {
      */
     protected void doCleanPackage(String dir) {
         FileUtils.deleteAllFiles(dir);
-    }
-
-    /***
-     * @return path to generate the code in
-     */
-    protected String getDistinationPath() {
-        return distPath;
     }
 
     /**
