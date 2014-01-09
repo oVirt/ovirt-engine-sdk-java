@@ -189,6 +189,7 @@ public class HostNIC extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -219,6 +220,7 @@ public class HostNIC extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId

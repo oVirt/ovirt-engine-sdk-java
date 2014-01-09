@@ -179,6 +179,8 @@ public class Host extends
      *      [action.ssh.user.user_name]
      *      [action.ssh.user.password]
      *      [action.image]
+     *      [action.async]
+     *      [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -234,6 +236,8 @@ public class Host extends
      *      [action.ssh.user.user_name]
      *      [action.ssh.user.password]
      *      [action.image]
+     *      [action.async]
+     *      [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -270,6 +274,11 @@ public class Host extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -296,6 +305,11 @@ public class Host extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -507,6 +521,8 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.fence_type
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -537,6 +553,8 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.fence_type
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -575,6 +593,8 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.iscsi.address
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -605,6 +625,8 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.iscsi.address
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -716,6 +738,8 @@ public class Host extends
      *    <pre>
      *    action.iscsi.address
      *    action.iscsi.target
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -747,6 +771,8 @@ public class Host extends
      *    <pre>
      *    action.iscsi.address
      *    action.iscsi.target
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -783,6 +809,11 @@ public class Host extends
      * Performs forceselectspm action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -809,6 +840,11 @@ public class Host extends
      * Performs forceselectspm action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -910,6 +946,8 @@ public class Host extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -954,6 +992,11 @@ public class Host extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -980,6 +1023,11 @@ public class Host extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -1014,6 +1062,11 @@ public class Host extends
      * Performs commitnetconfig action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -1040,6 +1093,11 @@ public class Host extends
      * Performs commitnetconfig action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]

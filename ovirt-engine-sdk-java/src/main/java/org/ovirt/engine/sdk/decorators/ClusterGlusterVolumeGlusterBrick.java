@@ -88,6 +88,8 @@ public class ClusterGlusterVolumeGlusterBrick extends
      *    action.brick.server_id
      *    action.brick.brick_dir
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -120,6 +122,8 @@ public class ClusterGlusterVolumeGlusterBrick extends
      *    action.brick.server_id
      *    action.brick.brick_dir
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId

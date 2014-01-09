@@ -101,6 +101,11 @@ public class VMDisk extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -127,6 +132,11 @@ public class VMDisk extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -263,6 +273,8 @@ public class VMDisk extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -293,6 +305,8 @@ public class VMDisk extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -396,6 +410,8 @@ public class VMDisk extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.detach
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -440,6 +456,11 @@ public class VMDisk extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -466,6 +487,11 @@ public class VMDisk extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]

@@ -345,7 +345,14 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
-                    <parameters_set/>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -367,7 +374,14 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
-                    <parameters_set/>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -395,6 +409,12 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>action.host.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -615,6 +635,12 @@ or less indicates that the session should never timeout</description>
 </parameter>
                             </parameters_set>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -648,6 +674,12 @@ or less indicates that the session should never timeout</description>
 </parameter>
                             </parameters_set>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -680,6 +712,12 @@ or less indicates that the session should never timeout</description>
     <name>brick.name</name>
 </parameter>
                             </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -737,6 +775,12 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>action.force</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -797,6 +841,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.force</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -822,6 +872,12 @@ or less indicates that the session should never timeout</description>
                     <type>Action</type>
                     <parameters_set>
                         <description>resets all options for the gluster volume attached to the cluster</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -853,6 +909,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="true" type="xs:boolean">
                             <name>action.force</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -883,6 +945,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="true" type="xs:string">
                             <name>action.option.value</name>
                         </parameter>
+                        <parameter required="true" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="true" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -910,6 +978,12 @@ or less indicates that the session should never timeout</description>
                         <description>start the gluster volume attached to the cluster with an optional argument to force the operation</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.force</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -939,6 +1013,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.force</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -964,6 +1044,12 @@ or less indicates that the session should never timeout</description>
                     <type>Action</type>
                     <parameters_set>
                         <description>invoke the stop rebalance command on the gluster volume attached to the cluster</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -1299,6 +1385,12 @@ or less indicates that the session should never timeout</description>
                         <description>delete the specified data center in the system</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.force</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -2503,6 +2595,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>activate the specified storage domain in the data center</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -2525,6 +2626,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>deactivate the specified storage domain in the data center</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -2742,6 +2852,12 @@ or less indicates that the session should never timeout</description>
                     <parameters_set>
                         <parameter required="true" type="xs:string">
                             <name>storagedomain.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -3975,6 +4091,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.force</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -4234,6 +4356,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>activate the specified host in the system</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -4290,6 +4421,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>commit the changes made to network configuration of the host</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -4312,6 +4452,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>deactivate the specified host</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -4339,6 +4488,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="true" type="xs:string">
                             <name>action.fence_type</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -4362,6 +4517,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>force the specified to be selected as storage pool manager</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -4432,6 +4596,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:string">
                             <name>action.image</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -4459,6 +4629,12 @@ or less indicates that the session should never timeout</description>
                         <description>initiate the command to discover the iscsi targets and map the targets to the storage server connections</description>
                         <parameter required="true" type="xs:string">
                             <name>action.iscsi.address</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -4490,6 +4666,12 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="true" type="xs:string">
                             <name>action.iscsi.target</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -4639,6 +4821,12 @@ or less indicates that the session should never timeout</description>
 </parameter>
 <parameter required="false" type="xs:boolean">
     <name>host_nic.override_configuration</name>
+</parameter>
+<parameter required="false" type="xs:boolean">
+    <name>action.async</name>
+</parameter>
+<parameter required="false" type="xs:long">
+    <name>action.grace_period.expiry</name>
 </parameter>
                             </parameters_set>
                         </parameter>
@@ -4822,6 +5010,9 @@ or less indicates that the session should never timeout</description>
                         <description>detach the network interface card from the specified host</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -5167,6 +5358,12 @@ or less indicates that the session should never timeout</description>
                     <type>Action</type>
                     <parameters_set>
                         <description>clear the specified external job in the system</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -5197,6 +5394,12 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>action.force</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -5297,6 +5500,12 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>action.status.state</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -6852,6 +7061,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="true" type="xs:string">
                             <name>storagedomain.id|name</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -7249,6 +7464,12 @@ or less indicates that the session should never timeout</description>
 </parameter>
                             </parameters_set>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -7371,6 +7592,9 @@ or less indicates that the session should never timeout</description>
     <name>disk.id</name>
 </parameter>
                             </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -7958,6 +8182,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.force</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -8032,6 +8262,12 @@ or less indicates that the session should never timeout</description>
                     <parameters_set>
                         <parameter required="true" type="xs:string">
                             <name>storagedomain.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -9014,6 +9250,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.async</name>
                         </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -9728,6 +9967,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.vm.disks.detach_only</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -10110,6 +10355,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>detach a virtual machine in the system identified by the given id from the storage domain</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -10311,6 +10565,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="true" type="xs:boolean">
                             <name>action.detach</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -10401,6 +10661,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>activate a disk attached to a virtual machine</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -10423,6 +10692,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>deactivate a disk attached to a virtual machine</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -10451,6 +10729,12 @@ or less indicates that the session should never timeout</description>
                     <parameters_set>
                         <parameter required="true" type="xs:string">
                             <name>storagedomain.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -11067,6 +11351,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>shutdown a virtual machine in the system identified by the given id</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -11249,6 +11542,12 @@ or less indicates that the session should never timeout</description>
                         <description>restore the virtual machine from a given snapshot</description>
                         <parameter required="false" type="xs:boolean">
                             <name>action.restore_memory</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -11461,6 +11760,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>stop a virtual machine in the system identified by the given id</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -11483,6 +11791,15 @@ or less indicates that the session should never timeout</description>
                 </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <description>suspend a virtual machine in the system identified by the given id</description>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -11586,6 +11903,12 @@ or less indicates that the session should never timeout</description>
                         <description>Create a ticket for connecting to the VM using the display protocol.</description>
                         <parameter required="false" type="xs:string">
                             <name>action.ticket.value</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
                 </body>

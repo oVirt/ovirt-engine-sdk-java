@@ -77,6 +77,7 @@ public class ObjectFactory {
     private final static QName _Vm_QNAME = new QName("", "vm");
     private final static QName _StorageDomainStates_QNAME = new QName("", "storage_domain_states");
     private final static QName _Events_QNAME = new QName("", "events");
+    private final static QName _UsageMessage_QNAME = new QName("", "usage_message");
     private final static QName _DetailedLinks_QNAME = new QName("", "detailedLinks");
     private final static QName _Mac_QNAME = new QName("", "mac");
     private final static QName _Usb_QNAME = new QName("", "usb");
@@ -519,6 +520,14 @@ public class ObjectFactory {
      */
     public Events createEvents() {
         return new Events();
+    }
+
+    /**
+     * Create an instance of {@link UsageMessage }
+     *
+     */
+    public UsageMessage createUsageMessage() {
+        return new UsageMessage();
     }
 
     /**
@@ -2384,6 +2393,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "events")
     public JAXBElement<Events> createEvents(Events value) {
         return new JAXBElement<Events>(_Events_QNAME, Events.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UsageMessage }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "usage_message")
+    public JAXBElement<UsageMessage> createUsageMessage(UsageMessage value) {
+        return new JAXBElement<UsageMessage>(_UsageMessage_QNAME, UsageMessage.class, null, value);
     }
 
     /**

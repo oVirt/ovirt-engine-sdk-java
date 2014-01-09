@@ -86,6 +86,8 @@ public class ClusterGlusterVolume extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -116,6 +118,8 @@ public class ClusterGlusterVolume extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -154,6 +158,8 @@ public class ClusterGlusterVolume extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -184,6 +190,8 @@ public class ClusterGlusterVolume extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -221,6 +229,8 @@ public class ClusterGlusterVolume extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -250,6 +260,8 @@ public class ClusterGlusterVolume extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -314,6 +326,8 @@ public class ClusterGlusterVolume extends
      *    <pre>
      *    action.option.name
      *    action.force
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -345,6 +359,8 @@ public class ClusterGlusterVolume extends
      *    <pre>
      *    action.option.name
      *    action.force
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -382,6 +398,8 @@ public class ClusterGlusterVolume extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -411,6 +429,8 @@ public class ClusterGlusterVolume extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -450,6 +470,8 @@ public class ClusterGlusterVolume extends
      *    <pre>
      *    action.option.name
      *    action.option.value
+     *    action.async
+     *    action.grace_period.expiry
      *    </pre>
      *
      * @return
@@ -481,6 +503,8 @@ public class ClusterGlusterVolume extends
      *    <pre>
      *    action.option.name
      *    action.option.value
+     *    action.async
+     *    action.grace_period.expiry
      *    </pre>
      *
      * @param correlationId
@@ -520,6 +544,8 @@ public class ClusterGlusterVolume extends
      *    <pre>
      *    [action.fix_layout]
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -551,6 +577,8 @@ public class ClusterGlusterVolume extends
      *    <pre>
      *    [action.fix_layout]
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId

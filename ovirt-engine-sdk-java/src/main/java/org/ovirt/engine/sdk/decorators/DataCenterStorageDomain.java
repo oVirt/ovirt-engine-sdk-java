@@ -84,6 +84,11 @@ public class DataCenterStorageDomain extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -110,6 +115,11 @@ public class DataCenterStorageDomain extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -209,6 +219,11 @@ public class DataCenterStorageDomain extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -235,6 +250,11 @@ public class DataCenterStorageDomain extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]

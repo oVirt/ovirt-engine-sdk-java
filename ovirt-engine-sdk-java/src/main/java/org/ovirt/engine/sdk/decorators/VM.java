@@ -237,6 +237,11 @@ public class VM extends
      * Performs suspend action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -263,6 +268,11 @@ public class VM extends
      * Performs suspend action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -451,6 +461,11 @@ public class VM extends
      * Performs stop action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -477,6 +492,11 @@ public class VM extends
      * Performs stop action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -613,6 +633,11 @@ public class VM extends
      * Performs detach action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -639,6 +664,11 @@ public class VM extends
      * Performs detach action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -675,6 +705,8 @@ public class VM extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.ticket.value]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -705,6 +737,8 @@ public class VM extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.ticket.value]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -995,6 +1029,8 @@ public class VM extends
      *    <pre>
      *    [action.force]
      *    [action.vm.disks.detach_only]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -1111,6 +1147,11 @@ public class VM extends
      * Performs shutdown action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -1137,6 +1178,11 @@ public class VM extends
      * Performs shutdown action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]

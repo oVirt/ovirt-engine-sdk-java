@@ -53,6 +53,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}template" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain" minOccurs="0"/>
  *         &lt;element name="start_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="stop_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="creation_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="origin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -104,6 +105,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "template",
     "storageDomain",
     "startTime",
+    "stopTime",
     "creationTime",
     "origin",
     "stateless",
@@ -158,6 +160,9 @@ public class VM
     @XmlElement(name = "start_time")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar startTime;
+    @XmlElement(name = "stop_time")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar stopTime;
     @XmlElement(name = "creation_time")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar creationTime;
@@ -560,6 +565,34 @@ public class VM
 
     public boolean isSetStartTime() {
         return (this.startTime!= null);
+    }
+
+    /**
+     * Gets the value of the stopTime property.
+     *
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *
+     */
+    public XMLGregorianCalendar getStopTime() {
+        return stopTime;
+    }
+
+    /**
+     * Sets the value of the stopTime property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *
+     */
+    public void setStopTime(XMLGregorianCalendar value) {
+        this.stopTime = value;
+    }
+
+    public boolean isSetStopTime() {
+        return (this.stopTime!= null);
     }
 
     /**

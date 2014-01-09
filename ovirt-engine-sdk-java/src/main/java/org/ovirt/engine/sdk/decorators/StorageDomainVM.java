@@ -158,6 +158,7 @@ public class StorageDomainVM extends
      *    [action.exclusive]
      *    [action.vm.name]
      *    [action.vm.disks.disk]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -195,6 +196,7 @@ public class StorageDomainVM extends
      *    [action.exclusive]
      *    [action.vm.name]
      *    [action.vm.disks.disk]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId

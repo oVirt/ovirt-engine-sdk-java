@@ -69,6 +69,8 @@ public class TemplateDisk extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -99,6 +101,8 @@ public class TemplateDisk extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -203,6 +207,8 @@ public class TemplateDisk extends
      *    <pre>
      *    [action.storage_domain.id]
      *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId

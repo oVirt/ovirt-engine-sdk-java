@@ -70,6 +70,8 @@ public class ClusterGlusterHook extends
      *    <pre>
      *    action.resolution_type
      *    [action.host.id|name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -101,6 +103,8 @@ public class ClusterGlusterHook extends
      *    <pre>
      *    action.resolution_type
      *    [action.host.id|name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -138,6 +142,8 @@ public class ClusterGlusterHook extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -167,6 +173,8 @@ public class ClusterGlusterHook extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -269,6 +277,8 @@ public class ClusterGlusterHook extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -298,6 +308,8 @@ public class ClusterGlusterHook extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId

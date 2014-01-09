@@ -87,6 +87,8 @@ public class JobStep extends
      *    <pre>
      *    [action.force]
      *    [action.status.state]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -118,6 +120,8 @@ public class JobStep extends
      *    <pre>
      *    [action.force]
      *    [action.status.state]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId

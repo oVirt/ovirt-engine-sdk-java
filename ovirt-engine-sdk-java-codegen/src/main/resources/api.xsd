@@ -117,6 +117,16 @@
     </xs:sequence>
   </xs:complexType>
 
+
+  <xs:element name="usage_message" type="UsageMessage"/>
+
+  <xs:complexType name="UsageMessage">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string"/>
+      <xs:element ref="detailedLink" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- Actions -->
 
   <xs:complexType name="GracePeriod">
@@ -2505,6 +2515,7 @@
           <xs:element ref="template" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="storage_domain" minOccurs="0" maxOccurs="1"/>
           <xs:element name="start_time" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="stop_time" type="xs:dateTime" minOccurs="0"/>
           <xs:element name="creation_time" type="xs:dateTime" minOccurs="0"/>
           <xs:element name="origin" type="xs:string" minOccurs="0"/>
           <xs:element name="stateless" type="xs:boolean" minOccurs="0"/>

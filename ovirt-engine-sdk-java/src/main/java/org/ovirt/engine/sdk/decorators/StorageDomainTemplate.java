@@ -156,6 +156,8 @@ public class StorageDomainTemplate extends
      *    [action.exclusive]
      *    [action.template.name]
      *    [action.vm.disks.disk]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -191,6 +193,8 @@ public class StorageDomainTemplate extends
      *    [action.exclusive]
      *    [action.template.name]
      *    [action.vm.disks.disk]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
