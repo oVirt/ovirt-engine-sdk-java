@@ -29,7 +29,12 @@ Source0:        http://ovirt.org/releases/stable/src/%{name}-%{version}.tar.gz
 
 BuildArch: noarch
 
+%if 0%{?fedora}
 BuildRequires:  java-devel
+%endif
+%if 0%{?rhel}
+BuildRequires:  java7-devel
+%endif
 BuildRequires:  jpackage-utils
 
 %if %{require_java_dep}
@@ -52,10 +57,17 @@ BuildRequires:  maven-source-plugin
 
 Requires: java
 Requires: httpcomponents-client >= 4.2
-Requires: apache-commons-logging
-Requires: apache-commons-beanutils
-Requires: commons-codec
 Requires: log4j
+%if 0%{?rhel}
+Requires: jakarta-commons-beanutils
+Requires: jakarta-commons-codec
+Requires: jakarta-commons-logging
+%endif
+%if 0%{?fedora}
+Requires: apache-commons-beanutils
+Requires: apache-commons-codec
+Requires: apache-commons-logging
+%endif
 
 %description
 This package contains The oVirt-Engine Java Software Development Kit.
