@@ -742,6 +742,15 @@ public class VM extends
      *    [action.pause]
      *    [action.vm.os.boot]
      *    [action.vm.domain.user.password]
+     *    [action.vm.initialization.cloud_init.hostname]
+     *    [action.vm.initialization.cloud_init.network_configuration.nics.nic]
+     *    [action.vm.initialization.cloud_init.network_configuration.dns.servers.host]
+     *    [action.vm.initialization.cloud_init.network_configuration.dns.search_domains.host]
+     *    [action.vm.initialization.cloud_init.authorized_keys.authorized_key]
+     *    [action.vm.initialization.cloud_init.regenerate_ssh_keys]
+     *    [action.vm.initialization.cloud_init.timezone]
+     *    [action.vm.initialization.cloud_init.users.user]
+     *    [action.vm.initialization.cloud_init.payload_files.payload_file]
      *    </pre>
      *
      * @return
@@ -785,6 +794,15 @@ public class VM extends
      *    [action.pause]
      *    [action.vm.os.boot]
      *    [action.vm.domain.user.password]
+     *    [action.vm.initialization.cloud_init.hostname]
+     *    [action.vm.initialization.cloud_init.network_configuration.nics.nic]
+     *    [action.vm.initialization.cloud_init.network_configuration.dns.servers.host]
+     *    [action.vm.initialization.cloud_init.network_configuration.dns.search_domains.host]
+     *    [action.vm.initialization.cloud_init.authorized_keys.authorized_key]
+     *    [action.vm.initialization.cloud_init.regenerate_ssh_keys]
+     *    [action.vm.initialization.cloud_init.timezone]
+     *    [action.vm.initialization.cloud_init.users.user]
+     *    [action.vm.initialization.cloud_init.payload_files.payload_file]
      *    </pre>
      *
      * @param correlationId

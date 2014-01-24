@@ -942,9 +942,9 @@ public class Api implements AutoCloseable {
 
 
     /**
-     * Gets the value of the Time property.
+     * Gets the value of the Summary property.
      *
-     * @return {@link javax.xml.datatype.XMLGregorianCalendar }
+     * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -955,9 +955,9 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
-    public javax.xml.datatype.XMLGregorianCalendar getTime() throws ClientProtocolException, ServerException,
+    public org.ovirt.engine.sdk.entities.ApiSummary getSummary() throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {
-        return getEntryPoint().getTime();
+        return getEntryPoint().getSummary();
     }
     /**
      * Gets the value of the SpecialObjects property.
@@ -984,9 +984,9 @@ public class Api implements AutoCloseable {
         return null;
     }
     /**
-     * Gets the value of the Summary property.
+     * Gets the value of the Time property.
      *
-     * @return {@link org.ovirt.engine.sdk.entities.ApiSummary }
+     * @return {@link javax.xml.datatype.XMLGregorianCalendar }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -997,9 +997,9 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
-    public org.ovirt.engine.sdk.entities.ApiSummary getSummary() throws ClientProtocolException, ServerException,
+    public javax.xml.datatype.XMLGregorianCalendar getTime() throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {
-        return getEntryPoint().getSummary();
+        return getEntryPoint().getTime();
     }
     /**
      * Gets the value of the Comment property.

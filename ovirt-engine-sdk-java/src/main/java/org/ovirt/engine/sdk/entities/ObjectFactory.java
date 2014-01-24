@@ -70,6 +70,7 @@ public class ObjectFactory {
     private final static QName _Roles_QNAME = new QName("", "roles");
     private final static QName _PowerManagementStates_QNAME = new QName("", "power_management_states");
     private final static QName _VirtioScsi_QNAME = new QName("", "virtio_scsi");
+    private final static QName _AuthorizedKey_QNAME = new QName("", "authorized_key");
     private final static QName _Nics_QNAME = new QName("", "nics");
     private final static QName _TemplateStates_QNAME = new QName("", "template_states");
     private final static QName _OsTypes_QNAME = new QName("", "os_types");
@@ -86,11 +87,13 @@ public class ObjectFactory {
     private final static QName _Snapshots_QNAME = new QName("", "snapshots");
     private final static QName _Tags_QNAME = new QName("", "tags");
     private final static QName _Cdroms_QNAME = new QName("", "cdroms");
+    private final static QName _NetworkConfiguration_QNAME = new QName("", "network_configuration");
     private final static QName _Quotas_QNAME = new QName("", "quotas");
-    private final static QName _MemoryPools_QNAME = new QName("", "memory_pools");
     private final static QName _ContentTypes_QNAME = new QName("", "content_types");
+    private final static QName _MemoryPools_QNAME = new QName("", "memory_pools");
     private final static QName _KeyValuePair_QNAME = new QName("", "keyValuePair");
     private final static QName _Slaves_QNAME = new QName("", "slaves");
+    private final static QName _Dns_QNAME = new QName("", "dns");
     private final static QName _Fault_QNAME = new QName("", "fault");
     private final static QName _VmAffinities_QNAME = new QName("", "vm_affinities");
     private final static QName _GlusterVolumes_QNAME = new QName("", "gluster_volumes");
@@ -160,12 +163,14 @@ public class ObjectFactory {
     private final static QName _StorageFormats_QNAME = new QName("", "storage_formats");
     private final static QName _CustomProperties_QNAME = new QName("", "custom_properties");
     private final static QName _Watchdogs_QNAME = new QName("", "watchdogs");
+    private final static QName _AuthorizedKeys_QNAME = new QName("", "authorized_keys");
     private final static QName _Creation_QNAME = new QName("", "creation");
     private final static QName _PowerManagers_QNAME = new QName("", "power_managers");
     private final static QName _VmStates_QNAME = new QName("", "vm_states");
     private final static QName _Link_QNAME = new QName("", "link");
     private final static QName _DataCenterStates_QNAME = new QName("", "data_center_states");
     private final static QName _Version_QNAME = new QName("", "version");
+    private final static QName _CloudInit_QNAME = new QName("", "cloud_init");
     private final static QName _VcpuPin_QNAME = new QName("", "vcpu_pin");
     private final static QName _Cpus_QNAME = new QName("", "cpus");
     private final static QName _BrickDetails_QNAME = new QName("", "brick_details");
@@ -202,10 +207,11 @@ public class ObjectFactory {
     private final static QName _Permission_QNAME = new QName("", "permission");
     private final static QName _FenceTypes_QNAME = new QName("", "fence_types");
     private final static QName _ReportedDeviceTypes_QNAME = new QName("", "reported_device_types");
+    private final static QName _PayloadEncodings_QNAME = new QName("", "payload_encodings");
     private final static QName _Floppy_QNAME = new QName("", "floppy");
     private final static QName _Console_QNAME = new QName("", "console");
-    private final static QName _Clusters_QNAME = new QName("", "clusters");
     private final static QName _ServerHooks_QNAME = new QName("", "server_hooks");
+    private final static QName _Clusters_QNAME = new QName("", "clusters");
     private final static QName _CpuModes_QNAME = new QName("", "cpu_modes");
     private final static QName _Images_QNAME = new QName("", "images");
     private final static QName _Permits_QNAME = new QName("", "permits");
@@ -230,8 +236,8 @@ public class ObjectFactory {
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
     private final static QName _Application_QNAME = new QName("", "application");
     private final static QName _Nic_QNAME = new QName("", "nic");
-    private final static QName _SgioOptions_QNAME = new QName("", "sgio_options");
     private final static QName _Ip_QNAME = new QName("", "ip");
+    private final static QName _SgioOptions_QNAME = new QName("", "sgio_options");
     private final static QName _ServerHook_QNAME = new QName("", "server_hook");
     private final static QName _WatchdogActions_QNAME = new QName("", "watchdog_actions");
     private final static QName _PmProxies_QNAME = new QName("", "pm_proxies");
@@ -460,6 +466,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AuthorizedKey }
+     *
+     */
+    public AuthorizedKey createAuthorizedKey() {
+        return new AuthorizedKey();
+    }
+
+    /**
      * Create an instance of {@link Nics }
      *
      */
@@ -588,19 +602,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link NetworkConfiguration }
+     *
+     */
+    public NetworkConfiguration createNetworkConfiguration() {
+        return new NetworkConfiguration();
+    }
+
+    /**
      * Create an instance of {@link Quotas }
      *
      */
     public Quotas createQuotas() {
         return new Quotas();
-    }
-
-    /**
-     * Create an instance of {@link GlusterMemoryPools }
-     *
-     */
-    public GlusterMemoryPools createGlusterMemoryPools() {
-        return new GlusterMemoryPools();
     }
 
     /**
@@ -612,11 +626,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GlusterMemoryPools }
+     *
+     */
+    public GlusterMemoryPools createGlusterMemoryPools() {
+        return new GlusterMemoryPools();
+    }
+
+    /**
      * Create an instance of {@link KeyValuePair }
      *
      */
     public KeyValuePair createKeyValuePair() {
         return new KeyValuePair();
+    }
+
+    /**
+     * Create an instance of {@link DNS }
+     *
+     */
+    public DNS createDNS() {
+        return new DNS();
     }
 
     /**
@@ -1180,6 +1210,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AuthorizedKeys }
+     *
+     */
+    public AuthorizedKeys createAuthorizedKeys() {
+        return new AuthorizedKeys();
+    }
+
+    /**
      * Create an instance of {@link Creation }
      *
      */
@@ -1225,6 +1263,14 @@ public class ObjectFactory {
      */
     public VersionCaps createVersionCaps() {
         return new VersionCaps();
+    }
+
+    /**
+     * Create an instance of {@link CloudInit }
+     *
+     */
+    public CloudInit createCloudInit() {
+        return new CloudInit();
     }
 
     /**
@@ -1516,6 +1562,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PayloadEncodings }
+     *
+     */
+    public PayloadEncodings createPayloadEncodings() {
+        return new PayloadEncodings();
+    }
+
+    /**
      * Create an instance of {@link Floppy }
      *
      */
@@ -1532,19 +1586,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Clusters }
-     *
-     */
-    public Clusters createClusters() {
-        return new Clusters();
-    }
-
-    /**
      * Create an instance of {@link GlusterServerHooks }
      *
      */
     public GlusterServerHooks createGlusterServerHooks() {
         return new GlusterServerHooks();
+    }
+
+    /**
+     * Create an instance of {@link Clusters }
+     *
+     */
+    public Clusters createClusters() {
+        return new Clusters();
     }
 
     /**
@@ -2270,6 +2324,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorizedKey }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "authorized_key")
+    public JAXBElement<AuthorizedKey> createAuthorizedKey(AuthorizedKey value) {
+        return new JAXBElement<AuthorizedKey>(_AuthorizedKey_QNAME, AuthorizedKey.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Nics }{@code >}}
      *
      */
@@ -2414,6 +2477,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NetworkConfiguration }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "network_configuration")
+    public JAXBElement<NetworkConfiguration> createNetworkConfiguration(NetworkConfiguration value) {
+        return new JAXBElement<NetworkConfiguration>(_NetworkConfiguration_QNAME, NetworkConfiguration.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Quotas }{@code >}}
      *
      */
@@ -2423,21 +2495,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterMemoryPools }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "memory_pools")
-    public JAXBElement<GlusterMemoryPools> createMemoryPools(GlusterMemoryPools value) {
-        return new JAXBElement<GlusterMemoryPools>(_MemoryPools_QNAME, GlusterMemoryPools.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ContentTypes }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "content_types")
     public JAXBElement<ContentTypes> createContentTypes(ContentTypes value) {
         return new JAXBElement<ContentTypes>(_ContentTypes_QNAME, ContentTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterMemoryPools }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "memory_pools")
+    public JAXBElement<GlusterMemoryPools> createMemoryPools(GlusterMemoryPools value) {
+        return new JAXBElement<GlusterMemoryPools>(_MemoryPools_QNAME, GlusterMemoryPools.class, null, value);
     }
 
     /**
@@ -2456,6 +2528,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "slaves")
     public JAXBElement<Slaves> createSlaves(Slaves value) {
         return new JAXBElement<Slaves>(_Slaves_QNAME, Slaves.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DNS }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "dns")
+    public JAXBElement<DNS> createDns(DNS value) {
+        return new JAXBElement<DNS>(_Dns_QNAME, DNS.class, null, value);
     }
 
     /**
@@ -3080,6 +3161,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AuthorizedKeys }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "authorized_keys")
+    public JAXBElement<AuthorizedKeys> createAuthorizedKeys(AuthorizedKeys value) {
+        return new JAXBElement<AuthorizedKeys>(_AuthorizedKeys_QNAME, AuthorizedKeys.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Creation }{@code >}}
      *
      */
@@ -3131,6 +3221,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "version")
     public JAXBElement<VersionCaps> createVersion(VersionCaps value) {
         return new JAXBElement<VersionCaps>(_Version_QNAME, VersionCaps.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CloudInit }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "cloud_init")
+    public JAXBElement<CloudInit> createCloudInit(CloudInit value) {
+        return new JAXBElement<CloudInit>(_CloudInit_QNAME, CloudInit.class, null, value);
     }
 
     /**
@@ -3458,6 +3557,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PayloadEncodings }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "payload_encodings")
+    public JAXBElement<PayloadEncodings> createPayloadEncodings(PayloadEncodings value) {
+        return new JAXBElement<PayloadEncodings>(_PayloadEncodings_QNAME, PayloadEncodings.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Floppy }{@code >}}
      *
      */
@@ -3476,21 +3584,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Clusters }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "clusters")
-    public JAXBElement<Clusters> createClusters(Clusters value) {
-        return new JAXBElement<Clusters>(_Clusters_QNAME, Clusters.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GlusterServerHooks }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "server_hooks")
     public JAXBElement<GlusterServerHooks> createServerHooks(GlusterServerHooks value) {
         return new JAXBElement<GlusterServerHooks>(_ServerHooks_QNAME, GlusterServerHooks.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Clusters }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "clusters")
+    public JAXBElement<Clusters> createClusters(Clusters value) {
+        return new JAXBElement<Clusters>(_Clusters_QNAME, Clusters.class, null, value);
     }
 
     /**
@@ -3710,21 +3818,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ScsiGenericIoOptions }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "sgio_options")
-    public JAXBElement<ScsiGenericIoOptions> createSgioOptions(ScsiGenericIoOptions value) {
-        return new JAXBElement<ScsiGenericIoOptions>(_SgioOptions_QNAME, ScsiGenericIoOptions.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IP }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "ip")
     public JAXBElement<IP> createIp(IP value) {
         return new JAXBElement<IP>(_Ip_QNAME, IP.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ScsiGenericIoOptions }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "sgio_options")
+    public JAXBElement<ScsiGenericIoOptions> createSgioOptions(ScsiGenericIoOptions value) {
+        return new JAXBElement<ScsiGenericIoOptions>(_SgioOptions_QNAME, ScsiGenericIoOptions.class, null, value);
     }
 
     /**

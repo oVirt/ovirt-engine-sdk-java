@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}files"/>
- *         &lt;element name="volume_id" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="volume_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -58,7 +58,7 @@ public class Payload {
 
     @XmlElement(required = true)
     protected Files files;
-    @XmlElement(name = "volume_id", required = true)
+    @XmlElement(name = "volume_id")
     protected String volumeId;
     @XmlAttribute(name = "type")
     protected String type;

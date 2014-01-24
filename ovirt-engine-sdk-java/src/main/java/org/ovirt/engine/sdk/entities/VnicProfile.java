@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element ref="{}network"/>
+ *         &lt;element ref="{}network" minOccurs="0"/>
  *         &lt;element name="port_mirroring" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}custom_properties" minOccurs="0"/>
  *       &lt;/sequence>
@@ -58,7 +58,6 @@ public class VnicProfile
     extends BaseResource
 {
 
-    @XmlElement(required = true)
     protected Network network;
     @XmlElement(name = "port_mirroring")
     protected Boolean portMirroring;

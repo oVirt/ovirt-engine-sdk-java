@@ -74,6 +74,7 @@ import javax.xml.bind.annotation.XmlType;
     Header.class,
     Statistic.class,
     SpecialObjects.class,
+    AuthorizedKey.class,
     HostNIC.class,
     Domain.class,
     ProductInfo.class,

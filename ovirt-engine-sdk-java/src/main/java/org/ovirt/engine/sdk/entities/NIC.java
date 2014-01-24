@@ -47,6 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}port_mirroring" minOccurs="0"/>
  *         &lt;element ref="{}reported_devices" minOccurs="0"/>
  *         &lt;element ref="{}vnic_profile" minOccurs="0"/>
+ *         &lt;element name="boot_protocol" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="on_boot" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -66,7 +68,9 @@ import javax.xml.bind.annotation.XmlType;
     "plugged",
     "portMirroring",
     "reportedDevices",
-    "vnicProfile"
+    "vnicProfile",
+    "bootProtocol",
+    "onBoot"
 })
 public class NIC
     extends BaseDevice
@@ -86,6 +90,10 @@ public class NIC
     protected ReportedDevices reportedDevices;
     @XmlElement(name = "vnic_profile")
     protected VnicProfile vnicProfile;
+    @XmlElement(name = "boot_protocol")
+    protected String bootProtocol;
+    @XmlElement(name = "on_boot")
+    protected Boolean onBoot;
 
     /**
      * Gets the value of the network property.
@@ -365,6 +373,62 @@ public class NIC
 
     public boolean isSetVnicProfile() {
         return (this.vnicProfile!= null);
+    }
+
+    /**
+     * Gets the value of the bootProtocol property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getBootProtocol() {
+        return bootProtocol;
+    }
+
+    /**
+     * Sets the value of the bootProtocol property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setBootProtocol(String value) {
+        this.bootProtocol = value;
+    }
+
+    public boolean isSetBootProtocol() {
+        return (this.bootProtocol!= null);
+    }
+
+    /**
+     * Gets the value of the onBoot property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getOnBoot() {
+        return onBoot;
+    }
+
+    /**
+     * Sets the value of the onBoot property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setOnBoot(Boolean value) {
+        this.onBoot = value;
+    }
+
+    public boolean isSetOnBoot() {
+        return (this.onBoot!= null);
     }
 
 }

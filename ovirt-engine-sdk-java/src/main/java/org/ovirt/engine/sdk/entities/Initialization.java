@@ -23,6 +23,7 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="configuration" type="{}Configuration" minOccurs="0"/>
+ *         &lt;element name="cloud_init" type="{}CloudInit" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,11 +49,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Initialization", propOrder = {
-    "configuration"
+    "configuration",
+    "cloudInit"
 })
 public class Initialization {
 
     protected Configuration configuration;
+    @XmlElement(name = "cloud_init")
+    protected CloudInit cloudInit;
 
     /**
      * Gets the value of the configuration property.
@@ -79,6 +84,34 @@ public class Initialization {
 
     public boolean isSetConfiguration() {
         return (this.configuration!= null);
+    }
+
+    /**
+     * Gets the value of the cloudInit property.
+     *
+     * @return
+     *     possible object is
+     *     {@link CloudInit }
+     *
+     */
+    public CloudInit getCloudInit() {
+        return cloudInit;
+    }
+
+    /**
+     * Sets the value of the cloudInit property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link CloudInit }
+     *
+     */
+    public void setCloudInit(CloudInit value) {
+        this.cloudInit = value;
+    }
+
+    public boolean isSetCloudInit() {
+        return (this.cloudInit!= null);
     }
 
 }

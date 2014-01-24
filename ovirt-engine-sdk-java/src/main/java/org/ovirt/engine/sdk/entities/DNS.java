@@ -28,18 +28,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Image complex type.
+ * <p>Java class for DNS complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Image">
+ * &lt;complexType name="DNS">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseResource">
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}storage_domain" minOccurs="0"/>
+ *         &lt;element name="servers" type="{}Hosts" minOccurs="0"/>
+ *         &lt;element name="search_domains" type="{}Hosts" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/extension>
+ *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -47,42 +48,71 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Image", propOrder = {
-    "storageDomain"
+@XmlType(name = "DNS", propOrder = {
+    "servers",
+    "searchDomains"
 })
-public class Image
-    extends BaseResource
-{
+public class DNS {
 
-    @XmlElement(name = "storage_domain")
-    protected StorageDomain storageDomain;
+    protected Hosts servers;
+    @XmlElement(name = "search_domains")
+    protected Hosts searchDomains;
 
     /**
-     * Gets the value of the storageDomain property.
+     * Gets the value of the servers property.
      *
      * @return
      *     possible object is
-     *     {@link StorageDomain }
+     *     {@link Hosts }
      *
      */
-    public StorageDomain getStorageDomain() {
-        return storageDomain;
+    public Hosts getServers() {
+        return servers;
     }
 
     /**
-     * Sets the value of the storageDomain property.
+     * Sets the value of the servers property.
      *
      * @param value
      *     allowed object is
-     *     {@link StorageDomain }
+     *     {@link Hosts }
      *
      */
-    public void setStorageDomain(StorageDomain value) {
-        this.storageDomain = value;
+    public void setServers(Hosts value) {
+        this.servers = value;
     }
 
-    public boolean isSetStorageDomain() {
-        return (this.storageDomain!= null);
+    public boolean isSetServers() {
+        return (this.servers!= null);
+    }
+
+    /**
+     * Gets the value of the searchDomains property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Hosts }
+     *
+     */
+    public Hosts getSearchDomains() {
+        return searchDomains;
+    }
+
+    /**
+     * Sets the value of the searchDomains property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Hosts }
+     *
+     */
+    public void setSearchDomains(Hosts value) {
+        this.searchDomains = value;
+    }
+
+    public boolean isSetSearchDomains() {
+        return (this.searchDomains!= null);
     }
 
 }
+

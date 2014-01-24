@@ -23,21 +23,21 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Image complex type.
+ * <p>Java class for AuthorizedKey complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Image">
+ * &lt;complexType name="AuthorizedKey">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element ref="{}storage_domain" minOccurs="0"/>
+ *         &lt;element ref="{}user" minOccurs="0"/>
+ *         &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -47,42 +47,72 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Image", propOrder = {
-    "storageDomain"
+@XmlType(name = "AuthorizedKey", propOrder = {
+    "user",
+    "key"
 })
-public class Image
+public class AuthorizedKey
     extends BaseResource
 {
 
-    @XmlElement(name = "storage_domain")
-    protected StorageDomain storageDomain;
+    protected User user;
+    protected String key;
 
     /**
-     * Gets the value of the storageDomain property.
+     * Gets the value of the user property.
      *
      * @return
      *     possible object is
-     *     {@link StorageDomain }
+     *     {@link User }
      *
      */
-    public StorageDomain getStorageDomain() {
-        return storageDomain;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Sets the value of the storageDomain property.
+     * Sets the value of the user property.
      *
      * @param value
      *     allowed object is
-     *     {@link StorageDomain }
+     *     {@link User }
      *
      */
-    public void setStorageDomain(StorageDomain value) {
-        this.storageDomain = value;
+    public void setUser(User value) {
+        this.user = value;
     }
 
-    public boolean isSetStorageDomain() {
-        return (this.storageDomain!= null);
+    public boolean isSetUser() {
+        return (this.user!= null);
+    }
+
+    /**
+     * Gets the value of the key property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getKey() {
+        return key;
+    }
+
+    /**
+     * Sets the value of the key property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setKey(String value) {
+        this.key = value;
+    }
+
+    public boolean isSetKey() {
+        return (this.key!= null);
     }
 
 }
+
