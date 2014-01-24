@@ -1,5 +1,5 @@
-%global     package_version 3.4.0.3
-%global     package_maven_version 3.4.0.3-SNAPSHOT
+%global     package_version 3.5.0.0
+%global     package_maven_version 3.5.0.0-SNAPSHOT
 %global     _javadocname javadoc
 
 %if 0%{?fedora}
