@@ -120,12 +120,14 @@ public class VMDisks extends
     public List<VMDisk> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
-                .add("max", max, UrlParameterType.MATRIX)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Disks.class,
                 VMDisk.class, headers);
@@ -206,11 +208,11 @@ public class VMDisks extends
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, disk,
                 org.ovirt.engine.sdk.entities.Disk.class,
@@ -301,13 +303,17 @@ public class VMDisks extends
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Expect", expect)
-                .add("Correlation-Id", correlationId)
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, disk,
                 org.ovirt.engine.sdk.entities.Disk.class,

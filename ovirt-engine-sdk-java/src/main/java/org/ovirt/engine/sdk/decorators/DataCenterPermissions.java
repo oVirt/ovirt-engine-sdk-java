@@ -135,11 +135,11 @@ public class DataCenterPermissions extends
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, permission,
                 org.ovirt.engine.sdk.entities.Permission.class,
@@ -190,13 +190,17 @@ public class DataCenterPermissions extends
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Expect", expect)
-                .add("Correlation-Id", correlationId)
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, permission,
                 org.ovirt.engine.sdk.entities.Permission.class,

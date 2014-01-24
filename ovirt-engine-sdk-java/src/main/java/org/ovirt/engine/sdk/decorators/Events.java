@@ -127,15 +127,23 @@ public class Events extends
     public List<Event> list(String query, Boolean caseSensitive, String from, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        String url = new UrlBuilder(SLASH + getName())
-                .add("search", query, UrlParameterType.QUERY)
-                .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
-                .add("from", from, UrlParameterType.MATRIX)
-                .add("max", max, UrlParameterType.MATRIX)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (from != null) {
+            urlBuilder.add("from", from, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Events.class,
                 Event.class, headers);
@@ -173,11 +181,11 @@ public class Events extends
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, event,
                 org.ovirt.engine.sdk.entities.Event.class,
@@ -225,13 +233,17 @@ public class Events extends
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Expect", expect)
-                .add("Correlation-Id", correlationId)
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, event,
                 org.ovirt.engine.sdk.entities.Event.class,

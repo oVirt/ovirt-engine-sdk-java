@@ -124,13 +124,17 @@ public class ClusterGlusterVolumes extends
     public List<ClusterGlusterVolume> list(String query, Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        String url = new UrlBuilder(this.parent.getHref() + SLASH + getName())
-                .add("search", query, UrlParameterType.QUERY)
-                .add("case_sensitive", caseSensitive, UrlParameterType.MATRIX)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class,
                 ClusterGlusterVolume.class, headers);
@@ -163,11 +167,11 @@ public class ClusterGlusterVolumes extends
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, glustervolume,
                 org.ovirt.engine.sdk.entities.GlusterVolume.class,
@@ -210,13 +214,17 @@ public class ClusterGlusterVolumes extends
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
-        List<Header> headers = new HttpHeaderBuilder()
-                .add("Expect", expect)
-                .add("Correlation-Id", correlationId)
-                .build();
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
 
-        url = new UrlBuilder(url)
-                .build();
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
 
         return getProxy().add(url, glustervolume,
                 org.ovirt.engine.sdk.entities.GlusterVolume.class,
