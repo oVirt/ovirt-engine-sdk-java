@@ -195,6 +195,8 @@
       <xs:element name="clone" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
       <!-- indicates whether to restore snapshot's memory on preview/restore snapshot -->
       <xs:element name="restore_memory" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <!-- Custom disks list for preview/restore snapshot -->
+      <xs:element ref="disks" minOccurs="0" maxOccurs="1"/>
       <!-- Used for external job -->
       <xs:element name="succeeded" type="xs:boolean" minOccurs="0"/>
       <!-- resolve GlusterHook using one of the resolution -->
@@ -634,6 +636,7 @@
           <xs:element ref="content_types" minOccurs="0" />
           <xs:element ref="hook_states" minOccurs="0" />
           <xs:element ref="stages" minOccurs="0" />
+          <xs:element ref="sso_methods" minOccurs="0"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1033,6 +1036,20 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:element name="sso_methods" type="SsoMethods"/>
+
+  <xs:complexType name="SsoMethods">
+    <xs:sequence>
+      <xs:element name="sso_method" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:appinfo>
+            <jaxb:property name="SsoMethods"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- Common to all resources -->
 
   <xs:complexType name="ActionableResource">
@@ -1106,7 +1123,9 @@
     <xs:complexContent>
       <xs:extension base="BaseResource">
         <xs:sequence>
+            <!-- TODO: (deprecated) remove 'storage_type' element post 4.0 -->
             <xs:element name="storage_type" type="xs:string" minOccurs="0" />
+            <xs:element name="local" type="xs:boolean" minOccurs="0" />
             <xs:element name="storage_format" type="xs:string" minOccurs="0" />
             <xs:element name="version" type="Version" minOccurs="0" />
             <xs:element name="supported_versions" type="SupportedVersions" minOccurs="0" />
@@ -1265,8 +1284,10 @@
           <xs:element name="threads_as_cores" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
           <xs:element name="tunnel_migration" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
           <xs:element name="trusted_service" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="ha_reservation" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
           <xs:element name="ballooning_enabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="display" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="ksm" minOccurs="0" maxOccurs="1"/>
           <!-- Also a rel="networks" link -->
         </xs:sequence>
       </xs:extension>
@@ -1328,6 +1349,7 @@
       <xs:element ref="status" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="pm_proxies" minOccurs="0" maxOccurs="1"/>
       <xs:element ref="agents" minOccurs="0"/>
+      <xs:element name="automatic_pm_enabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
     <xs:attribute name="type" type="xs:string"/>
   </xs:complexType>
@@ -1589,6 +1611,7 @@
       <xs:extension base="BaseResource">
         <xs:sequence>
           <xs:element ref="domain" minOccurs="0"/>
+          <xs:element name="external_id" type="xs:string" minOccurs="0" maxOccurs="1"/>
           <xs:element name="department" type="xs:string" minOccurs="0" maxOccurs="1"/>
           <xs:element name="logged_in" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
           <xs:element name="last_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
@@ -1658,6 +1681,7 @@
       <xs:extension base="BaseResource">
         <xs:sequence>
           <xs:element ref="domain" minOccurs="0"/>
+          <xs:element name="external_id" type="xs:string" minOccurs="0" maxOccurs="1"/>
           <!-- used only to represent the initial role assignments for a
                new group, therafter modification of role assignments are
                only supported via the rel="roles" sub-collection -->
@@ -1993,6 +2017,36 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:element name="label" type="Label"/>
+
+  <xs:element name="labels" type="Labels"/>
+
+  <xs:complexType name="Label">
+    <xs:complexContent>
+      <xs:extension base="BaseResource">
+        <xs:sequence>
+          <xs:element ref="network" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="host_nic" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Labels">
+    <xs:complexContent>
+      <xs:extension base="BaseResources">
+        <xs:sequence>
+          <xs:annotation>
+            <xs:appinfo>
+                <jaxb:property name="Labels"/>
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:element ref="label" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <!-- Vnic Profiles -->
   <xs:element name="vnic_profile" type="VnicProfile"/>
 
@@ -2250,11 +2304,13 @@
           <xs:element name="display" type="Display" minOccurs="0" maxOccurs="1"/>
           <xs:element name="stateless" type="xs:boolean" minOccurs="0"/>
           <xs:element name="delete_protected" type="xs:boolean" minOccurs="0"/>
+          <xs:element ref="sso" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="console" minOccurs="0" maxOccurs="1"/>
           <xs:element name="timezone" type="xs:string" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="domain" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="usb" minOccurs="0" maxOccurs="1"/>
           <xs:element name="tunnel_migration" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="migration_downtime" type="xs:int" minOccurs="0" maxOccurs="1" />
           <xs:element ref="virtio_scsi" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="permissions" minOccurs="0" maxOccurs="1"/>
           <!-- also rel="cdroms/disks/nics/watchdogs" links, see Devices below -->
@@ -2307,6 +2363,34 @@
       <xs:element name="version" type="Version" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
     <xs:attribute name="type" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- Single Sign-On Section -->
+  <xs:element name="sso" type="Sso"/>
+
+  <xs:complexType name="Sso">
+    <xs:sequence>
+      <xs:element ref="methods" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="methods" type="Methods"/>
+
+  <xs:complexType name="Methods">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:appinfo>
+          <jaxb:property name="methods"/>
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:element ref="method" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="method" type="Method" />
+
+  <xs:complexType name="Method">
+    <xs:attribute name="id" type="xs:string"/>
   </xs:complexType>
 
   <xs:complexType name="HighAvailability">
@@ -2406,6 +2490,17 @@
       <xs:sequence>
         <xs:element name="configuration" type="Configuration" minOccurs="0" maxOccurs="1"/>
         <xs:element name="cloud_init" type="CloudInit" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="host_name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="domain" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="timezone" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="authorized_ssh_keys" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="regenerate_ssh_keys" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="dns_servers" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="dns_search" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="nics" type="GuestNicsConfiguration" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="windows_license_key" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="root_password" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="custom_script" type="xs:string" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
   </xs:complexType>
 
@@ -2520,6 +2615,7 @@
           <xs:element name="origin" type="xs:string" minOccurs="0"/>
           <xs:element name="stateless" type="xs:boolean" minOccurs="0"/>
           <xs:element name="delete_protected" type="xs:boolean" minOccurs="0"/>
+          <xs:element ref="sso" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="console" minOccurs="0" maxOccurs="1"/>
           <xs:element name="timezone" type="xs:string" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="domain" minOccurs="0" maxOccurs="1"/>
@@ -2537,6 +2633,7 @@
           <xs:element ref="quota" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="usb" minOccurs="0" maxOccurs="1"/>
           <xs:element name="tunnel_migration" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="migration_downtime" type="xs:int" minOccurs="0" maxOccurs="1" />
           <xs:element ref="virtio_scsi" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="permissions" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="vmpool" minOccurs="0" maxOccurs="1">
@@ -2668,6 +2765,8 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+
+
   <!-- Virtual Machine Pools -->
 
   <xs:element name="vmpool" type="VmPool"/>
@@ -2975,6 +3074,7 @@
     </xs:complexContent>
   </xs:complexType>
 
+
   <!-- Host NICs -->
 
   <xs:element name="host_nic" type="HostNIC"/>
@@ -3020,6 +3120,25 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="guest_nic_configuration" type="GuestNicConfiguration"/>
+
+  <xs:element name="guest_nics_configuation" type="GuestNicsConfiguration"/>
+
+  <xs:complexType name="GuestNicConfiguration">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element ref="ip" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="boot_protocol" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="on_boot" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GuestNicsConfiguration">
+      <xs:sequence>
+          <xs:element name="nics" type="GuestNicConfiguration" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
   </xs:complexType>
 
   <xs:element name="host_nic_states" type="HostNICStates"/>

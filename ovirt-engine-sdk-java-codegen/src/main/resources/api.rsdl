@@ -120,6 +120,9 @@ or less indicates that the session should never timeout</description>
                             <name>cluster.trusted_service</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
+                            <name>cluster.ha_reservation</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
                             <name>cluster.ballooning_enabled</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
@@ -127,6 +130,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.display.proxy</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>cluster.ksm.enabled</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -221,7 +227,7 @@ or less indicates that the session should never timeout</description>
                 <body>
                     <type>Cluster</type>
                     <parameters_set>
-                        <description>update the specified cluster in the system. The capabilities like virt servicem luster service, tarnsparent huge pages etc can be changed.</description>
+                        <description>update the specified cluster in the system. The capabilities like virt service, cluster service, tarnsparent huge pages etc can be changed.</description>
                         <parameter required="false" type="xs:string">
                             <name>cluster.name</name>
                         </parameter>
@@ -284,6 +290,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.display.proxy</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>cluster.ksm.enabled</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -1137,7 +1146,7 @@ or less indicates that the session should never timeout</description>
             </request>
         </link>
         <link href="/ovirt-engine/api/clusters/{cluster:id}/networks/{network:id}" rel="get">
-            <description>get the detials of the specified network in the cluster</description>
+            <description>get the details of the specified network in the cluster</description>
             <request>
                 <http_method>GET</http_method>
                 <body/>
@@ -1300,14 +1309,18 @@ or less indicates that the session should never timeout</description>
                         <parameter required="true" type="xs:string">
                             <name>datacenter.name</name>
                         </parameter>
-                        <parameter required="true" type="xs:string">
-                            <name>datacenter.storage_type</name>
-                        </parameter>
                         <parameter required="true" type="xs:int">
                             <name>datacenter.version.major</name>
                         </parameter>
                         <parameter required="true" type="xs:int">
                             <name>datacenter.version.minor</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>datacenter.storage_type</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>datacenter.local</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>datacenter.description</name>
@@ -1441,6 +1454,10 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>datacenter.storage_type</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>datacenter.local</name>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>datacenter.version.major</name>
@@ -1536,6 +1553,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.display.proxy</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>cluster.ksm.enabled</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -1675,6 +1695,9 @@ or less indicates that the session should never timeout</description>
                             <name>cluster.trusted_service</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
+                            <name>cluster.ha_reservation</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
                             <name>cluster.ballooning_enabled</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
@@ -1682,6 +1705,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.display.proxy</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>cluster.ksm.enabled</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -2288,6 +2314,58 @@ or less indicates that the session should never timeout</description>
             </request>
             <response>
                 <type>Network</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/networks/{network:id}/labels" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Label</type>
+                </body>
+            </request>
+            <response>
+                <type>Label</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/networks/{network:id}/labels" rel="get">
+            <description>get the labels of a network</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Labels</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/networks/{network:id}/labels/{label:id}" rel="delete">
+            <description>delete the specified label of a network</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>async</name>
+                            <value>true|false</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/networks/{network:id}/labels/{label:id}" rel="get">
+            <description>get a specific label of a network</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Label</type>
             </response>
         </link>
         <link href="/ovirt-engine/api/datacenters/{datacenter:id}/networks/{network:id}/permissions" rel="add">
@@ -2920,7 +2998,7 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/disks" rel="add">
-            <description>add a new disk the system</description>
+            <description>add a new disk to the system</description>
             <request>
                 <http_method>POST</http_method>
                 <headers>
@@ -2940,7 +3018,7 @@ or less indicates that the session should never timeout</description>
                 <body>
                     <type>Disk</type>
                     <parameters_set>
-                        <description>add a new disk the system with specified size, space will be allocated from the storage domain for the disk</description>
+                        <description>add a new disk to the system with specified size, space will be allocated from the storage domain for the disk</description>
                         <parameter required="true" type="xs:int">
                             <name>provisioned_size</name>
                         </parameter>
@@ -2984,7 +3062,7 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                     </parameters_set>
                     <parameters_set>
-                        <description>add a new lun disk the system, this operation does not require size but requires lun connection details</description>
+                        <description>add a new lun disk to the system, this operation does not require size but requires lun connection details</description>
                         <parameter required="true" type="xs:string">
                             <name>disk.interface</name>
                         </parameter>
@@ -3127,7 +3205,7 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/disks/{disk:id}/permissions" rel="get">
-            <description>get the list of permission for the disk in the system. Disk inherits permissions from the VM it is attached to and from the storage domain it resides on (if there is one)</description>
+            <description>get the list of permissions for the disk in the system. Disk inherits permissions from the VM it is attached to and from the storage domain it resides on (if there is one)</description>
             <request>
                 <http_method>GET</http_method>
                 <url>
@@ -3860,6 +3938,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:string">
                             <name>host.power_management.username</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>host.power_management.automatic_pm_enabled</name>
+                        </parameter>
                         <parameter required="false" type="xs:string">
                             <name>host.power_management.password</name>
                         </parameter>
@@ -3957,6 +4038,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>host.power_management.type</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>host.power_management.automatic_pm_enabled</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>host.power_management.enabled</name>
@@ -4191,6 +4275,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:string">
                             <name>host.power_management.password</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>host.power_management.automatic_pm_enabled</name>
+                        </parameter>
                         <parameter required="false" type="collection">
                             <name>host.power_management.options.option</name>
                             <parameters_set>
@@ -4273,6 +4360,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>host.power_management.type</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>host.power_management.automatic_pm_enabled</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>host.power_management.enabled</name>
@@ -5021,6 +5111,58 @@ or less indicates that the session should never timeout</description>
                 <type>Action</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/hosts/{host:id}/nics/{nic:id}/labels" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Label</type>
+                </body>
+            </request>
+            <response>
+                <type>Label</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/hosts/{host:id}/nics/{nic:id}/labels" rel="get">
+            <description>get the labels of an interface</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Labels</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/hosts/{host:id}/nics/{nic:id}/labels/{label:id}" rel="delete">
+            <description>delete the specified label of an interface</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>async</name>
+                            <value>true|false</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/hosts/{host:id}/nics/{nic:id}/labels/{label:id}" rel="get">
+            <description>get a specific label of an interface</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Label</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/hosts/{host:id}/nics/{nic:id}/statistics" rel="get">
             <description>get the statistics for the network interface card attached to the specified host</description>
             <request>
@@ -5717,6 +5859,58 @@ or less indicates that the session should never timeout</description>
             </request>
             <response>
                 <type>Network</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/networks/{network:id}/labels" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Label</type>
+                </body>
+            </request>
+            <response>
+                <type>Label</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/networks/{network:id}/labels" rel="get">
+            <description>get the labels of a network</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Labels</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/networks/{network:id}/labels/{label:id}" rel="delete">
+            <description>delete the specified label of a network</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>async</name>
+                            <value>true|false</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/networks/{network:id}/labels/{label:id}" rel="get">
+            <description>get a specific label of a network</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Label</type>
             </response>
         </link>
         <link href="/ovirt-engine/api/networks/{network:id}/permissions" rel="add">
@@ -7780,6 +7974,14 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>template.delete_protected</name>
                         </parameter>
+                        <parameter required="false" type="collection">
+                            <name>template.sso.methods.method</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>method.id</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.console.enabled</name>
                         </parameter>
@@ -7855,6 +8057,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.tunnel_migration</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>template.migration_downtime</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.virtio_scsi.enabled</name>
@@ -8019,6 +8224,14 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>template.delete_protected</name>
                         </parameter>
+                        <parameter required="false" type="collection">
+                            <name>template.sso.methods.method</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>method.id</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.console.enabled</name>
                         </parameter>
@@ -8094,6 +8307,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.tunnel_migration</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>template.migration_downtime</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.virtio_scsi.enabled</name>
@@ -9481,6 +9697,14 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.delete_protected</name>
                         </parameter>
+                        <parameter required="false" type="collection">
+                            <name>vm.sso.methods.method</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>method.id</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.console.enabled</name>
                         </parameter>
@@ -9510,6 +9734,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.tunnel_migration</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.migration_downtime</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.virtio_scsi.enabled</name>
@@ -9670,6 +9897,14 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.delete_protected</name>
                         </parameter>
+                        <parameter required="false" type="collection">
+                            <name>vm.sso.methods.method</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>method.id</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.console.enabled</name>
                         </parameter>
@@ -9690,6 +9925,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.tunnel_migration</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.migration_downtime</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.virtio_scsi.enabled</name>
@@ -9830,6 +10068,14 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.delete_protected</name>
                         </parameter>
+                        <parameter required="false" type="collection">
+                            <name>vm.sso.methods.method</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>method.id</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
                         <parameter required="false" type="xs:string">
                             <name>vm.cpu.mode</name>
                         </parameter>
@@ -9853,6 +10099,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.tunnel_migration</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.migration_downtime</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.virtio_scsi.enabled</name>
@@ -10111,6 +10360,14 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.delete_protected</name>
                         </parameter>
+                        <parameter required="false" type="collection">
+                            <name>vm.sso.methods.method</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>method.id</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.console.enabled</name>
                         </parameter>
@@ -10131,6 +10388,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.tunnel_migration</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.migration_downtime</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.virtio_scsi.enabled</name>
@@ -11317,6 +11577,28 @@ or less indicates that the session should never timeout</description>
                 <type>Permission</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/reboot" rel="reboot">
+            <description>reboot a virtual machine in the system identified by the given id</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/vms/{vm:id}/reporteddevices" rel="get">
             <request>
                 <http_method>GET</http_method>
@@ -11393,6 +11675,14 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>snapshot.persist_memorystate</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>snapshot.disks.disk</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>disk.id</name>
+</parameter>
+                            </parameters_set>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -11548,6 +11838,17 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:long">
                             <name>action.grace_period.expiry</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>action.disks.disk</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>disk.id</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>disk.image_id</name>
+</parameter>
+                            </parameters_set>
                         </parameter>
                     </parameters_set>
                 </body>
