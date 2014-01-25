@@ -4,7 +4,7 @@
 	<groupId>org.ovirt.engine.sdk</groupId>
 	<artifactId>ovirt-engine-sdk-java</artifactId>
 	<packaging>jar</packaging>
-	<version>3.4.0.3-SNAPSHOT</version>
+	<version>3.4.0.3</version>
 	<name>ovirt-engine-sdk-java</name>
 	<description>This is Java SDK for the oVirt virtualization</description>
 	<url>http://www.ovirt.org/Java-sdk</url>
