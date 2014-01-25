@@ -28,18 +28,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Group complex type.
+ * <p>Java class for Label complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Group">
+ * &lt;complexType name="Label">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element ref="{}domain" minOccurs="0"/>
- *         &lt;element name="external_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="roles" type="{}Roles" minOccurs="0"/>
+ *         &lt;element ref="{}network" minOccurs="0"/>
+ *         &lt;element ref="{}host_nic" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -49,102 +48,72 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Group", propOrder = {
-    "domain",
-    "externalId",
-    "roles"
+@XmlType(name = "Label", propOrder = {
+    "network",
+    "hostNic"
 })
-public class Group
+public class Label
     extends BaseResource
 {
 
-    protected Domain domain;
-    @XmlElement(name = "external_id")
-    protected String externalId;
-    protected Roles roles;
+    protected Network network;
+    @XmlElement(name = "host_nic")
+    protected HostNIC hostNic;
 
     /**
-     * Gets the value of the domain property.
+     * Gets the value of the network property.
      *
      * @return
      *     possible object is
-     *     {@link Domain }
+     *     {@link Network }
      *
      */
-    public Domain getDomain() {
-        return domain;
+    public Network getNetwork() {
+        return network;
     }
 
     /**
-     * Sets the value of the domain property.
+     * Sets the value of the network property.
      *
      * @param value
      *     allowed object is
-     *     {@link Domain }
+     *     {@link Network }
      *
      */
-    public void setDomain(Domain value) {
-        this.domain = value;
+    public void setNetwork(Network value) {
+        this.network = value;
     }
 
-    public boolean isSetDomain() {
-        return (this.domain!= null);
+    public boolean isSetNetwork() {
+        return (this.network!= null);
     }
 
     /**
-     * Gets the value of the externalId property.
+     * Gets the value of the hostNic property.
      *
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link HostNIC }
      *
      */
-    public String getExternalId() {
-        return externalId;
+    public HostNIC getHostNic() {
+        return hostNic;
     }
 
     /**
-     * Sets the value of the externalId property.
+     * Sets the value of the hostNic property.
      *
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link HostNIC }
      *
      */
-    public void setExternalId(String value) {
-        this.externalId = value;
+    public void setHostNic(HostNIC value) {
+        this.hostNic = value;
     }
 
-    public boolean isSetExternalId() {
-        return (this.externalId!= null);
-    }
-
-    /**
-     * Gets the value of the roles property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Roles }
-     *
-     */
-    public Object getRoles() {
-        return roles;
-    }
-
-    /**
-     * Sets the value of the roles property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Roles }
-     *
-     */
-    public void setRoles(Roles value) {
-        this.roles = value;
-    }
-
-    public boolean isSetRoles() {
-        return (this.roles!= null);
+    public boolean isSetHostNic() {
+        return (this.hostNic!= null);
     }
 
 }

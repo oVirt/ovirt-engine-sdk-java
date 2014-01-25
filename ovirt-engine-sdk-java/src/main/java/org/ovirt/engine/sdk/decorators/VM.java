@@ -234,6 +234,164 @@ public class VM extends
 
 
     /**
+     * Updates VM object.
+     *
+     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
+     *    <pre>
+     *    [vm.name]
+     *    [vm.cluster.id|name]
+     *    [vm.timezone]
+     *    [vm.os.boot]
+     *    [vm.custom_properties.custom_property]
+     *    [vm.os.type]
+     *    [vm.usb.enabled]
+     *    [vm.usb.type]
+     *    [vm.type]
+     *    [vm.os.initRd]
+     *    [vm.display.monitors]
+     *    [vm.display.single_qxl_pci]
+     *    [vm.display.type]
+     *    [vm.display.allow_override]
+     *    [vm.display.smartcard_enabled]
+     *    [vm.display.keyboard_layout]
+     *    [vm.os.cmdline]
+     *    [vm.cpu.mode]
+     *    [vm.cpu.architecture]
+     *    [vm.cpu.topology.cores]
+     *    [vm.cpu_shares]
+     *    [vm.memory]
+     *    [vm.high_availability.priority]
+     *    [vm.high_availability.enabled]
+     *    [vm.domain.name]
+     *    [vm.description]
+     *    [vm.comment]
+     *    [vm.stateless]
+     *    [vm.delete_protected]
+     *    [vm.sso.methods.method]
+     *    [vm.console.enabled]
+     *    [vm.cpu.topology.sockets]
+     *    [vm.placement_policy.affinity]
+     *    [vm.placement_policy.host.id|name]
+     *    [vm.origin]
+     *    [vm.os.kernel]
+     *    [vm.tunnel_migration]
+     *    [vm.migration_downtime]
+     *    [vm.virtio_scsi.enabled]
+     *    [vm.payloads.payload]
+     *    [vm.cpu.cpu_tune.vcpu_pin]
+     *    </pre>
+     *
+     * @return
+     *     {@link VM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VM update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VM.class,
+                VM.class,
+                headers);
+    }
+    /**
+     * Updates VM object.
+     *
+     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
+     *    <pre>
+     *    [vm.name]
+     *    [vm.cluster.id|name]
+     *    [vm.timezone]
+     *    [vm.os.boot]
+     *    [vm.custom_properties.custom_property]
+     *    [vm.os.type]
+     *    [vm.usb.enabled]
+     *    [vm.usb.type]
+     *    [vm.type]
+     *    [vm.os.initRd]
+     *    [vm.display.monitors]
+     *    [vm.display.single_qxl_pci]
+     *    [vm.display.type]
+     *    [vm.display.allow_override]
+     *    [vm.display.smartcard_enabled]
+     *    [vm.display.keyboard_layout]
+     *    [vm.os.cmdline]
+     *    [vm.cpu.mode]
+     *    [vm.cpu.architecture]
+     *    [vm.cpu.topology.cores]
+     *    [vm.cpu_shares]
+     *    [vm.memory]
+     *    [vm.high_availability.priority]
+     *    [vm.high_availability.enabled]
+     *    [vm.domain.name]
+     *    [vm.description]
+     *    [vm.comment]
+     *    [vm.stateless]
+     *    [vm.delete_protected]
+     *    [vm.sso.methods.method]
+     *    [vm.console.enabled]
+     *    [vm.cpu.topology.sockets]
+     *    [vm.placement_policy.affinity]
+     *    [vm.placement_policy.host.id|name]
+     *    [vm.origin]
+     *    [vm.os.kernel]
+     *    [vm.tunnel_migration]
+     *    [vm.migration_downtime]
+     *    [vm.virtio_scsi.enabled]
+     *    [vm.payloads.payload]
+     *    [vm.cpu.cpu_tune.vcpu_pin]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VM update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VM.class,
+                VM.class,
+                headers);
+    }
+    /**
      * Performs suspend action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
@@ -304,53 +462,11 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Updates VM object.
+     * Performs cancelmigration action.
      *
-     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
-     *    <pre>
-     *    [vm.name]
-     *    [vm.cluster.id|name]
-     *    [vm.timezone]
-     *    [vm.os.boot]
-     *    [vm.custom_properties.custom_property]
-     *    [vm.os.type]
-     *    [vm.usb.enabled]
-     *    [vm.usb.type]
-     *    [vm.type]
-     *    [vm.os.initRd]
-     *    [vm.display.monitors]
-     *    [vm.display.single_qxl_pci]
-     *    [vm.display.type]
-     *    [vm.display.allow_override]
-     *    [vm.display.smartcard_enabled]
-     *    [vm.display.keyboard_layout]
-     *    [vm.os.cmdline]
-     *    [vm.cpu.mode]
-     *    [vm.cpu.architecture]
-     *    [vm.cpu.topology.cores]
-     *    [vm.cpu_shares]
-     *    [vm.memory]
-     *    [vm.high_availability.priority]
-     *    [vm.high_availability.enabled]
-     *    [vm.domain.name]
-     *    [vm.description]
-     *    [vm.comment]
-     *    [vm.stateless]
-     *    [vm.delete_protected]
-     *    [vm.console.enabled]
-     *    [vm.cpu.topology.sockets]
-     *    [vm.placement_policy.affinity]
-     *    [vm.placement_policy.host.id|name]
-     *    [vm.origin]
-     *    [vm.os.kernel]
-     *    [vm.tunnel_migration]
-     *    [vm.virtio_scsi.enabled]
-     *    [vm.payloads.payload]
-     *    [vm.cpu.cpu_tune.vcpu_pin]
-     *    </pre>
-     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
-     *     {@link VM }
+     *     {@link Action }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -359,9 +475,9 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VM update() throws ClientProtocolException,
+    public Action cancelmigration(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
+        String url = this.getHref() + "/cancelmigration";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -369,93 +485,7 @@ public class VM extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.VM.class,
-                VM.class,
-                headers);
-    }
-    /**
-     * Updates VM object.
-     *
-     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
-     *    <pre>
-     *    [vm.name]
-     *    [vm.cluster.id|name]
-     *    [vm.timezone]
-     *    [vm.os.boot]
-     *    [vm.custom_properties.custom_property]
-     *    [vm.os.type]
-     *    [vm.usb.enabled]
-     *    [vm.usb.type]
-     *    [vm.type]
-     *    [vm.os.initRd]
-     *    [vm.display.monitors]
-     *    [vm.display.single_qxl_pci]
-     *    [vm.display.type]
-     *    [vm.display.allow_override]
-     *    [vm.display.smartcard_enabled]
-     *    [vm.display.keyboard_layout]
-     *    [vm.os.cmdline]
-     *    [vm.cpu.mode]
-     *    [vm.cpu.architecture]
-     *    [vm.cpu.topology.cores]
-     *    [vm.cpu_shares]
-     *    [vm.memory]
-     *    [vm.high_availability.priority]
-     *    [vm.high_availability.enabled]
-     *    [vm.domain.name]
-     *    [vm.description]
-     *    [vm.comment]
-     *    [vm.stateless]
-     *    [vm.delete_protected]
-     *    [vm.console.enabled]
-     *    [vm.cpu.topology.sockets]
-     *    [vm.placement_policy.affinity]
-     *    [vm.placement_policy.host.id|name]
-     *    [vm.origin]
-     *    [vm.os.kernel]
-     *    [vm.tunnel_migration]
-     *    [vm.virtio_scsi.enabled]
-     *    [vm.payloads.payload]
-     *    [vm.cpu.cpu_tune.vcpu_pin]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link VM }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public VM update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.VM.class,
-                VM.class,
-                headers);
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs stop action.
@@ -520,32 +550,6 @@ public class VM extends
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
         }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs cancelmigration action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action cancelmigration(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/cancelmigration";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
@@ -687,6 +691,80 @@ public class VM extends
     public Action detach(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/detach";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs migrate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.host.id|name]
+     *    [action.async]
+     *    [action.force]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action migrate(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/migrate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs migrate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.host.id|name]
+     *    [action.async]
+     *    [action.force]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action migrate(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/migrate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
@@ -884,16 +962,9 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs migrate action.
+     * Performs reboot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.host.id|name]
-     *    [action.async]
-     *    [action.force]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -904,9 +975,9 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action) throws ClientProtocolException,
+    public Action reboot(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/migrate";
+        String url = this.getHref() + "/reboot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -917,16 +988,9 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs migrate action.
+     * Performs reboot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.host.id|name]
-     *    [action.async]
-     *    [action.force]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -942,9 +1006,9 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action, String correlationId) throws ClientProtocolException,
+    public Action reboot(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/migrate";
+        String url = this.getHref() + "/reboot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {

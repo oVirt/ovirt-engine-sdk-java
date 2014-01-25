@@ -68,6 +68,7 @@ import javax.xml.bind.annotation.XmlType;
     Hosts.class,
     Networks.class,
     Templates.class,
+    Labels.class,
     GlusterClients.class,
     Statistics.class,
     VmPools.class,

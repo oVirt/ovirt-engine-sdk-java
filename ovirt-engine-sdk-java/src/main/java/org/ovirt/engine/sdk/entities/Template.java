@@ -54,11 +54,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="display" type="{}Display" minOccurs="0"/>
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}sso" minOccurs="0"/>
  *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="migration_downtime" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}virtio_scsi" minOccurs="0"/>
  *         &lt;element ref="{}permissions" minOccurs="0"/>
  *       &lt;/sequence>
@@ -86,11 +88,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "display",
     "stateless",
     "deleteProtected",
+    "sso",
     "console",
     "timezone",
     "domain",
     "usb",
     "tunnelMigration",
+    "migrationDowntime",
     "virtioScsi",
     "permissions"
 })
@@ -119,12 +123,15 @@ public class Template
     protected Boolean stateless;
     @XmlElement(name = "delete_protected")
     protected Boolean deleteProtected;
+    protected Sso sso;
     protected Console console;
     protected String timezone;
     protected Domain domain;
     protected Usb usb;
     @XmlElement(name = "tunnel_migration")
     protected Boolean tunnelMigration;
+    @XmlElement(name = "migration_downtime")
+    protected Integer migrationDowntime;
     @XmlElement(name = "virtio_scsi")
     protected VirtIOSCSI virtioScsi;
     protected Permissions permissions;
@@ -550,6 +557,34 @@ public class Template
     }
 
     /**
+     * Gets the value of the sso property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Sso }
+     *
+     */
+    public Sso getSso() {
+        return sso;
+    }
+
+    /**
+     * Sets the value of the sso property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Sso }
+     *
+     */
+    public void setSso(Sso value) {
+        this.sso = value;
+    }
+
+    public boolean isSetSso() {
+        return (this.sso!= null);
+    }
+
+    /**
      * Gets the value of the console property.
      *
      * @return
@@ -687,6 +722,34 @@ public class Template
 
     public boolean isSetTunnelMigration() {
         return (this.tunnelMigration!= null);
+    }
+
+    /**
+     * Gets the value of the migrationDowntime property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getMigrationDowntime() {
+        return migrationDowntime;
+    }
+
+    /**
+     * Sets the value of the migrationDowntime property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setMigrationDowntime(Integer value) {
+        this.migrationDowntime = value;
+    }
+
+    public boolean isSetMigrationDowntime() {
+        return (this.migrationDowntime!= null);
     }
 
     /**

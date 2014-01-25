@@ -156,6 +156,7 @@ public class DataCenterClusters extends
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @return
@@ -206,6 +207,7 @@ public class DataCenterClusters extends
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @param expect

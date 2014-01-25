@@ -92,6 +92,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}content_types" minOccurs="0"/>
  *         &lt;element ref="{}hook_states" minOccurs="0"/>
  *         &lt;element ref="{}stages" minOccurs="0"/>
+ *         &lt;element ref="{}sso_methods" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -156,7 +157,8 @@ import javax.xml.bind.annotation.XmlType;
     "snapshotStatuses",
     "contentTypes",
     "hookStates",
-    "stages"
+    "stages",
+    "ssoMethods"
 })
 public class VersionCaps
     extends Version
@@ -266,6 +268,8 @@ public class VersionCaps
     @XmlElement(name = "hook_states")
     protected HookStates hookStates;
     protected Stages stages;
+    @XmlElement(name = "sso_methods")
+    protected SsoMethods ssoMethods;
 
     /**
      * Gets the value of the current property.
@@ -1805,6 +1809,34 @@ public class VersionCaps
 
     public boolean isSetStages() {
         return (this.stages!= null);
+    }
+
+    /**
+     * Gets the value of the ssoMethods property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SsoMethods }
+     *
+     */
+    public SsoMethods getSsoMethods() {
+        return ssoMethods;
+    }
+
+    /**
+     * Sets the value of the ssoMethods property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SsoMethods }
+     *
+     */
+    public void setSsoMethods(SsoMethods value) {
+        this.ssoMethods = value;
+    }
+
+    public boolean isSetSsoMethods() {
+        return (this.ssoMethods!= null);
     }
 
 }

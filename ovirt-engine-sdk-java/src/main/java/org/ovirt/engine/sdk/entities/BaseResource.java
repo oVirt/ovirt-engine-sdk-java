@@ -82,6 +82,7 @@ import javax.xml.bind.annotation.XmlType;
     StorageDomain.class,
     DataCenter.class,
     Hook.class,
+    Label.class,
     GlusterVolume.class,
     StorageConnection.class,
     ReportedDevice.class,

@@ -165,6 +165,7 @@ public class Template extends
      *    [template.type]
      *    [template.stateless]
      *    [template.delete_protected]
+     *    [template.sso.methods.method]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -186,6 +187,7 @@ public class Template extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    </pre>
      *
@@ -233,6 +235,7 @@ public class Template extends
      *    [template.type]
      *    [template.stateless]
      *    [template.delete_protected]
+     *    [template.sso.methods.method]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -254,6 +257,7 @@ public class Template extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    </pre>
      *

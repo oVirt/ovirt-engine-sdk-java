@@ -157,6 +157,7 @@ public class Cluster extends
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @return
@@ -212,6 +213,7 @@ public class Cluster extends
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @param correlationId

@@ -165,9 +165,11 @@ public class Clusters extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @return
@@ -218,9 +220,11 @@ public class Clusters extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @param expect

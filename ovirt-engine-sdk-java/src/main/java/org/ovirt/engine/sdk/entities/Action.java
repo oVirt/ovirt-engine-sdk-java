@@ -81,6 +81,7 @@ import javax.xml.bind.annotation.XmlType;
     "detach",
     "clone",
     "restoreMemory",
+    "disks",
     "succeeded",
     "resolutionType",
     "bricks",
@@ -131,6 +132,7 @@ public class Action
     protected Boolean clone;
     @XmlElement(name = "restore_memory")
     protected Boolean restoreMemory;
+    protected Disks disks;
     protected Boolean succeeded;
     @XmlElement(name = "resolution_type")
     protected String resolutionType;
@@ -897,6 +899,34 @@ public class Action
 
     public boolean isSetRestoreMemory() {
         return (this.restoreMemory!= null);
+    }
+
+    /**
+     * Gets the value of the disks property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Disks }
+     *
+     */
+    public Disks getDisks() {
+        return disks;
+    }
+
+    /**
+     * Sets the value of the disks property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Disks }
+     *
+     */
+    public void setDisks(Disks value) {
+        this.disks = value;
+    }
+
+    public boolean isSetDisks() {
+        return (this.disks!= null);
     }
 
     /**

@@ -49,8 +49,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="threads_as_cores" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="trusted_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="ha_reservation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="ballooning_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}display" minOccurs="0"/>
+ *         &lt;element ref="{}ksm" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -73,8 +75,10 @@ import javax.xml.bind.annotation.XmlType;
     "threadsAsCores",
     "tunnelMigration",
     "trustedService",
+    "haReservation",
     "ballooningEnabled",
-    "display"
+    "display",
+    "ksm"
 })
 public class Cluster
     extends BaseResource
@@ -102,9 +106,12 @@ public class Cluster
     protected Boolean tunnelMigration;
     @XmlElement(name = "trusted_service")
     protected Boolean trustedService;
+    @XmlElement(name = "ha_reservation")
+    protected Boolean haReservation;
     @XmlElement(name = "ballooning_enabled")
     protected Boolean ballooningEnabled;
     protected Display display;
+    protected KSM ksm;
 
     /**
      * Gets the value of the cpu property.
@@ -443,6 +450,34 @@ public class Cluster
     }
 
     /**
+     * Gets the value of the haReservation property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getHaReservation() {
+        return haReservation;
+    }
+
+    /**
+     * Sets the value of the haReservation property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setHaReservation(Boolean value) {
+        this.haReservation = value;
+    }
+
+    public boolean isSetHaReservation() {
+        return (this.haReservation!= null);
+    }
+
+    /**
      * Gets the value of the ballooningEnabled property.
      *
      * @return
@@ -496,6 +531,34 @@ public class Cluster
 
     public boolean isSetDisplay() {
         return (this.display!= null);
+    }
+
+    /**
+     * Gets the value of the ksm property.
+     *
+     * @return
+     *     possible object is
+     *     {@link KSM }
+     *
+     */
+    public KSM getKsm() {
+        return ksm;
+    }
+
+    /**
+     * Sets the value of the ksm property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link KSM }
+     *
+     */
+    public void setKsm(KSM value) {
+        this.ksm = value;
+    }
+
+    public boolean isSetKsm() {
+        return (this.ksm!= null);
     }
 
 }

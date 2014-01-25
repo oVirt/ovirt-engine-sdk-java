@@ -57,6 +57,7 @@ public class ObjectFactory {
     private final static QName _Features_QNAME = new QName("", "features");
     private final static QName _Role_QNAME = new QName("", "role");
     private final static QName _Feature_QNAME = new QName("", "feature");
+    private final static QName _GuestNicConfiguration_QNAME = new QName("", "guest_nic_configuration");
     private final static QName _Template_QNAME = new QName("", "template");
     private final static QName _IpVersions_QNAME = new QName("", "ip_versions");
     private final static QName _Host_QNAME = new QName("", "host");
@@ -90,8 +91,8 @@ public class ObjectFactory {
     private final static QName _Cdroms_QNAME = new QName("", "cdroms");
     private final static QName _NetworkConfiguration_QNAME = new QName("", "network_configuration");
     private final static QName _Quotas_QNAME = new QName("", "quotas");
-    private final static QName _ContentTypes_QNAME = new QName("", "content_types");
     private final static QName _MemoryPools_QNAME = new QName("", "memory_pools");
+    private final static QName _ContentTypes_QNAME = new QName("", "content_types");
     private final static QName _KeyValuePair_QNAME = new QName("", "keyValuePair");
     private final static QName _Slaves_QNAME = new QName("", "slaves");
     private final static QName _Dns_QNAME = new QName("", "dns");
@@ -103,10 +104,12 @@ public class ObjectFactory {
     private final static QName _ErrorHandling_QNAME = new QName("", "error_handling");
     private final static QName _Configuration_QNAME = new QName("", "configuration");
     private final static QName _ProductInfo_QNAME = new QName("", "product_info");
+    private final static QName _Methods_QNAME = new QName("", "methods");
     private final static QName _Body_QNAME = new QName("", "body");
     private final static QName _ParametersSet_QNAME = new QName("", "parameters_set");
     private final static QName _Ips_QNAME = new QName("", "ips");
     private final static QName _BootDevices_QNAME = new QName("", "boot_devices");
+    private final static QName _Sso_QNAME = new QName("", "sso");
     private final static QName _Bonding_QNAME = new QName("", "bonding");
     private final static QName _Ssh_QNAME = new QName("", "ssh");
     private final static QName _StorageDomain_QNAME = new QName("", "storage_domain");
@@ -119,25 +122,27 @@ public class ObjectFactory {
     private final static QName _Hook_QNAME = new QName("", "hook");
     private final static QName _PortMirroring_QNAME = new QName("", "port_mirroring");
     private final static QName _Templates_QNAME = new QName("", "templates");
+    private final static QName _Labels_QNAME = new QName("", "labels");
     private final static QName _Cpu_QNAME = new QName("", "cpu");
     private final static QName _Display_QNAME = new QName("", "display");
+    private final static QName _Label_QNAME = new QName("", "label");
     private final static QName _Agent_QNAME = new QName("", "agent");
     private final static QName _Url_QNAME = new QName("", "url");
     private final static QName _Watchdog_QNAME = new QName("", "watchdog");
     private final static QName _StepTypes_QNAME = new QName("", "step_types");
-    private final static QName _MemoryPool_QNAME = new QName("", "memory_pool");
     private final static QName _GlusterVolumeStates_QNAME = new QName("", "gluster_volume_states");
     private final static QName _Usages_QNAME = new QName("", "usages");
-    private final static QName _GlusterClients_QNAME = new QName("", "gluster_clients");
+    private final static QName _MemoryPool_QNAME = new QName("", "memory_pool");
     private final static QName _PmProxyTypes_QNAME = new QName("", "pm_proxy_types");
+    private final static QName _GlusterClients_QNAME = new QName("", "gluster_clients");
     private final static QName _LinkCapabilities_QNAME = new QName("", "linkCapabilities");
     private final static QName _Brick_QNAME = new QName("", "brick");
     private final static QName _GlusterVolume_QNAME = new QName("", "gluster_volume");
     private final static QName _LogicalUnit_QNAME = new QName("", "logical_unit");
     private final static QName _Statistics_QNAME = new QName("", "statistics");
     private final static QName _Response_QNAME = new QName("", "response");
-    private final static QName _StorageConnection_QNAME = new QName("", "storage_connection");
     private final static QName _PmProxy_QNAME = new QName("", "pm_proxy");
+    private final static QName _StorageConnection_QNAME = new QName("", "storage_connection");
     private final static QName _StorageManager_QNAME = new QName("", "storage_manager");
     private final static QName _BootProtocols_QNAME = new QName("", "boot_protocols");
     private final static QName _CpuTune_QNAME = new QName("", "cpu_tune");
@@ -162,6 +167,7 @@ public class ObjectFactory {
     private final static QName _Steps_QNAME = new QName("", "steps");
     private final static QName _Disks_QNAME = new QName("", "disks");
     private final static QName _StorageFormats_QNAME = new QName("", "storage_formats");
+    private final static QName _SsoMethods_QNAME = new QName("", "sso_methods");
     private final static QName _CustomProperties_QNAME = new QName("", "custom_properties");
     private final static QName _Watchdogs_QNAME = new QName("", "watchdogs");
     private final static QName _AuthorizedKeys_QNAME = new QName("", "authorized_keys");
@@ -178,14 +184,15 @@ public class ObjectFactory {
     private final static QName _HostNonOperationalDetails_QNAME = new QName("", "host_non_operational_details");
     private final static QName _DiskStates_QNAME = new QName("", "disk_states");
     private final static QName _Api_QNAME = new QName("", "api");
-    private final static QName _Ksm_QNAME = new QName("", "ksm");
     private final static QName _GlusterClient_QNAME = new QName("", "gluster_client");
+    private final static QName _Ksm_QNAME = new QName("", "ksm");
     private final static QName _Options_QNAME = new QName("", "options");
     private final static QName _Files_QNAME = new QName("", "files");
     private final static QName _Snapshot_QNAME = new QName("", "snapshot");
     private final static QName _WatchdogModels_QNAME = new QName("", "watchdog_models");
     private final static QName _GlusterVolumeTypes_QNAME = new QName("", "gluster_volume_types");
     private final static QName _PowerManagement_QNAME = new QName("", "power_management");
+    private final static QName _Method_QNAME = new QName("", "method");
     private final static QName _Capabilities_QNAME = new QName("", "capabilities");
     private final static QName _GlusterHook_QNAME = new QName("", "gluster_hook");
     private final static QName _Headers_QNAME = new QName("", "headers");
@@ -222,6 +229,7 @@ public class ObjectFactory {
     private final static QName _Hooks_QNAME = new QName("", "hooks");
     private final static QName _Agents_QNAME = new QName("", "agents");
     private final static QName _NfsVersions_QNAME = new QName("", "nfs_versions");
+    private final static QName _GuestNicsConfiguation_QNAME = new QName("", "guest_nics_configuation");
     private final static QName _VnicProfiles_QNAME = new QName("", "vnic_profiles");
     private final static QName _Vmpool_QNAME = new QName("", "vmpool");
     private final static QName _Network_QNAME = new QName("", "network");
@@ -231,8 +239,8 @@ public class ObjectFactory {
     private final static QName _NicInterfaces_QNAME = new QName("", "nic_interfaces");
     private final static QName _HookStates_QNAME = new QName("", "hook_states");
     private final static QName _DisplayTypes_QNAME = new QName("", "display_types");
-    private final static QName _DiskInterfaces_QNAME = new QName("", "disk_interfaces");
     private final static QName _HostNicStates_QNAME = new QName("", "host_nic_states");
+    private final static QName _DiskInterfaces_QNAME = new QName("", "disk_interfaces");
     private final static QName _BrickStates_QNAME = new QName("", "brick_states");
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
     private final static QName _Application_QNAME = new QName("", "application");
@@ -360,6 +368,14 @@ public class ObjectFactory {
      */
     public Feature createFeature() {
         return new Feature();
+    }
+
+    /**
+     * Create an instance of {@link GuestNicConfiguration }
+     *
+     */
+    public GuestNicConfiguration createGuestNicConfiguration() {
+        return new GuestNicConfiguration();
     }
 
     /**
@@ -731,6 +747,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Methods }
+     *
+     */
+    public Methods createMethods() {
+        return new Methods();
+    }
+
+    /**
      * Create an instance of {@link Body }
      *
      */
@@ -760,6 +784,14 @@ public class ObjectFactory {
      */
     public IPs createIPs() {
         return new IPs();
+    }
+
+    /**
+     * Create an instance of {@link Sso }
+     *
+     */
+    public Sso createSso() {
+        return new Sso();
     }
 
     /**
@@ -859,11 +891,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Labels }
+     *
+     */
+    public Labels createLabels() {
+        return new Labels();
+    }
+
+    /**
      * Create an instance of {@link CPU }
      *
      */
     public CPU createCPU() {
         return new CPU();
+    }
+
+    /**
+     * Create an instance of {@link Label }
+     *
+     */
+    public Label createLabel() {
+        return new Label();
     }
 
     /**
@@ -907,6 +955,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GlusterMemoryPool }
+     *
+     */
+    public GlusterMemoryPool createGlusterMemoryPool() {
+        return new GlusterMemoryPool();
+    }
+
+    /**
      * Create an instance of {@link Usages }
      *
      */
@@ -923,11 +979,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GlusterMemoryPool }
+     * Create an instance of {@link GlusterClients }
      *
      */
-    public GlusterMemoryPool createGlusterMemoryPool() {
-        return new GlusterMemoryPool();
+    public GlusterClients createGlusterClients() {
+        return new GlusterClients();
     }
 
     /**
@@ -936,14 +992,6 @@ public class ObjectFactory {
      */
     public PmProxyTypes createPmProxyTypes() {
         return new PmProxyTypes();
-    }
-
-    /**
-     * Create an instance of {@link GlusterClients }
-     *
-     */
-    public GlusterClients createGlusterClients() {
-        return new GlusterClients();
     }
 
     /**
@@ -1203,6 +1251,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SsoMethods }
+     *
+     */
+    public SsoMethods createSsoMethods() {
+        return new SsoMethods();
+    }
+
+    /**
      * Create an instance of {@link CustomProperties }
      *
      */
@@ -1331,19 +1387,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link KSM }
-     *
-     */
-    public KSM createKSM() {
-        return new KSM();
-    }
-
-    /**
      * Create an instance of {@link GlusterClient }
      *
      */
     public GlusterClient createGlusterClient() {
         return new GlusterClient();
+    }
+
+    /**
+     * Create an instance of {@link KSM }
+     *
+     */
+    public KSM createKSM() {
+        return new KSM();
     }
 
     /**
@@ -1392,6 +1448,14 @@ public class ObjectFactory {
      */
     public PowerManagement createPowerManagement() {
         return new PowerManagement();
+    }
+
+    /**
+     * Create an instance of {@link Method }
+     *
+     */
+    public Method createMethod() {
+        return new Method();
     }
 
     /**
@@ -1680,6 +1744,14 @@ public class ObjectFactory {
      */
     public NfsVersions createNfsVersions() {
         return new NfsVersions();
+    }
+
+    /**
+     * Create an instance of {@link GuestNicsConfiguration }
+     *
+     */
+    public GuestNicsConfiguration createGuestNicsConfiguration() {
+        return new GuestNicsConfiguration();
     }
 
     /**
@@ -2216,6 +2288,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GuestNicConfiguration }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "guest_nic_configuration")
+    public JAXBElement<GuestNicConfiguration> createGuestNicConfiguration(GuestNicConfiguration value) {
+        return new JAXBElement<GuestNicConfiguration>(_GuestNicConfiguration_QNAME, GuestNicConfiguration.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Template }{@code >}}
      *
      */
@@ -2513,21 +2594,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContentTypes }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "content_types")
-    public JAXBElement<ContentTypes> createContentTypes(ContentTypes value) {
-        return new JAXBElement<ContentTypes>(_ContentTypes_QNAME, ContentTypes.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GlusterMemoryPools }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "memory_pools")
     public JAXBElement<GlusterMemoryPools> createMemoryPools(GlusterMemoryPools value) {
         return new JAXBElement<GlusterMemoryPools>(_MemoryPools_QNAME, GlusterMemoryPools.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ContentTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "content_types")
+    public JAXBElement<ContentTypes> createContentTypes(ContentTypes value) {
+        return new JAXBElement<ContentTypes>(_ContentTypes_QNAME, ContentTypes.class, null, value);
     }
 
     /**
@@ -2630,6 +2711,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Methods }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "methods")
+    public JAXBElement<Methods> createMethods(Methods value) {
+        return new JAXBElement<Methods>(_Methods_QNAME, Methods.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Body }{@code >}}
      *
      */
@@ -2663,6 +2753,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "boot_devices")
     public JAXBElement<BootDevices> createBootDevices(BootDevices value) {
         return new JAXBElement<BootDevices>(_BootDevices_QNAME, BootDevices.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Sso }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "sso")
+    public JAXBElement<Sso> createSso(Sso value) {
+        return new JAXBElement<Sso>(_Sso_QNAME, Sso.class, null, value);
     }
 
     /**
@@ -2774,6 +2873,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Labels }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "labels")
+    public JAXBElement<Labels> createLabels(Labels value) {
+        return new JAXBElement<Labels>(_Labels_QNAME, Labels.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CPU }{@code >}}
      *
      */
@@ -2789,6 +2897,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "display")
     public JAXBElement<Display> createDisplay(Display value) {
         return new JAXBElement<Display>(_Display_QNAME, Display.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Label }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "label")
+    public JAXBElement<Label> createLabel(Label value) {
+        return new JAXBElement<Label>(_Label_QNAME, Label.class, null, value);
     }
 
     /**
@@ -2828,15 +2945,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterMemoryPool }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "memory_pool")
-    public JAXBElement<GlusterMemoryPool> createMemoryPool(GlusterMemoryPool value) {
-        return new JAXBElement<GlusterMemoryPool>(_MemoryPool_QNAME, GlusterMemoryPool.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GlusterStates }{@code >}}
      *
      */
@@ -2855,12 +2963,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterClients }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterMemoryPool }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "gluster_clients")
-    public JAXBElement<GlusterClients> createGlusterClients(GlusterClients value) {
-        return new JAXBElement<GlusterClients>(_GlusterClients_QNAME, GlusterClients.class, null, value);
+    @XmlElementDecl(namespace = "", name = "memory_pool")
+    public JAXBElement<GlusterMemoryPool> createMemoryPool(GlusterMemoryPool value) {
+        return new JAXBElement<GlusterMemoryPool>(_MemoryPool_QNAME, GlusterMemoryPool.class, null, value);
     }
 
     /**
@@ -2870,6 +2978,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "pm_proxy_types")
     public JAXBElement<PmProxyTypes> createPmProxyTypes(PmProxyTypes value) {
         return new JAXBElement<PmProxyTypes>(_PmProxyTypes_QNAME, PmProxyTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterClients }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "gluster_clients")
+    public JAXBElement<GlusterClients> createGlusterClients(GlusterClients value) {
+        return new JAXBElement<GlusterClients>(_GlusterClients_QNAME, GlusterClients.class, null, value);
     }
 
     /**
@@ -2927,21 +3044,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StorageConnection }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "storage_connection")
-    public JAXBElement<StorageConnection> createStorageConnection(StorageConnection value) {
-        return new JAXBElement<StorageConnection>(_StorageConnection_QNAME, StorageConnection.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PmProxy }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "pm_proxy")
     public JAXBElement<PmProxy> createPmProxy(PmProxy value) {
         return new JAXBElement<PmProxy>(_PmProxy_QNAME, PmProxy.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageConnection }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_connection")
+    public JAXBElement<StorageConnection> createStorageConnection(StorageConnection value) {
+        return new JAXBElement<StorageConnection>(_StorageConnection_QNAME, StorageConnection.class, null, value);
     }
 
     /**
@@ -3161,6 +3278,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SsoMethods }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "sso_methods")
+    public JAXBElement<SsoMethods> createSsoMethods(SsoMethods value) {
+        return new JAXBElement<SsoMethods>(_SsoMethods_QNAME, SsoMethods.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CustomProperties }{@code >}}
      *
      */
@@ -3305,21 +3431,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link KSM }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "ksm")
-    public JAXBElement<KSM> createKsm(KSM value) {
-        return new JAXBElement<KSM>(_Ksm_QNAME, KSM.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GlusterClient }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "gluster_client")
     public JAXBElement<GlusterClient> createGlusterClient(GlusterClient value) {
         return new JAXBElement<GlusterClient>(_GlusterClient_QNAME, GlusterClient.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KSM }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "ksm")
+    public JAXBElement<KSM> createKsm(KSM value) {
+        return new JAXBElement<KSM>(_Ksm_QNAME, KSM.class, null, value);
     }
 
     /**
@@ -3374,6 +3500,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "power_management")
     public JAXBElement<PowerManagement> createPowerManagement(PowerManagement value) {
         return new JAXBElement<PowerManagement>(_PowerManagement_QNAME, PowerManagement.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Method }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "method")
+    public JAXBElement<Method> createMethod(Method value) {
+        return new JAXBElement<Method>(_Method_QNAME, Method.class, null, value);
     }
 
     /**
@@ -3701,6 +3836,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GuestNicsConfiguration }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "guest_nics_configuation")
+    public JAXBElement<GuestNicsConfiguration> createGuestNicsConfiguation(GuestNicsConfiguration value) {
+        return new JAXBElement<GuestNicsConfiguration>(_GuestNicsConfiguation_QNAME, GuestNicsConfiguration.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link VnicProfiles }{@code >}}
      *
      */
@@ -3782,21 +3926,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DiskInterfaces }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "disk_interfaces")
-    public JAXBElement<DiskInterfaces> createDiskInterfaces(DiskInterfaces value) {
-        return new JAXBElement<DiskInterfaces>(_DiskInterfaces_QNAME, DiskInterfaces.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link HostNICStates }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "host_nic_states")
     public JAXBElement<HostNICStates> createHostNicStates(HostNICStates value) {
         return new JAXBElement<HostNICStates>(_HostNicStates_QNAME, HostNICStates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiskInterfaces }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "disk_interfaces")
+    public JAXBElement<DiskInterfaces> createDiskInterfaces(DiskInterfaces value) {
+        return new JAXBElement<DiskInterfaces>(_DiskInterfaces_QNAME, DiskInterfaces.class, null, value);
     }
 
     /**
