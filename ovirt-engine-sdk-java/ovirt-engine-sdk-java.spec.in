@@ -1,5 +1,5 @@
-%global     package_version 1.0.0.19
-%global     package_maven_version 1.0.0.19-1
+%global     package_version 3.3.3.0
+%global     package_maven_version 3.3.3.0
 %global     _javadocname javadoc
 
 %if 0%{?fedora}
@@ -117,6 +117,14 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 %{_javadocdir}/%{name}
 
 %changelog
+* Mon Jan 27 2014 Juan Hernandez <juan.hernandez@redhat.com> - 3.3.3.0-1
+- Regenerate against version 3.3.3 of the engine.
+- Added VNIC profile permissions sub collection.
+- Added CloudInit support to VM initialization action.
+- Remove support for snapshot commit and undo opertions, these
+  operations have been removed from the RESTAPI.
+- Don't add parameters with null values #1047638.
+
 * Wed  Oct 30 2013 Michael Pasternak <mpastern@redhat.com> - 1.0.0.19-1
 - to host.install() added ssh related arguments
 - to template added virtio_scsi.enabled
