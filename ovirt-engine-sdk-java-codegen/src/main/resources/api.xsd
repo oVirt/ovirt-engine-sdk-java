@@ -4,12 +4,6 @@
            xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
            jaxb:version="2.1" jaxb:extensionBindingPrefixes="xjc">
 
-  <xs:annotation>
-    <xs:appinfo>
-      <jaxb:globalBindings generateIsSetMethod="true"/>
-    </xs:appinfo>
-  </xs:annotation>
-
   <!-- Links -->
   <xs:element name="keyValuePair" type="KeyValuePair"/>
 

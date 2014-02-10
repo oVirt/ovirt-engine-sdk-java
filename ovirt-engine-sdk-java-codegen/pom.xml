@@ -182,6 +182,8 @@
                   <arguments>
                     <argument>--xsd</argument>
                     <argument>${basedir}/src/main/resources/api.xsd</argument>
+                    <argument>--xjb</argument>
+                    <argument>${basedir}/src/main/resources/api.xjb</argument>
                     <argument>--rsdl</argument>
                     <argument>${basedir}/src/main/resources/api.rsdl</argument>
                   </arguments>

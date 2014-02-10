@@ -30,6 +30,7 @@ public class Main {
     public static void main(String[] args) throws IOException, JAXBException {
         // Parse the command line parameters:
         String xsdPath = null;
+        String xjbPath = null;
         String rsdlPath = null;
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
@@ -37,6 +38,12 @@ public class Main {
                 i++;
                 if (i < args.length) {
                     xsdPath = args[i];
+                }
+                break;
+            case "--xjb":
+                i++;
+                if (i < args.length) {
+                    xjbPath = args[i];
                 }
                 break;
             case "--rsdl":
@@ -50,13 +57,13 @@ public class Main {
                 System.exit(1);
             }
         }
-        if (xsdPath == null || rsdlPath == null) {
+        if (xsdPath == null || xjbPath == null || rsdlPath == null) {
             System.err.println("Missing required parameters.");
             System.exit(1);
         }
 
         // #1 - generate api entities from the XSD schema
-        new XsdCodegen(xsdPath).generate();
+        new XsdCodegen(xsdPath, xjbPath).generate();
 
         // #2 - generate api entities decorators by RSDL and SDK entry point
         new RsdlCodegen(xsdPath, rsdlPath).generate();
