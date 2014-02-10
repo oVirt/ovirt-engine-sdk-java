@@ -53,17 +53,23 @@ public class XsdCodegen extends AbstractCodegen {
      */
     private String xsdPath;
 
-    public XsdCodegen(String xsdPath) {
+    /**
+     * The location of the JAXB bindings file.
+     */
+    private String xjbPath;
+
+    public XsdCodegen(String xsdPath, String xjbPath) {
         super(getEntitiesPath());
         this.xsdPath = xsdPath;
+        this.xjbPath = xjbPath;
     }
 
     /**
      * Generates entities classes
-     * 
+     *
      * @param distPath
      *            directory to generates the code at
-     * 
+     *
      * @throws IOException
      * @throws JAXBException
      */
@@ -74,10 +80,10 @@ public class XsdCodegen extends AbstractCodegen {
 
         if (OsUtil.isWindows()) {
             xjcOutput = runCommand(WINDOWS_XJC_PATH + " -d " + distPath +
-                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + xsdPath);
+                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + xsdPath + " -b " + xjbPath);
         } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
             xjcOutput = runCommand(NX_XJC_PATH + " -d " + distPath +
-                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + xsdPath);
+                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + xsdPath + " -b " + xjbPath);
         } else {
             throw new RuntimeException("unsupported OS.");
         }
@@ -90,12 +96,12 @@ public class XsdCodegen extends AbstractCodegen {
 
     /**
      * Runs system command
-     * 
+     *
      * @param command
      *            command to run
-     * 
+     *
      * @return command output
-     * 
+     *
      * @throws IOException
      */
     private String runCommand(String command) throws IOException {
@@ -127,7 +133,7 @@ public class XsdCodegen extends AbstractCodegen {
 
     /**
      * Deletes all entities files
-     * 
+     *
      * @param dir
      *            directory to clean
      */
@@ -164,7 +170,7 @@ public class XsdCodegen extends AbstractCodegen {
 
     /**
      * Modifies public getters to return Object so inheriting classes could override them with different signature
-     * 
+     *
      * @param accessors
      *            a list of possible getter types
      */
@@ -175,7 +181,7 @@ public class XsdCodegen extends AbstractCodegen {
 
     /**
      * Modifies public getters (decorators shadows public getters with own ones)
-     * 
+     *
      * @param accessors
      *            accessors to be removed (get/set/is)
      * @param path
@@ -248,7 +254,7 @@ public class XsdCodegen extends AbstractCodegen {
 
     /**
      * Inject CopyrightHeader in to file
-     * 
+     *
      * @param file
      *            file to inject to
      */
@@ -265,7 +271,7 @@ public class XsdCodegen extends AbstractCodegen {
     }
 
     public static void main(String[] args) throws JAXBException, IOException {
-        XsdCodegen generator = new XsdCodegen(args[0]);
+        XsdCodegen generator = new XsdCodegen(args[0], args[1]);
         generator.generate();
     }
 }
