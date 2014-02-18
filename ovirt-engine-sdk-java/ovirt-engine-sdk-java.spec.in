@@ -1,5 +1,5 @@
 %global     package_version 3.4.0.4
-%global     package_maven_version 3.4.0.4-SNAPSHOT
+%global     package_maven_version 3.4.0.4
 %global     _javadocname javadoc
 
 %if 0%{?fedora}
@@ -117,6 +117,9 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 %{_javadocdir}/%{name}
 
 %changelog
+* Tue Feb 18 2014 Juan Hernandez <juan.hernandez@redhat.com> - 3.4.0.4-1
+- Add allContent parameter to relevant methods.
+
 * Fri Jan 24 2014 Juan Hernandez <juan.hernandez@redhat.com> - 3.4.0.3-1
 - Don't add parameters with null values #1047638
 
