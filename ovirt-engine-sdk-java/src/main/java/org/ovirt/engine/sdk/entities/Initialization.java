@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="regenerate_ssh_keys" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="dns_servers" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="dns_search" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="nics" type="{}GuestNicsConfiguration" minOccurs="0"/>
+ *         &lt;element ref="{}nic_configurations" minOccurs="0"/>
  *         &lt;element name="windows_license_key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="root_password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="custom_script" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -69,7 +69,7 @@ import javax.xml.bind.annotation.XmlType;
     "regenerateSshKeys",
     "dnsServers",
     "dnsSearch",
-    "nics",
+    "nicConfigurations",
     "windowsLicenseKey",
     "rootPassword",
     "customScript"
@@ -91,7 +91,8 @@ public class Initialization {
     protected String dnsServers;
     @XmlElement(name = "dns_search")
     protected String dnsSearch;
-    protected GuestNicsConfiguration nics;
+    @XmlElement(name = "nic_configurations")
+    protected GuestNicsConfiguration nicConfigurations;
     @XmlElement(name = "windows_license_key")
     protected String windowsLicenseKey;
     @XmlElement(name = "root_password")
@@ -352,31 +353,31 @@ public class Initialization {
     }
 
     /**
-     * Gets the value of the nics property.
+     * Gets the value of the nicConfigurations property.
      *
      * @return
      *     possible object is
      *     {@link GuestNicsConfiguration }
      *
      */
-    public GuestNicsConfiguration getNics() {
-        return nics;
+    public GuestNicsConfiguration getNicConfigurations() {
+        return nicConfigurations;
     }
 
     /**
-     * Sets the value of the nics property.
+     * Sets the value of the nicConfigurations property.
      *
      * @param value
      *     allowed object is
      *     {@link GuestNicsConfiguration }
      *
      */
-    public void setNics(GuestNicsConfiguration value) {
-        this.nics = value;
+    public void setNicConfigurations(GuestNicsConfiguration value) {
+        this.nicConfigurations = value;
     }
 
-    public boolean isSetNics() {
-        return (this.nics!= null);
+    public boolean isSetNicConfigurations() {
+        return (this.nicConfigurations!= null);
     }
 
     /**

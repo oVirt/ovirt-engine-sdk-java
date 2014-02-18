@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -38,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="nics" type="{}GuestNicConfiguration" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}nic_configuration" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -49,25 +50,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GuestNicsConfiguration", propOrder = {
-    "nics"
+    "nicConfigurations"
 })
 public class GuestNicsConfiguration {
 
-    protected List<GuestNicConfiguration> nics;
+    @XmlElement(name = "nic_configuration")
+    protected List<GuestNicConfiguration> nicConfigurations;
 
     /**
-     * Gets the value of the nics property.
+     * Gets the value of the nicConfigurations property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nics property.
+     * This is why there is not a <CODE>set</CODE> method for the nicConfigurations property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getNics().add(newItem);
+     *    getNicConfigurations().add(newItem);
      * </pre>
      *
      *
@@ -77,19 +79,19 @@ public class GuestNicsConfiguration {
      *
      *
      */
-    public List<GuestNicConfiguration> getNics() {
-        if (nics == null) {
-            nics = new ArrayList<GuestNicConfiguration>();
+    public List<GuestNicConfiguration> getNicConfigurations() {
+        if (nicConfigurations == null) {
+            nicConfigurations = new ArrayList<GuestNicConfiguration>();
         }
-        return this.nics;
+        return this.nicConfigurations;
     }
 
-    public boolean isSetNics() {
-        return ((this.nics!= null)&&(!this.nics.isEmpty()));
+    public boolean isSetNicConfigurations() {
+        return ((this.nicConfigurations!= null)&&(!this.nicConfigurations.isEmpty()));
     }
 
-    public void unsetNics() {
-        this.nics = null;
+    public void unsetNicConfigurations() {
+        this.nicConfigurations = null;
     }
 
 }

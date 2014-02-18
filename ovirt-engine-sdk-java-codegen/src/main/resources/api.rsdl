@@ -7634,7 +7634,7 @@ or less indicates that the session should never timeout</description>
                 <body>
                     <type>Action</type>
                     <parameters_set>
-                        <description>import the template from the export or data domain into the specified cluster</description>
+                        <description>import the template from the export or data domain identified by storagedomain-identifier into the destination storage domain identified by storage_domain.id|name</description>
                         <parameter required="true" type="xs:string">
                             <name>action.cluster.id|name</name>
                         </parameter>
@@ -7757,7 +7757,7 @@ or less indicates that the session should never timeout</description>
                 <body>
                     <type>Action</type>
                     <parameters_set>
-                        <description>import the specified virtual machine in the storage domain into the specified cluster</description>
+                        <description>import the specified virtual machine from the source storagedomain identified by storagedomain-identifier into the destination storage domain identified by storage_domain.id|name</description>
                         <parameter required="true" type="xs:string">
                             <name>action.cluster.id|name</name>
                         </parameter>
@@ -8110,6 +8110,10 @@ or less indicates that the session should never timeout</description>
                         <name>Filter</name>
                         <value>true|false</value>
                     </header>
+                    <header required="false">
+                        <name>All-Content</name>
+                        <value>true|false</value>
+                    </header>
                 </headers>
                 <url>
                     <parameters_set>
@@ -8161,6 +8165,10 @@ or less indicates that the session should never timeout</description>
                 <headers>
                     <header required="false">
                         <name>Filter</name>
+                        <value>true|false</value>
+                    </header>
+                    <header required="false">
+                        <name>All-Content</name>
                         <value>true|false</value>
                     </header>
                 </headers>
@@ -10161,6 +10169,10 @@ or less indicates that the session should never timeout</description>
                         <name>Filter</name>
                         <value>true|false</value>
                     </header>
+                    <header required="false">
+                        <name>All-Content</name>
+                        <value>true|false</value>
+                    </header>
                 </headers>
                 <url>
                     <parameters_set>
@@ -10233,6 +10245,10 @@ or less indicates that the session should never timeout</description>
                 <headers>
                     <header required="false">
                         <name>Filter</name>
+                        <value>true|false</value>
+                    </header>
+                    <header required="false">
+                        <name>All-Content</name>
                         <value>true|false</value>
                     </header>
                 </headers>
@@ -10553,6 +10569,14 @@ or less indicates that the session should never timeout</description>
             <description>get the cdrom for a virtual machine identified by the given id</description>
             <request>
                 <http_method>GET</http_method>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>current</name>
+                            <value>true|false</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
                 <body/>
             </request>
             <response>
@@ -11286,6 +11310,12 @@ or less indicates that the session should never timeout</description>
             <description>get all the network interfaces for a given virtual machine</description>
             <request>
                 <http_method>GET</http_method>
+                <headers>
+                    <header required="false">
+                        <name>All-Content</name>
+                        <value>true|false</value>
+                    </header>
+                </headers>
                 <url>
                     <parameters_set>
                         <parameter required="false" type="xs:int" context="matrix">
@@ -11325,6 +11355,12 @@ or less indicates that the session should never timeout</description>
             <description>get the details of a network interface for a given virtual machine</description>
             <request>
                 <http_method>GET</http_method>
+                <headers>
+                    <header required="false">
+                        <name>All-Content</name>
+                        <value>true|false</value>
+                    </header>
+                </headers>
                 <body/>
             </request>
             <response>

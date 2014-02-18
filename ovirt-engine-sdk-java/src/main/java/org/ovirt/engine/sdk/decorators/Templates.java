@@ -97,6 +97,10 @@ public class Templates extends
     /**
      * Lists Template objects.
      *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param query
      *    <pre>
      *    [search query]
@@ -120,10 +124,13 @@ public class Templates extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Template> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+    public List<Template> list(String query, Boolean caseSensitive, Integer max, String allContent) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());

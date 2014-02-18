@@ -102,6 +102,10 @@ public class VMNICs extends
     /**
      * Lists VMNIC objects.
      *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param max
      *    <pre>
      *    [max results]
@@ -117,10 +121,13 @@ public class VMNICs extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<VMNIC> list(Integer max) throws ClientProtocolException,
+    public List<VMNIC> list(Integer max, String allContent) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
