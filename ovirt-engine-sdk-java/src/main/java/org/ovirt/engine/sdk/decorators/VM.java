@@ -277,6 +277,7 @@ public class VM extends
      *    [vm.tunnel_migration]
      *    [vm.migration_downtime]
      *    [vm.virtio_scsi.enabled]
+     *    [vm.use_latest_template_version]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
      *    </pre>
@@ -352,6 +353,7 @@ public class VM extends
      *    [vm.tunnel_migration]
      *    [vm.migration_downtime]
      *    [vm.virtio_scsi.enabled]
+     *    [vm.use_latest_template_version]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
      *    </pre>

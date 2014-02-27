@@ -479,6 +479,14 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="TemplateVersion">
+    <xs:sequence>
+       <xs:element name="base_template" type="Template"  minOccurs="0" maxOccurs="1"/>
+       <xs:element name="version_number" type="xs:int"  minOccurs="0" maxOccurs="1" />
+       <xs:element name="version_name" type="xs:string"  minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <!-- Version numbers -->
 
   <xs:element name="system_version" type="Version"/>
@@ -2308,6 +2316,7 @@
           <xs:element ref="virtio_scsi" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="permissions" minOccurs="0" maxOccurs="1"/>
           <!-- also rel="cdroms/disks/nics/watchdogs" links, see Devices below -->
+          <xs:element name="version" type="TemplateVersion" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -2472,11 +2481,12 @@
   </xs:complexType>
 
   <xs:element name="configuration" type="Configuration"/>
+
   <xs:complexType name="Configuration">
-        <xs:choice>
-            <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="data" type="xs:string" minOccurs="0" maxOccurs="1"/>
-        </xs:choice>
+    <xs:sequence>
+      <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="data" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:element name="initialization" type="Initialization"/>
@@ -2648,6 +2658,7 @@
 
           <xs:element ref="reported_devices" minOccurs="0" maxOccurs="1"/>
           <xs:element ref="watchdogs" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="use_latest_template_version" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

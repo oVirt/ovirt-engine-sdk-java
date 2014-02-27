@@ -206,6 +206,7 @@ public class VMs extends
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.use_latest_template_version]
      *
      *    Overload 2:
      *
@@ -394,6 +395,7 @@ public class VMs extends
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.use_latest_template_version]
      *
      *    Overload 2:
      *

@@ -189,6 +189,7 @@ public class Template extends
      *    [template.tunnel_migration]
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.version.version_name]
      *    </pre>
      *
      * @return
@@ -259,6 +260,7 @@ public class Template extends
      *    [template.tunnel_migration]
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.version.version_name]
      *    </pre>
      *
      * @param correlationId

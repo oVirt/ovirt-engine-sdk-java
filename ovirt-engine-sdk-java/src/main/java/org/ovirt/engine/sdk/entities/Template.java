@@ -63,6 +63,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="migration_downtime" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}virtio_scsi" minOccurs="0"/>
  *         &lt;element ref="{}permissions" minOccurs="0"/>
+ *         &lt;element name="version" type="{}TemplateVersion" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -96,7 +97,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "tunnelMigration",
     "migrationDowntime",
     "virtioScsi",
-    "permissions"
+    "permissions",
+    "version"
 })
 public class Template
     extends BaseResource
@@ -135,6 +137,7 @@ public class Template
     @XmlElement(name = "virtio_scsi")
     protected VirtIOSCSI virtioScsi;
     protected Permissions permissions;
+    protected TemplateVersion version;
 
     /**
      * Gets the value of the vm property.
@@ -806,6 +809,34 @@ public class Template
 
     public boolean isSetPermissions() {
         return (this.permissions!= null);
+    }
+
+    /**
+     * Gets the value of the version property.
+     *
+     * @return
+     *     possible object is
+     *     {@link TemplateVersion }
+     *
+     */
+    public TemplateVersion getVersion() {
+        return version;
+    }
+
+    /**
+     * Sets the value of the version property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link TemplateVersion }
+     *
+     */
+    public void setVersion(TemplateVersion value) {
+        this.version = value;
+    }
+
+    public boolean isSetVersion() {
+        return (this.version!= null);
     }
 
 }

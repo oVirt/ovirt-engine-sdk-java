@@ -84,6 +84,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}floppies" minOccurs="0"/>
  *         &lt;element ref="{}reported_devices" minOccurs="0"/>
  *         &lt;element ref="{}watchdogs" minOccurs="0"/>
+ *         &lt;element name="use_latest_template_version" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -137,7 +138,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "cdroms",
     "floppies",
     "reportedDevices",
-    "watchdogs"
+    "watchdogs",
+    "useLatestTemplateVersion"
 })
 @XmlSeeAlso({
     Snapshot.class
@@ -209,6 +211,8 @@ public class VM
     @XmlElement(name = "reported_devices")
     protected ReportedDevices reportedDevices;
     protected WatchDogs watchdogs;
+    @XmlElement(name = "use_latest_template_version")
+    protected Boolean useLatestTemplateVersion;
 
     /**
      * Gets the value of the type property.
@@ -1440,6 +1444,34 @@ public class VM
 
     public boolean isSetWatchdogs() {
         return (this.watchdogs!= null);
+    }
+
+    /**
+     * Gets the value of the useLatestTemplateVersion property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUseLatestTemplateVersion() {
+        return useLatestTemplateVersion;
+    }
+
+    /**
+     * Sets the value of the useLatestTemplateVersion property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUseLatestTemplateVersion(Boolean value) {
+        this.useLatestTemplateVersion = value;
+    }
+
+    public boolean isSetUseLatestTemplateVersion() {
+        return (this.useLatestTemplateVersion!= null);
     }
 
 }

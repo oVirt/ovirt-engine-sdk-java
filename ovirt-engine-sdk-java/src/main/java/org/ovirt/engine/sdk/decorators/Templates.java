@@ -192,6 +192,8 @@ public class Templates extends
      *    [template.virtio_scsi.enabled]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
+     *    [template.version.version_name]
+     *    [template.version.base_template.id]
      *    [template.cpu.cpu_tune.vcpu_pin]
      *    </pre>
      *
@@ -263,6 +265,8 @@ public class Templates extends
      *    [template.virtio_scsi.enabled]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
+     *    [template.version.version_name]
+     *    [template.version.base_template.id]
      *    [template.cpu.cpu_tune.vcpu_pin]
      *    </pre>
      *

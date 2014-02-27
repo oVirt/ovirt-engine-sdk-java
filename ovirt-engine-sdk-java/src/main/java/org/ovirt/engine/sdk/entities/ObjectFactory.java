@@ -2147,6 +2147,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TemplateVersion }
+     *
+     */
+    public TemplateVersion createTemplateVersion() {
+        return new TemplateVersion();
+    }
+
+    /**
      * Create an instance of {@link CustomProperty }
      *
      */

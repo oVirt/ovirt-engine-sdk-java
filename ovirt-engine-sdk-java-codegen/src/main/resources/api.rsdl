@@ -8083,6 +8083,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>template.permissions.clone</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>template.version.version_name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>template.version.base_template.id</name>
+                        </parameter>
                         <parameter required="false" type="collection">
                             <name>template.cpu.cpu_tune.vcpu_pin</name>
                             <parameters_set>
@@ -8321,6 +8327,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.virtio_scsi.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>template.version.version_name</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -9788,6 +9797,9 @@ or less indicates that the session should never timeout</description>
 </parameter>
                             </parameters_set>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.use_latest_template_version</name>
+                        </parameter>
                     </parameters_set>
                     <parameters_set>
                         <description>add a virtual machine to the system by cloning from a snapshot</description>
@@ -10410,6 +10422,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.virtio_scsi.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.use_latest_template_version</name>
                         </parameter>
                         <parameter required="false" type="collection">
                             <name>vm.payloads.payload</name>
