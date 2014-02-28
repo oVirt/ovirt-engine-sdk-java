@@ -111,7 +111,6 @@ public class HostNIC extends
      *    [hostnic.mac]
      *    [hostnic.ip.address]
      *    [hostnic.ip.netmask]
-     *    [hostnic.ip.mtu]
      *    </pre>
      *
      * @return
@@ -155,7 +154,6 @@ public class HostNIC extends
      *    [hostnic.mac]
      *    [hostnic.ip.address]
      *    [hostnic.ip.netmask]
-     *    [hostnic.ip.mtu]
      *    </pre>
      *
      * @param correlationId

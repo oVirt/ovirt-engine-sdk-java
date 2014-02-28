@@ -5036,9 +5036,6 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:string">
                             <name>hostnic.ip.netmask</name>
                         </parameter>
-                        <parameter required="false" type="xs:int">
-                            <name>hostnic.ip.mtu</name>
-                        </parameter>
                     </parameters_set>
                 </body>
             </request>
