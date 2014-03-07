@@ -16,14 +16,14 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.ovirt.engine.sdk.codegen.utils.FormatUtils;
 import org.ovirt.engine.sdk.codegen.utils.TypeUtils;
 import org.ovirt.engine.sdk.codegen.utils.UrlUtils;
-import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Header;
 import org.ovirt.engine.sdk.entities.Parameter;
-import org.ovirt.engine.sdk.codegen.utils.ArrayUtils;
 
 /**
  * Abstract Overloadable-Template class
@@ -32,90 +32,80 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
     private static final String XSD_STRING_TYPE = "xs:string";
     protected static final String DOC_SEPARATOR = "     *";
 
-    private static HeaderBuilderParameterTemplate headerBuilderParameterTemplate;
-    private static ExtraMethodParameterTemplate extraMethodParameterTemplate;
-    private static UrlBuilderParameterTemplate urlBuilderParameterTemplate;
-
     /**
-     * Abstract Overloadable-Template class default constructor
+     * Generate the code that checks the value of URL parameters and adds it to the list of parameters to actually send
+     * to the server.
+     *
+     * @param parameters the list of parameters to add
      */
-    public AbstractOverloadableTemplate() {
-        initResources();
+    protected String getUrlBuilderCode(List<Parameter> parameters) {
+        StringBuilder buffer = new StringBuilder();
+        for (Parameter parameter : parameters) {
+            UrlBuilderParameterTemplate template = new UrlBuilderParameterTemplate();
+            buffer.append("\n");
+            buffer.append(
+                template.getTemplate(
+                    parameter.getName(),
+                    UrlUtils.toQueryParam(parameter.getName()),
+                    UrlUtils.toParamType(parameter.getContext())
+                )
+            );
+        }
+        return buffer.toString();
     }
 
     /**
-     * Initializes AbstractOverloadableTemplate resources
+     * Get a list of the method parameter declarations that corresponding to the given URL parameters.
+     *
+     * @param params a list containing the URL parameters
      */
-    public static synchronized void initResources() {
-        if (headerBuilderParameterTemplate == null) {
-            headerBuilderParameterTemplate = new HeaderBuilderParameterTemplate();
+    protected List<String> getUrlParameterDeclarations(List<Parameter> params) {
+        List<String> paramDecls = new ArrayList<>();
+        for (Parameter param : params) {
+            String paramName = UrlUtils.toQueryParam(param.getName());
+            String paramType = TypeUtils.toJava(param.getType());
+            MethodParameterTemplate paramDeclTemplate = new MethodParameterTemplate();
+            String paramDecl = paramDeclTemplate.getTemplate(paramType, paramName);
+            paramDecls.add(paramDecl);
         }
-        if (extraMethodParameterTemplate == null) {
-            extraMethodParameterTemplate = new ExtraMethodParameterTemplate();
-        }
-        if (urlBuilderParameterTemplate == null) {
-            urlBuilderParameterTemplate = new UrlBuilderParameterTemplate();
-        }
+        return paramDecls;
     }
 
     /**
-     * Appends url params
-     * 
-     * @param methodExtraParamsDef
-     *            extra method params definitions
-     * @param urlParamsToBuild
-     *            url params to build
-     * @param parameter
-     *            parameter to discover
+     * Get a list of the method parameter declarations that corresponding to the given headers.
+     *
+     * @param headers a list containing the headers
      */
-    protected void addUrlParams(StringBuffer methodExtraParamsDef, StringBuffer urlParamsToBuild, Parameter parameter) {
-        methodExtraParamsDef.append(extraMethodParameterTemplate.getTemplate(
-                TypeUtils.toJava(parameter.getType()),
-                UrlUtils.toQueryParam(parameter.getName())));
-
-        urlParamsToBuild.append("\n" + urlBuilderParameterTemplate.getTemplate(
-                parameter.getName(),
-                UrlUtils.toQueryParam(parameter.getName()),
-                UrlUtils.toParamType(parameter.getContext())));
+    protected List<String> getHeaderDeclarations(List<Header> headers) {
+        List<String> paramDecls = new ArrayList<>();
+        for (Header header : headers) {
+            String paramName = FormatUtils.toJava(header.getName());
+            String paramType = TypeUtils.toJava(XSD_STRING_TYPE);
+            MethodParameterTemplate paramDeclTemplate = new MethodParameterTemplate();
+            String paramDecl = paramDeclTemplate.getTemplate(paramType, paramName);
+            paramDecls.add(paramDecl);
+        }
+        return paramDecls;
     }
 
     /**
      * Appends header params
-     * 
-     * @param dl
-     *            DetailedLink
-     * @param methodExtraParamsDef
-     *            extra method params definitions
-     * @param headersToBuild
-     *            headers to build
-     * @param urlParamsToBuild
-     *            url params to build
-     * @param templateBuff
-     *            template container
-     * 
-     * @return StringBuffer
+     *
+     * @param headers the list of headers
      */
-    protected StringBuffer addHeaderParams(DetailedLink dl, StringBuffer methodExtraParamsDef,
-            StringBuffer headersToBuild, StringBuffer urlParamsToBuild, StringBuffer templateBuff) {
-        // header params
-        if (dl.isSetRequest() && dl.getRequest().isSetHeaders() &&
-                dl.getRequest().getHeaders().isSetHeaders() &&
-                !dl.getRequest().getHeaders().getHeaders().isEmpty()) {
-            for (Header header : dl.getRequest().getHeaders().getHeaders()) {
-
-                if (!ArrayUtils.contains(DocsGen.HEADERS_EXCEPTIONS, header.getName())) {
-                    methodExtraParamsDef.append(extraMethodParameterTemplate.getTemplate(
-                            TypeUtils.toJava(XSD_STRING_TYPE),
-                            FormatUtils.toJava(header.getName())));
-
-                    headersToBuild.append("\n" + headerBuilderParameterTemplate.getTemplate(
-                            header.getName(),
-                            FormatUtils.toJava(header.getName())));
-                }
-            }
-
+    protected String getHeaderBuilderCode(List<Header> headers) {
+        StringBuilder buffer = new StringBuilder();
+        for (Header header : headers) {
+            String headerName = header.getName();
+            HeaderBuilderParameterTemplate template = new HeaderBuilderParameterTemplate();
+            buffer.append("\n");
+            buffer.append(
+                template.getTemplate(
+                    headerName,
+                    FormatUtils.toJava(headerName)
+                )
+            );
         }
-
-        return methodExtraParamsDef;
+        return buffer.toString();
     }
 }

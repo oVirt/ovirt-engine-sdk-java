@@ -11,7 +11,7 @@ $docParams$
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public $decoratorName$ add(org.ovirt.engine.sdk.entities.$publicEntityName$ $publicEntityNameLowerCase$$methodExtraParamsDef$) throws
+    public $decoratorName$ add(org.ovirt.engine.sdk.entities.$publicEntityName$ $publicEntityNameLowerCase$$paramList$) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 

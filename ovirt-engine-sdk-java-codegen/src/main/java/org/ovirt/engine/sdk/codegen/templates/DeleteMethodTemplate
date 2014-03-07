@@ -11,7 +11,7 @@ $docParams$
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete($methodExtraParamsDef$) throws ClientProtocolException,
+    public Response delete($paramList$) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

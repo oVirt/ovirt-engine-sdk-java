@@ -16,12 +16,16 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
+import org.ovirt.engine.sdk.codegen.utils.LinkUtils;
 import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
 import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 import org.ovirt.engine.sdk.entities.DetailedLink;
+import org.ovirt.engine.sdk.entities.Header;
 import org.ovirt.engine.sdk.entities.Parameter;
-import org.ovirt.engine.sdk.entities.ParametersSet;
 
 /**
  * Provides Resource action templating services
@@ -34,54 +38,48 @@ public class CollectionActionMethodTemplate extends AbstractOverloadableTemplate
 
     /**
      * Formats template in to the resource action template
-     * 
+     *
+     * @param urlParameters
+     *            the list of URL parameters
+     * @param headers
+     *            the list of headers
      * @param methodName
      *            name of java method
      * @param actionName
      *            name of api action
      * @param docParams
      *            documentation params
-     * 
-     * @return Formated template
-     */
-    private String getTemplate(String methodName, String actionName, String docParams) {
-        return getTemplate(methodName, actionName, docParams, "", "", "");
-    }
-
-    /**
-     * Formats template in to the resource action template
-     * 
-     * @param methodName
-     *            name of java method
-     * @param actionName
-     *            name of api action
-     * @param docParams
-     *            documentation params
-     * @param methodExtraParamsDef
-     *            method parameters (url/header encapsulations)
-     * @param headersToBuild
-     *            headers to build with HttpHeaderBuilder
-     * @param urlParamsToBuild
-     *            url Params To Build with UrlParamsBuilder
      * 
      * @return formated template
      */
-    private String getTemplate(String methodName,
+    private String getTemplate(
+            List<Parameter> urlParameters,
+            List<Header> headers,
+            String methodName,
             String actionName,
-            String docParams,
-            String methodExtraParamsDef,
-            String headersToBuild,
-            String urlParamsToBuild) {
+            String docParams) {
 
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getTemplate());
+        // Generate the parameter declarations, for both URL parameters and headers:
+        List<String> paramDecls = new ArrayList<>();
+        paramDecls.addAll(getUrlParameterDeclarations(urlParameters));
+        paramDecls.addAll(getHeaderDeclarations(headers));
+        String paramList = "";
+        if (!paramDecls.isEmpty()) {
+            paramList = ", " + StringUtils.formatList(paramDecls, ", ");
+        }
 
+        // Generate the code that populates the list of URL parameters to send tot the server:
+        String urlBuilderCode = getUrlBuilderCode(urlParameters);
+        String headerBuilderCode = getHeaderBuilderCode(headers);
+
+        // Generate the method:
+        StringTemplateWrapper templateWrapper = new StringTemplateWrapper(getTemplate());
         templateWrapper.set("methodName", methodName);
         templateWrapper.set("actionName", actionName);
         templateWrapper.set("docParams", docParams);
-        templateWrapper.set("methodExtraParamsDef", methodExtraParamsDef);
-        templateWrapper.set("headersToBuild", headersToBuild);
-        templateWrapper.set("urlParamsToBuild", urlParamsToBuild);
+        templateWrapper.set("paramList", paramList);
+        templateWrapper.set("headersToBuild", headerBuilderCode);
+        templateWrapper.set("urlParamsToBuild", urlBuilderCode);
 
         return templateWrapper.toString();
     }
@@ -100,48 +98,60 @@ public class CollectionActionMethodTemplate extends AbstractOverloadableTemplate
      * 
      * @return formated template
      */
-    public String getTemplate(String methodName, String actionName,
-            String docParams, DetailedLink dl) {
+    public String getTemplate(String methodName, String actionName, String docParams, DetailedLink dl) {
+        StringBuilder buffer = new StringBuilder();
 
-        StringBuffer methodExtraParamsDef = new StringBuffer();
-        StringBuffer headersToBuild = new StringBuffer();
-        StringBuffer urlParamsToBuild = new StringBuffer();
-        StringBuffer templateBuff = new StringBuffer();
+        // Generate URL and header parameters:
+        List<Parameter> urlParameters = LinkUtils.getUrlParameters(dl);
+        List<Header> headers = LinkUtils.getHeaders(dl);
 
-        if (dl.isSetRequest() && dl.getRequest().isSetUrl() &&
-                dl.getRequest().getUrl().isSetParametersSets() &&
-                !dl.getRequest().getUrl().getParametersSets().isEmpty()) {
-
-            // url params
-            for (ParametersSet parametersSet : dl.getRequest().getUrl().getParametersSets()) {
-                for (Parameter parameter : parametersSet.getParameters()) {
-                    addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
-                }
-                methodExtraParamsDef =
-                        addHeaderParams(dl, methodExtraParamsDef,
-                                headersToBuild, urlParamsToBuild, templateBuff);
-            }
-        } else {
-            methodExtraParamsDef =
-                    addHeaderParams(dl, methodExtraParamsDef,
-                            headersToBuild, urlParamsToBuild, templateBuff);
-        }
-
-        // add default method
-        templateBuff.append(getTemplate(methodName,
+        // Add default method, without URL or header parameters:
+        buffer.append(
+            getTemplate(
+                new ArrayList<Parameter>(0),
+                new ArrayList<Header>(0),
+                methodName,
                 actionName,
-                docParams));
+                docParams
+            )
+        );
 
-        // add method overload containing url/matrix params
-        if (methodExtraParamsDef.length() > 0) {
-            templateBuff.append(getTemplate(methodName,
+        // Add method overload containing all the URL parameters but none of the header parameters:
+        if (!urlParameters.isEmpty()) {
+            buffer.append(
+                getTemplate(
+                    urlParameters,
+                    new ArrayList<Header>(0),
+                    methodName,
                     actionName,
-                    StringUtils.combine(docParams, DocsGen.generateUrlAndHeadersParams(dl)),
-                    methodExtraParamsDef.toString(),
-                    headersToBuild.toString(),
-                    urlParamsToBuild.toString()));
+                    StringUtils.combine(
+                        docParams,
+                        DocsGen.generateUrlParameters(dl)
+                    )
+                )
+            );
         }
 
-        return templateBuff.toString();
+        // Add method overloads containg all the URL parameters and all the sublists of the header parameters:
+        if (!headers.isEmpty()) {
+            for (int i = 1; i <= headers.size(); i++) {
+                List<Header> headerSublist = headers.subList(0, i);
+                buffer.append(
+                    getTemplate(
+                        urlParameters,
+                        headerSublist,
+                        methodName,
+                        actionName,
+                        StringUtils.combine(
+                            docParams,
+                            DocsGen.generateHeaders(headerSublist),
+                            DocsGen.generateUrlParameters(dl)
+                        )
+                    )
+                );
+            }
+        }
+
+        return buffer.toString();
     }
 }
