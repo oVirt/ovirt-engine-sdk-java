@@ -11,7 +11,7 @@ $docParams$
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<$decoratorName$> list($methodExtraParamsDef$) throws ClientProtocolException,
+    public List<$decoratorName$> list($paramList$) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();$headersToBuild$

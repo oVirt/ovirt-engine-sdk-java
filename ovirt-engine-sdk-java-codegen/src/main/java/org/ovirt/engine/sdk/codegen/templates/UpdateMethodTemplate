@@ -11,7 +11,7 @@ $docParams$
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public $decoratorName$ update($methodExtraParamsDef$) throws ClientProtocolException,
+    public $decoratorName$ update($paramList$) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

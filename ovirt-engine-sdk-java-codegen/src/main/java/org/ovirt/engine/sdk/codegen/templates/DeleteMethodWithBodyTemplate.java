@@ -16,12 +16,16 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
+import org.ovirt.engine.sdk.codegen.utils.LinkUtils;
 import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
 import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 import org.ovirt.engine.sdk.entities.DetailedLink;
+import org.ovirt.engine.sdk.entities.Header;
 import org.ovirt.engine.sdk.entities.Parameter;
-import org.ovirt.engine.sdk.entities.ParametersSet;
 
 /**
  * Provides Resource delete with body templating services
@@ -34,32 +38,43 @@ public class DeleteMethodWithBodyTemplate extends AbstractOverloadableTemplate {
 
     /**
      * Formats template in to the resource delete template
-     * 
+     *
+     * @param urlParameters
+     *            the list of URL parameters
+     * @param headers
+     *            the list of headers
      * @param docParams
      *            documentation params
-     * @param methodExtraParamsDef
-     *            method parameters (url/header encapsulations)
-     * @param headersToBuild
-     *            headers to build with HttpHeaderBuilder
-     * @param urlParamsToBuild
-     *            url Params To Build with UrlParamsBuilder
      * 
      * @return formated add template
      */
-    private String getTemplate(String deleteBody, String docParams, String methodExtraParamsDef,
-            String headersToBuild, String urlParamsToBuild) {
+    private String getTemplate(
+            List<Parameter> urlParameters,
+            List<Header> headers,
+            String deleteBody,
+            String docParams) {
 
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(super.getTemplate());
+        // Generate the parameter declarations, for both URL parameters and headers:
+        List<String> paramDecls = new ArrayList<>();
+        paramDecls.addAll(getUrlParameterDeclarations(urlParameters));
+        paramDecls.addAll(getHeaderDeclarations(headers));
+        String paramList = "";
+        if (!paramDecls.isEmpty()) {
+            paramList = ", " + StringUtils.formatList(paramDecls, ", ");
+        }
 
+        // Generate the code that populates the list of URL parameters to send tot the server:
+        String urlBuilderCode = getUrlBuilderCode(urlParameters);
+        String headerBuilderCode = getHeaderBuilderCode(headers);
+
+        // Generate the method:
+        StringTemplateWrapper templateWrapper = new StringTemplateWrapper(super.getTemplate());
         templateWrapper.set("deleteBody", deleteBody);
         templateWrapper.set("deleteBodyLowerCase", deleteBody.toLowerCase());
-
         templateWrapper.set("docParams", docParams);
-        templateWrapper.set("methodExtraParamsDef", methodExtraParamsDef);
-        templateWrapper.set("headersToBuild", headersToBuild);
-        templateWrapper.set("urlParamsToBuild", urlParamsToBuild);
-
+        templateWrapper.set("paramList", paramList);
+        templateWrapper.set("headersToBuild", headerBuilderCode);
+        templateWrapper.set("urlParamsToBuild", urlBuilderCode);
         return templateWrapper.toString();
     }
 
@@ -68,49 +83,52 @@ public class DeleteMethodWithBodyTemplate extends AbstractOverloadableTemplate {
      * 
      * @param docParams
      *            documentation params
-     * @param detailedLink
+     * @param dl
      *            a DetailedLink
      * 
      * @return formated add template
      */
-    public String getTemplate(String docParams, DetailedLink detailedLink) {
+    public String getTemplate(String docParams, DetailedLink dl) {
+        StringBuilder buffer = new StringBuilder();
 
-        StringBuffer methodExtraParamsDef = new StringBuffer();
-        StringBuffer headersToBuild = new StringBuffer();
-        StringBuffer urlParamsToBuild = new StringBuffer();
-        StringBuffer templateBuff = new StringBuffer();
+        // Generate URL and header parameters:
+        List<Parameter> urlParameters = LinkUtils.getUrlParameters(dl);
+        List<Header> headers = LinkUtils.getHeaders(dl);
 
-        if (detailedLink.isSetRequest() && detailedLink.getRequest().isSetUrl() &&
-                detailedLink.getRequest().getUrl().isSetParametersSets() &&
-                !detailedLink.getRequest().getUrl().getParametersSets().isEmpty()) {
+        // Add method overload containing all the URL parameters but none of the header parameters:
+        if (!urlParameters.isEmpty()) {
+            buffer.append(
+                getTemplate(
+                    urlParameters,
+                    new ArrayList<Header>(0),
+                    dl.getRequest().getBody().getType(),
+                    StringUtils.combine(
+                        docParams,
+                        DocsGen.generateUrlParameters(dl)
+                    )
+                )
+            );
+        }
 
-            // add url params
-            for (ParametersSet parametersSet : detailedLink.getRequest().getUrl().getParametersSets()) {
-                for (Parameter parameter : parametersSet.getParameters()) {
-                    addUrlParams(methodExtraParamsDef, urlParamsToBuild, parameter);
-                }
-                // add header params
-                methodExtraParamsDef =
-                        addHeaderParams(detailedLink, methodExtraParamsDef,
-                                headersToBuild, urlParamsToBuild, templateBuff);
+        // Add method overloads containg all the URL parameters and all the sublists of the header parameters:
+        if (!headers.isEmpty()) {
+            for (int i = 1; i <= headers.size(); i++) {
+                List<Header> headerSublist = headers.subList(0, i);
+                buffer.append(
+                    getTemplate(
+                        urlParameters,
+                        headerSublist,
+                        dl.getRequest().getBody().getType(),
+                        StringUtils.combine(
+                            docParams,
+                            DocsGen.generateHeaders(headerSublist),
+                            DocsGen.generateUrlParameters(dl)
+                        )
+                    )
+                );
             }
-        } else {
-            // add header params
-            methodExtraParamsDef =
-                    addHeaderParams(detailedLink, methodExtraParamsDef,
-                            headersToBuild, urlParamsToBuild, templateBuff);
         }
 
-        // add method overload containing url/matrix params
-        if (methodExtraParamsDef.length() > 0) {
-            templateBuff.append(getTemplate(
-                    detailedLink.getRequest().getBody().getType(),
-                    StringUtils.combine(docParams, DocsGen.generateUrlAndHeadersParams(detailedLink)),
-                    methodExtraParamsDef.toString(),
-                    headersToBuild.toString(),
-                    urlParamsToBuild.toString()));
-        }
-
-        return templateBuff.toString();
+        return buffer.toString();
     }
 }

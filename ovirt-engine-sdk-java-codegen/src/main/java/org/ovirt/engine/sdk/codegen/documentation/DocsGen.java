@@ -19,7 +19,6 @@ package org.ovirt.engine.sdk.codegen.documentation;
 import java.util.List;
 
 import org.ovirt.engine.sdk.codegen.common.IDocCodegen;
-import org.ovirt.engine.sdk.codegen.utils.ArrayUtils;
 import org.ovirt.engine.sdk.codegen.utils.FormatUtils;
 import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 import org.ovirt.engine.sdk.codegen.utils.UrlUtils;
@@ -48,8 +47,6 @@ public class DocsGen implements IDocCodegen {
     private static final String PARAM = PREFIX + " " + AT;
     private static final String LINK = " {@link $TYPE$}";
     private static final String NAMESPACE = "org.ovirt.engine.sdk.entities.";
-
-    public static final String[] HEADERS_EXCEPTIONS = new String[] { "Content-Type", "Filter" };
 
     /**
      * Generate doc string from DetailedLink params
@@ -108,39 +105,38 @@ public class DocsGen implements IDocCodegen {
     }
 
     /**
-     * Generates URL and Http headers docs
-     * 
-     * @param detailedLink
-     *            detailed link to fetch UrlAndHeaders parsms from
-     * 
-     * @return doc string
+     * Generates the documentation for the list of headers given.
      */
-    public static String generateUrlAndHeadersParams(DetailedLink detailedLink) {
-        StringBuffer docParams = new StringBuffer();
-
-        // headers
-        if (detailedLink.getRequest() != null && detailedLink.getRequest().isSetHeaders()
-                && detailedLink.getRequest().getHeaders().isSetHeaders()) {
-
-            if (!detailedLink.getRequest().getHeaders().getHeaders().isEmpty()) {
-                for (Header header : detailedLink.getRequest().getHeaders().getHeaders()) {
-                    if (!ArrayUtils.contains(HEADERS_EXCEPTIONS, header.getName())) {
-                        if (header.isRequired() != null && header.isRequired().equals(Boolean.TRUE)) {
-                            docParams.append(NEW_LINE + PARAM + FormatUtils.toJava(header.getName() +
-                                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
-                                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + header.getValue()) +
-                                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_CLOSE);
-                        } else {
-                            docParams.append(NEW_LINE + PARAM + FormatUtils.toJava(header.getName()) +
-                                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
-                                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET +
-                                    BREACKS_OPEN + header.getValue() + BREACKS_CLOSE +
-                                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_CLOSE);
-                        }
-                    }
-                }
+    public static String generateHeaders(List<Header> headers) {
+        StringBuilder buffer = new StringBuilder();
+        for (Header header : headers) {
+            if (header.isRequired() != null && header.isRequired()) {
+                buffer.append(
+                    NEW_LINE + PARAM + FormatUtils.toJava(header.getName()) +
+                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
+                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + header.getValue() +
+                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_CLOSE
+                );
+            }
+            else {
+                buffer.append(
+                    NEW_LINE + PARAM + FormatUtils.toJava(header.getName()) +
+                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN +
+                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET +
+                    BREACKS_OPEN + header.getValue() + BREACKS_CLOSE +
+                    NEW_LINE + PREFIX + PARAM_DETAILS_OFFSET + PRE_CLOSE
+                );
             }
         }
+        buffer.append(NEW_LINE + PREFIX);
+        return buffer.toString();
+    }
+
+    /**
+     * Generates the docuemntation for the URL parameters available in the given link.
+     */
+    public static String generateUrlParameters(DetailedLink detailedLink) {
+        StringBuffer docParams = new StringBuffer();
 
         // url params
         if (detailedLink.getRequest() != null && detailedLink.getRequest().isSetUrl()
@@ -227,7 +223,7 @@ public class DocsGen implements IDocCodegen {
         StringBuffer docParamsBuffer = new StringBuffer();
 
         docParamsBuffer.append(generateBodyParams(detailedLink));
-        docParamsBuffer.append(generateUrlAndHeadersParams(detailedLink));
+        docParamsBuffer.append(generateUrlParameters(detailedLink));
 
         return docParamsBuffer.toString();
     }

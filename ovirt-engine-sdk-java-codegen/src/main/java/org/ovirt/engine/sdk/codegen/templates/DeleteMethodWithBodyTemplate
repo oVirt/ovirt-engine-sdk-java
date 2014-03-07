@@ -11,7 +11,7 @@ $docParams$
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(org.ovirt.engine.sdk.entities.$deleteBody$ $deleteBodyLowerCase$$methodExtraParamsDef$) throws ClientProtocolException,
+    public Response delete(org.ovirt.engine.sdk.entities.$deleteBody$ $deleteBodyLowerCase$$paramList$) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

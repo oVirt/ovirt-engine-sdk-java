@@ -17,6 +17,7 @@
 package org.ovirt.engine.sdk.codegen.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -221,5 +222,21 @@ public class StringUtils {
             return candidate + "s";
         }
         return candidate;
+    }
+
+    /**
+     * Formats a collection of objects separating their string representation with the given separator.
+     */
+    public static String formatList(Collection<?> collection, String separator) {
+        StringBuilder buffer = new StringBuilder();
+        boolean first = true;
+        for (Object item : collection) {
+            if (!first) {
+                buffer.append(separator);
+            }
+            buffer.append(item);
+            first = false;
+        }
+        return buffer.toString();
     }
 }

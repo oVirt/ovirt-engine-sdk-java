@@ -11,7 +11,7 @@ $docParams$
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action $methodName$(Action action$methodExtraParamsDef$) throws ClientProtocolException,
+    public Action $methodName$(Action action$paramList$) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/$actionName$";
 
