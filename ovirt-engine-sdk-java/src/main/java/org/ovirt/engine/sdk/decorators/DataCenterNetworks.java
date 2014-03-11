@@ -176,6 +176,46 @@ public class DataCenterNetworks extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link DataCenterNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterNetwork add(org.ovirt.engine.sdk.entities.Network network, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterNetwork.class, headers);
+    }
+    /**
+     * Adds Network object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    network.id|name
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

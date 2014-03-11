@@ -182,6 +182,49 @@ public class NetworkVnicProfiles extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link NetworkVnicProfile }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public NetworkVnicProfile add(org.ovirt.engine.sdk.entities.VnicProfile vnicprofile, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, vnicprofile,
+                org.ovirt.engine.sdk.entities.VnicProfile.class,
+                NetworkVnicProfile.class, headers);
+    }
+    /**
+     * Adds VnicProfile object.
+     *
+     * @param vnicprofile {@link org.ovirt.engine.sdk.entities.VnicProfile}
+     *    <pre>
+     *    vnicprofile.name
+     *    [vnicprofile.description]
+     *    [vnicprofile.port_mirroring]
+     *    [vnicprofile.custom_properties.custom_property]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

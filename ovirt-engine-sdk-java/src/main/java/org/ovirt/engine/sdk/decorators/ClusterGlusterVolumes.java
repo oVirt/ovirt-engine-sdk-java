@@ -191,6 +191,106 @@ public class ClusterGlusterVolumes extends
      *    [gluster_volume.options.option]
      *    </pre>
      *
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterGlusterVolume }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterGlusterVolume add(org.ovirt.engine.sdk.entities.GlusterVolume glustervolume, Boolean force) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (force != null) {
+            urlBuilder.add("force", force, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().add(url, glustervolume,
+                org.ovirt.engine.sdk.entities.GlusterVolume.class,
+                ClusterGlusterVolume.class, headers);
+    }
+    /**
+     * Adds GlusterVolume object.
+     *
+     * @param glustervolume {@link org.ovirt.engine.sdk.entities.GlusterVolume}
+     *    <pre>
+     *    gluster_volume.name
+     *    gluster_volume.volume_type
+     *    gluster_volume.bricks.brick
+     *    [gluster_volume.transport_types]
+     *    [gluster_volume.replica_count]
+     *    [gluster_volume.stripe_count]
+     *    [gluster_volume.options.option]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterGlusterVolume }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterGlusterVolume add(org.ovirt.engine.sdk.entities.GlusterVolume glustervolume, Boolean force, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (force != null) {
+            urlBuilder.add("force", force, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().add(url, glustervolume,
+                org.ovirt.engine.sdk.entities.GlusterVolume.class,
+                ClusterGlusterVolume.class, headers);
+    }
+    /**
+     * Adds GlusterVolume object.
+     *
+     * @param glustervolume {@link org.ovirt.engine.sdk.entities.GlusterVolume}
+     *    <pre>
+     *    gluster_volume.name
+     *    gluster_volume.volume_type
+     *    gluster_volume.bricks.brick
+     *    [gluster_volume.transport_types]
+     *    [gluster_volume.replica_count]
+     *    [gluster_volume.stripe_count]
+     *    [gluster_volume.options.option]
+     *    </pre>
+     *
      * @param expect
      *    <pre>
      *    [201-created]
@@ -199,6 +299,7 @@ public class ClusterGlusterVolumes extends
      *    <pre>
      *    [any string]
      *    </pre>
+     *
      * @param force
      *    <pre>
      *    [true|false]

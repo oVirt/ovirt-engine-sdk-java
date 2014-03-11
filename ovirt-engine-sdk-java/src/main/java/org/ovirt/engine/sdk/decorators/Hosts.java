@@ -293,6 +293,100 @@ public class Hosts extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link Host }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Host add(org.ovirt.engine.sdk.entities.Host host, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, host,
+                org.ovirt.engine.sdk.entities.Host.class,
+                Host.class, headers);
+    }
+    /**
+     * Adds Host object.
+     *
+     * @param host {@link org.ovirt.engine.sdk.entities.Host}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a new host to the system
+     *      providing the host root
+     *      password. This has been
+     *      deprecated and provided for
+     *      backwards compatibility
+     *
+     *      host.name
+     *      host.address
+     *      host.root_password
+     *      host.cluster.id|name
+     *      [host.comment]
+     *      [host.port]
+     *      [host.display.address]
+     *      [host.storage_manager.priority]
+     *      [host.power_management.type]
+     *      [host.power_management.enabled]
+     *      [host.power_management.address]
+     *      [host.power_management.username]
+     *      [host.power_management.password]
+     *      [host.power_management.options.option]
+     *      [host.power_management.pm_proxy]
+     *      [host.power_management.agents.agent]
+     *      [host.reboot_after_installation]
+     *      [host.override_iptables]
+     *
+     *    Overload 2:
+     *
+     *      add a new host to the system
+     *      providing the ssh password or
+     *      fingerprint
+     *
+     *      host.name
+     *      host.address
+     *      host.cluster.id|name
+     *      [host.comment]
+     *      [host.ssh.port]
+     *      [host.ssh.fingerprint]
+     *      [host.ssh.authentication_method]
+     *      [host.ssh.user.user_name]
+     *      [host.ssh.user.password]
+     *      [host.port]
+     *      [host.display.address]
+     *      [host.storage_manager.priority]
+     *      [host.power_management.type]
+     *      [host.power_management.enabled]
+     *      [host.power_management.address]
+     *      [host.power_management.username]
+     *      [host.power_management.password]
+     *      [host.power_management.options.option]
+     *      [host.power_management.pm_proxy]
+     *      [host.power_management.agents.agent]
+     *      [host.reboot_after_installation]
+     *      [host.override_iptables]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

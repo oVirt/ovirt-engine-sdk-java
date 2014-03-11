@@ -102,10 +102,44 @@ public class VMSnapshots extends
     /**
      * Lists VMSnapshot objects.
      *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link VMSnapshot }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<VMSnapshot> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Snapshots.class,
+                VMSnapshot.class, headers);
+    }
+    /**
+     * Lists VMSnapshot objects.
+     *
      * @param allContent
      *    <pre>
      *    [true|false]
      *    </pre>
+     *
      * @param max
      *    <pre>
      *    [max results]
@@ -163,6 +197,47 @@ public class VMSnapshots extends
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, snapshot,
+                org.ovirt.engine.sdk.entities.Snapshot.class,
+                VMSnapshot.class, headers);
+    }
+    /**
+     * Adds Snapshot object.
+     *
+     * @param snapshot {@link org.ovirt.engine.sdk.entities.Snapshot}
+     *    <pre>
+     *    snapshot.description
+     *    [snapshot.persist_memorystate]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMSnapshot }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMSnapshot add(org.ovirt.engine.sdk.entities.Snapshot snapshot, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);

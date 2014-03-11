@@ -284,6 +284,100 @@ public class UserPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link UserPermission }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public UserPermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                UserPermission.class, headers);
+    }
+    /**
+     * Adds Permission object.
+     *
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a new tole permission for
+     *      the user on the data center
+     *
+     *      permission.role.id
+     *      permission.data_center.id
+     *
+     *    Overload 2:
+     *
+     *      add a new tole permission for
+     *      the user on the cluster
+     *
+     *      permission.role.id
+     *      permission.cluster.id
+     *
+     *    Overload 3:
+     *
+     *      add a new tole permission for
+     *      the user on the host
+     *
+     *      permission.role.id
+     *      permission.host.id
+     *
+     *    Overload 4:
+     *
+     *      add a new tole permission for
+     *      the user on the storage domain
+     *
+     *      permission.role.id
+     *      permission.storage_domain.id
+     *
+     *    Overload 5:
+     *
+     *      add a new tole permission for
+     *      the user on the vm
+     *
+     *      permission.role.id
+     *      permission.vm.id
+     *
+     *    Overload 6:
+     *
+     *      add a new tole permission for
+     *      the user on the vm pool
+     *
+     *      permission.role.id
+     *      permission.vmpool.id
+     *
+     *    Overload 7:
+     *
+     *      add a new tole permission for
+     *      the user on the template
+     *
+     *      permission.role.id
+     *      permission.template.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

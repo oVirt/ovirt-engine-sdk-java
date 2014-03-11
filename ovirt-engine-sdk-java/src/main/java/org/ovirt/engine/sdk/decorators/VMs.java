@@ -485,6 +485,196 @@ public class VMs extends
      *    <pre>
      *    [any string]
      *    </pre>
+     *
+     * @return
+     *     {@link VM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VM add(org.ovirt.engine.sdk.entities.VM vm, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, vm,
+                org.ovirt.engine.sdk.entities.VM.class,
+                VM.class, headers);
+    }
+    /**
+     * Adds VM object.
+     *
+     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a virtual machine to the
+     *      system from scratch
+     *
+     *      vm.name
+     *      vm.template.id|name
+     *      vm.cluster.id|name
+     *      [vm.quota.id]
+     *      [vm.timezone]
+     *      [vm.os.boot]
+     *      [vm.custom_properties.custom_property]
+     *      [vm.os.type]
+     *      [vm.usb.enabled]
+     *      [vm.usb.type]
+     *      [vm.type]
+     *      [vm.os.initRd]
+     *      [vm.display.monitors]
+     *      [vm.display.single_qxl_pci]
+     *      [vm.display.type]
+     *      [vm.display.allow_override]
+     *      [vm.display.smartcard_enabled]
+     *      [vm.display.keyboard_layout]
+     *      [vm.os.cmdline]
+     *      [vm.cpu.topology.cores]
+     *      [vm.cpu.architecture]
+     *      [vm.memory]
+     *      [vm.memory_policy.guaranteed]
+     *      [vm.high_availability.priority]
+     *      [vm.high_availability.enabled]
+     *      [vm.domain.name]
+     *      [vm.description]
+     *      [vm.comment]
+     *      [vm.stateless]
+     *      [vm.permissions.clone]
+     *      [vm.delete_protected]
+     *      [vm.console.enabled]
+     *      [vm.cpu.mode]
+     *      [vm.cpu.topology.sockets]
+     *      [vm.cpu_shares]
+     *      [vm.placement_policy.affinity]
+     *      [vm.placement_policy.host.id|name]
+     *      [vm.origin]
+     *      [vm.os.kernel]
+     *      [vm.disks.clone]
+     *      [vm.tunnel_migration]
+     *      [vm.virtio_scsi.enabled]
+     *      [vm.payloads.payload]
+     *      [vm.initialization.configuration.type]
+     *      [vm.initialization.configuration.data]
+     *      [vm.cpu.cpu_tune.vcpu_pin]
+     *
+     *    Overload 2:
+     *
+     *      add a virtual machine to the
+     *      system by cloning from a
+     *      snapshot
+     *
+     *      vm.name
+     *      vm.template.id|name
+     *      vm.cluster.id|name
+     *      vm.snapshots.snapshot
+     *      [vm.quota.id]
+     *      [vm.timezone]
+     *      [vm.os.boot]
+     *      [vm.custom_properties.custom_property]
+     *      [vm.os.type]
+     *      [vm.usb.enabled]
+     *      [vm.usb.type]
+     *      [vm.type]
+     *      [vm.os.initRd]
+     *      [vm.display.monitors]
+     *      [vm.display.single_qxl_pci]
+     *      [vm.display.type]
+     *      [vm.display.allow_override]
+     *      [vm.display.smartcard_enabled]
+     *      [vm.display.keyboard_layout]
+     *      [vm.os.cmdline]
+     *      [vm.cpu.topology.cores]
+     *      [vm.cpu_shares]
+     *      [vm.cpu.architecture]
+     *      [vm.memory]
+     *      [vm.memory_policy.guaranteed]
+     *      [vm.high_availability.priority]
+     *      [vm.high_availability.enabled]
+     *      [vm.domain.name]
+     *      [vm.description]
+     *      [vm.comment]
+     *      [vm.stateless]
+     *      [vm.delete_protected]
+     *      [vm.console.enabled]
+     *      [vm.cpu.topology.sockets]
+     *      [vm.placement_policy.affinity]
+     *      [vm.placement_policy.host.id|name]
+     *      [vm.origin]
+     *      [vm.os.kernel]
+     *      [vm.tunnel_migration]
+     *      [vm.virtio_scsi.enabled]
+     *      [vm.payloads.payload]
+     *      [vm.cpu.cpu_tune.vcpu_pin]
+     *
+     *    Overload 3:
+     *
+     *      add a virtual machine to the
+     *      system from a configuration -
+     *      requires the configuration
+     *      type and the configuration
+     *      data
+     *
+     *      vm.initialization.configuration.type
+     *      vm.initialization.configuration.data
+     *      [vm.name]
+     *      [vm.quota.id]
+     *      [vm.timezone]
+     *      [vm.os.boot]
+     *      [vm.custom_properties.custom_property]
+     *      [vm.os.type]
+     *      [vm.usb.enabled]
+     *      [vm.usb.type]
+     *      [vm.type]
+     *      [vm.os.initRd]
+     *      [vm.display.monitors]
+     *      [vm.display.type]
+     *      [vm.display.allow_override]
+     *      [vm.display.smartcard_enabled]
+     *      [vm.display.keyboard_layout]
+     *      [vm.os.cmdline]
+     *      [vm.cpu.topology.cores]
+     *      [vm.memory]
+     *      [vm.memory_policy.guaranteed]
+     *      [vm.high_availability.priority]
+     *      [vm.high_availability.enabled]
+     *      [vm.domain.name]
+     *      [vm.description]
+     *      [vm.comment]
+     *      [vm.stateless]
+     *      [vm.permissions.clone]
+     *      [vm.delete_protected]
+     *      [vm.cpu.mode]
+     *      [vm.cpu.topology.sockets]
+     *      [vm.placement_policy.affinity]
+     *      [vm.placement_policy.host.id|name]
+     *      [vm.origin]
+     *      [vm.os.kernel]
+     *      [vm.disks.clone]
+     *      [vm.tunnel_migration]
+     *      [vm.virtio_scsi.enabled]
+     *      [vm.payloads.payload]
+     *      [vm.initialization.configuration.type]
+     *      [vm.initialization.configuration.data]
+     *      [vm.cpu.cpu_tune.vcpu_pin]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @param expect
      *    <pre>
      *    [201-created]

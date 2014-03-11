@@ -286,6 +286,101 @@ public class VMDisks extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link VMDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMDisk add(org.ovirt.engine.sdk.entities.Disk disk, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, disk,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                VMDisk.class, headers);
+    }
+    /**
+     * Adds Disk object.
+     *
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a new disk to the virtual
+     *      machine allocating space from
+     *      the storage domain
+     *
+     *      provisioned_size
+     *      disk.interface
+     *      disk.format
+     *      [disk.alias]
+     *      [disk.name]
+     *      [disk.size]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
+     *      [disk.storage_domains.storage_domain]
+     *
+     *    Overload 2:
+     *
+     *      add a new direct lun disk to
+     *      the virtual machine, this
+     *      operation does not require
+     *      size but needs lun connection
+     *      details
+     *
+     *      disk.interface
+     *      disk.format
+     *      disk.lun_storage.type
+     *      disk.lun_storage.logical_unit
+     *      [disk.alias]
+     *      [disk.sparse]
+     *      [disk.bootable]
+     *      [disk.shareable]
+     *      [disk.propagate_errors]
+     *      [disk.wipe_after_delete]
+     *      [disk.sgio]
+     *      [disk.storage_domains.storage_domain]
+     *
+     *    Overload 3:
+     *
+     *      attach a disk to the virtual machine
+     *
+     *      disk.id
+     *      [disk.active]
+     *      [disk.read_only]
+     *
+     *    Overload 4:
+     *
+     *      attach a disk snapshot to the
+     *      virtual machine
+     *
+     *      disk.id
+     *      disk.snapshot.id
+     *      [disk.active]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

@@ -230,6 +230,73 @@ public class TemplateNICs extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link TemplateNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public TemplateNIC add(org.ovirt.engine.sdk.entities.NIC nic, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, nic,
+                org.ovirt.engine.sdk.entities.NIC.class,
+                TemplateNIC.class, headers);
+    }
+    /**
+     * Adds NIC object.
+     *
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a new network interface
+     *      card to the template using a
+     *      virtual network interface card
+     *      profile
+     *
+     *      nic.name
+     *      [nic.vnic_profile.id]
+     *      [nic.linked]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.plugged]
+     *
+     *    Overload 2:
+     *
+     *      add a new network interface
+     *      card to the template using a
+     *      network with optional port
+     *      mirroring options. This has
+     *      been deprecated
+     *
+     *      nic.name
+     *      [nic.network.id|name]
+     *      [nic.linked]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.port_mirroring.networks.network]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

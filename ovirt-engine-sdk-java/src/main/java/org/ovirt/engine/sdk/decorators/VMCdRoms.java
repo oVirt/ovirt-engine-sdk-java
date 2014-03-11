@@ -176,6 +176,46 @@ public class VMCdRoms extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link VMCdRom }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMCdRom add(org.ovirt.engine.sdk.entities.CdRom cdrom, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, cdrom,
+                org.ovirt.engine.sdk.entities.CdRom.class,
+                VMCdRom.class, headers);
+    }
+    /**
+     * Adds CdRom object.
+     *
+     * @param cdrom {@link org.ovirt.engine.sdk.entities.CdRom}
+     *    <pre>
+     *    cdrom.file.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
