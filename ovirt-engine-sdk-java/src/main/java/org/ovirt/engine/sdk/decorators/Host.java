@@ -477,10 +477,101 @@ public class Host extends
      *      [host.power_management.agents.agent]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Host }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Host update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Host.class,
+                Host.class,
+                headers);
+    }
+    /**
+     * Updates Host object.
+     *
+     * @param host {@link org.ovirt.engine.sdk.entities.Host}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the specified host in
+     *      the system. This is deprecated
+     *      and is provided only for
+     *      backwards compatibility
+     *
+     *      [host.name]
+     *      [host.comment]
+     *      [host.address]
+     *      [host.root_password]
+     *      [host.display.address]
+     *      [host.cluster.id|name]
+     *      [host.port]
+     *      [host.storage_manager.priority]
+     *      [host.power_management.type]
+     *      [host.power_management.enabled]
+     *      [host.power_management.address]
+     *      [host.power_management.username]
+     *      [host.power_management.password]
+     *      [host.power_management.automatic_pm_enabled]
+     *      [host.power_management.options.option]
+     *      [host.power_management.pm_proxy]
+     *      [host.power_management.agents.agent]
+     *
+     *    Overload 2:
+     *
+     *      update the specified host in the system
+     *
+     *      [host.name]
+     *      [host.comment]
+     *      [host.address]
+     *      [host.ssh.port]
+     *      [host.ssh.user.user_name]
+     *      [host.ssh.fingerprint]
+     *      [host.display.address]
+     *      [host.cluster.id|name]
+     *      [host.port]
+     *      [host.storage_manager.priority]
+     *      [host.power_management.type]
+     *      [host.power_management.automatic_pm_enabled]
+     *      [host.power_management.enabled]
+     *      [host.power_management.address]
+     *      [host.power_management.username]
+     *      [host.power_management.password]
+     *      [host.power_management.options.option]
+     *      [host.power_management.pm_proxy]
+     *      [host.power_management.agents.agent]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
+     *
      * @param async
      *    <pre>
      *    [true|false]
@@ -907,10 +998,44 @@ public class Host extends
     /**
      * Deletes object.
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
+     *
      * @param async
      *    <pre>
      *    [true|false]
@@ -954,10 +1079,52 @@ public class Host extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(org.ovirt.engine.sdk.entities.Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, action,
+                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
+     *
      * @param async
      *    <pre>
      *    [true|false]

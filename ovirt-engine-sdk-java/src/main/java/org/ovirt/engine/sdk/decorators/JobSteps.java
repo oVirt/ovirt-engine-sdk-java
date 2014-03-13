@@ -182,6 +182,49 @@ public class JobSteps extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link JobStep }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public JobStep add(org.ovirt.engine.sdk.entities.Step step, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, step,
+                org.ovirt.engine.sdk.entities.Step.class,
+                JobStep.class, headers);
+    }
+    /**
+     * Adds Step object.
+     *
+     * @param step {@link org.ovirt.engine.sdk.entities.Step}
+     *    <pre>
+     *    step.type
+     *    step.description
+     *    [step.job.id]
+     *    [step.parent_step.id]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

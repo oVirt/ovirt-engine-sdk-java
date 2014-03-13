@@ -199,6 +199,53 @@ public class DataCenters extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, datacenter,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class, headers);
+    }
+    /**
+     * Adds DataCenter object.
+     *
+     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
+     *    <pre>
+     *    datacenter.name
+     *    datacenter.version.major
+     *    datacenter.version.minor
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
+     *    [datacenter.description]
+     *    [datacenter.comment]
+     *    [datacenter.storage_format]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

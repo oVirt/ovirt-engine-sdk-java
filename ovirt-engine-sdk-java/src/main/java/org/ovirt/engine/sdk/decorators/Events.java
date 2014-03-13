@@ -214,6 +214,57 @@ public class Events extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link Event }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Event add(org.ovirt.engine.sdk.entities.Event event, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, event,
+                org.ovirt.engine.sdk.entities.Event.class,
+                Event.class, headers);
+    }
+    /**
+     * Adds Event object.
+     *
+     * @param event {@link org.ovirt.engine.sdk.entities.Event}
+     *    <pre>
+     *    event.description
+     *    event.severity
+     *    event.origin
+     *    event.custom_id
+     *    [event.flood_rate]
+     *    [event.host.id]
+     *    [event.user.id]
+     *    [event.vm.id]
+     *    [event.storage_domain.id]
+     *    [event.template.id]
+     *    [event.cluster.id]
+     *    [event.data_center.id]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

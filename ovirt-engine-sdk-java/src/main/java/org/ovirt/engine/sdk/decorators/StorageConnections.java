@@ -216,6 +216,85 @@ public class StorageConnections extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link StorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageConnection add(org.ovirt.engine.sdk.entities.StorageConnection storageconnection, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, storageconnection,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageConnection.class, headers);
+    }
+    /**
+     * Adds StorageConnection object.
+     *
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a iSCSI storage connection
+     *      to the system
+     *
+     *      storage_connection.address
+     *      storage_connection.type
+     *      storage_connection.iqn
+     *      storage_connection.port
+     *      [storage_connection.username]
+     *      [storage_connection.password]
+     *
+     *    Overload 2:
+     *
+     *      add a nfs storage connection to the system
+     *
+     *      storage_connection.address
+     *      storage_connection.type
+     *      storage_connection.path
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.nfs_retrans]
+     *
+     *    Overload 3:
+     *
+     *      add a vfs storage connection to the system
+     *
+     *      storage_connection.type
+     *      storage_connection.path
+     *      storage_connection.vfs_type
+     *      [storage_connection.address]
+     *      [storage_connection.mount_options]
+     *
+     *    Overload 4:
+     *
+     *      add a local storage connection
+     *      to the system
+     *
+     *      storage_connection.type
+     *      storage_connection.path
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

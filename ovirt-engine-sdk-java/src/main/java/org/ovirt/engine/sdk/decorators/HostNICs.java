@@ -258,6 +258,49 @@ public class HostNICs extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link HostNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public HostNIC add(org.ovirt.engine.sdk.entities.HostNIC hostnic, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, hostnic,
+                org.ovirt.engine.sdk.entities.HostNIC.class,
+                HostNIC.class, headers);
+    }
+    /**
+     * Adds HostNIC object.
+     *
+     * @param hostnic {@link org.ovirt.engine.sdk.entities.HostNIC}
+     *    <pre>
+     *    hostnic.network.id|name
+     *    hostnic.name
+     *    hostnic.bonding.slaves.host_nic
+     *    [hostnic.bonding.options.option]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

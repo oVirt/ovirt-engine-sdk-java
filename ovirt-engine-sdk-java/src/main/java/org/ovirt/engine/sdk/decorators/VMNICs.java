@@ -102,10 +102,44 @@ public class VMNICs extends
     /**
      * Lists VMNIC objects.
      *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link VMNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<VMNIC> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Nics.class,
+                VMNIC.class, headers);
+    }
+    /**
+     * Lists VMNIC objects.
+     *
      * @param allContent
      *    <pre>
      *    [true|false]
      *    </pre>
+     *
      * @param max
      *    <pre>
      *    [max results]
@@ -187,6 +221,71 @@ public class VMNICs extends
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, nic,
+                org.ovirt.engine.sdk.entities.NIC.class,
+                VMNIC.class, headers);
+    }
+    /**
+     * Adds NIC object.
+     *
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a new network interface to
+     *      the given virtual machine with
+     *      vnic profile id
+     *
+     *      nic.name
+     *      [nic.vnic_profile.id]
+     *      [nic.linked]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.plugged]
+     *
+     *    Overload 2:
+     *
+     *      add a new network interface to
+     *      the given virtual machine with
+     *      port mirroring options
+     *
+     *      nic.name
+     *      [nic.network.id|name]
+     *      [nic.linked]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.port_mirroring.networks.network]
+     *      [nic.plugged]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMNIC add(org.ovirt.engine.sdk.entities.NIC nic, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);

@@ -212,6 +212,64 @@ public class VnicProfilePermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link VnicProfilePermission }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VnicProfilePermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                VnicProfilePermission.class, headers);
+    }
+    /**
+     * Adds Permission object.
+     *
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a new user level
+     *      permission on the virtual
+     *      network interface card profile
+     *      in the system
+     *
+     *      permission.user.id
+     *      permission.role.id
+     *
+     *    Overload 2:
+     *
+     *      add a new group level
+     *      permission on the virtual
+     *      network interface card profile
+     *      in the system
+     *
+     *      permission.group.id
+     *      permission.role.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]

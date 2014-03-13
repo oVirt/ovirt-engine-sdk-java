@@ -398,6 +398,98 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [stripe_count]
      *    </pre>
      *
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, Boolean force) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (force != null) {
+            urlBuilder.add("force", force, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
+     * Adds GlusterBrick object.
+     *
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     *    <pre>
+     *    brick
+     *    [replica_count]
+     *    [stripe_count]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, Boolean force, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (force != null) {
+            urlBuilder.add("force", force, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
+     * Adds GlusterBrick object.
+     *
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     *    <pre>
+     *    brick
+     *    [replica_count]
+     *    [stripe_count]
+     *    </pre>
+     *
      * @param expect
      *    <pre>
      *    [201-created]
@@ -406,6 +498,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [any string]
      *    </pre>
+     *
      * @param force
      *    <pre>
      *    [true|false]

@@ -214,6 +214,65 @@ public class DataCenterClusters extends
      *    <pre>
      *    [201-created]
      *    </pre>
+     *
+     * @return
+     *     {@link DataCenterCluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterCluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, cluster,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                DataCenterCluster.class, headers);
+    }
+    /**
+     * Adds Cluster object.
+     *
+     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     *    <pre>
+     *    cluster.name
+     *    cluster.version.major
+     *    cluster.version.minor
+     *    cluster.cpu.id
+     *    [cluster.description]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.policy]
+     *    [cluster.scheduling_policy.thresholds.low]
+     *    [cluster.scheduling_policy.thresholds.high]
+     *    [cluster.scheduling_policy.thresholds.duration]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.virt_service]
+     *    [cluster.gluster_service]
+     *    [cluster.threads_as_cores]
+     *    [cluster.tunnel_migration]
+     *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
