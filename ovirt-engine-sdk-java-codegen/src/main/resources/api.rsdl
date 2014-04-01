@@ -10872,7 +10872,7 @@ or less indicates that the session should never timeout</description>
                             <name>action.vm.domain.user.password</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
-                            <name>action.vm.initialization.cloud_init.hostname</name>
+                            <name>action.vm.initialization.cloud_init.host.address</name>
                         </parameter>
                         <parameter required="false" type="collection">
                             <name>action.vm.initialization.cloud_init.network_configuration.nics.nic</name>
