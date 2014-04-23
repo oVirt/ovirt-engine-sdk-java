@@ -1,5 +1,5 @@
-%global     package_version 3.4.0.8
-%global     package_maven_version 3.4.0.8-SNAPSHOT
+%global     package_version 3.4.1.0
+%global     package_maven_version 3.4.1.0
 %global     _javadocname javadoc
 
 %if 0%{?fedora}
@@ -117,6 +117,13 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 %{_javadocdir}/%{name}
 
 %changelog
+* Wed Apr 23 2014 Juan Hernandez <juan.hernandez@redhat.com> - 3.4.1.0-1
+- Added actions to preview, commit and undo snapshots.
+- Added support for affinity groups.
+- Added support to import a VM as template.
+- Removed external_id from users and groups.
+- Renamed cloud_init.hostname to cloud_init.host.address.
+
 * Thu Mar 13 2014 Juan Hernandez <juan.hernandez@redhat.com> - 3.4.0.7-1
 - Added overloads for new headers #1073417.
 
