@@ -301,6 +301,157 @@ or less indicates that the session should never timeout</description>
                 <type>Cluster</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/affinitygroups" rel="add">
+            <description>add a new affinity group to the cluster</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>AffinityGroup</type>
+                    <parameters_set>
+                        <description>add a new affinity group to the cluster</description>
+                        <parameter required="true" type="xs:string">
+                            <name>affinitygroup.name</name>
+                        </parameter>
+                        <parameter required="true" type="xs:boolean">
+                            <name>affinitygroup.positive</name>
+                        </parameter>
+                        <parameter required="true" type="xs:boolean">
+                            <name>affinitygroup.enforcing</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>AffinityGroup</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/affinitygroups" rel="get">
+            <description>get the list of affinity groups in the cluster</description>
+            <request>
+                <http_method>GET</http_method>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:int" context="matrix">
+                            <name>max</name>
+                            <value>max results</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+            <response>
+                <type>AffinityGroups</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}" rel="delete">
+            <description>delete the specified affinity groups in the cluster</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}" rel="get">
+            <description>get the details of the specified affinity group in the cluster</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>AffinityGroup</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}" rel="update">
+            <description>update the specified affinity group in the cluster</description>
+            <request>
+                <http_method>PUT</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>AffinityGroup</type>
+                    <parameters_set>
+                        <parameter required="false" type="xs:string">
+                            <name>affinitygroup.name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>affinitygroup.positive</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>affinitygroup.enforcing</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>AffinityGroup</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}/vms" rel="add">
+            <description>add a vm to the specified affinity group</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>VM</type>
+                    <parameters_set>
+                        <description>add a vm to affinity group</description>
+                        <parameter required="true" type="xs:string">
+                            <name>vm.id|name</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>VM</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}/vms" rel="get">
+            <description>get the list of vms per affinity group</description>
+            <request>
+                <http_method>GET</http_method>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:int" context="matrix">
+                            <name>max</name>
+                            <value>max results</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+            <response>
+                <type>VMs</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}/vms/{vm:id}" rel="delete">
+            <description>remove the specified vm from the affinity groups</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
         <link href="/ovirt-engine/api/clusters/{cluster:id}/glusterhooks" rel="get">
             <request>
                 <http_method>GET</http_method>
@@ -1715,6 +1866,78 @@ or less indicates that the session should never timeout</description>
             <response>
                 <type>Cluster</type>
             </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/affinitygroups" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>AffinityGroup</type>
+                </body>
+            </request>
+            <response>
+                <type>AffinityGroup</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/affinitygroups" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>AffinityGroups</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>AffinityGroup</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}" rel="update">
+            <request>
+                <http_method>PUT</http_method>
+                <body>
+                    <type>AffinityGroup</type>
+                </body>
+            </request>
+            <response>
+                <type>AffinityGroup</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}/vms" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>VM</type>
+                </body>
+            </request>
+            <response>
+                <type>VM</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}/vms" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>VMs</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/affinitygroups/{affinitygroup:id}/vms/{vm:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
         </link>
         <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/glusterhooks" rel="get">
             <request>
@@ -10635,6 +10858,17 @@ or less indicates that the session should never timeout</description>
                 <type>CdRom</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/commit_snapshot" rel="commit_snapshot">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/vms/{vm:id}/detach" rel="detach">
             <description>detach a virtual machine in the system identified by the given id from the storage domain</description>
             <request>
@@ -11625,6 +11859,17 @@ or less indicates that the session should never timeout</description>
                 <type>Permission</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/preview_snapshot" rel="preview_snapshot">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/vms/{vm:id}/reboot" rel="reboot">
             <description>reboot a virtual machine in the system identified by the given id</description>
             <request>
@@ -11975,7 +12220,7 @@ or less indicates that the session should never timeout</description>
                             <name>action.vm.domain.user.password</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
-                            <name>action.vm.initialization.cloud_init.hostname</name>
+                            <name>action.vm.initialization.cloud_init.host.address</name>
                         </parameter>
                         <parameter required="false" type="collection">
                             <name>action.vm.initialization.cloud_init.network_configuration.nics.nic</name>
@@ -12260,6 +12505,17 @@ or less indicates that the session should never timeout</description>
                             <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/undo_snapshot" rel="undo_snapshot">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
                 </body>
             </request>
             <response>

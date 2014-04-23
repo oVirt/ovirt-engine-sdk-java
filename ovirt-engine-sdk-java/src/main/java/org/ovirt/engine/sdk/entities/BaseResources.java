@@ -56,6 +56,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     ReportedDevices.class,
     Roles.class,
+    AffinityGroups.class,
     Events.class,
     GlusterBricks.class,
     Snapshots.class,

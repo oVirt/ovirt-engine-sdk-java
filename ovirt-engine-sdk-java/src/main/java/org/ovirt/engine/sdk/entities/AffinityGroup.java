@@ -23,21 +23,23 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Group complex type.
+ * <p>Java class for AffinityGroup complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="Group">
+ * &lt;complexType name="AffinityGroup">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element ref="{}domain" minOccurs="0"/>
- *         &lt;element name="roles" type="{}Roles" minOccurs="0"/>
+ *         &lt;element ref="{}cluster"/>
+ *         &lt;element name="positive" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="enforcing" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -47,71 +49,86 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Group", propOrder = {
-    "domain",
-    "roles"
+@XmlType(name = "AffinityGroup", propOrder = {
+    "cluster",
+    "positive",
+    "enforcing"
 })
-public class Group
+public class AffinityGroup
     extends BaseResource
 {
 
-    protected Domain domain;
-    protected Roles roles;
+    @XmlElement(required = true)
+    protected Cluster cluster;
+    protected boolean positive;
+    protected boolean enforcing;
 
     /**
-     * Gets the value of the domain property.
+     * Gets the value of the cluster property.
      *
      * @return
      *     possible object is
-     *     {@link Domain }
+     *     {@link Cluster }
      *
      */
-    public Domain getDomain() {
-        return domain;
+    public Cluster getCluster() {
+        return cluster;
     }
 
     /**
-     * Sets the value of the domain property.
+     * Sets the value of the cluster property.
      *
      * @param value
      *     allowed object is
-     *     {@link Domain }
+     *     {@link Cluster }
      *
      */
-    public void setDomain(Domain value) {
-        this.domain = value;
+    public void setCluster(Cluster value) {
+        this.cluster = value;
     }
 
-    public boolean isSetDomain() {
-        return (this.domain!= null);
+    public boolean isSetCluster() {
+        return (this.cluster!= null);
     }
 
     /**
-     * Gets the value of the roles property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Roles }
+     * Gets the value of the positive property.
      *
      */
-    public Object getRoles() {
-        return roles;
+    public boolean isPositive() {
+        return positive;
     }
 
     /**
-     * Sets the value of the roles property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Roles }
+     * Sets the value of the positive property.
      *
      */
-    public void setRoles(Roles value) {
-        this.roles = value;
+    public void setPositive(boolean value) {
+        this.positive = value;
     }
 
-    public boolean isSetRoles() {
-        return (this.roles!= null);
+    public boolean isSetPositive() {
+        return true;
+    }
+
+    /**
+     * Gets the value of the enforcing property.
+     *
+     */
+    public boolean isEnforcing() {
+        return enforcing;
+    }
+
+    /**
+     * Sets the value of the enforcing property.
+     *
+     */
+    public void setEnforcing(boolean value) {
+        this.enforcing = value;
+    }
+
+    public boolean isSetEnforcing() {
+        return true;
     }
 
 }

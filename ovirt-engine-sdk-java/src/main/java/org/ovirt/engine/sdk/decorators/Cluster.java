@@ -46,6 +46,7 @@ public class Cluster extends
     private final Object LOCK = new Object();
 
     private volatile ClusterGlusterHooks clusterGlusterHooks;
+    private volatile ClusterAffinityGroups clusterAffinityGroups;
     private volatile ClusterGlusterVolumes clusterGlusterVolumes;
     private volatile ClusterNetworks clusterNetworks;
     private volatile ClusterPermissions clusterPermissions;
@@ -80,6 +81,22 @@ public class Cluster extends
             }
         }
         return clusterGlusterHooks;
+    }
+    /**
+     * Gets the value of the ClusterAffinityGroups property.
+     *
+     * @return
+     *     {@link ClusterAffinityGroups }
+     */
+    public ClusterAffinityGroups getAffinityGroups() {
+        if (this.clusterAffinityGroups == null) {
+            synchronized (this.LOCK) {
+                if (this.clusterAffinityGroups == null) {
+                    this.clusterAffinityGroups = new ClusterAffinityGroups(proxy, this);
+                }
+            }
+        }
+        return clusterAffinityGroups;
     }
     /**
      * Gets the value of the ClusterGlusterVolumes property.

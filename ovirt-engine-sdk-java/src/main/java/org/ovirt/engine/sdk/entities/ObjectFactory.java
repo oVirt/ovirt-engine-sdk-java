@@ -67,11 +67,13 @@ public class ObjectFactory {
     private final static QName _SpecialObjects_QNAME = new QName("", "special_objects");
     private final static QName _Statistic_QNAME = new QName("", "statistic");
     private final static QName _VmDeviceTypes_QNAME = new QName("", "vm_device_types");
+    private final static QName _AffinityGroup_QNAME = new QName("", "affinity_group");
     private final static QName _Roles_QNAME = new QName("", "roles");
     private final static QName _PowerManagementStates_QNAME = new QName("", "power_management_states");
     private final static QName _VirtioScsi_QNAME = new QName("", "virtio_scsi");
     private final static QName _AuthorizedKey_QNAME = new QName("", "authorized_key");
     private final static QName _Nics_QNAME = new QName("", "nics");
+    private final static QName _AffinityGroups_QNAME = new QName("", "affinity_groups");
     private final static QName _TemplateStates_QNAME = new QName("", "template_states");
     private final static QName _OsTypes_QNAME = new QName("", "os_types");
     private final static QName _Vm_QNAME = new QName("", "vm");
@@ -90,8 +92,8 @@ public class ObjectFactory {
     private final static QName _Cdroms_QNAME = new QName("", "cdroms");
     private final static QName _NetworkConfiguration_QNAME = new QName("", "network_configuration");
     private final static QName _Quotas_QNAME = new QName("", "quotas");
-    private final static QName _ContentTypes_QNAME = new QName("", "content_types");
     private final static QName _MemoryPools_QNAME = new QName("", "memory_pools");
+    private final static QName _ContentTypes_QNAME = new QName("", "content_types");
     private final static QName _KeyValuePair_QNAME = new QName("", "keyValuePair");
     private final static QName _Slaves_QNAME = new QName("", "slaves");
     private final static QName _Dns_QNAME = new QName("", "dns");
@@ -451,6 +453,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AffinityGroup }
+     *
+     */
+    public AffinityGroup createAffinityGroup() {
+        return new AffinityGroup();
+    }
+
+    /**
      * Create an instance of {@link Roles }
      *
      */
@@ -488,6 +498,14 @@ public class ObjectFactory {
      */
     public Nics createNics() {
         return new Nics();
+    }
+
+    /**
+     * Create an instance of {@link AffinityGroups }
+     *
+     */
+    public AffinityGroups createAffinityGroups() {
+        return new AffinityGroups();
     }
 
     /**
@@ -2386,6 +2404,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AffinityGroup }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "affinity_group")
+    public JAXBElement<AffinityGroup> createAffinityGroup(AffinityGroup value) {
+        return new JAXBElement<AffinityGroup>(_AffinityGroup_QNAME, AffinityGroup.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Roles }{@code >}}
      *
      */
@@ -2428,6 +2455,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "nics")
     public JAXBElement<Nics> createNics(Nics value) {
         return new JAXBElement<Nics>(_Nics_QNAME, Nics.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AffinityGroups }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "affinity_groups")
+    public JAXBElement<AffinityGroups> createAffinityGroups(AffinityGroups value) {
+        return new JAXBElement<AffinityGroups>(_AffinityGroups_QNAME, AffinityGroups.class, null, value);
     }
 
     /**
@@ -2593,21 +2629,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ContentTypes }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "content_types")
-    public JAXBElement<ContentTypes> createContentTypes(ContentTypes value) {
-        return new JAXBElement<ContentTypes>(_ContentTypes_QNAME, ContentTypes.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GlusterMemoryPools }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "memory_pools")
     public JAXBElement<GlusterMemoryPools> createMemoryPools(GlusterMemoryPools value) {
         return new JAXBElement<GlusterMemoryPools>(_MemoryPools_QNAME, GlusterMemoryPools.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ContentTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "content_types")
+    public JAXBElement<ContentTypes> createContentTypes(ContentTypes value) {
+        return new JAXBElement<ContentTypes>(_ContentTypes_QNAME, ContentTypes.class, null, value);
     }
 
     /**

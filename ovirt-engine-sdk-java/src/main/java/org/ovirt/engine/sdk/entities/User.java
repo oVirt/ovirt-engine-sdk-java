@@ -38,7 +38,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element ref="{}domain" minOccurs="0"/>
- *         &lt;element name="external_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="department" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="logged_in" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -58,7 +57,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "User", propOrder = {
     "domain",
-    "externalId",
     "department",
     "loggedIn",
     "lastName",
@@ -73,8 +71,6 @@ public class User
 {
 
     protected Domain domain;
-    @XmlElement(name = "external_id")
-    protected String externalId;
     protected String department;
     @XmlElement(name = "logged_in")
     protected Boolean loggedIn;
@@ -113,34 +109,6 @@ public class User
 
     public boolean isSetDomain() {
         return (this.domain!= null);
-    }
-
-    /**
-     * Gets the value of the externalId property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getExternalId() {
-        return externalId;
-    }
-
-    /**
-     * Sets the value of the externalId property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setExternalId(String value) {
-        this.externalId = value;
-    }
-
-    public boolean isSetExternalId() {
-        return (this.externalId!= null);
     }
 
     /**

@@ -69,6 +69,7 @@ import javax.xml.bind.annotation.XmlType;
     "discardSnapshots",
     "exclusive",
     "vm",
+    "snapshot",
     "template",
     "hostNics",
     "checkConnectivity",
@@ -86,6 +87,7 @@ import javax.xml.bind.annotation.XmlType;
     "resolutionType",
     "bricks",
     "job",
+    "importAsTemplate",
     "status",
     "fault",
     "iscsiTargets",
@@ -115,6 +117,7 @@ public class Action
     protected Boolean discardSnapshots;
     protected Boolean exclusive;
     protected VM vm;
+    protected Snapshot snapshot;
     protected Template template;
     @XmlElement(name = "host_nics")
     protected HostNics hostNics;
@@ -138,6 +141,8 @@ public class Action
     protected String resolutionType;
     protected GlusterBricks bricks;
     protected Job job;
+    @XmlElement(name = "import_as_template")
+    protected Boolean importAsTemplate;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -563,6 +568,34 @@ public class Action
 
     public boolean isSetVm() {
         return (this.vm!= null);
+    }
+
+    /**
+     * Gets the value of the snapshot property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Snapshot }
+     *
+     */
+    public Snapshot getSnapshot() {
+        return snapshot;
+    }
+
+    /**
+     * Sets the value of the snapshot property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Snapshot }
+     *
+     */
+    public void setSnapshot(Snapshot value) {
+        this.snapshot = value;
+    }
+
+    public boolean isSetSnapshot() {
+        return (this.snapshot!= null);
     }
 
     /**
@@ -1039,6 +1072,34 @@ public class Action
 
     public boolean isSetJob() {
         return (this.job!= null);
+    }
+
+    /**
+     * Gets the value of the importAsTemplate property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getImportAsTemplate() {
+        return importAsTemplate;
+    }
+
+    /**
+     * Sets the value of the importAsTemplate property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setImportAsTemplate(Boolean value) {
+        this.importAsTemplate = value;
+    }
+
+    public boolean isSetImportAsTemplate() {
+        return (this.importAsTemplate!= null);
     }
 
     /**

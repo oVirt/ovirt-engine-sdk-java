@@ -47,6 +47,7 @@ public class DataCenterCluster extends
 
     private volatile DataCenterClusterPermissions dataCenterClusterPermissions;
     private volatile DataCenterClusterGlusterHooks dataCenterClusterGlusterHooks;
+    private volatile DataCenterClusterAffinityGroups dataCenterClusterAffinityGroups;
     private volatile DataCenterClusterGlusterVolumes dataCenterClusterGlusterVolumes;
     private volatile DataCenterClusterNetworks dataCenterClusterNetworks;
 
@@ -96,6 +97,22 @@ public class DataCenterCluster extends
             }
         }
         return dataCenterClusterGlusterHooks;
+    }
+    /**
+     * Gets the value of the DataCenterClusterAffinityGroups property.
+     *
+     * @return
+     *     {@link DataCenterClusterAffinityGroups }
+     */
+    public DataCenterClusterAffinityGroups getAffinityGroups() {
+        if (this.dataCenterClusterAffinityGroups == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterAffinityGroups == null) {
+                    this.dataCenterClusterAffinityGroups = new DataCenterClusterAffinityGroups(proxy, this);
+                }
+            }
+        }
+        return dataCenterClusterAffinityGroups;
     }
     /**
      * Gets the value of the DataCenterClusterGlusterVolumes property.

@@ -234,6 +234,76 @@ public class VM extends
 
 
     /**
+     * Performs suspend action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action suspend(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/suspend";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs suspend action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action suspend(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/suspend";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
      * Updates VM object.
      *
      * @param vm {@link org.ovirt.engine.sdk.entities.VM}
@@ -394,77 +464,7 @@ public class VM extends
                 headers);
     }
     /**
-     * Performs suspend action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action suspend(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/suspend";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs suspend action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action suspend(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/suspend";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs cancelmigration action.
+     * Performs commit_snapshot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
@@ -477,9 +477,9 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action cancelmigration(Action action) throws ClientProtocolException,
+    public Action commit_snapshot(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/cancelmigration";
+        String url = this.getHref() + "/commit_snapshot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -552,6 +552,32 @@ public class VM extends
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
         }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs cancelmigration action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action cancelmigration(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/cancelmigration";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
@@ -780,6 +806,58 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
+     * Performs preview_snapshot action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action preview_snapshot(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/preview_snapshot";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs undo_snapshot action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action undo_snapshot(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/undo_snapshot";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
      * Performs ticket action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
@@ -870,7 +948,7 @@ public class VM extends
      *    [action.pause]
      *    [action.vm.os.boot]
      *    [action.vm.domain.user.password]
-     *    [action.vm.initialization.cloud_init.hostname]
+     *    [action.vm.initialization.cloud_init.host.address]
      *    [action.vm.initialization.cloud_init.network_configuration.nics.nic]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.servers.host]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.search_domains.host]
@@ -922,7 +1000,7 @@ public class VM extends
      *    [action.pause]
      *    [action.vm.os.boot]
      *    [action.vm.domain.user.password]
-     *    [action.vm.initialization.cloud_init.hostname]
+     *    [action.vm.initialization.cloud_init.host.address]
      *    [action.vm.initialization.cloud_init.network_configuration.nics.nic]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.servers.host]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.search_domains.host]
