@@ -9561,6 +9561,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:string">
                             <name>vmpool.display.proxy</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vmpool.description</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -9675,6 +9678,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>vmpool.display.proxy</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vmpool.description</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -11393,6 +11399,40 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>action.storage_domain.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/maintenance" rel="maintenance">
+            <description>enable or disable maintenance mode for this virtual machine</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                    <parameters_set>
+                        <description>enable or disable maintenance mode for this virtual machine</description>
+                        <parameter required="true" type="xs:boolean">
+                            <name>action.maintenance_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
                         </parameter>
                         <parameter required="false" type="xs:long">
                             <name>action.grace_period.expiry</name>

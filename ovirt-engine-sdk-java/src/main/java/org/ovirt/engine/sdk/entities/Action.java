@@ -88,6 +88,7 @@ import javax.xml.bind.annotation.XmlType;
     "bricks",
     "job",
     "importAsTemplate",
+    "maintenanceEnabled",
     "status",
     "fault",
     "iscsiTargets",
@@ -143,6 +144,8 @@ public class Action
     protected Job job;
     @XmlElement(name = "import_as_template")
     protected Boolean importAsTemplate;
+    @XmlElement(name = "maintenance_enabled")
+    protected Boolean maintenanceEnabled;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -1100,6 +1103,34 @@ public class Action
 
     public boolean isSetImportAsTemplate() {
         return (this.importAsTemplate!= null);
+    }
+
+    /**
+     * Gets the value of the maintenanceEnabled property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getMaintenanceEnabled() {
+        return maintenanceEnabled;
+    }
+
+    /**
+     * Sets the value of the maintenanceEnabled property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setMaintenanceEnabled(Boolean value) {
+        this.maintenanceEnabled = value;
+    }
+
+    public boolean isSetMaintenanceEnabled() {
+        return (this.maintenanceEnabled!= null);
     }
 
     /**

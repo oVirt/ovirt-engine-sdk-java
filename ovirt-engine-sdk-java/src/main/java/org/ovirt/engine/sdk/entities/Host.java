@@ -64,6 +64,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}hooks" minOccurs="0"/>
  *         &lt;element name="libvirt_version" type="{}Version" minOccurs="0"/>
  *         &lt;element ref="{}display" minOccurs="0"/>
+ *         &lt;element name="hosted_engine" type="{}HostedEngine" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -99,7 +100,8 @@ import javax.xml.bind.annotation.XmlType;
     "os",
     "hooks",
     "libvirtVersion",
-    "display"
+    "display",
+    "hostedEngine"
 })
 public class Host
     extends BaseResource
@@ -141,6 +143,8 @@ public class Host
     @XmlElement(name = "libvirt_version")
     protected Version libvirtVersion;
     protected Display display;
+    @XmlElement(name = "hosted_engine")
+    protected HostedEngine hostedEngine;
 
     /**
      * Gets the value of the address property.
@@ -868,6 +872,34 @@ public class Host
 
     public boolean isSetDisplay() {
         return (this.display!= null);
+    }
+
+    /**
+     * Gets the value of the hostedEngine property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostedEngine }
+     *
+     */
+    public HostedEngine getHostedEngine() {
+        return hostedEngine;
+    }
+
+    /**
+     * Sets the value of the hostedEngine property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostedEngine }
+     *
+     */
+    public void setHostedEngine(HostedEngine value) {
+        this.hostedEngine = value;
+    }
+
+    public boolean isSetHostedEngine() {
+        return (this.hostedEngine!= null);
     }
 
 }

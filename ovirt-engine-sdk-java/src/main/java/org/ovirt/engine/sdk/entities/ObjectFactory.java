@@ -99,9 +99,9 @@ public class ObjectFactory {
     private final static QName _Dns_QNAME = new QName("", "dns");
     private final static QName _Fault_QNAME = new QName("", "fault");
     private final static QName _VmAffinities_QNAME = new QName("", "vm_affinities");
-    private final static QName _GlusterVolumes_QNAME = new QName("", "gluster_volumes");
     private final static QName _Cdrom_QNAME = new QName("", "cdrom");
     private final static QName _DetailedLink_QNAME = new QName("", "detailedLink");
+    private final static QName _GlusterVolumes_QNAME = new QName("", "gluster_volumes");
     private final static QName _ErrorHandling_QNAME = new QName("", "error_handling");
     private final static QName _Configuration_QNAME = new QName("", "configuration");
     private final static QName _ProductInfo_QNAME = new QName("", "product_info");
@@ -223,6 +223,7 @@ public class ObjectFactory {
     private final static QName _Console_QNAME = new QName("", "console");
     private final static QName _ServerHooks_QNAME = new QName("", "server_hooks");
     private final static QName _Clusters_QNAME = new QName("", "clusters");
+    private final static QName _HostedEngine_QNAME = new QName("", "hosted_engine");
     private final static QName _CpuModes_QNAME = new QName("", "cpu_modes");
     private final static QName _Images_QNAME = new QName("", "images");
     private final static QName _Permits_QNAME = new QName("", "permits");
@@ -709,6 +710,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GlusterVolumes }
+     *
+     */
+    public GlusterVolumes createGlusterVolumes() {
+        return new GlusterVolumes();
+    }
+
+    /**
      * Create an instance of {@link DetailedLink }
      *
      */
@@ -722,14 +731,6 @@ public class ObjectFactory {
      */
     public CdRom createCdRom() {
         return new CdRom();
-    }
-
-    /**
-     * Create an instance of {@link GlusterVolumes }
-     *
-     */
-    public GlusterVolumes createGlusterVolumes() {
-        return new GlusterVolumes();
     }
 
     /**
@@ -1698,6 +1699,14 @@ public class ObjectFactory {
      */
     public Clusters createClusters() {
         return new Clusters();
+    }
+
+    /**
+     * Create an instance of {@link HostedEngine }
+     *
+     */
+    public HostedEngine createHostedEngine() {
+        return new HostedEngine();
     }
 
     /**
@@ -2692,15 +2701,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterVolumes }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "gluster_volumes")
-    public JAXBElement<GlusterVolumes> createGlusterVolumes(GlusterVolumes value) {
-        return new JAXBElement<GlusterVolumes>(_GlusterVolumes_QNAME, GlusterVolumes.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CdRom }{@code >}}
      *
      */
@@ -2716,6 +2716,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "detailedLink")
     public JAXBElement<DetailedLink> createDetailedLink(DetailedLink value) {
         return new JAXBElement<DetailedLink>(_DetailedLink_QNAME, DetailedLink.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterVolumes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "gluster_volumes")
+    public JAXBElement<GlusterVolumes> createGlusterVolumes(GlusterVolumes value) {
+        return new JAXBElement<GlusterVolumes>(_GlusterVolumes_QNAME, GlusterVolumes.class, null, value);
     }
 
     /**
@@ -3805,6 +3814,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "clusters")
     public JAXBElement<Clusters> createClusters(Clusters value) {
         return new JAXBElement<Clusters>(_Clusters_QNAME, Clusters.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostedEngine }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "hosted_engine")
+    public JAXBElement<HostedEngine> createHostedEngine(HostedEngine value) {
+        return new JAXBElement<HostedEngine>(_HostedEngine_QNAME, HostedEngine.class, null, value);
     }
 
     /**

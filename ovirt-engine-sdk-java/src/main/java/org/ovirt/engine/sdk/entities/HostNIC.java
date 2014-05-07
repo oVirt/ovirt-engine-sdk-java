@@ -52,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="bridged" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="custom_configuration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="override_configuration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}labels" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -76,7 +77,8 @@ import javax.xml.bind.annotation.XmlType;
     "mtu",
     "bridged",
     "customConfiguration",
-    "overrideConfiguration"
+    "overrideConfiguration",
+    "labels"
 })
 public class HostNIC
     extends BaseResource
@@ -101,6 +103,7 @@ public class HostNIC
     protected Boolean customConfiguration;
     @XmlElement(name = "override_configuration")
     protected Boolean overrideConfiguration;
+    protected Labels labels;
 
     /**
      * Gets the value of the host property.
@@ -520,6 +523,34 @@ public class HostNIC
 
     public boolean isSetOverrideConfiguration() {
         return (this.overrideConfiguration!= null);
+    }
+
+    /**
+     * Gets the value of the labels property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Labels }
+     *
+     */
+    public Object getLabels() {
+        return labels;
+    }
+
+    /**
+     * Sets the value of the labels property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Labels }
+     *
+     */
+    public void setLabels(Labels value) {
+        this.labels = value;
+    }
+
+    public boolean isSetLabels() {
+        return (this.labels!= null);
     }
 
 }
