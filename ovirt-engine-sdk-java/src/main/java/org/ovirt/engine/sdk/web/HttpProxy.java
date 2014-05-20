@@ -45,6 +45,8 @@ public class HttpProxy {
     private static final String PERSISTENT_AUTH_HEADER_CONTENT = "persistent-auth";
     private static final String PERSISTENT_AUTH_HEADER = "Prefer";
     private static final String FILTER_HEADER = "Filter";
+    private static final String EXPECT_HEADER = "Expect";
+    private static final String ALTERNATIVE_EXPECT_HEADER = "X-Ovirt-Expect";
     private static final String STATIC_HEADERS[] = new String[] { "Content-type:application/xml" };
     private static final int BAD_REQUEST = 400;
 
@@ -161,6 +163,14 @@ public class HttpProxy {
         List<Header> updated = excludeNullHeaders(headers);
         if (updated != null && !updated.isEmpty()) {
             request.setHeaders(updated.toArray(new Header[updated.size()]));
+        }
+
+        // The Apache web server ignores the "Expect" header, so if this header was explicitly added by the user, then
+        // we need to add the alternative "X-Ovirt-Expect" as well:
+        for (Header header : headers) {
+            if (EXPECT_HEADER.equalsIgnoreCase(header.getName())) {
+                request.setHeader(ALTERNATIVE_EXPECT_HEADER, header.getValue());
+            }
         }
 
         // inject .ctr defined static parameters
