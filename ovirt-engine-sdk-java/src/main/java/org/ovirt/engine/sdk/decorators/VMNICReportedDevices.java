@@ -99,6 +99,26 @@ public class VMNICReportedDevices extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.ReportedDevice.class, VMNICReportedDevice.class);
     }
 
+    /**
+     * Fetches VMNICReportedDevice object by id.
+     *
+     * @return
+     *     {@link VMNICReportedDevice }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public VMNICReportedDevice getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.ReportedDevice.class, VMNICReportedDevice.class);
+    }
+
 
 }
 

@@ -100,6 +100,26 @@ public class VMTags extends
     }
 
     /**
+     * Fetches VMTag object by id.
+     *
+     * @return
+     *     {@link VMTag }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public VMTag getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Tag.class, VMTag.class);
+    }
+
+    /**
      * Lists VMTag objects.
      *
      * @param max
