@@ -94,6 +94,23 @@ public abstract class CollectionDecorator<R extends BaseResource, Q extends Base
     abstract public Z get(UUID id) throws ClientProtocolException, ServerException, IOException;
 
     /**
+     * Fetches entity from the collection by id
+     *
+     * @param id
+     *            entity id
+     *
+     * @return Z
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    abstract public Z getById(String id) throws ClientProtocolException, ServerException, IOException;
+
+    /**
      * Fetches object by name.
      * 
      * @param name
