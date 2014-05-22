@@ -100,6 +100,26 @@ public class DataCenterClusterAffinityGroupVMs extends
     }
 
     /**
+     * Fetches DataCenterClusterAffinityGroupVM object by id.
+     *
+     * @return
+     *     {@link DataCenterClusterAffinityGroupVM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public DataCenterClusterAffinityGroupVM getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, DataCenterClusterAffinityGroupVM.class);
+    }
+
+    /**
      * Adds VM object.
      *
      * @param vm {@link org.ovirt.engine.sdk.entities.VM}

@@ -99,6 +99,26 @@ public class VMNICStatistics extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VMNICStatistic.class);
     }
 
+    /**
+     * Fetches VMNICStatistic object by id.
+     *
+     * @return
+     *     {@link VMNICStatistic }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public VMNICStatistic getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Statistic.class, VMNICStatistic.class);
+    }
+
 
 }
 

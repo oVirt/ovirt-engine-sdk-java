@@ -100,6 +100,26 @@ public class VMWatchDogs extends
     }
 
     /**
+     * Fetches VMWatchDog object by id.
+     *
+     * @return
+     *     {@link VMWatchDog }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public VMWatchDog getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.WatchDog.class, VMWatchDog.class);
+    }
+
+    /**
      * Lists VMWatchDog objects.
      *
      * @param max

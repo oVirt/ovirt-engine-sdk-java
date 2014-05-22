@@ -95,6 +95,25 @@ public class StorageConnections extends
     }
 
     /**
+     * Fetches StorageConnection object by id.
+     *
+     * @return {@link StorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public StorageConnection getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageConnection.class, StorageConnection.class);
+    }
+
+    /**
      * Adds StorageConnection object.
      *
      * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}

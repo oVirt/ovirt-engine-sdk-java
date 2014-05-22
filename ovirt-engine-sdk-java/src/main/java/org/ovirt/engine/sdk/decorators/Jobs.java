@@ -95,6 +95,25 @@ public class Jobs extends
     }
 
     /**
+     * Fetches Job object by id.
+     *
+     * @return {@link Job }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public Job getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Job.class, Job.class);
+    }
+
+    /**
      * Lists Job objects.
      *
      * @param max

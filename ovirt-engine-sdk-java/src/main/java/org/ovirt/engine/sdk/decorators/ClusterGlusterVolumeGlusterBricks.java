@@ -100,6 +100,26 @@ public class ClusterGlusterVolumeGlusterBricks extends
     }
 
     /**
+     * Fetches ClusterGlusterVolumeGlusterBrick object by id.
+     *
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public ClusterGlusterVolumeGlusterBrick getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterBrick.class, ClusterGlusterVolumeGlusterBrick.class);
+    }
+
+    /**
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
