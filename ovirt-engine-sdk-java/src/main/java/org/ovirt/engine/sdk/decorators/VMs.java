@@ -95,6 +95,25 @@ public class VMs extends
     }
 
     /**
+     * Fetches VM object by id.
+     *
+     * @return {@link VM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public VM getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.VM.class, VM.class);
+    }
+
+    /**
      * Lists VM objects.
      *
      * @param query
@@ -124,6 +143,61 @@ public class VMs extends
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.VMs.class,
+                VM.class, headers);
+    }
+    /**
+     * Lists VM objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link VM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<VM> list(String query, Boolean caseSensitive, Integer max, String allContent) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
@@ -182,6 +256,7 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.console.enabled]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
@@ -192,11 +267,16 @@ public class VMs extends
      *      [vm.os.kernel]
      *      [vm.disks.clone]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.use_latest_template_version]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *
      *    Overload 2:
      *
@@ -236,6 +316,7 @@ public class VMs extends
      *      [vm.comment]
      *      [vm.stateless]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.console.enabled]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -243,9 +324,13 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *
      *    Overload 3:
      *
@@ -284,6 +369,7 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -292,11 +378,16 @@ public class VMs extends
      *      [vm.os.kernel]
      *      [vm.disks.clone]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
+     *      [vm.initialization.regenerate_ids]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *    </pre>
      *
      * @return
@@ -364,6 +455,7 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.console.enabled]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
@@ -374,11 +466,16 @@ public class VMs extends
      *      [vm.os.kernel]
      *      [vm.disks.clone]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.use_latest_template_version]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *
      *    Overload 2:
      *
@@ -418,6 +515,7 @@ public class VMs extends
      *      [vm.comment]
      *      [vm.stateless]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.console.enabled]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -425,9 +523,13 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *
      *    Overload 3:
      *
@@ -466,6 +568,7 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -474,11 +577,16 @@ public class VMs extends
      *      [vm.os.kernel]
      *      [vm.disks.clone]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
+     *      [vm.initialization.regenerate_ids]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *    </pre>
      *
      * @param correlationId
@@ -554,6 +662,7 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.console.enabled]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
@@ -564,11 +673,16 @@ public class VMs extends
      *      [vm.os.kernel]
      *      [vm.disks.clone]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.use_latest_template_version]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *
      *    Overload 2:
      *
@@ -608,6 +722,7 @@ public class VMs extends
      *      [vm.comment]
      *      [vm.stateless]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.console.enabled]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -615,9 +730,13 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *
      *    Overload 3:
      *
@@ -656,6 +775,7 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
+     *      [vm.sso.methods.method]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -664,11 +784,16 @@ public class VMs extends
      *      [vm.os.kernel]
      *      [vm.disks.clone]
      *      [vm.tunnel_migration]
+     *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
+     *      [vm.initialization.regenerate_ids]
      *      [vm.cpu.cpu_tune.vcpu_pin]
+     *      [vm.serial_number.policy]
+     *      [vm.serial_number.value]
+     *      [vm.bios.boot_menu.enabled]
      *    </pre>
      *
      * @param correlationId

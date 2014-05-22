@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}network" minOccurs="0"/>
  *         &lt;element ref="{}mac" minOccurs="0"/>
  *         &lt;element ref="{}ip" minOccurs="0"/>
+ *         &lt;element name="base_interface" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}vlan" minOccurs="0"/>
  *         &lt;element ref="{}bonding" minOccurs="0"/>
  *         &lt;element name="boot_protocol" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -52,6 +53,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="bridged" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="custom_configuration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="override_configuration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}labels" minOccurs="0"/>
+ *         &lt;element ref="{}properties" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -66,6 +69,7 @@ import javax.xml.bind.annotation.XmlType;
     "network",
     "mac",
     "ip",
+    "baseInterface",
     "vlan",
     "bonding",
     "bootProtocol",
@@ -76,7 +80,9 @@ import javax.xml.bind.annotation.XmlType;
     "mtu",
     "bridged",
     "customConfiguration",
-    "overrideConfiguration"
+    "overrideConfiguration",
+    "labels",
+    "properties"
 })
 public class HostNIC
     extends BaseResource
@@ -86,6 +92,8 @@ public class HostNIC
     protected Network network;
     protected MAC mac;
     protected IP ip;
+    @XmlElement(name = "base_interface")
+    protected String baseInterface;
     protected VLAN vlan;
     protected Bonding bonding;
     @XmlElement(name = "boot_protocol")
@@ -101,6 +109,8 @@ public class HostNIC
     protected Boolean customConfiguration;
     @XmlElement(name = "override_configuration")
     protected Boolean overrideConfiguration;
+    protected Labels labels;
+    protected Properties properties;
 
     /**
      * Gets the value of the host property.
@@ -212,6 +222,34 @@ public class HostNIC
 
     public boolean isSetIp() {
         return (this.ip!= null);
+    }
+
+    /**
+     * Gets the value of the baseInterface property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getBaseInterface() {
+        return baseInterface;
+    }
+
+    /**
+     * Sets the value of the baseInterface property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setBaseInterface(String value) {
+        this.baseInterface = value;
+    }
+
+    public boolean isSetBaseInterface() {
+        return (this.baseInterface!= null);
     }
 
     /**
@@ -520,6 +558,62 @@ public class HostNIC
 
     public boolean isSetOverrideConfiguration() {
         return (this.overrideConfiguration!= null);
+    }
+
+    /**
+     * Gets the value of the labels property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Labels }
+     *
+     */
+    public Object getLabels() {
+        return labels;
+    }
+
+    /**
+     * Sets the value of the labels property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Labels }
+     *
+     */
+    public void setLabels(Labels value) {
+        this.labels = value;
+    }
+
+    public boolean isSetLabels() {
+        return (this.labels!= null);
+    }
+
+    /**
+     * Gets the value of the properties property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Properties }
+     *
+     */
+    public Properties getProperties() {
+        return properties;
+    }
+
+    /**
+     * Sets the value of the properties property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Properties }
+     *
+     */
+    public void setProperties(Properties value) {
+        this.properties = value;
+    }
+
+    public boolean isSetProperties() {
+        return (this.properties!= null);
     }
 
 }

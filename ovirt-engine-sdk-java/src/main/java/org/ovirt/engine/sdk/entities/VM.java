@@ -42,9 +42,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
+ *         &lt;element name="stop_reason" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="memory" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="cpu" type="{}CPU" minOccurs="0"/>
  *         &lt;element name="cpu_shares" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="bios" type="{}Bios" minOccurs="0"/>
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
  *         &lt;element name="high_availability" type="{}HighAvailability" minOccurs="0"/>
  *         &lt;element name="display" type="{}Display" minOccurs="0"/>
@@ -58,6 +60,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="origin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}sso" minOccurs="0"/>
  *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
@@ -75,6 +78,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="migration_downtime" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}virtio_scsi" minOccurs="0"/>
  *         &lt;element ref="{}permissions" minOccurs="0"/>
  *         &lt;element ref="{}vmpool" minOccurs="0"/>
@@ -82,6 +86,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}floppies" minOccurs="0"/>
  *         &lt;element ref="{}reported_devices" minOccurs="0"/>
  *         &lt;element ref="{}watchdogs" minOccurs="0"/>
+ *         &lt;element name="use_latest_template_version" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}serial_number" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -94,9 +100,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "VM", propOrder = {
     "type",
     "status",
+    "stopReason",
     "memory",
     "cpu",
     "cpuShares",
+    "bios",
     "os",
     "highAvailability",
     "display",
@@ -110,6 +118,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "origin",
     "stateless",
     "deleteProtected",
+    "sso",
     "console",
     "timezone",
     "domain",
@@ -127,13 +136,16 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "quota",
     "usb",
     "tunnelMigration",
+    "migrationDowntime",
     "virtioScsi",
     "permissions",
     "vmPool",
     "cdroms",
     "floppies",
     "reportedDevices",
-    "watchdogs"
+    "watchdogs",
+    "useLatestTemplateVersion",
+    "serialNumber"
 })
 @XmlSeeAlso({
     Snapshot.class
@@ -144,10 +156,13 @@ public class VM
 
     protected String type;
     protected Status status;
+    @XmlElement(name = "stop_reason")
+    protected String stopReason;
     protected Long memory;
     protected CPU cpu;
     @XmlElement(name = "cpu_shares")
     protected Integer cpuShares;
+    protected Bios bios;
     protected OperatingSystem os;
     @XmlElement(name = "high_availability")
     protected HighAvailability highAvailability;
@@ -170,6 +185,7 @@ public class VM
     protected Boolean stateless;
     @XmlElement(name = "delete_protected")
     protected Boolean deleteProtected;
+    protected Sso sso;
     protected Console console;
     protected String timezone;
     protected Domain domain;
@@ -192,6 +208,8 @@ public class VM
     protected Usb usb;
     @XmlElement(name = "tunnel_migration")
     protected Boolean tunnelMigration;
+    @XmlElement(name = "migration_downtime")
+    protected Integer migrationDowntime;
     @XmlElement(name = "virtio_scsi")
     protected VirtIOSCSI virtioScsi;
     protected Permissions permissions;
@@ -202,6 +220,10 @@ public class VM
     @XmlElement(name = "reported_devices")
     protected ReportedDevices reportedDevices;
     protected WatchDogs watchdogs;
+    @XmlElement(name = "use_latest_template_version")
+    protected Boolean useLatestTemplateVersion;
+    @XmlElement(name = "serial_number")
+    protected SerialNumber serialNumber;
 
     /**
      * Gets the value of the type property.
@@ -257,6 +279,34 @@ public class VM
 
     public boolean isSetStatus() {
         return (this.status!= null);
+    }
+
+    /**
+     * Gets the value of the stopReason property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getStopReason() {
+        return stopReason;
+    }
+
+    /**
+     * Sets the value of the stopReason property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setStopReason(String value) {
+        this.stopReason = value;
+    }
+
+    public boolean isSetStopReason() {
+        return (this.stopReason!= null);
     }
 
     /**
@@ -341,6 +391,34 @@ public class VM
 
     public boolean isSetCpuShares() {
         return (this.cpuShares!= null);
+    }
+
+    /**
+     * Gets the value of the bios property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Bios }
+     *
+     */
+    public Bios getBios() {
+        return bios;
+    }
+
+    /**
+     * Sets the value of the bios property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Bios }
+     *
+     */
+    public void setBios(Bios value) {
+        this.bios = value;
+    }
+
+    public boolean isSetBios() {
+        return (this.bios!= null);
     }
 
     /**
@@ -705,6 +783,34 @@ public class VM
 
     public boolean isSetDeleteProtected() {
         return (this.deleteProtected!= null);
+    }
+
+    /**
+     * Gets the value of the sso property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Sso }
+     *
+     */
+    public Sso getSso() {
+        return sso;
+    }
+
+    /**
+     * Sets the value of the sso property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Sso }
+     *
+     */
+    public void setSso(Sso value) {
+        this.sso = value;
+    }
+
+    public boolean isSetSso() {
+        return (this.sso!= null);
     }
 
     /**
@@ -1184,6 +1290,34 @@ public class VM
     }
 
     /**
+     * Gets the value of the migrationDowntime property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getMigrationDowntime() {
+        return migrationDowntime;
+    }
+
+    /**
+     * Sets the value of the migrationDowntime property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setMigrationDowntime(Integer value) {
+        this.migrationDowntime = value;
+    }
+
+    public boolean isSetMigrationDowntime() {
+        return (this.migrationDowntime!= null);
+    }
+
+    /**
      * Gets the value of the virtioScsi property.
      *
      * @return
@@ -1377,6 +1511,62 @@ public class VM
 
     public boolean isSetWatchdogs() {
         return (this.watchdogs!= null);
+    }
+
+    /**
+     * Gets the value of the useLatestTemplateVersion property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUseLatestTemplateVersion() {
+        return useLatestTemplateVersion;
+    }
+
+    /**
+     * Sets the value of the useLatestTemplateVersion property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUseLatestTemplateVersion(Boolean value) {
+        this.useLatestTemplateVersion = value;
+    }
+
+    public boolean isSetUseLatestTemplateVersion() {
+        return (this.useLatestTemplateVersion!= null);
+    }
+
+    /**
+     * Gets the value of the serialNumber property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SerialNumber }
+     *
+     */
+    public SerialNumber getSerialNumber() {
+        return serialNumber;
+    }
+
+    /**
+     * Sets the value of the serialNumber property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SerialNumber }
+     *
+     */
+    public void setSerialNumber(SerialNumber value) {
+        this.serialNumber = value;
+    }
+
+    public boolean isSetSerialNumber() {
+        return (this.serialNumber!= null);
     }
 
 }

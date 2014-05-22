@@ -95,6 +95,25 @@ public class StorageDomains extends
     }
 
     /**
+     * Fetches StorageDomain object by id.
+     *
+     * @return {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public StorageDomain getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageDomain.class, StorageDomain.class);
+    }
+
+    /**
      * Lists StorageDomain objects.
      *
      * @param query

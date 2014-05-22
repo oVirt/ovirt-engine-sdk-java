@@ -56,6 +56,7 @@ public class Api implements AutoCloseable {
     private volatile Domains domains;
     private volatile Disks disks;
     private volatile VnicProfiles vnicProfiles;
+    private volatile Bookmarks bookmarks;
     private volatile Clusters clusters;
     private volatile DataCenters dataCenters;
     private volatile Roles roles;
@@ -769,6 +770,23 @@ public class Api implements AutoCloseable {
             }
         }
         return vnicProfiles;
+    }
+    /**
+     * Gets the value of the Bookmarks property.
+     *
+     * @return
+     *     {@link Bookmarks }
+     *
+     */
+    public Bookmarks getBookmarks() {
+        if (this.bookmarks == null) {
+            synchronized (this.LOCK) {
+                if (this.bookmarks == null) {
+                    this.bookmarks = new Bookmarks(proxy);
+                }
+            }
+        }
+        return bookmarks;
     }
     /**
      * Gets the value of the Clusters property.

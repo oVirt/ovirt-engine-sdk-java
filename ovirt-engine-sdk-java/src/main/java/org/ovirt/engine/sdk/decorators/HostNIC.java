@@ -45,6 +45,7 @@ public class HostNIC extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile HostNICLabels hostNICLabels;
     private volatile HostNICStatistics hostNICStatistics;
 
 
@@ -62,6 +63,22 @@ public class HostNIC extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the HostNICLabels property.
+     *
+     * @return
+     *     {@link HostNICLabels }
+     */
+    public HostNICLabels getLabels() {
+        if (this.hostNICLabels == null) {
+            synchronized (this.LOCK) {
+                if (this.hostNICLabels == null) {
+                    this.hostNICLabels = new HostNICLabels(proxy, this);
+                }
+            }
+        }
+        return hostNICLabels;
+    }
     /**
      * Gets the value of the HostNICStatistics property.
      *
@@ -94,7 +111,6 @@ public class HostNIC extends
      *    [hostnic.mac]
      *    [hostnic.ip.address]
      *    [hostnic.ip.netmask]
-     *    [hostnic.ip.mtu]
      *    </pre>
      *
      * @return
@@ -138,7 +154,6 @@ public class HostNIC extends
      *    [hostnic.mac]
      *    [hostnic.ip.address]
      *    [hostnic.ip.netmask]
-     *    [hostnic.ip.mtu]
      *    </pre>
      *
      * @param async
@@ -190,7 +205,6 @@ public class HostNIC extends
      *    [hostnic.mac]
      *    [hostnic.ip.address]
      *    [hostnic.ip.netmask]
-     *    [hostnic.ip.mtu]
      *    </pre>
      *
      * @param correlationId

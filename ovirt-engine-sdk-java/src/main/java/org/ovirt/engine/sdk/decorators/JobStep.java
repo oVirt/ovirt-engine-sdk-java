@@ -85,6 +85,7 @@ public class JobStep extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    action.succeeded
      *    [action.force]
      *    [action.status.state]
      *    [action.async]
@@ -118,6 +119,7 @@ public class JobStep extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    action.succeeded
      *    [action.force]
      *    [action.status.state]
      *    [action.async]

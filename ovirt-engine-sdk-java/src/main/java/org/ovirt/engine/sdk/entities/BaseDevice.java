@@ -55,9 +55,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     CdRom.class,
     WatchDog.class,
-    Disk.class,
     Floppy.class,
-    NIC.class
+    NIC.class,
+    Disk.class
 })
 public class BaseDevice
     extends BaseResource

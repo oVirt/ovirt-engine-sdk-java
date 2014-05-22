@@ -95,6 +95,25 @@ public class Disks extends
     }
 
     /**
+     * Fetches Disk object by id.
+     *
+     * @return {@link Disk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public Disk getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, Disk.class);
+    }
+
+    /**
      * Lists Disk objects.
      *
      * @param query
@@ -148,10 +167,10 @@ public class Disks extends
      *    <pre>
      *    Overload 1:
      *
-     *      add a new disk the system with
-     *      specified size, space will be
-     *      allocated from the storage
-     *      domain for the disk
+     *      add a new disk to the system
+     *      with specified size, space
+     *      will be allocated from the
+     *      storage domain for the disk
      *
      *      provisioned_size
      *      disk.interface
@@ -168,10 +187,10 @@ public class Disks extends
      *
      *    Overload 2:
      *
-     *      add a new lun disk the system,
-     *      this operation does not
-     *      require size but requires lun
-     *      connection details
+     *      add a new lun disk to the
+     *      system, this operation does
+     *      not require size but requires
+     *      lun connection details
      *
      *      disk.interface
      *      disk.format
@@ -218,10 +237,10 @@ public class Disks extends
      *    <pre>
      *    Overload 1:
      *
-     *      add a new disk the system with
-     *      specified size, space will be
-     *      allocated from the storage
-     *      domain for the disk
+     *      add a new disk to the system
+     *      with specified size, space
+     *      will be allocated from the
+     *      storage domain for the disk
      *
      *      provisioned_size
      *      disk.interface
@@ -238,10 +257,10 @@ public class Disks extends
      *
      *    Overload 2:
      *
-     *      add a new lun disk the system,
-     *      this operation does not
-     *      require size but requires lun
-     *      connection details
+     *      add a new lun disk to the
+     *      system, this operation does
+     *      not require size but requires
+     *      lun connection details
      *
      *      disk.interface
      *      disk.format
@@ -296,10 +315,10 @@ public class Disks extends
      *    <pre>
      *    Overload 1:
      *
-     *      add a new disk the system with
-     *      specified size, space will be
-     *      allocated from the storage
-     *      domain for the disk
+     *      add a new disk to the system
+     *      with specified size, space
+     *      will be allocated from the
+     *      storage domain for the disk
      *
      *      provisioned_size
      *      disk.interface
@@ -316,10 +335,10 @@ public class Disks extends
      *
      *    Overload 2:
      *
-     *      add a new lun disk the system,
-     *      this operation does not
-     *      require size but requires lun
-     *      connection details
+     *      add a new lun disk to the
+     *      system, this operation does
+     *      not require size but requires
+     *      lun connection details
      *
      *      disk.interface
      *      disk.format

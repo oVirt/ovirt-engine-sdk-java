@@ -46,6 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element ref="{}pm_proxies" minOccurs="0"/>
  *         &lt;element ref="{}agents" minOccurs="0"/>
+ *         &lt;element name="automatic_pm_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="kdump_detection" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -64,7 +66,9 @@ import javax.xml.bind.annotation.XmlType;
     "options",
     "status",
     "pmProxies",
-    "agents"
+    "agents",
+    "automaticPmEnabled",
+    "kdumpDetection"
 })
 public class PowerManagement {
 
@@ -77,6 +81,10 @@ public class PowerManagement {
     @XmlElement(name = "pm_proxies")
     protected PmProxies pmProxies;
     protected Agents agents;
+    @XmlElement(name = "automatic_pm_enabled")
+    protected Boolean automaticPmEnabled;
+    @XmlElement(name = "kdump_detection")
+    protected Boolean kdumpDetection;
     @XmlAttribute(name = "type")
     protected String type;
 
@@ -302,6 +310,62 @@ public class PowerManagement {
 
     public boolean isSetAgents() {
         return (this.agents!= null);
+    }
+
+    /**
+     * Gets the value of the automaticPmEnabled property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getAutomaticPmEnabled() {
+        return automaticPmEnabled;
+    }
+
+    /**
+     * Sets the value of the automaticPmEnabled property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setAutomaticPmEnabled(Boolean value) {
+        this.automaticPmEnabled = value;
+    }
+
+    public boolean isSetAutomaticPmEnabled() {
+        return (this.automaticPmEnabled!= null);
+    }
+
+    /**
+     * Gets the value of the kdumpDetection property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getKdumpDetection() {
+        return kdumpDetection;
+    }
+
+    /**
+     * Sets the value of the kdumpDetection property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setKdumpDetection(Boolean value) {
+        this.kdumpDetection = value;
+    }
+
+    public boolean isSetKdumpDetection() {
+        return (this.kdumpDetection!= null);
     }
 
     /**

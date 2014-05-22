@@ -46,6 +46,7 @@ public class DataCenterClusterGlusterVolume extends
     private final Object LOCK = new Object();
 
     private volatile DataCenterClusterGlusterVolumeGlusterBricks dataCenterClusterGlusterVolumeGlusterBricks;
+    private volatile DataCenterClusterGlusterVolumeStatistics dataCenterClusterGlusterVolumeStatistics;
 
 
     /**
@@ -77,6 +78,22 @@ public class DataCenterClusterGlusterVolume extends
             }
         }
         return dataCenterClusterGlusterVolumeGlusterBricks;
+    }
+    /**
+     * Gets the value of the DataCenterClusterGlusterVolumeStatistics property.
+     *
+     * @return
+     *     {@link DataCenterClusterGlusterVolumeStatistics }
+     */
+    public DataCenterClusterGlusterVolumeStatistics getStatistics() {
+        if (this.dataCenterClusterGlusterVolumeStatistics == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterGlusterVolumeStatistics == null) {
+                    this.dataCenterClusterGlusterVolumeStatistics = new DataCenterClusterGlusterVolumeStatistics(proxy, this);
+                }
+            }
+        }
+        return dataCenterClusterGlusterVolumeStatistics;
     }
 
 

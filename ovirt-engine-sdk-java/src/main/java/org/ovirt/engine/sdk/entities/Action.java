@@ -69,6 +69,7 @@ import javax.xml.bind.annotation.XmlType;
     "discardSnapshots",
     "exclusive",
     "vm",
+    "snapshot",
     "template",
     "hostNics",
     "checkConnectivity",
@@ -81,10 +82,13 @@ import javax.xml.bind.annotation.XmlType;
     "detach",
     "clone",
     "restoreMemory",
+    "disks",
     "succeeded",
     "resolutionType",
     "bricks",
     "job",
+    "importAsTemplate",
+    "maintenanceEnabled",
     "status",
     "fault",
     "iscsiTargets",
@@ -114,6 +118,7 @@ public class Action
     protected Boolean discardSnapshots;
     protected Boolean exclusive;
     protected VM vm;
+    protected Snapshot snapshot;
     protected Template template;
     @XmlElement(name = "host_nics")
     protected HostNics hostNics;
@@ -131,11 +136,16 @@ public class Action
     protected Boolean clone;
     @XmlElement(name = "restore_memory")
     protected Boolean restoreMemory;
+    protected Disks disks;
     protected Boolean succeeded;
     @XmlElement(name = "resolution_type")
     protected String resolutionType;
     protected GlusterBricks bricks;
     protected Job job;
+    @XmlElement(name = "import_as_template")
+    protected Boolean importAsTemplate;
+    @XmlElement(name = "maintenance_enabled")
+    protected Boolean maintenanceEnabled;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -564,6 +574,34 @@ public class Action
     }
 
     /**
+     * Gets the value of the snapshot property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Snapshot }
+     *
+     */
+    public Snapshot getSnapshot() {
+        return snapshot;
+    }
+
+    /**
+     * Sets the value of the snapshot property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Snapshot }
+     *
+     */
+    public void setSnapshot(Snapshot value) {
+        this.snapshot = value;
+    }
+
+    public boolean isSetSnapshot() {
+        return (this.snapshot!= null);
+    }
+
+    /**
      * Gets the value of the template property.
      *
      * @return
@@ -900,6 +938,34 @@ public class Action
     }
 
     /**
+     * Gets the value of the disks property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Disks }
+     *
+     */
+    public Disks getDisks() {
+        return disks;
+    }
+
+    /**
+     * Sets the value of the disks property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Disks }
+     *
+     */
+    public void setDisks(Disks value) {
+        this.disks = value;
+    }
+
+    public boolean isSetDisks() {
+        return (this.disks!= null);
+    }
+
+    /**
      * Gets the value of the succeeded property.
      *
      * @return
@@ -1009,6 +1075,62 @@ public class Action
 
     public boolean isSetJob() {
         return (this.job!= null);
+    }
+
+    /**
+     * Gets the value of the importAsTemplate property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getImportAsTemplate() {
+        return importAsTemplate;
+    }
+
+    /**
+     * Sets the value of the importAsTemplate property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setImportAsTemplate(Boolean value) {
+        this.importAsTemplate = value;
+    }
+
+    public boolean isSetImportAsTemplate() {
+        return (this.importAsTemplate!= null);
+    }
+
+    /**
+     * Gets the value of the maintenanceEnabled property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getMaintenanceEnabled() {
+        return maintenanceEnabled;
+    }
+
+    /**
+     * Sets the value of the maintenanceEnabled property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setMaintenanceEnabled(Boolean value) {
+        this.maintenanceEnabled = value;
+    }
+
+    public boolean isSetMaintenanceEnabled() {
+        return (this.maintenanceEnabled!= null);
     }
 
     /**

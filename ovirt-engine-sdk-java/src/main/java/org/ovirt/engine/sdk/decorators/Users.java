@@ -95,6 +95,25 @@ public class Users extends
     }
 
     /**
+     * Fetches User object by id.
+     *
+     * @return {@link User }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public User getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.User.class, User.class);
+    }
+
+    /**
      * Lists User objects.
      *
      * @param query

@@ -100,6 +100,26 @@ public class VMSnapshots extends
     }
 
     /**
+     * Fetches VMSnapshot object by id.
+     *
+     * @return
+     *     {@link VMSnapshot }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public VMSnapshot getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Snapshot.class, VMSnapshot.class);
+    }
+
+    /**
      * Lists VMSnapshot objects.
      *
      * @param max
@@ -180,6 +200,7 @@ public class VMSnapshots extends
      *    <pre>
      *    snapshot.description
      *    [snapshot.persist_memorystate]
+     *    [snapshot.disks.disk]
      *    </pre>
      *
      * @return
@@ -213,6 +234,7 @@ public class VMSnapshots extends
      *    <pre>
      *    snapshot.description
      *    [snapshot.persist_memorystate]
+     *    [snapshot.disks.disk]
      *    </pre>
      *
      * @param expect
@@ -254,6 +276,7 @@ public class VMSnapshots extends
      *    <pre>
      *    snapshot.description
      *    [snapshot.persist_memorystate]
+     *    [snapshot.disks.disk]
      *    </pre>
      *
      * @param expect

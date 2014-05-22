@@ -46,6 +46,7 @@ public class Network extends
     private final Object LOCK = new Object();
 
     private volatile NetworkPermissions networkPermissions;
+    private volatile NetworkLabels networkLabels;
     private volatile NetworkVnicProfiles networkVnicProfiles;
 
 
@@ -78,6 +79,22 @@ public class Network extends
             }
         }
         return networkPermissions;
+    }
+    /**
+     * Gets the value of the NetworkLabels property.
+     *
+     * @return
+     *     {@link NetworkLabels }
+     */
+    public NetworkLabels getLabels() {
+        if (this.networkLabels == null) {
+            synchronized (this.LOCK) {
+                if (this.networkLabels == null) {
+                    this.networkLabels = new NetworkLabels(proxy, this);
+                }
+            }
+        }
+        return networkLabels;
     }
     /**
      * Gets the value of the NetworkVnicProfiles property.

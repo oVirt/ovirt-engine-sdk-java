@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element name="storage_type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="local" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="storage_format" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
  *         &lt;element name="supported_versions" type="{}SupportedVersions" minOccurs="0"/>
@@ -53,6 +54,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DataCenter", propOrder = {
     "storageType",
+    "local",
     "storageFormat",
     "version",
     "supportedVersions",
@@ -64,6 +66,7 @@ public class DataCenter
 
     @XmlElement(name = "storage_type")
     protected String storageType;
+    protected Boolean local;
     @XmlElement(name = "storage_format")
     protected String storageFormat;
     protected Version version;
@@ -97,6 +100,34 @@ public class DataCenter
 
     public boolean isSetStorageType() {
         return (this.storageType!= null);
+    }
+
+    /**
+     * Gets the value of the local property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getLocal() {
+        return local;
+    }
+
+    /**
+     * Sets the value of the local property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setLocal(Boolean value) {
+        this.local = value;
+    }
+
+    public boolean isSetLocal() {
+        return (this.local!= null);
     }
 
     /**

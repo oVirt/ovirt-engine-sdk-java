@@ -64,6 +64,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}hooks" minOccurs="0"/>
  *         &lt;element name="libvirt_version" type="{}Version" minOccurs="0"/>
  *         &lt;element ref="{}display" minOccurs="0"/>
+ *         &lt;element name="hosted_engine" type="{}HostedEngine" minOccurs="0"/>
+ *         &lt;element name="kdump_status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="selinux" type="{}SELinux" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -99,7 +102,10 @@ import javax.xml.bind.annotation.XmlType;
     "os",
     "hooks",
     "libvirtVersion",
-    "display"
+    "display",
+    "hostedEngine",
+    "kdumpStatus",
+    "selinux"
 })
 public class Host
     extends BaseResource
@@ -141,6 +147,11 @@ public class Host
     @XmlElement(name = "libvirt_version")
     protected Version libvirtVersion;
     protected Display display;
+    @XmlElement(name = "hosted_engine")
+    protected HostedEngine hostedEngine;
+    @XmlElement(name = "kdump_status")
+    protected String kdumpStatus;
+    protected SELinux selinux;
 
     /**
      * Gets the value of the address property.
@@ -868,6 +879,90 @@ public class Host
 
     public boolean isSetDisplay() {
         return (this.display!= null);
+    }
+
+    /**
+     * Gets the value of the hostedEngine property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostedEngine }
+     *
+     */
+    public HostedEngine getHostedEngine() {
+        return hostedEngine;
+    }
+
+    /**
+     * Sets the value of the hostedEngine property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostedEngine }
+     *
+     */
+    public void setHostedEngine(HostedEngine value) {
+        this.hostedEngine = value;
+    }
+
+    public boolean isSetHostedEngine() {
+        return (this.hostedEngine!= null);
+    }
+
+    /**
+     * Gets the value of the kdumpStatus property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getKdumpStatus() {
+        return kdumpStatus;
+    }
+
+    /**
+     * Sets the value of the kdumpStatus property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setKdumpStatus(String value) {
+        this.kdumpStatus = value;
+    }
+
+    public boolean isSetKdumpStatus() {
+        return (this.kdumpStatus!= null);
+    }
+
+    /**
+     * Gets the value of the selinux property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SELinux }
+     *
+     */
+    public SELinux getSelinux() {
+        return selinux;
+    }
+
+    /**
+     * Sets the value of the selinux property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SELinux }
+     *
+     */
+    public void setSelinux(SELinux value) {
+        this.selinux = value;
+    }
+
+    public boolean isSetSelinux() {
+        return (this.selinux!= null);
     }
 
 }

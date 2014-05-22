@@ -100,6 +100,26 @@ public class DataCenterStorageDomainDisks extends
     }
 
     /**
+     * Fetches DataCenterStorageDomainDisk object by id.
+     *
+     * @return
+     *     {@link DataCenterStorageDomainDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public DataCenterStorageDomainDisk getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Disk.class, DataCenterStorageDomainDisk.class);
+    }
+
+    /**
      * Lists DataCenterStorageDomainDisk objects.
      *
      * @param query

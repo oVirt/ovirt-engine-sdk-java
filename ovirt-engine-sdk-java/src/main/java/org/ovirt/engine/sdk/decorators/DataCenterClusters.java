@@ -100,6 +100,26 @@ public class DataCenterClusters extends
     }
 
     /**
+     * Fetches DataCenterCluster object by id.
+     *
+     * @return
+     *     {@link DataCenterCluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public DataCenterCluster getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Cluster.class, DataCenterCluster.class);
+    }
+
+    /**
      * Lists DataCenterCluster objects.
      *
      * @param max
@@ -156,6 +176,7 @@ public class DataCenterClusters extends
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @return
@@ -206,6 +227,7 @@ public class DataCenterClusters extends
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @param expect
@@ -264,6 +286,7 @@ public class DataCenterClusters extends
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @param expect

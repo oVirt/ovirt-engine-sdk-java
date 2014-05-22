@@ -95,6 +95,25 @@ public class DataCenters extends
     }
 
     /**
+     * Fetches DataCenter object by id.
+     *
+     * @return {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public DataCenter getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.DataCenter.class, DataCenter.class);
+    }
+
+    /**
      * Lists DataCenter objects.
      *
      * @param query
@@ -147,9 +166,10 @@ public class DataCenters extends
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
      *    datacenter.name
-     *    datacenter.storage_type
      *    datacenter.version.major
      *    datacenter.version.minor
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
      *    [datacenter.description]
      *    [datacenter.comment]
      *    [datacenter.storage_format]
@@ -185,9 +205,10 @@ public class DataCenters extends
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
      *    datacenter.name
-     *    datacenter.storage_type
      *    datacenter.version.major
      *    datacenter.version.minor
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
      *    [datacenter.description]
      *    [datacenter.comment]
      *    [datacenter.storage_format]
@@ -231,9 +252,10 @@ public class DataCenters extends
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
      *    datacenter.name
-     *    datacenter.storage_type
      *    datacenter.version.major
      *    datacenter.version.minor
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
      *    [datacenter.description]
      *    [datacenter.comment]
      *    [datacenter.storage_format]

@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element ref="{}host" minOccurs="0"/>
  *         &lt;element ref="{}vm" minOccurs="0"/>
+ *         &lt;element ref="{}template" minOccurs="0"/>
  *         &lt;element ref="{}user" minOccurs="0"/>
  *         &lt;element ref="{}group" minOccurs="0"/>
  *         &lt;element name="parent" type="{}TagParent" minOccurs="0"/>
@@ -53,6 +54,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Tag", propOrder = {
     "host",
     "vm",
+    "template",
     "user",
     "group",
     "parent"
@@ -63,6 +65,7 @@ public class Tag
 
     protected Host host;
     protected VM vm;
+    protected Template template;
     protected User user;
     protected Group group;
     protected TagParent parent;
@@ -121,6 +124,34 @@ public class Tag
 
     public boolean isSetVm() {
         return (this.vm!= null);
+    }
+
+    /**
+     * Gets the value of the template property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Template }
+     *
+     */
+    public Template getTemplate() {
+        return template;
+    }
+
+    /**
+     * Sets the value of the template property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Template }
+     *
+     */
+    public void setTemplate(Template value) {
+        this.template = value;
+    }
+
+    public boolean isSetTemplate() {
+        return (this.template!= null);
     }
 
     /**

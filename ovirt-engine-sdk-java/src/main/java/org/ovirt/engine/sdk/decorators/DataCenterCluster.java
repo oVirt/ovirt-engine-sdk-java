@@ -47,6 +47,7 @@ public class DataCenterCluster extends
 
     private volatile DataCenterClusterPermissions dataCenterClusterPermissions;
     private volatile DataCenterClusterGlusterHooks dataCenterClusterGlusterHooks;
+    private volatile DataCenterClusterAffinityGroups dataCenterClusterAffinityGroups;
     private volatile DataCenterClusterGlusterVolumes dataCenterClusterGlusterVolumes;
     private volatile DataCenterClusterNetworks dataCenterClusterNetworks;
 
@@ -96,6 +97,22 @@ public class DataCenterCluster extends
             }
         }
         return dataCenterClusterGlusterHooks;
+    }
+    /**
+     * Gets the value of the DataCenterClusterAffinityGroups property.
+     *
+     * @return
+     *     {@link DataCenterClusterAffinityGroups }
+     */
+    public DataCenterClusterAffinityGroups getAffinityGroups() {
+        if (this.dataCenterClusterAffinityGroups == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterAffinityGroups == null) {
+                    this.dataCenterClusterAffinityGroups = new DataCenterClusterAffinityGroups(proxy, this);
+                }
+            }
+        }
+        return dataCenterClusterAffinityGroups;
     }
     /**
      * Gets the value of the DataCenterClusterGlusterVolumes property.
@@ -153,9 +170,11 @@ public class DataCenterCluster extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @return
@@ -207,9 +226,11 @@ public class DataCenterCluster extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @param correlationId

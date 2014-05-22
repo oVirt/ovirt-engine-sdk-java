@@ -95,6 +95,25 @@ public class Clusters extends
     }
 
     /**
+     * Fetches Cluster object by id.
+     *
+     * @return {@link Cluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public Cluster getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Cluster.class, Cluster.class);
+    }
+
+    /**
      * Lists Cluster objects.
      *
      * @param query
@@ -165,9 +184,11 @@ public class Clusters extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @return
@@ -218,9 +239,11 @@ public class Clusters extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @param expect
@@ -279,9 +302,11 @@ public class Clusters extends
      *    [cluster.threads_as_cores]
      *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
      *    </pre>
      *
      * @param expect

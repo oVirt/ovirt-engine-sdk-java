@@ -100,6 +100,26 @@ public class UserRoles extends
     }
 
     /**
+     * Fetches UserRole object by id.
+     *
+     * @return
+     *     {@link UserRole }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public UserRole getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Role.class, UserRole.class);
+    }
+
+    /**
      * Lists UserRole objects.
      *
      * @param max

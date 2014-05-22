@@ -51,6 +51,7 @@ import javax.xml.bind.annotation.XmlType;
     Floppies.class,
     Nics.class,
     CdRoms.class,
+    DiskSnapshots.class,
     Disks.class,
     WatchDogs.class
 })

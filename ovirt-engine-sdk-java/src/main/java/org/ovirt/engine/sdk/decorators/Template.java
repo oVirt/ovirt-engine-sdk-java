@@ -46,6 +46,7 @@ public class Template extends
     private final Object LOCK = new Object();
 
     private volatile TemplateWatchDogs templateWatchDogs;
+    private volatile TemplateTags templateTags;
     private volatile TemplateCdRoms templateCdRoms;
     private volatile TemplateNICs templateNICs;
     private volatile TemplatePermissions templatePermissions;
@@ -81,6 +82,22 @@ public class Template extends
             }
         }
         return templateWatchDogs;
+    }
+    /**
+     * Gets the value of the TemplateTags property.
+     *
+     * @return
+     *     {@link TemplateTags }
+     */
+    public TemplateTags getTags() {
+        if (this.templateTags == null) {
+            synchronized (this.LOCK) {
+                if (this.templateTags == null) {
+                    this.templateTags = new TemplateTags(proxy, this);
+                }
+            }
+        }
+        return templateTags;
     }
     /**
      * Gets the value of the TemplateCdRoms property.
@@ -165,6 +182,7 @@ public class Template extends
      *    [template.type]
      *    [template.stateless]
      *    [template.delete_protected]
+     *    [template.sso.methods.method]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -186,7 +204,12 @@ public class Template extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.version.version_name]
+     *    [template.serial_number.policy]
+     *    [template.serial_number.value]
+     *    [template.bios.boot_menu.enabled]
      *    </pre>
      *
      * @return
@@ -233,6 +256,7 @@ public class Template extends
      *    [template.type]
      *    [template.stateless]
      *    [template.delete_protected]
+     *    [template.sso.methods.method]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -254,7 +278,12 @@ public class Template extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.version.version_name]
+     *    [template.serial_number.policy]
+     *    [template.serial_number.value]
+     *    [template.bios.boot_menu.enabled]
      *    </pre>
      *
      * @param correlationId

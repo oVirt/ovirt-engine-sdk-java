@@ -95,6 +95,25 @@ public class Templates extends
     }
 
     /**
+     * Fetches Template object by id.
+     *
+     * @return {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    @Override
+    public Template getById(String id) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Template.class, Template.class);
+    }
+
+    /**
      * Lists Template objects.
      *
      * @param query
@@ -142,6 +161,61 @@ public class Templates extends
                 Template.class, headers);
     }
     /**
+     * Lists Template objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Template> list(String query, Boolean caseSensitive, Integer max, String allContent) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Templates.class,
+                Template.class, headers);
+    }
+    /**
      * Adds Template object.
      *
      * @param template {@link org.ovirt.engine.sdk.entities.Template}
@@ -159,6 +233,7 @@ public class Templates extends
      *    [template.type]
      *    [template.stateless]
      *    [template.delete_protected]
+     *    [template.sso.methods.method]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -180,10 +255,16 @@ public class Templates extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
+     *    [template.version.version_name]
+     *    [template.version.base_template.id]
      *    [template.cpu.cpu_tune.vcpu_pin]
+     *    [template.serial_number.policy]
+     *    [template.serial_number.value]
+     *    [template.bios.boot_menu.enabled]
      *    </pre>
      *
      * @return
@@ -228,6 +309,7 @@ public class Templates extends
      *    [template.type]
      *    [template.stateless]
      *    [template.delete_protected]
+     *    [template.sso.methods.method]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -249,10 +331,16 @@ public class Templates extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
+     *    [template.version.version_name]
+     *    [template.version.base_template.id]
      *    [template.cpu.cpu_tune.vcpu_pin]
+     *    [template.serial_number.policy]
+     *    [template.serial_number.value]
+     *    [template.bios.boot_menu.enabled]
      *    </pre>
      *
      * @param expect
@@ -305,6 +393,7 @@ public class Templates extends
      *    [template.type]
      *    [template.stateless]
      *    [template.delete_protected]
+     *    [template.sso.methods.method]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -326,10 +415,16 @@ public class Templates extends
      *    [template.usb.enabled]
      *    [template.usb.type]
      *    [template.tunnel_migration]
+     *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
+     *    [template.version.version_name]
+     *    [template.version.base_template.id]
      *    [template.cpu.cpu_tune.vcpu_pin]
+     *    [template.serial_number.policy]
+     *    [template.serial_number.value]
+     *    [template.bios.boot_menu.enabled]
      *    </pre>
      *
      * @param expect
