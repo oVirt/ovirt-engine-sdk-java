@@ -23,6 +23,7 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element ref="{}domain" minOccurs="0"/>
+ *         &lt;element name="domain_entry_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="roles" type="{}Roles" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -49,6 +51,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Group", propOrder = {
     "domain",
+    "domainEntryId",
     "roles"
 })
 public class Group
@@ -56,6 +59,8 @@ public class Group
 {
 
     protected Domain domain;
+    @XmlElement(name = "domain_entry_id")
+    protected String domainEntryId;
     protected Roles roles;
 
     /**
@@ -84,6 +89,34 @@ public class Group
 
     public boolean isSetDomain() {
         return (this.domain!= null);
+    }
+
+    /**
+     * Gets the value of the domainEntryId property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getDomainEntryId() {
+        return domainEntryId;
+    }
+
+    /**
+     * Sets the value of the domainEntryId property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setDomainEntryId(String value) {
+        this.domainEntryId = value;
+    }
+
+    public boolean isSetDomainEntryId() {
+        return (this.domainEntryId!= null);
     }
 
     /**

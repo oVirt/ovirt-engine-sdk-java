@@ -167,10 +167,10 @@ public class Disks extends
      *    <pre>
      *    Overload 1:
      *
-     *      add a new disk the system with
-     *      specified size, space will be
-     *      allocated from the storage
-     *      domain for the disk
+     *      add a new disk to the system
+     *      with specified size, space
+     *      will be allocated from the
+     *      storage domain for the disk
      *
      *      provisioned_size
      *      disk.interface
@@ -187,10 +187,10 @@ public class Disks extends
      *
      *    Overload 2:
      *
-     *      add a new lun disk the system,
-     *      this operation does not
-     *      require size but requires lun
-     *      connection details
+     *      add a new lun disk to the
+     *      system, this operation does
+     *      not require size but requires
+     *      lun connection details
      *
      *      disk.interface
      *      disk.format
@@ -237,10 +237,10 @@ public class Disks extends
      *    <pre>
      *    Overload 1:
      *
-     *      add a new disk the system with
-     *      specified size, space will be
-     *      allocated from the storage
-     *      domain for the disk
+     *      add a new disk to the system
+     *      with specified size, space
+     *      will be allocated from the
+     *      storage domain for the disk
      *
      *      provisioned_size
      *      disk.interface
@@ -257,10 +257,10 @@ public class Disks extends
      *
      *    Overload 2:
      *
-     *      add a new lun disk the system,
-     *      this operation does not
-     *      require size but requires lun
-     *      connection details
+     *      add a new lun disk to the
+     *      system, this operation does
+     *      not require size but requires
+     *      lun connection details
      *
      *      disk.interface
      *      disk.format
@@ -315,10 +315,10 @@ public class Disks extends
      *    <pre>
      *    Overload 1:
      *
-     *      add a new disk the system with
-     *      specified size, space will be
-     *      allocated from the storage
-     *      domain for the disk
+     *      add a new disk to the system
+     *      with specified size, space
+     *      will be allocated from the
+     *      storage domain for the disk
      *
      *      provisioned_size
      *      disk.interface
@@ -335,10 +335,10 @@ public class Disks extends
      *
      *    Overload 2:
      *
-     *      add a new lun disk the system,
-     *      this operation does not
-     *      require size but requires lun
-     *      connection details
+     *      add a new lun disk to the
+     *      system, this operation does
+     *      not require size but requires
+     *      lun connection details
      *
      *      disk.interface
      *      disk.format

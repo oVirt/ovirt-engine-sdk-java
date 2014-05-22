@@ -24,6 +24,7 @@ package org.ovirt.engine.sdk.entities;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -93,6 +94,9 @@ import javax.xml.bind.annotation.XmlType;
     "lunStorage",
     "sgio",
     "snapshot"
+})
+@XmlSeeAlso({
+    DiskSnapshot.class
 })
 public class Disk
     extends BaseDevice

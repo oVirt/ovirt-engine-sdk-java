@@ -46,6 +46,7 @@ public class ClusterGlusterVolume extends
     private final Object LOCK = new Object();
 
     private volatile ClusterGlusterVolumeGlusterBricks clusterGlusterVolumeGlusterBricks;
+    private volatile ClusterGlusterVolumeStatistics clusterGlusterVolumeStatistics;
 
 
     /**
@@ -77,6 +78,22 @@ public class ClusterGlusterVolume extends
             }
         }
         return clusterGlusterVolumeGlusterBricks;
+    }
+    /**
+     * Gets the value of the ClusterGlusterVolumeStatistics property.
+     *
+     * @return
+     *     {@link ClusterGlusterVolumeStatistics }
+     */
+    public ClusterGlusterVolumeStatistics getStatistics() {
+        if (this.clusterGlusterVolumeStatistics == null) {
+            synchronized (this.LOCK) {
+                if (this.clusterGlusterVolumeStatistics == null) {
+                    this.clusterGlusterVolumeStatistics = new ClusterGlusterVolumeStatistics(proxy, this);
+                }
+            }
+        }
+        return clusterGlusterVolumeStatistics;
     }
 
 

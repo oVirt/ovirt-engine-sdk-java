@@ -166,9 +166,10 @@ public class DataCenters extends
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
      *    datacenter.name
-     *    datacenter.storage_type
      *    datacenter.version.major
      *    datacenter.version.minor
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
      *    [datacenter.description]
      *    [datacenter.comment]
      *    [datacenter.storage_format]
@@ -204,9 +205,10 @@ public class DataCenters extends
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
      *    datacenter.name
-     *    datacenter.storage_type
      *    datacenter.version.major
      *    datacenter.version.minor
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
      *    [datacenter.description]
      *    [datacenter.comment]
      *    [datacenter.storage_format]
@@ -250,9 +252,10 @@ public class DataCenters extends
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
      *    datacenter.name
-     *    datacenter.storage_type
      *    datacenter.version.major
      *    datacenter.version.minor
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
      *    [datacenter.description]
      *    [datacenter.comment]
      *    [datacenter.storage_format]

@@ -48,6 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}usages" minOccurs="0"/>
  *         &lt;element name="required" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="profile_required" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}labels" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -68,7 +69,8 @@ import javax.xml.bind.annotation.XmlType;
     "mtu",
     "usages",
     "required",
-    "profileRequired"
+    "profileRequired",
+    "labels"
 })
 public class Network
     extends BaseResource
@@ -87,6 +89,7 @@ public class Network
     protected Boolean required;
     @XmlElement(name = "profile_required")
     protected Boolean profileRequired;
+    protected Labels labels;
 
     /**
      * Gets the value of the dataCenter property.
@@ -394,6 +397,34 @@ public class Network
 
     public boolean isSetProfileRequired() {
         return (this.profileRequired!= null);
+    }
+
+    /**
+     * Gets the value of the labels property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Labels }
+     *
+     */
+    public Object getLabels() {
+        return labels;
+    }
+
+    /**
+     * Sets the value of the labels property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Labels }
+     *
+     */
+    public void setLabels(Labels value) {
+        this.labels = value;
+    }
+
+    public boolean isSetLabels() {
+        return (this.labels!= null);
     }
 
 }

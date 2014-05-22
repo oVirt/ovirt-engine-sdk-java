@@ -200,6 +200,7 @@ public class VMSnapshots extends
      *    <pre>
      *    snapshot.description
      *    [snapshot.persist_memorystate]
+     *    [snapshot.disks.disk]
      *    </pre>
      *
      * @return
@@ -233,6 +234,7 @@ public class VMSnapshots extends
      *    <pre>
      *    snapshot.description
      *    [snapshot.persist_memorystate]
+     *    [snapshot.disks.disk]
      *    </pre>
      *
      * @param expect
@@ -274,6 +276,7 @@ public class VMSnapshots extends
      *    <pre>
      *    snapshot.description
      *    [snapshot.persist_memorystate]
+     *    [snapshot.disks.disk]
      *    </pre>
      *
      * @param expect

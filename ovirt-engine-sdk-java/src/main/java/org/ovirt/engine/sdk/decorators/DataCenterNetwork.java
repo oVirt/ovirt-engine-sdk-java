@@ -47,6 +47,7 @@ public class DataCenterNetwork extends
 
     private volatile DataCenterNetworkPermissions dataCenterNetworkPermissions;
     private volatile DataCenterNetworkVnicProfiles dataCenterNetworkVnicProfiles;
+    private volatile DataCenterNetworkLabels dataCenterNetworkLabels;
 
 
     /**
@@ -94,6 +95,22 @@ public class DataCenterNetwork extends
             }
         }
         return dataCenterNetworkVnicProfiles;
+    }
+    /**
+     * Gets the value of the DataCenterNetworkLabels property.
+     *
+     * @return
+     *     {@link DataCenterNetworkLabels }
+     */
+    public DataCenterNetworkLabels getLabels() {
+        if (this.dataCenterNetworkLabels == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterNetworkLabels == null) {
+                    this.dataCenterNetworkLabels = new DataCenterNetworkLabels(proxy, this);
+                }
+            }
+        }
+        return dataCenterNetworkLabels;
     }
 
 

@@ -185,12 +185,14 @@ public class Hosts extends
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.password]
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
+     *      [host.power_management.kdump_detection]
      *
      *    Overload 2:
      *
@@ -211,6 +213,7 @@ public class Hosts extends
      *      [host.display.address]
      *      [host.storage_manager.priority]
      *      [host.power_management.type]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
@@ -220,6 +223,7 @@ public class Hosts extends
      *      [host.power_management.agents.agent]
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
+     *      [host.power_management.kdump_detection]
      *    </pre>
      *
      * @return
@@ -271,12 +275,14 @@ public class Hosts extends
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.password]
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
+     *      [host.power_management.kdump_detection]
      *
      *    Overload 2:
      *
@@ -297,6 +303,7 @@ public class Hosts extends
      *      [host.display.address]
      *      [host.storage_manager.priority]
      *      [host.power_management.type]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
@@ -306,6 +313,7 @@ public class Hosts extends
      *      [host.power_management.agents.agent]
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
+     *      [host.power_management.kdump_detection]
      *    </pre>
      *
      * @param expect
@@ -365,12 +373,14 @@ public class Hosts extends
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.password]
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
+     *      [host.power_management.kdump_detection]
      *
      *    Overload 2:
      *
@@ -391,6 +401,7 @@ public class Hosts extends
      *      [host.display.address]
      *      [host.storage_manager.priority]
      *      [host.power_management.type]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
@@ -400,6 +411,7 @@ public class Hosts extends
      *      [host.power_management.agents.agent]
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
+     *      [host.power_management.kdump_detection]
      *    </pre>
      *
      * @param expect

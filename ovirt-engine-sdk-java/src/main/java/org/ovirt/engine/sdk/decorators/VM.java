@@ -54,6 +54,7 @@ public class VM extends
     private volatile VMWatchDogs vMWatchDogs;
     private volatile VMDisks vMDisks;
     private volatile VMNICs vMNICs;
+    private volatile VMSessions vMSessions;
     private volatile VMCdRoms vMCdRoms;
 
 
@@ -216,6 +217,22 @@ public class VM extends
         return vMNICs;
     }
     /**
+     * Gets the value of the VMSessions property.
+     *
+     * @return
+     *     {@link VMSessions }
+     */
+    public VMSessions getSessions() {
+        if (this.vMSessions == null) {
+            synchronized (this.LOCK) {
+                if (this.vMSessions == null) {
+                    this.vMSessions = new VMSessions(proxy, this);
+                }
+            }
+        }
+        return vMSessions;
+    }
+    /**
      * Gets the value of the VMCdRoms property.
      *
      * @return
@@ -337,6 +354,7 @@ public class VM extends
      *    [vm.comment]
      *    [vm.stateless]
      *    [vm.delete_protected]
+     *    [vm.sso.methods.method]
      *    [vm.console.enabled]
      *    [vm.cpu.topology.sockets]
      *    [vm.placement_policy.affinity]
@@ -344,9 +362,14 @@ public class VM extends
      *    [vm.origin]
      *    [vm.os.kernel]
      *    [vm.tunnel_migration]
+     *    [vm.migration_downtime]
      *    [vm.virtio_scsi.enabled]
+     *    [vm.use_latest_template_version]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
+     *    [vm.serial_number.policy]
+     *    [vm.serial_number.value]
+     *    [vm.bios.boot_menu.enabled]
      *    </pre>
      *
      * @return
@@ -410,6 +433,7 @@ public class VM extends
      *    [vm.comment]
      *    [vm.stateless]
      *    [vm.delete_protected]
+     *    [vm.sso.methods.method]
      *    [vm.console.enabled]
      *    [vm.cpu.topology.sockets]
      *    [vm.placement_policy.affinity]
@@ -417,9 +441,14 @@ public class VM extends
      *    [vm.origin]
      *    [vm.os.kernel]
      *    [vm.tunnel_migration]
+     *    [vm.migration_downtime]
      *    [vm.virtio_scsi.enabled]
+     *    [vm.use_latest_template_version]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
+     *    [vm.serial_number.policy]
+     *    [vm.serial_number.value]
+     *    [vm.bios.boot_menu.enabled]
      *    </pre>
      *
      * @param correlationId
@@ -456,6 +485,32 @@ public class VM extends
                 org.ovirt.engine.sdk.entities.VM.class,
                 VM.class,
                 headers);
+    }
+    /**
+     * Performs commit_snapshot action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action commit_snapshot(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/commit_snapshot";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
      * Performs stop action.
@@ -544,6 +599,32 @@ public class VM extends
     public Action cancelmigration(Action action) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/cancelmigration";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs clone action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action clone(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/clone";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -700,6 +781,204 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
+     * Performs maintenance action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.maintenance_enabled
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action maintenance(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/maintenance";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs maintenance action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.maintenance_enabled
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action maintenance(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/maintenance";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs migrate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.host.id|name]
+     *    [action.async]
+     *    [action.force]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action migrate(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/migrate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs migrate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.host.id|name]
+     *    [action.async]
+     *    [action.force]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action migrate(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/migrate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs preview_snapshot action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action preview_snapshot(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/preview_snapshot";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs undo_snapshot action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action undo_snapshot(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/undo_snapshot";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
      * Performs ticket action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
@@ -790,7 +1069,7 @@ public class VM extends
      *    [action.pause]
      *    [action.vm.os.boot]
      *    [action.vm.domain.user.password]
-     *    [action.vm.initialization.cloud_init.hostname]
+     *    [action.vm.initialization.cloud_init.host.address]
      *    [action.vm.initialization.cloud_init.network_configuration.nics.nic]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.servers.host]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.search_domains.host]
@@ -842,7 +1121,7 @@ public class VM extends
      *    [action.pause]
      *    [action.vm.os.boot]
      *    [action.vm.domain.user.password]
-     *    [action.vm.initialization.cloud_init.hostname]
+     *    [action.vm.initialization.cloud_init.host.address]
      *    [action.vm.initialization.cloud_init.network_configuration.nics.nic]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.servers.host]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.search_domains.host]
@@ -884,16 +1163,9 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs migrate action.
+     * Performs reboot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.host.id|name]
-     *    [action.async]
-     *    [action.force]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -904,9 +1176,9 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action) throws ClientProtocolException,
+    public Action reboot(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/migrate";
+        String url = this.getHref() + "/reboot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -917,16 +1189,9 @@ public class VM extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs migrate action.
+     * Performs reboot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.host.id|name]
-     *    [action.async]
-     *    [action.force]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -942,9 +1207,9 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action, String correlationId) throws ClientProtocolException,
+    public Action reboot(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/migrate";
+        String url = this.getHref() + "/reboot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {

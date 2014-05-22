@@ -80,6 +80,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}watchdog_models" minOccurs="0"/>
  *         &lt;element ref="{}watchdog_actions" minOccurs="0"/>
  *         &lt;element ref="{}authentication_methods" minOccurs="0"/>
+ *         &lt;element ref="{}kdump_states" minOccurs="0"/>
  *         &lt;element ref="{}step_types" minOccurs="0"/>
  *         &lt;element ref="{}payload_encodings" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
@@ -92,6 +93,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}content_types" minOccurs="0"/>
  *         &lt;element ref="{}hook_states" minOccurs="0"/>
  *         &lt;element ref="{}stages" minOccurs="0"/>
+ *         &lt;element ref="{}sso_methods" minOccurs="0"/>
+ *         &lt;element ref="{}architecture_capabilities" minOccurs="0"/>
+ *         &lt;element ref="{}serial_number_policies" minOccurs="0"/>
+ *         &lt;element ref="{}selinux_modes" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -145,6 +150,7 @@ import javax.xml.bind.annotation.XmlType;
     "watchdogModels",
     "watchdogActions",
     "authenticationMethods",
+    "kdumpStates",
     "stepTypes",
     "payloadEncodings",
     "glusterVolumeTypes",
@@ -156,7 +162,11 @@ import javax.xml.bind.annotation.XmlType;
     "snapshotStatuses",
     "contentTypes",
     "hookStates",
-    "stages"
+    "stages",
+    "ssoMethods",
+    "architectureCapabilities",
+    "serialNumberPolicies",
+    "selinuxModes"
 })
 public class VersionCaps
     extends Version
@@ -243,6 +253,8 @@ public class VersionCaps
     protected WatchdogActions watchdogActions;
     @XmlElement(name = "authentication_methods")
     protected AuthenticationMethod authenticationMethods;
+    @XmlElement(name = "kdump_states")
+    protected KdumpStates kdumpStates;
     @XmlElement(name = "step_types")
     protected StepTypes stepTypes;
     @XmlElement(name = "payload_encodings")
@@ -266,6 +278,14 @@ public class VersionCaps
     @XmlElement(name = "hook_states")
     protected HookStates hookStates;
     protected Stages stages;
+    @XmlElement(name = "sso_methods")
+    protected SsoMethods ssoMethods;
+    @XmlElement(name = "architecture_capabilities")
+    protected ArchitectureCapabilities architectureCapabilities;
+    @XmlElement(name = "serial_number_policies")
+    protected SerialNumberPolicies serialNumberPolicies;
+    @XmlElement(name = "selinux_modes")
+    protected SELinuxModes selinuxModes;
 
     /**
      * Gets the value of the current property.
@@ -1472,6 +1492,34 @@ public class VersionCaps
     }
 
     /**
+     * Gets the value of the kdumpStates property.
+     *
+     * @return
+     *     possible object is
+     *     {@link KdumpStates }
+     *
+     */
+    public KdumpStates getKdumpStates() {
+        return kdumpStates;
+    }
+
+    /**
+     * Sets the value of the kdumpStates property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link KdumpStates }
+     *
+     */
+    public void setKdumpStates(KdumpStates value) {
+        this.kdumpStates = value;
+    }
+
+    public boolean isSetKdumpStates() {
+        return (this.kdumpStates!= null);
+    }
+
+    /**
      * Gets the value of the stepTypes property.
      *
      * @return
@@ -1805,6 +1853,118 @@ public class VersionCaps
 
     public boolean isSetStages() {
         return (this.stages!= null);
+    }
+
+    /**
+     * Gets the value of the ssoMethods property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SsoMethods }
+     *
+     */
+    public SsoMethods getSsoMethods() {
+        return ssoMethods;
+    }
+
+    /**
+     * Sets the value of the ssoMethods property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SsoMethods }
+     *
+     */
+    public void setSsoMethods(SsoMethods value) {
+        this.ssoMethods = value;
+    }
+
+    public boolean isSetSsoMethods() {
+        return (this.ssoMethods!= null);
+    }
+
+    /**
+     * Gets the value of the architectureCapabilities property.
+     *
+     * @return
+     *     possible object is
+     *     {@link ArchitectureCapabilities }
+     *
+     */
+    public ArchitectureCapabilities getArchitectureCapabilities() {
+        return architectureCapabilities;
+    }
+
+    /**
+     * Sets the value of the architectureCapabilities property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ArchitectureCapabilities }
+     *
+     */
+    public void setArchitectureCapabilities(ArchitectureCapabilities value) {
+        this.architectureCapabilities = value;
+    }
+
+    public boolean isSetArchitectureCapabilities() {
+        return (this.architectureCapabilities!= null);
+    }
+
+    /**
+     * Gets the value of the serialNumberPolicies property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SerialNumberPolicies }
+     *
+     */
+    public SerialNumberPolicies getSerialNumberPolicies() {
+        return serialNumberPolicies;
+    }
+
+    /**
+     * Sets the value of the serialNumberPolicies property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SerialNumberPolicies }
+     *
+     */
+    public void setSerialNumberPolicies(SerialNumberPolicies value) {
+        this.serialNumberPolicies = value;
+    }
+
+    public boolean isSetSerialNumberPolicies() {
+        return (this.serialNumberPolicies!= null);
+    }
+
+    /**
+     * Gets the value of the selinuxModes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SELinuxModes }
+     *
+     */
+    public SELinuxModes getSelinuxModes() {
+        return selinuxModes;
+    }
+
+    /**
+     * Sets the value of the selinuxModes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SELinuxModes }
+     *
+     */
+    public void setSelinuxModes(SELinuxModes value) {
+        this.selinuxModes = value;
+    }
+
+    public boolean isSetSelinuxModes() {
+        return (this.selinuxModes!= null);
     }
 
 }

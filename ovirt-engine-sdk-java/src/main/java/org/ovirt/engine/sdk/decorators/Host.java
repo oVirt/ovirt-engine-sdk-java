@@ -365,9 +365,11 @@ public class Host extends
      *      [host.power_management.address]
      *      [host.power_management.username]
      *      [host.power_management.password]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
+     *      [host.power_management.kdump_detection]
      *
      *    Overload 2:
      *
@@ -384,6 +386,7 @@ public class Host extends
      *      [host.port]
      *      [host.storage_manager.priority]
      *      [host.power_management.type]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
@@ -391,6 +394,7 @@ public class Host extends
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
+     *      [host.power_management.kdump_detection]
      *    </pre>
      *
      * @return
@@ -445,9 +449,11 @@ public class Host extends
      *      [host.power_management.address]
      *      [host.power_management.username]
      *      [host.power_management.password]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
+     *      [host.power_management.kdump_detection]
      *
      *    Overload 2:
      *
@@ -464,6 +470,7 @@ public class Host extends
      *      [host.port]
      *      [host.storage_manager.priority]
      *      [host.power_management.type]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
@@ -471,6 +478,7 @@ public class Host extends
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
+     *      [host.power_management.kdump_detection]
      *    </pre>
      *
      * @param async
@@ -533,9 +541,11 @@ public class Host extends
      *      [host.power_management.address]
      *      [host.power_management.username]
      *      [host.power_management.password]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
+     *      [host.power_management.kdump_detection]
      *
      *    Overload 2:
      *
@@ -552,6 +562,7 @@ public class Host extends
      *      [host.port]
      *      [host.storage_manager.priority]
      *      [host.power_management.type]
+     *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
      *      [host.power_management.address]
      *      [host.power_management.username]
@@ -559,6 +570,7 @@ public class Host extends
      *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
+     *      [host.power_management.kdump_detection]
      *    </pre>
      *
      * @param correlationId

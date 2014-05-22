@@ -45,6 +45,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="memory" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="cpu" type="{}CPU" minOccurs="0"/>
  *         &lt;element name="cpu_shares" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="bios" type="{}Bios" minOccurs="0"/>
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
  *         &lt;element ref="{}cluster" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain" minOccurs="0"/>
@@ -54,13 +55,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="display" type="{}Display" minOccurs="0"/>
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}sso" minOccurs="0"/>
  *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="migration_downtime" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}virtio_scsi" minOccurs="0"/>
  *         &lt;element ref="{}permissions" minOccurs="0"/>
+ *         &lt;element name="version" type="{}TemplateVersion" minOccurs="0"/>
+ *         &lt;element ref="{}serial_number" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -77,6 +82,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "memory",
     "cpu",
     "cpuShares",
+    "bios",
     "os",
     "cluster",
     "storageDomain",
@@ -86,13 +92,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "display",
     "stateless",
     "deleteProtected",
+    "sso",
     "console",
     "timezone",
     "domain",
     "usb",
     "tunnelMigration",
+    "migrationDowntime",
     "virtioScsi",
-    "permissions"
+    "permissions",
+    "version",
+    "serialNumber"
 })
 public class Template
     extends BaseResource
@@ -105,6 +115,7 @@ public class Template
     protected CPU cpu;
     @XmlElement(name = "cpu_shares")
     protected Integer cpuShares;
+    protected Bios bios;
     protected OperatingSystem os;
     protected Cluster cluster;
     @XmlElement(name = "storage_domain")
@@ -119,15 +130,21 @@ public class Template
     protected Boolean stateless;
     @XmlElement(name = "delete_protected")
     protected Boolean deleteProtected;
+    protected Sso sso;
     protected Console console;
     protected String timezone;
     protected Domain domain;
     protected Usb usb;
     @XmlElement(name = "tunnel_migration")
     protected Boolean tunnelMigration;
+    @XmlElement(name = "migration_downtime")
+    protected Integer migrationDowntime;
     @XmlElement(name = "virtio_scsi")
     protected VirtIOSCSI virtioScsi;
     protected Permissions permissions;
+    protected TemplateVersion version;
+    @XmlElement(name = "serial_number")
+    protected SerialNumber serialNumber;
 
     /**
      * Gets the value of the vm property.
@@ -295,6 +312,34 @@ public class Template
 
     public boolean isSetCpuShares() {
         return (this.cpuShares!= null);
+    }
+
+    /**
+     * Gets the value of the bios property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Bios }
+     *
+     */
+    public Bios getBios() {
+        return bios;
+    }
+
+    /**
+     * Sets the value of the bios property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Bios }
+     *
+     */
+    public void setBios(Bios value) {
+        this.bios = value;
+    }
+
+    public boolean isSetBios() {
+        return (this.bios!= null);
     }
 
     /**
@@ -550,6 +595,34 @@ public class Template
     }
 
     /**
+     * Gets the value of the sso property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Sso }
+     *
+     */
+    public Sso getSso() {
+        return sso;
+    }
+
+    /**
+     * Sets the value of the sso property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Sso }
+     *
+     */
+    public void setSso(Sso value) {
+        this.sso = value;
+    }
+
+    public boolean isSetSso() {
+        return (this.sso!= null);
+    }
+
+    /**
      * Gets the value of the console property.
      *
      * @return
@@ -690,6 +763,34 @@ public class Template
     }
 
     /**
+     * Gets the value of the migrationDowntime property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getMigrationDowntime() {
+        return migrationDowntime;
+    }
+
+    /**
+     * Sets the value of the migrationDowntime property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setMigrationDowntime(Integer value) {
+        this.migrationDowntime = value;
+    }
+
+    public boolean isSetMigrationDowntime() {
+        return (this.migrationDowntime!= null);
+    }
+
+    /**
      * Gets the value of the virtioScsi property.
      *
      * @return
@@ -743,6 +844,62 @@ public class Template
 
     public boolean isSetPermissions() {
         return (this.permissions!= null);
+    }
+
+    /**
+     * Gets the value of the version property.
+     *
+     * @return
+     *     possible object is
+     *     {@link TemplateVersion }
+     *
+     */
+    public TemplateVersion getVersion() {
+        return version;
+    }
+
+    /**
+     * Sets the value of the version property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link TemplateVersion }
+     *
+     */
+    public void setVersion(TemplateVersion value) {
+        this.version = value;
+    }
+
+    public boolean isSetVersion() {
+        return (this.version!= null);
+    }
+
+    /**
+     * Gets the value of the serialNumber property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SerialNumber }
+     *
+     */
+    public SerialNumber getSerialNumber() {
+        return serialNumber;
+    }
+
+    /**
+     * Sets the value of the serialNumber property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SerialNumber }
+     *
+     */
+    public void setSerialNumber(SerialNumber value) {
+        this.serialNumber = value;
+    }
+
+    public boolean isSetSerialNumber() {
+        return (this.serialNumber!= null);
     }
 
 }

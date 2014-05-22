@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element ref="{}domain" minOccurs="0"/>
+ *         &lt;element name="domain_entry_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="department" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="logged_in" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -57,6 +58,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "User", propOrder = {
     "domain",
+    "domainEntryId",
     "department",
     "loggedIn",
     "lastName",
@@ -71,6 +73,8 @@ public class User
 {
 
     protected Domain domain;
+    @XmlElement(name = "domain_entry_id")
+    protected String domainEntryId;
     protected String department;
     @XmlElement(name = "logged_in")
     protected Boolean loggedIn;
@@ -109,6 +113,34 @@ public class User
 
     public boolean isSetDomain() {
         return (this.domain!= null);
+    }
+
+    /**
+     * Gets the value of the domainEntryId property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getDomainEntryId() {
+        return domainEntryId;
+    }
+
+    /**
+     * Sets the value of the domainEntryId property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setDomainEntryId(String value) {
+        this.domainEntryId = value;
+    }
+
+    public boolean isSetDomainEntryId() {
+        return (this.domainEntryId!= null);
     }
 
     /**

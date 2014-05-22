@@ -122,6 +122,7 @@ public class VMSnapshot extends
      *    [action.restore_memory]
      *    [action.async]
      *    [action.grace_period.expiry]
+     *    [action.disks.disk]
      *    </pre>
      *
      * @return
@@ -154,6 +155,7 @@ public class VMSnapshot extends
      *    [action.restore_memory]
      *    [action.async]
      *    [action.grace_period.expiry]
+     *    [action.disks.disk]
      *    </pre>
      *
      * @param correlationId
