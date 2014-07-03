@@ -38,4 +38,23 @@ public class ArrayUtils {
         }
         return false;
     }
+
+    /**
+     * Checks if an array starts with another array, similar to how the {@link String#startsWith(String)} checks
+     * strings, but comparing objects instead of characters.
+     *
+     * @param array the array to be checked
+     * @param prefix the prefix to look for
+     */
+    public static <T> boolean startsWith(T[] array, T[] prefix) {
+        if (array.length < prefix.length) {
+            return false;
+        }
+        for (int i = 0; i < prefix.length; i++) {
+            if (!array[i].equals(prefix[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

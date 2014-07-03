@@ -19,6 +19,7 @@ package org.ovirt.engine.sdk.codegen.rsdl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -120,6 +121,78 @@ public class RsdlCodegen extends AbstractCodegen {
     };
     private static final String[] RETURN_BODY_EXCEPTIONS = new String[] { "Response", "Responses" };
     private static final String[] ACTION_NAME_EXCEPTIONS = new String[] { "import", "export" };
+
+    /**
+     * In come cases it isn't possible to derive the name of the entity from the link, specially when there are several
+     * links that have similar structure but different types. For example, the following to lings have the same
+     * structure:
+     *
+     * <pre>
+     * hosts/{host:id}/numanodes/{numanode:id}
+     * vms/{vm:id}/numanodes/{numanode:id}
+     * </pre>
+     *
+     * But for the first the entity type is {@code NumaNode} and for the second it is {@code VirtualNumaNode}. This
+     * isn't a problem for links that have a request or response type explicitly specified, as it will be taken from
+     * there. For example, the link to get a VM numa node explicitly indicates that the type is {@code VirtualNumaNode}:
+     *
+     * <pre>
+     * &lt;link href="/ovirt-engine/api/vms/{vm:id}/numanodes/{numanode:id}" rel="get"&gt;
+     *   &lt;description&gt;get the details of the specified virtual NUMA node for the vm&lt;/description&gt;
+     *   &lt;request&gt;
+     *     &lt;http_method&gt;GET&lt;/http_method&gt;
+     *     &lt;body/&gt;
+     *   &lt;/request&gt;
+     *   &lt;response&gt;
+     *     &lt;type&gt;VirtualNumaNode&lt;/type&gt;
+     *   &lt;/response&gt;
+     * &lt;/link&gt;
+     * </pre>
+     *
+     * But some links don't specify a request or response type, like the {@code DELETE} links. For those cases we need
+     * this map of exceptions.
+     */
+    private static Map<String[], String> ENTITY_NAME_EXCEPTIONS = new HashMap<>();
+
+    static {
+        ENTITY_NAME_EXCEPTIONS.put(
+            new String[] { "vms", "{vm:id}", "numanodes", "{numanode:id}" }, "VirtualNumaNode"
+        );
+    }
+
+    /**
+     * Same for collections.
+     */
+    private static Map<String[], String> COLLECTION_NAME_EXCEPTIONS = new HashMap<>();
+
+    static {
+        COLLECTION_NAME_EXCEPTIONS.put(
+            new String[] { "vms", "{vm:id}", "numanodes", }, "VirtualNumaNodes"
+        );
+    }
+
+    /**
+     * Checks if the given name has an exceptional treatment.
+     *
+     * @param exceptions the map of exceptions to check
+     * @param name the name to check
+     * @param periods the URL segments to check
+     * @param i the number of URL segments to check
+     * @return the exceptional name assigned, or {@code null} if no exceptional treatment is needed
+     */
+    private static String checkNamingException(Map<String[], String> exceptions, String name, String[] periods, int i) {
+        periods = Arrays.copyOfRange(periods, 0, i);
+        for (Map.Entry<String[], String> exceptionEntry : exceptions.entrySet()) {
+            String[] exceptionKey = exceptionEntry.getKey();
+            if (exceptionKey.length < i) {
+                continue;
+            }
+            if (ArrayUtils.startsWith(periods, exceptionKey)) {
+                return exceptionEntry.getValue();
+            }
+        }
+        return null;
+    }
 
     /**
      * Create a code generator for the decorator classes.
@@ -254,12 +327,12 @@ public class RsdlCodegen extends AbstractCodegen {
 
                 if (!ArrayUtils.contains(COLLECTION2ENTITY_EXCEPTIONS, period)) {
                     if (i == 1) { // root-collection
-                        String collection = getRootCollectionName(period);
+                        String collection = getRootCollectionName(period, periods, i);
                         collectionName = collection;
                         parent = StringUtils.toUpperCase(StringUtils.toSingular(collection));
                         String decoratorCollectionName = StringUtils.toUpperCase(collection);
-                        String publicEntityName = getPublicEntity(StringUtils.toSingular(collection));
-                        String publicCollectionName = getPublicCollection(collection);
+                        String publicEntityName = getPublicEntity(StringUtils.toSingular(collection), periods, i);
+                        String publicCollectionName = getPublicCollection(collection, periods, i);
                         String decoratorEntityName = StringUtils.toSingular(decoratorCollectionName);
 
                         addRootCollection(url,
@@ -273,9 +346,9 @@ public class RsdlCodegen extends AbstractCodegen {
                                 decoratorEntityName);
 
                     } else if (i == 2) { // root-resource
-                        String resource = getRootResourceName(collectionName);
+                        String resource = getRootResourceName(collectionName, periods, i);
                         String decoratorResourceName = StringUtils.toUpperCase(resource);
-                        String publicEntityName = getPublicEntity(StringUtils.toSingular(collectionName));
+                        String publicEntityName = getPublicEntity(StringUtils.toSingular(collectionName), periods, i);
 
                         addRootResource(url,
                                 rel,
@@ -288,11 +361,11 @@ public class RsdlCodegen extends AbstractCodegen {
                         String collection = getSubCollectionName(actualReturnType, parent, i, periods);
                         collectionName = collection;
                         ResourceHolder resourceHolder = this.resourcesHolder.get(parent.toLowerCase());
-                        String decoratorEntityName = getSubResourceName(collectionName, parent);
+                        String decoratorEntityName = getSubResourceName(collectionName, parent, periods, i);
                         String publicEntityName =
                                 getSubCollectionEntityName(rel, actualReturnType, requestMethod, periods, i, period);
                         String publicCollectionName =
-                                getPublicCollection(StringUtils.toPlural(actualReturnType));
+                                getPublicCollection(StringUtils.toPlural(actualReturnType), periods, i);
 
                         addSubCollection(url,
                                 rel,
@@ -310,9 +383,9 @@ public class RsdlCodegen extends AbstractCodegen {
 
                     } else { // sub-resource
                         if (!isAction(period, rel, requestMethod)) {
-                            String resource = getSubResourceName(collectionName, parent);
+                            String resource = getSubResourceName(collectionName, parent, periods, i);
                             String subResourceDecoratorName = resource;
-                            String publicEntityName = getSubResourceEntityName(parent, collectionName);
+                            String publicEntityName = getSubResourceEntityName(parent, collectionName, periods, i);
 
                             addSubResource(url,
                                     rel,
@@ -330,12 +403,12 @@ public class RsdlCodegen extends AbstractCodegen {
                 } else { // unique treatment for COLLECTION2ENTITY_EXCEPTIONS
                     if (period.equals("capabilities") || parent.equalsIgnoreCase("capabilities")) {
                         if (i == 1) { // root-collection
-                            String collection = getRootCollectionName(period);
+                            String collection = getRootCollectionName(period, periods, i);
                             collectionName = collection;
                             parent = StringUtils.toUpperCase(collectionName);
                             String decoratorCollectionName = StringUtils.toUpperCase(collection);
-                            String publicEntityName = getPublicEntity(VersionCaps.class.getSimpleName());
-                            String publicCollectionName = getPublicCollection(Capabilities.class.getSimpleName());
+                            String publicEntityName = getPublicEntity(VersionCaps.class.getSimpleName(), periods, i);
+                            String publicCollectionName = getPublicCollection(Capabilities.class.getSimpleName(), periods, i);
                             String decoratorEntityName = VersionCaps.class.getSimpleName();
 
                             addRootCollection(url,
@@ -351,7 +424,7 @@ public class RsdlCodegen extends AbstractCodegen {
                         } else if (i == 2) { // root-resource
                             String resource = VersionCaps.class.getSimpleName();
                             String decoratorResourceName = resource;
-                            String publicEntityName = getPublicEntity(resource);
+                            String publicEntityName = getPublicEntity(resource, periods, i);
 
                             addRootResource(url,
                                     rel,
@@ -588,11 +661,11 @@ public class RsdlCodegen extends AbstractCodegen {
     private String getSubCollectionEntityName(String rel, String actualReturnType,
             HttpMethod requestMethod, String[] periods, int i, String period) {
         String publicEntityName =
-                getPublicEntity(StringUtils.toSingular(StringUtils.toPlural(actualReturnType)),
+                getPublicEntity(StringUtils.toSingular(StringUtils.toPlural(actualReturnType)), periods, i,
                         false);
         if (publicEntityName == null && isAction(period, rel, requestMethod)) {
             publicEntityName =
-                    getPublicEntity(StringUtils.toSingular(StringUtils.toPlural(periods[i - 3])));
+                    getPublicEntity(StringUtils.toSingular(StringUtils.toPlural(periods[i - 3])), periods, i);
         }
         return publicEntityName;
     }
@@ -604,13 +677,13 @@ public class RsdlCodegen extends AbstractCodegen {
      * @param collectionName
      * @return
      */
-    private String getSubResourceEntityName(String parent, String collectionName) {
+    private String getSubResourceEntityName(String parent, String collectionName, String[] periods, int i) {
         String publicEntityName =
-                getPublicEntity(StringUtils.toSingular(collectionName), false);
+                getPublicEntity(StringUtils.toSingular(collectionName), periods, i, false);
         if (publicEntityName == null) {
             publicEntityName =
                     getPublicEntity(StringUtils.toSingular(collectionName.replace(parent,
-                            "")));
+                            "")), periods, i);
         }
         return publicEntityName;
     }
@@ -783,11 +856,11 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return sub-resource name
      */
-    private String getSubResourceName(String collectionName, String parent) {
+    private String getSubResourceName(String collectionName, String parent, String[] periods, int i) {
         String resource = StringUtils.toSingular(collectionName);
         String resourceCandidate =
                 getPublicEntity(StringUtils.toSingular(collectionName.replace(parent, "")
-                        .toLowerCase()), false);
+                        .toLowerCase()), periods, i, false);
         if (resourceCandidate != null) {
             resource = parent + resourceCandidate;
         }
@@ -811,7 +884,7 @@ public class RsdlCodegen extends AbstractCodegen {
                         StringUtils.toUpperCase(actualReturnType));
             }
         } else {
-            collection = getPublicCollection(periods[i - 1].toLowerCase(), false);
+            collection = getPublicCollection(periods[i - 1].toLowerCase(), periods, i, false);
             if (collection != null) {
                 collection = StringUtils.toPlural(parent
                         +
@@ -831,9 +904,9 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return root-resource name
      */
-    private String getRootResourceName(String collectionName) {
+    private String getRootResourceName(String collectionName, String[] periods, int i) {
         String resource = StringUtils.toSingular(collectionName);
-        String resourceCandidate = getPublicEntity(StringUtils.toSingular(collectionName), false);
+        String resourceCandidate = getPublicEntity(StringUtils.toSingular(collectionName), periods, i, false);
         if (resourceCandidate != null) {
             resource = resourceCandidate;
         }
@@ -846,9 +919,9 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return root-collection name
      */
-    private String getRootCollectionName(String period) {
+    private String getRootCollectionName(String period, String[] periods, int i) {
         String collection = StringUtils.toUpperCase(StringUtils.toPlural(period));
-        String collectionCandidate = getPublicCollection(StringUtils.toPlural(period), false);
+        String collectionCandidate = getPublicCollection(StringUtils.toPlural(period), periods, i, false);
         if (collectionCandidate != null) {
             collection = collectionCandidate;
         }
@@ -879,7 +952,7 @@ public class RsdlCodegen extends AbstractCodegen {
         String actualReturnType;
         if (i == periods.length) {
             if (responseBodyType == null || ArrayUtils.contains(RETURN_BODY_EXCEPTIONS, responseBodyType)) {
-                String collectionCandidate = getPublicCollection(period.toLowerCase(), false);
+                String collectionCandidate = getPublicCollection(period.toLowerCase(), periods, i, false);
                 if (collectionCandidate != null) {
                     actualReturnType = collectionCandidate;
                 } else {
@@ -890,7 +963,7 @@ public class RsdlCodegen extends AbstractCodegen {
             }
 
         } else {
-            actualReturnType = getPublicCollection(period.toLowerCase(), false);
+            actualReturnType = getPublicCollection(period.toLowerCase(), periods, i, false);
         }
         return actualReturnType;
     }
@@ -918,7 +991,11 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return public entity name according to class-simple-name
      */
-    private String getPublicCollection(String collectionName) {
+    private String getPublicCollection(String collectionName, String[] periods, int i) {
+        String exception = checkNamingException(COLLECTION_NAME_EXCEPTIONS, collectionName, periods, i);
+        if (exception != null) {
+            return exception;
+        }
         if (this.entitiesMap.containsKey(collectionName.toLowerCase())) {
             return this.entitiesMap.get(collectionName.toLowerCase());
         }
@@ -931,9 +1008,9 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return public entity name according to class-simple-name
      */
-    private String getPublicCollection(String collectionName, boolean throwError) {
+    private String getPublicCollection(String collectionName, String[] periods, int i, boolean throwError) {
         try {
-            return getPublicCollection(collectionName);
+            return getPublicCollection(collectionName, periods, i);
         } catch (RuntimeException rte) {
             if (!throwError)
                 return null;
@@ -946,7 +1023,11 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return public collection name according to class-simple-name
      */
-    private String getPublicEntity(String entityName) {
+    private String getPublicEntity(String entityName, String[] periods, int i) {
+        String exception = checkNamingException(ENTITY_NAME_EXCEPTIONS, entityName, periods, i);
+        if (exception != null) {
+            return exception;
+        }
         if (this.entitiesMap.containsKey(entityName.toLowerCase())) {
             return this.entitiesMap.get(entityName.toLowerCase());
         }
@@ -959,9 +1040,9 @@ public class RsdlCodegen extends AbstractCodegen {
      * 
      * @return public collection name according to class-simple-name
      */
-    private String getPublicEntity(String entityName, boolean throwError) {
+    private String getPublicEntity(String entityName, String[] periods, int i, boolean throwError) {
         try {
-            return getPublicEntity(entityName);
+            return getPublicEntity(entityName, periods, i);
         } catch (RuntimeException rte) {
             if (!throwError)
                 return null;
