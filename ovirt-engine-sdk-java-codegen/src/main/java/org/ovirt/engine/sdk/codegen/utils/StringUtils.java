@@ -1,11 +1,11 @@
 //
-// Copyright (c) 2012 Red Hat, Inc.
+// Copyright (c) 2014 Red Hat, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//           http://www.apache.org/licenses/LICENSE-2.0
+//   http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,12 +18,28 @@ package org.ovirt.engine.sdk.codegen.utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Provides String related services
  */
 public class StringUtils {
+    /**
+     * The rules for forming plurals are not as simple as adding an {@code s} to the end, so we should implement them
+     * correctly or have a table of exceptions. For simplicity, we are using a table.
+     */
+    private static Map<String, String> SINGULAR_EXCEPTIONS = new HashMap<>();
+    private static Map<String, String> PLURAL_EXCEPTIONS = new HashMap<>();
+
+    static {
+        SINGULAR_EXCEPTIONS.put("SchedulingPolicies", "SchedulingPolicy");
+        for (Map.Entry<String, String> exception : SINGULAR_EXCEPTIONS.entrySet()) {
+            PLURAL_EXCEPTIONS.put(exception.getValue(), exception.getKey());
+        }
+    }
+
     /**
      * Determinates if given string is in plural form
      * 
@@ -144,7 +160,7 @@ public class StringUtils {
      * 
      * @param str
      *            string to format
-     * @param lengh
+     * @param length
      *            max string length
      * @param linePrefix
      *            new string prefix
@@ -199,29 +215,37 @@ public class StringUtils {
     /**
      * Converts string to singular form
      *
-     * @param candidate
-     *
      * @return singular string
      */
-    public static String toSingular(String candidate) {
-        if (candidate.length() >= 1 && candidate.endsWith("s")) {
-            return candidate.substring(0, candidate.length() - 1);
+    public static String toSingular(String plural) {
+        String singular = SINGULAR_EXCEPTIONS.get(plural);
+        if (singular == null) {
+            if (plural.length() >= 1 && plural.endsWith("s")) {
+                singular = plural.substring(0, plural.length() - 1);
+            }
+            else {
+                singular = plural;
+            }
         }
-        return candidate;
+        return singular;
     }
 
     /**
      * Converts string to plural form
      *
-     * @param candidate
-     *
      * @return plural string
      */
-    public static String toPlural(String candidate) {
-        if (candidate.length() >= 1 && !candidate.endsWith("s")) {
-            return candidate + "s";
+    public static String toPlural(String singular) {
+        String plural = PLURAL_EXCEPTIONS.get(singular);
+        if (plural == null) {
+            if (singular.length() >= 1 && !singular.endsWith("s")) {
+                plural = singular + "s";
+            }
+            else {
+                plural = singular;
+            }
         }
-        return candidate;
+        return plural;
     }
 
     /**
