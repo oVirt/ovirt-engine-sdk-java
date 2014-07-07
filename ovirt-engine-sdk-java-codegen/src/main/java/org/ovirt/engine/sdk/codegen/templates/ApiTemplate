@@ -336,7 +336,7 @@ $collectionsVariables$
      * @param requestTimeout
      *            request timeout (preserved for future use)
      * @param sessionTimeout
-     *            authentication session inactivity timeout
+     *            authentication session inactivity timeout in minutes (if persistentAuth is enabled)
      * @param persistentAuth
      *            disable persistent authentication (will be used auth. per request)
      * @param noHostVerification
@@ -393,7 +393,7 @@ $collectionsVariables$
      * @param requestTimeout
      *            request timeout (preserved for future use)
      * @param sessionTimeout
-     *            authentication session inactivity timeout
+     *            authentication session inactivity timeout in minutes (if persistentAuth is enabled)
      * @param persistentAuth
      *            disable persistent authentication
      *            (will be used auth. per request)
