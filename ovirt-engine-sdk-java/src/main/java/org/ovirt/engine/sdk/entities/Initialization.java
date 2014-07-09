@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="user_locale" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="user_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="active_directory_ou" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="org_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -86,7 +87,8 @@ import javax.xml.bind.annotation.XmlType;
     "systemLocale",
     "userLocale",
     "userName",
-    "activeDirectoryOu"
+    "activeDirectoryOu",
+    "orgName"
 })
 public class Initialization {
 
@@ -127,6 +129,8 @@ public class Initialization {
     protected String userName;
     @XmlElement(name = "active_directory_ou")
     protected String activeDirectoryOu;
+    @XmlElement(name = "org_name")
+    protected String orgName;
 
     /**
      * Gets the value of the configuration property.
@@ -686,6 +690,34 @@ public class Initialization {
 
     public boolean isSetActiveDirectoryOu() {
         return (this.activeDirectoryOu!= null);
+    }
+
+    /**
+     * Gets the value of the orgName property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getOrgName() {
+        return orgName;
+    }
+
+    /**
+     * Sets the value of the orgName property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setOrgName(String value) {
+        this.orgName = value;
+    }
+
+    public boolean isSetOrgName() {
+        return (this.orgName!= null);
     }
 
 }

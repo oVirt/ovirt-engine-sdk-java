@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -36,11 +37,12 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="SchedulingPolicies">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
+ *         &lt;element name="scheduling_policy" type="{}SchedulingPolicy" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="policy" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -49,11 +51,53 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SchedulingPolicies", propOrder = {
+    "schedulingPolicy",
     "policy"
 })
-public class SchedulingPolicies {
+public class SchedulingPolicies
+    extends BaseResources
+{
 
+    @XmlElement(name = "scheduling_policy")
+    protected List<SchedulingPolicy> schedulingPolicy;
     protected List<String> policy;
+
+    /**
+     * Gets the value of the schedulingPolicy property.
+     *
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the schedulingPolicy property.
+     *
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getSchedulingPolicy().add(newItem);
+     * </pre>
+     *
+     *
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link SchedulingPolicy }
+     *
+     *
+     */
+    public List<SchedulingPolicy> getSchedulingPolicy() {
+        if (schedulingPolicy == null) {
+            schedulingPolicy = new ArrayList<SchedulingPolicy>();
+        }
+        return this.schedulingPolicy;
+    }
+
+    public boolean isSetSchedulingPolicy() {
+        return ((this.schedulingPolicy!= null)&&(!this.schedulingPolicy.isEmpty()));
+    }
+
+    public void unsetSchedulingPolicy() {
+        this.schedulingPolicy = null;
+    }
 
     /**
      * Gets the value of the policy property.

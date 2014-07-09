@@ -193,6 +193,7 @@ public class Hosts extends
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.protocol]
      *
      *    Overload 2:
      *
@@ -224,6 +225,7 @@ public class Hosts extends
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.protocol]
      *    </pre>
      *
      * @return
@@ -283,6 +285,7 @@ public class Hosts extends
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.protocol]
      *
      *    Overload 2:
      *
@@ -314,6 +317,7 @@ public class Hosts extends
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.protocol]
      *    </pre>
      *
      * @param expect
@@ -381,6 +385,7 @@ public class Hosts extends
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.protocol]
      *
      *    Overload 2:
      *
@@ -412,6 +417,7 @@ public class Hosts extends
      *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.protocol]
      *    </pre>
      *
      * @param expect

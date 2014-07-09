@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="product_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="uuid" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="family" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="supported_rng_sources" type="{}RngSources" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -58,7 +59,8 @@ import javax.xml.bind.annotation.XmlType;
     "serialNumber",
     "productName",
     "uuid",
-    "family"
+    "family",
+    "supportedRngSources"
 })
 public class HardwareInformation {
 
@@ -70,6 +72,8 @@ public class HardwareInformation {
     protected String productName;
     protected String uuid;
     protected String family;
+    @XmlElement(name = "supported_rng_sources")
+    protected RngSources supportedRngSources;
 
     /**
      * Gets the value of the manufacturer property.
@@ -237,6 +241,34 @@ public class HardwareInformation {
 
     public boolean isSetFamily() {
         return (this.family!= null);
+    }
+
+    /**
+     * Gets the value of the supportedRngSources property.
+     *
+     * @return
+     *     possible object is
+     *     {@link RngSources }
+     *
+     */
+    public RngSources getSupportedRngSources() {
+        return supportedRngSources;
+    }
+
+    /**
+     * Sets the value of the supportedRngSources property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link RngSources }
+     *
+     */
+    public void setSupportedRngSources(RngSources value) {
+        this.supportedRngSources = value;
+    }
+
+    public boolean isSetSupportedRngSources() {
+        return (this.supportedRngSources!= null);
     }
 
 }

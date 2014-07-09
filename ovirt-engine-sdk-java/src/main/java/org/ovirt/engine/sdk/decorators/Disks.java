@@ -183,6 +183,7 @@ public class Disks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -202,6 +203,7 @@ public class Disks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *      [disk.storage_domains.storage_domain]
      *    </pre>
@@ -253,6 +255,7 @@ public class Disks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -272,6 +275,7 @@ public class Disks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *      [disk.storage_domains.storage_domain]
      *    </pre>
@@ -331,6 +335,7 @@ public class Disks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -350,6 +355,7 @@ public class Disks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *      [disk.storage_domains.storage_domain]
      *    </pre>

@@ -126,6 +126,10 @@ public class VMCdRoms extends
      *    <pre>
      *    [max results]
      *    </pre>
+     * @param current
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      *
      * @return List of {@link VMCdRom }
@@ -137,7 +141,7 @@ public class VMCdRoms extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<VMCdRom> list(Integer max) throws ClientProtocolException,
+    public List<VMCdRom> list(Integer max, Boolean current) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -146,6 +150,9 @@ public class VMCdRoms extends
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        if (current != null) {
+            urlBuilder.add("current", current, UrlParameterType.MATRIX);
         }
         String url = urlBuilder.build();
 

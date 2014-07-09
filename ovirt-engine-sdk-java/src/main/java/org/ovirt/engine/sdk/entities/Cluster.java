@@ -55,6 +55,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}display" minOccurs="0"/>
  *         &lt;element ref="{}ksm" minOccurs="0"/>
  *         &lt;element ref="{}serial_number" minOccurs="0"/>
+ *         &lt;element name="required_rng_sources" type="{}RngSources" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -82,7 +83,8 @@ import javax.xml.bind.annotation.XmlType;
     "ballooningEnabled",
     "display",
     "ksm",
-    "serialNumber"
+    "serialNumber",
+    "requiredRngSources"
 })
 public class Cluster
     extends BaseResource
@@ -120,6 +122,8 @@ public class Cluster
     protected KSM ksm;
     @XmlElement(name = "serial_number")
     protected SerialNumber serialNumber;
+    @XmlElement(name = "required_rng_sources")
+    protected RngSources requiredRngSources;
 
     /**
      * Gets the value of the cpu property.
@@ -623,6 +627,34 @@ public class Cluster
 
     public boolean isSetSerialNumber() {
         return (this.serialNumber!= null);
+    }
+
+    /**
+     * Gets the value of the requiredRngSources property.
+     *
+     * @return
+     *     possible object is
+     *     {@link RngSources }
+     *
+     */
+    public RngSources getRequiredRngSources() {
+        return requiredRngSources;
+    }
+
+    /**
+     * Sets the value of the requiredRngSources property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link RngSources }
+     *
+     */
+    public void setRequiredRngSources(RngSources value) {
+        this.requiredRngSources = value;
+    }
+
+    public boolean isSetRequiredRngSources() {
+        return (this.requiredRngSources!= null);
     }
 
 }

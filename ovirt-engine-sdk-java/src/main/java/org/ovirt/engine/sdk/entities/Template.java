@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -56,6 +57,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}sso" minOccurs="0"/>
+ *         &lt;element ref="{}rng_device" minOccurs="0"/>
  *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
@@ -93,6 +95,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "stateless",
     "deleteProtected",
     "sso",
+    "rngDevice",
     "console",
     "timezone",
     "domain",
@@ -103,6 +106,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "permissions",
     "version",
     "serialNumber"
+})
+@XmlSeeAlso({
+    InstanceType.class
 })
 public class Template
     extends BaseResource
@@ -131,6 +137,8 @@ public class Template
     @XmlElement(name = "delete_protected")
     protected Boolean deleteProtected;
     protected Sso sso;
+    @XmlElement(name = "rng_device")
+    protected RngDevice rngDevice;
     protected Console console;
     protected String timezone;
     protected Domain domain;
@@ -620,6 +628,34 @@ public class Template
 
     public boolean isSetSso() {
         return (this.sso!= null);
+    }
+
+    /**
+     * Gets the value of the rngDevice property.
+     *
+     * @return
+     *     possible object is
+     *     {@link RngDevice }
+     *
+     */
+    public RngDevice getRngDevice() {
+        return rngDevice;
+    }
+
+    /**
+     * Sets the value of the rngDevice property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link RngDevice }
+     *
+     */
+    public void setRngDevice(RngDevice value) {
+        this.rngDevice = value;
+    }
+
+    public boolean isSetRngDevice() {
+        return (this.rngDevice!= null);
     }
 
     /**

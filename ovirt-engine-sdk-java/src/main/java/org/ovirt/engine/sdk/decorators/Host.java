@@ -50,6 +50,7 @@ public class Host extends
     private volatile HostTags hostTags;
     private volatile HostPermissions hostPermissions;
     private volatile HostStatistics hostStatistics;
+    private volatile HostNumaNodes hostNumaNodes;
 
 
     /**
@@ -145,6 +146,22 @@ public class Host extends
             }
         }
         return hostStatistics;
+    }
+    /**
+     * Gets the value of the HostNumaNodes property.
+     *
+     * @return
+     *     {@link HostNumaNodes }
+     */
+    public HostNumaNodes getNumaNodes() {
+        if (this.hostNumaNodes == null) {
+            synchronized (this.LOCK) {
+                if (this.hostNumaNodes == null) {
+                    this.hostNumaNodes = new HostNumaNodes(proxy, this);
+                }
+            }
+        }
+        return hostNumaNodes;
     }
 
 
@@ -765,9 +782,34 @@ public class Host extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    [action.cluster.id|name]
-     *    [action.async]
-     *    [action.grace_period.expiry]
+     *    Overload 1:
+     *
+     *      approve specified host to be
+     *      added to the engine by using
+     *      root password (deprecated
+     *      verb). this occurs when the
+     *      host registers itself with the
+     *      engine
+     *
+     *      [action.cluster.id|name]
+     *      [action.async]
+     *      [action.grace_period.expiry]
+     *      [host.root_password]
+     *
+     *    Overload 2:
+     *
+     *      approve specified host to be
+     *      added to the engine by using
+     *      ssh authentication. this
+     *      occurs when the host registers
+     *      itself with the engine
+     *
+     *      [action.cluster.id|name]
+     *      [action.async]
+     *      [action.grace_period.expiry]
+     *      [host.ssh.authentication_method]
+     *      [host.ssh.user.user_name]
+     *      [host.ssh.user.password]
      *    </pre>
      *
      * @return
@@ -797,9 +839,34 @@ public class Host extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    [action.cluster.id|name]
-     *    [action.async]
-     *    [action.grace_period.expiry]
+     *    Overload 1:
+     *
+     *      approve specified host to be
+     *      added to the engine by using
+     *      root password (deprecated
+     *      verb). this occurs when the
+     *      host registers itself with the
+     *      engine
+     *
+     *      [action.cluster.id|name]
+     *      [action.async]
+     *      [action.grace_period.expiry]
+     *      [host.root_password]
+     *
+     *    Overload 2:
+     *
+     *      approve specified host to be
+     *      added to the engine by using
+     *      ssh authentication. this
+     *      occurs when the host registers
+     *      itself with the engine
+     *
+     *      [action.cluster.id|name]
+     *      [action.async]
+     *      [action.grace_period.expiry]
+     *      [host.ssh.authentication_method]
+     *      [host.ssh.user.user_name]
+     *      [host.ssh.user.password]
      *    </pre>
      *
      * @param correlationId

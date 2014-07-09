@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="reason" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="detail" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="detail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -56,7 +56,6 @@ public class Fault {
 
     @XmlElement(required = true)
     protected String reason;
-    @XmlElement(required = true)
     protected String detail;
 
     /**

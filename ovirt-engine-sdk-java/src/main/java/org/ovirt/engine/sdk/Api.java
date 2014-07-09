@@ -52,22 +52,25 @@ public class Api implements AutoCloseable {
     private volatile Users users;
     private volatile Jobs jobs;
     private volatile Templates templates;
+    private volatile SchedulingPolicyUnits schedulingPolicyUnits;
     private volatile Events events;
     private volatile Domains domains;
+    private volatile SchedulingPolicies schedulingPolicies;
     private volatile Disks disks;
     private volatile VnicProfiles vnicProfiles;
     private volatile Bookmarks bookmarks;
     private volatile Clusters clusters;
     private volatile DataCenters dataCenters;
     private volatile Roles roles;
-    private volatile Hosts hosts;
     private volatile Permissions permissions;
+    private volatile Hosts hosts;
     private volatile VMs vMs;
     private volatile StorageConnections storageConnections;
     private volatile VmPools vmPools;
     private volatile StorageDomains storageDomains;
     private volatile Capabilities capabilities;
     private volatile Groups groups;
+    private volatile InstanceTypes instanceTypes;
 
 
     /**
@@ -377,7 +380,7 @@ public class Api implements AutoCloseable {
      * @param requestTimeout
      *            request timeout (preserved for future use)
      * @param sessionTimeout
-     *            authentication session inactivity timeout
+     *            authentication session inactivity timeout in minutes (if persistentAuth is enabled)
      * @param persistentAuth
      *            disable persistent authentication (will be used auth. per request)
      * @param noHostVerification
@@ -434,7 +437,7 @@ public class Api implements AutoCloseable {
      * @param requestTimeout
      *            request timeout (preserved for future use)
      * @param sessionTimeout
-     *            authentication session inactivity timeout
+     *            authentication session inactivity timeout in minutes (if persistentAuth is enabled)
      * @param persistentAuth
      *            disable persistent authentication
      *            (will be used auth. per request)
@@ -704,6 +707,23 @@ public class Api implements AutoCloseable {
         return templates;
     }
     /**
+     * Gets the value of the SchedulingPolicyUnits property.
+     *
+     * @return
+     *     {@link SchedulingPolicyUnits }
+     *
+     */
+    public SchedulingPolicyUnits getSchedulingPolicyUnits() {
+        if (this.schedulingPolicyUnits == null) {
+            synchronized (this.LOCK) {
+                if (this.schedulingPolicyUnits == null) {
+                    this.schedulingPolicyUnits = new SchedulingPolicyUnits(proxy);
+                }
+            }
+        }
+        return schedulingPolicyUnits;
+    }
+    /**
      * Gets the value of the Events property.
      *
      * @return
@@ -736,6 +756,23 @@ public class Api implements AutoCloseable {
             }
         }
         return domains;
+    }
+    /**
+     * Gets the value of the SchedulingPolicies property.
+     *
+     * @return
+     *     {@link SchedulingPolicies }
+     *
+     */
+    public SchedulingPolicies getSchedulingPolicies() {
+        if (this.schedulingPolicies == null) {
+            synchronized (this.LOCK) {
+                if (this.schedulingPolicies == null) {
+                    this.schedulingPolicies = new SchedulingPolicies(proxy);
+                }
+            }
+        }
+        return schedulingPolicies;
     }
     /**
      * Gets the value of the Disks property.
@@ -840,23 +877,6 @@ public class Api implements AutoCloseable {
         return roles;
     }
     /**
-     * Gets the value of the Hosts property.
-     *
-     * @return
-     *     {@link Hosts }
-     *
-     */
-    public Hosts getHosts() {
-        if (this.hosts == null) {
-            synchronized (this.LOCK) {
-                if (this.hosts == null) {
-                    this.hosts = new Hosts(proxy);
-                }
-            }
-        }
-        return hosts;
-    }
-    /**
      * Gets the value of the Permissions property.
      *
      * @return
@@ -872,6 +892,23 @@ public class Api implements AutoCloseable {
             }
         }
         return permissions;
+    }
+    /**
+     * Gets the value of the Hosts property.
+     *
+     * @return
+     *     {@link Hosts }
+     *
+     */
+    public Hosts getHosts() {
+        if (this.hosts == null) {
+            synchronized (this.LOCK) {
+                if (this.hosts == null) {
+                    this.hosts = new Hosts(proxy);
+                }
+            }
+        }
+        return hosts;
     }
     /**
      * Gets the value of the VMs property.
@@ -974,6 +1011,23 @@ public class Api implements AutoCloseable {
             }
         }
         return groups;
+    }
+    /**
+     * Gets the value of the InstanceTypes property.
+     *
+     * @return
+     *     {@link InstanceTypes }
+     *
+     */
+    public InstanceTypes getInstanceTypes() {
+        if (this.instanceTypes == null) {
+            synchronized (this.LOCK) {
+                if (this.instanceTypes == null) {
+                    this.instanceTypes = new InstanceTypes(proxy);
+                }
+            }
+        }
+        return instanceTypes;
     }
 
 
