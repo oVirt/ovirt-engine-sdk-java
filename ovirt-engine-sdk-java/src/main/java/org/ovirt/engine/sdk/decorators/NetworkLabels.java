@@ -123,6 +123,10 @@ public class NetworkLabels extends
      * Adds Label object.
      *
      * @param label {@link org.ovirt.engine.sdk.entities.Label}
+     *    <pre>
+     *    label.id
+     *    </pre>
+     *
      * @return
      *     {@link NetworkLabel }
      *
@@ -138,6 +142,93 @@ public class NetworkLabels extends
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, label,
+                org.ovirt.engine.sdk.entities.Label.class,
+                NetworkLabel.class, headers);
+    }
+    /**
+     * Adds Label object.
+     *
+     * @param label {@link org.ovirt.engine.sdk.entities.Label}
+     *    <pre>
+     *    label.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link NetworkLabel }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public NetworkLabel add(org.ovirt.engine.sdk.entities.Label label, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, label,
+                org.ovirt.engine.sdk.entities.Label.class,
+                NetworkLabel.class, headers);
+    }
+    /**
+     * Adds Label object.
+     *
+     * @param label {@link org.ovirt.engine.sdk.entities.Label}
+     *    <pre>
+     *    label.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link NetworkLabel }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public NetworkLabel add(org.ovirt.engine.sdk.entities.Label label, String expect, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);

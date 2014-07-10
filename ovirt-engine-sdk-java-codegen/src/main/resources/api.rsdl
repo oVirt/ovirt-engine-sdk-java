@@ -2540,10 +2540,31 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/datacenters/{datacenter:id}/networks/{network:id}/labels" rel="add">
+            <description>add a new label to the network</description>
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Label</type>
+                    <parameters_set>
+                        <description>add a new label to the network</description>
+                        <parameter required="true" type="xs:string">
+                            <name>label.id</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -5332,10 +5353,31 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/hosts/{host:id}/nics/{nic:id}/labels" rel="add">
+            <description>add a new label to the interface</description>
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Label</type>
+                    <parameters_set>
+                        <description>add a new label to the interface</description>
+                        <parameter required="true" type="xs:string">
+                            <name>label.id</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -6082,10 +6124,31 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/networks/{network:id}/labels" rel="add">
+            <description>add a new label to the network</description>
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Label</type>
+                    <parameters_set>
+                        <description>add a new label to the network</description>
+                        <parameter required="true" type="xs:string">
+                            <name>label.id</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -10867,6 +10930,16 @@ or less indicates that the session should never timeout</description>
         <link href="/ovirt-engine/api/vms/{vm:id}/commit_snapshot" rel="commit_snapshot">
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Action</type>
                 </body>
@@ -11902,8 +11975,23 @@ or less indicates that the session should never timeout</description>
         <link href="/ovirt-engine/api/vms/{vm:id}/preview_snapshot" rel="preview_snapshot">
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <parameter required="true" type="xs:string">
+                            <name>action.snapshot.id</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -12554,6 +12642,16 @@ or less indicates that the session should never timeout</description>
         <link href="/ovirt-engine/api/vms/{vm:id}/undo_snapshot" rel="undo_snapshot">
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Action</type>
                 </body>
