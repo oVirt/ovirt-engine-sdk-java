@@ -167,9 +167,11 @@ public class HttpProxy {
 
         // The Apache web server ignores the "Expect" header, so if this header was explicitly added by the user, then
         // we need to add the alternative "X-Ovirt-Expect" as well:
-        for (Header header : headers) {
-            if (EXPECT_HEADER.equalsIgnoreCase(header.getName())) {
-                request.setHeader(ALTERNATIVE_EXPECT_HEADER, header.getValue());
+        if (headers != null) {
+            for (Header header : headers) {
+                if (EXPECT_HEADER.equalsIgnoreCase(header.getName())) {
+                    request.setHeader(ALTERNATIVE_EXPECT_HEADER, header.getValue());
+                }
             }
         }
 
