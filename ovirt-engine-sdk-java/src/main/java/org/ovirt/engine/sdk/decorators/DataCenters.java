@@ -165,14 +165,14 @@ public class DataCenters extends
      *
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
+     *    datacenter.local
      *    datacenter.name
-     *    datacenter.version.major
-     *    datacenter.version.minor
-     *    [datacenter.storage_type]
-     *    [datacenter.local]
-     *    [datacenter.description]
      *    [datacenter.comment]
+     *    [datacenter.description]
      *    [datacenter.storage_format]
+     *    [datacenter.storage_type]
+     *    [datacenter.version.major]
+     *    [datacenter.version.minor]
      *    </pre>
      *
      * @return
@@ -204,14 +204,14 @@ public class DataCenters extends
      *
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
+     *    datacenter.local
      *    datacenter.name
-     *    datacenter.version.major
-     *    datacenter.version.minor
-     *    [datacenter.storage_type]
-     *    [datacenter.local]
-     *    [datacenter.description]
      *    [datacenter.comment]
+     *    [datacenter.description]
      *    [datacenter.storage_format]
+     *    [datacenter.storage_type]
+     *    [datacenter.version.major]
+     *    [datacenter.version.minor]
      *    </pre>
      *
      * @param expect
@@ -251,14 +251,14 @@ public class DataCenters extends
      *
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
      *    <pre>
+     *    datacenter.local
      *    datacenter.name
-     *    datacenter.version.major
-     *    datacenter.version.minor
-     *    [datacenter.storage_type]
-     *    [datacenter.local]
-     *    [datacenter.description]
      *    [datacenter.comment]
+     *    [datacenter.description]
      *    [datacenter.storage_format]
+     *    [datacenter.storage_type]
+     *    [datacenter.version.major]
+     *    [datacenter.version.minor]
      *    </pre>
      *
      * @param expect

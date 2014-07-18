@@ -270,6 +270,8 @@ public class Templates extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.cluster.id]
+     *    [template.cluster.name]
      *    </pre>
      *
      * @return
@@ -351,6 +353,8 @@ public class Templates extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.cluster.id]
+     *    [template.cluster.name]
      *    </pre>
      *
      * @param expect
@@ -440,6 +444,8 @@ public class Templates extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.cluster.id]
+     *    [template.cluster.name]
      *    </pre>
      *
      * @param expect

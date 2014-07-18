@@ -6,7 +6,7 @@
         <name>ovirt-engine-api-schema.xsd</name>
         <description>oVirt API entities schema.</description>
     </schema>
-    <general href="/ovirt-engine/*" rel="*">
+    <general href="/ovirt-engine/api/*" rel="*">
         <description>These options are valid for entire application.</description>
         <request>
             <headers>
@@ -1633,30 +1633,30 @@ or less indicates that the session should never timeout</description>
                     <type>DataCenter</type>
                     <parameters_set>
                         <description>add a new data center to the system</description>
-                        <parameter required="true" type="xs:string">
-                            <name>datacenter.name</name>
-                        </parameter>
-                        <parameter required="true" type="xs:int">
-                            <name>datacenter.version.major</name>
-                        </parameter>
-                        <parameter required="true" type="xs:int">
-                            <name>datacenter.version.minor</name>
-                        </parameter>
-                        <parameter required="false" type="xs:string">
-                            <name>datacenter.storage_type</name>
-                            <deprecated>true</deprecated>
-                        </parameter>
-                        <parameter required="false" type="xs:boolean">
+                        <parameter required="true" type="xs:boolean">
                             <name>datacenter.local</name>
                         </parameter>
-                        <parameter required="false" type="xs:string">
-                            <name>datacenter.description</name>
+                        <parameter required="true" type="xs:string">
+                            <name>datacenter.name</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>datacenter.comment</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
+                            <name>datacenter.description</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
                             <name>datacenter.storage_format</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>datacenter.storage_type</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>datacenter.version.major</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>datacenter.version.minor</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -9658,6 +9658,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>template.bios.boot_menu.enabled</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>template.cluster.id</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>template.cluster.name</name>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -12131,6 +12137,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:long">
                             <name>vm.memory</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>vm.memory_policy.guaranteed</name>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>vm.high_availability.priority</name>
