@@ -23,6 +23,7 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -34,12 +35,15 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="SchedulingPolicy">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element name="policy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="thresholds" type="{}SchedulingPolicyThresholds" minOccurs="0"/>
+ *         &lt;element name="locked" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="default_policy" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}properties" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -49,12 +53,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SchedulingPolicy", propOrder = {
     "policy",
-    "thresholds"
+    "thresholds",
+    "locked",
+    "defaultPolicy",
+    "properties"
 })
-public class SchedulingPolicy {
+public class SchedulingPolicy
+    extends BaseResource
+{
 
     protected String policy;
     protected SchedulingPolicyThresholds thresholds;
+    protected Boolean locked;
+    @XmlElement(name = "default_policy")
+    protected Boolean defaultPolicy;
+    protected Properties properties;
 
     /**
      * Gets the value of the policy property.
@@ -112,5 +125,88 @@ public class SchedulingPolicy {
         return (this.thresholds!= null);
     }
 
-}
+    /**
+     * Gets the value of the locked property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getLocked() {
+        return locked;
+    }
 
+    /**
+     * Sets the value of the locked property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setLocked(Boolean value) {
+        this.locked = value;
+    }
+
+    public boolean isSetLocked() {
+        return (this.locked!= null);
+    }
+
+    /**
+     * Gets the value of the defaultPolicy property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getDefaultPolicy() {
+        return defaultPolicy;
+    }
+
+    /**
+     * Sets the value of the defaultPolicy property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setDefaultPolicy(Boolean value) {
+        this.defaultPolicy = value;
+    }
+
+    public boolean isSetDefaultPolicy() {
+        return (this.defaultPolicy!= null);
+    }
+
+    /**
+     * Gets the value of the properties property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Properties }
+     *
+     */
+    public Properties getProperties() {
+        return properties;
+    }
+
+    /**
+     * Sets the value of the properties property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Properties }
+     *
+     */
+    public void setProperties(Properties value) {
+        this.properties = value;
+    }
+
+    public boolean isSetProperties() {
+        return (this.properties!= null);
+    }
+
+}

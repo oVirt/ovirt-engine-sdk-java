@@ -53,6 +53,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}host" minOccurs="0"/>
  *         &lt;element ref="{}cluster" minOccurs="0"/>
  *         &lt;element ref="{}template" minOccurs="0"/>
+ *         &lt;element ref="{}instance_type" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain" minOccurs="0"/>
  *         &lt;element name="start_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="stop_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -61,6 +62,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}sso" minOccurs="0"/>
+ *         &lt;element ref="{}rng_device" minOccurs="0"/>
  *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
@@ -88,6 +90,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}watchdogs" minOccurs="0"/>
  *         &lt;element name="use_latest_template_version" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}serial_number" minOccurs="0"/>
+ *         &lt;element name="next_run_configuration_exists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="numa_tune_mode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="start_paused" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -111,6 +116,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "host",
     "cluster",
     "template",
+    "instanceType",
     "storageDomain",
     "startTime",
     "stopTime",
@@ -119,6 +125,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "stateless",
     "deleteProtected",
     "sso",
+    "rngDevice",
     "console",
     "timezone",
     "domain",
@@ -145,7 +152,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "reportedDevices",
     "watchdogs",
     "useLatestTemplateVersion",
-    "serialNumber"
+    "serialNumber",
+    "nextRunConfigurationExists",
+    "numaTuneMode",
+    "startPaused"
 })
 @XmlSeeAlso({
     Snapshot.class
@@ -170,6 +180,8 @@ public class VM
     protected Host host;
     protected Cluster cluster;
     protected Template template;
+    @XmlElement(name = "instance_type")
+    protected InstanceType instanceType;
     @XmlElement(name = "storage_domain")
     protected StorageDomain storageDomain;
     @XmlElement(name = "start_time")
@@ -186,6 +198,8 @@ public class VM
     @XmlElement(name = "delete_protected")
     protected Boolean deleteProtected;
     protected Sso sso;
+    @XmlElement(name = "rng_device")
+    protected RngDevice rngDevice;
     protected Console console;
     protected String timezone;
     protected Domain domain;
@@ -224,6 +238,12 @@ public class VM
     protected Boolean useLatestTemplateVersion;
     @XmlElement(name = "serial_number")
     protected SerialNumber serialNumber;
+    @XmlElement(name = "next_run_configuration_exists")
+    protected Boolean nextRunConfigurationExists;
+    @XmlElement(name = "numa_tune_mode")
+    protected String numaTuneMode;
+    @XmlElement(name = "start_paused")
+    protected Boolean startPaused;
 
     /**
      * Gets the value of the type property.
@@ -590,6 +610,34 @@ public class VM
     }
 
     /**
+     * Gets the value of the instanceType property.
+     *
+     * @return
+     *     possible object is
+     *     {@link InstanceType }
+     *
+     */
+    public InstanceType getInstanceType() {
+        return instanceType;
+    }
+
+    /**
+     * Sets the value of the instanceType property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link InstanceType }
+     *
+     */
+    public void setInstanceType(InstanceType value) {
+        this.instanceType = value;
+    }
+
+    public boolean isSetInstanceType() {
+        return (this.instanceType!= null);
+    }
+
+    /**
      * Gets the value of the storageDomain property.
      *
      * @return
@@ -811,6 +859,34 @@ public class VM
 
     public boolean isSetSso() {
         return (this.sso!= null);
+    }
+
+    /**
+     * Gets the value of the rngDevice property.
+     *
+     * @return
+     *     possible object is
+     *     {@link RngDevice }
+     *
+     */
+    public RngDevice getRngDevice() {
+        return rngDevice;
+    }
+
+    /**
+     * Sets the value of the rngDevice property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link RngDevice }
+     *
+     */
+    public void setRngDevice(RngDevice value) {
+        this.rngDevice = value;
+    }
+
+    public boolean isSetRngDevice() {
+        return (this.rngDevice!= null);
     }
 
     /**
@@ -1567,6 +1643,90 @@ public class VM
 
     public boolean isSetSerialNumber() {
         return (this.serialNumber!= null);
+    }
+
+    /**
+     * Gets the value of the nextRunConfigurationExists property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getNextRunConfigurationExists() {
+        return nextRunConfigurationExists;
+    }
+
+    /**
+     * Sets the value of the nextRunConfigurationExists property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setNextRunConfigurationExists(Boolean value) {
+        this.nextRunConfigurationExists = value;
+    }
+
+    public boolean isSetNextRunConfigurationExists() {
+        return (this.nextRunConfigurationExists!= null);
+    }
+
+    /**
+     * Gets the value of the numaTuneMode property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getNumaTuneMode() {
+        return numaTuneMode;
+    }
+
+    /**
+     * Sets the value of the numaTuneMode property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setNumaTuneMode(String value) {
+        this.numaTuneMode = value;
+    }
+
+    public boolean isSetNumaTuneMode() {
+        return (this.numaTuneMode!= null);
+    }
+
+    /**
+     * Gets the value of the startPaused property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getStartPaused() {
+        return startPaused;
+    }
+
+    /**
+     * Sets the value of the startPaused property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setStartPaused(Boolean value) {
+        this.startPaused = value;
+    }
+
+    public boolean isSetStartPaused() {
+        return (this.startPaused!= null);
     }
 
 }

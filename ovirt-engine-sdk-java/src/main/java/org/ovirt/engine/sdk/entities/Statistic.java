@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}disk" minOccurs="0"/>
  *         &lt;element ref="{}host" minOccurs="0"/>
  *         &lt;element ref="{}host_nic" minOccurs="0"/>
+ *         &lt;element ref="{}host_numa_node" minOccurs="0"/>
  *         &lt;element ref="{}nic" minOccurs="0"/>
  *         &lt;element ref="{}vm" minOccurs="0"/>
  *         &lt;element ref="{}brick" minOccurs="0"/>
@@ -64,6 +65,7 @@ import javax.xml.bind.annotation.XmlType;
     "disk",
     "host",
     "hostNic",
+    "hostNumaNode",
     "nic",
     "vm",
     "brick",
@@ -84,6 +86,8 @@ public class Statistic
     protected Host host;
     @XmlElement(name = "host_nic")
     protected HostNIC hostNic;
+    @XmlElement(name = "host_numa_node")
+    protected NumaNode hostNumaNode;
     protected NIC nic;
     protected VM vm;
     protected GlusterBrick brick;
@@ -257,6 +261,34 @@ public class Statistic
 
     public boolean isSetHostNic() {
         return (this.hostNic!= null);
+    }
+
+    /**
+     * Gets the value of the hostNumaNode property.
+     *
+     * @return
+     *     possible object is
+     *     {@link NumaNode }
+     *
+     */
+    public NumaNode getHostNumaNode() {
+        return hostNumaNode;
+    }
+
+    /**
+     * Sets the value of the hostNumaNode property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link NumaNode }
+     *
+     */
+    public void setHostNumaNode(NumaNode value) {
+        this.hostNumaNode = value;
+    }
+
+    public boolean isSetHostNumaNode() {
+        return (this.hostNumaNode!= null);
     }
 
     /**

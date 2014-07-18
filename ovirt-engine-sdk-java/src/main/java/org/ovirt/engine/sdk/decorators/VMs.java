@@ -228,6 +228,7 @@ public class VMs extends
      *      vm.name
      *      vm.template.id|name
      *      vm.cluster.id|name
+     *      [vm.instance_type.id|name]
      *      [vm.quota.id]
      *      [vm.timezone]
      *      [vm.os.boot]
@@ -242,6 +243,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -257,6 +260,9 @@ public class VMs extends
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.console.enabled]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
@@ -277,6 +283,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *
      *    Overload 2:
      *
@@ -302,6 +310,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -317,6 +327,9 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.console.enabled]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -331,6 +344,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *
      *    Overload 3:
      *
@@ -356,6 +371,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -370,6 +387,9 @@ public class VMs extends
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -388,6 +408,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *    </pre>
      *
      * @return
@@ -427,6 +449,7 @@ public class VMs extends
      *      vm.name
      *      vm.template.id|name
      *      vm.cluster.id|name
+     *      [vm.instance_type.id|name]
      *      [vm.quota.id]
      *      [vm.timezone]
      *      [vm.os.boot]
@@ -441,6 +464,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -456,6 +481,9 @@ public class VMs extends
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.console.enabled]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
@@ -476,6 +504,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *
      *    Overload 2:
      *
@@ -501,6 +531,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -516,6 +548,9 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.console.enabled]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -530,6 +565,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *
      *    Overload 3:
      *
@@ -555,6 +592,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -569,6 +608,9 @@ public class VMs extends
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -587,6 +629,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *    </pre>
      *
      * @param correlationId
@@ -634,6 +678,7 @@ public class VMs extends
      *      vm.name
      *      vm.template.id|name
      *      vm.cluster.id|name
+     *      [vm.instance_type.id|name]
      *      [vm.quota.id]
      *      [vm.timezone]
      *      [vm.os.boot]
@@ -648,6 +693,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -663,6 +710,9 @@ public class VMs extends
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.console.enabled]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
@@ -683,6 +733,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *
      *    Overload 2:
      *
@@ -708,6 +760,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -723,6 +777,9 @@ public class VMs extends
      *      [vm.stateless]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.console.enabled]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -737,6 +794,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *
      *    Overload 3:
      *
@@ -762,6 +821,8 @@ public class VMs extends
      *      [vm.display.type]
      *      [vm.display.allow_override]
      *      [vm.display.smartcard_enabled]
+     *      [vm.display.file_transfer_enabled]
+     *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
@@ -776,6 +837,9 @@ public class VMs extends
      *      [vm.permissions.clone]
      *      [vm.delete_protected]
      *      [vm.sso.methods.method]
+     *      [vm.rng_device.rate.bytes]
+     *      [vm.rng_device.rate.period]
+     *      [vm.rng_device.source]
      *      [vm.cpu.mode]
      *      [vm.cpu.topology.sockets]
      *      [vm.placement_policy.affinity]
@@ -794,6 +858,8 @@ public class VMs extends
      *      [vm.serial_number.policy]
      *      [vm.serial_number.value]
      *      [vm.bios.boot_menu.enabled]
+     *      [vm.numa_tune_mode]
+     *      [vm.start_paused]
      *    </pre>
      *
      * @param correlationId

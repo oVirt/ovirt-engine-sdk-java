@@ -46,6 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="cpu_tune" type="{}CpuTune" minOccurs="0"/>
  *         &lt;element name="mode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="architecture" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="cores" type="{}Cores" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -63,7 +64,8 @@ import javax.xml.bind.annotation.XmlType;
     "speed",
     "cpuTune",
     "mode",
-    "architecture"
+    "architecture",
+    "cores"
 })
 public class CPU {
 
@@ -75,6 +77,7 @@ public class CPU {
     protected CpuTune cpuTune;
     protected String mode;
     protected String architecture;
+    protected Cores cores;
     @XmlAttribute(name = "id")
     protected String id;
 
@@ -272,6 +275,34 @@ public class CPU {
 
     public boolean isSetArchitecture() {
         return (this.architecture!= null);
+    }
+
+    /**
+     * Gets the value of the cores property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Cores }
+     *
+     */
+    public Cores getCores() {
+        return cores;
+    }
+
+    /**
+     * Sets the value of the cores property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Cores }
+     *
+     */
+    public void setCores(Cores value) {
+        this.cores = value;
+    }
+
+    public boolean isSetCores() {
+        return (this.cores!= null);
     }
 
     /**

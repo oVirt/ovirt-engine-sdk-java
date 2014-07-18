@@ -234,6 +234,9 @@ public class Templates extends
      *    [template.stateless]
      *    [template.delete_protected]
      *    [template.sso.methods.method]
+     *    [vm.rng_device.rate.bytes]
+     *    [vm.rng_device.rate.period]
+     *    [vm.rng_device.source]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -250,6 +253,8 @@ public class Templates extends
      *    [vm.display.single_qxl_pci]
      *    [template.display.allow_override]
      *    [template.display.smartcard_enabled]
+     *    [template.display.file_transfer_enabled]
+     *    [template.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
      *    [template.os.initRd]
      *    [template.usb.enabled]
@@ -265,6 +270,9 @@ public class Templates extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.cluster.id]
+     *    [template.cluster.name]
+     *    [template.start_paused]
      *    </pre>
      *
      * @return
@@ -310,6 +318,9 @@ public class Templates extends
      *    [template.stateless]
      *    [template.delete_protected]
      *    [template.sso.methods.method]
+     *    [vm.rng_device.rate.bytes]
+     *    [vm.rng_device.rate.period]
+     *    [vm.rng_device.source]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -326,6 +337,8 @@ public class Templates extends
      *    [vm.display.single_qxl_pci]
      *    [template.display.allow_override]
      *    [template.display.smartcard_enabled]
+     *    [template.display.file_transfer_enabled]
+     *    [template.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
      *    [template.os.initRd]
      *    [template.usb.enabled]
@@ -341,6 +354,9 @@ public class Templates extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.cluster.id]
+     *    [template.cluster.name]
+     *    [template.start_paused]
      *    </pre>
      *
      * @param expect
@@ -394,6 +410,9 @@ public class Templates extends
      *    [template.stateless]
      *    [template.delete_protected]
      *    [template.sso.methods.method]
+     *    [vm.rng_device.rate.bytes]
+     *    [vm.rng_device.rate.period]
+     *    [vm.rng_device.source]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -410,6 +429,8 @@ public class Templates extends
      *    [vm.display.single_qxl_pci]
      *    [template.display.allow_override]
      *    [template.display.smartcard_enabled]
+     *    [template.display.file_transfer_enabled]
+     *    [template.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
      *    [template.os.initRd]
      *    [template.usb.enabled]
@@ -425,6 +446,9 @@ public class Templates extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.cluster.id]
+     *    [template.cluster.name]
+     *    [template.start_paused]
      *    </pre>
      *
      * @param expect

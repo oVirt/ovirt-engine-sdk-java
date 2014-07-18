@@ -158,6 +158,16 @@ public class DataCenterNetworks extends
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
      *    network.id|name
+     *    [network.description]
+     *    [network.comment]
+     *    [network.vlan.id]
+     *    [network.ip.address]
+     *    [network.ip.gateway]
+     *    [network.ip.netmask]
+     *    [network.stp]
+     *    [network.mtu]
+     *    [network.profile_required]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @return
@@ -190,6 +200,16 @@ public class DataCenterNetworks extends
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
      *    network.id|name
+     *    [network.description]
+     *    [network.comment]
+     *    [network.vlan.id]
+     *    [network.ip.address]
+     *    [network.ip.gateway]
+     *    [network.ip.netmask]
+     *    [network.stp]
+     *    [network.mtu]
+     *    [network.profile_required]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @param expect
@@ -230,6 +250,16 @@ public class DataCenterNetworks extends
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
      *    network.id|name
+     *    [network.description]
+     *    [network.comment]
+     *    [network.vlan.id]
+     *    [network.ip.address]
+     *    [network.ip.gateway]
+     *    [network.ip.netmask]
+     *    [network.stp]
+     *    [network.mtu]
+     *    [network.profile_required]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @param expect

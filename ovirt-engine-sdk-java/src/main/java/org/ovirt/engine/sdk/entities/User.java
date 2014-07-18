@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="domain_entry_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="department" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="logged_in" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="namespace" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="user_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -61,6 +62,7 @@ import javax.xml.bind.annotation.XmlType;
     "domainEntryId",
     "department",
     "loggedIn",
+    "namespace",
     "lastName",
     "userName",
     "password",
@@ -78,6 +80,7 @@ public class User
     protected String department;
     @XmlElement(name = "logged_in")
     protected Boolean loggedIn;
+    protected String namespace;
     @XmlElement(name = "last_name")
     protected String lastName;
     @XmlElement(name = "user_name")
@@ -197,6 +200,34 @@ public class User
 
     public boolean isSetLoggedIn() {
         return (this.loggedIn!= null);
+    }
+
+    /**
+     * Gets the value of the namespace property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getNamespace() {
+        return namespace;
+    }
+
+    /**
+     * Sets the value of the namespace property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setNamespace(String value) {
+        this.namespace = value;
+    }
+
+    public boolean isSetNamespace() {
+        return (this.namespace!= null);
     }
 
     /**

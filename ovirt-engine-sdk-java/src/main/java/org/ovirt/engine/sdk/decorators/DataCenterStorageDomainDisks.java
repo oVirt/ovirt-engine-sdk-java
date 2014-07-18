@@ -197,6 +197,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *
      *    Overload 2:
      *
@@ -214,6 +215,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *    </pre>
      *
@@ -265,6 +267,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *
      *    Overload 2:
      *
@@ -282,6 +285,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *    </pre>
      *
@@ -341,6 +345,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *
      *    Overload 2:
      *
@@ -358,6 +363,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *    </pre>
      *
@@ -425,6 +431,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *
      *    Overload 2:
      *
@@ -442,6 +449,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *    </pre>
      *

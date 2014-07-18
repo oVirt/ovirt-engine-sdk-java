@@ -173,10 +173,10 @@ public class Networks extends
      *    [network.ip.address]
      *    [network.ip.gateway]
      *    [network.ip.netmask]
-     *    [network.display]
      *    [network.stp]
      *    [network.mtu]
      *    [network.profile_required]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @return
@@ -216,10 +216,10 @@ public class Networks extends
      *    [network.ip.address]
      *    [network.ip.gateway]
      *    [network.ip.netmask]
-     *    [network.display]
      *    [network.stp]
      *    [network.mtu]
      *    [network.profile_required]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @param expect
@@ -267,10 +267,10 @@ public class Networks extends
      *    [network.ip.address]
      *    [network.ip.gateway]
      *    [network.ip.netmask]
-     *    [network.display]
      *    [network.stp]
      *    [network.mtu]
      *    [network.profile_required]
+     *    [network.usages.usage]
      *    </pre>
      *
      * @param expect

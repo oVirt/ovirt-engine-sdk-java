@@ -183,6 +183,9 @@ public class Template extends
      *    [template.stateless]
      *    [template.delete_protected]
      *    [template.sso.methods.method]
+     *    [vm.rng_device.rate.bytes]
+     *    [vm.rng_device.rate.period]
+     *    [vm.rng_device.source]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -199,6 +202,8 @@ public class Template extends
      *    [vm.display.single_qxl_pci]
      *    [template.display.allow_override]
      *    [template.display.smartcard_enabled]
+     *    [vm.display.file_transfer_enabled]
+     *    [vm.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
      *    [template.os.initRd]
      *    [template.usb.enabled]
@@ -210,6 +215,7 @@ public class Template extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.start_paused]
      *    </pre>
      *
      * @return
@@ -257,6 +263,9 @@ public class Template extends
      *    [template.stateless]
      *    [template.delete_protected]
      *    [template.sso.methods.method]
+     *    [vm.rng_device.rate.bytes]
+     *    [vm.rng_device.rate.period]
+     *    [vm.rng_device.source]
      *    [template.console.enabled]
      *    [template.placement_policy.affinity]
      *    [template.description]
@@ -273,6 +282,8 @@ public class Template extends
      *    [vm.display.single_qxl_pci]
      *    [template.display.allow_override]
      *    [template.display.smartcard_enabled]
+     *    [vm.display.file_transfer_enabled]
+     *    [vm.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
      *    [template.os.initRd]
      *    [template.usb.enabled]
@@ -284,6 +295,7 @@ public class Template extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.start_paused]
      *    </pre>
      *
      * @param correlationId

@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -56,6 +57,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="stateless" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="delete_protected" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}sso" minOccurs="0"/>
+ *         &lt;element ref="{}rng_device" minOccurs="0"/>
  *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
@@ -66,6 +68,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}permissions" minOccurs="0"/>
  *         &lt;element name="version" type="{}TemplateVersion" minOccurs="0"/>
  *         &lt;element ref="{}serial_number" minOccurs="0"/>
+ *         &lt;element name="start_paused" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -93,6 +96,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "stateless",
     "deleteProtected",
     "sso",
+    "rngDevice",
     "console",
     "timezone",
     "domain",
@@ -102,7 +106,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "virtioScsi",
     "permissions",
     "version",
-    "serialNumber"
+    "serialNumber",
+    "startPaused"
+})
+@XmlSeeAlso({
+    InstanceType.class
 })
 public class Template
     extends BaseResource
@@ -131,6 +139,8 @@ public class Template
     @XmlElement(name = "delete_protected")
     protected Boolean deleteProtected;
     protected Sso sso;
+    @XmlElement(name = "rng_device")
+    protected RngDevice rngDevice;
     protected Console console;
     protected String timezone;
     protected Domain domain;
@@ -145,6 +155,8 @@ public class Template
     protected TemplateVersion version;
     @XmlElement(name = "serial_number")
     protected SerialNumber serialNumber;
+    @XmlElement(name = "start_paused")
+    protected Boolean startPaused;
 
     /**
      * Gets the value of the vm property.
@@ -623,6 +635,34 @@ public class Template
     }
 
     /**
+     * Gets the value of the rngDevice property.
+     *
+     * @return
+     *     possible object is
+     *     {@link RngDevice }
+     *
+     */
+    public RngDevice getRngDevice() {
+        return rngDevice;
+    }
+
+    /**
+     * Sets the value of the rngDevice property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link RngDevice }
+     *
+     */
+    public void setRngDevice(RngDevice value) {
+        this.rngDevice = value;
+    }
+
+    public boolean isSetRngDevice() {
+        return (this.rngDevice!= null);
+    }
+
+    /**
      * Gets the value of the console property.
      *
      * @return
@@ -900,6 +940,34 @@ public class Template
 
     public boolean isSetSerialNumber() {
         return (this.serialNumber!= null);
+    }
+
+    /**
+     * Gets the value of the startPaused property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getStartPaused() {
+        return startPaused;
+    }
+
+    /**
+     * Sets the value of the startPaused property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setStartPaused(Boolean value) {
+        this.startPaused = value;
+    }
+
+    public boolean isSetStartPaused() {
+        return (this.startPaused!= null);
     }
 
 }

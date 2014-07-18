@@ -97,6 +97,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}architecture_capabilities" minOccurs="0"/>
  *         &lt;element ref="{}serial_number_policies" minOccurs="0"/>
  *         &lt;element ref="{}selinux_modes" minOccurs="0"/>
+ *         &lt;element ref="{}rng_sources" minOccurs="0"/>
+ *         &lt;element ref="{}scheduling_policy_unit_types" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -166,7 +168,9 @@ import javax.xml.bind.annotation.XmlType;
     "ssoMethods",
     "architectureCapabilities",
     "serialNumberPolicies",
-    "selinuxModes"
+    "selinuxModes",
+    "rngSources",
+    "schedulingPolicyUnitTypes"
 })
 public class VersionCaps
     extends Version
@@ -286,6 +290,10 @@ public class VersionCaps
     protected SerialNumberPolicies serialNumberPolicies;
     @XmlElement(name = "selinux_modes")
     protected SELinuxModes selinuxModes;
+    @XmlElement(name = "rng_sources")
+    protected RngSources rngSources;
+    @XmlElement(name = "scheduling_policy_unit_types")
+    protected SchedulingPolicyUnitTypes schedulingPolicyUnitTypes;
 
     /**
      * Gets the value of the current property.
@@ -1965,6 +1973,62 @@ public class VersionCaps
 
     public boolean isSetSelinuxModes() {
         return (this.selinuxModes!= null);
+    }
+
+    /**
+     * Gets the value of the rngSources property.
+     *
+     * @return
+     *     possible object is
+     *     {@link RngSources }
+     *
+     */
+    public RngSources getRngSources() {
+        return rngSources;
+    }
+
+    /**
+     * Sets the value of the rngSources property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link RngSources }
+     *
+     */
+    public void setRngSources(RngSources value) {
+        this.rngSources = value;
+    }
+
+    public boolean isSetRngSources() {
+        return (this.rngSources!= null);
+    }
+
+    /**
+     * Gets the value of the schedulingPolicyUnitTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SchedulingPolicyUnitTypes }
+     *
+     */
+    public SchedulingPolicyUnitTypes getSchedulingPolicyUnitTypes() {
+        return schedulingPolicyUnitTypes;
+    }
+
+    /**
+     * Sets the value of the schedulingPolicyUnitTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SchedulingPolicyUnitTypes }
+     *
+     */
+    public void setSchedulingPolicyUnitTypes(SchedulingPolicyUnitTypes value) {
+        this.schedulingPolicyUnitTypes = value;
+    }
+
+    public boolean isSetSchedulingPolicyUnitTypes() {
+        return (this.schedulingPolicyUnitTypes!= null);
     }
 
 }

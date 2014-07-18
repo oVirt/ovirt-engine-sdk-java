@@ -174,6 +174,7 @@ public class VMDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -194,6 +195,7 @@ public class VMDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *      [disk.storage_domains.storage_domain]
      *
@@ -261,6 +263,7 @@ public class VMDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -281,6 +284,7 @@ public class VMDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *      [disk.storage_domains.storage_domain]
      *
@@ -356,6 +360,7 @@ public class VMDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -376,6 +381,7 @@ public class VMDisks extends
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
+     *      [disk.quota.id]
      *      [disk.sgio]
      *      [disk.storage_domains.storage_domain]
      *

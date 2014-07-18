@@ -59,6 +59,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="max_scheduling_memory" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="summary" type="{}VmSummary" minOccurs="0"/>
  *         &lt;element name="override_iptables" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="protocol" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="reboot_after_installation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
  *         &lt;element ref="{}hooks" minOccurs="0"/>
@@ -67,6 +68,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="hosted_engine" type="{}HostedEngine" minOccurs="0"/>
  *         &lt;element name="kdump_status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="selinux" type="{}SELinux" minOccurs="0"/>
+ *         &lt;element name="auto_numa_status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="numa_supported" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="live_snapshot_support" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -98,6 +102,7 @@ import javax.xml.bind.annotation.XmlType;
     "maxSchedulingMemory",
     "summary",
     "overrideIptables",
+    "protocol",
     "rebootAfterInstallation",
     "os",
     "hooks",
@@ -105,7 +110,10 @@ import javax.xml.bind.annotation.XmlType;
     "display",
     "hostedEngine",
     "kdumpStatus",
-    "selinux"
+    "selinux",
+    "autoNumaStatus",
+    "numaSupported",
+    "liveSnapshotSupport"
 })
 public class Host
     extends BaseResource
@@ -140,6 +148,7 @@ public class Host
     protected VmSummary summary;
     @XmlElement(name = "override_iptables")
     protected Boolean overrideIptables;
+    protected String protocol;
     @XmlElement(name = "reboot_after_installation")
     protected Boolean rebootAfterInstallation;
     protected OperatingSystem os;
@@ -152,6 +161,12 @@ public class Host
     @XmlElement(name = "kdump_status")
     protected String kdumpStatus;
     protected SELinux selinux;
+    @XmlElement(name = "auto_numa_status")
+    protected String autoNumaStatus;
+    @XmlElement(name = "numa_supported")
+    protected Boolean numaSupported;
+    @XmlElement(name = "live_snapshot_support")
+    protected Boolean liveSnapshotSupport;
 
     /**
      * Gets the value of the address property.
@@ -742,6 +757,34 @@ public class Host
     }
 
     /**
+     * Gets the value of the protocol property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getProtocol() {
+        return protocol;
+    }
+
+    /**
+     * Sets the value of the protocol property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setProtocol(String value) {
+        this.protocol = value;
+    }
+
+    public boolean isSetProtocol() {
+        return (this.protocol!= null);
+    }
+
+    /**
      * Gets the value of the rebootAfterInstallation property.
      *
      * @return
@@ -963,6 +1006,90 @@ public class Host
 
     public boolean isSetSelinux() {
         return (this.selinux!= null);
+    }
+
+    /**
+     * Gets the value of the autoNumaStatus property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getAutoNumaStatus() {
+        return autoNumaStatus;
+    }
+
+    /**
+     * Sets the value of the autoNumaStatus property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setAutoNumaStatus(String value) {
+        this.autoNumaStatus = value;
+    }
+
+    public boolean isSetAutoNumaStatus() {
+        return (this.autoNumaStatus!= null);
+    }
+
+    /**
+     * Gets the value of the numaSupported property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getNumaSupported() {
+        return numaSupported;
+    }
+
+    /**
+     * Sets the value of the numaSupported property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setNumaSupported(Boolean value) {
+        this.numaSupported = value;
+    }
+
+    public boolean isSetNumaSupported() {
+        return (this.numaSupported!= null);
+    }
+
+    /**
+     * Gets the value of the liveSnapshotSupport property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getLiveSnapshotSupport() {
+        return liveSnapshotSupport;
+    }
+
+    /**
+     * Sets the value of the liveSnapshotSupport property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setLiveSnapshotSupport(Boolean value) {
+        this.liveSnapshotSupport = value;
+    }
+
+    public boolean isSetLiveSnapshotSupport() {
+        return (this.liveSnapshotSupport!= null);
     }
 
 }

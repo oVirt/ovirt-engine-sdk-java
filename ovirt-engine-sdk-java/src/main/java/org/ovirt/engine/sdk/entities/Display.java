@@ -49,6 +49,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="smartcard_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="keyboard_layout" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="proxy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="file_transfer_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="copy_paste_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -69,7 +71,9 @@ import javax.xml.bind.annotation.XmlType;
     "certificate",
     "smartcardEnabled",
     "keyboardLayout",
-    "proxy"
+    "proxy",
+    "fileTransferEnabled",
+    "copyPasteEnabled"
 })
 public class Display {
 
@@ -91,6 +95,10 @@ public class Display {
     @XmlElement(name = "keyboard_layout")
     protected String keyboardLayout;
     protected String proxy;
+    @XmlElement(name = "file_transfer_enabled")
+    protected Boolean fileTransferEnabled;
+    @XmlElement(name = "copy_paste_enabled")
+    protected Boolean copyPasteEnabled;
 
     /**
      * Gets the value of the type property.
@@ -398,6 +406,62 @@ public class Display {
 
     public boolean isSetProxy() {
         return (this.proxy!= null);
+    }
+
+    /**
+     * Gets the value of the fileTransferEnabled property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getFileTransferEnabled() {
+        return fileTransferEnabled;
+    }
+
+    /**
+     * Sets the value of the fileTransferEnabled property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setFileTransferEnabled(Boolean value) {
+        this.fileTransferEnabled = value;
+    }
+
+    public boolean isSetFileTransferEnabled() {
+        return (this.fileTransferEnabled!= null);
+    }
+
+    /**
+     * Gets the value of the copyPasteEnabled property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getCopyPasteEnabled() {
+        return copyPasteEnabled;
+    }
+
+    /**
+     * Sets the value of the copyPasteEnabled property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setCopyPasteEnabled(Boolean value) {
+        this.copyPasteEnabled = value;
+    }
+
+    public boolean isSetCopyPasteEnabled() {
+        return (this.copyPasteEnabled!= null);
     }
 
 }

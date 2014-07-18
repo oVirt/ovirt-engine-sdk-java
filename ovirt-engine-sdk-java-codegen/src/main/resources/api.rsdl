@@ -6,7 +6,7 @@
         <name>ovirt-engine-api-schema.xsd</name>
         <description>oVirt API entities schema.</description>
     </schema>
-    <general href="/ovirt-engine/*" rel="*">
+    <general href="/ovirt-engine/api/*" rel="*">
         <description>These options are valid for entire application.</description>
         <request>
             <headers>
@@ -154,15 +154,33 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.scheduling_policy.policy</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.low</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.high</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.duration</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>cluster.scheduling_policy.id</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>cluster.scheduling_policy.properties.property</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>property.name</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>property.value</name>
+</parameter>
+                            </parameters_set>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.error_handling.on_error</name>
@@ -320,15 +338,33 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.scheduling_policy.policy</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.low</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.high</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.duration</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>cluster.scheduling_policy.id</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>cluster.scheduling_policy.properties.property</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>property.name</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>property.value</name>
+</parameter>
+                            </parameters_set>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.error_handling.on_error</name>
@@ -752,6 +788,15 @@ or less indicates that the session should never timeout</description>
                 <http_method>DELETE</http_method>
                 <body/>
             </request>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/glustervolumes/{glustervolume:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>GlusterVolumeProfileDetails</type>
+            </response>
         </link>
         <link href="/ovirt-engine/api/clusters/{cluster:id}/glustervolumes/{glustervolume:id}" rel="get">
             <request>
@@ -1215,6 +1260,31 @@ or less indicates that the session should never timeout</description>
                 <type>Action</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/glustervolumes/{glustervolume:id}/startprofile" rel="startprofile">
+            <description>start profile on the gluster volume attached to the cluster</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                    <parameters_set>
+                        <description>start profiling on the gluster volume attached to the cluster</description>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/clusters/{cluster:id}/glustervolumes/{glustervolume:id}/statistics" rel="get">
             <request>
                 <http_method>GET</http_method>
@@ -1260,6 +1330,31 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:long">
                             <name>action.grace_period.expiry</name>
                         </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/clusters/{cluster:id}/glustervolumes/{glustervolume:id}/stopprofile" rel="stopprofile">
+            <description>stop the profiling of gluster volume attached to the cluster</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                    <parameters_set>
+                        <description>stop profiling on the gluster volume attached to the cluster</description>
                     </parameters_set>
                 </body>
             </request>
@@ -1538,30 +1633,30 @@ or less indicates that the session should never timeout</description>
                     <type>DataCenter</type>
                     <parameters_set>
                         <description>add a new data center to the system</description>
-                        <parameter required="true" type="xs:string">
-                            <name>datacenter.name</name>
-                        </parameter>
-                        <parameter required="true" type="xs:int">
-                            <name>datacenter.version.major</name>
-                        </parameter>
-                        <parameter required="true" type="xs:int">
-                            <name>datacenter.version.minor</name>
-                        </parameter>
-                        <parameter required="false" type="xs:string">
-                            <name>datacenter.storage_type</name>
-                            <deprecated>true</deprecated>
-                        </parameter>
-                        <parameter required="false" type="xs:boolean">
+                        <parameter required="true" type="xs:boolean">
                             <name>datacenter.local</name>
                         </parameter>
-                        <parameter required="false" type="xs:string">
-                            <name>datacenter.description</name>
+                        <parameter required="true" type="xs:string">
+                            <name>datacenter.name</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>datacenter.comment</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
+                            <name>datacenter.description</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
                             <name>datacenter.storage_format</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>datacenter.storage_type</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>datacenter.version.major</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>datacenter.version.minor</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -1752,15 +1847,33 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.scheduling_policy.policy</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.low</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.high</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.duration</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>cluster.scheduling_policy.id</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>cluster.scheduling_policy.properties.property</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>property.name</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>property.value</name>
+</parameter>
+                            </parameters_set>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.error_handling.on_error</name>
@@ -1898,15 +2011,33 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.scheduling_policy.policy</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.low</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.high</name>
+                            <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>cluster.scheduling_policy.thresholds.duration</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>cluster.scheduling_policy.id</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>cluster.scheduling_policy.properties.property</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>property.name</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>property.value</name>
+</parameter>
+                            </parameters_set>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>cluster.error_handling.on_error</name>
@@ -2109,6 +2240,15 @@ or less indicates that the session should never timeout</description>
                 <body/>
             </request>
             <response>
+                <type>GlusterVolumeProfileDetails</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/glustervolumes/{glustervolume:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
                 <type>GlusterVolume</type>
             </response>
         </link>
@@ -2264,6 +2404,17 @@ or less indicates that the session should never timeout</description>
                 <type>Action</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/glustervolumes/{glustervolume:id}/startprofile" rel="startprofile">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/glustervolumes/{glustervolume:id}/statistics" rel="get">
             <request>
                 <http_method>GET</http_method>
@@ -2283,6 +2434,17 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/glustervolumes/{glustervolume:id}/stop" rel="stop">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/clusters/{cluster:id}/glustervolumes/{glustervolume:id}/stopprofile" rel="stopprofile">
             <request>
                 <http_method>POST</http_method>
                 <body>
@@ -2547,6 +2709,41 @@ or less indicates that the session should never timeout</description>
                         <parameter required="true" type="xs:string">
                             <name>network.id|name</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>network.description</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>network.comment</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>network.vlan.id</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>network.ip.address</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>network.ip.gateway</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>network.ip.netmask</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>network.stp</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>network.mtu</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>network.profile_required</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>network.usages.usage</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>usage</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
                     </parameters_set>
                 </body>
             </request>
@@ -2639,10 +2836,31 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/datacenters/{datacenter:id}/networks/{network:id}/labels" rel="add">
+            <description>add a new label to the network</description>
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Label</type>
+                    <parameters_set>
+                        <description>add a new label to the network</description>
+                        <parameter required="true" type="xs:string">
+                            <name>label.id</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -3104,6 +3322,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
+                        </parameter>
                     </parameters_set>
                     <parameters_set>
                         <description>add a new lun disk to the storage domain in the data center</description>
@@ -3150,6 +3371,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>disk.sgio</name>
@@ -3230,6 +3454,17 @@ or less indicates that the session should never timeout</description>
                 <type>Disk</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/storagedomains/{storagedomain:id}/disks/{disk:id}/copy" rel="copy">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/datacenters/{datacenter:id}/storagedomains/{storagedomain:id}/disks/{disk:id}/export" rel="export">
             <request>
                 <http_method>POST</http_method>
@@ -3260,6 +3495,17 @@ or less indicates that the session should never timeout</description>
                             <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/storagedomains/{storagedomain:id}/disks/{disk:id}/move" rel="move">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
                 </body>
             </request>
             <response>
@@ -3374,6 +3620,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
+                        </parameter>
                         <parameter required="false" type="collection">
                             <name>disk.storage_domains.storage_domain</name>
                             <parameters_set>
@@ -3428,6 +3677,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>disk.sgio</name>
@@ -3504,11 +3756,112 @@ or less indicates that the session should never timeout</description>
                 <type>Disk</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/disks/{disk:id}/copy" rel="copy">
+            <description>copy a disk to a different storage domain</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                    <header required="false">
+                        <name>Filter</name>
+                        <value>true|false</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                    <parameters_set>
+                        <description>copy a disk to a different storage domain</description>
+                        <parameter required="true" type="xs:string">
+                            <name>storagedomain.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/disks/{disk:id}/export" rel="export">
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                    <header required="false">
+                        <name>Filter</name>
+                        <value>true|false</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <parameter required="true" type="xs:string">
+                            <name>storagedomain.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/disks/{disk:id}/move" rel="move">
+            <description>move a disk to a different storage domain</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                    <header required="false">
+                        <name>Filter</name>
+                        <value>true|false</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                    <parameters_set>
+                        <description>move a disk to a different storage domain</description>
+                        <parameter required="true" type="xs:string">
+                            <name>storagedomain.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -4353,6 +4706,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>host.power_management.kdump_detection</name>
                         </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>host.protocol</name>
+                        </parameter>
                     </parameters_set>
                     <parameters_set>
                         <description>add a new host to the system providing the ssh password or fingerprint</description>
@@ -4465,6 +4821,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>host.power_management.kdump_detection</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>host.protocol</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -4843,7 +5202,7 @@ or less indicates that the session should never timeout</description>
                 <body>
                     <type>Action</type>
                     <parameters_set>
-                        <description>approve specified host to be added to the engine. this occurs when the host registers itself with the engine</description>
+                        <description>approve specified host to be added to the engine by using root password (deprecated verb). this occurs when the host registers itself with the engine</description>
                         <parameter required="false" type="xs:string">
                             <name>action.cluster.id|name</name>
                         </parameter>
@@ -4852,6 +5211,31 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:long">
                             <name>action.grace_period.expiry</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>host.root_password</name>
+                            <deprecated>true</deprecated>
+                        </parameter>
+                    </parameters_set>
+                    <parameters_set>
+                        <description>approve specified host to be added to the engine by using ssh authentication. this occurs when the host registers itself with the engine</description>
+                        <parameter required="false" type="xs:string">
+                            <name>action.cluster.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.async</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>action.grace_period.expiry</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>host.ssh.authentication_method</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>host.ssh.user.user_name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>host.ssh.user.password</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -5488,10 +5872,31 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/hosts/{host:id}/nics/{nic:id}/labels" rel="add">
+            <description>add a new label to the interface</description>
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Label</type>
+                    <parameters_set>
+                        <description>add a new label to the interface</description>
+                        <parameter required="true" type="xs:string">
+                            <name>label.id</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -5559,6 +5964,62 @@ or less indicates that the session should never timeout</description>
         </link>
         <link href="/ovirt-engine/api/hosts/{host:id}/nics/{nic:id}/statistics/{statistic:id}" rel="get">
             <description>get the details of the specified statistics for the network interface card attached to the specified host</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Statistic</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/hosts/{host:id}/numanodes" rel="get">
+            <description>get the list of NUMA nodes for the host</description>
+            <request>
+                <http_method>GET</http_method>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:int" context="matrix">
+                            <name>max</name>
+                            <value>max results</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+            <response>
+                <type>NumaNodes</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/hosts/{host:id}/numanodes/{numanode:id}" rel="get">
+            <description>get the details of the specified NUMA node for the host</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>NumaNode</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/hosts/{host:id}/numanodes/{numanode:id}/statistics" rel="get">
+            <description>get the statistics for the specified NUMA node of the host</description>
+            <request>
+                <http_method>GET</http_method>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:int" context="matrix">
+                            <name>max</name>
+                            <value>max results</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+            <response>
+                <type>Statistics</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/hosts/{host:id}/numanodes/{numanode:id}/statistics/{statistic:id}" rel="get">
+            <description>get the details of the specified statistics for the specified NUMA node of the host</description>
             <request>
                 <http_method>GET</http_method>
                 <body/>
@@ -5793,6 +6254,252 @@ or less indicates that the session should never timeout</description>
             </request>
             <response>
                 <type>Tag</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes" rel="add">
+            <description>add a new instance type to the system</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>InstanceType</type>
+                    <parameters_set>
+                        <description>add a new instance type to the system</description>
+                        <parameter required="true" type="xs:string">
+                            <name>instance_type.name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>instance_type.memory</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>instance_type.cpu.topology.cores</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>instance_type.high_availability.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>instance_type.origin</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>instance_type.high_availability.priority</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>instance_type.console.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>instance_type.description</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>instance_type.os.boot</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>boot.dev</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>instance_type.cpu.topology.sockets</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>instance_type.cpu_shares</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>instance_type.cpu.architecture</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>instance_type.display.type</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>instance_type.display.monitors</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>instance_typeay.single_qxl_pci</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>instance_type.display.smartcard_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>instance_type.usb.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>instance_type.usb.type</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>instance_type.migration_downtime</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>instance_type.virtio_scsi.enabled</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>InstanceType</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes" rel="get">
+            <description>get the list of instance types on the system</description>
+            <request>
+                <http_method>GET</http_method>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:int" context="matrix">
+                            <name>max</name>
+                            <value>max results</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+            <response>
+                <type>InstanceTypes</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}" rel="delete">
+            <description>delete the instance type from the system</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>async</name>
+                            <value>true|false</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}" rel="get">
+            <description>get the details of the instance type on the system</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>InstanceType</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}" rel="update">
+            <request>
+                <http_method>PUT</http_method>
+                <body>
+                    <type>InstanceType</type>
+                </body>
+            </request>
+            <response>
+                <type>InstanceType</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/nics" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>NIC</type>
+                </body>
+            </request>
+            <response>
+                <type>NIC</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/nics" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Nics</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/nics/{nic:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/nics/{nic:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>NIC</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/nics/{nic:id}" rel="update">
+            <request>
+                <http_method>PUT</http_method>
+                <body>
+                    <type>NIC</type>
+                </body>
+            </request>
+            <response>
+                <type>NIC</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/watchdogs" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>WatchDog</type>
+                </body>
+            </request>
+            <response>
+                <type>WatchDog</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/watchdogs" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>WatchDogs</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/watchdogs/{watchdog:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/watchdogs/{watchdog:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>WatchDog</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/instancetypes/{instancetype:id}/watchdogs/{watchdog:id}" rel="update">
+            <request>
+                <http_method>PUT</http_method>
+                <body>
+                    <type>WatchDog</type>
+                </body>
+            </request>
+            <response>
+                <type>WatchDog</type>
             </response>
         </link>
         <link href="/ovirt-engine/api/jobs" rel="add">
@@ -6110,9 +6817,6 @@ or less indicates that the session should never timeout</description>
                             <name>network.ip.netmask</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
-                            <name>network.display</name>
-                        </parameter>
-                        <parameter required="false" type="xs:boolean">
                             <name>network.stp</name>
                         </parameter>
                         <parameter required="false" type="xs:int">
@@ -6120,6 +6824,14 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>network.profile_required</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>network.usages.usage</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>usage</name>
+</parameter>
+                            </parameters_set>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -6241,10 +6953,31 @@ or less indicates that the session should never timeout</description>
             </response>
         </link>
         <link href="/ovirt-engine/api/networks/{network:id}/labels" rel="add">
+            <description>add a new label to the network</description>
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Label</type>
+                    <parameters_set>
+                        <description>add a new label to the network</description>
+                        <parameter required="true" type="xs:string">
+                            <name>label.id</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -6820,6 +7553,280 @@ or less indicates that the session should never timeout</description>
             </request>
             <response>
                 <type>Permit</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies" rel="add">
+            <description>add a new scheduling policy to the system</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>SchedulingPolicy</type>
+                    <parameters_set>
+                        <description>add a new scheduling policy to the system</description>
+                        <parameter required="true" type="xs:string">
+                            <name>schedulingpolicy.name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>schedulingpolicy.description</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>schedulingpolicy.properties.property</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>property.name</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>property.value</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>SchedulingPolicy</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies" rel="get">
+            <description>get a list of scheduling policies in the system</description>
+            <request>
+                <http_method>GET</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Filter</name>
+                        <value>true|false</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>case_sensitive</name>
+                            <value>true|false</value>
+                        </parameter>
+                        <parameter required="false" type="xs:int" context="matrix">
+                            <name>max</name>
+                            <value>max results</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+            <response>
+                <type>SchedulingPolicies</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>SchedulingPolicy</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}" rel="update">
+            <request>
+                <http_method>PUT</http_method>
+                <body>
+                    <type>SchedulingPolicy</type>
+                </body>
+            </request>
+            <response>
+                <type>SchedulingPolicy</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/balances" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Balance</type>
+                </body>
+            </request>
+            <response>
+                <type>Balance</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/balances" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Balances</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/balances/{balance:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/balances/{balance:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Balance</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/filters" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Filter</type>
+                </body>
+            </request>
+            <response>
+                <type>Filter</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/filters" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Filters</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/filters/{filter:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/filters/{filter:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Filter</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/weights" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Weight</type>
+                </body>
+            </request>
+            <response>
+                <type>Weight</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/weights" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Weights</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/weights/{weight:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicies/{schedulingpolicie:id}/weights/{weight:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Weight</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicyunits" rel="get">
+            <description>get a list of scheduling policy units in the system</description>
+            <request>
+                <http_method>GET</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Filter</name>
+                        <value>true|false</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>case_sensitive</name>
+                            <value>true|false</value>
+                        </parameter>
+                        <parameter required="false" type="xs:int" context="matrix">
+                            <name>max</name>
+                            <value>max results</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+            <response>
+                <type>SchedulingPolicyUnits</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicyunits/{schedulingpolicyunit:id}" rel="delete">
+            <description>delete the specified disabled and external scheduling policy unit in the system</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>async</name>
+                            <value>true|false</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/schedulingpolicyunits/{schedulingpolicyunit:id}" rel="get">
+            <description>get the details of the specified scheduling policy unit in the system</description>
+            <request>
+                <http_method>GET</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Filter</name>
+                        <value>true|false</value>
+                    </header>
+                </headers>
+                <body/>
+            </request>
+            <response>
+                <type>SchedulingPolicyUnit</type>
             </response>
         </link>
         <link href="/ovirt-engine/api/storageconnections" rel="add">
@@ -7485,6 +8492,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
+                        </parameter>
                     </parameters_set>
                     <parameters_set>
                         <description>add a new lun disk to the storage domain</description>
@@ -7531,6 +8541,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>disk.sgio</name>
@@ -7611,6 +8624,17 @@ or less indicates that the session should never timeout</description>
                 <type>Disk</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/storagedomains/{storagedomain:id}/disks/{disk:id}/copy" rel="copy">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/storagedomains/{storagedomain:id}/disks/{disk:id}/export" rel="export">
             <request>
                 <http_method>POST</http_method>
@@ -7641,6 +8665,17 @@ or less indicates that the session should never timeout</description>
                             <name>action.grace_period.expiry</name>
                         </parameter>
                     </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/storagedomains/{storagedomain:id}/disks/{disk:id}/move" rel="move">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Action</type>
                 </body>
             </request>
             <response>
@@ -8099,6 +9134,43 @@ or less indicates that the session should never timeout</description>
                 <type>Action</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/storagedomains/{storagedomain:id}/templates/{template:id}/register" rel="register">
+            <description>Register the Template means importing the Template from the data domain, by inserting the configuration of the Template and disks into the DB without the copy process</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                    <parameters_set>
+                        <description>Register the Template means importing the Template from the data domain, by inserting the configuration of the Template and disks into the DB without the copy process</description>
+                        <parameter required="true" type="xs:string">
+                            <name>action.cluster.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolen">
+                            <name>action.clone</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolen">
+                            <name>action.exclusive</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>action.template.name</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/storagedomains/{storagedomain:id}/vms" rel="get">
             <description>get the list of virtual machines in the storage domain</description>
             <request>
@@ -8217,6 +9289,40 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:long">
                             <name>action.grace_period.expiry</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/storagedomains/{storagedomain:id}/vms/{vm:id}/register" rel="register">
+            <description>Register the VM means importing the VM from the data domain, by inserting the configuration of the VM and disks into the DB without the copy process</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                    <parameters_set>
+                        <description>Register the VM means importing the VM from the data domain, by inserting the configuration of the VM and disks into the DB without the copy process</description>
+                        <parameter required="true" type="xs:string">
+                            <name>action.cluster.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolen">
+                            <name>action.clone</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>action.vm.name</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -8410,6 +9516,15 @@ or less indicates that the session should never timeout</description>
 </parameter>
                             </parameters_set>
                         </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.bytes</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.period</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.rng_device.source</name>
+                        </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.console.enabled</name>
                         </parameter>
@@ -8470,6 +9585,12 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.display.smartcard_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>template.display.file_transfer_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>template.display.copy_paste_enabled</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>template.display.keyboard_layout</name>
@@ -8536,6 +9657,15 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.bios.boot_menu.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>template.cluster.id</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>template.cluster.name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>template.start_paused</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -8683,6 +9813,15 @@ or less indicates that the session should never timeout</description>
 </parameter>
                             </parameters_set>
                         </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.bytes</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.period</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.rng_device.source</name>
+                        </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.console.enabled</name>
                         </parameter>
@@ -8744,6 +9883,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>template.display.smartcard_enabled</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.file_transfer_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.copy_paste_enabled</name>
+                        </parameter>
                         <parameter required="false" type="xs:string">
                             <name>template.display.keyboard_layout</name>
                         </parameter>
@@ -8776,6 +9921,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>template.bios.boot_menu.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>template.start_paused</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -10151,6 +11299,9 @@ or less indicates that the session should never timeout</description>
                             <name>vm.cluster.id|name</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
+                            <name>vm.instance_type.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
                             <name>vm.quota.id</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
@@ -10205,6 +11356,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.display.smartcard_enabled</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.file_transfer_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.copy_paste_enabled</name>
+                        </parameter>
                         <parameter required="false" type="xs:string">
                             <name>vm.display.keyboard_layout</name>
                         </parameter>
@@ -10254,6 +11411,15 @@ or less indicates that the session should never timeout</description>
     <name>method.id</name>
 </parameter>
                             </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.bytes</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.period</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.rng_device.source</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.console.enabled</name>
@@ -10342,6 +11508,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.bios.boot_menu.enabled</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.numa_tune_mode</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.start_paused</name>
+                        </parameter>
                     </parameters_set>
                     <parameters_set>
                         <description>add a virtual machine to the system by cloning from a snapshot</description>
@@ -10417,6 +11589,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.display.smartcard_enabled</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.file_transfer_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.copy_paste_enabled</name>
+                        </parameter>
                         <parameter required="false" type="xs:string">
                             <name>vm.display.keyboard_layout</name>
                         </parameter>
@@ -10466,6 +11644,15 @@ or less indicates that the session should never timeout</description>
     <name>method.id</name>
 </parameter>
                             </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.bytes</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.period</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.rng_device.source</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.console.enabled</name>
@@ -10536,6 +11723,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.bios.boot_menu.enabled</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.numa_tune_mode</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.start_paused</name>
+                        </parameter>
                     </parameters_set>
                     <parameters_set>
                         <description>add a virtual machine to the system from a configuration - requires the configuration type and the configuration data</description>
@@ -10600,6 +11793,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.display.smartcard_enabled</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.file_transfer_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.copy_paste_enabled</name>
+                        </parameter>
                         <parameter required="false" type="xs:string">
                             <name>vm.display.keyboard_layout</name>
                         </parameter>
@@ -10646,6 +11845,15 @@ or less indicates that the session should never timeout</description>
     <name>method.id</name>
 </parameter>
                             </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.bytes</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.period</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.rng_device.source</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>vm.cpu.mode</name>
@@ -10727,6 +11935,12 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.bios.boot_menu.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.numa_tune_mode</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.start_paused</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -10852,6 +12066,9 @@ or less indicates that the session should never timeout</description>
                     <parameters_set>
                         <description>update the virtual machine in the system for the given virtual machine id with the values specified in the request</description>
                         <parameter required="false" type="xs:string">
+                            <name>vm.instance_type.id|name</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
                             <name>vm.name</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
@@ -10909,6 +12126,12 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.display.smartcard_enabled</name>
                         </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.file_transfer_enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.display.copy_paste_enabled</name>
+                        </parameter>
                         <parameter required="false" type="xs:string">
                             <name>vm.display.keyboard_layout</name>
                         </parameter>
@@ -10929,6 +12152,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:long">
                             <name>vm.memory</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>vm.memory_policy.guaranteed</name>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>vm.high_availability.priority</name>
@@ -10958,6 +12184,15 @@ or less indicates that the session should never timeout</description>
     <name>method.id</name>
 </parameter>
                             </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.bytes</name>
+                        </parameter>
+                        <parameter required="false" type="xs:int">
+                            <name>vm.rng_device.rate.period</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.rng_device.source</name>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.console.enabled</name>
@@ -11030,6 +12265,12 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>vm.bios.boot_menu.enabled</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm.numa_tune_mode</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>vm.start_paused</name>
                         </parameter>
                     </parameters_set>
                 </body>
@@ -11123,6 +12364,10 @@ or less indicates that the session should never timeout</description>
                             <name>max</name>
                             <value>max results</value>
                         </parameter>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>current</name>
+                            <value>true|false</value>
+                        </parameter>
                     </parameters_set>
                 </url>
                 <body/>
@@ -11213,8 +12458,23 @@ or less indicates that the session should never timeout</description>
         <link href="/ovirt-engine/api/vms/{vm:id}/clone" rel="clone">
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <parameter required="true" type="xs:string">
+                            <name>action.vm.name</name>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -11224,6 +12484,16 @@ or less indicates that the session should never timeout</description>
         <link href="/ovirt-engine/api/vms/{vm:id}/commit_snapshot" rel="commit_snapshot">
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Action</type>
                 </body>
@@ -11318,6 +12588,9 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
                         </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
+                        </parameter>
                         <parameter required="false" type="collection">
                             <name>disk.storage_domains.storage_domain</name>
                             <parameters_set>
@@ -11372,6 +12645,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>disk.sgio</name>
@@ -11521,6 +12797,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:boolean">
                             <name>disk.wipe_after_delete</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>disk.quota.id</name>
                         </parameter>
                         <parameter required="false" type="xs:string">
                             <name>disk.sgio</name>
@@ -11760,6 +13039,27 @@ or less indicates that the session should never timeout</description>
                         <parameter required="false" type="xs:long">
                             <name>action.grace_period.expiry</name>
                         </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>Action</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/logon" rel="logon">
+            <description>Perform automatic logon on the VM using the guest agent.</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>Action</type>
+                    <parameters_set>
+                        <description>Perform automatic logon on the VM using the guest agent.</description>
                     </parameters_set>
                 </body>
             </request>
@@ -12163,6 +13463,161 @@ or less indicates that the session should never timeout</description>
                 <type>Statistic</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/numanodes" rel="add">
+            <description>add a new virtual NUMA node for the vm</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>VirtualNumaNode</type>
+                    <parameters_set>
+                        <description>add a new virtual NUMA node for the vm</description>
+                        <parameter required="true" type="xs:int">
+                            <name>vm_numa_node.index</name>
+                        </parameter>
+                        <parameter required="true" type="xs:string">
+                            <name>vm_numa_node.memory</name>
+                        </parameter>
+                        <parameter required="true" type="collection">
+                            <name>vm_numa_node.cpu.cores.core</name>
+                            <parameters_set>
+<parameter required="true" type="xs:int">
+    <name>core.index</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>vm_numa_node.numa_node_pins.numa_node_pin</name>
+                            <parameters_set>
+<parameter required="false" type="xs:int">
+    <name>numa_node_pin.index</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>VirtualNumaNode</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/numanodes" rel="get">
+            <description>get the list of virtual NUMA nodes for the vm</description>
+            <request>
+                <http_method>GET</http_method>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:int" context="matrix">
+                            <name>max</name>
+                            <value>max results</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+            <response>
+                <type>VirtualNumaNodes</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/numanodes/{numanode:id}" rel="delete">
+            <description>delete the specified virtual NUMA node for the vm</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <headers>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>async</name>
+                            <value>true|false</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/numanodes/{numanode:id}" rel="get">
+            <description>get the details of the specified virtual NUMA node for the vm</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>VirtualNumaNode</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/vms/{vm:id}/numanodes/{numanode:id}" rel="update">
+            <description>update the specified virtual NUMA node for the vm</description>
+            <request>
+                <http_method>PUT</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
+                <url>
+                    <parameters_set>
+                        <parameter required="false" type="xs:boolean" context="matrix">
+                            <name>async</name>
+                            <value>true|false</value>
+                        </parameter>
+                    </parameters_set>
+                </url>
+                <body>
+                    <type>VirtualNumaNode</type>
+                    <parameters_set>
+                        <description>update the specified virtual NUMA node for the vm</description>
+                        <parameter required="false" type="xs:int">
+                            <name>vm_numa_node.index</name>
+                        </parameter>
+                        <parameter required="false" type="xs:string">
+                            <name>vm_numa_node.memory</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>vm_numa_node.cpu.cores.core</name>
+                            <parameters_set>
+<parameter required="false" type="xs:int">
+    <name>core.index</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>vm_numa_node.numa_node_pins.numa_node_pin</name>
+                            <parameters_set>
+<parameter required="false" type="xs:int">
+    <name>numa_node_pin.index</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>VirtualNumaNode</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/vms/{vm:id}/permissions" rel="add">
             <description>add a new permission for a given virtual machine</description>
             <request>
@@ -12259,8 +13714,37 @@ or less indicates that the session should never timeout</description>
         <link href="/ovirt-engine/api/vms/{vm:id}/preview_snapshot" rel="preview_snapshot">
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Action</type>
+                    <parameters_set>
+                        <parameter required="true" type="xs:string">
+                            <name>action.snapshot.id</name>
+                        </parameter>
+                        <parameter required="false" type="xs:boolean">
+                            <name>action.restore_memory</name>
+                        </parameter>
+                        <parameter required="false" type="collection">
+                            <name>action.disks.disk</name>
+                            <parameters_set>
+<parameter required="false" type="xs:string">
+    <name>disk.id</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>disk.image_id</name>
+</parameter>
+                            </parameters_set>
+                        </parameter>
+                    </parameters_set>
                 </body>
             </request>
             <response>
@@ -12952,6 +14436,16 @@ or less indicates that the session should never timeout</description>
         <link href="/ovirt-engine/api/vms/{vm:id}/undo_snapshot" rel="undo_snapshot">
             <request>
                 <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Correlation-Id</name>
+                        <value>any string</value>
+                    </header>
+                </headers>
                 <body>
                     <type>Action</type>
                 </body>

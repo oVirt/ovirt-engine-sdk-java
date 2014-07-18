@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element name="domain_entry_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="namespace" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="roles" type="{}Roles" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -52,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Group", propOrder = {
     "domain",
     "domainEntryId",
+    "namespace",
     "roles"
 })
 public class Group
@@ -61,6 +63,7 @@ public class Group
     protected Domain domain;
     @XmlElement(name = "domain_entry_id")
     protected String domainEntryId;
+    protected String namespace;
     protected Roles roles;
 
     /**
@@ -117,6 +120,34 @@ public class Group
 
     public boolean isSetDomainEntryId() {
         return (this.domainEntryId!= null);
+    }
+
+    /**
+     * Gets the value of the namespace property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getNamespace() {
+        return namespace;
+    }
+
+    /**
+     * Sets the value of the namespace property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setNamespace(String value) {
+        this.namespace = value;
+    }
+
+    public boolean isSetNamespace() {
+        return (this.namespace!= null);
     }
 
     /**
