@@ -109,9 +109,9 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 %{_mavenpomdir}/JPP.%{name}-%{name}.pom
 %{_mavendepmapfragdir}/%{name}
 %endif
-%doc AUTHORS
-%doc README
-%doc LICENSE
+%doc AUTHORS.md
+%doc README.md
+%doc LICENSE.md
 
 %files javadoc
 %{_javadocdir}/%{name}
