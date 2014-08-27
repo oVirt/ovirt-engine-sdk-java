@@ -175,6 +175,7 @@ public class VMDisks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -186,7 +187,6 @@ public class VMDisks extends
      *      details
      *
      *      disk.interface
-     *      disk.format
      *      disk.lun_storage.type
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
@@ -197,7 +197,6 @@ public class VMDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
-     *      [disk.storage_domains.storage_domain]
      *
      *    Overload 3:
      *
@@ -264,6 +263,7 @@ public class VMDisks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -275,7 +275,6 @@ public class VMDisks extends
      *      details
      *
      *      disk.interface
-     *      disk.format
      *      disk.lun_storage.type
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
@@ -286,7 +285,6 @@ public class VMDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
-     *      [disk.storage_domains.storage_domain]
      *
      *    Overload 3:
      *
@@ -361,6 +359,7 @@ public class VMDisks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -372,7 +371,6 @@ public class VMDisks extends
      *      details
      *
      *      disk.interface
-     *      disk.format
      *      disk.lun_storage.type
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
@@ -383,7 +381,6 @@ public class VMDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
-     *      [disk.storage_domains.storage_domain]
      *
      *    Overload 3:
      *

@@ -215,6 +215,7 @@ public class Template extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @return
@@ -294,6 +295,7 @@ public class Template extends
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @param correlationId

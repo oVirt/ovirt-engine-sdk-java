@@ -68,6 +68,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}permissions" minOccurs="0"/>
  *         &lt;element name="version" type="{}TemplateVersion" minOccurs="0"/>
  *         &lt;element ref="{}serial_number" minOccurs="0"/>
+ *         &lt;element ref="{}cpu_profile" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -105,7 +106,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "virtioScsi",
     "permissions",
     "version",
-    "serialNumber"
+    "serialNumber",
+    "cpuProfile"
 })
 @XmlSeeAlso({
     InstanceType.class
@@ -153,6 +155,8 @@ public class Template
     protected TemplateVersion version;
     @XmlElement(name = "serial_number")
     protected SerialNumber serialNumber;
+    @XmlElement(name = "cpu_profile")
+    protected CpuProfile cpuProfile;
 
     /**
      * Gets the value of the vm property.
@@ -936,6 +940,34 @@ public class Template
 
     public boolean isSetSerialNumber() {
         return (this.serialNumber!= null);
+    }
+
+    /**
+     * Gets the value of the cpuProfile property.
+     *
+     * @return
+     *     possible object is
+     *     {@link CpuProfile }
+     *
+     */
+    public CpuProfile getCpuProfile() {
+        return cpuProfile;
+    }
+
+    /**
+     * Sets the value of the cpuProfile property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link CpuProfile }
+     *
+     */
+    public void setCpuProfile(CpuProfile value) {
+        this.cpuProfile = value;
+    }
+
+    public boolean isSetCpuProfile() {
+        return (this.cpuProfile!= null);
     }
 
 }

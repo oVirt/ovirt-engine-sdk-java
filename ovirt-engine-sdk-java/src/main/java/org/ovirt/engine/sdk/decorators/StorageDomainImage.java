@@ -63,6 +63,32 @@ public class StorageDomainImage extends
 
 
 
+    /**
+     * Performs importImage action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action importImage(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/import";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
 
 }
 

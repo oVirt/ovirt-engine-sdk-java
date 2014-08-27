@@ -395,6 +395,7 @@ public class VM extends
      *    [vm.serial_number.value]
      *    [vm.bios.boot_menu.enabled]
      *    [vm.numa_tune_mode]
+     *    [vm.cpu_profile.id]
      *    </pre>
      *
      * @return
@@ -482,6 +483,7 @@ public class VM extends
      *    [vm.serial_number.value]
      *    [vm.bios.boot_menu.enabled]
      *    [vm.numa_tune_mode]
+     *    [vm.cpu_profile.id]
      *    </pre>
      *
      * @param correlationId

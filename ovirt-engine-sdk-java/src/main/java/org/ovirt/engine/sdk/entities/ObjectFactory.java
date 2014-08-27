@@ -46,6 +46,7 @@ public class ObjectFactory {
 
     private final static QName _Summary_QNAME = new QName("", "summary");
     private final static QName _EntityProfileDetail_QNAME = new QName("", "entity_profile_detail");
+    private final static QName _Qos_QNAME = new QName("", "qos");
     private final static QName _HardwareInformation_QNAME = new QName("", "hardware_information");
     private final static QName _SnapshotStatuses_QNAME = new QName("", "snapshot_statuses");
     private final static QName _ConfigurationTypes_QNAME = new QName("", "configuration_types");
@@ -64,6 +65,7 @@ public class ObjectFactory {
     private final static QName _Host_QNAME = new QName("", "host");
     private final static QName _Bookmark_QNAME = new QName("", "bookmark");
     private final static QName _Image_QNAME = new QName("", "image");
+    private final static QName _DiskProfiles_QNAME = new QName("", "disk_profiles");
     private final static QName _AuthenticationMethods_QNAME = new QName("", "authentication_methods");
     private final static QName _RngSources_QNAME = new QName("", "rng_sources");
     private final static QName _Header_QNAME = new QName("", "header");
@@ -137,12 +139,14 @@ public class ObjectFactory {
     private final static QName _PortMirroring_QNAME = new QName("", "port_mirroring");
     private final static QName _Templates_QNAME = new QName("", "templates");
     private final static QName _Labels_QNAME = new QName("", "labels");
-    private final static QName _Cpu_QNAME = new QName("", "cpu");
     private final static QName _VolumeProfileDetails_QNAME = new QName("", "volume_profile_details");
+    private final static QName _Cpu_QNAME = new QName("", "cpu");
+    private final static QName _QosTypes_QNAME = new QName("", "qos_types");
     private final static QName _Label_QNAME = new QName("", "label");
     private final static QName _Display_QNAME = new QName("", "display");
     private final static QName _DiskSnapshots_QNAME = new QName("", "disk_snapshots");
     private final static QName _Agent_QNAME = new QName("", "agent");
+    private final static QName _CpuProfile_QNAME = new QName("", "cpu_profile");
     private final static QName _Url_QNAME = new QName("", "url");
     private final static QName _Watchdog_QNAME = new QName("", "watchdog");
     private final static QName _StepTypes_QNAME = new QName("", "step_types");
@@ -159,11 +163,13 @@ public class ObjectFactory {
     private final static QName _LogicalUnit_QNAME = new QName("", "logical_unit");
     private final static QName _Statistics_QNAME = new QName("", "statistics");
     private final static QName _Response_QNAME = new QName("", "response");
+    private final static QName _IscsiBonds_QNAME = new QName("", "iscsi_bonds");
     private final static QName _PmProxy_QNAME = new QName("", "pm_proxy");
     private final static QName _StorageConnection_QNAME = new QName("", "storage_connection");
     private final static QName _StorageManager_QNAME = new QName("", "storage_manager");
     private final static QName _BootProtocols_QNAME = new QName("", "boot_protocols");
     private final static QName _CpuTune_QNAME = new QName("", "cpu_tune");
+    private final static QName _DiskProfile_QNAME = new QName("", "disk_profile");
     private final static QName _VmNumaNode_QNAME = new QName("", "vm_numa_node");
     private final static QName _HostNumaNodes_QNAME = new QName("", "host_numa_nodes");
     private final static QName _NicConfiguration_QNAME = new QName("", "nic_configuration");
@@ -171,8 +177,10 @@ public class ObjectFactory {
     private final static QName _Stages_QNAME = new QName("", "stages");
     private final static QName _VmTypes_QNAME = new QName("", "vm_types");
     private final static QName _Source_QNAME = new QName("", "source");
+    private final static QName _CpuProfiles_QNAME = new QName("", "cpu_profiles");
     private final static QName _Vlan_QNAME = new QName("", "vlan");
     private final static QName _Core_QNAME = new QName("", "core");
+    private final static QName _IscsiBond_QNAME = new QName("", "iscsi_bond");
     private final static QName _Vmpools_QNAME = new QName("", "vmpools");
     private final static QName _BrickProfileDetail_QNAME = new QName("", "brick_profile_detail");
     private final static QName _Jobs_QNAME = new QName("", "jobs");
@@ -207,6 +215,7 @@ public class ObjectFactory {
     private final static QName _PowerManagers_QNAME = new QName("", "power_managers");
     private final static QName _VmStates_QNAME = new QName("", "vm_states");
     private final static QName _Link_QNAME = new QName("", "link");
+    private final static QName _Qoss_QNAME = new QName("", "qoss");
     private final static QName _DataCenterStates_QNAME = new QName("", "data_center_states");
     private final static QName _Cores_QNAME = new QName("", "cores");
     private final static QName _Version_QNAME = new QName("", "version");
@@ -234,8 +243,8 @@ public class ObjectFactory {
     private final static QName _SerialNumberPolicies_QNAME = new QName("", "serial_number_policies");
     private final static QName _Users_QNAME = new QName("", "users");
     private final static QName _ProfileDetail_QNAME = new QName("", "profile_detail");
-    private final static QName _Permit_QNAME = new QName("", "permit");
     private final static QName _Disk_QNAME = new QName("", "disk");
+    private final static QName _Permit_QNAME = new QName("", "permit");
     private final static QName _BootMenu_QNAME = new QName("", "boot_menu");
     private final static QName _VnicProfile_QNAME = new QName("", "vnic_profile");
     private final static QName _DataCenters_QNAME = new QName("", "data_centers");
@@ -331,6 +340,14 @@ public class ObjectFactory {
      */
     public EntityProfileDetail createEntityProfileDetail() {
         return new EntityProfileDetail();
+    }
+
+    /**
+     * Create an instance of {@link QoS }
+     *
+     */
+    public QoS createQoS() {
+        return new QoS();
     }
 
     /**
@@ -475,6 +492,14 @@ public class ObjectFactory {
      */
     public Image createImage() {
         return new Image();
+    }
+
+    /**
+     * Create an instance of {@link DiskProfiles }
+     *
+     */
+    public DiskProfiles createDiskProfiles() {
+        return new DiskProfiles();
     }
 
     /**
@@ -1078,6 +1103,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link QosTypes }
+     *
+     */
+    public QosTypes createQosTypes() {
+        return new QosTypes();
+    }
+
+    /**
      * Create an instance of {@link Label }
      *
      */
@@ -1107,6 +1140,14 @@ public class ObjectFactory {
      */
     public Agent createAgent() {
         return new Agent();
+    }
+
+    /**
+     * Create an instance of {@link CpuProfile }
+     *
+     */
+    public CpuProfile createCpuProfile() {
+        return new CpuProfile();
     }
 
     /**
@@ -1238,6 +1279,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link IscsiBonds }
+     *
+     */
+    public IscsiBonds createIscsiBonds() {
+        return new IscsiBonds();
+    }
+
+    /**
      * Create an instance of {@link PmProxy }
      *
      */
@@ -1275,6 +1324,14 @@ public class ObjectFactory {
      */
     public CpuTune createCpuTune() {
         return new CpuTune();
+    }
+
+    /**
+     * Create an instance of {@link DiskProfile }
+     *
+     */
+    public DiskProfile createDiskProfile() {
+        return new DiskProfile();
     }
 
     /**
@@ -1326,6 +1383,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CpuProfiles }
+     *
+     */
+    public CpuProfiles createCpuProfiles() {
+        return new CpuProfiles();
+    }
+
+    /**
      * Create an instance of {@link VLAN }
      *
      */
@@ -1339,6 +1404,14 @@ public class ObjectFactory {
      */
     public Core createCore() {
         return new Core();
+    }
+
+    /**
+     * Create an instance of {@link IscsiBond }
+     *
+     */
+    public IscsiBond createIscsiBond() {
+        return new IscsiBond();
     }
 
     /**
@@ -1611,6 +1684,14 @@ public class ObjectFactory {
      */
     public Link createLink() {
         return new Link();
+    }
+
+    /**
+     * Create an instance of {@link QoSs }
+     *
+     */
+    public QoSs createQoSs() {
+        return new QoSs();
     }
 
     /**
@@ -2486,6 +2567,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JobOwner }
+     *
+     */
+    public JobOwner createJobOwner() {
+        return new JobOwner();
+    }
+
+    /**
      * Create an instance of {@link MemoryPolicy }
      *
      */
@@ -2656,6 +2745,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QoS }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "qos")
+    public JAXBElement<QoS> createQos(QoS value) {
+        return new JAXBElement<QoS>(_Qos_QNAME, QoS.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link HardwareInformation }{@code >}}
      *
      */
@@ -2815,6 +2913,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "image")
     public JAXBElement<Image> createImage(Image value) {
         return new JAXBElement<Image>(_Image_QNAME, Image.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiskProfiles }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "disk_profiles")
+    public JAXBElement<DiskProfiles> createDiskProfiles(DiskProfiles value) {
+        return new JAXBElement<DiskProfiles>(_DiskProfiles_QNAME, DiskProfiles.class, null, value);
     }
 
     /**
@@ -3475,6 +3582,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterVolumeProfileDetails }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "volume_profile_details")
+    public JAXBElement<GlusterVolumeProfileDetails> createVolumeProfileDetails(GlusterVolumeProfileDetails value) {
+        return new JAXBElement<GlusterVolumeProfileDetails>(_VolumeProfileDetails_QNAME, GlusterVolumeProfileDetails.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CPU }{@code >}}
      *
      */
@@ -3484,12 +3600,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GlusterVolumeProfileDetails }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link QosTypes }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "", name = "volume_profile_details")
-    public JAXBElement<GlusterVolumeProfileDetails> createVolumeProfileDetails(GlusterVolumeProfileDetails value) {
-        return new JAXBElement<GlusterVolumeProfileDetails>(_VolumeProfileDetails_QNAME, GlusterVolumeProfileDetails.class, null, value);
+    @XmlElementDecl(namespace = "", name = "qos_types")
+    public JAXBElement<QosTypes> createQosTypes(QosTypes value) {
+        return new JAXBElement<QosTypes>(_QosTypes_QNAME, QosTypes.class, null, value);
     }
 
     /**
@@ -3526,6 +3642,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "agent")
     public JAXBElement<Agent> createAgent(Agent value) {
         return new JAXBElement<Agent>(_Agent_QNAME, Agent.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CpuProfile }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "cpu_profile")
+    public JAXBElement<CpuProfile> createCpuProfile(CpuProfile value) {
+        return new JAXBElement<CpuProfile>(_CpuProfile_QNAME, CpuProfile.class, null, value);
     }
 
     /**
@@ -3673,6 +3798,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IscsiBonds }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "iscsi_bonds")
+    public JAXBElement<IscsiBonds> createIscsiBonds(IscsiBonds value) {
+        return new JAXBElement<IscsiBonds>(_IscsiBonds_QNAME, IscsiBonds.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PmProxy }{@code >}}
      *
      */
@@ -3715,6 +3849,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "cpu_tune")
     public JAXBElement<CpuTune> createCpuTune(CpuTune value) {
         return new JAXBElement<CpuTune>(_CpuTune_QNAME, CpuTune.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiskProfile }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "disk_profile")
+    public JAXBElement<DiskProfile> createDiskProfile(DiskProfile value) {
+        return new JAXBElement<DiskProfile>(_DiskProfile_QNAME, DiskProfile.class, null, value);
     }
 
     /**
@@ -3781,6 +3924,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CpuProfiles }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "cpu_profiles")
+    public JAXBElement<CpuProfiles> createCpuProfiles(CpuProfiles value) {
+        return new JAXBElement<CpuProfiles>(_CpuProfiles_QNAME, CpuProfiles.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link VLAN }{@code >}}
      *
      */
@@ -3796,6 +3948,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "core")
     public JAXBElement<Core> createCore(Core value) {
         return new JAXBElement<Core>(_Core_QNAME, Core.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IscsiBond }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "iscsi_bond")
+    public JAXBElement<IscsiBond> createIscsiBond(IscsiBond value) {
+        return new JAXBElement<IscsiBond>(_IscsiBond_QNAME, IscsiBond.class, null, value);
     }
 
     /**
@@ -4105,6 +4266,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QoSs }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "qoss")
+    public JAXBElement<QoSs> createQoss(QoSs value) {
+        return new JAXBElement<QoSs>(_Qoss_QNAME, QoSs.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DataCenterStates }{@code >}}
      *
      */
@@ -4348,21 +4518,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Permit }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "permit")
-    public JAXBElement<Permit> createPermit(Permit value) {
-        return new JAXBElement<Permit>(_Permit_QNAME, Permit.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Disk }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "disk")
     public JAXBElement<Disk> createDisk(Disk value) {
         return new JAXBElement<Disk>(_Disk_QNAME, Disk.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Permit }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "permit")
+    public JAXBElement<Permit> createPermit(Permit value) {
+        return new JAXBElement<Permit>(_Permit_QNAME, Permit.class, null, value);
     }
 
     /**

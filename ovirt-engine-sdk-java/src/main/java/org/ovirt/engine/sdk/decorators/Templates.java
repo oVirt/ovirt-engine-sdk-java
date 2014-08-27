@@ -272,6 +272,7 @@ public class Templates extends
      *    [template.bios.boot_menu.enabled]
      *    [template.cluster.id]
      *    [template.cluster.name]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @return
@@ -355,6 +356,7 @@ public class Templates extends
      *    [template.bios.boot_menu.enabled]
      *    [template.cluster.id]
      *    [template.cluster.name]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @param expect
@@ -446,6 +448,7 @@ public class Templates extends
      *    [template.bios.boot_menu.enabled]
      *    [template.cluster.id]
      *    [template.cluster.name]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @param expect

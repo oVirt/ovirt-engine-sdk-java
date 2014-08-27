@@ -49,6 +49,7 @@ public class DataCenterCluster extends
     private volatile DataCenterClusterGlusterHooks dataCenterClusterGlusterHooks;
     private volatile DataCenterClusterAffinityGroups dataCenterClusterAffinityGroups;
     private volatile DataCenterClusterGlusterVolumes dataCenterClusterGlusterVolumes;
+    private volatile DataCenterClusterCpuProfiles dataCenterClusterCpuProfiles;
     private volatile DataCenterClusterNetworks dataCenterClusterNetworks;
 
 
@@ -129,6 +130,22 @@ public class DataCenterCluster extends
             }
         }
         return dataCenterClusterGlusterVolumes;
+    }
+    /**
+     * Gets the value of the DataCenterClusterCpuProfiles property.
+     *
+     * @return
+     *     {@link DataCenterClusterCpuProfiles }
+     */
+    public DataCenterClusterCpuProfiles getCpuProfiles() {
+        if (this.dataCenterClusterCpuProfiles == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterClusterCpuProfiles == null) {
+                    this.dataCenterClusterCpuProfiles = new DataCenterClusterCpuProfiles(proxy, this);
+                }
+            }
+        }
+        return dataCenterClusterCpuProfiles;
     }
     /**
      * Gets the value of the DataCenterClusterNetworks property.

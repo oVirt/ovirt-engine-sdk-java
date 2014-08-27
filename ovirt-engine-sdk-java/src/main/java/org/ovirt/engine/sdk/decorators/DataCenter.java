@@ -47,7 +47,9 @@ public class DataCenter extends
 
     private volatile DataCenterClusters dataCenterClusters;
     private volatile DataCenterPermissions dataCenterPermissions;
+    private volatile DataCenterQoSs dataCenterQoSs;
     private volatile DataCenterNetworks dataCenterNetworks;
+    private volatile DataCenterIscsiBonds dataCenterIscsiBonds;
     private volatile DataCenterStorageDomains dataCenterStorageDomains;
     private volatile DataCenterQuotas dataCenterQuotas;
 
@@ -99,6 +101,22 @@ public class DataCenter extends
         return dataCenterPermissions;
     }
     /**
+     * Gets the value of the DataCenterQoSs property.
+     *
+     * @return
+     *     {@link DataCenterQoSs }
+     */
+    public DataCenterQoSs getQoSs() {
+        if (this.dataCenterQoSs == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterQoSs == null) {
+                    this.dataCenterQoSs = new DataCenterQoSs(proxy, this);
+                }
+            }
+        }
+        return dataCenterQoSs;
+    }
+    /**
      * Gets the value of the DataCenterNetworks property.
      *
      * @return
@@ -113,6 +131,22 @@ public class DataCenter extends
             }
         }
         return dataCenterNetworks;
+    }
+    /**
+     * Gets the value of the DataCenterIscsiBonds property.
+     *
+     * @return
+     *     {@link DataCenterIscsiBonds }
+     */
+    public DataCenterIscsiBonds getIscsiBonds() {
+        if (this.dataCenterIscsiBonds == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterIscsiBonds == null) {
+                    this.dataCenterIscsiBonds = new DataCenterIscsiBonds(proxy, this);
+                }
+            }
+        }
+        return dataCenterIscsiBonds;
     }
     /**
      * Gets the value of the DataCenterStorageDomains property.

@@ -47,30 +47,32 @@ public class Api implements AutoCloseable {
     private volatile API entryPoint = null;
     private final Object LOCK = new Object();
 
-    private volatile Tags tags;
-    private volatile Networks networks;
-    private volatile Users users;
     private volatile Jobs jobs;
-    private volatile Templates templates;
-    private volatile SchedulingPolicyUnits schedulingPolicyUnits;
+    private volatile Users users;
     private volatile Events events;
     private volatile Domains domains;
-    private volatile SchedulingPolicies schedulingPolicies;
-    private volatile Disks disks;
     private volatile VnicProfiles vnicProfiles;
     private volatile Bookmarks bookmarks;
-    private volatile Clusters clusters;
     private volatile DataCenters dataCenters;
-    private volatile Roles roles;
-    private volatile Permissions permissions;
     private volatile Hosts hosts;
+    private volatile Permissions permissions;
     private volatile VMs vMs;
-    private volatile StorageConnections storageConnections;
-    private volatile VmPools vmPools;
     private volatile StorageDomains storageDomains;
-    private volatile Capabilities capabilities;
     private volatile Groups groups;
     private volatile InstanceTypes instanceTypes;
+    private volatile Networks networks;
+    private volatile Tags tags;
+    private volatile Templates templates;
+    private volatile SchedulingPolicyUnits schedulingPolicyUnits;
+    private volatile SchedulingPolicies schedulingPolicies;
+    private volatile Disks disks;
+    private volatile Clusters clusters;
+    private volatile Roles roles;
+    private volatile StorageConnections storageConnections;
+    private volatile DiskProfiles diskProfiles;
+    private volatile Capabilities capabilities;
+    private volatile VmPools vmPools;
+    private volatile CpuProfiles cpuProfiles;
 
 
     /**
@@ -622,57 +624,6 @@ public class Api implements AutoCloseable {
     }
 
     /**
-     * Gets the value of the Tags property.
-     *
-     * @return
-     *     {@link Tags }
-     *
-     */
-    public Tags getTags() {
-        if (this.tags == null) {
-            synchronized (this.LOCK) {
-                if (this.tags == null) {
-                    this.tags = new Tags(proxy);
-                }
-            }
-        }
-        return tags;
-    }
-    /**
-     * Gets the value of the Networks property.
-     *
-     * @return
-     *     {@link Networks }
-     *
-     */
-    public Networks getNetworks() {
-        if (this.networks == null) {
-            synchronized (this.LOCK) {
-                if (this.networks == null) {
-                    this.networks = new Networks(proxy);
-                }
-            }
-        }
-        return networks;
-    }
-    /**
-     * Gets the value of the Users property.
-     *
-     * @return
-     *     {@link Users }
-     *
-     */
-    public Users getUsers() {
-        if (this.users == null) {
-            synchronized (this.LOCK) {
-                if (this.users == null) {
-                    this.users = new Users(proxy);
-                }
-            }
-        }
-        return users;
-    }
-    /**
      * Gets the value of the Jobs property.
      *
      * @return
@@ -690,38 +641,21 @@ public class Api implements AutoCloseable {
         return jobs;
     }
     /**
-     * Gets the value of the Templates property.
+     * Gets the value of the Users property.
      *
      * @return
-     *     {@link Templates }
+     *     {@link Users }
      *
      */
-    public Templates getTemplates() {
-        if (this.templates == null) {
+    public Users getUsers() {
+        if (this.users == null) {
             synchronized (this.LOCK) {
-                if (this.templates == null) {
-                    this.templates = new Templates(proxy);
+                if (this.users == null) {
+                    this.users = new Users(proxy);
                 }
             }
         }
-        return templates;
-    }
-    /**
-     * Gets the value of the SchedulingPolicyUnits property.
-     *
-     * @return
-     *     {@link SchedulingPolicyUnits }
-     *
-     */
-    public SchedulingPolicyUnits getSchedulingPolicyUnits() {
-        if (this.schedulingPolicyUnits == null) {
-            synchronized (this.LOCK) {
-                if (this.schedulingPolicyUnits == null) {
-                    this.schedulingPolicyUnits = new SchedulingPolicyUnits(proxy);
-                }
-            }
-        }
-        return schedulingPolicyUnits;
+        return users;
     }
     /**
      * Gets the value of the Events property.
@@ -758,40 +692,6 @@ public class Api implements AutoCloseable {
         return domains;
     }
     /**
-     * Gets the value of the SchedulingPolicies property.
-     *
-     * @return
-     *     {@link SchedulingPolicies }
-     *
-     */
-    public SchedulingPolicies getSchedulingPolicies() {
-        if (this.schedulingPolicies == null) {
-            synchronized (this.LOCK) {
-                if (this.schedulingPolicies == null) {
-                    this.schedulingPolicies = new SchedulingPolicies(proxy);
-                }
-            }
-        }
-        return schedulingPolicies;
-    }
-    /**
-     * Gets the value of the Disks property.
-     *
-     * @return
-     *     {@link Disks }
-     *
-     */
-    public Disks getDisks() {
-        if (this.disks == null) {
-            synchronized (this.LOCK) {
-                if (this.disks == null) {
-                    this.disks = new Disks(proxy);
-                }
-            }
-        }
-        return disks;
-    }
-    /**
      * Gets the value of the VnicProfiles property.
      *
      * @return
@@ -826,23 +726,6 @@ public class Api implements AutoCloseable {
         return bookmarks;
     }
     /**
-     * Gets the value of the Clusters property.
-     *
-     * @return
-     *     {@link Clusters }
-     *
-     */
-    public Clusters getClusters() {
-        if (this.clusters == null) {
-            synchronized (this.LOCK) {
-                if (this.clusters == null) {
-                    this.clusters = new Clusters(proxy);
-                }
-            }
-        }
-        return clusters;
-    }
-    /**
      * Gets the value of the DataCenters property.
      *
      * @return
@@ -858,40 +741,6 @@ public class Api implements AutoCloseable {
             }
         }
         return dataCenters;
-    }
-    /**
-     * Gets the value of the Roles property.
-     *
-     * @return
-     *     {@link Roles }
-     *
-     */
-    public Roles getRoles() {
-        if (this.roles == null) {
-            synchronized (this.LOCK) {
-                if (this.roles == null) {
-                    this.roles = new Roles(proxy);
-                }
-            }
-        }
-        return roles;
-    }
-    /**
-     * Gets the value of the Permissions property.
-     *
-     * @return
-     *     {@link Permissions }
-     *
-     */
-    public Permissions getPermissions() {
-        if (this.permissions == null) {
-            synchronized (this.LOCK) {
-                if (this.permissions == null) {
-                    this.permissions = new Permissions(proxy);
-                }
-            }
-        }
-        return permissions;
     }
     /**
      * Gets the value of the Hosts property.
@@ -911,6 +760,23 @@ public class Api implements AutoCloseable {
         return hosts;
     }
     /**
+     * Gets the value of the Permissions property.
+     *
+     * @return
+     *     {@link Permissions }
+     *
+     */
+    public Permissions getPermissions() {
+        if (this.permissions == null) {
+            synchronized (this.LOCK) {
+                if (this.permissions == null) {
+                    this.permissions = new Permissions(proxy);
+                }
+            }
+        }
+        return permissions;
+    }
+    /**
      * Gets the value of the VMs property.
      *
      * @return
@@ -928,40 +794,6 @@ public class Api implements AutoCloseable {
         return vMs;
     }
     /**
-     * Gets the value of the StorageConnections property.
-     *
-     * @return
-     *     {@link StorageConnections }
-     *
-     */
-    public StorageConnections getStorageConnections() {
-        if (this.storageConnections == null) {
-            synchronized (this.LOCK) {
-                if (this.storageConnections == null) {
-                    this.storageConnections = new StorageConnections(proxy);
-                }
-            }
-        }
-        return storageConnections;
-    }
-    /**
-     * Gets the value of the VmPools property.
-     *
-     * @return
-     *     {@link VmPools }
-     *
-     */
-    public VmPools getVmPools() {
-        if (this.vmPools == null) {
-            synchronized (this.LOCK) {
-                if (this.vmPools == null) {
-                    this.vmPools = new VmPools(proxy);
-                }
-            }
-        }
-        return vmPools;
-    }
-    /**
      * Gets the value of the StorageDomains property.
      *
      * @return
@@ -977,23 +809,6 @@ public class Api implements AutoCloseable {
             }
         }
         return storageDomains;
-    }
-    /**
-     * Gets the value of the Capabilities property.
-     *
-     * @return
-     *     {@link Capabilities }
-     *
-     */
-    public Capabilities getCapabilities() {
-        if (this.capabilities == null) {
-            synchronized (this.LOCK) {
-                if (this.capabilities == null) {
-                    this.capabilities = new Capabilities(proxy);
-                }
-            }
-        }
-        return capabilities;
     }
     /**
      * Gets the value of the Groups property.
@@ -1028,6 +843,227 @@ public class Api implements AutoCloseable {
             }
         }
         return instanceTypes;
+    }
+    /**
+     * Gets the value of the Networks property.
+     *
+     * @return
+     *     {@link Networks }
+     *
+     */
+    public Networks getNetworks() {
+        if (this.networks == null) {
+            synchronized (this.LOCK) {
+                if (this.networks == null) {
+                    this.networks = new Networks(proxy);
+                }
+            }
+        }
+        return networks;
+    }
+    /**
+     * Gets the value of the Tags property.
+     *
+     * @return
+     *     {@link Tags }
+     *
+     */
+    public Tags getTags() {
+        if (this.tags == null) {
+            synchronized (this.LOCK) {
+                if (this.tags == null) {
+                    this.tags = new Tags(proxy);
+                }
+            }
+        }
+        return tags;
+    }
+    /**
+     * Gets the value of the Templates property.
+     *
+     * @return
+     *     {@link Templates }
+     *
+     */
+    public Templates getTemplates() {
+        if (this.templates == null) {
+            synchronized (this.LOCK) {
+                if (this.templates == null) {
+                    this.templates = new Templates(proxy);
+                }
+            }
+        }
+        return templates;
+    }
+    /**
+     * Gets the value of the SchedulingPolicyUnits property.
+     *
+     * @return
+     *     {@link SchedulingPolicyUnits }
+     *
+     */
+    public SchedulingPolicyUnits getSchedulingPolicyUnits() {
+        if (this.schedulingPolicyUnits == null) {
+            synchronized (this.LOCK) {
+                if (this.schedulingPolicyUnits == null) {
+                    this.schedulingPolicyUnits = new SchedulingPolicyUnits(proxy);
+                }
+            }
+        }
+        return schedulingPolicyUnits;
+    }
+    /**
+     * Gets the value of the SchedulingPolicies property.
+     *
+     * @return
+     *     {@link SchedulingPolicies }
+     *
+     */
+    public SchedulingPolicies getSchedulingPolicies() {
+        if (this.schedulingPolicies == null) {
+            synchronized (this.LOCK) {
+                if (this.schedulingPolicies == null) {
+                    this.schedulingPolicies = new SchedulingPolicies(proxy);
+                }
+            }
+        }
+        return schedulingPolicies;
+    }
+    /**
+     * Gets the value of the Disks property.
+     *
+     * @return
+     *     {@link Disks }
+     *
+     */
+    public Disks getDisks() {
+        if (this.disks == null) {
+            synchronized (this.LOCK) {
+                if (this.disks == null) {
+                    this.disks = new Disks(proxy);
+                }
+            }
+        }
+        return disks;
+    }
+    /**
+     * Gets the value of the Clusters property.
+     *
+     * @return
+     *     {@link Clusters }
+     *
+     */
+    public Clusters getClusters() {
+        if (this.clusters == null) {
+            synchronized (this.LOCK) {
+                if (this.clusters == null) {
+                    this.clusters = new Clusters(proxy);
+                }
+            }
+        }
+        return clusters;
+    }
+    /**
+     * Gets the value of the Roles property.
+     *
+     * @return
+     *     {@link Roles }
+     *
+     */
+    public Roles getRoles() {
+        if (this.roles == null) {
+            synchronized (this.LOCK) {
+                if (this.roles == null) {
+                    this.roles = new Roles(proxy);
+                }
+            }
+        }
+        return roles;
+    }
+    /**
+     * Gets the value of the StorageConnections property.
+     *
+     * @return
+     *     {@link StorageConnections }
+     *
+     */
+    public StorageConnections getStorageConnections() {
+        if (this.storageConnections == null) {
+            synchronized (this.LOCK) {
+                if (this.storageConnections == null) {
+                    this.storageConnections = new StorageConnections(proxy);
+                }
+            }
+        }
+        return storageConnections;
+    }
+    /**
+     * Gets the value of the DiskProfiles property.
+     *
+     * @return
+     *     {@link DiskProfiles }
+     *
+     */
+    public DiskProfiles getDiskProfiles() {
+        if (this.diskProfiles == null) {
+            synchronized (this.LOCK) {
+                if (this.diskProfiles == null) {
+                    this.diskProfiles = new DiskProfiles(proxy);
+                }
+            }
+        }
+        return diskProfiles;
+    }
+    /**
+     * Gets the value of the Capabilities property.
+     *
+     * @return
+     *     {@link Capabilities }
+     *
+     */
+    public Capabilities getCapabilities() {
+        if (this.capabilities == null) {
+            synchronized (this.LOCK) {
+                if (this.capabilities == null) {
+                    this.capabilities = new Capabilities(proxy);
+                }
+            }
+        }
+        return capabilities;
+    }
+    /**
+     * Gets the value of the VmPools property.
+     *
+     * @return
+     *     {@link VmPools }
+     *
+     */
+    public VmPools getVmPools() {
+        if (this.vmPools == null) {
+            synchronized (this.LOCK) {
+                if (this.vmPools == null) {
+                    this.vmPools = new VmPools(proxy);
+                }
+            }
+        }
+        return vmPools;
+    }
+    /**
+     * Gets the value of the CpuProfiles property.
+     *
+     * @return
+     *     {@link CpuProfiles }
+     *
+     */
+    public CpuProfiles getCpuProfiles() {
+        if (this.cpuProfiles == null) {
+            synchronized (this.LOCK) {
+                if (this.cpuProfiles == null) {
+                    this.cpuProfiles = new CpuProfiles(proxy);
+                }
+            }
+        }
+        return cpuProfiles;
     }
 
 

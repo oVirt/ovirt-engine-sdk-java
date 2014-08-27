@@ -99,6 +99,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}selinux_modes" minOccurs="0"/>
  *         &lt;element ref="{}rng_sources" minOccurs="0"/>
  *         &lt;element ref="{}scheduling_policy_unit_types" minOccurs="0"/>
+ *         &lt;element ref="{}qos_types" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -170,7 +171,8 @@ import javax.xml.bind.annotation.XmlType;
     "serialNumberPolicies",
     "selinuxModes",
     "rngSources",
-    "schedulingPolicyUnitTypes"
+    "schedulingPolicyUnitTypes",
+    "qosTypes"
 })
 public class VersionCaps
     extends Version
@@ -294,6 +296,8 @@ public class VersionCaps
     protected RngSources rngSources;
     @XmlElement(name = "scheduling_policy_unit_types")
     protected SchedulingPolicyUnitTypes schedulingPolicyUnitTypes;
+    @XmlElement(name = "qos_types")
+    protected QosTypes qosTypes;
 
     /**
      * Gets the value of the current property.
@@ -2029,6 +2033,34 @@ public class VersionCaps
 
     public boolean isSetSchedulingPolicyUnitTypes() {
         return (this.schedulingPolicyUnitTypes!= null);
+    }
+
+    /**
+     * Gets the value of the qosTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link QosTypes }
+     *
+     */
+    public QosTypes getQosTypes() {
+        return qosTypes;
+    }
+
+    /**
+     * Sets the value of the qosTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link QosTypes }
+     *
+     */
+    public void setQosTypes(QosTypes value) {
+        this.qosTypes = value;
+    }
+
+    public boolean isSetQosTypes() {
+        return (this.qosTypes!= null);
     }
 
 }

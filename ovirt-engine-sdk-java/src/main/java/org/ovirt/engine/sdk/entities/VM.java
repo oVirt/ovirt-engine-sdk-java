@@ -83,6 +83,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="migration_downtime" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}virtio_scsi" minOccurs="0"/>
  *         &lt;element ref="{}permissions" minOccurs="0"/>
+ *         &lt;element ref="{}cpu_profile" minOccurs="0"/>
  *         &lt;element ref="{}vmpool" minOccurs="0"/>
  *         &lt;element ref="{}cdroms" minOccurs="0"/>
  *         &lt;element ref="{}floppies" minOccurs="0"/>
@@ -145,6 +146,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "migrationDowntime",
     "virtioScsi",
     "permissions",
+    "cpuProfile",
     "vmPool",
     "cdroms",
     "floppies",
@@ -225,6 +227,8 @@ public class VM
     @XmlElement(name = "virtio_scsi")
     protected VirtIOSCSI virtioScsi;
     protected Permissions permissions;
+    @XmlElement(name = "cpu_profile")
+    protected CpuProfile cpuProfile;
     @XmlElement(name = "vmpool")
     protected VmPool vmPool;
     protected CdRoms cdroms;
@@ -1443,6 +1447,34 @@ public class VM
 
     public boolean isSetPermissions() {
         return (this.permissions!= null);
+    }
+
+    /**
+     * Gets the value of the cpuProfile property.
+     *
+     * @return
+     *     possible object is
+     *     {@link CpuProfile }
+     *
+     */
+    public CpuProfile getCpuProfile() {
+        return cpuProfile;
+    }
+
+    /**
+     * Sets the value of the cpuProfile property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link CpuProfile }
+     *
+     */
+    public void setCpuProfile(CpuProfile value) {
+        this.cpuProfile = value;
+    }
+
+    public boolean isSetCpuProfile() {
+        return (this.cpuProfile!= null);
     }
 
     /**

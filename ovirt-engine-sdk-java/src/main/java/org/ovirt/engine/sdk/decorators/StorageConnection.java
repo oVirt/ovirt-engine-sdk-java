@@ -325,9 +325,9 @@ public class StorageConnection extends
     /**
      * Deletes object.
      *
-     * @param host {@link org.ovirt.engine.sdk.entities.Host}
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    [host.id|name]
+     *    [action.host.id|name]
      *    </pre>
      *
      * @param async
@@ -345,7 +345,7 @@ public class StorageConnection extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(org.ovirt.engine.sdk.entities.Host host, Boolean async) throws ClientProtocolException,
+    public Response delete(org.ovirt.engine.sdk.entities.Action action, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -358,15 +358,15 @@ public class StorageConnection extends
         }
         url = urlBuilder.build();
 
-        return getProxy().delete(url, host,
-                org.ovirt.engine.sdk.entities.Host.class, Response.class, headers);
+        return getProxy().delete(url, action,
+                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
     }
     /**
      * Deletes object.
      *
-     * @param host {@link org.ovirt.engine.sdk.entities.Host}
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    [host.id|name]
+     *    [action.host.id|name]
      *    </pre>
      *
      * @param correlationId
@@ -389,7 +389,7 @@ public class StorageConnection extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(org.ovirt.engine.sdk.entities.Host host, Boolean async, String correlationId) throws ClientProtocolException,
+    public Response delete(org.ovirt.engine.sdk.entities.Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -405,8 +405,8 @@ public class StorageConnection extends
         }
         url = urlBuilder.build();
 
-        return getProxy().delete(url, host,
-                org.ovirt.engine.sdk.entities.Host.class, Response.class, headers);
+        return getProxy().delete(url, action,
+                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
     }
 
 }
