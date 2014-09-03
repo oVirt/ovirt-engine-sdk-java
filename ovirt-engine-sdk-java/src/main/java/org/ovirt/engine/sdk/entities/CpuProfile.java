@@ -23,7 +23,6 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -37,8 +36,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element ref="{}qos"/>
- *         &lt;element ref="{}cluster"/>
+ *         &lt;element ref="{}qos" minOccurs="0"/>
+ *         &lt;element ref="{}cluster" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -56,9 +55,7 @@ public class CpuProfile
     extends BaseResource
 {
 
-    @XmlElement(required = true)
     protected QoS qos;
-    @XmlElement(required = true)
     protected Cluster cluster;
 
     /**

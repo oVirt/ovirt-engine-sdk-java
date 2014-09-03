@@ -40,7 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element ref="{}status" minOccurs="0"/>
- *         &lt;element name="owner" type="{}JobOwner" minOccurs="0"/>
+ *         &lt;element name="owner" type="{}User" minOccurs="0"/>
  *         &lt;element name="start_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="end_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="last_updated" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -69,7 +69,7 @@ public class Job
 {
 
     protected Status status;
-    protected JobOwner owner;
+    protected User owner;
     @XmlElement(name = "start_time")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar startTime;
@@ -116,10 +116,10 @@ public class Job
      *
      * @return
      *     possible object is
-     *     {@link JobOwner }
+     *     {@link User }
      *
      */
-    public JobOwner getOwner() {
+    public User getOwner() {
         return owner;
     }
 
@@ -128,10 +128,10 @@ public class Job
      *
      * @param value
      *     allowed object is
-     *     {@link JobOwner }
+     *     {@link User }
      *
      */
-    public void setOwner(JobOwner value) {
+    public void setOwner(User value) {
         this.owner = value;
     }
 

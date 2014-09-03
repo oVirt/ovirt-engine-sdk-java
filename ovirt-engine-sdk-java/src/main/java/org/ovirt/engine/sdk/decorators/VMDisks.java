@@ -197,6 +197,7 @@ public class VMDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.lun_storage.host]
      *
      *    Overload 3:
      *
@@ -285,6 +286,7 @@ public class VMDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.lun_storage.host]
      *
      *    Overload 3:
      *
@@ -381,6 +383,7 @@ public class VMDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.lun_storage.host]
      *
      *    Overload 3:
      *

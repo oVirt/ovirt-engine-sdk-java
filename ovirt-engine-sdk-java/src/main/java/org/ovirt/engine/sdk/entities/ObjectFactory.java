@@ -95,6 +95,7 @@ public class ObjectFactory {
     private final static QName _Payloads_QNAME = new QName("", "payloads");
     private final static QName _Bricks_QNAME = new QName("", "bricks");
     private final static QName _Snapshots_QNAME = new QName("", "snapshots");
+    private final static QName _SoundcardEnabled_QNAME = new QName("", "soundcard_enabled");
     private final static QName _Tags_QNAME = new QName("", "tags");
     private final static QName _Cdroms_QNAME = new QName("", "cdroms");
     private final static QName _NetworkConfiguration_QNAME = new QName("", "network_configuration");
@@ -2567,14 +2568,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JobOwner }
-     *
-     */
-    public JobOwner createJobOwner() {
-        return new JobOwner();
-    }
-
-    /**
      * Create an instance of {@link MemoryPolicy }
      *
      */
@@ -3183,6 +3176,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "snapshots")
     public JAXBElement<Snapshots> createSnapshots(Snapshots value) {
         return new JAXBElement<Snapshots>(_Snapshots_QNAME, Snapshots.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "soundcard_enabled")
+    public JAXBElement<Boolean> createSoundcardEnabled(Boolean value) {
+        return new JAXBElement<Boolean>(_SoundcardEnabled_QNAME, Boolean.class, null, value);
     }
 
     /**

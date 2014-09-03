@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element ref="{}qos"/>
- *         &lt;element ref="{}storage_domain"/>
+ *         &lt;element ref="{}qos" minOccurs="0"/>
+ *         &lt;element ref="{}storage_domain" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -56,9 +56,8 @@ public class DiskProfile
     extends BaseResource
 {
 
-    @XmlElement(required = true)
     protected QoS qos;
-    @XmlElement(name = "storage_domain", required = true)
+    @XmlElement(name = "storage_domain")
     protected StorageDomain storageDomain;
 
     /**

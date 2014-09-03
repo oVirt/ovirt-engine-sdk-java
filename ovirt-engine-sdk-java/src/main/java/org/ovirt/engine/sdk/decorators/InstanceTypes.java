@@ -171,6 +171,7 @@ public class InstanceTypes extends
      *    [instance_type.usb.type]
      *    [instance_type.migration_downtime]
      *    [instance_type.virtio_scsi.enabled]
+     *    [instance_type.soundcard_enabled]
      *    </pre>
      *
      * @return
@@ -222,6 +223,7 @@ public class InstanceTypes extends
      *    [instance_type.usb.type]
      *    [instance_type.migration_downtime]
      *    [instance_type.virtio_scsi.enabled]
+     *    [instance_type.soundcard_enabled]
      *    </pre>
      *
      * @param expect
@@ -281,6 +283,7 @@ public class InstanceTypes extends
      *    [instance_type.usb.type]
      *    [instance_type.migration_downtime]
      *    [instance_type.virtio_scsi.enabled]
+     *    [instance_type.soundcard_enabled]
      *    </pre>
      *
      * @param expect

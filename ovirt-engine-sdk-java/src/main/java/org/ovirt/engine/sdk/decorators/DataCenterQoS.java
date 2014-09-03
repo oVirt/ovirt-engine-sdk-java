@@ -77,6 +77,12 @@ public class DataCenterQoS extends
      *    [qos.max_read_iops]
      *    [qos.max_write_iops]
      *    [qos.cpu_limit]
+     *    [qos.inbound_average]
+     *    [qos.inbound_peak]
+     *    [qos.inbound_burst]
+     *    [qos.outbound_average]
+     *    [qos.outbound_peak]
+     *    [qos.outbound_burst]
      *    </pre>
      *
      * @return
@@ -120,6 +126,12 @@ public class DataCenterQoS extends
      *    [qos.max_read_iops]
      *    [qos.max_write_iops]
      *    [qos.cpu_limit]
+     *    [qos.inbound_average]
+     *    [qos.inbound_peak]
+     *    [qos.inbound_burst]
+     *    [qos.outbound_average]
+     *    [qos.outbound_peak]
+     *    [qos.outbound_burst]
      *    </pre>
      *
      * @param correlationId

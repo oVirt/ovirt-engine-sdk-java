@@ -121,9 +121,9 @@ import javax.xml.bind.annotation.XmlType;
     GlusterServerHook.class,
     Cluster.class,
     Group.class,
+    User.class,
     Step.class,
     Storage.class,
-    User.class,
     BaseDevice.class
 })
 public class BaseResource

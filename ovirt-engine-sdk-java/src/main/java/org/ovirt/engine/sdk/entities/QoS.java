@@ -46,6 +46,12 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="max_read_iops" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="max_write_iops" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="cpu_limit" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="inbound_average" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="inbound_peak" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="inbound_burst" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="outbound_average" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="outbound_peak" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="outbound_burst" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/extension>
@@ -64,7 +70,13 @@ import javax.xml.bind.annotation.XmlType;
     "maxIops",
     "maxReadIops",
     "maxWriteIops",
-    "cpuLimit"
+    "cpuLimit",
+    "inboundAverage",
+    "inboundPeak",
+    "inboundBurst",
+    "outboundAverage",
+    "outboundPeak",
+    "outboundBurst"
 })
 public class QoS
     extends BaseResource
@@ -86,6 +98,18 @@ public class QoS
     protected Integer maxWriteIops;
     @XmlElement(name = "cpu_limit")
     protected Integer cpuLimit;
+    @XmlElement(name = "inbound_average")
+    protected Integer inboundAverage;
+    @XmlElement(name = "inbound_peak")
+    protected Integer inboundPeak;
+    @XmlElement(name = "inbound_burst")
+    protected Integer inboundBurst;
+    @XmlElement(name = "outbound_average")
+    protected Integer outboundAverage;
+    @XmlElement(name = "outbound_peak")
+    protected Integer outboundPeak;
+    @XmlElement(name = "outbound_burst")
+    protected Integer outboundBurst;
     @XmlAttribute(name = "type")
     protected String type;
 
@@ -311,6 +335,174 @@ public class QoS
 
     public boolean isSetCpuLimit() {
         return (this.cpuLimit!= null);
+    }
+
+    /**
+     * Gets the value of the inboundAverage property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getInboundAverage() {
+        return inboundAverage;
+    }
+
+    /**
+     * Sets the value of the inboundAverage property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setInboundAverage(Integer value) {
+        this.inboundAverage = value;
+    }
+
+    public boolean isSetInboundAverage() {
+        return (this.inboundAverage!= null);
+    }
+
+    /**
+     * Gets the value of the inboundPeak property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getInboundPeak() {
+        return inboundPeak;
+    }
+
+    /**
+     * Sets the value of the inboundPeak property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setInboundPeak(Integer value) {
+        this.inboundPeak = value;
+    }
+
+    public boolean isSetInboundPeak() {
+        return (this.inboundPeak!= null);
+    }
+
+    /**
+     * Gets the value of the inboundBurst property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getInboundBurst() {
+        return inboundBurst;
+    }
+
+    /**
+     * Sets the value of the inboundBurst property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setInboundBurst(Integer value) {
+        this.inboundBurst = value;
+    }
+
+    public boolean isSetInboundBurst() {
+        return (this.inboundBurst!= null);
+    }
+
+    /**
+     * Gets the value of the outboundAverage property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getOutboundAverage() {
+        return outboundAverage;
+    }
+
+    /**
+     * Sets the value of the outboundAverage property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setOutboundAverage(Integer value) {
+        this.outboundAverage = value;
+    }
+
+    public boolean isSetOutboundAverage() {
+        return (this.outboundAverage!= null);
+    }
+
+    /**
+     * Gets the value of the outboundPeak property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getOutboundPeak() {
+        return outboundPeak;
+    }
+
+    /**
+     * Sets the value of the outboundPeak property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setOutboundPeak(Integer value) {
+        this.outboundPeak = value;
+    }
+
+    public boolean isSetOutboundPeak() {
+        return (this.outboundPeak!= null);
+    }
+
+    /**
+     * Gets the value of the outboundBurst property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getOutboundBurst() {
+        return outboundBurst;
+    }
+
+    /**
+     * Sets the value of the outboundBurst property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setOutboundBurst(Integer value) {
+        this.outboundBurst = value;
+    }
+
+    public boolean isSetOutboundBurst() {
+        return (this.outboundBurst!= null);
     }
 
     /**

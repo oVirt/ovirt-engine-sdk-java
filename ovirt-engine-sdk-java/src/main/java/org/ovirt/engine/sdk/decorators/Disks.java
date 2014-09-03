@@ -205,6 +205,7 @@ public class Disks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.lun_storage.host]
      *    </pre>
      *
      * @return
@@ -276,6 +277,7 @@ public class Disks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.lun_storage.host]
      *    </pre>
      *
      * @param expect
@@ -355,6 +357,7 @@ public class Disks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.lun_storage.host]
      *    </pre>
      *
      * @param expect

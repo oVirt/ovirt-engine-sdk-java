@@ -79,6 +79,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="guest_info" type="{}GuestInfo" minOccurs="0"/>
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
+ *         &lt;element ref="{}soundcard_enabled" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="migration_downtime" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}virtio_scsi" minOccurs="0"/>
@@ -142,6 +143,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "guestInfo",
     "quota",
     "usb",
+    "soundcardEnabled",
     "tunnelMigration",
     "migrationDowntime",
     "virtioScsi",
@@ -220,6 +222,8 @@ public class VM
     protected GuestInfo guestInfo;
     protected Quota quota;
     protected Usb usb;
+    @XmlElement(name = "soundcard_enabled")
+    protected Boolean soundcardEnabled;
     @XmlElement(name = "tunnel_migration")
     protected Boolean tunnelMigration;
     @XmlElement(name = "migration_downtime")
@@ -1335,6 +1339,34 @@ public class VM
 
     public boolean isSetUsb() {
         return (this.usb!= null);
+    }
+
+    /**
+     * Gets the value of the soundcardEnabled property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getSoundcardEnabled() {
+        return soundcardEnabled;
+    }
+
+    /**
+     * Sets the value of the soundcardEnabled property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setSoundcardEnabled(Boolean value) {
+        this.soundcardEnabled = value;
+    }
+
+    public boolean isSetSoundcardEnabled() {
+        return (this.soundcardEnabled!= null);
     }
 
     /**
