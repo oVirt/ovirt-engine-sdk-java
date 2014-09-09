@@ -142,6 +142,7 @@ public class ObjectFactory {
     private final static QName _LogicalUnit_QNAME = new QName("", "logical_unit");
     private final static QName _Statistics_QNAME = new QName("", "statistics");
     private final static QName _Response_QNAME = new QName("", "response");
+    private final static QName _IscsiBonds_QNAME = new QName("", "iscsi_bonds");
     private final static QName _PmProxy_QNAME = new QName("", "pm_proxy");
     private final static QName _StorageConnection_QNAME = new QName("", "storage_connection");
     private final static QName _StorageManager_QNAME = new QName("", "storage_manager");
@@ -152,6 +153,7 @@ public class ObjectFactory {
     private final static QName _Stages_QNAME = new QName("", "stages");
     private final static QName _VmTypes_QNAME = new QName("", "vm_types");
     private final static QName _Vlan_QNAME = new QName("", "vlan");
+    private final static QName _IscsiBond_QNAME = new QName("", "iscsi_bond");
     private final static QName _Vmpools_QNAME = new QName("", "vmpools");
     private final static QName _Jobs_QNAME = new QName("", "jobs");
     private final static QName _Tag_QNAME = new QName("", "tag");
@@ -233,8 +235,8 @@ public class ObjectFactory {
     private final static QName _Hooks_QNAME = new QName("", "hooks");
     private final static QName _Agents_QNAME = new QName("", "agents");
     private final static QName _NfsVersions_QNAME = new QName("", "nfs_versions");
-    private final static QName _VnicProfiles_QNAME = new QName("", "vnic_profiles");
     private final static QName _Vmpool_QNAME = new QName("", "vmpool");
+    private final static QName _VnicProfiles_QNAME = new QName("", "vnic_profiles");
     private final static QName _Network_QNAME = new QName("", "network");
     private final static QName _BrickMemoryinfo_QNAME = new QName("", "brick_memoryinfo");
     private final static QName _Quota_QNAME = new QName("", "quota");
@@ -1054,6 +1056,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link IscsiBonds }
+     *
+     */
+    public IscsiBonds createIscsiBonds() {
+        return new IscsiBonds();
+    }
+
+    /**
      * Create an instance of {@link PmProxy }
      *
      */
@@ -1131,6 +1141,14 @@ public class ObjectFactory {
      */
     public VLAN createVLAN() {
         return new VLAN();
+    }
+
+    /**
+     * Create an instance of {@link IscsiBond }
+     *
+     */
+    public IscsiBond createIscsiBond() {
+        return new IscsiBond();
     }
 
     /**
@@ -3088,6 +3106,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IscsiBonds }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "iscsi_bonds")
+    public JAXBElement<IscsiBonds> createIscsiBonds(IscsiBonds value) {
+        return new JAXBElement<IscsiBonds>(_IscsiBonds_QNAME, IscsiBonds.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PmProxy }{@code >}}
      *
      */
@@ -3175,6 +3202,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "vlan")
     public JAXBElement<VLAN> createVlan(VLAN value) {
         return new JAXBElement<VLAN>(_Vlan_QNAME, VLAN.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IscsiBond }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "iscsi_bond")
+    public JAXBElement<IscsiBond> createIscsiBond(IscsiBond value) {
+        return new JAXBElement<IscsiBond>(_IscsiBond_QNAME, IscsiBond.class, null, value);
     }
 
     /**
@@ -3907,21 +3943,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VnicProfiles }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "vnic_profiles")
-    public JAXBElement<VnicProfiles> createVnicProfiles(VnicProfiles value) {
-        return new JAXBElement<VnicProfiles>(_VnicProfiles_QNAME, VnicProfiles.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link VmPool }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "vmpool")
     public JAXBElement<VmPool> createVmpool(VmPool value) {
         return new JAXBElement<VmPool>(_Vmpool_QNAME, VmPool.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VnicProfiles }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vnic_profiles")
+    public JAXBElement<VnicProfiles> createVnicProfiles(VnicProfiles value) {
+        return new JAXBElement<VnicProfiles>(_VnicProfiles_QNAME, VnicProfiles.class, null, value);
     }
 
     /**

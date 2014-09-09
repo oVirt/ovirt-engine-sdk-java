@@ -72,6 +72,7 @@ import javax.xml.bind.annotation.XmlType;
     Labels.class,
     GlusterClients.class,
     Statistics.class,
+    IscsiBonds.class,
     VmPools.class,
     Jobs.class,
     Domains.class,

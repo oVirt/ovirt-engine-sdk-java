@@ -2423,6 +2423,327 @@ or less indicates that the session should never timeout</description>
                 <type>Permission</type>
             </response>
         </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds" rel="add">
+            <description>add a new iSCSI Bond to the specified datacenter</description>
+            <request>
+                <http_method>POST</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>IscsiBond</type>
+                    <parameters_set>
+                        <description>add a new iSCSI Bond to the datacenter</description>
+                        <parameter required="true" type="xs:string">
+                            <name>iscsibond.name</name>
+                        </parameter>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>IscsiBond</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds" rel="get">
+            <description>get all iSCSI Bonds for the specified datacenter</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>IscsiBonds</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}" rel="delete">
+            <description>remove the specified iSCSI Bond from the datacenter</description>
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>IscsiBond</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}" rel="update">
+            <description>update the specified iSCSI Bond</description>
+            <request>
+                <http_method>PUT</http_method>
+                <headers>
+                    <header required="true">
+                        <name>Content-Type</name>
+                        <value>application/xml|json</value>
+                    </header>
+                    <header required="false">
+                        <name>Expect</name>
+                        <value>201-created</value>
+                    </header>
+                </headers>
+                <body>
+                    <type>IscsiBond</type>
+                    <parameters_set>
+                        <description>update the specified iSCSI Bond</description>
+                    </parameters_set>
+                </body>
+            </request>
+            <response>
+                <type>IscsiBond</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks" rel="add">
+            <description>specify list of networks contained in the iSCSI Bond</description>
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Network</type>
+                </body>
+            </request>
+            <response>
+                <type>Network</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks" rel="get">
+            <description>gets the specified iSCSI Bond with the networks</description>
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Networks</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Network</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}" rel="update">
+            <request>
+                <http_method>PUT</http_method>
+                <body>
+                    <type>Network</type>
+                </body>
+            </request>
+            <response>
+                <type>Network</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/labels" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Label</type>
+                </body>
+            </request>
+            <response>
+                <type>Label</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/labels" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Labels</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/labels/{label:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/labels/{label:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Label</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/permissions" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Permission</type>
+                </body>
+            </request>
+            <response>
+                <type>Permission</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/permissions" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Permissions</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/permissions/{permission:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/permissions/{permission:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Permission</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/vnicprofiles" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>VnicProfile</type>
+                </body>
+            </request>
+            <response>
+                <type>VnicProfile</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/vnicprofiles" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>VnicProfiles</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/vnicprofiles/{vnicprofile:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/vnicprofiles/{vnicprofile:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>VnicProfile</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/vnicprofiles/{vnicprofile:id}/permissions" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>Permission</type>
+                </body>
+            </request>
+            <response>
+                <type>Permission</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/vnicprofiles/{vnicprofile:id}/permissions" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Permissions</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/vnicprofiles/{vnicprofile:id}/permissions/{permission:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/networks/{network:id}/vnicprofiles/{vnicprofile:id}/permissions/{permission:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>Permission</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/storageconnections" rel="add">
+            <request>
+                <http_method>POST</http_method>
+                <body>
+                    <type>StorageConnection</type>
+                </body>
+            </request>
+            <response>
+                <type>StorageConnection</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/storageconnections" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>StorageConnections</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/storageconnections/{storageconnection:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body/>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/storageconnections/{storageconnection:id}" rel="delete">
+            <request>
+                <http_method>DELETE</http_method>
+                <body>
+                    <type>Host</type>
+                </body>
+            </request>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/storageconnections/{storageconnection:id}" rel="get">
+            <request>
+                <http_method>GET</http_method>
+                <body/>
+            </request>
+            <response>
+                <type>StorageConnection</type>
+            </response>
+        </link>
+        <link href="/ovirt-engine/api/datacenters/{datacenter:id}/iscsibonds/{iscsibond:id}/storageconnections/{storageconnection:id}" rel="update">
+            <request>
+                <http_method>PUT</http_method>
+                <body>
+                    <type>StorageConnection</type>
+                </body>
+            </request>
+            <response>
+                <type>StorageConnection</type>
+            </response>
+        </link>
         <link href="/ovirt-engine/api/datacenters/{datacenter:id}/networks" rel="add">
             <description>add a new network to the datacenter</description>
             <request>
@@ -10655,6 +10976,9 @@ or less indicates that the session should never timeout</description>
                         </parameter>
                         <parameter required="false" type="xs:long">
                             <name>vm.memory</name>
+                        </parameter>
+                        <parameter required="false" type="xs:long">
+                            <name>vm.memory_policy.guaranteed</name>
                         </parameter>
                         <parameter required="false" type="xs:int">
                             <name>vm.high_availability.priority</name>

@@ -87,6 +87,7 @@ import javax.xml.bind.annotation.XmlType;
     GlusterVolume.class,
     StorageConnection.class,
     ReportedDevice.class,
+    IscsiBond.class,
     Tag.class,
     File.class,
     Job.class,
