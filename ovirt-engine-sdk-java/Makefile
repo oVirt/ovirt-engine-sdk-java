@@ -1,6 +1,6 @@
 all: rpm
 
-rpmrelease:=0.1$(rpmsuffix)
+rpmrelease:=1$(rpmsuffix)
 rpmversion=3.5.0.5
 RPMTOP=$(shell bash -c "pwd -P")/rpmtop
 NAME=ovirt-engine-sdk-java
