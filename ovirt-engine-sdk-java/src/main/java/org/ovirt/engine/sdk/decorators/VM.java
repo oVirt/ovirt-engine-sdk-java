@@ -388,6 +388,7 @@ public class VM extends
      *    [vm.tunnel_migration]
      *    [vm.migration_downtime]
      *    [vm.virtio_scsi.enabled]
+     *    [vm.soundcard_enabled]
      *    [vm.use_latest_template_version]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
@@ -396,6 +397,7 @@ public class VM extends
      *    [vm.bios.boot_menu.enabled]
      *    [vm.numa_tune_mode]
      *    [vm.start_paused]
+     *    [vm.cpu_profile.id]
      *    </pre>
      *
      * @return
@@ -476,6 +478,7 @@ public class VM extends
      *    [vm.tunnel_migration]
      *    [vm.migration_downtime]
      *    [vm.virtio_scsi.enabled]
+     *    [vm.soundcard_enabled]
      *    [vm.use_latest_template_version]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
@@ -484,6 +487,7 @@ public class VM extends
      *    [vm.bios.boot_menu.enabled]
      *    [vm.numa_tune_mode]
      *    [vm.start_paused]
+     *    [vm.cpu_profile.id]
      *    </pre>
      *
      * @param correlationId

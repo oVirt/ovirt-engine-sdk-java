@@ -55,6 +55,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlSeeAlso({
     ReportedDevices.class,
+    DiskProfiles.class,
     Roles.class,
     AffinityGroups.class,
     Events.class,
@@ -74,7 +75,9 @@ import javax.xml.bind.annotation.XmlType;
     Labels.class,
     GlusterClients.class,
     Statistics.class,
+    IscsiBonds.class,
     NumaNodes.class,
+    CpuProfiles.class,
     VmPools.class,
     Jobs.class,
     Domains.class,
@@ -87,6 +90,7 @@ import javax.xml.bind.annotation.XmlType;
     SchedulingPolicyUnits.class,
     Filters.class,
     AuthorizedKeys.class,
+    QoSs.class,
     Files.class,
     Sessions.class,
     Capabilities.class,
@@ -103,6 +107,7 @@ import javax.xml.bind.annotation.XmlType;
     Permits.class,
     Hooks.class,
     VnicProfiles.class,
+    MacPools.class,
     Balances.class,
     Weights.class,
     BaseDevices.class

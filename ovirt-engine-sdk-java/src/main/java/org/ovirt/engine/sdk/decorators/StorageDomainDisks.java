@@ -197,6 +197,7 @@ public class StorageDomainDisks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *
      *    Overload 2:
      *
@@ -264,6 +265,7 @@ public class StorageDomainDisks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *
      *    Overload 2:
      *
@@ -339,6 +341,7 @@ public class StorageDomainDisks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *
      *    Overload 2:
      *
@@ -422,6 +425,7 @@ public class StorageDomainDisks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *
      *    Overload 2:
      *

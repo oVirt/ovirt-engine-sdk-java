@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
  *         &lt;element name="supported_versions" type="{}SupportedVersions" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
+ *         &lt;element ref="{}mac_pool" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -58,7 +59,8 @@ import javax.xml.bind.annotation.XmlType;
     "storageFormat",
     "version",
     "supportedVersions",
-    "status"
+    "status",
+    "macPool"
 })
 public class DataCenter
     extends BaseResource
@@ -73,6 +75,8 @@ public class DataCenter
     @XmlElement(name = "supported_versions")
     protected SupportedVersions supportedVersions;
     protected Status status;
+    @XmlElement(name = "mac_pool")
+    protected MacPool macPool;
 
     /**
      * Gets the value of the storageType property.
@@ -240,6 +244,34 @@ public class DataCenter
 
     public boolean isSetStatus() {
         return (this.status!= null);
+    }
+
+    /**
+     * Gets the value of the macPool property.
+     *
+     * @return
+     *     possible object is
+     *     {@link MacPool }
+     *
+     */
+    public MacPool getMacPool() {
+        return macPool;
+    }
+
+    /**
+     * Sets the value of the macPool property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link MacPool }
+     *
+     */
+    public void setMacPool(MacPool value) {
+        this.macPool = value;
+    }
+
+    public boolean isSetMacPool() {
+        return (this.macPool!= null);
     }
 
 }

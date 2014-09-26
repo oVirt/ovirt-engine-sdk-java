@@ -184,6 +184,7 @@ public class Disks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -194,7 +195,6 @@ public class Disks extends
      *      lun connection details
      *
      *      disk.interface
-     *      disk.format
      *      disk.lun_storage.type
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
@@ -205,7 +205,7 @@ public class Disks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
-     *      [disk.storage_domains.storage_domain]
+     *      [disk.lun_storage.host]
      *    </pre>
      *
      * @return
@@ -256,6 +256,7 @@ public class Disks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -266,7 +267,6 @@ public class Disks extends
      *      lun connection details
      *
      *      disk.interface
-     *      disk.format
      *      disk.lun_storage.type
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
@@ -277,7 +277,7 @@ public class Disks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
-     *      [disk.storage_domains.storage_domain]
+     *      [disk.lun_storage.host]
      *    </pre>
      *
      * @param expect
@@ -336,6 +336,7 @@ public class Disks extends
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
+     *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
      *
      *    Overload 2:
@@ -346,7 +347,6 @@ public class Disks extends
      *      lun connection details
      *
      *      disk.interface
-     *      disk.format
      *      disk.lun_storage.type
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
@@ -357,7 +357,7 @@ public class Disks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
-     *      [disk.storage_domains.storage_domain]
+     *      [disk.lun_storage.host]
      *    </pre>
      *
      * @param expect

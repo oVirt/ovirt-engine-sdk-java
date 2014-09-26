@@ -49,6 +49,7 @@ public class Cluster extends
     private volatile ClusterAffinityGroups clusterAffinityGroups;
     private volatile ClusterGlusterVolumes clusterGlusterVolumes;
     private volatile ClusterNetworks clusterNetworks;
+    private volatile ClusterCpuProfiles clusterCpuProfiles;
     private volatile ClusterPermissions clusterPermissions;
 
 
@@ -129,6 +130,22 @@ public class Cluster extends
             }
         }
         return clusterNetworks;
+    }
+    /**
+     * Gets the value of the ClusterCpuProfiles property.
+     *
+     * @return
+     *     {@link ClusterCpuProfiles }
+     */
+    public ClusterCpuProfiles getCpuProfiles() {
+        if (this.clusterCpuProfiles == null) {
+            synchronized (this.LOCK) {
+                if (this.clusterCpuProfiles == null) {
+                    this.clusterCpuProfiles = new ClusterCpuProfiles(proxy, this);
+                }
+            }
+        }
+        return clusterCpuProfiles;
     }
     /**
      * Gets the value of the ClusterPermissions property.

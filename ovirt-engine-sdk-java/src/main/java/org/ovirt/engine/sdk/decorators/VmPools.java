@@ -173,6 +173,7 @@ public class VmPools extends
      *    [vmpool.max_user_vms]
      *    [vmpool.display.proxy]
      *    [vmpool.description]
+     *    [vmpool.soundcard_enabled]
      *    </pre>
      *
      * @return
@@ -212,6 +213,7 @@ public class VmPools extends
      *    [vmpool.max_user_vms]
      *    [vmpool.display.proxy]
      *    [vmpool.description]
+     *    [vmpool.soundcard_enabled]
      *    </pre>
      *
      * @param expect
@@ -259,6 +261,7 @@ public class VmPools extends
      *    [vmpool.max_user_vms]
      *    [vmpool.display.proxy]
      *    [vmpool.description]
+     *    [vmpool.soundcard_enabled]
      *    </pre>
      *
      * @param expect

@@ -81,6 +81,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}watchdog_actions" minOccurs="0"/>
  *         &lt;element ref="{}authentication_methods" minOccurs="0"/>
  *         &lt;element ref="{}kdump_states" minOccurs="0"/>
+ *         &lt;element ref="{}spm_states" minOccurs="0"/>
  *         &lt;element ref="{}step_types" minOccurs="0"/>
  *         &lt;element ref="{}payload_encodings" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
@@ -99,6 +100,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}selinux_modes" minOccurs="0"/>
  *         &lt;element ref="{}rng_sources" minOccurs="0"/>
  *         &lt;element ref="{}scheduling_policy_unit_types" minOccurs="0"/>
+ *         &lt;element ref="{}qos_types" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -153,6 +155,7 @@ import javax.xml.bind.annotation.XmlType;
     "watchdogActions",
     "authenticationMethods",
     "kdumpStates",
+    "spmStates",
     "stepTypes",
     "payloadEncodings",
     "glusterVolumeTypes",
@@ -170,7 +173,8 @@ import javax.xml.bind.annotation.XmlType;
     "serialNumberPolicies",
     "selinuxModes",
     "rngSources",
-    "schedulingPolicyUnitTypes"
+    "schedulingPolicyUnitTypes",
+    "qosTypes"
 })
 public class VersionCaps
     extends Version
@@ -259,6 +263,8 @@ public class VersionCaps
     protected AuthenticationMethod authenticationMethods;
     @XmlElement(name = "kdump_states")
     protected KdumpStates kdumpStates;
+    @XmlElement(name = "spm_states")
+    protected SpmStates spmStates;
     @XmlElement(name = "step_types")
     protected StepTypes stepTypes;
     @XmlElement(name = "payload_encodings")
@@ -294,6 +300,8 @@ public class VersionCaps
     protected RngSources rngSources;
     @XmlElement(name = "scheduling_policy_unit_types")
     protected SchedulingPolicyUnitTypes schedulingPolicyUnitTypes;
+    @XmlElement(name = "qos_types")
+    protected QosTypes qosTypes;
 
     /**
      * Gets the value of the current property.
@@ -1528,6 +1536,34 @@ public class VersionCaps
     }
 
     /**
+     * Gets the value of the spmStates property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SpmStates }
+     *
+     */
+    public SpmStates getSpmStates() {
+        return spmStates;
+    }
+
+    /**
+     * Sets the value of the spmStates property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SpmStates }
+     *
+     */
+    public void setSpmStates(SpmStates value) {
+        this.spmStates = value;
+    }
+
+    public boolean isSetSpmStates() {
+        return (this.spmStates!= null);
+    }
+
+    /**
      * Gets the value of the stepTypes property.
      *
      * @return
@@ -2029,6 +2065,34 @@ public class VersionCaps
 
     public boolean isSetSchedulingPolicyUnitTypes() {
         return (this.schedulingPolicyUnitTypes!= null);
+    }
+
+    /**
+     * Gets the value of the qosTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link QosTypes }
+     *
+     */
+    public QosTypes getQosTypes() {
+        return qosTypes;
+    }
+
+    /**
+     * Sets the value of the qosTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link QosTypes }
+     *
+     */
+    public void setQosTypes(QosTypes value) {
+        this.qosTypes = value;
+    }
+
+    public boolean isSetQosTypes() {
+        return (this.qosTypes!= null);
     }
 
 }

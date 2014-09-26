@@ -211,11 +211,13 @@ public class Template extends
      *    [template.tunnel_migration]
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.soundcard_enabled]
      *    [template.version.version_name]
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
      *    [template.start_paused]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @return
@@ -291,11 +293,13 @@ public class Template extends
      *    [template.tunnel_migration]
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.soundcard_enabled]
      *    [template.version.version_name]
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
      *    [template.start_paused]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @param correlationId

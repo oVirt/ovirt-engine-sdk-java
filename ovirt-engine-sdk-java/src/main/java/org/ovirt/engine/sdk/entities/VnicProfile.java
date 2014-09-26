@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}network" minOccurs="0"/>
  *         &lt;element name="port_mirroring" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}custom_properties" minOccurs="0"/>
+ *         &lt;element ref="{}qos" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -52,7 +53,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "VnicProfile", propOrder = {
     "network",
     "portMirroring",
-    "customProperties"
+    "customProperties",
+    "qos"
 })
 public class VnicProfile
     extends BaseResource
@@ -63,6 +65,7 @@ public class VnicProfile
     protected Boolean portMirroring;
     @XmlElement(name = "custom_properties")
     protected CustomProperties customProperties;
+    protected QoS qos;
 
     /**
      * Gets the value of the network property.
@@ -146,6 +149,34 @@ public class VnicProfile
 
     public boolean isSetCustomProperties() {
         return (this.customProperties!= null);
+    }
+
+    /**
+     * Gets the value of the qos property.
+     *
+     * @return
+     *     possible object is
+     *     {@link QoS }
+     *
+     */
+    public QoS getQos() {
+        return qos;
+    }
+
+    /**
+     * Sets the value of the qos property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link QoS }
+     *
+     */
+    public void setQos(QoS value) {
+        this.qos = value;
+    }
+
+    public boolean isSetQos() {
+        return (this.qos!= null);
     }
 
 }

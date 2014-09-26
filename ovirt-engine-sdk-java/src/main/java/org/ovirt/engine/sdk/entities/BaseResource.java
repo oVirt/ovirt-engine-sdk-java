@@ -65,6 +65,7 @@ import javax.xml.bind.annotation.XmlType;
     "links"
 })
 @XmlSeeAlso({
+    QoS.class,
     Event.class,
     Role.class,
     Feature.class,
@@ -88,10 +89,14 @@ import javax.xml.bind.annotation.XmlType;
     Hook.class,
     GlusterVolumeProfileDetails.class,
     Label.class,
+    CpuProfile.class,
     Weight.class,
     GlusterVolume.class,
     StorageConnection.class,
+    DiskProfile.class,
     ReportedDevice.class,
+    MacPool.class,
+    IscsiBond.class,
     Tag.class,
     File.class,
     Job.class,
@@ -99,8 +104,6 @@ import javax.xml.bind.annotation.XmlType;
     Creation.class,
     GlusterBrickAdvancedDetails.class,
     API.class,
-    Template.class,
-    VM.class,
     GlusterHook.class,
     Permit.class,
     VnicProfile.class,
@@ -120,6 +123,7 @@ import javax.xml.bind.annotation.XmlType;
     User.class,
     Step.class,
     Storage.class,
+    VmBase.class,
     BaseDevice.class
 })
 public class BaseResource

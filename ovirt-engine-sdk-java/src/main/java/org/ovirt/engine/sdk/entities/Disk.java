@@ -61,6 +61,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="lun_storage" type="{}Storage" minOccurs="0"/>
  *         &lt;element name="sgio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}snapshot" minOccurs="0"/>
+ *         &lt;element ref="{}disk_profile" minOccurs="0"/>
+ *         &lt;element name="logical_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -93,7 +95,9 @@ import javax.xml.bind.annotation.XmlType;
     "quota",
     "lunStorage",
     "sgio",
-    "snapshot"
+    "snapshot",
+    "diskProfile",
+    "logicalName"
 })
 @XmlSeeAlso({
     DiskSnapshot.class
@@ -135,6 +139,10 @@ public class Disk
     protected Storage lunStorage;
     protected String sgio;
     protected Snapshot snapshot;
+    @XmlElement(name = "disk_profile")
+    protected DiskProfile diskProfile;
+    @XmlElement(name = "logical_name")
+    protected String logicalName;
 
     /**
      * Gets the value of the alias property.
@@ -778,6 +786,62 @@ public class Disk
 
     public boolean isSetSnapshot() {
         return (this.snapshot!= null);
+    }
+
+    /**
+     * Gets the value of the diskProfile property.
+     *
+     * @return
+     *     possible object is
+     *     {@link DiskProfile }
+     *
+     */
+    public DiskProfile getDiskProfile() {
+        return diskProfile;
+    }
+
+    /**
+     * Sets the value of the diskProfile property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link DiskProfile }
+     *
+     */
+    public void setDiskProfile(DiskProfile value) {
+        this.diskProfile = value;
+    }
+
+    public boolean isSetDiskProfile() {
+        return (this.diskProfile!= null);
+    }
+
+    /**
+     * Gets the value of the logicalName property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getLogicalName() {
+        return logicalName;
+    }
+
+    /**
+     * Sets the value of the logicalName property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setLogicalName(String value) {
+        this.logicalName = value;
+    }
+
+    public boolean isSetLogicalName() {
+        return (this.logicalName!= null);
     }
 
 }

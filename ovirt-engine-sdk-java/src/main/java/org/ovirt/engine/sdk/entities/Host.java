@@ -45,6 +45,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="port" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="storage_manager" type="{}StorageManager" minOccurs="0"/>
+ *         &lt;element name="spm" type="{}SPM" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
  *         &lt;element ref="{}hardware_information" minOccurs="0"/>
  *         &lt;element ref="{}power_management" minOccurs="0"/>
@@ -88,6 +89,7 @@ import javax.xml.bind.annotation.XmlType;
     "port",
     "type",
     "storageManager",
+    "spm",
     "version",
     "hardwareInformation",
     "powerManagement",
@@ -128,6 +130,7 @@ public class Host
     protected String type;
     @XmlElement(name = "storage_manager")
     protected StorageManager storageManager;
+    protected SPM spm;
     protected Version version;
     @XmlElement(name = "hardware_information")
     protected HardwareInformation hardwareInformation;
@@ -362,6 +365,34 @@ public class Host
 
     public boolean isSetStorageManager() {
         return (this.storageManager!= null);
+    }
+
+    /**
+     * Gets the value of the spm property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SPM }
+     *
+     */
+    public SPM getSpm() {
+        return spm;
+    }
+
+    /**
+     * Sets the value of the spm property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SPM }
+     *
+     */
+    public void setSpm(SPM value) {
+        this.spm = value;
+    }
+
+    public boolean isSetSpm() {
+        return (this.spm!= null);
     }
 
     /**

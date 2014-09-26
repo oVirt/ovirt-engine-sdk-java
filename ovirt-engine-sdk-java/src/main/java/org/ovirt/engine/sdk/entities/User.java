@@ -44,6 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="namespace" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="user_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="principal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="roles" type="{}Roles" minOccurs="0"/>
@@ -65,6 +66,7 @@ import javax.xml.bind.annotation.XmlType;
     "namespace",
     "lastName",
     "userName",
+    "principal",
     "password",
     "email",
     "roles",
@@ -85,6 +87,7 @@ public class User
     protected String lastName;
     @XmlElement(name = "user_name")
     protected String userName;
+    protected String principal;
     protected String password;
     protected String email;
     protected Roles roles;
@@ -284,6 +287,34 @@ public class User
 
     public boolean isSetUserName() {
         return (this.userName!= null);
+    }
+
+    /**
+     * Gets the value of the principal property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getPrincipal() {
+        return principal;
+    }
+
+    /**
+     * Sets the value of the principal property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setPrincipal(String value) {
+        this.principal = value;
+    }
+
+    public boolean isSetPrincipal() {
+        return (this.principal!= null);
     }
 
     /**

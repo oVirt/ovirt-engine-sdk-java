@@ -262,6 +262,7 @@ public class Templates extends
      *    [template.tunnel_migration]
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.soundcard_enabled]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
      *    [template.version.version_name]
@@ -273,6 +274,7 @@ public class Templates extends
      *    [template.cluster.id]
      *    [template.cluster.name]
      *    [template.start_paused]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @return
@@ -346,6 +348,7 @@ public class Templates extends
      *    [template.tunnel_migration]
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.soundcard_enabled]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
      *    [template.version.version_name]
@@ -357,6 +360,7 @@ public class Templates extends
      *    [template.cluster.id]
      *    [template.cluster.name]
      *    [template.start_paused]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @param expect
@@ -438,6 +442,7 @@ public class Templates extends
      *    [template.tunnel_migration]
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
+     *    [template.soundcard_enabled]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
      *    [template.version.version_name]
@@ -449,6 +454,7 @@ public class Templates extends
      *    [template.cluster.id]
      *    [template.cluster.name]
      *    [template.start_paused]
+     *    [template.cpu_profile.id]
      *    </pre>
      *
      * @param expect

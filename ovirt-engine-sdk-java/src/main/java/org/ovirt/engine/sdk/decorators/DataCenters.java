@@ -173,6 +173,7 @@ public class DataCenters extends
      *    [datacenter.storage_type]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
+     *    [datacenter.mac_pool.id]
      *    </pre>
      *
      * @return
@@ -212,6 +213,7 @@ public class DataCenters extends
      *    [datacenter.storage_type]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
+     *    [datacenter.mac_pool.id]
      *    </pre>
      *
      * @param expect
@@ -259,6 +261,7 @@ public class DataCenters extends
      *    [datacenter.storage_type]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
+     *    [datacenter.mac_pool.id]
      *    </pre>
      *
      * @param expect

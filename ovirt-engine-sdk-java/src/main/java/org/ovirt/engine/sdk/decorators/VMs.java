@@ -272,9 +272,11 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.disks.clone]
+     *      [vm.disks.disk]
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
+     *      [vm.soundcard_enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
@@ -285,6 +287,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *
      *    Overload 2:
      *
@@ -339,6 +342,7 @@ public class VMs extends
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
+     *      [vm.soundcard_enabled]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *      [vm.serial_number.policy]
@@ -346,6 +350,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *
      *    Overload 3:
      *
@@ -397,6 +402,7 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.disks.clone]
+     *      [vm.disks.disk]
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
@@ -410,6 +416,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *    </pre>
      *
      * @return
@@ -493,9 +500,11 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.disks.clone]
+     *      [vm.disks.disk]
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
+     *      [vm.soundcard_enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
@@ -506,6 +515,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *
      *    Overload 2:
      *
@@ -560,6 +570,7 @@ public class VMs extends
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
+     *      [vm.soundcard_enabled]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *      [vm.serial_number.policy]
@@ -567,6 +578,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *
      *    Overload 3:
      *
@@ -618,6 +630,7 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.disks.clone]
+     *      [vm.disks.disk]
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
@@ -631,6 +644,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *    </pre>
      *
      * @param correlationId
@@ -722,9 +736,11 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.disks.clone]
+     *      [vm.disks.disk]
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
+     *      [vm.soundcard_enabled]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
@@ -735,6 +751,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *
      *    Overload 2:
      *
@@ -789,6 +806,7 @@ public class VMs extends
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
+     *      [vm.soundcard_enabled]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *      [vm.serial_number.policy]
@@ -796,6 +814,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *
      *    Overload 3:
      *
@@ -847,6 +866,7 @@ public class VMs extends
      *      [vm.origin]
      *      [vm.os.kernel]
      *      [vm.disks.clone]
+     *      [vm.disks.disk]
      *      [vm.tunnel_migration]
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
@@ -860,6 +880,7 @@ public class VMs extends
      *      [vm.bios.boot_menu.enabled]
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
+     *      [vm.cpu_profile.id]
      *    </pre>
      *
      * @param correlationId
