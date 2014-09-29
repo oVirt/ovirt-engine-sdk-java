@@ -92,30 +92,7 @@ public class ConnectionsPoolBuilder {
 
     private URL urlobj = null;
 
-    /**
-     * @param url
-     *            oVirt API url
-     * @param username
-     *            oVirt API user name
-     * @param password
-     *            oVirt API password
-     * 
-     * @throws MalformedURLException
-     */
-    public ConnectionsPoolBuilder(String url, String username, String password) throws MalformedURLException {
-        url(url);
-        username(username);
-        password(password);
-    }
-
-    /**
-     * @param url
-     *            oVirt API url
-     * 
-     * @throws MalformedURLException
-     */
-    public ConnectionsPoolBuilder(String url) throws MalformedURLException {
-        url(url);
+    public ConnectionsPoolBuilder() {
     }
 
     /**
@@ -125,7 +102,7 @@ public class ConnectionsPoolBuilder {
      * 
      * @throws MalformedURLException
      */
-    private ConnectionsPoolBuilder url(String url) throws MalformedURLException {
+    public ConnectionsPoolBuilder url(String url) throws MalformedURLException {
         this.url = url;
         this.urlobj = createURL(url);
         return this;
@@ -135,7 +112,7 @@ public class ConnectionsPoolBuilder {
      * @param username
      *            oVirt API user name
      */
-    private ConnectionsPoolBuilder username(String username) {
+    public ConnectionsPoolBuilder username(String username) {
         this.username = username;
         return this;
     }
@@ -144,7 +121,7 @@ public class ConnectionsPoolBuilder {
      * @param password
      *            oVirt API password
      */
-    private ConnectionsPoolBuilder password(String password) {
+    public ConnectionsPoolBuilder password(String password) {
         this.password = password;
         return this;
     }

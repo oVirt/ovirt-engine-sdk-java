@@ -93,15 +93,27 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site using
      *             HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String username, String password) throws ClientProtocolException,
             ServerException, IOException, UnsecuredConnectionAttemptError {
-
-        configureLog4J();
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password).build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool).build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        this.initResources();
+        this(
+            url,
+            username,
+            password,
+            null, // sessionid,
+            null, // port,
+            null, // requestTimeout,
+            null, // sessionTimeout,
+            null, // persistentAuth,
+            null, // noHostVerification,
+            null, // keyStorePath,
+            null, // keyStorePassword,
+            null, // filter,
+            null // debug,
+        );
     }
 
     /**
@@ -123,19 +135,28 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String username, String password, String keyStorePath)
             throws ClientProtocolException, ServerException, IOException,
                    UnsecuredConnectionAttemptError {
-
-        configureLog4J();
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .keyStorePath(keyStorePath)
-                .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        this.initResources();
+        this(
+            url,
+            username,
+            password,
+            null, // sessionid,
+            null, // port,
+            null, // requestTimeout,
+            null, // sessionTimeout,
+            null, // persistentAuth,
+            null, // noHostVerification,
+            keyStorePath,
+            null, // keyStorePassword,
+            null, // filter,
+            null // debug,
+        );
     }
 
     /**
@@ -161,21 +182,28 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String username, String password, String keyStorePath,
             String keyStorePassword, Boolean filter) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException {
-
-        configureLog4J();
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .keyStorePath(keyStorePath)
-                .keyStorePassword(keyStorePassword)
-                .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                .filter(filter)
-                .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        initResources();
+        this(
+            url,
+            username,
+            password,
+            null, // sessionid,
+            null, // port,
+            null, // requestTimeout,
+            null, // sessionTimeout,
+            null, // persistentAuth,
+            null, // noHostVerification,
+            keyStorePath,
+            keyStorePassword,
+            filter,
+            null // debug,
+        );
     }
 
     /**
@@ -194,18 +222,27 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String sessionid) throws ClientProtocolException, ServerException,
             IOException, UnsecuredConnectionAttemptError {
-
-        configureLog4J();
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url).build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                .sessionid(sessionid)
-                .persistentAuth(true)
-                .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        this.initResources();
+        this(
+            url,
+            null, // username,
+            null, // password,
+            sessionid,
+            null, // port,
+            null, // requestTimeout,
+            null, // sessionTimeout,
+            null, // persistentAuth,
+            null, // noHostVerification,
+            null, // keyStorePath,
+            null, // keyStorePassword,
+            null, // filter,
+            null // debug,
+        );
     }
 
     /**
@@ -227,19 +264,28 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String username, String password, boolean noHostVerification)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
             IOException {
-
-        configureLog4J();
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .noHostVerification(noHostVerification)
-                .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        initResources();
+        this(
+            url,
+            username,
+            password,
+            null, // sessionid,
+            null, // port,
+            null, // requestTimeout,
+            null, // sessionTimeout,
+            null, // persistentAuth,
+            noHostVerification,
+            null, // keyStorePath,
+            null, // keyStorePassword,
+            null, // filter,
+            null // debug,
+        );
     }
 
     /**
@@ -260,21 +306,28 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String sessionid, boolean noHostVerification)
             throws ClientProtocolException, ServerException, UnsecuredConnectionAttemptError,
             IOException {
-
-        configureLog4J();
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url)
-                .noHostVerification(noHostVerification)
-                .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                .sessionid(sessionid)
-                .persistentAuth(true)
-                .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        initResources();
+        this(
+            url,
+            null, // username,
+            null, // password,
+            sessionid,
+            null, // port,
+            null, // requestTimeout,
+            null, // sessionTimeout,
+            null, // persistentAuth,
+            null, // noHostVerification,
+            null, // keyStorePath,
+            null, // keyStorePassword,
+            null, // filter,
+            null // debug,
+        );
     }
 
     /**
@@ -298,20 +351,28 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String username, String password, Boolean noHostVerification,
             Boolean filter) throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {
-
-        configureLog4J();
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .noHostVerification(noHostVerification)
-                .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                .filter(filter)
-                .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        initResources();
+        this(
+            url,
+            username,
+            password,
+            null, // sessionid,
+            null, // port,
+            null, // requestTimeout,
+            null, // sessionTimeout,
+            null, // persistentAuth,
+            null, // noHostVerification,
+            null, // keyStorePath,
+            null, // keyStorePassword,
+            filter,
+            null // debug,
+        );
     }
 
     /**
@@ -346,26 +407,29 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String username, String password, String sessionid, Integer port,
             Integer requestTimeout, Boolean persistentAuth, Boolean noHostVerification,
             Boolean filter, Boolean debug) throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {
-
-        configureLog4J(debug);
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .port(port)
-                .requestTimeout(requestTimeout)
-                .noHostVerification(noHostVerification)
-                .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                .sessionid(sessionid)
-                .persistentAuth(persistentAuth)
-                .filter(filter)
-                .debug(debug)
-                .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        initResources();
+        this(
+            url,
+            username,
+            password,
+            sessionid,
+            port,
+            requestTimeout,
+            null, // sessionTimeout,
+            persistentAuth,
+            noHostVerification,
+            null, // keyStorePath,
+            null, // keyStorePassword,
+            filter,
+            debug
+        );
     }
 
     /**
@@ -402,27 +466,29 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site
      *             using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String username, String password, String sessionid, Integer port,
             Integer requestTimeout, Integer sessionTimeout, Boolean persistentAuth,
             Boolean noHostVerification, Boolean filter, Boolean debug) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException {
-
-        configureLog4J(debug);
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
-                .port(port)
-                .requestTimeout(requestTimeout)
-                .sessionTimeout(sessionTimeout)
-                .noHostVerification(noHostVerification)
-                .build();
-        HttpProxy httpProxy = new HttpProxyBuilder(pool)
-                .sessionid(sessionid)
-                .persistentAuth(persistentAuth)
-                .filter(filter)
-                .debug(debug)
-                .build();
-        this.proxy = new HttpProxyBroker(httpProxy);
-        initResources();
+        this(
+            url,
+            username,
+            password,
+            sessionid,
+            port,
+            requestTimeout,
+            sessionTimeout,
+            persistentAuth,
+            noHostVerification,
+            null, // keyStorePath,
+            null, // keyStorePassword,
+            filter,
+            debug
+        );
     }
 
     /**
@@ -462,18 +528,61 @@ public class Api implements AutoCloseable {
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured
      *             site using HTTP protocol has occurred.
+     *
+     * @deprecated Use the {@link ApiBuilder} class instead.
      */
+    @Deprecated
     public Api(String url, String username, String password, String sessionid,
             Integer port, Integer requestTimeout, Integer sessionTimeout,
             Boolean persistentAuth, String keyStorePath, String keyStorePassword,
             Boolean filter, Boolean debug) throws ClientProtocolException,
             ServerException, UnsecuredConnectionAttemptError, IOException {
+        this(
+            url,
+            username,
+            password,
+            sessionid,
+            port,
+            requestTimeout,
+            sessionTimeout,
+            persistentAuth,
+            null, // noHostVerification,
+            keyStorePath,
+            keyStorePassword,
+            filter,
+            debug
+        );
+    }
+
+    /**
+     * This method is intended for use by the {@link org.ovirt.engine.sdk.ApiBuilder} class, don't use it directly.
+     */
+    Api(
+        String url,
+        String username,
+        String password,
+        String sessionid,
+        Integer port,
+        Integer requestTimeout,
+        Integer sessionTimeout,
+        Boolean persistentAuth,
+        Boolean noHostVerification,
+        String keyStorePath,
+        String keyStorePassword,
+        Boolean filter,
+        Boolean debug
+    )
+    throws ServerException, UnsecuredConnectionAttemptError, IOException {
 
         configureLog4J(debug);
-        ConnectionsPool pool = new ConnectionsPoolBuilder(url, username, password)
+        ConnectionsPool pool = new ConnectionsPoolBuilder()
+                .url(url)
+                .username(username)
+                .password(password)
                 .port(port)
                 .requestTimeout(requestTimeout)
                 .sessionTimeout(sessionTimeout)
+                .noHostVerification(noHostVerification)
                 .keyStorePath(keyStorePath)
                 .keyStorePassword(keyStorePassword)
                 .build();
@@ -488,16 +597,7 @@ public class Api implements AutoCloseable {
     }
 
     /**
-     * Configures log4j
-     */
-    private void configureLog4J() {
-        configureLog4J(Boolean.FALSE);
-    }
-
-    /**
-     * Configures log4j
-     *
-     * @param debug
+     * Configures log4j.
      */
     private void configureLog4J(Boolean debug) {
         String patternLayout = "%d %-5p [%c] %m%n";
