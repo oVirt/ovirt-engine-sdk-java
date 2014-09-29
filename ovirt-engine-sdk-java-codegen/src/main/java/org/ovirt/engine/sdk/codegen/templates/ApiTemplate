@@ -65,7 +65,8 @@ $collectionsVariables$
             null, // keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -108,7 +109,8 @@ $collectionsVariables$
             keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -155,7 +157,8 @@ $collectionsVariables$
             keyStorePath,
             keyStorePassword,
             filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -194,7 +197,8 @@ $collectionsVariables$
             null, // keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -237,7 +241,8 @@ $collectionsVariables$
             null, // keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -279,7 +284,8 @@ $collectionsVariables$
             null, // keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -324,7 +330,8 @@ $collectionsVariables$
             null, // keyStorePath,
             null, // keyStorePassword,
             filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -381,7 +388,8 @@ $collectionsVariables$
             null, // keyStorePath,
             null, // keyStorePassword,
             filter,
-            debug
+            debug,
+            null  // kerberos,
         );
     }
 
@@ -440,7 +448,8 @@ $collectionsVariables$
             null, // keyStorePath,
             null, // keyStorePassword,
             filter,
-            debug
+            debug,
+            null  // kerberos
         );
     }
 
@@ -503,7 +512,8 @@ $collectionsVariables$
             keyStorePath,
             keyStorePassword,
             filter,
-            debug
+            debug,
+            null  // kerberos
         );
     }
 
@@ -523,7 +533,8 @@ $collectionsVariables$
         String keyStorePath,
         String keyStorePassword,
         Boolean filter,
-        Boolean debug
+        Boolean debug,
+        Boolean kerberos
     )
     throws ServerException, UnsecuredConnectionAttemptError, IOException {
 
@@ -538,6 +549,7 @@ $collectionsVariables$
                 .noHostVerification(noHostVerification)
                 .keyStorePath(keyStorePath)
                 .keyStorePassword(keyStorePassword)
+                .kerberos(kerberos)
                 .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
                 .sessionid(sessionid)

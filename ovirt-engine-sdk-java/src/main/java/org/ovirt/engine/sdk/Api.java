@@ -112,7 +112,8 @@ public class Api implements AutoCloseable {
             null, // keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -155,7 +156,8 @@ public class Api implements AutoCloseable {
             keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -202,7 +204,8 @@ public class Api implements AutoCloseable {
             keyStorePath,
             keyStorePassword,
             filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -241,7 +244,8 @@ public class Api implements AutoCloseable {
             null, // keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -284,7 +288,8 @@ public class Api implements AutoCloseable {
             null, // keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -326,7 +331,8 @@ public class Api implements AutoCloseable {
             null, // keyStorePath,
             null, // keyStorePassword,
             null, // filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -371,7 +377,8 @@ public class Api implements AutoCloseable {
             null, // keyStorePath,
             null, // keyStorePassword,
             filter,
-            null // debug,
+            null, // debug,
+            null  // kerberos,
         );
     }
 
@@ -428,7 +435,8 @@ public class Api implements AutoCloseable {
             null, // keyStorePath,
             null, // keyStorePassword,
             filter,
-            debug
+            debug,
+            null  // kerberos,
         );
     }
 
@@ -487,7 +495,8 @@ public class Api implements AutoCloseable {
             null, // keyStorePath,
             null, // keyStorePassword,
             filter,
-            debug
+            debug,
+            null  // kerberos
         );
     }
 
@@ -550,7 +559,8 @@ public class Api implements AutoCloseable {
             keyStorePath,
             keyStorePassword,
             filter,
-            debug
+            debug,
+            null  // kerberos
         );
     }
 
@@ -570,7 +580,8 @@ public class Api implements AutoCloseable {
         String keyStorePath,
         String keyStorePassword,
         Boolean filter,
-        Boolean debug
+        Boolean debug,
+        Boolean kerberos
     )
     throws ServerException, UnsecuredConnectionAttemptError, IOException {
 
@@ -585,6 +596,7 @@ public class Api implements AutoCloseable {
                 .noHostVerification(noHostVerification)
                 .keyStorePath(keyStorePath)
                 .keyStorePassword(keyStorePassword)
+                .kerberos(kerberos)
                 .build();
         HttpProxy httpProxy = new HttpProxyBuilder(pool)
                 .sessionid(sessionid)

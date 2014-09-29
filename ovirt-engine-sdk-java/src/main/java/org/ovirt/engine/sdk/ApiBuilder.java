@@ -49,6 +49,7 @@ public class ApiBuilder {
     private String keyStorePassword;
     private Boolean filter;
     private Boolean debug;
+    private Boolean kerberos;
 
     /**
      * Sets the URL that will be used to build the API object, for example
@@ -158,6 +159,64 @@ public class ApiBuilder {
     }
 
     /**
+     * Enables or disables Kerberos authentication. By default it is disabled, to enable it you need to pass
+     * {@code true} to this method. In addition, the environment needs to be configured correctly, doing the following:
+     *
+     * <ul>
+     * <li>Create a JAAS configuration file readable by the application, with the following content:
+     * <pre>
+     * com.sun.security.jgss.login {
+     *   com.sun.security.auth.module.Krb5LoginModule required client=true useTicketCache=true;
+     * };
+     *
+     * com.sun.security.jgss.initiate {
+     *   com.sun.security.auth.module.Krb5LoginModule required client=TRUE useTicketCache=true;
+     * };
+     *
+     * com.sun.security.jgss.accept {
+     *   com.sun.security.auth.module.Krb5LoginModule required client=TRUE useTicketCache=true;
+     * };
+     * </pre>
+     * <li>Add the following system properties to your environment, either as command line options to the {@code java}
+     * command or using the {@link System#setProperty(String, String)} method:
+     * <pre>
+     * -Djava.security.auth.login.config=&lt;location of the JAAS configuration file&gt;
+     * -Djava.security.krb5.conf=&lt;location of the Kerberos configuration file&gt;
+     * -Djavax.security.auth.useSubjectCredsOnly=false
+     * </pre>
+     * </li>
+     * </ul>
+     *
+     * Note that with this configuration you will be responsible for populating the Kerberos credentials cache before
+     * running the Java program, usually with the {@code kinit} command. The SDK will then take your credentials from
+     * that cache and use them to authenticate to the server.
+     *
+     * Note also that the Kerberos implementation in the JVM only supports the traditional file based credentials
+     * cache, so make sure that if you have either don't {@code default_ccache_name} parameter in your Kerberos
+     * configuration file or its value starts with {@code FILE}, as this is the only type of credential cache
+     * currently supported by the JVM.
+     *
+     * If you have problems with this configuration it is very useful to add the {@code debug} parameter to all the
+     * entries in the JAAS configuration file:
+     *
+     * <pre>
+     * com.sun.security.jgss.login {
+     *   com.sun.security.auth.module.Krb5LoginModule ... debug=true;
+     * };
+     * </pre>
+     *
+     * It is also useful to enable debug output of the Kerberos implementation of the JVM:
+     *
+     * <pre>
+     * -Dsun.security.krb5.debug=true
+     * </pre>
+     */
+    public ApiBuilder kerberos(Boolean kerberos) {
+        this.kerberos = kerberos;
+        return this;
+    }
+
+    /**
      * Creates an API entry point object.
      *
      * @throws ServerException Signals that an API error has occurred
@@ -179,7 +238,8 @@ public class ApiBuilder {
             keyStorePath,
             keyStorePassword,
             filter,
-            debug
+            debug,
+            kerberos
         );
     }
 }

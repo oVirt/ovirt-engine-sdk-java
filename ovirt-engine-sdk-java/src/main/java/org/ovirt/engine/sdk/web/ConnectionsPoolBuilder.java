@@ -27,6 +27,7 @@ import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.Principal;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 
@@ -36,13 +37,16 @@ import javax.net.ssl.X509TrustManager;
 
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.params.AuthPolicy;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.params.BasicHttpParams;
@@ -89,6 +93,7 @@ public class ConnectionsPoolBuilder {
     private boolean noHostVerification = false;
     private String keyStorePath;
     private String keyStorePassword;
+    private Boolean kerberos;
 
     private URL urlobj = null;
 
@@ -216,6 +221,15 @@ public class ConnectionsPoolBuilder {
         return this;
     }
 
+
+    /**
+     * Enables or disables Kerberos authentication. By default it is disabled.
+     */
+    public ConnectionsPoolBuilder kerberos(Boolean kerberos) {
+        this.kerberos = kerberos;
+        return this;
+    }
+
     /**
      * Creates DefaultHttpClient
      *
@@ -244,10 +258,26 @@ public class ConnectionsPoolBuilder {
             DefaultHttpClient.setDefaultHttpParams(httpParams);
         }
 
-        if (!StringUtils.isNulOrEmpty(username))
-            client.getCredentialsProvider().setCredentials(
-                    new AuthScope(getHost(url), port_),
-                    new UsernamePasswordCredentials(username, password));
+        AuthScope authScope = new AuthScope(getHost(url), port_, AuthScope.ANY_REALM, AuthScope.ANY_SCHEME);
+        if (kerberos != null && kerberos) {
+            client.getAuthSchemes().register(AuthPolicy.SPNEGO, new SPNegoSchemeFactory(true));
+            Credentials credentials = new Credentials() {
+                @Override
+                public Principal getUserPrincipal() {
+                    return null;
+                }
+
+                @Override
+                public String getPassword() {
+                    return null;
+                }
+            };
+            client.getCredentialsProvider().setCredentials(authScope, credentials);
+        }
+        else if (!StringUtils.isNulOrEmpty(username)) {
+            Credentials credentials = new UsernamePasswordCredentials(username, password);
+            client.getCredentialsProvider().setCredentials(authScope, credentials);
+        }
 
         // FIXME: use all .ctr params
 
