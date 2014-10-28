@@ -191,6 +191,10 @@ public class Clusters extends
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
      *    [cluster.ksm.enabled]
+     *    [cluster.fencing_policy.enabled]
+     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    </pre>
      *
      * @return
@@ -248,6 +252,10 @@ public class Clusters extends
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
      *    [cluster.ksm.enabled]
+     *    [cluster.fencing_policy.enabled]
+     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    </pre>
      *
      * @param expect
@@ -313,6 +321,10 @@ public class Clusters extends
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
      *    [cluster.ksm.enabled]
+     *    [cluster.fencing_policy.enabled]
+     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    </pre>
      *
      * @param expect

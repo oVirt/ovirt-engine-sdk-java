@@ -56,6 +56,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}ksm" minOccurs="0"/>
  *         &lt;element ref="{}serial_number" minOccurs="0"/>
  *         &lt;element name="required_rng_sources" type="{}RngSources" minOccurs="0"/>
+ *         &lt;element ref="{}fencing_policy" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -84,7 +85,8 @@ import javax.xml.bind.annotation.XmlType;
     "display",
     "ksm",
     "serialNumber",
-    "requiredRngSources"
+    "requiredRngSources",
+    "fencingPolicy"
 })
 public class Cluster
     extends BaseResource
@@ -124,6 +126,8 @@ public class Cluster
     protected SerialNumber serialNumber;
     @XmlElement(name = "required_rng_sources")
     protected RngSources requiredRngSources;
+    @XmlElement(name = "fencing_policy")
+    protected FencingPolicy fencingPolicy;
 
     /**
      * Gets the value of the cpu property.
@@ -655,6 +659,34 @@ public class Cluster
 
     public boolean isSetRequiredRngSources() {
         return (this.requiredRngSources!= null);
+    }
+
+    /**
+     * Gets the value of the fencingPolicy property.
+     *
+     * @return
+     *     possible object is
+     *     {@link FencingPolicy }
+     *
+     */
+    public FencingPolicy getFencingPolicy() {
+        return fencingPolicy;
+    }
+
+    /**
+     * Sets the value of the fencingPolicy property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link FencingPolicy }
+     *
+     */
+    public void setFencingPolicy(FencingPolicy value) {
+        this.fencingPolicy = value;
+    }
+
+    public boolean isSetFencingPolicy() {
+        return (this.fencingPolicy!= null);
     }
 
 }

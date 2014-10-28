@@ -158,6 +158,9 @@ public class RsdlCodegen extends AbstractCodegen {
         ENTITY_NAME_EXCEPTIONS.put(
             new String[] { "vms", "{vm:id}", "numanodes", "{numanode:id}" }, "VirtualNumaNode"
         );
+        ENTITY_NAME_EXCEPTIONS.put(
+            new String[] { "operatingsystems", "{operatingsystem:id}" }, "OperatingSystemInfo"
+        );
     }
 
     /**
@@ -168,6 +171,9 @@ public class RsdlCodegen extends AbstractCodegen {
     static {
         COLLECTION_NAME_EXCEPTIONS.put(
             new String[] { "vms", "{vm:id}", "numanodes", }, "VirtualNumaNodes"
+        );
+        COLLECTION_NAME_EXCEPTIONS.put(
+            new String[] { "operatingsystems" }, "OperatingSystemInfos"
         );
     }
 

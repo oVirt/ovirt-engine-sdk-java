@@ -47,8 +47,8 @@ public class Api implements AutoCloseable {
     private volatile API entryPoint = null;
     private final Object LOCK = new Object();
 
-    private volatile Jobs jobs;
     private volatile Users users;
+    private volatile Jobs jobs;
     private volatile Events events;
     private volatile Domains domains;
     private volatile VnicProfiles vnicProfiles;
@@ -65,6 +65,7 @@ public class Api implements AutoCloseable {
     private volatile Templates templates;
     private volatile SchedulingPolicyUnits schedulingPolicyUnits;
     private volatile SchedulingPolicies schedulingPolicies;
+    private volatile OperatingSystemInfos operatingSystemInfos;
     private volatile Disks disks;
     private volatile Clusters clusters;
     private volatile Roles roles;
@@ -737,23 +738,6 @@ public class Api implements AutoCloseable {
     }
 
     /**
-     * Gets the value of the Jobs property.
-     *
-     * @return
-     *     {@link Jobs }
-     *
-     */
-    public Jobs getJobs() {
-        if (this.jobs == null) {
-            synchronized (this.LOCK) {
-                if (this.jobs == null) {
-                    this.jobs = new Jobs(proxy);
-                }
-            }
-        }
-        return jobs;
-    }
-    /**
      * Gets the value of the Users property.
      *
      * @return
@@ -769,6 +753,23 @@ public class Api implements AutoCloseable {
             }
         }
         return users;
+    }
+    /**
+     * Gets the value of the Jobs property.
+     *
+     * @return
+     *     {@link Jobs }
+     *
+     */
+    public Jobs getJobs() {
+        if (this.jobs == null) {
+            synchronized (this.LOCK) {
+                if (this.jobs == null) {
+                    this.jobs = new Jobs(proxy);
+                }
+            }
+        }
+        return jobs;
     }
     /**
      * Gets the value of the Events property.
@@ -1041,6 +1042,23 @@ public class Api implements AutoCloseable {
             }
         }
         return schedulingPolicies;
+    }
+    /**
+     * Gets the value of the OperatingSystemInfos property.
+     *
+     * @return
+     *     {@link OperatingSystemInfos }
+     *
+     */
+    public OperatingSystemInfos getOperatingSystemInfos() {
+        if (this.operatingSystemInfos == null) {
+            synchronized (this.LOCK) {
+                if (this.operatingSystemInfos == null) {
+                    this.operatingSystemInfos = new OperatingSystemInfos(proxy);
+                }
+            }
+        }
+        return operatingSystemInfos;
     }
     /**
      * Gets the value of the Disks property.

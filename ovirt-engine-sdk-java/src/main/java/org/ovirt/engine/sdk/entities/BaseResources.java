@@ -71,6 +71,7 @@ import javax.xml.bind.annotation.XmlType;
     Hosts.class,
     Permissions.class,
     Networks.class,
+    OperatingSystemInfos.class,
     Templates.class,
     Labels.class,
     GlusterClients.class,

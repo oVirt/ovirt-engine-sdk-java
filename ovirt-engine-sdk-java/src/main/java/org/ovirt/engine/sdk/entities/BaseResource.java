@@ -115,6 +115,7 @@ import javax.xml.bind.annotation.XmlType;
     Network.class,
     Quota.class,
     Parameter.class,
+    OperatingSystemInfo.class,
     Version.class,
     Application.class,
     GlusterServerHook.class,

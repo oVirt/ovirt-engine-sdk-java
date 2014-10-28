@@ -80,6 +80,7 @@ public class ObjectFactory {
     private final static QName _VirtioScsi_QNAME = new QName("", "virtio_scsi");
     private final static QName _AuthorizedKey_QNAME = new QName("", "authorized_key");
     private final static QName _Nics_QNAME = new QName("", "nics");
+    private final static QName _SkipIfSdActive_QNAME = new QName("", "skip_if_sd_active");
     private final static QName _AffinityGroups_QNAME = new QName("", "affinity_groups");
     private final static QName _TemplateStates_QNAME = new QName("", "template_states");
     private final static QName _OsTypes_QNAME = new QName("", "os_types");
@@ -137,15 +138,16 @@ public class ObjectFactory {
     private final static QName _DataCenter_QNAME = new QName("", "data_center");
     private final static QName _Networks_QNAME = new QName("", "networks");
     private final static QName _Hook_QNAME = new QName("", "hook");
+    private final static QName _OperatingSystems_QNAME = new QName("", "operating_systems");
     private final static QName _PortMirroring_QNAME = new QName("", "port_mirroring");
     private final static QName _Templates_QNAME = new QName("", "templates");
     private final static QName _Labels_QNAME = new QName("", "labels");
     private final static QName _VolumeProfileDetails_QNAME = new QName("", "volume_profile_details");
     private final static QName _Cpu_QNAME = new QName("", "cpu");
     private final static QName _QosTypes_QNAME = new QName("", "qos_types");
+    private final static QName _DiskSnapshots_QNAME = new QName("", "disk_snapshots");
     private final static QName _Label_QNAME = new QName("", "label");
     private final static QName _Display_QNAME = new QName("", "display");
-    private final static QName _DiskSnapshots_QNAME = new QName("", "disk_snapshots");
     private final static QName _Agent_QNAME = new QName("", "agent");
     private final static QName _CpuProfile_QNAME = new QName("", "cpu_profile");
     private final static QName _Url_QNAME = new QName("", "url");
@@ -162,6 +164,7 @@ public class ObjectFactory {
     private final static QName _Brick_QNAME = new QName("", "brick");
     private final static QName _GlusterVolume_QNAME = new QName("", "gluster_volume");
     private final static QName _LogicalUnit_QNAME = new QName("", "logical_unit");
+    private final static QName _SkipIfConnectivityBroken_QNAME = new QName("", "skip_if_connectivity_broken");
     private final static QName _Statistics_QNAME = new QName("", "statistics");
     private final static QName _Response_QNAME = new QName("", "response");
     private final static QName _IscsiBonds_QNAME = new QName("", "iscsi_bonds");
@@ -268,6 +271,7 @@ public class ObjectFactory {
     private final static QName _PreviewVms_QNAME = new QName("", "preview_vms");
     private final static QName _Status_QNAME = new QName("", "status");
     private final static QName _NfsProfileDetails_QNAME = new QName("", "nfs_profile_details");
+    private final static QName _FencingPolicy_QNAME = new QName("", "fencing_policy");
     private final static QName _Property_QNAME = new QName("", "property");
     private final static QName _Permission_QNAME = new QName("", "permission");
     private final static QName _FenceTypes_QNAME = new QName("", "fence_types");
@@ -305,6 +309,7 @@ public class ObjectFactory {
     private final static QName _BrickStates_QNAME = new QName("", "brick_states");
     private final static QName _NumaNodePin_QNAME = new QName("", "numa_node_pin");
     private final static QName _MacPools_QNAME = new QName("", "mac_pools");
+    private final static QName _OperatingSystem_QNAME = new QName("", "operating_system");
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
     private final static QName _Application_QNAME = new QName("", "application");
     private final static QName _Nic_QNAME = new QName("", "nic");
@@ -619,6 +624,14 @@ public class ObjectFactory {
      */
     public Nics createNics() {
         return new Nics();
+    }
+
+    /**
+     * Create an instance of {@link SkipIfSDActive }
+     *
+     */
+    public SkipIfSDActive createSkipIfSDActive() {
+        return new SkipIfSDActive();
     }
 
     /**
@@ -1070,6 +1083,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OperatingSystemInfos }
+     *
+     */
+    public OperatingSystemInfos createOperatingSystemInfos() {
+        return new OperatingSystemInfos();
+    }
+
+    /**
      * Create an instance of {@link PortMirroring }
      *
      */
@@ -1118,6 +1139,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DiskSnapshots }
+     *
+     */
+    public DiskSnapshots createDiskSnapshots() {
+        return new DiskSnapshots();
+    }
+
+    /**
      * Create an instance of {@link Label }
      *
      */
@@ -1131,14 +1160,6 @@ public class ObjectFactory {
      */
     public Display createDisplay() {
         return new Display();
-    }
-
-    /**
-     * Create an instance of {@link DiskSnapshots }
-     *
-     */
-    public DiskSnapshots createDiskSnapshots() {
-        return new DiskSnapshots();
     }
 
     /**
@@ -1267,6 +1288,14 @@ public class ObjectFactory {
      */
     public LogicalUnit createLogicalUnit() {
         return new LogicalUnit();
+    }
+
+    /**
+     * Create an instance of {@link SkipIfConnectivityBroken }
+     *
+     */
+    public SkipIfConnectivityBroken createSkipIfConnectivityBroken() {
+        return new SkipIfConnectivityBroken();
     }
 
     /**
@@ -2110,6 +2139,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FencingPolicy }
+     *
+     */
+    public FencingPolicy createFencingPolicy() {
+        return new FencingPolicy();
+    }
+
+    /**
      * Create an instance of {@link FenceTypes }
      *
      */
@@ -2387,6 +2424,14 @@ public class ObjectFactory {
      */
     public NumaNodePin createNumaNodePin() {
         return new NumaNodePin();
+    }
+
+    /**
+     * Create an instance of {@link OperatingSystemInfo }
+     *
+     */
+    public OperatingSystemInfo createOperatingSystemInfo() {
+        return new OperatingSystemInfo();
     }
 
     /**
@@ -3106,6 +3151,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SkipIfSDActive }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "skip_if_sd_active")
+    public JAXBElement<SkipIfSDActive> createSkipIfSdActive(SkipIfSDActive value) {
+        return new JAXBElement<SkipIfSDActive>(_SkipIfSdActive_QNAME, SkipIfSDActive.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AffinityGroups }{@code >}}
      *
      */
@@ -3619,6 +3673,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OperatingSystemInfos }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "operating_systems")
+    public JAXBElement<OperatingSystemInfos> createOperatingSystems(OperatingSystemInfos value) {
+        return new JAXBElement<OperatingSystemInfos>(_OperatingSystems_QNAME, OperatingSystemInfos.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PortMirroring }{@code >}}
      *
      */
@@ -3673,6 +3736,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiskSnapshots }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "disk_snapshots")
+    public JAXBElement<DiskSnapshots> createDiskSnapshots(DiskSnapshots value) {
+        return new JAXBElement<DiskSnapshots>(_DiskSnapshots_QNAME, DiskSnapshots.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Label }{@code >}}
      *
      */
@@ -3688,15 +3760,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "display")
     public JAXBElement<Display> createDisplay(Display value) {
         return new JAXBElement<Display>(_Display_QNAME, Display.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DiskSnapshots }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "", name = "disk_snapshots")
-    public JAXBElement<DiskSnapshots> createDiskSnapshots(DiskSnapshots value) {
-        return new JAXBElement<DiskSnapshots>(_DiskSnapshots_QNAME, DiskSnapshots.class, null, value);
     }
 
     /**
@@ -3841,6 +3904,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "logical_unit")
     public JAXBElement<LogicalUnit> createLogicalUnit(LogicalUnit value) {
         return new JAXBElement<LogicalUnit>(_LogicalUnit_QNAME, LogicalUnit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SkipIfConnectivityBroken }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "skip_if_connectivity_broken")
+    public JAXBElement<SkipIfConnectivityBroken> createSkipIfConnectivityBroken(SkipIfConnectivityBroken value) {
+        return new JAXBElement<SkipIfConnectivityBroken>(_SkipIfConnectivityBroken_QNAME, SkipIfConnectivityBroken.class, null, value);
     }
 
     /**
@@ -4798,6 +4870,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FencingPolicy }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "fencing_policy")
+    public JAXBElement<FencingPolicy> createFencingPolicy(FencingPolicy value) {
+        return new JAXBElement<FencingPolicy>(_FencingPolicy_QNAME, FencingPolicy.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Property }{@code >}}
      *
      */
@@ -5128,6 +5209,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "mac_pools")
     public JAXBElement<MacPools> createMacPools(MacPools value) {
         return new JAXBElement<MacPools>(_MacPools_QNAME, MacPools.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OperatingSystemInfo }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "operating_system")
+    public JAXBElement<OperatingSystemInfo> createOperatingSystem(OperatingSystemInfo value) {
+        return new JAXBElement<OperatingSystemInfo>(_OperatingSystem_QNAME, OperatingSystemInfo.class, null, value);
     }
 
     /**

@@ -126,6 +126,10 @@ public class StorageDomainTemplates extends
      *    <pre>
      *    [max results]
      *    </pre>
+     * @param unregistered
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      *
      * @return List of {@link StorageDomainTemplate }
@@ -137,7 +141,7 @@ public class StorageDomainTemplates extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<StorageDomainTemplate> list(Integer max) throws ClientProtocolException,
+    public List<StorageDomainTemplate> list(Integer max, Boolean unregistered) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -146,6 +150,9 @@ public class StorageDomainTemplates extends
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        if (unregistered != null) {
+            urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
         }
         String url = urlBuilder.build();
 
