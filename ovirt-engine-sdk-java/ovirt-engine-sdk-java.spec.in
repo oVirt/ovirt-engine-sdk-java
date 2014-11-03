@@ -11,11 +11,19 @@
 %endif
 
 %if 0%{?rhel}
+%if 0%{?rhel} >= 7
+%global     install_poms 1
+%global     require_maven 1
+%global     require_java_dep 1
+%global     mvn mvn-rpmbuild
+%global     mvnout target
+%else
 %global     install_poms 0
 %global     require_maven 0
 %global     require_java_dep 0
 %global     mvn mvn
 %global     mvnout target
+%endif
 %endif
 
 Name:           ovirt-engine-sdk-java
@@ -33,7 +41,11 @@ BuildArch: noarch
 BuildRequires:  java-devel
 %endif
 %if 0%{?rhel}
+%if 0%{?rhel} >= 7
+BuildRequires:  java-devel
+%else
 BuildRequires:  java7-devel
+%endif
 %endif
 BuildRequires:  jpackage-utils
 
@@ -208,7 +220,7 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 - to VersionCaps added a list of supported payload-encodings
 - to Step added externalType
 - to NIC added vnicProfile and bootProtocol
-- to CPU added architecture 
+- to CPU added architecture
 - to VnicProfilePermission added delete() method
 - to Disk added readOnly
 - to VMs.add() added [vm.cpu.architecture], [action.vm.initialization.cloud_init.*] arguments
@@ -283,7 +295,7 @@ ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_jav
 - [@param template.console.enabled: boolean] #878459
 - to vm added:
 - [@param vm.console.enabled: boolean] #878459
-- to Cluster added:    
+- to Cluster added:
   *[@param cluster.comment: string]
   *[@param cluster.ballooning_enabled: boolean]
   *[@param cluster.tunnel_migration: boolean]
