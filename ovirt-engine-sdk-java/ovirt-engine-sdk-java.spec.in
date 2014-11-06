@@ -6,7 +6,7 @@
 %global     install_poms 1
 %global     require_maven 1
 %global     require_java_dep 1
-%global     mvn mvn-rpmbuild
+%global     mvn xmvn
 %global     mvnout target
 %endif
 
@@ -15,7 +15,7 @@
 %global     install_poms 1
 %global     require_maven 1
 %global     require_java_dep 1
-%global     mvn mvn-rpmbuild
+%global     mvn xmvn
 %global     mvnout target
 %else
 %global     install_poms 0
