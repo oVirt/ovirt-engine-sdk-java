@@ -4,8 +4,32 @@ oVirt Java SDK
 Introduction
 ------------
 
-The oVirt Python SDK is a Python library that simplfies access to the oVirt
+The oVirt Java SDK is a Java library that simplfies access to the oVirt
 Engine REST API.
+
+Using
+-----
+
+If you want to use the Java SDK in your application you will need the
+`.jar` file and its dependencies. The Java SDK is available in Maven
+central, so the easiest way to get it and its dependencies is to include
+a `dependency` element inside your own `pom.xml` file:
+
+    <dependency>
+        <groupId>org.ovirt.engine.sdk</groupId>
+        <artifactId>ovirt-engine-sdk-java</artifactId>
+        <version>3.5.0.5</version>
+    </dependency>
+
+If you aren't using Maven to manage your dependencies you will need to
+get the dependencies manually and add them to the class path of your
+application. Currently the SDK uses the following Java libraries:
+
+- [Apache Commons BeanUtils](http://commons.apache.org/proper/commons-beanutils)
+- [Apache Commons Codec](http://commons.apache.org/proper/commons-codec)
+- [Apache Commons Logging](http://commons.apache.org/proper/commons-logging)
+- [Apache HTTP Components](http://hc.apache.org)
+- [Apache log4j 1.2](http://logging.apache.org/log4j/1.2)
 
 Generating
 ----------
