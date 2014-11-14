@@ -71,9 +71,15 @@ Requires: java
 Requires: httpcomponents-client >= 4.2
 Requires: log4j
 %if 0%{?rhel}
+%if 0%{?rhel} >= 7
+Requires: apache-commons-beanutils
+Requires: apache-commons-codec
+Requires: apache-commons-logging
+%else
 Requires: jakarta-commons-beanutils
 Requires: jakarta-commons-codec
 Requires: jakarta-commons-logging
+%endif
 %endif
 %if 0%{?fedora}
 Requires: apache-commons-beanutils
