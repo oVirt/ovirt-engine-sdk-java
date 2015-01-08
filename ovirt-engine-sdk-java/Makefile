@@ -1,16 +1,25 @@
 all: rpm
 
-rpmrelease:=0.4$(rpmsuffix)
-rpmversion=3.6.0.0
+pomversion=$(shell ./version.py --pom)
+rpmversion=$(shell ./version.py --rpm)
+rpmdist=$(shell rpm --eval '%dist')
+rpmrelease=0.5$(rpmsuffix)$(rpmdist)
+
 RPMTOP=$(shell bash -c "pwd -P")/rpmtop
 NAME=ovirt-engine-sdk-java
 SPEC=$(NAME).spec
 
-TARBALL=$(NAME)-$(rpmversion).tar.gz
-SRPM=$(RPMTOP)/SRPMS/$(NAME)-$(rpmversion)-$(rpmrelease)*.src.rpm
+TARBALL=$(NAME)-$(pomversion).tar.gz
+SRPM=$(RPMTOP)/SRPMS/$(NAME)-$(rpmversion)-$(rpmrelease).src.rpm
 
-$(NAME).spec: $(NAME).spec.in
-	sed 's/^Version:.*/Version: $(rpmversion)/;s/^Release:.*/Release: $(rpmrelease)%{dist}/;s/%{release}/$(rpmrelease)/' $(NAME).spec.in > $(SPEC)
+$(SPEC): spec$(rpmdist).in
+	sed \
+		-e 's/@POM_VERSION@/$(pomversion)/g' \
+		-e 's/@RPM_VERSION@/$(rpmversion)/g' \
+		-e 's/@RPM_RELEASE@/$(rpmrelease)/g' \
+		-e 's/@TARBALL@/$(TARBALL)/g' \
+		< $< \
+		> $@
 
 .PHONY: dist tarball
 tarball: dist

@@ -101,7 +101,7 @@ include a reference to the commit or tag of the engine that was used to
 download the updated metadata. For example:
 
     sdk: Regenerate against the latest API
-    
+
     This patch regenerates the SDK using the latest API obtained from
     the engine built from commit fffffff, corresponding to tag
     ovirt-engine-3.5.7.
@@ -117,14 +117,14 @@ for engine 3.5.7 then the version number should be 3.5.7.`x`. The value of `x`
 is increased for each release, and reset to 0 when the other three numbers
 change.
 
+The `pom.xml` files need to be changed to remove the `-SNAPSHOT` suffix from
+the version number.
+
 Once the next release number is decided the `Makefile` *may* need to be changed
-to reflect that number and also change the RPM release number to `1`.
+to set the RPM release number to `1`.
 
-The `.spec.in` and `pom.xml` files need to be changed to remove the `-SNAPSHOT`
-suffix from the version number.
-
-The `%changelog` in the `.spec.in` should be updated so that it contains short
-descriptions of bugs fixed and relevant changes.
+The `%changelog` in all the `spec.*.in` should be updated so that it contains
+short descriptions of bugs fixed and relevant changes.
 
 Look at commit ea06203 (with command, `git show ea06203`) for a typical release
 commit.
@@ -135,11 +135,10 @@ Don't forget to create tag the release commit, and push it to the upstream repos
     $ git push origin 3.5.7.0 HEAD:refs/heads/sdk_3.5
 
 To finish the release you need to do an additional change that prepares for the
-next development iteration, basically setting the version number to the next
-expected one in the `Makefile` and in `setup.py` and adding the `-SNAPSHOT`
-suffix. Commit e9b76aa is a good example. Note that this change will usually
-contain the correct next version number, so usually there is no need to change
-it when doing next release.
+next development iteration, basically adding the `-SNAPSHOT` suffix in the
+`pom.xml` file. Commit e9b76aa is a good example. Note that this file will
+usually already contain the correct next version number, so usually there is no
+need to change the version number itself, only add the `-SNAPSHOT` suffix.
 
 Packaging
 ---------
@@ -153,3 +152,7 @@ To create the RPM packages just run `make rpm`:
 
 The generated `.rpm` file will be available in the `rpmtop/RPMS/noarch`
 directory.
+
+Note that there are several `spec.*.in` templates, one for each supported
+distribution. Whenever making a packaging change remember to make it in
+all the relevant templates.
