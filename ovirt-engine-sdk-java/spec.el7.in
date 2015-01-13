@@ -1,100 +1,26 @@
-%global     package_version 3.5.0.6
-%global     package_maven_version 3.5.0.6-SNAPSHOT
-%global     _javadocname javadoc
-
-%if 0%{?fedora}
-%global     install_poms 1
-%global     require_maven 1
-%global     require_java_dep 1
-%global     mvn xmvn
-%global     mvnout target
-%endif
-
-%if 0%{?rhel}
-%if 0%{?rhel} >= 7
-%global     install_poms 1
-%global     require_maven 1
-%global     require_java_dep 1
-%global     mvn xmvn
-%global     mvnout target
-%else
-%global     install_poms 0
-%global     require_maven 0
-%global     require_java_dep 0
-%global     mvn mvn
-%global     mvnout target
-%endif
-%endif
-
-Name:           ovirt-engine-sdk-java
-Version:        %{package_version}
-Release:        1%{?dist}
-Summary:        oVirt Engine Software Development Kit (Java)
-Group:          Development/Libraries
-License:        ASL 2.0
-URL:            http://ovirt.org
-Source0:        http://ovirt.org/releases/stable/src/%{name}-%{version}.tar.gz
+Name: ovirt-engine-sdk-java
+Version: @RPM_VERSION@
+Release: @RPM_RELEASE@
+Summary: oVirt Engine Software Development Kit (Java)
+Group: Development/Libraries
+License: ASL 2.0
+URL: http://ovirt.org
+Source: http://ovirt.org/releases/stable/src/@TARBALL@
 
 BuildArch: noarch
 
-%if 0%{?fedora}
-BuildRequires:  java-devel
-%endif
-%if 0%{?rhel}
-%if 0%{?rhel} >= 7
-BuildRequires:  java-devel
-%else
-BuildRequires:  java7-devel
-%endif
-%endif
-BuildRequires:  jpackage-utils
-
-%if %{require_java_dep}
-BuildRequires:  apache-commons-logging
-BuildRequires:  apache-commons-compress
-BuildRequires:  httpcomponents-client >= 4.2
-BuildRequires:  junit
-BuildRequires:  xerces-j2
-BuildRequires:  maven-local
-%endif
-
-%if %{require_maven}
-BuildRequires:  maven
-BuildRequires:  maven-compiler-plugin
-BuildRequires:  maven-install-plugin
-BuildRequires:  maven-jar-plugin
-BuildRequires:  maven-javadoc-plugin
-BuildRequires:  maven-source-plugin
-%endif
-
-Requires: java
-Requires: httpcomponents-client >= 4.2
-Requires: log4j
-%if 0%{?rhel}
-%if 0%{?rhel} >= 7
-Requires: apache-commons-beanutils
-Requires: apache-commons-codec
-Requires: apache-commons-logging
-%else
-Requires: jakarta-commons-beanutils
-Requires: jakarta-commons-codec
-Requires: jakarta-commons-logging
-%endif
-%endif
-%if 0%{?fedora}
-Requires: apache-commons-beanutils
-Requires: apache-commons-codec
-Requires: apache-commons-logging
-%endif
+BuildRequires: apache-commons-beanutils
+BuildRequires: httpcomponents-client
+BuildRequires: log4j
+BuildRequires: maven-local
 
 %description
 This package contains The oVirt-Engine Java Software Development Kit.
 With this package, custom java software can be built for oVirt-Engine.
 
 %package javadoc
-Summary:    Javadocs for %{name}
-Group:      Documentation
-Requires:   jpackage-utils
+Summary: Javadocs for %{name}
+Group: Documentation
 
 %description javadoc
 This package contains the API documentation for %{name}.
@@ -103,36 +29,20 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{name}
 
 %build
-%{mvn} install javadoc:aggregate
+%mvn_build
 
 %install
-install -d -m 755 "%{buildroot}%{_javadir}/%{name}"
-install -d -m 755 "%{buildroot}%{_mavenpomdir}"
+%mvn_install
 
-install -pm 644 "%{mvnout}/%{name}-%{package_maven_version}.jar" "%{buildroot}%{_javadir}/%{name}"
-ln -s "%{name}-%{package_maven_version}.jar" "%{buildroot}%{_javadir}/%{name}/%{name}.jar"
-
-%if %{install_poms}
-install -pm 644 "pom.xml" "%{buildroot}%{_mavenpomdir}/JPP.%{name}-%{name}.pom"
-%add_maven_depmap "JPP.%{name}-%{name}.pom" "%{name}/%{name}.jar"
-%endif
-
-mkdir -p "%{buildroot}%{_javadocdir}/%{name}"
-install -pm 644 "%{mvnout}/%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_javadocdir}/%{name}"
-ln -s "%{name}-%{package_maven_version}-%{_javadocname}.jar" "%{buildroot}%{_javadocdir}/%{name}/%{name}-%{_javadocname}.jar"
-
-%files
-%{_javadir}/%{name}/
-%if %{install_poms}
-%{_mavenpomdir}/JPP.%{name}-%{name}.pom
-%{_mavendepmapfragdir}/%{name}
-%endif
+%files -f .mfiles
+%{_javadir}/%{name}
 %doc AUTHORS.md
 %doc README.md
 %doc LICENSE.md
 
-%files javadoc
+%files javadoc -f .mfiles-javadoc
 %{_javadocdir}/%{name}
+%doc LICENSE.md
 
 %changelog
 * Wed Sep 10 2014 Juan Hernandez <juan.hernandez@redhat.com> - 3.5.0.5-1
