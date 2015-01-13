@@ -1,11 +1,12 @@
 all: rpm
 
-pomversion=$(shell ./version.py --pom)
-rpmversion=$(shell ./version.py --rpm)
+PWD=$(shell bash -c "pwd -P")
+pomversion=$(shell $(PWD)/version.py --pom)
+rpmversion=$(shell $(PWD)/version.py --rpm)
 rpmdist=$(shell rpm --eval '%dist')
 rpmrelease=0.1$(rpmsuffix)$(rpmdist)
 
-RPMTOP=$(shell bash -c "pwd -P")/rpmtop
+RPMTOP=$(PWD)/rpmtop
 NAME=ovirt-engine-sdk-java
 SPEC=$(NAME).spec
 
