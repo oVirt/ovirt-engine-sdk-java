@@ -183,6 +183,21 @@ public class StorageDomains extends
      *
      *    Overload 2:
      *
+     *      Import an existing block
+     *      storage domain to the system
+     *      using the targets already
+     *      connected to the host
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.import
+     *      [storagedomain.storage.address]
+     *      [storagedomain.format]
+     *      [storagedomain.comment]
+     *
+     *    Overload 3:
+     *
      *      add a new storage domain to
      *      the system using the storage
      *      on the given host and path
@@ -197,7 +212,7 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
-     *    Overload 3:
+     *    Overload 4:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -213,7 +228,7 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
-     *    Overload 4:
+     *    Overload 5:
      *
      *      add a new storage domain to
      *      the system using the gluster
@@ -279,6 +294,21 @@ public class StorageDomains extends
      *
      *    Overload 2:
      *
+     *      Import an existing block
+     *      storage domain to the system
+     *      using the targets already
+     *      connected to the host
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.import
+     *      [storagedomain.storage.address]
+     *      [storagedomain.format]
+     *      [storagedomain.comment]
+     *
+     *    Overload 3:
+     *
      *      add a new storage domain to
      *      the system using the storage
      *      on the given host and path
@@ -293,7 +323,7 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
-     *    Overload 3:
+     *    Overload 4:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -309,7 +339,7 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
-     *    Overload 4:
+     *    Overload 5:
      *
      *      add a new storage domain to
      *      the system using the gluster
@@ -383,6 +413,21 @@ public class StorageDomains extends
      *
      *    Overload 2:
      *
+     *      Import an existing block
+     *      storage domain to the system
+     *      using the targets already
+     *      connected to the host
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.import
+     *      [storagedomain.storage.address]
+     *      [storagedomain.format]
+     *      [storagedomain.comment]
+     *
+     *    Overload 3:
+     *
      *      add a new storage domain to
      *      the system using the storage
      *      on the given host and path
@@ -397,7 +442,7 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
-     *    Overload 3:
+     *    Overload 4:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -413,7 +458,7 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
-     *    Overload 4:
+     *    Overload 5:
      *
      *      add a new storage domain to
      *      the system using the gluster
@@ -495,6 +540,21 @@ public class StorageDomains extends
      *
      *    Overload 2:
      *
+     *      Import an existing block
+     *      storage domain to the system
+     *      using the targets already
+     *      connected to the host
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.import
+     *      [storagedomain.storage.address]
+     *      [storagedomain.format]
+     *      [storagedomain.comment]
+     *
+     *    Overload 3:
+     *
      *      add a new storage domain to
      *      the system using the storage
      *      on the given host and path
@@ -509,7 +569,7 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
-     *    Overload 3:
+     *    Overload 4:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -525,7 +585,7 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *
-     *    Overload 4:
+     *    Overload 5:
      *
      *      add a new storage domain to
      *      the system using the gluster

@@ -368,6 +368,7 @@ public class VM extends
      *    [vm.cpu_shares]
      *    [vm.memory]
      *    [vm.memory_policy.guaranteed]
+     *    [vm.memory_policy.ballooning]
      *    [vm.high_availability.priority]
      *    [vm.high_availability.enabled]
      *    [vm.domain.name]
@@ -457,6 +458,7 @@ public class VM extends
      *    [vm.cpu_shares]
      *    [vm.memory]
      *    [vm.memory_policy.guaranteed]
+     *    [vm.memory_policy.ballooning]
      *    [vm.high_availability.priority]
      *    [vm.high_availability.enabled]
      *    [vm.domain.name]
@@ -974,6 +976,7 @@ public class VM extends
      *    [action.async]
      *    [action.force]
      *    [action.grace_period.expiry]
+     *    [action.cluster.id]
      *    </pre>
      *
      * @return
@@ -1007,6 +1010,7 @@ public class VM extends
      *    [action.async]
      *    [action.force]
      *    [action.grace_period.expiry]
+     *    [action.cluster.id]
      *    </pre>
      *
      * @param correlationId

@@ -61,6 +61,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}console" minOccurs="0"/>
  *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
+ *         &lt;element name="custom_properties" type="{}CustomProperties" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
  *         &lt;element ref="{}soundcard_enabled" minOccurs="0"/>
  *         &lt;element name="tunnel_migration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -101,6 +102,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "console",
     "timezone",
     "domain",
+    "customProperties",
     "usb",
     "soundcardEnabled",
     "tunnelMigration",
@@ -146,6 +148,8 @@ public class Template
     protected Console console;
     protected String timezone;
     protected Domain domain;
+    @XmlElement(name = "custom_properties")
+    protected CustomProperties customProperties;
     protected Usb usb;
     @XmlElement(name = "soundcard_enabled")
     protected Boolean soundcardEnabled;
@@ -748,6 +752,34 @@ public class Template
 
     public boolean isSetDomain() {
         return (this.domain!= null);
+    }
+
+    /**
+     * Gets the value of the customProperties property.
+     *
+     * @return
+     *     possible object is
+     *     {@link CustomProperties }
+     *
+     */
+    public CustomProperties getCustomProperties() {
+        return customProperties;
+    }
+
+    /**
+     * Sets the value of the customProperties property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link CustomProperties }
+     *
+     */
+    public void setCustomProperties(CustomProperties value) {
+        this.customProperties = value;
+    }
+
+    public boolean isSetCustomProperties() {
+        return (this.customProperties!= null);
     }
 
     /**

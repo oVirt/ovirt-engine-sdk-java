@@ -49,6 +49,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="used" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="committed" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="storage_format" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="import" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -70,7 +71,8 @@ import javax.xml.bind.annotation.XmlType;
     "available",
     "used",
     "committed",
-    "storageFormat"
+    "storageFormat",
+    "_import"
 })
 public class StorageDomain
     extends BaseResource
@@ -90,6 +92,8 @@ public class StorageDomain
     protected Long committed;
     @XmlElement(name = "storage_format")
     protected String storageFormat;
+    @XmlElement(name = "import")
+    protected Boolean _import;
 
     /**
      * Gets the value of the dataCenter property.
@@ -425,6 +429,34 @@ public class StorageDomain
 
     public boolean isSetStorageFormat() {
         return (this.storageFormat!= null);
+    }
+
+    /**
+     * Gets the value of the import property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getImport() {
+        return _import;
+    }
+
+    /**
+     * Sets the value of the import property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setImport(Boolean value) {
+        this._import = value;
+    }
+
+    public boolean isSetImport() {
+        return (this._import!= null);
     }
 
 }

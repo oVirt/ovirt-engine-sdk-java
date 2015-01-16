@@ -60,6 +60,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}creation_states" minOccurs="0"/>
  *         &lt;element ref="{}power_management_states" minOccurs="0"/>
  *         &lt;element ref="{}host_states" minOccurs="0"/>
+ *         &lt;element ref="{}host_protocols" minOccurs="0"/>
  *         &lt;element ref="{}host_non_operational_details" minOccurs="0"/>
  *         &lt;element ref="{}network_states" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain_states" minOccurs="0"/>
@@ -81,6 +82,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}watchdog_actions" minOccurs="0"/>
  *         &lt;element ref="{}authentication_methods" minOccurs="0"/>
  *         &lt;element ref="{}kdump_states" minOccurs="0"/>
+ *         &lt;element ref="{}spm_states" minOccurs="0"/>
  *         &lt;element ref="{}step_types" minOccurs="0"/>
  *         &lt;element ref="{}payload_encodings" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
@@ -133,6 +135,7 @@ import javax.xml.bind.annotation.XmlType;
     "creationStates",
     "powerManagementStates",
     "hostStates",
+    "hostProtocols",
     "hostNonOperationalDetails",
     "networkStates",
     "storageDomainStates",
@@ -154,6 +157,7 @@ import javax.xml.bind.annotation.XmlType;
     "watchdogActions",
     "authenticationMethods",
     "kdumpStates",
+    "spmStates",
     "stepTypes",
     "payloadEncodings",
     "glusterVolumeTypes",
@@ -221,6 +225,8 @@ public class VersionCaps
     protected PowerManagementStates powerManagementStates;
     @XmlElement(name = "host_states")
     protected HostStates hostStates;
+    @XmlElement(name = "host_protocols")
+    protected HostProtocols hostProtocols;
     @XmlElement(name = "host_non_operational_details")
     protected HostNonOperationalDetails hostNonOperationalDetails;
     @XmlElement(name = "network_states")
@@ -261,6 +267,8 @@ public class VersionCaps
     protected AuthenticationMethod authenticationMethods;
     @XmlElement(name = "kdump_states")
     protected KdumpStates kdumpStates;
+    @XmlElement(name = "spm_states")
+    protected SpmStates spmStates;
     @XmlElement(name = "step_types")
     protected StepTypes stepTypes;
     @XmlElement(name = "payload_encodings")
@@ -944,6 +952,34 @@ public class VersionCaps
     }
 
     /**
+     * Gets the value of the hostProtocols property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostProtocols }
+     *
+     */
+    public HostProtocols getHostProtocols() {
+        return hostProtocols;
+    }
+
+    /**
+     * Sets the value of the hostProtocols property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostProtocols }
+     *
+     */
+    public void setHostProtocols(HostProtocols value) {
+        this.hostProtocols = value;
+    }
+
+    public boolean isSetHostProtocols() {
+        return (this.hostProtocols!= null);
+    }
+
+    /**
      * Gets the value of the hostNonOperationalDetails property.
      *
      * @return
@@ -1529,6 +1565,34 @@ public class VersionCaps
 
     public boolean isSetKdumpStates() {
         return (this.kdumpStates!= null);
+    }
+
+    /**
+     * Gets the value of the spmStates property.
+     *
+     * @return
+     *     possible object is
+     *     {@link SpmStates }
+     *
+     */
+    public SpmStates getSpmStates() {
+        return spmStates;
+    }
+
+    /**
+     * Sets the value of the spmStates property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link SpmStates }
+     *
+     */
+    public void setSpmStates(SpmStates value) {
+        this.spmStates = value;
+    }
+
+    public boolean isSetSpmStates() {
+        return (this.spmStates!= null);
     }
 
     /**

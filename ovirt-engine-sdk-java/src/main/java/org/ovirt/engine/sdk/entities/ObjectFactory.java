@@ -188,6 +188,7 @@ public class ObjectFactory {
     private final static QName _Tag_QNAME = new QName("", "tag");
     private final static QName _Domains_QNAME = new QName("", "domains");
     private final static QName _Payload_QNAME = new QName("", "payload");
+    private final static QName _Spm_QNAME = new QName("", "spm");
     private final static QName _ArchitectureCapability_QNAME = new QName("", "architecture_capability");
     private final static QName _HostStorage_QNAME = new QName("", "host_storage");
     private final static QName _HostNics_QNAME = new QName("", "host_nics");
@@ -236,6 +237,7 @@ public class ObjectFactory {
     private final static QName _Snapshot_QNAME = new QName("", "snapshot");
     private final static QName _WatchdogModels_QNAME = new QName("", "watchdog_models");
     private final static QName _GlusterVolumeTypes_QNAME = new QName("", "gluster_volume_types");
+    private final static QName _SpmStates_QNAME = new QName("", "spm_states");
     private final static QName _PowerManagement_QNAME = new QName("", "power_management");
     private final static QName _Method_QNAME = new QName("", "method");
     private final static QName _Capabilities_QNAME = new QName("", "capabilities");
@@ -248,6 +250,7 @@ public class ObjectFactory {
     private final static QName _Permit_QNAME = new QName("", "permit");
     private final static QName _BootMenu_QNAME = new QName("", "boot_menu");
     private final static QName _VnicProfile_QNAME = new QName("", "vnic_profile");
+    private final static QName _HostProtocols_QNAME = new QName("", "host_protocols");
     private final static QName _DataCenters_QNAME = new QName("", "data_centers");
     private final static QName _Selinux_QNAME = new QName("", "selinux");
     private final static QName _HostNumaNode_QNAME = new QName("", "host_numa_node");
@@ -1464,6 +1467,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SPM }
+     *
+     */
+    public SPM createSPM() {
+        return new SPM();
+    }
+
+    /**
      * Create an instance of {@link ArchitectureCapability }
      *
      */
@@ -1848,6 +1859,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SpmStates }
+     *
+     */
+    public SpmStates createSpmStates() {
+        return new SpmStates();
+    }
+
+    /**
      * Create an instance of {@link PowerManagement }
      *
      */
@@ -1933,6 +1952,14 @@ public class ObjectFactory {
      */
     public BootMenu createBootMenu() {
         return new BootMenu();
+    }
+
+    /**
+     * Create an instance of {@link HostProtocols }
+     *
+     */
+    public HostProtocols createHostProtocols() {
+        return new HostProtocols();
     }
 
     /**
@@ -4016,6 +4043,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SPM }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "spm")
+    public JAXBElement<SPM> createSpm(SPM value) {
+        return new JAXBElement<SPM>(_Spm_QNAME, SPM.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArchitectureCapability }{@code >}}
      *
      */
@@ -4448,6 +4484,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SpmStates }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "spm_states")
+    public JAXBElement<SpmStates> createSpmStates(SpmStates value) {
+        return new JAXBElement<SpmStates>(_SpmStates_QNAME, SpmStates.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PowerManagement }{@code >}}
      *
      */
@@ -4553,6 +4598,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "vnic_profile")
     public JAXBElement<VnicProfile> createVnicProfile(VnicProfile value) {
         return new JAXBElement<VnicProfile>(_VnicProfile_QNAME, VnicProfile.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostProtocols }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "host_protocols")
+    public JAXBElement<HostProtocols> createHostProtocols(HostProtocols value) {
+        return new JAXBElement<HostProtocols>(_HostProtocols_QNAME, HostProtocols.class, null, value);
     }
 
     /**
