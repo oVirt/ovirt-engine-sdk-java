@@ -311,13 +311,7 @@ public class RsdlCodegen extends AbstractCodegen {
         // #2 - walk RSDL
         for (DetailedLink dl : rsdl.getLinks().getLinks()) {
 
-            // Get the URL of the resource and make it relative, removing the root URL of the application and any
-            // additional leading slash:
-            url = dl.getHref().replace(rootUrl, "");
-            while (url.startsWith(SLASH)) {
-                url = url.substring(SLASH.length());
-            }
-
+            url = dl.getHref();
             rel = dl.getRel();
             requestBodyType = dl.getRequest().getBody().getType();
             requestMethod = dl.getRequest().getHttpMethod();
