@@ -114,53 +114,6 @@ public class Users extends
     }
 
     /**
-     * Lists User objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link User }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<User> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Users.class,
-                User.class, headers);
-    }
-    /**
      * Adds User object.
      *
      * @param user {@link org.ovirt.engine.sdk.entities.User}
@@ -280,6 +233,53 @@ public class Users extends
 
         return getProxy().add(url, user,
                 org.ovirt.engine.sdk.entities.User.class,
+                User.class, headers);
+    }
+    /**
+     * Lists User objects.
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link User }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<User> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Users.class,
                 User.class, headers);
     }
 

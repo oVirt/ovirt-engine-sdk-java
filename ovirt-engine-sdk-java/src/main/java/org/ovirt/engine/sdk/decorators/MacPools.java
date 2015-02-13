@@ -114,39 +114,6 @@ public class MacPools extends
     }
 
     /**
-     * Lists MacPool objects.
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link MacPool }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<MacPool> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.MacPools.class,
-                MacPool.class, headers);
-    }
-    /**
      * Adds MacPool object.
      *
      * @param macpool {@link org.ovirt.engine.sdk.entities.MacPool}
@@ -275,6 +242,39 @@ public class MacPools extends
 
         return getProxy().add(url, macpool,
                 org.ovirt.engine.sdk.entities.MacPool.class,
+                MacPool.class, headers);
+    }
+    /**
+     * Lists MacPool objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link MacPool }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<MacPool> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.MacPools.class,
                 MacPool.class, headers);
     }
 

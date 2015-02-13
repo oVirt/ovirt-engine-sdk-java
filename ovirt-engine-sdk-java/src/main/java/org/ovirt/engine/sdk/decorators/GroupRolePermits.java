@@ -120,39 +120,6 @@ public class GroupRolePermits extends
     }
 
     /**
-     * Lists GroupRolePermit objects.
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link GroupRolePermit }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<GroupRolePermit> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Permits.class,
-                GroupRolePermit.class, headers);
-    }
-    /**
      * Adds Permit object.
      *
      * @param permit {@link org.ovirt.engine.sdk.entities.Permit}
@@ -269,6 +236,39 @@ public class GroupRolePermits extends
 
         return getProxy().add(url, permit,
                 org.ovirt.engine.sdk.entities.Permit.class,
+                GroupRolePermit.class, headers);
+    }
+    /**
+     * Lists GroupRolePermit objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link GroupRolePermit }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<GroupRolePermit> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Permits.class,
                 GroupRolePermit.class, headers);
     }
 

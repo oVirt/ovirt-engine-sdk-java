@@ -114,39 +114,6 @@ public class Jobs extends
     }
 
     /**
-     * Lists Job objects.
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link Job }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Job> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Jobs.class,
-                Job.class, headers);
-    }
-    /**
      * Adds Job object.
      *
      * @param job {@link org.ovirt.engine.sdk.entities.Job}
@@ -266,6 +233,39 @@ public class Jobs extends
 
         return getProxy().add(url, job,
                 org.ovirt.engine.sdk.entities.Job.class,
+                Job.class, headers);
+    }
+    /**
+     * Lists Job objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link Job }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Job> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Jobs.class,
                 Job.class, headers);
     }
 

@@ -114,53 +114,6 @@ public class VmPools extends
     }
 
     /**
-     * Lists VmPool objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link VmPool }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<VmPool> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.VmPools.class,
-                VmPool.class, headers);
-    }
-    /**
      * Adds VmPool object.
      *
      * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
@@ -301,6 +254,53 @@ public class VmPools extends
 
         return getProxy().add(url, vmpool,
                 org.ovirt.engine.sdk.entities.VmPool.class,
+                VmPool.class, headers);
+    }
+    /**
+     * Lists VmPool objects.
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link VmPool }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<VmPool> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.VmPools.class,
                 VmPool.class, headers);
     }
 

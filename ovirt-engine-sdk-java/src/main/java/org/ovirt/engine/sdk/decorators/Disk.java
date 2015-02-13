@@ -98,7 +98,7 @@ public class Disk extends
 
 
     /**
-     * Performs exportDisk action.
+     * Performs copy action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -117,9 +117,9 @@ public class Disk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportDisk(Action action) throws ClientProtocolException,
+    public Action copy(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/export";
+        String url = this.getHref() + "/copy";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -130,7 +130,7 @@ public class Disk extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs exportDisk action.
+     * Performs copy action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -154,9 +154,9 @@ public class Disk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportDisk(Action action, String correlationId) throws ClientProtocolException,
+    public Action copy(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/export";
+        String url = this.getHref() + "/copy";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
@@ -269,6 +269,78 @@ public class Disk extends
         return getProxy().delete(url, Response.class, headers);
     }
     /**
+     * Performs exportDisk action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action exportDisk(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/export";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs exportDisk action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    storagedomain.id|name
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action exportDisk(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/export";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
      * Performs move action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
@@ -328,78 +400,6 @@ public class Disk extends
     public Action move(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/move";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs copy action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    storagedomain.id|name
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action copy(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/copy";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs copy action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    storagedomain.id|name
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action copy(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/copy";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {

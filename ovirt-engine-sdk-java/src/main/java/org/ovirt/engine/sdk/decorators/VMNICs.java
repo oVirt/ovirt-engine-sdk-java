@@ -120,80 +120,6 @@ public class VMNICs extends
     }
 
     /**
-     * Lists VMNIC objects.
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link VMNIC }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<VMNIC> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Nics.class,
-                VMNIC.class, headers);
-    }
-    /**
-     * Lists VMNIC objects.
-     *
-     * @param allContent
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link VMNIC }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<VMNIC> list(Integer max, String allContent) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (allContent != null) {
-            headersBuilder.add("All-Content", allContent);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Nics.class,
-                VMNIC.class, headers);
-    }
-    /**
      * Adds NIC object.
      *
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
@@ -385,6 +311,80 @@ public class VMNICs extends
 
         return getProxy().add(url, nic,
                 org.ovirt.engine.sdk.entities.NIC.class,
+                VMNIC.class, headers);
+    }
+    /**
+     * Lists VMNIC objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link VMNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<VMNIC> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Nics.class,
+                VMNIC.class, headers);
+    }
+    /**
+     * Lists VMNIC objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link VMNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<VMNIC> list(Integer max, String allContent) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Nics.class,
                 VMNIC.class, headers);
     }
 

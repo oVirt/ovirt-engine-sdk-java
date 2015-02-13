@@ -114,60 +114,6 @@ public class Events extends
     }
 
     /**
-     * Lists Event objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param from
-     *    <pre>
-     *    [event_id]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link Event }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Event> list(String query, Boolean caseSensitive, String from, Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-        if (from != null) {
-            urlBuilder.add("from", from, UrlParameterType.MATRIX);
-        }
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Events.class,
-                Event.class, headers);
-    }
-    /**
      * Adds Event object.
      *
      * @param event {@link org.ovirt.engine.sdk.entities.Event}
@@ -317,6 +263,60 @@ public class Events extends
 
         return getProxy().add(url, event,
                 org.ovirt.engine.sdk.entities.Event.class,
+                Event.class, headers);
+    }
+    /**
+     * Lists Event objects.
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param from
+     *    <pre>
+     *    [event_id]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link Event }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Event> list(String query, Boolean caseSensitive, String from, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (from != null) {
+            urlBuilder.add("from", from, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Events.class,
                 Event.class, headers);
     }
 

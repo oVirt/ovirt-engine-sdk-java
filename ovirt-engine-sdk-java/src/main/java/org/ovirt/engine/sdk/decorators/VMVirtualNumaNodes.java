@@ -120,39 +120,6 @@ public class VMVirtualNumaNodes extends
     }
 
     /**
-     * Lists VMVirtualNumaNode objects.
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link VMVirtualNumaNode }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<VMVirtualNumaNode> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.VirtualNumaNodes.class,
-                VMVirtualNumaNode.class, headers);
-    }
-    /**
      * Adds VirtualNumaNode object.
      *
      * @param virtualnumanode {@link org.ovirt.engine.sdk.entities.VirtualNumaNode}
@@ -278,6 +245,39 @@ public class VMVirtualNumaNodes extends
 
         return getProxy().add(url, virtualnumanode,
                 org.ovirt.engine.sdk.entities.VirtualNumaNode.class,
+                VMVirtualNumaNode.class, headers);
+    }
+    /**
+     * Lists VMVirtualNumaNode objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link VMVirtualNumaNode }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<VMVirtualNumaNode> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.VirtualNumaNodes.class,
                 VMVirtualNumaNode.class, headers);
     }
 

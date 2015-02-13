@@ -120,6 +120,34 @@ public class DiskPermissions extends
     }
 
     /**
+     * Adds Permission object.
+     *
+     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     * @return
+     *     {@link DiskPermission }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, permission,
+                org.ovirt.engine.sdk.entities.Permission.class,
+                DiskPermission.class, headers);
+    }
+    /**
      * Lists DiskPermission objects.
      *
      * @param max
@@ -150,34 +178,6 @@ public class DiskPermissions extends
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
-                DiskPermission.class, headers);
-    }
-    /**
-     * Adds Permission object.
-     *
-     * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
-     * @return
-     *     {@link DiskPermission }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DiskPermission add(org.ovirt.engine.sdk.entities.Permission permission) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().add(url, permission,
-                org.ovirt.engine.sdk.entities.Permission.class,
                 DiskPermission.class, headers);
     }
 

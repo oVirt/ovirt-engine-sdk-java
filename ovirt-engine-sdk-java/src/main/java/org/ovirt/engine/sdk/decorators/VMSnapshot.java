@@ -45,9 +45,9 @@ public class VMSnapshot extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile VMSnapshotNics vMSnapshotNics;
-    private volatile VMSnapshotDisks vMSnapshotDisks;
     private volatile VMSnapshotCdRoms vMSnapshotCdRoms;
+    private volatile VMSnapshotDisks vMSnapshotDisks;
+    private volatile VMSnapshotNics vMSnapshotNics;
 
 
     /**
@@ -65,20 +65,20 @@ public class VMSnapshot extends
     }
 
     /**
-     * Gets the value of the VMSnapshotNics property.
+     * Gets the value of the VMSnapshotCdRoms property.
      *
      * @return
-     *     {@link VMSnapshotNics }
+     *     {@link VMSnapshotCdRoms }
      */
-    public VMSnapshotNics getNics() {
-        if (this.vMSnapshotNics == null) {
+    public VMSnapshotCdRoms getCdRoms() {
+        if (this.vMSnapshotCdRoms == null) {
             synchronized (this.LOCK) {
-                if (this.vMSnapshotNics == null) {
-                    this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
+                if (this.vMSnapshotCdRoms == null) {
+                    this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
                 }
             }
         }
-        return vMSnapshotNics;
+        return vMSnapshotCdRoms;
     }
     /**
      * Gets the value of the VMSnapshotDisks property.
@@ -97,97 +97,23 @@ public class VMSnapshot extends
         return vMSnapshotDisks;
     }
     /**
-     * Gets the value of the VMSnapshotCdRoms property.
+     * Gets the value of the VMSnapshotNics property.
      *
      * @return
-     *     {@link VMSnapshotCdRoms }
+     *     {@link VMSnapshotNics }
      */
-    public VMSnapshotCdRoms getCdRoms() {
-        if (this.vMSnapshotCdRoms == null) {
+    public VMSnapshotNics getNics() {
+        if (this.vMSnapshotNics == null) {
             synchronized (this.LOCK) {
-                if (this.vMSnapshotCdRoms == null) {
-                    this.vMSnapshotCdRoms = new VMSnapshotCdRoms(proxy, this);
+                if (this.vMSnapshotNics == null) {
+                    this.vMSnapshotNics = new VMSnapshotNics(proxy, this);
                 }
             }
         }
-        return vMSnapshotCdRoms;
+        return vMSnapshotNics;
     }
 
 
-    /**
-     * Performs restore action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.restore_memory]
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    [action.disks.disk]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action restore(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/restore";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs restore action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.restore_memory]
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    [action.disks.disk]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action restore(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/restore";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
     /**
      * Deletes object.
      *
@@ -286,6 +212,80 @@ public class VMSnapshot extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Performs restore action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.restore_memory]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    [action.disks.disk]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action restore(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/restore";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs restore action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.restore_memory]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    [action.disks.disk]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action restore(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/restore";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

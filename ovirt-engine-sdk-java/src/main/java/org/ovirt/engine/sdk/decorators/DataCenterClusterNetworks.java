@@ -120,39 +120,6 @@ public class DataCenterClusterNetworks extends
     }
 
     /**
-     * Lists DataCenterClusterNetwork objects.
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link DataCenterClusterNetwork }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<DataCenterClusterNetwork> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Networks.class,
-                DataCenterClusterNetwork.class, headers);
-    }
-    /**
      * Adds Network object.
      *
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
@@ -272,6 +239,39 @@ public class DataCenterClusterNetworks extends
 
         return getProxy().add(url, network,
                 org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterClusterNetwork.class, headers);
+    }
+    /**
+     * Lists DataCenterClusterNetwork objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link DataCenterClusterNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenterClusterNetwork> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Networks.class,
                 DataCenterClusterNetwork.class, headers);
     }
 

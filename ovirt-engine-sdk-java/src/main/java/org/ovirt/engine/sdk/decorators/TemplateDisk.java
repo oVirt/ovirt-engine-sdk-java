@@ -64,7 +64,7 @@ public class TemplateDisk extends
 
 
     /**
-     * Performs exportDisk action.
+     * Performs copy action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -83,9 +83,9 @@ public class TemplateDisk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportDisk(Action action) throws ClientProtocolException,
+    public Action copy(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/export";
+        String url = this.getHref() + "/copy";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -96,7 +96,7 @@ public class TemplateDisk extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs exportDisk action.
+     * Performs copy action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -120,9 +120,9 @@ public class TemplateDisk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportDisk(Action action, String correlationId) throws ClientProtocolException,
+    public Action copy(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/export";
+        String url = this.getHref() + "/copy";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
@@ -327,7 +327,7 @@ public class TemplateDisk extends
                 org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
     }
     /**
-     * Performs copy action.
+     * Performs exportDisk action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -346,9 +346,9 @@ public class TemplateDisk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action copy(Action action) throws ClientProtocolException,
+    public Action exportDisk(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/copy";
+        String url = this.getHref() + "/export";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -359,7 +359,7 @@ public class TemplateDisk extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs copy action.
+     * Performs exportDisk action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -383,9 +383,9 @@ public class TemplateDisk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action copy(Action action, String correlationId) throws ClientProtocolException,
+    public Action exportDisk(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/copy";
+        String url = this.getHref() + "/export";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {

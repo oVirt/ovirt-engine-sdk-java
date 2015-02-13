@@ -45,15 +45,15 @@ public class StorageDomain extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile StorageDomainPermissions storageDomainPermissions;
-    private volatile StorageDomainVMs storageDomainVMs;
-    private volatile StorageDomainTemplates storageDomainTemplates;
-    private volatile StorageDomainStorageConnections storageDomainStorageConnections;
-    private volatile StorageDomainDiskSnapshots storageDomainDiskSnapshots;
-    private volatile StorageDomainDisks storageDomainDisks;
-    private volatile StorageDomainImages storageDomainImages;
-    private volatile StorageDomainFiles storageDomainFiles;
     private volatile StorageDomainDiskProfiles storageDomainDiskProfiles;
+    private volatile StorageDomainDisks storageDomainDisks;
+    private volatile StorageDomainDiskSnapshots storageDomainDiskSnapshots;
+    private volatile StorageDomainFiles storageDomainFiles;
+    private volatile StorageDomainImages storageDomainImages;
+    private volatile StorageDomainPermissions storageDomainPermissions;
+    private volatile StorageDomainStorageConnections storageDomainStorageConnections;
+    private volatile StorageDomainTemplates storageDomainTemplates;
+    private volatile StorageDomainVMs storageDomainVMs;
 
 
     /**
@@ -71,84 +71,20 @@ public class StorageDomain extends
     }
 
     /**
-     * Gets the value of the StorageDomainPermissions property.
+     * Gets the value of the StorageDomainDiskProfiles property.
      *
      * @return
-     *     {@link StorageDomainPermissions }
+     *     {@link StorageDomainDiskProfiles }
      */
-    public StorageDomainPermissions getPermissions() {
-        if (this.storageDomainPermissions == null) {
+    public StorageDomainDiskProfiles getDiskProfiles() {
+        if (this.storageDomainDiskProfiles == null) {
             synchronized (this.LOCK) {
-                if (this.storageDomainPermissions == null) {
-                    this.storageDomainPermissions = new StorageDomainPermissions(proxy, this);
+                if (this.storageDomainDiskProfiles == null) {
+                    this.storageDomainDiskProfiles = new StorageDomainDiskProfiles(proxy, this);
                 }
             }
         }
-        return storageDomainPermissions;
-    }
-    /**
-     * Gets the value of the StorageDomainVMs property.
-     *
-     * @return
-     *     {@link StorageDomainVMs }
-     */
-    public StorageDomainVMs getVMs() {
-        if (this.storageDomainVMs == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainVMs == null) {
-                    this.storageDomainVMs = new StorageDomainVMs(proxy, this);
-                }
-            }
-        }
-        return storageDomainVMs;
-    }
-    /**
-     * Gets the value of the StorageDomainTemplates property.
-     *
-     * @return
-     *     {@link StorageDomainTemplates }
-     */
-    public StorageDomainTemplates getTemplates() {
-        if (this.storageDomainTemplates == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainTemplates == null) {
-                    this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
-                }
-            }
-        }
-        return storageDomainTemplates;
-    }
-    /**
-     * Gets the value of the StorageDomainStorageConnections property.
-     *
-     * @return
-     *     {@link StorageDomainStorageConnections }
-     */
-    public StorageDomainStorageConnections getStorageConnections() {
-        if (this.storageDomainStorageConnections == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainStorageConnections == null) {
-                    this.storageDomainStorageConnections = new StorageDomainStorageConnections(proxy, this);
-                }
-            }
-        }
-        return storageDomainStorageConnections;
-    }
-    /**
-     * Gets the value of the StorageDomainDiskSnapshots property.
-     *
-     * @return
-     *     {@link StorageDomainDiskSnapshots }
-     */
-    public StorageDomainDiskSnapshots getDiskSnapshots() {
-        if (this.storageDomainDiskSnapshots == null) {
-            synchronized (this.LOCK) {
-                if (this.storageDomainDiskSnapshots == null) {
-                    this.storageDomainDiskSnapshots = new StorageDomainDiskSnapshots(proxy, this);
-                }
-            }
-        }
-        return storageDomainDiskSnapshots;
+        return storageDomainDiskProfiles;
     }
     /**
      * Gets the value of the StorageDomainDisks property.
@@ -167,20 +103,20 @@ public class StorageDomain extends
         return storageDomainDisks;
     }
     /**
-     * Gets the value of the StorageDomainImages property.
+     * Gets the value of the StorageDomainDiskSnapshots property.
      *
      * @return
-     *     {@link StorageDomainImages }
+     *     {@link StorageDomainDiskSnapshots }
      */
-    public StorageDomainImages getImages() {
-        if (this.storageDomainImages == null) {
+    public StorageDomainDiskSnapshots getDiskSnapshots() {
+        if (this.storageDomainDiskSnapshots == null) {
             synchronized (this.LOCK) {
-                if (this.storageDomainImages == null) {
-                    this.storageDomainImages = new StorageDomainImages(proxy, this);
+                if (this.storageDomainDiskSnapshots == null) {
+                    this.storageDomainDiskSnapshots = new StorageDomainDiskSnapshots(proxy, this);
                 }
             }
         }
-        return storageDomainImages;
+        return storageDomainDiskSnapshots;
     }
     /**
      * Gets the value of the StorageDomainFiles property.
@@ -199,194 +135,87 @@ public class StorageDomain extends
         return storageDomainFiles;
     }
     /**
-     * Gets the value of the StorageDomainDiskProfiles property.
+     * Gets the value of the StorageDomainImages property.
      *
      * @return
-     *     {@link StorageDomainDiskProfiles }
+     *     {@link StorageDomainImages }
      */
-    public StorageDomainDiskProfiles getDiskProfiles() {
-        if (this.storageDomainDiskProfiles == null) {
+    public StorageDomainImages getImages() {
+        if (this.storageDomainImages == null) {
             synchronized (this.LOCK) {
-                if (this.storageDomainDiskProfiles == null) {
-                    this.storageDomainDiskProfiles = new StorageDomainDiskProfiles(proxy, this);
+                if (this.storageDomainImages == null) {
+                    this.storageDomainImages = new StorageDomainImages(proxy, this);
                 }
             }
         }
-        return storageDomainDiskProfiles;
-    }
-
-
-    /**
-     * Updates StorageDomain object.
-     *
-     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      update the storage domain
-     *
-     *      [storagedomain.name]
-     *
-     *    Overload 2:
-     *
-     *      update the storage domain
-     *
-     *      storagedomain.host.id|name
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
-     *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
-     *    </pre>
-     *
-     * @return
-     *     {@link StorageDomain }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public StorageDomain update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.StorageDomain.class,
-                StorageDomain.class,
-                headers);
+        return storageDomainImages;
     }
     /**
-     * Updates StorageDomain object.
-     *
-     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      update the storage domain
-     *
-     *      [storagedomain.name]
-     *
-     *    Overload 2:
-     *
-     *      update the storage domain
-     *
-     *      storagedomain.host.id|name
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
-     *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
-     *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
+     * Gets the value of the StorageDomainPermissions property.
      *
      * @return
-     *     {@link StorageDomain }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
+     *     {@link StorageDomainPermissions }
      */
-    public StorageDomain update(Boolean async) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+    public StorageDomainPermissions getPermissions() {
+        if (this.storageDomainPermissions == null) {
+            synchronized (this.LOCK) {
+                if (this.storageDomainPermissions == null) {
+                    this.storageDomainPermissions = new StorageDomainPermissions(proxy, this);
+                }
+            }
         }
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.StorageDomain.class,
-                StorageDomain.class,
-                headers);
+        return storageDomainPermissions;
     }
     /**
-     * Updates StorageDomain object.
-     *
-     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      update the storage domain
-     *
-     *      [storagedomain.name]
-     *
-     *    Overload 2:
-     *
-     *      update the storage domain
-     *
-     *      storagedomain.host.id|name
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
-     *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
+     * Gets the value of the StorageDomainStorageConnections property.
      *
      * @return
-     *     {@link StorageDomain }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
+     *     {@link StorageDomainStorageConnections }
      */
-    public StorageDomain update(Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
+    public StorageDomainStorageConnections getStorageConnections() {
+        if (this.storageDomainStorageConnections == null) {
+            synchronized (this.LOCK) {
+                if (this.storageDomainStorageConnections == null) {
+                    this.storageDomainStorageConnections = new StorageDomainStorageConnections(proxy, this);
+                }
+            }
         }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.StorageDomain.class,
-                StorageDomain.class,
-                headers);
+        return storageDomainStorageConnections;
     }
+    /**
+     * Gets the value of the StorageDomainTemplates property.
+     *
+     * @return
+     *     {@link StorageDomainTemplates }
+     */
+    public StorageDomainTemplates getTemplates() {
+        if (this.storageDomainTemplates == null) {
+            synchronized (this.LOCK) {
+                if (this.storageDomainTemplates == null) {
+                    this.storageDomainTemplates = new StorageDomainTemplates(proxy, this);
+                }
+            }
+        }
+        return storageDomainTemplates;
+    }
+    /**
+     * Gets the value of the StorageDomainVMs property.
+     *
+     * @return
+     *     {@link StorageDomainVMs }
+     */
+    public StorageDomainVMs getVMs() {
+        if (this.storageDomainVMs == null) {
+            synchronized (this.LOCK) {
+                if (this.storageDomainVMs == null) {
+                    this.storageDomainVMs = new StorageDomainVMs(proxy, this);
+                }
+            }
+        }
+        return storageDomainVMs;
+    }
+
+
     /**
      * Deletes object.
      *
@@ -573,6 +402,177 @@ public class StorageDomain extends
 
         return getProxy().delete(url, storagedomain,
                 org.ovirt.engine.sdk.entities.StorageDomain.class, Response.class, headers);
+    }
+    /**
+     * Updates StorageDomain object.
+     *
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the storage domain
+     *
+     *      [storagedomain.name]
+     *
+     *    Overload 2:
+     *
+     *      update the storage domain
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.storage.logical_unit
+     *      [storagedomain.name]
+     *      [storagedomain.comment]
+     *      [storagedomain.storage.override_luns]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomain update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageDomain.class,
+                StorageDomain.class,
+                headers);
+    }
+    /**
+     * Updates StorageDomain object.
+     *
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the storage domain
+     *
+     *      [storagedomain.name]
+     *
+     *    Overload 2:
+     *
+     *      update the storage domain
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.storage.logical_unit
+     *      [storagedomain.name]
+     *      [storagedomain.comment]
+     *      [storagedomain.storage.override_luns]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomain update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageDomain.class,
+                StorageDomain.class,
+                headers);
+    }
+    /**
+     * Updates StorageDomain object.
+     *
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the storage domain
+     *
+     *      [storagedomain.name]
+     *
+     *    Overload 2:
+     *
+     *      update the storage domain
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.storage.logical_unit
+     *      [storagedomain.name]
+     *      [storagedomain.comment]
+     *      [storagedomain.storage.override_luns]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomain update(Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageDomain.class,
+                StorageDomain.class,
+                headers);
     }
 
 }

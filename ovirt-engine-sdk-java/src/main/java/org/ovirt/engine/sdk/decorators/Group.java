@@ -45,8 +45,8 @@ public class Group extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile GroupRoles groupRoles;
     private volatile GroupPermissions groupPermissions;
+    private volatile GroupRoles groupRoles;
     private volatile GroupTags groupTags;
 
 
@@ -65,22 +65,6 @@ public class Group extends
     }
 
     /**
-     * Gets the value of the GroupRoles property.
-     *
-     * @return
-     *     {@link GroupRoles }
-     */
-    public GroupRoles getRoles() {
-        if (this.groupRoles == null) {
-            synchronized (this.LOCK) {
-                if (this.groupRoles == null) {
-                    this.groupRoles = new GroupRoles(proxy, this);
-                }
-            }
-        }
-        return groupRoles;
-    }
-    /**
      * Gets the value of the GroupPermissions property.
      *
      * @return
@@ -95,6 +79,22 @@ public class Group extends
             }
         }
         return groupPermissions;
+    }
+    /**
+     * Gets the value of the GroupRoles property.
+     *
+     * @return
+     *     {@link GroupRoles }
+     */
+    public GroupRoles getRoles() {
+        if (this.groupRoles == null) {
+            synchronized (this.LOCK) {
+                if (this.groupRoles == null) {
+                    this.groupRoles = new GroupRoles(proxy, this);
+                }
+            }
+        }
+        return groupRoles;
     }
     /**
      * Gets the value of the GroupTags property.

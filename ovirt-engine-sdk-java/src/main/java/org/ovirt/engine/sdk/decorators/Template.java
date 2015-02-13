@@ -45,12 +45,12 @@ public class Template extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile TemplateWatchDogs templateWatchDogs;
-    private volatile TemplateTags templateTags;
     private volatile TemplateCdRoms templateCdRoms;
+    private volatile TemplateDisks templateDisks;
     private volatile TemplateNICs templateNICs;
     private volatile TemplatePermissions templatePermissions;
-    private volatile TemplateDisks templateDisks;
+    private volatile TemplateTags templateTags;
+    private volatile TemplateWatchDogs templateWatchDogs;
 
 
     /**
@@ -68,38 +68,6 @@ public class Template extends
     }
 
     /**
-     * Gets the value of the TemplateWatchDogs property.
-     *
-     * @return
-     *     {@link TemplateWatchDogs }
-     */
-    public TemplateWatchDogs getWatchDogs() {
-        if (this.templateWatchDogs == null) {
-            synchronized (this.LOCK) {
-                if (this.templateWatchDogs == null) {
-                    this.templateWatchDogs = new TemplateWatchDogs(proxy, this);
-                }
-            }
-        }
-        return templateWatchDogs;
-    }
-    /**
-     * Gets the value of the TemplateTags property.
-     *
-     * @return
-     *     {@link TemplateTags }
-     */
-    public TemplateTags getTags() {
-        if (this.templateTags == null) {
-            synchronized (this.LOCK) {
-                if (this.templateTags == null) {
-                    this.templateTags = new TemplateTags(proxy, this);
-                }
-            }
-        }
-        return templateTags;
-    }
-    /**
      * Gets the value of the TemplateCdRoms property.
      *
      * @return
@@ -114,6 +82,22 @@ public class Template extends
             }
         }
         return templateCdRoms;
+    }
+    /**
+     * Gets the value of the TemplateDisks property.
+     *
+     * @return
+     *     {@link TemplateDisks }
+     */
+    public TemplateDisks getDisks() {
+        if (this.templateDisks == null) {
+            synchronized (this.LOCK) {
+                if (this.templateDisks == null) {
+                    this.templateDisks = new TemplateDisks(proxy, this);
+                }
+            }
+        }
+        return templateDisks;
     }
     /**
      * Gets the value of the TemplateNICs property.
@@ -148,23 +132,212 @@ public class Template extends
         return templatePermissions;
     }
     /**
-     * Gets the value of the TemplateDisks property.
+     * Gets the value of the TemplateTags property.
      *
      * @return
-     *     {@link TemplateDisks }
+     *     {@link TemplateTags }
      */
-    public TemplateDisks getDisks() {
-        if (this.templateDisks == null) {
+    public TemplateTags getTags() {
+        if (this.templateTags == null) {
             synchronized (this.LOCK) {
-                if (this.templateDisks == null) {
-                    this.templateDisks = new TemplateDisks(proxy, this);
+                if (this.templateTags == null) {
+                    this.templateTags = new TemplateTags(proxy, this);
                 }
             }
         }
-        return templateDisks;
+        return templateTags;
+    }
+    /**
+     * Gets the value of the TemplateWatchDogs property.
+     *
+     * @return
+     *     {@link TemplateWatchDogs }
+     */
+    public TemplateWatchDogs getWatchDogs() {
+        if (this.templateWatchDogs == null) {
+            synchronized (this.LOCK) {
+                if (this.templateWatchDogs == null) {
+                    this.templateWatchDogs = new TemplateWatchDogs(proxy, this);
+                }
+            }
+        }
+        return templateWatchDogs;
     }
 
 
+    /**
+     * Deletes object.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Performs exportTemplate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.storage_domain.id|name
+     *    [action.async]
+     *    [action.exclusive]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action exportTemplate(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/export";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs exportTemplate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.storage_domain.id|name
+     *    [action.async]
+     *    [action.exclusive]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action exportTemplate(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/export";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
     /**
      * Updates Template object.
      *
@@ -336,179 +509,6 @@ public class Template extends
                 org.ovirt.engine.sdk.entities.Template.class,
                 Template.class,
                 headers);
-    }
-    /**
-     * Performs exportTemplate action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.storage_domain.id|name
-     *    [action.async]
-     *    [action.exclusive]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action exportTemplate(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/export";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs exportTemplate action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.storage_domain.id|name
-     *    [action.async]
-     *    [action.exclusive]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action exportTemplate(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/export";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
     }
 
 }

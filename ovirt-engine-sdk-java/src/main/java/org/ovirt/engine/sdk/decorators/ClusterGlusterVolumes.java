@@ -120,46 +120,6 @@ public class ClusterGlusterVolumes extends
     }
 
     /**
-     * Lists ClusterGlusterVolume objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     *
-     * @return List of {@link ClusterGlusterVolume }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<ClusterGlusterVolume> list(String query, Boolean caseSensitive) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class,
-                ClusterGlusterVolume.class, headers);
-    }
-    /**
      * Adds GlusterVolume object.
      *
      * @param glustervolume {@link org.ovirt.engine.sdk.entities.GlusterVolume}
@@ -356,6 +316,46 @@ public class ClusterGlusterVolumes extends
 
         return getProxy().add(url, glustervolume,
                 org.ovirt.engine.sdk.entities.GlusterVolume.class,
+                ClusterGlusterVolume.class, headers);
+    }
+    /**
+     * Lists ClusterGlusterVolume objects.
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     *
+     * @return List of {@link ClusterGlusterVolume }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<ClusterGlusterVolume> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class,
                 ClusterGlusterVolume.class, headers);
     }
 

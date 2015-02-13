@@ -64,86 +64,6 @@ public class ClusterNetwork extends
 
 
     /**
-     * Updates ClusterNetwork object.
-     *
-     * @param network {@link org.ovirt.engine.sdk.entities.Network}
-     *    <pre>
-     *    [network.display]
-     *    [network.usages.usage]
-     *    </pre>
-     *
-     * @return
-     *     {@link ClusterNetwork }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public ClusterNetwork update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Network.class,
-                ClusterNetwork.class,
-                headers);
-    }
-    /**
-     * Updates ClusterNetwork object.
-     *
-     * @param network {@link org.ovirt.engine.sdk.entities.Network}
-     *    <pre>
-     *    [network.display]
-     *    [network.usages.usage]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link ClusterNetwork }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public ClusterNetwork update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Network.class,
-                ClusterNetwork.class,
-                headers);
-    }
-    /**
      * Deletes object.
      *
      * @return
@@ -241,6 +161,86 @@ public class ClusterNetwork extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Updates ClusterNetwork object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    [network.display]
+     *    [network.usages.usage]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterNetwork update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                ClusterNetwork.class,
+                headers);
+    }
+    /**
+     * Updates ClusterNetwork object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    [network.display]
+     *    [network.usages.usage]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterNetwork update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                ClusterNetwork.class,
+                headers);
     }
 
 }

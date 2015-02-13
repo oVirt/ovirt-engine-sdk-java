@@ -114,46 +114,6 @@ public class SchedulingPolicies extends
     }
 
     /**
-     * Lists SchedulingPolicy objects.
-     *
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link SchedulingPolicy }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<SchedulingPolicy> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.SchedulingPolicies.class,
-                SchedulingPolicy.class, headers);
-    }
-    /**
      * Adds SchedulingPolicy object.
      *
      * @param schedulingpolicy {@link org.ovirt.engine.sdk.entities.SchedulingPolicy}
@@ -276,6 +236,46 @@ public class SchedulingPolicies extends
 
         return getProxy().add(url, schedulingpolicy,
                 org.ovirt.engine.sdk.entities.SchedulingPolicy.class,
+                SchedulingPolicy.class, headers);
+    }
+    /**
+     * Lists SchedulingPolicy objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link SchedulingPolicy }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<SchedulingPolicy> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.SchedulingPolicies.class,
                 SchedulingPolicy.class, headers);
     }
 

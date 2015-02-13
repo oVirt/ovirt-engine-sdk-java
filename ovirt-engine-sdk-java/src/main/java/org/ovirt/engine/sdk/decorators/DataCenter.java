@@ -46,12 +46,12 @@ public class DataCenter extends
     private final Object LOCK = new Object();
 
     private volatile DataCenterClusters dataCenterClusters;
+    private volatile DataCenterIscsiBonds dataCenterIscsiBonds;
+    private volatile DataCenterNetworks dataCenterNetworks;
     private volatile DataCenterPermissions dataCenterPermissions;
     private volatile DataCenterQoSs dataCenterQoSs;
-    private volatile DataCenterNetworks dataCenterNetworks;
-    private volatile DataCenterIscsiBonds dataCenterIscsiBonds;
-    private volatile DataCenterStorageDomains dataCenterStorageDomains;
     private volatile DataCenterQuotas dataCenterQuotas;
+    private volatile DataCenterStorageDomains dataCenterStorageDomains;
 
 
     /**
@@ -83,6 +83,38 @@ public class DataCenter extends
             }
         }
         return dataCenterClusters;
+    }
+    /**
+     * Gets the value of the DataCenterIscsiBonds property.
+     *
+     * @return
+     *     {@link DataCenterIscsiBonds }
+     */
+    public DataCenterIscsiBonds getIscsiBonds() {
+        if (this.dataCenterIscsiBonds == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterIscsiBonds == null) {
+                    this.dataCenterIscsiBonds = new DataCenterIscsiBonds(proxy, this);
+                }
+            }
+        }
+        return dataCenterIscsiBonds;
+    }
+    /**
+     * Gets the value of the DataCenterNetworks property.
+     *
+     * @return
+     *     {@link DataCenterNetworks }
+     */
+    public DataCenterNetworks getNetworks() {
+        if (this.dataCenterNetworks == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterNetworks == null) {
+                    this.dataCenterNetworks = new DataCenterNetworks(proxy, this);
+                }
+            }
+        }
+        return dataCenterNetworks;
     }
     /**
      * Gets the value of the DataCenterPermissions property.
@@ -117,36 +149,20 @@ public class DataCenter extends
         return dataCenterQoSs;
     }
     /**
-     * Gets the value of the DataCenterNetworks property.
+     * Gets the value of the DataCenterQuotas property.
      *
      * @return
-     *     {@link DataCenterNetworks }
+     *     {@link DataCenterQuotas }
      */
-    public DataCenterNetworks getNetworks() {
-        if (this.dataCenterNetworks == null) {
+    public DataCenterQuotas getQuotas() {
+        if (this.dataCenterQuotas == null) {
             synchronized (this.LOCK) {
-                if (this.dataCenterNetworks == null) {
-                    this.dataCenterNetworks = new DataCenterNetworks(proxy, this);
+                if (this.dataCenterQuotas == null) {
+                    this.dataCenterQuotas = new DataCenterQuotas(proxy, this);
                 }
             }
         }
-        return dataCenterNetworks;
-    }
-    /**
-     * Gets the value of the DataCenterIscsiBonds property.
-     *
-     * @return
-     *     {@link DataCenterIscsiBonds }
-     */
-    public DataCenterIscsiBonds getIscsiBonds() {
-        if (this.dataCenterIscsiBonds == null) {
-            synchronized (this.LOCK) {
-                if (this.dataCenterIscsiBonds == null) {
-                    this.dataCenterIscsiBonds = new DataCenterIscsiBonds(proxy, this);
-                }
-            }
-        }
-        return dataCenterIscsiBonds;
+        return dataCenterQuotas;
     }
     /**
      * Gets the value of the DataCenterStorageDomains property.
@@ -164,118 +180,8 @@ public class DataCenter extends
         }
         return dataCenterStorageDomains;
     }
-    /**
-     * Gets the value of the DataCenterQuotas property.
-     *
-     * @return
-     *     {@link DataCenterQuotas }
-     */
-    public DataCenterQuotas getQuotas() {
-        if (this.dataCenterQuotas == null) {
-            synchronized (this.LOCK) {
-                if (this.dataCenterQuotas == null) {
-                    this.dataCenterQuotas = new DataCenterQuotas(proxy, this);
-                }
-            }
-        }
-        return dataCenterQuotas;
-    }
 
 
-    /**
-     * Updates DataCenter object.
-     *
-     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
-     *    <pre>
-     *    [datacenter.name]
-     *    [datacenter.description]
-     *    [datacenter.comment]
-     *    [datacenter.storage_type]
-     *    [datacenter.local]
-     *    [datacenter.version.major]
-     *    [datacenter.version.minor]
-     *    [datacenter.storage_format]
-     *    [datacenter.mac_pool.id]
-     *    </pre>
-     *
-     * @return
-     *     {@link DataCenter }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DataCenter update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.DataCenter.class,
-                DataCenter.class,
-                headers);
-    }
-    /**
-     * Updates DataCenter object.
-     *
-     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
-     *    <pre>
-     *    [datacenter.name]
-     *    [datacenter.description]
-     *    [datacenter.comment]
-     *    [datacenter.storage_type]
-     *    [datacenter.local]
-     *    [datacenter.version.major]
-     *    [datacenter.version.minor]
-     *    [datacenter.storage_format]
-     *    [datacenter.mac_pool.id]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link DataCenter }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DataCenter update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.DataCenter.class,
-                DataCenter.class,
-                headers);
-    }
     /**
      * Deletes object.
      *
@@ -464,6 +370,100 @@ public class DataCenter extends
 
         return getProxy().delete(url, action,
                 org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
+    }
+    /**
+     * Updates DataCenter object.
+     *
+     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
+     *    <pre>
+     *    [datacenter.name]
+     *    [datacenter.description]
+     *    [datacenter.comment]
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
+     *    [datacenter.version.major]
+     *    [datacenter.version.minor]
+     *    [datacenter.storage_format]
+     *    [datacenter.mac_pool.id]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenter update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class,
+                headers);
+    }
+    /**
+     * Updates DataCenter object.
+     *
+     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
+     *    <pre>
+     *    [datacenter.name]
+     *    [datacenter.description]
+     *    [datacenter.comment]
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
+     *    [datacenter.version.major]
+     *    [datacenter.version.minor]
+     *    [datacenter.storage_format]
+     *    [datacenter.mac_pool.id]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenter update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class,
+                headers);
     }
 
 }

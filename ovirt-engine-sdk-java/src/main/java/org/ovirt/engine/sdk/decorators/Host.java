@@ -47,10 +47,10 @@ public class Host extends
 
     private volatile HostHooks hostHooks;
     private volatile HostNICs hostNICs;
-    private volatile HostTags hostTags;
+    private volatile HostNumaNodes hostNumaNodes;
     private volatile HostPermissions hostPermissions;
     private volatile HostStatistics hostStatistics;
-    private volatile HostNumaNodes hostNumaNodes;
+    private volatile HostTags hostTags;
 
 
     /**
@@ -100,20 +100,20 @@ public class Host extends
         return hostNICs;
     }
     /**
-     * Gets the value of the HostTags property.
+     * Gets the value of the HostNumaNodes property.
      *
      * @return
-     *     {@link HostTags }
+     *     {@link HostNumaNodes }
      */
-    public HostTags getTags() {
-        if (this.hostTags == null) {
+    public HostNumaNodes getNumaNodes() {
+        if (this.hostNumaNodes == null) {
             synchronized (this.LOCK) {
-                if (this.hostTags == null) {
-                    this.hostTags = new HostTags(proxy, this);
+                if (this.hostNumaNodes == null) {
+                    this.hostNumaNodes = new HostNumaNodes(proxy, this);
                 }
             }
         }
-        return hostTags;
+        return hostNumaNodes;
     }
     /**
      * Gets the value of the HostPermissions property.
@@ -148,23 +148,686 @@ public class Host extends
         return hostStatistics;
     }
     /**
-     * Gets the value of the HostNumaNodes property.
+     * Gets the value of the HostTags property.
      *
      * @return
-     *     {@link HostNumaNodes }
+     *     {@link HostTags }
      */
-    public HostNumaNodes getNumaNodes() {
-        if (this.hostNumaNodes == null) {
+    public HostTags getTags() {
+        if (this.hostTags == null) {
             synchronized (this.LOCK) {
-                if (this.hostNumaNodes == null) {
-                    this.hostNumaNodes = new HostNumaNodes(proxy, this);
+                if (this.hostTags == null) {
+                    this.hostTags = new HostTags(proxy, this);
                 }
             }
         }
-        return hostNumaNodes;
+        return hostTags;
     }
 
 
+    /**
+     * Performs activate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action activate(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/activate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs activate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action activate(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/activate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs approve action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      approve specified host to be
+     *      added to the engine by using
+     *      root password (deprecated
+     *      verb). this occurs when the
+     *      host registers itself with the
+     *      engine
+     *
+     *      [action.cluster.id|name]
+     *      [action.async]
+     *      [action.grace_period.expiry]
+     *      [host.root_password]
+     *
+     *    Overload 2:
+     *
+     *      approve specified host to be
+     *      added to the engine by using
+     *      ssh authentication. this
+     *      occurs when the host registers
+     *      itself with the engine
+     *
+     *      [action.cluster.id|name]
+     *      [action.async]
+     *      [action.grace_period.expiry]
+     *      [host.ssh.authentication_method]
+     *      [host.ssh.user.user_name]
+     *      [host.ssh.user.password]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action approve(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/approve";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs approve action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      approve specified host to be
+     *      added to the engine by using
+     *      root password (deprecated
+     *      verb). this occurs when the
+     *      host registers itself with the
+     *      engine
+     *
+     *      [action.cluster.id|name]
+     *      [action.async]
+     *      [action.grace_period.expiry]
+     *      [host.root_password]
+     *
+     *    Overload 2:
+     *
+     *      approve specified host to be
+     *      added to the engine by using
+     *      ssh authentication. this
+     *      occurs when the host registers
+     *      itself with the engine
+     *
+     *      [action.cluster.id|name]
+     *      [action.async]
+     *      [action.grace_period.expiry]
+     *      [host.ssh.authentication_method]
+     *      [host.ssh.user.user_name]
+     *      [host.ssh.user.password]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action approve(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/approve";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs commitnetconfig action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action commitnetconfig(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/commitnetconfig";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs commitnetconfig action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action commitnetconfig(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/commitnetconfig";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs deactivate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action deactivate(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/deactivate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs deactivate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action deactivate(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/deactivate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(org.ovirt.engine.sdk.entities.Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, action,
+                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.force]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(org.ovirt.engine.sdk.entities.Action action, Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, action,
+                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
+    }
+    /**
+     * Performs fence action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.fence_type
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action fence(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/fence";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs fence action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.fence_type
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action fence(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/fence";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs forceselectspm action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action forceselectspm(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/forceselectspm";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs forceselectspm action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action forceselectspm(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/forceselectspm";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
     /**
      * Performs install action.
      *
@@ -288,10 +951,11 @@ public class Host extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs activate action.
+     * Performs iscsidiscover action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    action.iscsi.address
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -306,9 +970,9 @@ public class Host extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action activate(Action action) throws ClientProtocolException,
+    public Action iscsidiscover(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/activate";
+        String url = this.getHref() + "/iscsidiscover";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -319,10 +983,11 @@ public class Host extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs activate action.
+     * Performs iscsidiscover action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    action.iscsi.address
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -342,9 +1007,83 @@ public class Host extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action activate(Action action, String correlationId) throws ClientProtocolException,
+    public Action iscsidiscover(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/activate";
+        String url = this.getHref() + "/iscsidiscover";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs iscsilogin action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.iscsi.address
+     *    action.iscsi.target
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action iscsilogin(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/iscsilogin";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs iscsilogin action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.iscsi.address
+     *    action.iscsi.target
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action iscsilogin(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/iscsilogin";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
@@ -632,745 +1371,6 @@ public class Host extends
                 org.ovirt.engine.sdk.entities.Host.class,
                 Host.class,
                 headers);
-    }
-    /**
-     * Performs fence action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.fence_type
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action fence(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/fence";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs fence action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.fence_type
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action fence(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/fence";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs iscsidiscover action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.iscsi.address
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action iscsidiscover(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/iscsidiscover";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs iscsidiscover action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.iscsi.address
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action iscsidiscover(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/iscsidiscover";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs approve action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      approve specified host to be
-     *      added to the engine by using
-     *      root password (deprecated
-     *      verb). this occurs when the
-     *      host registers itself with the
-     *      engine
-     *
-     *      [action.cluster.id|name]
-     *      [action.async]
-     *      [action.grace_period.expiry]
-     *      [host.root_password]
-     *
-     *    Overload 2:
-     *
-     *      approve specified host to be
-     *      added to the engine by using
-     *      ssh authentication. this
-     *      occurs when the host registers
-     *      itself with the engine
-     *
-     *      [action.cluster.id|name]
-     *      [action.async]
-     *      [action.grace_period.expiry]
-     *      [host.ssh.authentication_method]
-     *      [host.ssh.user.user_name]
-     *      [host.ssh.user.password]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action approve(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/approve";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs approve action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      approve specified host to be
-     *      added to the engine by using
-     *      root password (deprecated
-     *      verb). this occurs when the
-     *      host registers itself with the
-     *      engine
-     *
-     *      [action.cluster.id|name]
-     *      [action.async]
-     *      [action.grace_period.expiry]
-     *      [host.root_password]
-     *
-     *    Overload 2:
-     *
-     *      approve specified host to be
-     *      added to the engine by using
-     *      ssh authentication. this
-     *      occurs when the host registers
-     *      itself with the engine
-     *
-     *      [action.cluster.id|name]
-     *      [action.async]
-     *      [action.grace_period.expiry]
-     *      [host.ssh.authentication_method]
-     *      [host.ssh.user.user_name]
-     *      [host.ssh.user.password]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action approve(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/approve";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs iscsilogin action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.iscsi.address
-     *    action.iscsi.target
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action iscsilogin(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/iscsilogin";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs iscsilogin action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.iscsi.address
-     *    action.iscsi.target
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action iscsilogin(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/iscsilogin";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs forceselectspm action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action forceselectspm(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/forceselectspm";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs forceselectspm action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action forceselectspm(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/forceselectspm";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.force]
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(org.ovirt.engine.sdk.entities.Action action, Boolean async) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, action,
-                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.force]
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(org.ovirt.engine.sdk.entities.Action action, Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, action,
-                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
-    }
-    /**
-     * Performs deactivate action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action deactivate(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/deactivate";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs deactivate action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action deactivate(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/deactivate";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs commitnetconfig action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action commitnetconfig(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/commitnetconfig";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs commitnetconfig action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action commitnetconfig(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/commitnetconfig";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

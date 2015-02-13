@@ -114,53 +114,6 @@ public class DataCenters extends
     }
 
     /**
-     * Lists DataCenter objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link DataCenter }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<DataCenter> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class,
-                DataCenter.class, headers);
-    }
-    /**
      * Adds DataCenter object.
      *
      * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
@@ -301,6 +254,53 @@ public class DataCenters extends
 
         return getProxy().add(url, datacenter,
                 org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class, headers);
+    }
+    /**
+     * Lists DataCenter objects.
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenter> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class,
                 DataCenter.class, headers);
     }
 

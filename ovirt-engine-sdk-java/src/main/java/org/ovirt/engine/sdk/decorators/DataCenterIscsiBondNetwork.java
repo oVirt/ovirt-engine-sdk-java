@@ -115,6 +115,31 @@ public class DataCenterIscsiBondNetwork extends
 
 
     /**
+     * Deletes object.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
      * Updates DataCenterIscsiBondNetwork object.
      *
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
@@ -144,31 +169,6 @@ public class DataCenterIscsiBondNetwork extends
                 org.ovirt.engine.sdk.entities.Network.class,
                 DataCenterIscsiBondNetwork.class,
                 headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
     }
 
 }

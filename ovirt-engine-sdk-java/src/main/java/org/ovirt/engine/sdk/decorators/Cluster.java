@@ -45,11 +45,11 @@ public class Cluster extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile ClusterGlusterHooks clusterGlusterHooks;
     private volatile ClusterAffinityGroups clusterAffinityGroups;
+    private volatile ClusterCpuProfiles clusterCpuProfiles;
+    private volatile ClusterGlusterHooks clusterGlusterHooks;
     private volatile ClusterGlusterVolumes clusterGlusterVolumes;
     private volatile ClusterNetworks clusterNetworks;
-    private volatile ClusterCpuProfiles clusterCpuProfiles;
     private volatile ClusterPermissions clusterPermissions;
 
 
@@ -68,22 +68,6 @@ public class Cluster extends
     }
 
     /**
-     * Gets the value of the ClusterGlusterHooks property.
-     *
-     * @return
-     *     {@link ClusterGlusterHooks }
-     */
-    public ClusterGlusterHooks getGlusterHooks() {
-        if (this.clusterGlusterHooks == null) {
-            synchronized (this.LOCK) {
-                if (this.clusterGlusterHooks == null) {
-                    this.clusterGlusterHooks = new ClusterGlusterHooks(proxy, this);
-                }
-            }
-        }
-        return clusterGlusterHooks;
-    }
-    /**
      * Gets the value of the ClusterAffinityGroups property.
      *
      * @return
@@ -98,6 +82,38 @@ public class Cluster extends
             }
         }
         return clusterAffinityGroups;
+    }
+    /**
+     * Gets the value of the ClusterCpuProfiles property.
+     *
+     * @return
+     *     {@link ClusterCpuProfiles }
+     */
+    public ClusterCpuProfiles getCpuProfiles() {
+        if (this.clusterCpuProfiles == null) {
+            synchronized (this.LOCK) {
+                if (this.clusterCpuProfiles == null) {
+                    this.clusterCpuProfiles = new ClusterCpuProfiles(proxy, this);
+                }
+            }
+        }
+        return clusterCpuProfiles;
+    }
+    /**
+     * Gets the value of the ClusterGlusterHooks property.
+     *
+     * @return
+     *     {@link ClusterGlusterHooks }
+     */
+    public ClusterGlusterHooks getGlusterHooks() {
+        if (this.clusterGlusterHooks == null) {
+            synchronized (this.LOCK) {
+                if (this.clusterGlusterHooks == null) {
+                    this.clusterGlusterHooks = new ClusterGlusterHooks(proxy, this);
+                }
+            }
+        }
+        return clusterGlusterHooks;
     }
     /**
      * Gets the value of the ClusterGlusterVolumes property.
@@ -132,22 +148,6 @@ public class Cluster extends
         return clusterNetworks;
     }
     /**
-     * Gets the value of the ClusterCpuProfiles property.
-     *
-     * @return
-     *     {@link ClusterCpuProfiles }
-     */
-    public ClusterCpuProfiles getCpuProfiles() {
-        if (this.clusterCpuProfiles == null) {
-            synchronized (this.LOCK) {
-                if (this.clusterCpuProfiles == null) {
-                    this.clusterCpuProfiles = new ClusterCpuProfiles(proxy, this);
-                }
-            }
-        }
-        return clusterCpuProfiles;
-    }
-    /**
      * Gets the value of the ClusterPermissions property.
      *
      * @return
@@ -165,6 +165,105 @@ public class Cluster extends
     }
 
 
+    /**
+     * Deletes object.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
     /**
      * Updates Cluster object.
      *
@@ -296,105 +395,6 @@ public class Cluster extends
                 org.ovirt.engine.sdk.entities.Cluster.class,
                 Cluster.class,
                 headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
     }
 
 }

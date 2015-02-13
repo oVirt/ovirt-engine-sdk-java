@@ -120,60 +120,6 @@ public class StorageDomainDisks extends
     }
 
     /**
-     * Lists StorageDomainDisk objects.
-     *
-     * @param query
-     *    <pre>
-     *    [query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     * @param unregistered
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     *
-     * @return List of {@link StorageDomainDisk }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<StorageDomainDisk> list(String query, Boolean caseSensitive, Integer max, Boolean unregistered) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        if (unregistered != null) {
-            urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
-                StorageDomainDisk.class, headers);
-    }
-    /**
      * Adds Disk object.
      *
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
@@ -490,6 +436,60 @@ public class StorageDomainDisks extends
 
         return getProxy().add(url, disk,
                 org.ovirt.engine.sdk.entities.Disk.class,
+                StorageDomainDisk.class, headers);
+    }
+    /**
+     * Lists StorageDomainDisk objects.
+     *
+     * @param query
+     *    <pre>
+     *    [query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param unregistered
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     *
+     * @return List of {@link StorageDomainDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<StorageDomainDisk> list(String query, Boolean caseSensitive, Integer max, Boolean unregistered) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        if (unregistered != null) {
+            urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
                 StorageDomainDisk.class, headers);
     }
 

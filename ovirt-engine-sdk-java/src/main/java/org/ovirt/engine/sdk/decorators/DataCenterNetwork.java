@@ -45,9 +45,9 @@ public class DataCenterNetwork extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile DataCenterNetworkLabels dataCenterNetworkLabels;
     private volatile DataCenterNetworkPermissions dataCenterNetworkPermissions;
     private volatile DataCenterNetworkVnicProfiles dataCenterNetworkVnicProfiles;
-    private volatile DataCenterNetworkLabels dataCenterNetworkLabels;
 
 
     /**
@@ -64,6 +64,22 @@ public class DataCenterNetwork extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the DataCenterNetworkLabels property.
+     *
+     * @return
+     *     {@link DataCenterNetworkLabels }
+     */
+    public DataCenterNetworkLabels getLabels() {
+        if (this.dataCenterNetworkLabels == null) {
+            synchronized (this.LOCK) {
+                if (this.dataCenterNetworkLabels == null) {
+                    this.dataCenterNetworkLabels = new DataCenterNetworkLabels(proxy, this);
+                }
+            }
+        }
+        return dataCenterNetworkLabels;
+    }
     /**
      * Gets the value of the DataCenterNetworkPermissions property.
      *
@@ -96,104 +112,8 @@ public class DataCenterNetwork extends
         }
         return dataCenterNetworkVnicProfiles;
     }
-    /**
-     * Gets the value of the DataCenterNetworkLabels property.
-     *
-     * @return
-     *     {@link DataCenterNetworkLabels }
-     */
-    public DataCenterNetworkLabels getLabels() {
-        if (this.dataCenterNetworkLabels == null) {
-            synchronized (this.LOCK) {
-                if (this.dataCenterNetworkLabels == null) {
-                    this.dataCenterNetworkLabels = new DataCenterNetworkLabels(proxy, this);
-                }
-            }
-        }
-        return dataCenterNetworkLabels;
-    }
 
 
-    /**
-     * Updates DataCenterNetwork object.
-     *
-     * @param network {@link org.ovirt.engine.sdk.entities.Network}
-     *    <pre>
-     *    [network.display]
-     *    [network.usages.usage]
-     *    </pre>
-     *
-     * @return
-     *     {@link DataCenterNetwork }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DataCenterNetwork update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Network.class,
-                DataCenterNetwork.class,
-                headers);
-    }
-    /**
-     * Updates DataCenterNetwork object.
-     *
-     * @param network {@link org.ovirt.engine.sdk.entities.Network}
-     *    <pre>
-     *    [network.display]
-     *    [network.usages.usage]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link DataCenterNetwork }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DataCenterNetwork update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Network.class,
-                DataCenterNetwork.class,
-                headers);
-    }
     /**
      * Deletes object.
      *
@@ -292,6 +212,86 @@ public class DataCenterNetwork extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Updates DataCenterNetwork object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    [network.display]
+     *    [network.usages.usage]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenterNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterNetwork update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterNetwork.class,
+                headers);
+    }
+    /**
+     * Updates DataCenterNetwork object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    [network.display]
+     *    [network.usages.usage]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenterNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterNetwork update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterNetwork.class,
+                headers);
     }
 
 }

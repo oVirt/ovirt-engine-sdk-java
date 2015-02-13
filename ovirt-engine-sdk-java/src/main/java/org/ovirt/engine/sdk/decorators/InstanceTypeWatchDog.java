@@ -64,6 +64,31 @@ public class InstanceTypeWatchDog extends
 
 
     /**
+     * Deletes object.
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, Response.class, headers);
+    }
+    /**
      * Updates InstanceTypeWatchDog object.
      *
      * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
@@ -93,31 +118,6 @@ public class InstanceTypeWatchDog extends
                 org.ovirt.engine.sdk.entities.WatchDog.class,
                 InstanceTypeWatchDog.class,
                 headers);
-    }
-    /**
-     * Deletes object.
-     *
-     * @return
-     *     {@link Response }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Response delete() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
     }
 
 }

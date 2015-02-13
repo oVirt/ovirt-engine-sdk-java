@@ -64,86 +64,6 @@ public class TemplateWatchDog extends
 
 
     /**
-     * Updates TemplateWatchDog object.
-     *
-     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
-     *    <pre>
-     *    [watchdog.action]
-     *    [watchdog.model]
-     *    </pre>
-     *
-     * @return
-     *     {@link TemplateWatchDog }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public TemplateWatchDog update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.WatchDog.class,
-                TemplateWatchDog.class,
-                headers);
-    }
-    /**
-     * Updates TemplateWatchDog object.
-     *
-     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
-     *    <pre>
-     *    [watchdog.action]
-     *    [watchdog.model]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link TemplateWatchDog }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public TemplateWatchDog update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.WatchDog.class,
-                TemplateWatchDog.class,
-                headers);
-    }
-    /**
      * Deletes object.
      *
      * @return
@@ -241,6 +161,86 @@ public class TemplateWatchDog extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Updates TemplateWatchDog object.
+     *
+     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     *    <pre>
+     *    [watchdog.action]
+     *    [watchdog.model]
+     *    </pre>
+     *
+     * @return
+     *     {@link TemplateWatchDog }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public TemplateWatchDog update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.WatchDog.class,
+                TemplateWatchDog.class,
+                headers);
+    }
+    /**
+     * Updates TemplateWatchDog object.
+     *
+     * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     *    <pre>
+     *    [watchdog.action]
+     *    [watchdog.model]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link TemplateWatchDog }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public TemplateWatchDog update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.WatchDog.class,
+                TemplateWatchDog.class,
+                headers);
     }
 
 }

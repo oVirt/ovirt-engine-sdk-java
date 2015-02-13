@@ -45,8 +45,8 @@ public class Network extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile NetworkPermissions networkPermissions;
     private volatile NetworkLabels networkLabels;
+    private volatile NetworkPermissions networkPermissions;
     private volatile NetworkVnicProfiles networkVnicProfiles;
 
 
@@ -65,22 +65,6 @@ public class Network extends
     }
 
     /**
-     * Gets the value of the NetworkPermissions property.
-     *
-     * @return
-     *     {@link NetworkPermissions }
-     */
-    public NetworkPermissions getPermissions() {
-        if (this.networkPermissions == null) {
-            synchronized (this.LOCK) {
-                if (this.networkPermissions == null) {
-                    this.networkPermissions = new NetworkPermissions(proxy, this);
-                }
-            }
-        }
-        return networkPermissions;
-    }
-    /**
      * Gets the value of the NetworkLabels property.
      *
      * @return
@@ -95,6 +79,22 @@ public class Network extends
             }
         }
         return networkLabels;
+    }
+    /**
+     * Gets the value of the NetworkPermissions property.
+     *
+     * @return
+     *     {@link NetworkPermissions }
+     */
+    public NetworkPermissions getPermissions() {
+        if (this.networkPermissions == null) {
+            synchronized (this.LOCK) {
+                if (this.networkPermissions == null) {
+                    this.networkPermissions = new NetworkPermissions(proxy, this);
+                }
+            }
+        }
+        return networkPermissions;
     }
     /**
      * Gets the value of the NetworkVnicProfiles property.
@@ -114,102 +114,6 @@ public class Network extends
     }
 
 
-    /**
-     * Updates Network object.
-     *
-     * @param network {@link org.ovirt.engine.sdk.entities.Network}
-     *    <pre>
-     *    [network.name]
-     *    [network.description]
-     *    [network.comment]
-     *    [network.vlan.id]
-     *    [network.ip.address]
-     *    [network.ip.gateway]
-     *    [network.ip.netmask]
-     *    [network.display]
-     *    [network.stp]
-     *    [network.mtu]
-     *    </pre>
-     *
-     * @return
-     *     {@link Network }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Network update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Network.class,
-                Network.class,
-                headers);
-    }
-    /**
-     * Updates Network object.
-     *
-     * @param network {@link org.ovirt.engine.sdk.entities.Network}
-     *    <pre>
-     *    [network.name]
-     *    [network.description]
-     *    [network.comment]
-     *    [network.vlan.id]
-     *    [network.ip.address]
-     *    [network.ip.gateway]
-     *    [network.ip.netmask]
-     *    [network.display]
-     *    [network.stp]
-     *    [network.mtu]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Network }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Network update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Network.class,
-                Network.class,
-                headers);
-    }
     /**
      * Deletes object.
      *
@@ -308,6 +212,102 @@ public class Network extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Updates Network object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    [network.name]
+     *    [network.description]
+     *    [network.comment]
+     *    [network.vlan.id]
+     *    [network.ip.address]
+     *    [network.ip.gateway]
+     *    [network.ip.netmask]
+     *    [network.display]
+     *    [network.stp]
+     *    [network.mtu]
+     *    </pre>
+     *
+     * @return
+     *     {@link Network }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Network update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                Network.class,
+                headers);
+    }
+    /**
+     * Updates Network object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *    <pre>
+     *    [network.name]
+     *    [network.description]
+     *    [network.comment]
+     *    [network.vlan.id]
+     *    [network.ip.address]
+     *    [network.ip.gateway]
+     *    [network.ip.netmask]
+     *    [network.display]
+     *    [network.stp]
+     *    [network.mtu]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Network }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Network update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Network.class,
+                Network.class,
+                headers);
     }
 
 }

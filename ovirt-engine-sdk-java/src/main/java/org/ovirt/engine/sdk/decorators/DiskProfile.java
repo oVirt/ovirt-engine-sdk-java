@@ -81,88 +81,6 @@ public class DiskProfile extends
 
 
     /**
-     * Updates DiskProfile object.
-     *
-     * @param diskprofile {@link org.ovirt.engine.sdk.entities.DiskProfile}
-     *    <pre>
-     *    [diskprofile.name]
-     *    [diskprofile.description]
-     *    [diskprofile.qos.id]
-     *    </pre>
-     *
-     * @return
-     *     {@link DiskProfile }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DiskProfile update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.DiskProfile.class,
-                DiskProfile.class,
-                headers);
-    }
-    /**
-     * Updates DiskProfile object.
-     *
-     * @param diskprofile {@link org.ovirt.engine.sdk.entities.DiskProfile}
-     *    <pre>
-     *    [diskprofile.name]
-     *    [diskprofile.description]
-     *    [diskprofile.qos.id]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link DiskProfile }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DiskProfile update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.DiskProfile.class,
-                DiskProfile.class,
-                headers);
-    }
-    /**
      * Deletes object.
      *
      * @return
@@ -260,6 +178,88 @@ public class DiskProfile extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Updates DiskProfile object.
+     *
+     * @param diskprofile {@link org.ovirt.engine.sdk.entities.DiskProfile}
+     *    <pre>
+     *    [diskprofile.name]
+     *    [diskprofile.description]
+     *    [diskprofile.qos.id]
+     *    </pre>
+     *
+     * @return
+     *     {@link DiskProfile }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DiskProfile update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.DiskProfile.class,
+                DiskProfile.class,
+                headers);
+    }
+    /**
+     * Updates DiskProfile object.
+     *
+     * @param diskprofile {@link org.ovirt.engine.sdk.entities.DiskProfile}
+     *    <pre>
+     *    [diskprofile.name]
+     *    [diskprofile.description]
+     *    [diskprofile.qos.id]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link DiskProfile }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DiskProfile update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.DiskProfile.class,
+                DiskProfile.class,
+                headers);
     }
 
 }

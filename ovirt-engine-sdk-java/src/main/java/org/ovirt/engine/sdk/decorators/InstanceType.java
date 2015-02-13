@@ -45,8 +45,8 @@ public class InstanceType extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile InstanceTypeWatchDogs instanceTypeWatchDogs;
     private volatile InstanceTypeNICs instanceTypeNICs;
+    private volatile InstanceTypeWatchDogs instanceTypeWatchDogs;
 
 
     /**
@@ -64,22 +64,6 @@ public class InstanceType extends
     }
 
     /**
-     * Gets the value of the InstanceTypeWatchDogs property.
-     *
-     * @return
-     *     {@link InstanceTypeWatchDogs }
-     */
-    public InstanceTypeWatchDogs getWatchDogs() {
-        if (this.instanceTypeWatchDogs == null) {
-            synchronized (this.LOCK) {
-                if (this.instanceTypeWatchDogs == null) {
-                    this.instanceTypeWatchDogs = new InstanceTypeWatchDogs(proxy, this);
-                }
-            }
-        }
-        return instanceTypeWatchDogs;
-    }
-    /**
      * Gets the value of the InstanceTypeNICs property.
      *
      * @return
@@ -95,39 +79,24 @@ public class InstanceType extends
         }
         return instanceTypeNICs;
     }
-
-
     /**
-     * Updates InstanceType object.
+     * Gets the value of the InstanceTypeWatchDogs property.
      *
-     * @param instancetype {@link org.ovirt.engine.sdk.entities.InstanceType}
      * @return
-     *     {@link InstanceType }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
+     *     {@link InstanceTypeWatchDogs }
      */
-    public InstanceType update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.InstanceType.class,
-                InstanceType.class,
-                headers);
+    public InstanceTypeWatchDogs getWatchDogs() {
+        if (this.instanceTypeWatchDogs == null) {
+            synchronized (this.LOCK) {
+                if (this.instanceTypeWatchDogs == null) {
+                    this.instanceTypeWatchDogs = new InstanceTypeWatchDogs(proxy, this);
+                }
+            }
+        }
+        return instanceTypeWatchDogs;
     }
+
+
     /**
      * Deletes object.
      *
@@ -226,6 +195,37 @@ public class InstanceType extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Updates InstanceType object.
+     *
+     * @param instancetype {@link org.ovirt.engine.sdk.entities.InstanceType}
+     * @return
+     *     {@link InstanceType }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public InstanceType update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.InstanceType.class,
+                InstanceType.class,
+                headers);
     }
 
 }

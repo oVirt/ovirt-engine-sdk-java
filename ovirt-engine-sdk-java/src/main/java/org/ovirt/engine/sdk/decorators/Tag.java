@@ -64,88 +64,6 @@ public class Tag extends
 
 
     /**
-     * Updates Tag object.
-     *
-     * @param tag {@link org.ovirt.engine.sdk.entities.Tag}
-     *    <pre>
-     *    [tag.name]
-     *    [tag.description]
-     *    [tag.parent.tag.id|name]
-     *    </pre>
-     *
-     * @return
-     *     {@link Tag }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Tag update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Tag.class,
-                Tag.class,
-                headers);
-    }
-    /**
-     * Updates Tag object.
-     *
-     * @param tag {@link org.ovirt.engine.sdk.entities.Tag}
-     *    <pre>
-     *    [tag.name]
-     *    [tag.description]
-     *    [tag.parent.tag.id|name]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Tag }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Tag update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Tag.class,
-                Tag.class,
-                headers);
-    }
-    /**
      * Deletes object.
      *
      * @return
@@ -243,6 +161,88 @@ public class Tag extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Updates Tag object.
+     *
+     * @param tag {@link org.ovirt.engine.sdk.entities.Tag}
+     *    <pre>
+     *    [tag.name]
+     *    [tag.description]
+     *    [tag.parent.tag.id|name]
+     *    </pre>
+     *
+     * @return
+     *     {@link Tag }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Tag update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Tag.class,
+                Tag.class,
+                headers);
+    }
+    /**
+     * Updates Tag object.
+     *
+     * @param tag {@link org.ovirt.engine.sdk.entities.Tag}
+     *    <pre>
+     *    [tag.name]
+     *    [tag.description]
+     *    [tag.parent.tag.id|name]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Tag }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Tag update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Tag.class,
+                Tag.class,
+                headers);
     }
 
 }

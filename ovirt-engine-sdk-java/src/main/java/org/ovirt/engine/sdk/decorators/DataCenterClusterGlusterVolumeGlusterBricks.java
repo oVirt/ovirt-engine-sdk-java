@@ -147,11 +147,11 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs stopmigrate action.
+     * Adds GlusterBrick object.
      *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
      * @return
-     *     {@link Action }
+     *     {@link DataCenterClusterGlusterVolumeGlusterBrick }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -160,10 +160,9 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action stopmigrate(Action action) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName() +
-                     SLASH +  "stopmigrate";
+    public DataCenterClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -171,7 +170,9 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().action(url, action, Action.class, Action.class, headers);
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
+                DataCenterClusterGlusterVolumeGlusterBrick.class, headers);
     }
     /**
      * Performs migrate action.
@@ -201,11 +202,11 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Adds GlusterBrick object.
+     * Performs stopmigrate action.
      *
-     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @return
-     *     {@link DataCenterClusterGlusterVolumeGlusterBrick }
+     *     {@link Action }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -214,9 +215,10 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
+    public Action stopmigrate(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() +
+                     SLASH +  "stopmigrate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -224,9 +226,7 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().add(url, glusterbrick,
-                org.ovirt.engine.sdk.entities.GlusterBrick.class,
-                DataCenterClusterGlusterVolumeGlusterBrick.class, headers);
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

@@ -120,39 +120,6 @@ public class ClusterAffinityGroups extends
     }
 
     /**
-     * Lists ClusterAffinityGroup objects.
-     *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     *
-     * @return List of {@link ClusterAffinityGroup }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<ClusterAffinityGroup> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.AffinityGroups.class,
-                ClusterAffinityGroup.class, headers);
-    }
-    /**
      * Adds AffinityGroup object.
      *
      * @param affinitygroup {@link org.ovirt.engine.sdk.entities.AffinityGroup}
@@ -226,6 +193,39 @@ public class ClusterAffinityGroups extends
 
         return getProxy().add(url, affinitygroup,
                 org.ovirt.engine.sdk.entities.AffinityGroup.class,
+                ClusterAffinityGroup.class, headers);
+    }
+    /**
+     * Lists ClusterAffinityGroup objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link ClusterAffinityGroup }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<ClusterAffinityGroup> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.AffinityGroups.class,
                 ClusterAffinityGroup.class, headers);
     }
 

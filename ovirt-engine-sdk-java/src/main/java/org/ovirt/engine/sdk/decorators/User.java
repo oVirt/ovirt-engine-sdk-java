@@ -45,9 +45,9 @@ public class User extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile UserPermissions userPermissions;
     private volatile UserRoles userRoles;
     private volatile UserTags userTags;
-    private volatile UserPermissions userPermissions;
 
 
     /**
@@ -64,6 +64,22 @@ public class User extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the UserPermissions property.
+     *
+     * @return
+     *     {@link UserPermissions }
+     */
+    public UserPermissions getPermissions() {
+        if (this.userPermissions == null) {
+            synchronized (this.LOCK) {
+                if (this.userPermissions == null) {
+                    this.userPermissions = new UserPermissions(proxy, this);
+                }
+            }
+        }
+        return userPermissions;
+    }
     /**
      * Gets the value of the UserRoles property.
      *
@@ -95,22 +111,6 @@ public class User extends
             }
         }
         return userTags;
-    }
-    /**
-     * Gets the value of the UserPermissions property.
-     *
-     * @return
-     *     {@link UserPermissions }
-     */
-    public UserPermissions getPermissions() {
-        if (this.userPermissions == null) {
-            synchronized (this.LOCK) {
-                if (this.userPermissions == null) {
-                    this.userPermissions = new UserPermissions(proxy, this);
-                }
-            }
-        }
-        return userPermissions;
     }
 
 

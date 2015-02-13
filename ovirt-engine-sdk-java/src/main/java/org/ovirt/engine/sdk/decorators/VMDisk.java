@@ -168,115 +168,10 @@ public class VMDisk extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Updates VMDisk object.
-     *
-     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
-     *    <pre>
-     *    [size]
-     *    [provisioned_size]
-     *    [disk.interface]
-     *    [disk.format]
-     *    [disk.sparse]
-     *    [disk.bootable]
-     *    [disk.shareable]
-     *    [disk.propagate_errors]
-     *    [disk.wipe_after_delete]
-     *    [disk.quota.id]
-     *    [disk.disk_profile.id]
-     *    [disk.sgio]
-     *    [disk.read_only]
-     *    [description]
-     *    </pre>
-     *
-     * @return
-     *     {@link VMDisk }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public VMDisk update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Disk.class,
-                VMDisk.class,
-                headers);
-    }
-    /**
-     * Updates VMDisk object.
-     *
-     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
-     *    <pre>
-     *    [size]
-     *    [provisioned_size]
-     *    [disk.interface]
-     *    [disk.format]
-     *    [disk.sparse]
-     *    [disk.bootable]
-     *    [disk.shareable]
-     *    [disk.propagate_errors]
-     *    [disk.wipe_after_delete]
-     *    [disk.quota.id]
-     *    [disk.disk_profile.id]
-     *    [disk.sgio]
-     *    [disk.read_only]
-     *    [description]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link VMDisk }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public VMDisk update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Disk.class,
-                VMDisk.class,
-                headers);
-    }
-    /**
-     * Performs exportDisk action.
+     * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    storagedomain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -291,9 +186,9 @@ public class VMDisk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportDisk(Action action) throws ClientProtocolException,
+    public Action deactivate(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/export";
+        String url = this.getHref() + "/deactivate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -304,11 +199,10 @@ public class VMDisk extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs exportDisk action.
+     * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    storagedomain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -328,9 +222,9 @@ public class VMDisk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportDisk(Action action, String correlationId) throws ClientProtocolException,
+    public Action deactivate(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/export";
+        String url = this.getHref() + "/deactivate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
@@ -533,10 +427,11 @@ public class VMDisk extends
                 org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
     }
     /**
-     * Performs deactivate action.
+     * Performs exportDisk action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    storagedomain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -551,9 +446,9 @@ public class VMDisk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action deactivate(Action action) throws ClientProtocolException,
+    public Action exportDisk(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/deactivate";
+        String url = this.getHref() + "/export";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -564,10 +459,11 @@ public class VMDisk extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs deactivate action.
+     * Performs exportDisk action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    storagedomain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -587,9 +483,9 @@ public class VMDisk extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action deactivate(Action action, String correlationId) throws ClientProtocolException,
+    public Action exportDisk(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/deactivate";
+        String url = this.getHref() + "/export";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
@@ -673,6 +569,110 @@ public class VMDisk extends
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Updates VMDisk object.
+     *
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    [size]
+     *    [provisioned_size]
+     *    [disk.interface]
+     *    [disk.format]
+     *    [disk.sparse]
+     *    [disk.bootable]
+     *    [disk.shareable]
+     *    [disk.propagate_errors]
+     *    [disk.wipe_after_delete]
+     *    [disk.quota.id]
+     *    [disk.disk_profile.id]
+     *    [disk.sgio]
+     *    [disk.read_only]
+     *    [description]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMDisk update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                VMDisk.class,
+                headers);
+    }
+    /**
+     * Updates VMDisk object.
+     *
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    [size]
+     *    [provisioned_size]
+     *    [disk.interface]
+     *    [disk.format]
+     *    [disk.sparse]
+     *    [disk.bootable]
+     *    [disk.shareable]
+     *    [disk.propagate_errors]
+     *    [disk.wipe_after_delete]
+     *    [disk.quota.id]
+     *    [disk.disk_profile.id]
+     *    [disk.sgio]
+     *    [disk.read_only]
+     *    [description]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMDisk update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                VMDisk.class,
+                headers);
     }
 
 }

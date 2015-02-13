@@ -64,166 +64,6 @@ public class StorageConnection extends
 
 
     /**
-     * Updates StorageConnection object.
-     *
-     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      update the specified iSCSI
-     *      storage connection in the
-     *      system
-     *
-     *      [storage_connection.port]
-     *      [storage_connection.username]
-     *      [storage_connection.password]
-     *      [storage_connection.iqn]
-     *      [storage_connection.address]
-     *
-     *    Overload 2:
-     *
-     *      update the specified nfs
-     *      storage connection in the
-     *      system
-     *
-     *      [storage_connection.nfs_timeo]
-     *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
-     *      [storage_connection.address]
-     *      [storage_connection.path]
-     *
-     *    Overload 3:
-     *
-     *      update the specified vfs
-     *      storage connection in the
-     *      system
-     *
-     *      [storage_connection.mount_options]
-     *      [storage_connection.vfs_type]
-     *      [storage_connection.address]
-     *      [storage_connection.path]
-     *
-     *    Overload 4:
-     *
-     *      update the specified local
-     *      storage connection in the
-     *      system
-     *
-     *      [storage_connection.path]
-     *    </pre>
-     *
-     * @return
-     *     {@link StorageConnection }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public StorageConnection update() throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.StorageConnection.class,
-                StorageConnection.class,
-                headers);
-    }
-    /**
-     * Updates StorageConnection object.
-     *
-     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      update the specified iSCSI
-     *      storage connection in the
-     *      system
-     *
-     *      [storage_connection.port]
-     *      [storage_connection.username]
-     *      [storage_connection.password]
-     *      [storage_connection.iqn]
-     *      [storage_connection.address]
-     *
-     *    Overload 2:
-     *
-     *      update the specified nfs
-     *      storage connection in the
-     *      system
-     *
-     *      [storage_connection.nfs_timeo]
-     *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
-     *      [storage_connection.address]
-     *      [storage_connection.path]
-     *
-     *    Overload 3:
-     *
-     *      update the specified vfs
-     *      storage connection in the
-     *      system
-     *
-     *      [storage_connection.mount_options]
-     *      [storage_connection.vfs_type]
-     *      [storage_connection.address]
-     *      [storage_connection.path]
-     *
-     *    Overload 4:
-     *
-     *      update the specified local
-     *      storage connection in the
-     *      system
-     *
-     *      [storage_connection.path]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link StorageConnection }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public StorageConnection update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.StorageConnection.class,
-                StorageConnection.class,
-                headers);
-    }
-    /**
      * Deletes object.
      *
      * @return
@@ -407,6 +247,166 @@ public class StorageConnection extends
 
         return getProxy().delete(url, action,
                 org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
+    }
+    /**
+     * Updates StorageConnection object.
+     *
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the specified iSCSI
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.port]
+     *      [storage_connection.username]
+     *      [storage_connection.password]
+     *      [storage_connection.iqn]
+     *      [storage_connection.address]
+     *
+     *    Overload 2:
+     *
+     *      update the specified nfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.nfs_retrans]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 3:
+     *
+     *      update the specified vfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.mount_options]
+     *      [storage_connection.vfs_type]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 4:
+     *
+     *      update the specified local
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.path]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageConnection update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageConnection.class,
+                headers);
+    }
+    /**
+     * Updates StorageConnection object.
+     *
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the specified iSCSI
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.port]
+     *      [storage_connection.username]
+     *      [storage_connection.password]
+     *      [storage_connection.iqn]
+     *      [storage_connection.address]
+     *
+     *    Overload 2:
+     *
+     *      update the specified nfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.nfs_retrans]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 3:
+     *
+     *      update the specified vfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.mount_options]
+     *      [storage_connection.vfs_type]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 4:
+     *
+     *      update the specified local
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.path]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageConnection update(String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageConnection.class,
+                headers);
     }
 
 }
