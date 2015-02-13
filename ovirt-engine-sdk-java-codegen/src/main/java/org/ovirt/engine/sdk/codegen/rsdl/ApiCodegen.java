@@ -24,9 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.JAXBException;
-
-import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.templates.ApiTemplate;
 import org.ovirt.engine.sdk.codegen.templates.CollectionGetterTemplate;
@@ -34,20 +31,15 @@ import org.ovirt.engine.sdk.codegen.templates.RootResourceDynamicTemplate;
 import org.ovirt.engine.sdk.codegen.templates.RootResourceStaticTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.ArrayUtils;
-import org.ovirt.engine.sdk.codegen.utils.OsUtil;
+import org.ovirt.engine.sdk.codegen.utils.ClassUtils;
 import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 import org.ovirt.engine.sdk.entities.API;
 
 /**
  * Provides SDK entry point codegen capabilities
  */
-public class ApiCodegen extends AbstractCodegen {
-
-    private static final String NX_API_PATH =
-            "../ovirt-engine-sdk-java/src/main/java/org/ovirt/engine/sdk/";
-    private static final String WINDOWS_API_PATH =
-            "..\\ovirt-engine-sdk-java\\src\\main\\java\\org\\ovirt\\engine\\sdk\\";
-    private static final String EP_NAME = "Api";
+public class ApiCodegen {
+    private static final String API_CLASS = "org.ovirt.engine.sdk.Api";
 
     private ApiTemplate apiTemplate;
     private Map<String, CollectionHolder> collectionsHolder;
@@ -58,15 +50,9 @@ public class ApiCodegen extends AbstractCodegen {
     private RootResourceStaticTemplate rootResourceStaticTemplate;
     private RootResourceDynamicTemplate rootResourceDynamicTemplate;
 
-    /**
-     * @param collectionsHolder
-     * @param variableTemplate
-     * @param collectionGetterTemplate
-     */
     public ApiCodegen(Map<String, CollectionHolder> collectionsHolder,
             VariableTemplate variableTemplate,
             CollectionGetterTemplate collectionGetterTemplate) {
-        super(getApiPath());
         this.apiTemplate = new ApiTemplate();
         this.rootResourceStaticTemplate = new RootResourceStaticTemplate();
         this.rootResourceDynamicTemplate = new RootResourceDynamicTemplate();
@@ -77,33 +63,15 @@ public class ApiCodegen extends AbstractCodegen {
     }
 
     /**
-     * @return Path to generate SDK entry point at
+     * Generates SDK entry point class.
      */
-    private static String getApiPath() {
-        if (OsUtil.isWindows()) {
-            return WINDOWS_API_PATH;
-        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
-            return NX_API_PATH;
-        } else {
-            throw new RuntimeException("unsupported OS.");
-        }
-    }
-
-    /**
-     * Generates SDK entry point class
-     */
-    @Override
-    protected void doGenerate(String distPath) throws IOException, JAXBException {
+    protected void generate(String distPath) throws IOException {
         String collectionsVariables = produceCollectionVariables();
         String collectionsGetters = produceCollectionGetters();
         String rootMethods = produceRootMethods();
 
-        persistClass(EP_NAME,
-                this.apiTemplate.getTemplate(collectionsVariables,
-                        collectionsGetters,
-                        rootMethods),
-                distPath);
-
+        String apiCode = apiTemplate.getTemplate(collectionsVariables, collectionsGetters, rootMethods);
+        ClassUtils.saveClass(distPath, API_CLASS, apiCode);
     }
 
     /**
@@ -179,14 +147,5 @@ public class ApiCodegen extends AbstractCodegen {
             buffer.append(variableTemplate.getTemplate(name, StringUtils.toLowerCase(name)));
         }
         return buffer.toString();
-    }
-
-    /**
-     * Cleans destionation path
-     */
-    @Override
-    protected void doCleanPackage(String dir) {
-        ;
-        // Do not clean /sdk package
     }
 }

@@ -16,35 +16,21 @@
 
 package org.ovirt.engine.sdk.codegen.xsd;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.JAXBException;
-
-import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.templates.CopyrightTemplate;
 import org.ovirt.engine.sdk.codegen.utils.FileUtils;
-import org.ovirt.engine.sdk.codegen.utils.OsUtil;
 
 /**
  * Provides XSD schema related services
  */
-public class XsdCodegen extends AbstractCodegen {
-
-    private static final String WINDOWS_XJC_PATH = "%java_home%\\bin\\xjc";
-    private static final String NX_XJC_PATH = "xjc";
-
-    private static final String WINDOWS_ENTITIES_PATH = "..\\ovirt-engine-sdk-java\\src\\main\\java\\";
-    private static final String NX_ENTITIES_PATH = "../ovirt-engine-sdk-java/src/main/java/";
-
+public class XsdCodegen {
     private static final String ENTITIES_PACKAGE = "org.ovirt.engine.sdk.entities";
-    private static final String XJC_FLAGS = " -extension -no-header -enableIntrospection ";
 
     private static final String copyrightTemplate = new CopyrightTemplate().getTemplate();
 
@@ -59,135 +45,51 @@ public class XsdCodegen extends AbstractCodegen {
     private String xjbPath;
 
     public XsdCodegen(String xsdPath, String xjbPath) {
-        super(getEntitiesPath());
         this.xsdPath = xsdPath;
         this.xjbPath = xjbPath;
     }
 
     /**
-     * Generates entities classes
+     * Generates entity classes.
      *
-     * @param distPath
-     *            directory to generates the code at
-     *
-     * @throws IOException
-     * @throws JAXBException
+     * @param distPath directory to generates the code at
      */
-    @Override
-    public void doGenerate(String distPath) throws IOException, JAXBException {
+    public void generate(String distPath) throws IOException {
+        // Remove all the previously generate classes, so that classes corresponding to types that have been
+        // removed from the XML schema will be later removed from the source code repository:
+        String packagePath = distPath + File.separatorChar + ENTITIES_PACKAGE.replace('.', File.separatorChar);
+        FileUtils.deleteAllFiles(packagePath);
 
-        String xjcOutput = null;
-
-        if (OsUtil.isWindows()) {
-            xjcOutput = runCommand(WINDOWS_XJC_PATH + " -d " + distPath +
-                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + xsdPath + " -b " + xjbPath);
-        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
-            xjcOutput = runCommand(NX_XJC_PATH + " -d " + distPath +
-                    " -p " + ENTITIES_PACKAGE + XJC_FLAGS + xsdPath + " -b " + xjbPath);
-        } else {
-            throw new RuntimeException("unsupported OS.");
+        // Run the XJC compiler to generate all the classes:
+        System.setProperty("javax.xml.accessExternalSchema", "all");
+        try {
+            com.sun.tools.xjc.Driver.run(
+                new String[] {
+                    "-extension",
+                    "-no-header",
+                    "-enableIntrospection",
+                    "-d", distPath,
+                    "-p", ENTITIES_PACKAGE,
+                    "-b", xjbPath,
+                    xsdPath
+                },
+                System.out,
+                System.err
+            );
         }
-
-        if (xjcOutput == null ||
-                !xjcOutput.startsWith("parsing a schema...compiling a schema...")) {
-            throw new RuntimeException("xjc codegen failed: " + xjcOutput);
-        }
-    }
-
-    /**
-     * Runs system command
-     *
-     * @param command
-     *            command to run
-     *
-     * @return command output
-     *
-     * @throws IOException
-     */
-    private String runCommand(String command) throws IOException {
-        String stdout = "";
-        String stderr = "";
-        String s = null;
-
-        Process p = Runtime.getRuntime().exec(command);
-
-        BufferedReader stdInput = new BufferedReader(new
-                InputStreamReader(p.getInputStream()));
-
-        BufferedReader stdError = new BufferedReader(new
-                InputStreamReader(p.getErrorStream()));
-
-        while ((s = stdInput.readLine()) != null) {
-            stdout += s;
-        }
-
-        while ((s = stdError.readLine()) != null) {
-            stderr += s;
-        }
-
-        if (!stderr.equals(""))
-            throw new RuntimeException(stderr);
-
-        return stdout;
-    }
-
-    /**
-     * Deletes all entities files
-     *
-     * @param dir
-     *            directory to clean
-     */
-    @Override
-    public void doCleanPackage(String dir) {
-        FileUtils.deleteAllFiles(dir);
-    }
-
-    /**
-     * @return Entities path according to OS
-     */
-    private static String getEntitiesPath() {
-        if (OsUtil.isWindows()) {
-            return WINDOWS_ENTITIES_PATH;
-        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
-            return NX_ENTITIES_PATH;
-        } else {
-            throw new RuntimeException("unsupported OS.");
+        catch (Exception exception) {
+            throw new IOException(exception);
         }
     }
 
     /**
-     * @return Entities absolete path according to OS
-     */
-    private static String getAbsoleteEntitiesPath() {
-        if (OsUtil.isWindows()) {
-            return WINDOWS_ENTITIES_PATH + "org\\ovirt\\engine\\sdk\\entities\\";
-        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
-            return NX_ENTITIES_PATH + "org/ovirt/engine/sdk/entities/";
-        } else {
-            throw new RuntimeException("unsupported OS.");
-        }
-    }
-
-    /**
-     * Modifies public getters to return Object so inheriting classes could override them with different signature
+     * Modifies public getters to return {@code Object} so inheriting classes could override them with different
+     * signature.
      *
-     * @param accessors
-     *            a list of possible getter types
+     * @param distPath the top level directory of the source code
+     * @param accessors a list of possible getter types
      */
-    public static void modifyGetters(Map<String, List<String>> accessors) {
-        String path = getAbsoleteEntitiesPath();
-        processFiles(accessors, path);
-    }
-
-    /**
-     * Modifies public getters (decorators shadows public getters with own ones)
-     *
-     * @param accessors
-     *            accessors to be removed (get/set/is)
-     * @param path
-     *            directory to loook at
-     */
-    private static void processFiles(Map<String, List<String>> accessors, String path) {
+    public static void modifyGetters(String distPath, Map<String, List<String>> accessors) {
         StringBuffer finalContent, tempContent = new StringBuffer();
         List<String> accessorsToCheck;
         String templateOriginal = "    public $accessor$ get$accessor$() {" + "\n";
@@ -196,7 +98,8 @@ public class XsdCodegen extends AbstractCodegen {
         boolean isInAccessor = false;
 
         // change shadowed getters
-        for (File file : FileUtils.list(path)) {
+        String entitiesPath = distPath + File.separator + ENTITIES_PACKAGE.replace('.', File.separatorChar);
+        for (File file : FileUtils.list(entitiesPath)) {
             finalContent = new StringBuffer();
             finalContent.append(copyrightTemplate);
             tempContent = new StringBuffer();
@@ -268,10 +171,5 @@ public class XsdCodegen extends AbstractCodegen {
             // TODO: Log error
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) throws JAXBException, IOException {
-        XsdCodegen generator = new XsdCodegen(args[0], args[1]);
-        generator.generate();
     }
 }

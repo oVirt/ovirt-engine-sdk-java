@@ -35,7 +35,6 @@ import javax.xml.transform.stream.StreamSource;
 import com.sun.xml.xsom.XSComplexType;
 import com.sun.xml.xsom.XSSchemaSet;
 import com.sun.xml.xsom.parser.XSOMParser;
-import org.ovirt.engine.sdk.codegen.common.AbstractCodegen;
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
@@ -54,7 +53,8 @@ import org.ovirt.engine.sdk.codegen.templates.SubCollectionTemplate;
 import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.UpdateMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
-import org.ovirt.engine.sdk.codegen.utils.OsUtil;
+import org.ovirt.engine.sdk.codegen.utils.ClassUtils;
+import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.entities.Capabilities;
 import org.ovirt.engine.sdk.entities.DetailedLink;
@@ -67,7 +67,7 @@ import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 /**
  * Provides RSDL related codegen capabilities
  */
-public class RsdlCodegen extends AbstractCodegen {
+public class RsdlCodegen {
     /**
      * The location of the XSD file.
      */
@@ -104,10 +104,8 @@ public class RsdlCodegen extends AbstractCodegen {
     private Map<String, CollectionHolder> collectionsHolder;
     private Map<String, ResourceHolder> resourcesHolder;
 
-    private static final String NX_DECORATORS_PATH =
-            "../ovirt-engine-sdk-java/src/main/java/org/ovirt/engine/sdk/decorators/";
-    private static final String WINDOWS_DECORATORS_PATH =
-            "..\\ovirt-engine-sdk-java\\src\\main\\java\\org\\ovirt\\engine\\sdk\\decorators\\";
+    private static final String DECORATORS_PACKAGE = "org.ovirt.engine.sdk.decorators";
+
     private static final String SLASH = "/";
     private static final String DELETE_REL = "delete";
     private static final String UPDATE_REL = "update";
@@ -203,10 +201,10 @@ public class RsdlCodegen extends AbstractCodegen {
     /**
      * Create a code generator for the decorator classes.
      *
+     * @param xsdPath the path of the file containing the XML schema
      * @param rsdlPath the path of the file containing the RSDL document
      */
     public RsdlCodegen(String xsdPath, String rsdlPath) {
-        super(getDecoratorsPath());
         this.xsdPath = xsdPath;
         this.rsdlPath = rsdlPath;
 
@@ -290,9 +288,11 @@ public class RsdlCodegen extends AbstractCodegen {
      * @throws IOException
      * @throws JAXBException
      */
-    @SuppressWarnings("unused")
-    @Override
-    protected void doGenerate(String distPath) throws IOException, JAXBException {
+    public void generate(String distPath) throws IOException, JAXBException {
+        // Remove all the previously generate classes, so that classes corresponding to types that have been
+        // removed from the XML schema will be later removed from the source code repository:
+        String packagePath = distPath + File.separatorChar + DECORATORS_PACKAGE.replace('.', File.separatorChar);
+        FileUtils.deleteAllFiles(packagePath);
 
         String url, rel, requestBodyType, responseBodyType, parent, collectionName, actualReturnType;
         HttpMethod requestMethod;
@@ -447,11 +447,11 @@ public class RsdlCodegen extends AbstractCodegen {
         persistContent(distPath);
 
         // #4 - generate SDK entry point
-        new ApiCodegen(collectionsHolder, variableTemplate, collectionGetterTemplate).generate();
+        new ApiCodegen(collectionsHolder, variableTemplate, collectionGetterTemplate).generate(distPath);
 
         // #5 - remove collection getters/setters from the public entities
         // (as they being shadowed by the decorators getters)
-        XsdCodegen.modifyGetters(getPublicAccessors());
+        XsdCodegen.modifyGetters(distPath, getPublicAccessors());
     }
 
     /**
@@ -976,12 +976,12 @@ public class RsdlCodegen extends AbstractCodegen {
      */
     private void persistContent(String distPath) {
         for (CollectionHolder collection : this.collectionsHolder.values()) {
-            persistClass(collection.getName(), collection.produce(), distPath);
+            ClassUtils.saveClass(distPath, DECORATORS_PACKAGE + "." +collection.getName(), collection.produce());
         }
         for (ResourceHolder resource : this.resourcesHolder.values()) {
-            persistClass(resource.getName(), resource.produce(), distPath);
+            ClassUtils.saveClass(distPath, DECORATORS_PACKAGE + "." + resource.getName(), resource.produce());
             for (CollectionHolder subCollection : resource.getSubcollections().values()) {
-                persistClass(subCollection.getName(), subCollection.produce(), distPath);
+                ClassUtils.saveClass(distPath, DECORATORS_PACKAGE + "." + subCollection.getName(), subCollection.produce());
             }
         }
     }
@@ -1047,19 +1047,6 @@ public class RsdlCodegen extends AbstractCodegen {
             if (!throwError)
                 return null;
             throw rte;
-        }
-    }
-
-    /**
-     * @return Decorators path according to OS
-     */
-    private static String getDecoratorsPath() {
-        if (OsUtil.isWindows()) {
-            return WINDOWS_DECORATORS_PATH;
-        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
-            return NX_DECORATORS_PATH;
-        } else {
-            throw new RuntimeException("unsupported OS.");
         }
     }
 

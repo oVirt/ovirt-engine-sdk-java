@@ -31,14 +31,23 @@
          the engine artifacts: -->
     <engine.version>3.6.0-SNAPSHOT</engine.version>
 
+    <!-- The version of the JAXB XJC compiler to use: -->
+    <jaxb.version>2.2.4-1</jaxb.version>
+
   </properties>
 
   <dependencies>
 
     <dependency>
-      <groupId>com.sun.xsom</groupId>
-      <artifactId>xsom</artifactId>
-      <version>20110809</version>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-xjc</artifactId>
+      <version>${jaxb.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>${jaxb.version}</version>
     </dependency>
 
   </dependencies>

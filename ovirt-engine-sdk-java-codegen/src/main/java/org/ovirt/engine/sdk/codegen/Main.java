@@ -16,6 +16,7 @@
 
 package org.ovirt.engine.sdk.codegen;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
@@ -27,6 +28,8 @@ import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
  * oVirt ovirt-engine-sdk-java codegen suite
  */
 public class Main {
+    private static final String DIST_PATH = "../ovirt-engine-sdk-java/src/main/java";
+
     public static void main(String[] args) throws IOException, JAXBException {
         // Parse the command line parameters:
         String xsdPath = null;
@@ -62,11 +65,14 @@ public class Main {
             System.exit(1);
         }
 
+        // Adjust the destination path to the platform:
+        String distPath = DIST_PATH.replace('/', File.separatorChar);
+
         // #1 - generate api entities from the XSD schema
-        new XsdCodegen(xsdPath, xjbPath).generate();
+        new XsdCodegen(xsdPath, xjbPath).generate(distPath);
 
         // #2 - generate api entities decorators by RSDL and SDK entry point
-        new RsdlCodegen(xsdPath, rsdlPath).generate();
+        new RsdlCodegen(xsdPath, rsdlPath).generate(distPath);
 
         // #3 - exit
         System.exit(0);

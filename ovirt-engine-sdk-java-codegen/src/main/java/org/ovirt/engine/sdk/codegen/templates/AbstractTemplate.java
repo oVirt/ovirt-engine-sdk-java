@@ -16,10 +16,9 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import java.io.FileNotFoundException;
-
-import org.ovirt.engine.sdk.codegen.utils.FileUtils;
-import org.ovirt.engine.sdk.codegen.utils.OsUtil;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Base Template class
@@ -29,11 +28,6 @@ public abstract class AbstractTemplate implements ITemplate {
     private String name;
     private String template;
     private String copyrightTemplate;
-
-    private static final String NX_TEMPLATES_PATH =
-            "/src/main/java/org/ovirt/engine/sdk/codegen/templates/";
-    private static final String WINDOWS_TEMPLATES_PATH =
-            "\\src\\main\\java\\org\\ovirt\\engine\\sdk\\codegen\\templates\\";
 
     /**
      * Generic .ctr
@@ -65,40 +59,22 @@ public abstract class AbstractTemplate implements ITemplate {
      */
     @Override
     public String loadTemplate() {
-        try {
-            return readFileTemplate();
-        } catch (FileNotFoundException e) {
-            // TODO: Log error
-            e.printStackTrace();
-            throw new RuntimeException("Template \"" + getName() + "\" not found.", e);
+        try (InputStream in = this.getClass().getResourceAsStream(name)) {
+            if (in == null) {
+                throw new RuntimeException("Template \"" + name + "\" not found.");
+            }
+            try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
+                byte[] buffer = new byte[1024];
+                int count;
+                while ((count = in.read(buffer)) != -1) {
+                    out.write(buffer, 0, count);
+                }
+                return new String(out.toByteArray(), "UTF-8");
+            }
         }
-    }
-
-    /**
-     * Reads actual template file
-     * 
-     * @return template content
-     * 
-     * @throws FileNotFoundException
-     */
-    private String readFileTemplate() throws FileNotFoundException {
-        return FileUtils.getFileContent(getTemplatePath() + getName());
-    }
-
-    /**
-     * @return this template path
-     */
-    private String getTemplatePath() {
-        String path;
-
-        if (OsUtil.isWindows()) {
-            path = System.getProperty("user.dir") + WINDOWS_TEMPLATES_PATH;
-        } else if (OsUtil.isMac() || OsUtil.isUnix() || OsUtil.isSolaris()) {
-            path = System.getProperty("user.dir") + NX_TEMPLATES_PATH;
-        } else {
-            throw new RuntimeException("unsupported OS.");
+        catch (IOException exception) {
+            throw new RuntimeException("Error loading template \"" + name + "\".", exception);
         }
-        return path;
     }
 
     /**
