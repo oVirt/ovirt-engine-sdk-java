@@ -16,7 +16,10 @@
 
 package org.ovirt.engine.sdk.codegen.holders;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.ovirt.engine.sdk.codegen.templates.CollectionTemplate;
@@ -110,11 +113,14 @@ public abstract class AbstractCollectionHolder implements IHolder {
      * @return methods string
      */
     protected String getMethods() {
-        String methods = "";
-        for (String key : this.methods.keySet()) {
-            methods += this.methods.get(key);
+        List<String> keys = new ArrayList<>(methods.keySet());
+        Collections.sort(keys);
+
+        StringBuilder buffer = new StringBuilder();
+        for (String key : keys) {
+            buffer.append(methods.get(key));
         }
-        return methods;
+        return buffer.toString();
     }
 
     /**

@@ -18,6 +18,10 @@ package org.ovirt.engine.sdk.codegen.rsdl;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.bind.JAXBException;
@@ -108,61 +112,73 @@ public class ApiCodegen extends AbstractCodegen {
      * @throws IOException
      */
     private String produceRootMethods() throws IOException {
-        String rootMethods = "";
-
         String[] exceptions =
                 new String[] { "Actions", "Href", "Links", "ExtensionType",
                         "CreationStatus", "Id", "Name", "Description", "Class" };
 
         String[] staticMethods = new String[] { "SpecialObjects", "ProductInfo" };
 
+        Map<String, String> methods = new HashMap<>();
         for (Method method : API.class.getMethods()) {
             String simpleMethodName = method.getName().replace("get", "");
             if (method.getName().startsWith("get")
                     && !ArrayUtils.contains(exceptions, simpleMethodName)) {
+                String code;
                 if (ArrayUtils.contains(staticMethods, simpleMethodName)) { // static methods
-                    rootMethods +=
-                            this.rootResourceStaticTemplate.getTemplate(method.getName(), method.getReturnType()
-                                    .getSimpleName(), method.getReturnType().getPackage().getName(), simpleMethodName);
+                    code = rootResourceStaticTemplate.getTemplate(method.getName(),
+                            method.getReturnType().getSimpleName(), method.getReturnType().getPackage().getName(),
+                            simpleMethodName);
                 } else { // dynamic methods
-                    rootMethods +=
-                            this.rootResourceDynamicTemplate.getTemplate(method.getName(), method.getReturnType()
-                                    .getSimpleName(), method.getReturnType().getPackage().getName(), simpleMethodName);
+                    code = rootResourceDynamicTemplate.getTemplate(method.getName(),
+                            method.getReturnType().getSimpleName(), method.getReturnType().getPackage().getName(),
+                            simpleMethodName);
                 }
+                methods.put(simpleMethodName, code);
             }
         }
-        return rootMethods;
+
+        List<String> keys = new ArrayList<>(methods.size());
+        keys.addAll(methods.keySet());
+        Collections.sort(keys);
+
+        StringBuilder buffer = new StringBuilder();
+        for (String key : keys) {
+            buffer.append(methods.get(key));
+        }
+        return buffer.toString();
     }
 
     /**
      * @return root-collection/s getter/s
      */
     private String produceCollectionGetters() {
-        StringBuffer subCollectionGetters = new StringBuffer();
+        List<String> keys = new ArrayList<>(collectionsHolder.keySet());
+        Collections.sort(keys);
 
-        for (CollectionHolder ch : this.collectionsHolder.values()) {
-            subCollectionGetters.append(
-                    this.collectionGetterTemplate.getTemplate(ch.getName(),
-                            StringUtils.toLowerCase(ch.getName()),
-                            ch.getPublicCollectionName()));
+        StringBuilder buffer = new StringBuilder();
+        for (String key : keys) {
+            CollectionHolder ch = collectionsHolder.get(key);
+            String name = ch.getName();
+            String publicName = ch.getPublicCollectionName();
+            buffer.append(collectionGetterTemplate.getTemplate(name, StringUtils.toLowerCase(name), publicName));
         }
-
-        return subCollectionGetters.toString();
+        return buffer.toString();
     }
 
     /**
      * @return root-collection/s variable/s
      */
     private String produceCollectionVariables() {
-        StringBuffer subCollectionVariables = new StringBuffer();
+        List<String> keys = new ArrayList<>(collectionsHolder.keySet());
+        Collections.sort(keys);
 
-        for (CollectionHolder ch : this.collectionsHolder.values()) {
-            subCollectionVariables.append(
-                    this.variableTemplate.getTemplate(ch.getName(),
-                            StringUtils.toLowerCase(ch.getName())));
+        StringBuilder buffer = new StringBuilder();
+        for (String key : keys) {
+            CollectionHolder ch = collectionsHolder.get(key);
+            String name = ch.getName();
+            buffer.append(variableTemplate.getTemplate(name, StringUtils.toLowerCase(name)));
         }
-
-        return subCollectionVariables.toString();
+        return buffer.toString();
     }
 
     /**

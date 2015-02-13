@@ -22,6 +22,11 @@ import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Holds sub-resources
  */
@@ -73,16 +78,19 @@ public class ResourceHolder extends AbstractResourceHolder {
      */
     @Override
     String getSubCollectionsGetters() {
-        StringBuffer subCollectionGetters = new StringBuffer();
+        Map<String, CollectionHolder> subCollections = getSubcollections();
 
-        for (CollectionHolder ch : this.getSubcollections().values()) {
-            subCollectionGetters.append(
-                            this.subCollectionGetterTemplate.getTemplate(ch.getName(),
-                                    StringUtils.toLowerCase(ch.getName()),
-                                    ch.getPublicCollectionName()));
+        List<String> keys = new ArrayList<>(subCollections.keySet());
+        Collections.sort(keys);
+
+        StringBuilder buffer = new StringBuilder();
+        for (String key : keys) {
+            CollectionHolder ch = subCollections.get(key);
+            String name = ch.getName();
+            String publicName = ch.getPublicCollectionName();
+            buffer.append(subCollectionGetterTemplate.getTemplate(name, StringUtils.toLowerCase(name), publicName));
         }
-
-        return subCollectionGetters.toString();
+        return buffer.toString();
     }
 
     /**
@@ -90,14 +98,16 @@ public class ResourceHolder extends AbstractResourceHolder {
      */
     @Override
     String getSubCollectionsVariables() {
-        StringBuffer subCollectionVariables = new StringBuffer();
+        Map<String, CollectionHolder> subCollections = getSubcollections();
+        List<String> keys = new ArrayList<>(subCollections.keySet());
+        Collections.sort(keys);
 
-        for (CollectionHolder ch : this.getSubcollections().values()) {
-            subCollectionVariables.append(
-                            this.variableTemplate.getTemplate(ch.getName(),
-                                    StringUtils.toLowerCase(ch.getName())));
+        StringBuilder buffer = new StringBuilder();
+        for (String key : keys) {
+            CollectionHolder ch = subCollections.get(key);
+            String name = ch.getName();
+            buffer.append(variableTemplate.getTemplate(name, StringUtils.toLowerCase(name)));
         }
-
-        return subCollectionVariables.toString();
+        return buffer.toString();
     }
 }
