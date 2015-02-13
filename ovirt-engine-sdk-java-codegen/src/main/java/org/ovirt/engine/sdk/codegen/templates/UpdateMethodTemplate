@@ -22,7 +22,7 @@ $docParams$
         url = urlBuilder.build();
 
         return getProxy().update(
-                url, 
+                url,
                 this,
                 org.ovirt.engine.sdk.entities.$publicEntityName$.class,
                 $decoratorName$.class,

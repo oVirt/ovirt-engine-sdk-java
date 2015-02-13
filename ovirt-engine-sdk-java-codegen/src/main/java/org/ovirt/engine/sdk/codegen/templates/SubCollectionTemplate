@@ -61,7 +61,7 @@ public class $decoratorSubCollectionName$ extends
 
     /**
      * Fetches $decoratorEntityName$ object by id.
-     * 
+     *
      * @return
      *     {@link $decoratorEntityName$ }
      *
