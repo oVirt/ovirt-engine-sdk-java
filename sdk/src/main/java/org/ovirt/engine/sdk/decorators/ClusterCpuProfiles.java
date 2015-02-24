@@ -272,6 +272,7 @@ public class ClusterCpuProfiles extends
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.CpuProfiles.class,
@@ -279,4 +280,3 @@ public class ClusterCpuProfiles extends
     }
 
 }
-

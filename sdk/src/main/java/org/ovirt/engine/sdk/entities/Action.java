@@ -18,7 +18,6 @@
 // ********************* GENERATED CODE - DO NOT MODIFY ****************
 // *********************************************************************
 
-
 package org.ovirt.engine.sdk.entities;
 
 import java.util.ArrayList;
@@ -1255,4 +1254,3 @@ public class Action
     }
 
 }
-

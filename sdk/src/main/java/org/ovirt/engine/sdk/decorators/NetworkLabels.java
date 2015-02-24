@@ -240,4 +240,3 @@ public class NetworkLabels extends
     }
 
 }
-

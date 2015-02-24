@@ -149,4 +149,3 @@ public class DataCenterClusterAffinityGroups extends
     }
 
 }
-

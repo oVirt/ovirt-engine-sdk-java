@@ -65,4 +65,3 @@ public class VMReportedDevice extends
 
 
 }
-

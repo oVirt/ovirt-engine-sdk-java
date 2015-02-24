@@ -65,4 +65,3 @@ public class HostNICStatistic extends
 
 
 }
-

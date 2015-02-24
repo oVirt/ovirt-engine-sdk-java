@@ -320,6 +320,7 @@ public class InstanceTypes extends
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.InstanceTypes.class,
@@ -327,4 +328,3 @@ public class InstanceTypes extends
     }
 
 }
-

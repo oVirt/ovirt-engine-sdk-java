@@ -18,7 +18,6 @@
 // ********************* GENERATED CODE - DO NOT MODIFY ****************
 // *********************************************************************
 
-
 package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.JAXBElement;
@@ -5401,4 +5400,3 @@ public class ObjectFactory {
     }
 
 }
-

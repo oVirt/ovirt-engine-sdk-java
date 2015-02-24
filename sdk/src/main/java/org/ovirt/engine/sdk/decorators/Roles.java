@@ -269,6 +269,7 @@ public class Roles extends
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Roles.class,
@@ -276,4 +277,3 @@ public class Roles extends
     }
 
 }
-

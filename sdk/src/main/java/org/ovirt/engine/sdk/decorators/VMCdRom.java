@@ -117,6 +117,7 @@ public class VMCdRom extends
         if (async != null) {
             urlBuilder.add("async", async, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
@@ -158,6 +159,7 @@ public class VMCdRom extends
         if (async != null) {
             urlBuilder.add("async", async, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
@@ -235,9 +237,11 @@ public class VMCdRom extends
         if (async != null) {
             urlBuilder.add("async", async, UrlParameterType.MATRIX);
         }
+
         if (current != null) {
             urlBuilder.add("current", current, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -293,9 +297,11 @@ public class VMCdRom extends
         if (async != null) {
             urlBuilder.add("async", async, UrlParameterType.MATRIX);
         }
+
         if (current != null) {
             urlBuilder.add("current", current, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -307,4 +313,3 @@ public class VMCdRom extends
     }
 
 }
-

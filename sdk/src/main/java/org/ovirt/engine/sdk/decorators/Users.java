@@ -271,12 +271,15 @@ public class Users extends
         if (query != null) {
             urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
+
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
+
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Users.class,
@@ -284,4 +287,3 @@ public class Users extends
     }
 
 }
-

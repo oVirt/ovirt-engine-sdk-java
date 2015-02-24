@@ -275,6 +275,7 @@ public class JobSteps extends
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Steps.class,
@@ -282,4 +283,3 @@ public class JobSteps extends
     }
 
 }
-

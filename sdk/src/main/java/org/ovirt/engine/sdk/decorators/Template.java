@@ -219,6 +219,7 @@ public class Template extends
         if (async != null) {
             urlBuilder.add("async", async, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
@@ -260,6 +261,7 @@ public class Template extends
         if (async != null) {
             urlBuilder.add("async", async, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
@@ -512,4 +514,3 @@ public class Template extends
     }
 
 }
-

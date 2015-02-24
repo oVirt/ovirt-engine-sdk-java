@@ -257,6 +257,7 @@ public class StorageDomainDisks extends
         if (unregistered != null) {
             urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().add(url, disk,
@@ -341,6 +342,7 @@ public class StorageDomainDisks extends
         if (unregistered != null) {
             urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().add(url, disk,
@@ -432,6 +434,7 @@ public class StorageDomainDisks extends
         if (unregistered != null) {
             urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().add(url, disk,
@@ -478,15 +481,19 @@ public class StorageDomainDisks extends
         if (query != null) {
             urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
+
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
+
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         if (unregistered != null) {
             urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Disks.class,
@@ -494,4 +501,3 @@ public class StorageDomainDisks extends
     }
 
 }
-

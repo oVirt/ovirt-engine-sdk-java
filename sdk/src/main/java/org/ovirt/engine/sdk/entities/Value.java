@@ -18,7 +18,6 @@
 // ********************* GENERATED CODE - DO NOT MODIFY ****************
 // *********************************************************************
 
-
 package org.ovirt.engine.sdk.entities;
 
 import java.math.BigDecimal;
@@ -117,4 +116,3 @@ public class Value {
     }
 
 }
-

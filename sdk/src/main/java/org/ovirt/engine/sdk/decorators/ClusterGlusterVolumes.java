@@ -197,6 +197,7 @@ public class ClusterGlusterVolumes extends
         if (force != null) {
             urlBuilder.add("force", force, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().add(url, glustervolume,
@@ -251,6 +252,7 @@ public class ClusterGlusterVolumes extends
         if (force != null) {
             urlBuilder.add("force", force, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().add(url, glustervolume,
@@ -312,6 +314,7 @@ public class ClusterGlusterVolumes extends
         if (force != null) {
             urlBuilder.add("force", force, UrlParameterType.MATRIX);
         }
+
         url = urlBuilder.build();
 
         return getProxy().add(url, glustervolume,
@@ -350,9 +353,11 @@ public class ClusterGlusterVolumes extends
         if (query != null) {
             urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
+
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.GlusterVolumes.class,
@@ -360,4 +365,3 @@ public class ClusterGlusterVolumes extends
     }
 
 }
-

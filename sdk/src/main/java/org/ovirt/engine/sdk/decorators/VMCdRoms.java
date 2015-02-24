@@ -270,9 +270,11 @@ public class VMCdRoms extends
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         if (current != null) {
             urlBuilder.add("current", current, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.CdRoms.class,
@@ -280,4 +282,3 @@ public class VMCdRoms extends
     }
 
 }
-

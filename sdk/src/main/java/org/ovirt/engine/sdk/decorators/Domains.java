@@ -141,6 +141,7 @@ public class Domains extends
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Domains.class,
@@ -148,4 +149,3 @@ public class Domains extends
     }
 
 }
-

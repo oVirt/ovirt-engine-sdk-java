@@ -151,9 +151,11 @@ public class StorageDomainTemplates extends
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         if (unregistered != null) {
             urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Templates.class,
@@ -161,4 +163,3 @@ public class StorageDomainTemplates extends
     }
 
 }
-

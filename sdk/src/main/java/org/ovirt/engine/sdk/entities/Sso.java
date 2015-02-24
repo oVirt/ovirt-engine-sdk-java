@@ -18,7 +18,6 @@
 // ********************* GENERATED CODE - DO NOT MODIFY ****************
 // *********************************************************************
 
-
 package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -84,4 +83,3 @@ public class Sso {
     }
 
 }
-

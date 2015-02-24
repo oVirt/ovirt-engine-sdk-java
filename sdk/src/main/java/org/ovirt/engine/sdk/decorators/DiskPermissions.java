@@ -175,6 +175,7 @@ public class DiskPermissions extends
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
@@ -182,4 +183,3 @@ public class DiskPermissions extends
     }
 
 }
-

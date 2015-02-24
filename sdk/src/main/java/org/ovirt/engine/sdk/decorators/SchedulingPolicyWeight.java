@@ -90,4 +90,3 @@ public class SchedulingPolicyWeight extends
     }
 
 }
-
