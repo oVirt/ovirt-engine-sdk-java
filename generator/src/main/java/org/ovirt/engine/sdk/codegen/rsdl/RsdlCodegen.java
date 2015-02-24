@@ -35,6 +35,7 @@ import javax.xml.transform.stream.StreamSource;
 import com.sun.xml.xsom.XSComplexType;
 import com.sun.xml.xsom.XSSchemaSet;
 import com.sun.xml.xsom.parser.XSOMParser;
+import org.apache.commons.io.FileUtils;
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
 import org.ovirt.engine.sdk.codegen.holders.CollectionHolder;
 import org.ovirt.engine.sdk.codegen.holders.ResourceHolder;
@@ -54,7 +55,6 @@ import org.ovirt.engine.sdk.codegen.templates.SubResourceTemplate;
 import org.ovirt.engine.sdk.codegen.templates.UpdateMethodTemplate;
 import org.ovirt.engine.sdk.codegen.templates.VariableTemplate;
 import org.ovirt.engine.sdk.codegen.utils.ClassUtils;
-import org.ovirt.engine.sdk.codegen.utils.FileUtils;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.entities.Capabilities;
 import org.ovirt.engine.sdk.entities.DetailedLink;
@@ -291,8 +291,10 @@ public class RsdlCodegen {
     public void generate(String distPath) throws IOException, JAXBException {
         // Remove all the previously generate classes, so that classes corresponding to types that have been
         // removed from the XML schema will be later removed from the source code repository:
-        String packagePath = distPath + File.separatorChar + DECORATORS_PACKAGE.replace('.', File.separatorChar);
-        FileUtils.deleteAllFiles(packagePath);
+        File packageDir = new File(distPath, DECORATORS_PACKAGE.replace('.', File.separatorChar));
+        if (packageDir.exists()) {
+            FileUtils.cleanDirectory(packageDir);
+        }
 
         String url, rel, requestBodyType, responseBodyType, parent, collectionName, actualReturnType;
         HttpMethod requestMethod;
@@ -974,7 +976,7 @@ public class RsdlCodegen {
      * @param distPath
      *            directory to write the files to
      */
-    private void persistContent(String distPath) {
+    private void persistContent(String distPath) throws IOException {
         for (CollectionHolder collection : this.collectionsHolder.values()) {
             ClassUtils.saveClass(distPath, DECORATORS_PACKAGE + "." +collection.getName(), collection.produce());
         }

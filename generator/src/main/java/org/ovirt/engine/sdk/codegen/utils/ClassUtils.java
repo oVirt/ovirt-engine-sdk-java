@@ -16,13 +16,12 @@
 
 package org.ovirt.engine.sdk.codegen.utils;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Utilities for handling class files.
@@ -35,8 +34,10 @@ public class ClassUtils {
      * @param className the fully qualified name of the class
      * @param classCode the source code of the class
      */
-    public static void saveClass(String distPath, String className, String classCode) {
-        String classPath = distPath + File.separator + className.replace('.', File.separatorChar) + ".java";
-        FileUtils.saveFile(classPath, classCode);
+    public static void saveClass(String distPath, String className, String classCode) throws IOException {
+        File classFile = new File(distPath, className.replace('.', File.separatorChar) + ".java");
+        List<String> classLines = Arrays.asList(classCode.split("\n"));
+        classLines = StringUtils.removeTrailingWhitespace(classLines);
+        FileUtils.writeLines(classFile, classLines);
     }
 }

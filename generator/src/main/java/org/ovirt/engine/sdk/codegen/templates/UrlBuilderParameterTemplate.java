@@ -39,7 +39,7 @@ public class UrlBuilderParameterTemplate extends AbstractTemplate {
     public String getTemplate(String realUrlParamName, String urlParamName, String urlParamType) {
 
         StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getTemplate(), true);
+                new StringTemplateWrapper(getTemplate());
 
         templateWrapper.set("realUrlParamName", realUrlParamName);
         templateWrapper.set("urlParamName", urlParamName);

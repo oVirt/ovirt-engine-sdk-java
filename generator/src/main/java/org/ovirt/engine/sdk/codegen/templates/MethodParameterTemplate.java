@@ -28,7 +28,7 @@ public class MethodParameterTemplate extends AbstractTemplate {
     }
 
     public String getTemplate(String type, String name) {
-        StringTemplateWrapper templateWrapper = new StringTemplateWrapper(getTemplate(), true);
+        StringTemplateWrapper templateWrapper = new StringTemplateWrapper(getTemplate());
         templateWrapper.set("type", type);
         templateWrapper.set("name", name);
         return templateWrapper.toString();

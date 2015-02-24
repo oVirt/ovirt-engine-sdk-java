@@ -33,7 +33,7 @@ public class ExtraMethodParameterTemplate extends AbstractTemplate {
         String param = paramTemplate.getTemplate(type, name);
 
         // Add the separation from the previous parameter:
-        StringTemplateWrapper templateWrapper = new StringTemplateWrapper(getTemplate(), true);
+        StringTemplateWrapper templateWrapper = new StringTemplateWrapper(getTemplate());
         templateWrapper.set("param", param);
         return templateWrapper.toString();
     }

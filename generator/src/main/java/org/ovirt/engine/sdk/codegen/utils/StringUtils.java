@@ -76,21 +76,6 @@ public class StringUtils {
     }
 
     /**
-     * Removes trailing NewLine
-     * 
-     * @param string
-     * 
-     * @return string with no trailing NewLine
-     */
-    public static String removeTrailingNewLine(String string) {
-        if (string.endsWith(FileUtils.NEW_LINE)) {
-            return string.substring(0,
-                    string.length() - FileUtils.NEW_LINE.length());
-        }
-        return string;
-    }
-
-    /**
      * Removes leading string
      * 
      * @param string
@@ -262,5 +247,27 @@ public class StringUtils {
             first = false;
         }
         return buffer.toString();
+    }
+
+    /**
+     * Remove trailing whitespace from the given lines. The result will be a new list, the one passed as parameter
+     * won't be modified.
+     *
+     * @param lines the lines to be processed
+     * @return a new list containing the result of removing trailing whitespace from the given lines
+     */
+    public static List<String> removeTrailingWhitespace(List<String> lines) {
+        if (lines == null) {
+            return null;
+        }
+        List<String> result = new ArrayList<>(lines);
+        for (int i = 0; i < result.size(); i++) {
+            String line = result.get(i);
+            if (line != null) {
+                line = line.replaceAll("\\s+$", "");
+                result.set(i, line);
+            }
+        }
+        return result;
     }
 }

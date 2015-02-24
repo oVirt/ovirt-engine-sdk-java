@@ -35,20 +35,6 @@ public class StringTemplateWrapper {
     /**
      * @param content
      *            template content
-     * 
-     * @param noTrallingNewLine
-     *            removes trailing new line
-     */
-    public StringTemplateWrapper(String content, boolean noTrailingNewLine) {
-        this.content = content;
-        if (noTrailingNewLine) {
-            this.content = StringUtils.removeTrailingNewLine(this.content);
-        }
-    }
-
-    /**
-     * @param content
-     *            template content
      * @param keyWrapper
      *            key wrapping string
      */

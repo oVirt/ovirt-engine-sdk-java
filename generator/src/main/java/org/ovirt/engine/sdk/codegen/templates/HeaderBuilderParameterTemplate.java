@@ -38,7 +38,7 @@ public class HeaderBuilderParameterTemplate extends AbstractTemplate {
     public String getTemplate(String realUrlParamName, String headerParamName) {
 
         StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getTemplate(), true);
+                new StringTemplateWrapper(getTemplate());
 
         templateWrapper.set("realUrlParamName", realUrlParamName);
         templateWrapper.set("headerParamName", headerParamName);
