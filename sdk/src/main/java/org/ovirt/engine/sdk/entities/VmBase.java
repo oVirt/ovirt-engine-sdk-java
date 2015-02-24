@@ -108,8 +108,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "cpuProfile"
 })
 @XmlSeeAlso({
-    Template.class,
-    VM.class
+    VM.class,
+    Template.class
 })
 public class VmBase
     extends BaseResource

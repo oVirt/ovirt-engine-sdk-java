@@ -48,12 +48,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BaseDevices")
 @XmlSeeAlso({
-    Floppies.class,
-    Nics.class,
     CdRoms.class,
+    Floppies.class,
+    WatchDogs.class,
+    Nics.class,
     DiskSnapshots.class,
-    Disks.class,
-    WatchDogs.class
+    Disks.class
 })
 public class BaseDevices
     extends BaseResources

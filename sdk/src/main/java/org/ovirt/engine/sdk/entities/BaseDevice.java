@@ -53,10 +53,10 @@ import javax.xml.bind.annotation.XmlType;
     "template"
 })
 @XmlSeeAlso({
+    NIC.class,
     CdRom.class,
     WatchDog.class,
     Floppy.class,
-    NIC.class,
     Disk.class
 })
 public class BaseDevice

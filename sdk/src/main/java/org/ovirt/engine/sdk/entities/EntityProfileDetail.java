@@ -54,8 +54,8 @@ import javax.xml.bind.annotation.XmlType;
     "profileDetail"
 })
 @XmlSeeAlso({
-    BrickProfileDetail.class,
-    NfsProfileDetail.class
+    NfsProfileDetail.class,
+    BrickProfileDetail.class
 })
 public class EntityProfileDetail {
 
