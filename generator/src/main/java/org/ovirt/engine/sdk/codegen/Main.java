@@ -23,10 +23,8 @@ import javax.xml.bind.JAXBException;
 
 import org.ovirt.engine.sdk.codegen.rsdl.RsdlCodegen;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
+import org.ovirt.engine.sdk.codegen.xsd.XsdData;
 
-/**
- * oVirt ovirt-engine-sdk-java codegen suite
- */
 public class Main {
     private static final String DIST_PATH = "../sdk/src/main/java";
 
@@ -68,13 +66,13 @@ public class Main {
         // Adjust the destination path to the platform:
         String distPath = DIST_PATH.replace('/', File.separatorChar);
 
-        // #1 - generate api entities from the XSD schema
+        // Load and analyze the XML schema:
+        XsdData.getInstance().load(xsdPath);
+
+        // Generate entities classes:
         new XsdCodegen(xsdPath, xjbPath).generate(distPath);
 
-        // #2 - generate api entities decorators by RSDL and SDK entry point
-        new RsdlCodegen(xsdPath, rsdlPath).generate(distPath);
-
-        // #3 - exit
-        System.exit(0);
+        // Generate decorator classes:
+        new RsdlCodegen(rsdlPath).generate(distPath);
     }
 }

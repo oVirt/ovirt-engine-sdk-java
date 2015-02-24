@@ -16,12 +16,5 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-/**
- * Provides Collection.list templating services
- */
 public class CollectionListMethodTemplate extends ListMethodTemplate {
-
-    public CollectionListMethodTemplate() {
-        super();
-    }
 }

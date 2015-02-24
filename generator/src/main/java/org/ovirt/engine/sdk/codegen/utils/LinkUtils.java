@@ -18,7 +18,9 @@ package org.ovirt.engine.sdk.codegen.utils;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Header;
@@ -31,11 +33,12 @@ public class LinkUtils {
     /**
      * Names of headers that are ignored for code generation purposes.
      */
-    private static final String[] HEADERS_EXCEPTIONS = new String[] {
-        "Content-Type",
-        "Filter"
-    };
+    private static final Set<String> HEADERS_EXCEPTIONS = new HashSet<>();
 
+    static {
+        HEADERS_EXCEPTIONS.add("Content-Type");
+        HEADERS_EXCEPTIONS.add("Filter");
+    }
 
     /**
      * Get the list of URL parameters that are available in the given link.
@@ -62,7 +65,7 @@ public class LinkUtils {
             Headers headers = request.getHeaders();
             if (headers != null) {
                 for (Header header : headers.getHeaders()) {
-                    if (!ArrayUtils.contains(HEADERS_EXCEPTIONS, header.getName())) {
+                    if (!HEADERS_EXCEPTIONS.contains(header.getName())) {
                         result.add(header);
                     }
                 }

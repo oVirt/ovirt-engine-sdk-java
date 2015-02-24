@@ -16,21 +16,13 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
-
 /**
  * Template to generate the declaration of a method parameter given its type and its name.
  */
 public class MethodParameterTemplate extends AbstractTemplate {
-
-    public MethodParameterTemplate() {
-        super();
-    }
-
-    public String getTemplate(String type, String name) {
-        StringTemplateWrapper templateWrapper = new StringTemplateWrapper(getTemplate());
-        templateWrapper.set("type", type);
-        templateWrapper.set("name", name);
-        return templateWrapper.toString();
+    public String evaluate(String type, String name) {
+        set("type", type);
+        set("name", name);
+        return evaluate();
     }
 }

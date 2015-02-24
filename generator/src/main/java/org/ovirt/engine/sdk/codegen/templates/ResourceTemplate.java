@@ -16,45 +16,77 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+import org.ovirt.engine.sdk.codegen.rsdl.BrokerRules;
+import org.ovirt.engine.sdk.codegen.rsdl.Location;
+import org.ovirt.engine.sdk.codegen.rsdl.LocationRules;
+import org.ovirt.engine.sdk.codegen.rsdl.SchemaRules;
+import org.ovirt.engine.sdk.codegen.utils.Tree;
+import org.ovirt.engine.sdk.entities.DetailedLink;
 
-/**
- * Provides Resource templating services
- */
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.ovirt.engine.sdk.codegen.utils.StringUtils.concatenateValues;
+
 public class ResourceTemplate extends AbstractTemplate {
+    public String evaluate(Tree<Location> entityTree) {
+        String brokerType = BrokerRules.getBrokerType(entityTree);
+        String entityType = SchemaRules.getSchemaType(entityTree);
 
-    public ResourceTemplate() {
-        super();
-    }
+        // We need to store the declarations of methods and fields indexed by name in order to be able to sort them by
+        // name before generating the code, so that the resulting code will have a predictable order:
+        Map<String, String> fieldsMap = new HashMap<>();
+        Map<String, String> gettersMap = new HashMap<>();
+        Map<String, String> methodsMap = new HashMap<>();
 
-    /**
-     * Formats template in to the decorator class
-     * 
-     * @param decoratorResourceName
-     * @param publicEntityName
-     * @param subCollectionsVariables
-     * @param subCollectionsGetters
-     * @param methods
-     * 
-     * @return
-     */
-    public String getTemplate(String decoratorResourceName,
-            String publicEntityName,
-            String subCollectionsVariables,
-            String subCollectionsGetters,
-            String methods) {
+        // Find the sub-collections:
+        List<Tree<Location>> collectionTrees = entityTree.getChildren(LocationRules::isCollection);
 
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getCopyrightTemplate()
-                                   +
-                                   getTemplate());
+        // Generate the code for the collection fields:
+        for (Tree<Location> collectionTree : collectionTrees) {
+            String fieldType = BrokerRules.getBrokerType(collectionTree);
+            String fieldName = Character.toLowerCase(fieldType.charAt(0)) + fieldType.substring(1);
+            String fieldCode = new VariableTemplate().evaluate(fieldType, fieldName);
+            fieldsMap.put(fieldName, fieldCode);
+        }
 
-        templateWrapper.set("decoratorResourceName", decoratorResourceName);
-        templateWrapper.set("publicEntityName", publicEntityName);
-        templateWrapper.set("subCollectionsVariables", subCollectionsVariables);
-        templateWrapper.set("subCollectionsGetters", subCollectionsGetters);
-        templateWrapper.set("methods", methods);
+        // Generate the code for the collection getters:
+        for (Tree<Location> collectionTree : collectionTrees) {
+            String getterName = LocationRules.getName(collectionTree);
+            String getterCode = new SubCollectionGetterTemplate().evaluate(collectionTree);
+            gettersMap.put(getterName, getterCode);
+        }
 
-        return templateWrapper.toString();
+        // Generate the code for the methods:
+        for (DetailedLink methodLink : entityTree.get().getLinks()) {
+            String methodName = methodLink.getRel();
+            switch (methodName) {
+            case "delete":
+                String deleteMethod = new DeleteMethodTemplate().evaluate(entityTree, methodLink);
+                methodsMap.put(methodName, deleteMethod);
+                break;
+            case "update":
+                String updateMethod = new UpdateMethodTemplate().evaluate(entityTree, methodLink);
+                methodsMap.put(methodName, updateMethod);
+                break;
+            }
+        }
+
+        // Generate the code for the actions:
+        for (Tree<Location> actionTree : entityTree.getChildren(LocationRules::isAction)) {
+            String actionName = LocationRules.getName(actionTree);
+            String actionMethod = new ResourceActionMethodTemplate().evaluate(actionTree);
+            methodsMap.put(actionName, actionMethod);
+        }
+
+        // Populate the template:
+        set("broker_type", brokerType);
+        set("entity_type", entityType);
+        set("sub_collection_variables", concatenateValues(fieldsMap));
+        set("sub_collection_getters", concatenateValues(gettersMap));
+        set("methods", concatenateValues(methodsMap));
+
+        return evaluate();
     }
 }

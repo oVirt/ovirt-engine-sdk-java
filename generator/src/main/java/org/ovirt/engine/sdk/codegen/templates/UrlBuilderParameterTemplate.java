@@ -16,35 +16,11 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
-
-/**
- * Provides url builder parameter templating services
- */
 public class UrlBuilderParameterTemplate extends AbstractTemplate {
-
-    public UrlBuilderParameterTemplate() {
-        super();
-    }
-
-    /**
-     * Formats string in to url parameter builder variable
-     * 
-     * @param realUrlParamName
-     * @param urlParamName
-     * @param urlParamType
-     * 
-     * @return formated string
-     */
-    public String getTemplate(String realUrlParamName, String urlParamName, String urlParamType) {
-
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getTemplate());
-
-        templateWrapper.set("realUrlParamName", realUrlParamName);
-        templateWrapper.set("urlParamName", urlParamName);
-        templateWrapper.set("urlParamType", urlParamType);
-
-        return templateWrapper.toString();
+    public String evaluate(String realUrlParamName, String urlParamName, String urlParamType) {
+        set("realUrlParamName", realUrlParamName);
+        set("urlParamName", urlParamName);
+        set("urlParamType", urlParamType);
+        return evaluate();
     }
 }

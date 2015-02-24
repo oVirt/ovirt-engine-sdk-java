@@ -18,7 +18,7 @@ package org.ovirt.engine.sdk.codegen.utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -26,44 +26,6 @@ import java.util.Map;
  * Provides String related services
  */
 public class StringUtils {
-    /**
-     * The rules for forming plurals are not as simple as adding an {@code s} to the end, so we should implement them
-     * correctly or have a table of exceptions. For simplicity, we are using a table.
-     */
-    private static Map<String, String> SINGULAR_EXCEPTIONS = new HashMap<>();
-    private static Map<String, String> PLURAL_EXCEPTIONS = new HashMap<>();
-
-    static {
-        SINGULAR_EXCEPTIONS.put("SchedulingPolicies", "SchedulingPolicy");
-        for (Map.Entry<String, String> exception : SINGULAR_EXCEPTIONS.entrySet()) {
-            PLURAL_EXCEPTIONS.put(exception.getValue(), exception.getKey());
-        }
-    }
-
-    /**
-     * Determinates if given string is in plural form
-     * 
-     * @param candidate
-     *            candidate to check
-     * 
-     * @return boolean
-     */
-    public static boolean isPlural(String candidate) {
-        return candidate.endsWith("s");
-    }
-
-    /**
-     * Determinates if given string is in singular form
-     * 
-     * @param candidate
-     *            candidate to check
-     * 
-     * @return boolean
-     */
-    public static boolean isSingular(String candidate) {
-        return !StringUtils.isPlural(candidate);
-    }
-
     /**
      * Wraps to UpperCase first char in candidate
      * 
@@ -73,29 +35,6 @@ public class StringUtils {
      */
     public static String toUpperCase(String candidate) {
         return Character.toUpperCase(candidate.charAt(0)) + candidate.substring(1);
-    }
-
-    /**
-     * Removes leading string
-     * 
-     * @param string
-     *            string to process
-     * @param string
-     *            leading string to remove
-     * 
-     * @return string with no leadingString
-     */
-    public static String removeLeadingString(String string, String leadingString) {
-        if (string != null && leadingString != null) {
-            if (string.startsWith(leadingString)) {
-                if (string.length() > leadingString.length()) {
-                    string = string.substring(leadingString.length());
-                } else {
-                    string = new String("");
-                }
-            }
-        }
-        return string;
     }
 
     /**
@@ -198,42 +137,6 @@ public class StringUtils {
     }
 
     /**
-     * Converts string to singular form
-     *
-     * @return singular string
-     */
-    public static String toSingular(String plural) {
-        String singular = SINGULAR_EXCEPTIONS.get(plural);
-        if (singular == null) {
-            if (plural.length() >= 1 && plural.endsWith("s")) {
-                singular = plural.substring(0, plural.length() - 1);
-            }
-            else {
-                singular = plural;
-            }
-        }
-        return singular;
-    }
-
-    /**
-     * Converts string to plural form
-     *
-     * @return plural string
-     */
-    public static String toPlural(String singular) {
-        String plural = PLURAL_EXCEPTIONS.get(singular);
-        if (plural == null) {
-            if (singular.length() >= 1 && !singular.endsWith("s")) {
-                plural = singular + "s";
-            }
-            else {
-                plural = singular;
-            }
-        }
-        return plural;
-    }
-
-    /**
      * Formats a collection of objects separating their string representation with the given separator.
      */
     public static String formatList(Collection<?> collection, String separator) {
@@ -269,5 +172,17 @@ public class StringUtils {
             }
         }
         return result;
+    }
+
+    /**
+     * Concatenates the values of a map of strings sorting them alphabetically by key. This is useful when generating
+     * code because it helps to make the output predictable (the default order of maps isn't predictable).
+     */
+    public static String concatenateValues(Map<String, String> map) {
+        List<String> keys = new ArrayList<>(map.keySet());
+        Collections.sort(keys);
+        StringBuilder buffer = new StringBuilder();
+        keys.forEach(key -> buffer.append(map.get(key)));
+        return buffer.toString();
     }
 }

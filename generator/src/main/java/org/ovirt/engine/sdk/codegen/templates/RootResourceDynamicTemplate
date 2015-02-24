@@ -1,7 +1,7 @@
     /**
      * Gets the value of the $simpleMethodName$ property.
      *
-     * @return {@link $responseTypePackage$.$responseType$ }
+     * @return {@link $responseType$ }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -12,7 +12,7 @@
      * @throws UnsecuredConnectionAttemptError
      *             Signals that attempt of connecting to SSL secured site using HTTP protocol has occurred.
      */
-    public $responseTypePackage$.$responseType$ $methodName$() throws ClientProtocolException, ServerException,
+    public $responseType$ $methodName$() throws ClientProtocolException, ServerException,
             UnsecuredConnectionAttemptError, IOException {
         return getEntryPoint().$methodName$();
     }

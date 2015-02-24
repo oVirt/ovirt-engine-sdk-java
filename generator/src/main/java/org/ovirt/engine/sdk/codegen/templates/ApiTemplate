@@ -27,7 +27,7 @@ public class Api implements AutoCloseable {
     private volatile API entryPoint = null;
     private final Object LOCK = new Object();
 
-$collectionsVariables$
+$fields$
 
     /**
      * @param url
@@ -689,7 +689,7 @@ $collectionsVariables$
         shutdown();
     }
 
-$collectionsGetters$
+$getters$
 
-$rootMethods$
+$methods$
 }

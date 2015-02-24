@@ -16,48 +16,55 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+import org.ovirt.engine.sdk.codegen.rsdl.BrokerRules;
+import org.ovirt.engine.sdk.codegen.rsdl.Location;
+import org.ovirt.engine.sdk.codegen.rsdl.LocationRules;
+import org.ovirt.engine.sdk.codegen.rsdl.SchemaRules;
+import org.ovirt.engine.sdk.codegen.utils.Tree;
+import org.ovirt.engine.sdk.entities.DetailedLink;
 
-/**
- * Provides Collection templating services
- */
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.ovirt.engine.sdk.codegen.utils.StringUtils.concatenateValues;
+
 public class CollectionTemplate extends AbstractTemplate {
+    public String evaluate(Tree<Location> collectionTree) {
+        Tree<Location> entityTree = collectionTree.getChild(LocationRules::isEntity);
 
-    public CollectionTemplate() {
-        super();
-    }
+        String collectionBrokerType = BrokerRules.getBrokerType(collectionTree);
+        String entityBrokerType = BrokerRules.getBrokerType(entityTree);
+        String collectionType = SchemaRules.getSchemaType(collectionTree);
+        String entityType = SchemaRules.getSchemaType(entityTree);
+        String collectionName = LocationRules.getName(collectionTree);
 
-    /**
-     * Formats template in to the decorator class
-     * 
-     * @param decoratorCollectionName
-     * @param publicEntityName
-     * @param publicCollectionName
-     * @param decoratorEntityName
-     * @param methods
-     * @param urlCollectionName
-     * 
-     * @return
-     */
-    public String getTemplate(String decoratorCollectionName,
-            String publicEntityName,
-            String publicCollectionName,
-            String decoratorEntityName,
-            String methods,
-            String urlCollectionName) {
+        // We need to store the body of the methods indexed by name in order to be able to sort them by name before
+        // generating the code, so that the resulting code will have a predictable order:
+        Map<String, String> methodsMap = new HashMap<>();
 
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getCopyrightTemplate()
-                        +
-                        getTemplate());
+        // Generate the code for the "add" and "list" methods:
+        for (DetailedLink methodLink : collectionTree.get().getLinks()) {
+            String methodName = methodLink.getRel();
+            switch (methodName) {
+            case "add":
+                String addMethod = new CollectionAddMethodTemplate().evaluate(collectionTree, methodLink);
+                methodsMap.put(methodName, addMethod);
+                break;
+            case "get":
+                String listMethod = new CollectionListMethodTemplate().evaluate(collectionTree, methodLink);
+                methodsMap.put(methodName, listMethod);
+                break;
+            }
+        }
 
-        templateWrapper.set("decoratorCollectionName", decoratorCollectionName);
-        templateWrapper.set("publicEntityName", publicEntityName);
-        templateWrapper.set("publicCollectionName", publicCollectionName);
-        templateWrapper.set("decoratorEntityName", decoratorEntityName);
-        templateWrapper.set("methods", methods);
-        templateWrapper.set("urlCollectionName", urlCollectionName);
+        // Populate the template:
+        set("collection_broker_type", collectionBrokerType);
+        set("entity_broker_type", entityBrokerType);
+        set("collection_type", collectionType);
+        set("entity_type", entityType);
+        set("collection_name", collectionName);
+        set("methods", concatenateValues(methodsMap));
 
-        return templateWrapper.toString();
+        return evaluate();
     }
 }

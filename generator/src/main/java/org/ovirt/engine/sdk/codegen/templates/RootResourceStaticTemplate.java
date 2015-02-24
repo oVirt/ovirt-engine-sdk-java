@@ -16,38 +16,13 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+import java.lang.reflect.Method;
 
-/**
- * Provides RootResourceStaticTemplate templating services
- */
 public class RootResourceStaticTemplate extends AbstractTemplate {
-
-    public RootResourceStaticTemplate() {
-        super();
-    }
-
-    /**
-     * Formats string in to RootResourceStaticTemplate
-     * 
-     * @param methodName
-     * @param responseType
-     * @param responseTypePackage
-     * @param simpleMethodName
-     * 
-     * @return formated string
-     */
-    public String getTemplate(String methodName, String responseType,
-            String responseTypePackage, String simpleMethodName) {
-
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getTemplate());
-
-        templateWrapper.set("methodName", methodName);
-        templateWrapper.set("responseType", responseType);
-        templateWrapper.set("responseTypePackage", responseTypePackage);
-        templateWrapper.set("simpleMethodName", simpleMethodName);
-
-        return templateWrapper.toString();
+    public String evaluate(Method method) {
+        set("methodName", method.getName());
+        set("responseType", method.getReturnType().getName());
+        set("simpleMethodName", method.getName().replaceAll("^get", ""));
+        return evaluate();
     }
 }

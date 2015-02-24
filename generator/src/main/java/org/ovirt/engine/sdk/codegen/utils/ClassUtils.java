@@ -17,16 +17,24 @@
 package org.ovirt.engine.sdk.codegen.utils;
 
 import org.apache.commons.io.FileUtils;
+import org.ovirt.engine.sdk.codegen.templates.CopyrightTemplate;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Utilities for handling class files.
  */
 public class ClassUtils {
+    /**
+     * The lines of the copyright statement, which will be added to all the generated classes.
+     */
+    private static final List<String> COPYRIGHT = Arrays.asList(new CopyrightTemplate().evaluate().split("\n"));
+
     /**
      * Saves the code of a class file.
      *
@@ -36,7 +44,9 @@ public class ClassUtils {
      */
     public static void saveClass(String distPath, String className, String classCode) throws IOException {
         File classFile = new File(distPath, className.replace('.', File.separatorChar) + ".java");
-        List<String> classLines = Arrays.asList(classCode.split("\n"));
+        List<String> classLines = new ArrayList<>(COPYRIGHT);
+        classLines.add("");
+        Collections.addAll(classLines, classCode.split("\n"));
         classLines = StringUtils.removeTrailingWhitespace(classLines);
         FileUtils.writeLines(classFile, classLines);
     }

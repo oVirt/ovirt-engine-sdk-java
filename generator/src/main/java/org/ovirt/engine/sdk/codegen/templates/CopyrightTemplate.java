@@ -16,16 +16,5 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-/**
- * Provides Copyright templating services
- */
 public class CopyrightTemplate extends AbstractTemplate {
-
-    public CopyrightTemplate() {
-        super();
-    }
-
-    public CopyrightTemplate(boolean noInit) {
-        super(noInit);
-    }
 }

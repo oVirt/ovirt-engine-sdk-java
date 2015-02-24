@@ -20,39 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ovirt.engine.sdk.codegen.documentation.DocsGen;
+import org.ovirt.engine.sdk.codegen.rsdl.BrokerRules;
+import org.ovirt.engine.sdk.codegen.rsdl.Location;
+import org.ovirt.engine.sdk.codegen.rsdl.SchemaRules;
 import org.ovirt.engine.sdk.codegen.utils.LinkUtils;
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
 import org.ovirt.engine.sdk.codegen.utils.StringUtils;
+import org.ovirt.engine.sdk.codegen.utils.Tree;
 import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Header;
 import org.ovirt.engine.sdk.entities.Parameter;
 
-/**
- * Provides Resource update templating services
- */
 public class UpdateMethodTemplate extends AbstractOverloadableTemplate {
-
-    public UpdateMethodTemplate() {
-        super();
-    }
-
-    /**
-     * Formats template in to the resource add template
-     *
-     * @param urlParameters
-     *            the list of URL parameters
-     * @param headers
-     *            the list of headers
-     * @param decoratorName
-     *            decorator entity name
-     * @param publicEntityName
-     *            public entity name
-     * @param docParams
-     *            documentation params
-     *
-     * @return formated add template
-     */
-    private String getTemplate(
+    private String evaluate(
             List<Parameter> urlParameters,
             List<Header> headers,
             String decoratorName,
@@ -70,28 +49,21 @@ public class UpdateMethodTemplate extends AbstractOverloadableTemplate {
         String headerBuilderCode = getHeaderBuilderCode(headers);
 
         // Generate the method:
-        StringTemplateWrapper templateWrapper = new StringTemplateWrapper(getTemplate());
-        templateWrapper.set("decoratorName", decoratorName);
-        templateWrapper.set("publicEntityName", publicEntityName);
-        templateWrapper.set("docParams", docParams);
-        templateWrapper.set("paramList", paramList);
-        templateWrapper.set("headersToBuild", headerBuilderCode);
-        templateWrapper.set("urlParamsToBuild", urlBuilderCode);
-        return templateWrapper.toString();
+        set("decoratorName", decoratorName);
+        set("publicEntityName", publicEntityName);
+        set("docParams", docParams);
+        set("paramList", paramList);
+        set("headersToBuild", headerBuilderCode);
+        set("urlParamsToBuild", urlBuilderCode);
+        return evaluate();
     }
 
-    /**
-     * Formats template in to the resource add template
-     * 
-     * @param decoratorName
-     * @param publicEntityName
-     * @param docParams
-     * @param dl
-     *            detailed link
-     * 
-     * @return update method
-     */
-    public String getTemplate(String decoratorName, String publicEntityName, String docParams, DetailedLink dl) {
+    public String evaluate(Tree<Location> entityTree, DetailedLink dl) {
+        String brokerType = BrokerRules.getBrokerType(entityTree);
+        String entityType = SchemaRules.getSchemaType(entityTree);
+
+        String docParams = DocsGen.generateBodyParams(dl);
+
         StringBuilder buffer = new StringBuilder();
 
         // Generate URL and header parameters:
@@ -100,23 +72,23 @@ public class UpdateMethodTemplate extends AbstractOverloadableTemplate {
 
         // Add default method, without URL or header parameters:
         buffer.append(
-            getTemplate(
-                new ArrayList<Parameter>(0),
-                new ArrayList<Header>(0),
-                decoratorName,
-                publicEntityName,
-                docParams
+            evaluate(
+                    new ArrayList<>(0),
+                    new ArrayList<>(0),
+                    brokerType,
+                    entityType,
+                    docParams
             )
         );
 
         // Add method overload containing all the URL parameters but none of the header parameters:
         if (!urlParameters.isEmpty()) {
             buffer.append(
-                getTemplate(
+                evaluate(
                     urlParameters,
-                    new ArrayList<Header>(0),
-                    decoratorName,
-                    publicEntityName,
+                    new ArrayList<>(0),
+                    brokerType,
+                    entityType,
                     StringUtils.combine(
                         docParams,
                         DocsGen.generateUrlParameters(dl)
@@ -130,11 +102,11 @@ public class UpdateMethodTemplate extends AbstractOverloadableTemplate {
             for (int i = 1; i <= headers.size(); i++) {
                 List<Header> headerSublist = headers.subList(0, i);
                 buffer.append(
-                    getTemplate(
+                    evaluate(
                         urlParameters,
                         headerSublist,
-                        decoratorName,
-                        publicEntityName,
+                        brokerType,
+                        entityType,
                         StringUtils.combine(
                             docParams,
                             DocsGen.generateHeaders(headerSublist),

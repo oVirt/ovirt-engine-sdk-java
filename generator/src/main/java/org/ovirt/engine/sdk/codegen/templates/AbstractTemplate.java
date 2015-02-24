@@ -1,11 +1,11 @@
 //
-// Copyright (c) 2012 Red Hat, Inc.
+// Copyright (c) 2014 Red Hat, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//           http://www.apache.org/licenses/LICENSE-2.0
+//   http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,37 +19,33 @@ package org.ovirt.engine.sdk.codegen.templates;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Base Template class
- */
-public abstract class AbstractTemplate implements ITemplate {
-
-    private String name;
-    private String template;
-    private String copyrightTemplate;
+public abstract class AbstractTemplate {
+    /**
+     * The key that surrounds variables in the template text.
+     */
+    private String KEY_WRAP = "$";
 
     /**
-     * Generic .ctr
+     * The name of the template.
      */
+    private String name;
+
+    /**
+     * The text of the template.
+     */
+    private String template;
+
+    /**
+     * The values of the variables to substitute in the generated text.
+     */
+    private Map<String, Object> variables = new HashMap<>();
+
     public AbstractTemplate() {
         this.name = getClass().getSimpleName();
         this.template = loadTemplate();
-        this.copyrightTemplate = new CopyrightTemplate(true).getTemplate();
-    }
-
-    /**
-     * Invoke this .ctr when no need to fetch CopyrightTemplate
-     * 
-     * @param noCopyrightTemplate
-     *            true/false
-     */
-    public AbstractTemplate(boolean noCopyrightTemplate) {
-        this.name = getClass().getSimpleName();
-        this.template = loadTemplate();
-        if (!noCopyrightTemplate) {
-            this.copyrightTemplate = new CopyrightTemplate(true).getTemplate();
-        }
     }
 
     /**
@@ -57,7 +53,6 @@ public abstract class AbstractTemplate implements ITemplate {
      * 
      * @return template
      */
-    @Override
     public String loadTemplate() {
         try (InputStream in = this.getClass().getResourceAsStream(name)) {
             if (in == null) {
@@ -78,23 +73,31 @@ public abstract class AbstractTemplate implements ITemplate {
     }
 
     /**
-     * @return template name
+     * Assigns a value to a variable.
      */
-    protected String getName() {
-        return this.name;
+    public void set(String name, Object value) {
+        variables.put(name, value);
     }
 
     /**
-     * @return CopyrightTemplate
+     * Assign values to several variables.
      */
-    protected String getCopyrightTemplate() {
-        return this.copyrightTemplate;
+    public void set(Map<String, String> map) {
+        variables.putAll(map);
     }
 
     /**
-     * @return abstract template form
+     * Evaluates the template and returns the generated text.
      */
-    public String getTemplate() {
-        return this.template;
+    public String evaluate() {
+        String text = template;
+        for (Map.Entry<String, Object> variable : variables.entrySet()) {
+            String key = KEY_WRAP + variable.getKey() + KEY_WRAP;
+            Object value = variable.getValue();
+            if (value != null) {
+                text = text.replace(key, value.toString());
+            }
+        }
+        return text;
     }
 }

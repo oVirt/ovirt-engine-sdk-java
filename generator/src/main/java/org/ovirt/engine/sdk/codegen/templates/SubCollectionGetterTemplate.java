@@ -16,35 +16,21 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+import org.ovirt.engine.sdk.codegen.rsdl.BrokerRules;
+import org.ovirt.engine.sdk.codegen.rsdl.Location;
+import org.ovirt.engine.sdk.codegen.rsdl.SchemaRules;
+import org.ovirt.engine.sdk.codegen.utils.Tree;
 
-/**
- * Provides class variable getter templating services
- */
 public class SubCollectionGetterTemplate extends AbstractTemplate {
+    public String evaluate(Tree<Location> collectionTree) {
+        String brokerType = BrokerRules.getBrokerType(collectionTree);
+        String collectionType = SchemaRules.getSchemaType(collectionTree);
+        String fieldName = Character.toLowerCase(brokerType.charAt(0)) + brokerType.substring(1);
 
-    public SubCollectionGetterTemplate() {
-        super();
-    }
+        set("broker_type", brokerType);
+        set("collection_type", collectionType);
+        set("field_name", fieldName);
 
-    /**
-     * Formates string in to class variable getter
-     * 
-     * @param decoratorCollectionName
-     * @param decoratorCollectionVariableName
-     * 
-     * @return formated string
-     */
-    public String getTemplate(String decoratorCollectionName,
-            String decoratorCollectionVariableName, String publicCollecionName) {
-
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getTemplate());
-
-        templateWrapper.set("decoratorCollectionName", decoratorCollectionName);
-        templateWrapper.set("decoratorCollectionVariableName", decoratorCollectionVariableName);
-        templateWrapper.set("publicCollecionName", publicCollecionName);
-
-        return templateWrapper.toString();
+        return evaluate();
     }
 }

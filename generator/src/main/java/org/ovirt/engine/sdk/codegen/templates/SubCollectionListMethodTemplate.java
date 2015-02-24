@@ -16,12 +16,5 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-/**
- * Provides SubCollection.list templating services
- */
 public class SubCollectionListMethodTemplate extends ListMethodTemplate {
-
-    public SubCollectionListMethodTemplate() {
-        super();
-    }
 }

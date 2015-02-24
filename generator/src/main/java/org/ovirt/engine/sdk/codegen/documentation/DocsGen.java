@@ -18,7 +18,6 @@ package org.ovirt.engine.sdk.codegen.documentation;
 
 import java.util.List;
 
-import org.ovirt.engine.sdk.codegen.common.IDocCodegen;
 import org.ovirt.engine.sdk.codegen.utils.FormatUtils;
 import org.ovirt.engine.sdk.codegen.utils.StringUtils;
 import org.ovirt.engine.sdk.codegen.utils.UrlUtils;
@@ -30,7 +29,7 @@ import org.ovirt.engine.sdk.entities.ParametersSet;
 /**
  * Provides documentation related codegen capabilities
  */
-public class DocsGen implements IDocCodegen {
+public class DocsGen {
 
     private static final int DOC_LENGH = 42;
     private static final String BREACKS_OPEN = "[";
@@ -218,7 +217,6 @@ public class DocsGen implements IDocCodegen {
         }
     }
 
-    @Override
     public String generate(DetailedLink detailedLink) {
         StringBuffer docParamsBuffer = new StringBuffer();
 

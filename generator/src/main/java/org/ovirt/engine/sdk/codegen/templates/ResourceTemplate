@@ -15,22 +15,22 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>$decoratorResourceName$ providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.$publicEntityName$ }.
+ * <p>$broker_type$ providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.$entity_type$ }.
  */
 @SuppressWarnings("unused")
-public class $decoratorResourceName$ extends
-        org.ovirt.engine.sdk.entities.$publicEntityName$ {
+public class $broker_type$ extends
+        org.ovirt.engine.sdk.entities.$entity_type$ {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-$subCollectionsVariables$
+$sub_collection_variables$
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public $decoratorResourceName$(HttpProxyBroker proxy) {
+    public $broker_type$(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -41,7 +41,7 @@ $subCollectionsVariables$
         return proxy;
     }
 
-$subCollectionsGetters$
+$sub_collection_getters$
 
 $methods$
 }

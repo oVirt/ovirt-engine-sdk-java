@@ -16,51 +16,65 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
+import org.ovirt.engine.sdk.codegen.rsdl.BrokerRules;
+import org.ovirt.engine.sdk.codegen.rsdl.Location;
+import org.ovirt.engine.sdk.codegen.rsdl.LocationRules;
+import org.ovirt.engine.sdk.codegen.rsdl.SchemaRules;
+import org.ovirt.engine.sdk.codegen.utils.Tree;
+import org.ovirt.engine.sdk.entities.DetailedLink;
 
-/**
- * Provides SubCollection templating services
- */
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.ovirt.engine.sdk.codegen.utils.StringUtils.concatenateValues;
+
 public class SubCollectionTemplate extends AbstractTemplate {
+    public String evaluate(Tree<Location> collectionTree) {
+        Tree<Location> parentTree = collectionTree.getParent();
+        Tree<Location> entityTree = collectionTree.getChild(LocationRules::isEntity);
 
-    public SubCollectionTemplate() {
-        super();
-    }
+        String parentBrokerType = BrokerRules.getBrokerType(parentTree);
+        String collectionBrokerType = BrokerRules.getBrokerType(collectionTree);
+        String entityBrokerType = BrokerRules.getBrokerType(entityTree);
+        String collectionType = SchemaRules.getSchemaType(collectionTree);
+        String collectionName = LocationRules.getName(collectionTree);
+        String entityType = SchemaRules.getSchemaType(entityTree);
 
-    /**
-     * Formats template in to the decorator class
-     * 
-     * @param decoratorSubCollectionName
-     * @param publicEntityName
-     * @param publicCollectionName
-     * @param parentDecoratorName
-     * @param decoratorEntityName
-     * @param urlCollectionName
-     * @param methods
-     * 
-     * @return
-     */
-    public String getTemplate(String decoratorSubCollectionName,
-            String publicEntityName,
-            String publicCollectionName,
-            String parentDecoratorName,
-            String decoratorEntityName,
-            String methods,
-            String urlCollectionName) {
+        // We need to store the body of the methods indexed by name in order to be able to sort them by name before
+        // generating the code, so that the resulting code will have a predictable order:
+        Map<String, String> methodsMap = new HashMap<>();
 
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getCopyrightTemplate()
-                                   +
-                                   getTemplate());
+        // Generate the code for the "add" and "list" methods:
+        for (DetailedLink methodLink : collectionTree.get().getLinks()) {
+            String methodName = methodLink.getRel();
+            switch (methodName) {
+            case "add":
+                String addMethod = new SubCollectionAddMethodTemplate().evaluate(collectionTree, methodLink);
+                methodsMap.put(methodName, addMethod);
+                break;
+            case "get":
+                String listMethod = new SubCollectionListMethodTemplate().evaluate(collectionTree, methodLink);
+                methodsMap.put(methodName, listMethod);
+                break;
+            }
+        }
 
-        templateWrapper.set("decoratorSubCollectionName", decoratorSubCollectionName);
-        templateWrapper.set("publicEntityName", publicEntityName);
-        templateWrapper.set("publicCollectionName", publicCollectionName);
-        templateWrapper.set("parentDecoratorName", parentDecoratorName);
-        templateWrapper.set("decoratorEntityName", decoratorEntityName);
-        templateWrapper.set("methods", methods);
-        templateWrapper.set("urlCollectionName", urlCollectionName);
+        // Generate the code for the action methods:
+        for (Tree<Location> actionTree : collectionTree.getChildren(LocationRules::isAction)) {
+            String actionName = LocationRules.getName(actionTree);
+            String actionMethod = new CollectionActionMethodTemplate().evaluate(actionTree);
+            methodsMap.put(actionName, actionMethod);
+        }
 
-        return templateWrapper.toString();
+        // Populate the template:
+        set("parent_broker_type", parentBrokerType);
+        set("collection_broker_type", collectionBrokerType);
+        set("entity_broker_type", entityBrokerType);
+        set("collection_type", collectionType);
+        set("collection_name", collectionName);
+        set("entity_type", entityType);
+        set("methods", concatenateValues(methodsMap));
+
+        return evaluate();
     }
 }

@@ -19,27 +19,27 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>$decoratorCollectionName$ providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.$publicCollectionName$ }.
+ * <p>$collection_broker_type$ providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.$collection_type$ }.
  */
 @SuppressWarnings("unused")
-public class $decoratorCollectionName$ extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.$publicEntityName$,
-                            org.ovirt.engine.sdk.entities.$publicCollectionName$,
-                            $decoratorEntityName$> {
+public class $collection_broker_type$ extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.$entity_type$,
+                            org.ovirt.engine.sdk.entities.$collection_type$,
+                            $entity_broker_type$> {
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public $decoratorCollectionName$(HttpProxyBroker proxy) {
-        super(proxy, "$urlCollectionName$");
+    public $collection_broker_type$(HttpProxyBroker proxy) {
+        super(proxy, "$collection_name$");
     }
 
     /**
-     * Lists $decoratorEntityName$ objects.
+     * Lists $entity_broker_type$ objects.
      *
      * @return
-     *     List of {@link $decoratorEntityName$ }
+     *     List of {@link $entity_broker_type$ }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -49,16 +49,16 @@ public class $decoratorCollectionName$ extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<$decoratorEntityName$> list() throws ClientProtocolException,
+    public List<$entity_broker_type$> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.$publicCollectionName$.class, $decoratorEntityName$.class);
+        return list(url, org.ovirt.engine.sdk.entities.$collection_type$.class, $entity_broker_type$.class);
     }
 
     /**
-     * Fetches $decoratorEntityName$ object by id.
+     * Fetches $entity_broker_type$ object by id.
      *
-     * @return {@link $decoratorEntityName$ }
+     * @return {@link $entity_broker_type$ }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -68,16 +68,16 @@ public class $decoratorCollectionName$ extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public $decoratorEntityName$ get(UUID id) throws ClientProtocolException,
+    public $entity_broker_type$ get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorEntityName$.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.$entity_type$.class, $entity_broker_type$.class);
     }
 
     /**
-     * Fetches $decoratorEntityName$ object by id.
+     * Fetches $entity_broker_type$ object by id.
      *
-     * @return {@link $decoratorEntityName$ }
+     * @return {@link $entity_broker_type$ }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -87,10 +87,10 @@ public class $decoratorCollectionName$ extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public $decoratorEntityName$ getById(String id) throws ClientProtocolException,
+    public $entity_broker_type$ getById(String id) throws ClientProtocolException,
             ServerException, IOException {
         String url = SLASH + getName() + SLASH + id;
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.$publicEntityName$.class, $decoratorEntityName$.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.$entity_type$.class, $entity_broker_type$.class);
     }
 
 $methods$

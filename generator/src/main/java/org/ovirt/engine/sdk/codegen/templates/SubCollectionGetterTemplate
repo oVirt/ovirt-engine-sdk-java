@@ -1,16 +1,16 @@
     /**
-     * Gets the value of the $decoratorCollectionName$ property.
+     * Gets the value of the $broker_type$ property.
      *
      * @return
-     *     {@link $decoratorCollectionName$ }
+     *     {@link $broker_type$ }
      */
-    public $decoratorCollectionName$ get$publicCollecionName$() {
-        if (this.$decoratorCollectionVariableName$ == null) {
+    public $broker_type$ get$collection_type$() {
+        if (this.$field_name$ == null) {
             synchronized (this.LOCK) {
-                if (this.$decoratorCollectionVariableName$ == null) {
-                    this.$decoratorCollectionVariableName$ = new $decoratorCollectionName$(proxy, this);
+                if (this.$field_name$ == null) {
+                    this.$field_name$ = new $broker_type$(proxy, this);
                 }
             }
         }
-        return $decoratorCollectionVariableName$;
+        return $field_name$;
     }

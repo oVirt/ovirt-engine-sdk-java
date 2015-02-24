@@ -44,7 +44,7 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
             UrlBuilderParameterTemplate template = new UrlBuilderParameterTemplate();
             buffer.append("\n");
             buffer.append(
-                template.getTemplate(
+                template.evaluate(
                     parameter.getName(),
                     UrlUtils.toQueryParam(parameter.getName()),
                     UrlUtils.toParamType(parameter.getContext())
@@ -65,7 +65,7 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
             String paramName = UrlUtils.toQueryParam(param.getName());
             String paramType = TypeUtils.toJava(param.getType());
             MethodParameterTemplate paramDeclTemplate = new MethodParameterTemplate();
-            String paramDecl = paramDeclTemplate.getTemplate(paramType, paramName);
+            String paramDecl = paramDeclTemplate.evaluate(paramType, paramName);
             paramDecls.add(paramDecl);
         }
         return paramDecls;
@@ -82,7 +82,7 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
             String paramName = FormatUtils.toJava(header.getName());
             String paramType = TypeUtils.toJava(XSD_STRING_TYPE);
             MethodParameterTemplate paramDeclTemplate = new MethodParameterTemplate();
-            String paramDecl = paramDeclTemplate.getTemplate(paramType, paramName);
+            String paramDecl = paramDeclTemplate.evaluate(paramType, paramName);
             paramDecls.add(paramDecl);
         }
         return paramDecls;
@@ -100,7 +100,7 @@ public abstract class AbstractOverloadableTemplate extends AbstractTemplate {
             HeaderBuilderParameterTemplate template = new HeaderBuilderParameterTemplate();
             buffer.append("\n");
             buffer.append(
-                template.getTemplate(
+                template.evaluate(
                     headerName,
                     FormatUtils.toJava(headerName)
                 )

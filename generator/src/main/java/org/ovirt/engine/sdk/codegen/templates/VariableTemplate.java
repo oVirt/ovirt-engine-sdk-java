@@ -16,33 +16,10 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
-
-/**
- * Provides class variable templating services
- */
 public class VariableTemplate extends AbstractTemplate {
-
-    public VariableTemplate() {
-        super();
-    }
-
-    /**
-     * Formates string in to class variable
-     * 
-     * @param type
-     * @param name
-     * 
-     * @return formated string
-     */
-    public String getTemplate(String type, String name) {
-
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getTemplate());
-
-        templateWrapper.set("type", type);
-        templateWrapper.set("name", name);
-
-        return templateWrapper.toString();
+    public String evaluate(String type, String name) {
+        set("type", type);
+        set("name", name);
+        return evaluate();
     }
 }

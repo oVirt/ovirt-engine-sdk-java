@@ -16,33 +16,10 @@
 
 package org.ovirt.engine.sdk.codegen.templates;
 
-import org.ovirt.engine.sdk.codegen.utils.StringTemplateWrapper;
-
-/**
- * Provides http header builder variable templating services
- */
 public class HeaderBuilderParameterTemplate extends AbstractTemplate {
-
-    public HeaderBuilderParameterTemplate() {
-        super();
-    }
-
-    /**
-     * Formats string in to http header builder variable
-     * 
-     * @param realUrlParamName
-     * @param headerParamName
-     * 
-     * @return formated string
-     */
-    public String getTemplate(String realUrlParamName, String headerParamName) {
-
-        StringTemplateWrapper templateWrapper =
-                new StringTemplateWrapper(getTemplate());
-
-        templateWrapper.set("realUrlParamName", realUrlParamName);
-        templateWrapper.set("headerParamName", headerParamName);
-
-        return templateWrapper.toString();
+    public String evaluate(String realUrlParamName, String headerParamName) {
+        set("realUrlParamName", realUrlParamName);
+        set("headerParamName", headerParamName);
+        return evaluate();
     }
 }
