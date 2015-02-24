@@ -36,10 +36,10 @@ Generating
 
 Most of the source code of the Java SDK is automatically generated from the
 metadata provided by the oVirt Engine artifacts. The code generator is a Java
-program that resides in the `ovirt-engine-sdk-java-codegen` directory. In order
+program that resides in the `generator` directory. In order
 to use it you will need first to build it, using Maven:
 
-    $ cd ../ovirt-engine-sdk-java-codegen
+    $ cd ../generator
     $ mvn clean install
 
 Then you will need to place the files containing the XML schema of entities and

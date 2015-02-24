@@ -50,11 +50,11 @@ cp target/%{name}-%{pom_version}-javadoc.jar %{buildroot}%{_javadocdir}/%{name}/
 %{_javadir}/%{name}
 %doc AUTHORS.md
 %doc README.md
-%doc LICENSE.md
+%doc LICENSE.txt
 
 %files javadoc
 %{_javadocdir}/%{name}
-%doc LICENSE.md
+%doc LICENSE.txt
 
 %changelog
 * Tue Oct 28 2014 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.0.0-0
