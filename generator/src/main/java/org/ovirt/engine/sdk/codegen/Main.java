@@ -28,7 +28,7 @@ import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
  * oVirt ovirt-engine-sdk-java codegen suite
  */
 public class Main {
-    private static final String DIST_PATH = "../ovirt-engine-sdk-java/src/main/java";
+    private static final String DIST_PATH = "../sdk/src/main/java";
 
     public static void main(String[] args) throws IOException, JAXBException {
         // Parse the command line parameters:

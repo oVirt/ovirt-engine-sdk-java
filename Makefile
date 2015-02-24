@@ -1,7 +1,7 @@
 GIT_HEAD=$(shell git log -1 --pretty=format:%h)
 DATE=$(shell date --utc +%Y%m%d)
 GIT_RELEASE=$(DATE).git$(GIT_HEAD)
-PROJ_DIR=ovirt-engine-sdk-java
+PROJ_DIR=sdk
 
 .PHONY: dist
 dist:
