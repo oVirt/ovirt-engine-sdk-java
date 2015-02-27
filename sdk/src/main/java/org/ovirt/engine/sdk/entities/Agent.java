@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Agent">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element name="address" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -42,9 +42,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}options" minOccurs="0"/>
  *         &lt;element name="concurrent" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="order" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="port" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element ref="{}host" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -58,9 +60,13 @@ import javax.xml.bind.annotation.XmlType;
     "password",
     "options",
     "concurrent",
-    "order"
+    "order",
+    "port",
+    "host"
 })
-public class Agent {
+public class Agent
+    extends BaseResource
+{
 
     protected String address;
     protected String username;
@@ -68,6 +74,8 @@ public class Agent {
     protected Options options;
     protected Boolean concurrent;
     protected Integer order;
+    protected Integer port;
+    protected Host host;
     @XmlAttribute(name = "type")
     protected String type;
 
@@ -237,6 +245,62 @@ public class Agent {
 
     public boolean isSetOrder() {
         return (this.order!= null);
+    }
+
+    /**
+     * Gets the value of the port property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getPort() {
+        return port;
+    }
+
+    /**
+     * Sets the value of the port property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setPort(Integer value) {
+        this.port = value;
+    }
+
+    public boolean isSetPort() {
+        return (this.port!= null);
+    }
+
+    /**
+     * Gets the value of the host property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Host }
+     *
+     */
+    public Host getHost() {
+        return host;
+    }
+
+    /**
+     * Sets the value of the host property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Host }
+     *
+     */
+    public void setHost(Host value) {
+        this.host = value;
+    }
+
+    public boolean isSetHost() {
+        return (this.host!= null);
     }
 
     /**

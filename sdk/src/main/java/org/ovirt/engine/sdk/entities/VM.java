@@ -45,7 +45,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}instance_type" minOccurs="0"/>
  *         &lt;element name="start_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="stop_time" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="custom_properties" type="{}CustomProperties" minOccurs="0"/>
+ *         &lt;element name="run_once" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="payloads" type="{}Payloads" minOccurs="0"/>
  *         &lt;element name="statistics" type="{}Statistics" minOccurs="0"/>
  *         &lt;element name="disks" type="{}Disks" minOccurs="0"/>
@@ -82,7 +82,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "instanceType",
     "startTime",
     "stopTime",
-    "customProperties",
+    "runOnce",
     "payloads",
     "statistics",
     "disks",
@@ -123,8 +123,8 @@ public class VM
     @XmlElement(name = "stop_time")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar stopTime;
-    @XmlElement(name = "custom_properties")
-    protected CustomProperties customProperties;
+    @XmlElement(name = "run_once")
+    protected Boolean runOnce;
     protected Payloads payloads;
     protected Statistics statistics;
     protected Disks disks;
@@ -323,31 +323,31 @@ public class VM
     }
 
     /**
-     * Gets the value of the customProperties property.
+     * Gets the value of the runOnce property.
      *
      * @return
      *     possible object is
-     *     {@link CustomProperties }
+     *     {@link Boolean }
      *
      */
-    public CustomProperties getCustomProperties() {
-        return customProperties;
+    public Boolean getRunOnce() {
+        return runOnce;
     }
 
     /**
-     * Sets the value of the customProperties property.
+     * Sets the value of the runOnce property.
      *
      * @param value
      *     allowed object is
-     *     {@link CustomProperties }
+     *     {@link Boolean }
      *
      */
-    public void setCustomProperties(CustomProperties value) {
-        this.customProperties = value;
+    public void setRunOnce(Boolean value) {
+        this.runOnce = value;
     }
 
-    public boolean isSetCustomProperties() {
-        return (this.customProperties!= null);
+    public boolean isSetRunOnce() {
+        return (this.runOnce!= null);
     }
 
     /**

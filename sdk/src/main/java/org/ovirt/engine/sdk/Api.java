@@ -56,12 +56,16 @@ public class Api implements AutoCloseable {
     private volatile Disks disks;
     private volatile Domains domains;
     private volatile Events events;
+    private volatile ExternalHostProviders externalHostProviders;
     private volatile Groups groups;
     private volatile Hosts hosts;
     private volatile InstanceTypes instanceTypes;
     private volatile Jobs jobs;
+    private volatile KatelloErrata katelloErrata;
     private volatile MacPools macPools;
     private volatile Networks networks;
+    private volatile OpenStackImageProviders openStackImageProviders;
+    private volatile OpenStackNetworkProviders openStackNetworkProviders;
     private volatile OperatingSystemInfos operatingSystemInfos;
     private volatile Permissions permissions;
     private volatile Roles roles;
@@ -72,8 +76,8 @@ public class Api implements AutoCloseable {
     private volatile Tags tags;
     private volatile Templates templates;
     private volatile Users users;
-    private volatile VmPools vmPools;
     private volatile VMs vMs;
+    private volatile VmPools vmPools;
     private volatile VnicProfiles vnicProfiles;
 
 
@@ -891,6 +895,23 @@ public class Api implements AutoCloseable {
         return events;
     }
     /**
+     * Gets the value of the ExternalHostProviders property.
+     *
+     * @return
+     *     {@link ExternalHostProviders }
+     *
+     */
+    public ExternalHostProviders getExternalHostProviders() {
+        if (this.externalHostProviders == null) {
+            synchronized (this.LOCK) {
+                if (this.externalHostProviders == null) {
+                    this.externalHostProviders = new ExternalHostProviders(proxy);
+                }
+            }
+        }
+        return externalHostProviders;
+    }
+    /**
      * Gets the value of the Groups property.
      *
      * @return
@@ -959,6 +980,23 @@ public class Api implements AutoCloseable {
         return jobs;
     }
     /**
+     * Gets the value of the KatelloErrata property.
+     *
+     * @return
+     *     {@link KatelloErrata }
+     *
+     */
+    public KatelloErrata getKatelloErrata() {
+        if (this.katelloErrata == null) {
+            synchronized (this.LOCK) {
+                if (this.katelloErrata == null) {
+                    this.katelloErrata = new KatelloErrata(proxy);
+                }
+            }
+        }
+        return katelloErrata;
+    }
+    /**
      * Gets the value of the MacPools property.
      *
      * @return
@@ -991,6 +1029,40 @@ public class Api implements AutoCloseable {
             }
         }
         return networks;
+    }
+    /**
+     * Gets the value of the OpenStackImageProviders property.
+     *
+     * @return
+     *     {@link OpenStackImageProviders }
+     *
+     */
+    public OpenStackImageProviders getOpenStackImageProviders() {
+        if (this.openStackImageProviders == null) {
+            synchronized (this.LOCK) {
+                if (this.openStackImageProviders == null) {
+                    this.openStackImageProviders = new OpenStackImageProviders(proxy);
+                }
+            }
+        }
+        return openStackImageProviders;
+    }
+    /**
+     * Gets the value of the OpenStackNetworkProviders property.
+     *
+     * @return
+     *     {@link OpenStackNetworkProviders }
+     *
+     */
+    public OpenStackNetworkProviders getOpenStackNetworkProviders() {
+        if (this.openStackNetworkProviders == null) {
+            synchronized (this.LOCK) {
+                if (this.openStackNetworkProviders == null) {
+                    this.openStackNetworkProviders = new OpenStackNetworkProviders(proxy);
+                }
+            }
+        }
+        return openStackNetworkProviders;
     }
     /**
      * Gets the value of the OperatingSystemInfos property.

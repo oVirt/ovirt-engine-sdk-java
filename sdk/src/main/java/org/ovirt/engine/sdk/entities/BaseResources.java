@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}ActionableResource">
  *       &lt;sequence>
+ *         &lt;element name="size" type="{http://www.w3.org/2001/XMLSchema}unsignedInt" minOccurs="0"/>
  *         &lt;element name="total" type="{http://www.w3.org/2001/XMLSchema}unsignedInt" minOccurs="0"/>
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}unsignedInt" minOccurs="0"/>
  *       &lt;/sequence>
@@ -49,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BaseResources", propOrder = {
+    "size",
     "total",
     "active"
 })
@@ -61,13 +63,16 @@ import javax.xml.bind.annotation.XmlType;
     IPs.class,
     Labels.class,
     Tags.class,
+    Certificates.class,
     Permits.class,
     Networks.class,
     DataCenters.class,
     Balances.class,
+    ExternalHostGroups.class,
     CpuProfiles.class,
     Hooks.class,
     Jobs.class,
+    ExternalHosts.class,
     DiskProfiles.class,
     GlusterMemoryPools.class,
     GlusterVolumes.class,
@@ -76,12 +81,17 @@ import javax.xml.bind.annotation.XmlType;
     HostNics.class,
     PreviewVMs.class,
     Users.class,
+    OpenStackNetworkProviders.class,
     Roles.class,
     QoSs.class,
+    OpenStackImageProviders.class,
     Clusters.class,
     Capabilities.class,
     Filters.class,
     OperatingSystemInfos.class,
+    OpenStackImages.class,
+    ExternalComputeResources.class,
+    ExternalHostProviders.class,
     Applications.class,
     SchedulingPolicies.class,
     Permissions.class,
@@ -91,6 +101,10 @@ import javax.xml.bind.annotation.XmlType;
     ReportedDevices.class,
     Templates.class,
     StorageDomains.class,
+    OpenStackNetworks.class,
+    KatelloErrata.class,
+    OpenStackSubnets.class,
+    Agents.class,
     Snapshots.class,
     HostStorage.class,
     Statistics.class,
@@ -104,6 +118,7 @@ import javax.xml.bind.annotation.XmlType;
     Files.class,
     GlusterHooks.class,
     InstanceTypes.class,
+    ExternalDiscoveredHosts.class,
     NumaNodes.class,
     AffinityGroups.class,
     GlusterBricks.class,
@@ -117,9 +132,39 @@ public class BaseResources
 {
 
     @XmlSchemaType(name = "unsignedInt")
+    protected Long size;
+    @XmlSchemaType(name = "unsignedInt")
     protected Long total;
     @XmlSchemaType(name = "unsignedInt")
     protected Long active;
+
+    /**
+     * Gets the value of the size property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *
+     */
+    public Long getSize() {
+        return size;
+    }
+
+    /**
+     * Sets the value of the size property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *
+     */
+    public void setSize(Long value) {
+        this.size = value;
+    }
+
+    public boolean isSetSize() {
+        return (this.size!= null);
+    }
 
     /**
      * Gets the value of the total property.

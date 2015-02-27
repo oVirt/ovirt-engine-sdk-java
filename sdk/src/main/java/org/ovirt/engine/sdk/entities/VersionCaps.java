@@ -59,6 +59,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}creation_states" minOccurs="0"/>
  *         &lt;element ref="{}power_management_states" minOccurs="0"/>
  *         &lt;element ref="{}host_states" minOccurs="0"/>
+ *         &lt;element ref="{}host_protocols" minOccurs="0"/>
  *         &lt;element ref="{}host_non_operational_details" minOccurs="0"/>
  *         &lt;element ref="{}network_states" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain_states" minOccurs="0"/>
@@ -100,6 +101,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}rng_sources" minOccurs="0"/>
  *         &lt;element ref="{}scheduling_policy_unit_types" minOccurs="0"/>
  *         &lt;element ref="{}qos_types" minOccurs="0"/>
+ *         &lt;element ref="{}inheritable_booleans" minOccurs="0"/>
+ *         &lt;element ref="{}network_plugin_types" minOccurs="0"/>
+ *         &lt;element ref="{}message_broker_types" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -133,6 +137,7 @@ import javax.xml.bind.annotation.XmlType;
     "creationStates",
     "powerManagementStates",
     "hostStates",
+    "hostProtocols",
     "hostNonOperationalDetails",
     "networkStates",
     "storageDomainStates",
@@ -173,7 +178,10 @@ import javax.xml.bind.annotation.XmlType;
     "selinuxModes",
     "rngSources",
     "schedulingPolicyUnitTypes",
-    "qosTypes"
+    "qosTypes",
+    "inheritableBooleans",
+    "networkPluginTypes",
+    "messageBrokerTypes"
 })
 public class VersionCaps
     extends Version
@@ -222,6 +230,8 @@ public class VersionCaps
     protected PowerManagementStates powerManagementStates;
     @XmlElement(name = "host_states")
     protected HostStates hostStates;
+    @XmlElement(name = "host_protocols")
+    protected HostProtocols hostProtocols;
     @XmlElement(name = "host_non_operational_details")
     protected HostNonOperationalDetails hostNonOperationalDetails;
     @XmlElement(name = "network_states")
@@ -301,6 +311,12 @@ public class VersionCaps
     protected SchedulingPolicyUnitTypes schedulingPolicyUnitTypes;
     @XmlElement(name = "qos_types")
     protected QosTypes qosTypes;
+    @XmlElement(name = "inheritable_booleans")
+    protected InheritableBooleans inheritableBooleans;
+    @XmlElement(name = "network_plugin_types")
+    protected NetworkPluginTypes networkPluginTypes;
+    @XmlElement(name = "message_broker_types")
+    protected MessageBrokerTypes messageBrokerTypes;
 
     /**
      * Gets the value of the current property.
@@ -944,6 +960,34 @@ public class VersionCaps
 
     public boolean isSetHostStates() {
         return (this.hostStates!= null);
+    }
+
+    /**
+     * Gets the value of the hostProtocols property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostProtocols }
+     *
+     */
+    public HostProtocols getHostProtocols() {
+        return hostProtocols;
+    }
+
+    /**
+     * Sets the value of the hostProtocols property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostProtocols }
+     *
+     */
+    public void setHostProtocols(HostProtocols value) {
+        this.hostProtocols = value;
+    }
+
+    public boolean isSetHostProtocols() {
+        return (this.hostProtocols!= null);
     }
 
     /**
@@ -2092,6 +2136,90 @@ public class VersionCaps
 
     public boolean isSetQosTypes() {
         return (this.qosTypes!= null);
+    }
+
+    /**
+     * Gets the value of the inheritableBooleans property.
+     *
+     * @return
+     *     possible object is
+     *     {@link InheritableBooleans }
+     *
+     */
+    public InheritableBooleans getInheritableBooleans() {
+        return inheritableBooleans;
+    }
+
+    /**
+     * Sets the value of the inheritableBooleans property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link InheritableBooleans }
+     *
+     */
+    public void setInheritableBooleans(InheritableBooleans value) {
+        this.inheritableBooleans = value;
+    }
+
+    public boolean isSetInheritableBooleans() {
+        return (this.inheritableBooleans!= null);
+    }
+
+    /**
+     * Gets the value of the networkPluginTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link NetworkPluginTypes }
+     *
+     */
+    public NetworkPluginTypes getNetworkPluginTypes() {
+        return networkPluginTypes;
+    }
+
+    /**
+     * Sets the value of the networkPluginTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link NetworkPluginTypes }
+     *
+     */
+    public void setNetworkPluginTypes(NetworkPluginTypes value) {
+        this.networkPluginTypes = value;
+    }
+
+    public boolean isSetNetworkPluginTypes() {
+        return (this.networkPluginTypes!= null);
+    }
+
+    /**
+     * Gets the value of the messageBrokerTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link MessageBrokerTypes }
+     *
+     */
+    public MessageBrokerTypes getMessageBrokerTypes() {
+        return messageBrokerTypes;
+    }
+
+    /**
+     * Sets the value of the messageBrokerTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link MessageBrokerTypes }
+     *
+     */
+    public void setMessageBrokerTypes(MessageBrokerTypes value) {
+        this.messageBrokerTypes = value;
+    }
+
+    public boolean isSetMessageBrokerTypes() {
+        return (this.messageBrokerTypes!= null);
     }
 
 }

@@ -56,6 +56,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}serial_number" minOccurs="0"/>
  *         &lt;element name="required_rng_sources" type="{}RngSources" minOccurs="0"/>
  *         &lt;element ref="{}fencing_policy" minOccurs="0"/>
+ *         &lt;element ref="{}migration" minOccurs="0"/>
+ *         &lt;element name="management_network" type="{}Network" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -85,7 +87,9 @@ import javax.xml.bind.annotation.XmlType;
     "ksm",
     "serialNumber",
     "requiredRngSources",
-    "fencingPolicy"
+    "fencingPolicy",
+    "migration",
+    "managementNetwork"
 })
 public class Cluster
     extends BaseResource
@@ -127,6 +131,9 @@ public class Cluster
     protected RngSources requiredRngSources;
     @XmlElement(name = "fencing_policy")
     protected FencingPolicy fencingPolicy;
+    protected MigrationOptions migration;
+    @XmlElement(name = "management_network")
+    protected Network managementNetwork;
 
     /**
      * Gets the value of the cpu property.
@@ -686,6 +693,62 @@ public class Cluster
 
     public boolean isSetFencingPolicy() {
         return (this.fencingPolicy!= null);
+    }
+
+    /**
+     * Gets the value of the migration property.
+     *
+     * @return
+     *     possible object is
+     *     {@link MigrationOptions }
+     *
+     */
+    public MigrationOptions getMigration() {
+        return migration;
+    }
+
+    /**
+     * Sets the value of the migration property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link MigrationOptions }
+     *
+     */
+    public void setMigration(MigrationOptions value) {
+        this.migration = value;
+    }
+
+    public boolean isSetMigration() {
+        return (this.migration!= null);
+    }
+
+    /**
+     * Gets the value of the managementNetwork property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Network }
+     *
+     */
+    public Network getManagementNetwork() {
+        return managementNetwork;
+    }
+
+    /**
+     * Sets the value of the managementNetwork property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Network }
+     *
+     */
+    public void setManagementNetwork(Network value) {
+        this.managementNetwork = value;
+    }
+
+    public boolean isSetManagementNetwork() {
+        return (this.managementNetwork!= null);
     }
 
 }

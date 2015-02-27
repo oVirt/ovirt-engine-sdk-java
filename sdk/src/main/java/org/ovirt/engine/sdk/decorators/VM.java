@@ -138,6 +138,22 @@ public class VM extends
         return vMNICs;
     }
     /**
+     * Gets the value of the VMVirtualNumaNodes property.
+     *
+     * @return
+     *     {@link VMVirtualNumaNodes }
+     */
+    public VMVirtualNumaNodes getVirtualNumaNodes() {
+        if (this.vMVirtualNumaNodes == null) {
+            synchronized (this.LOCK) {
+                if (this.vMVirtualNumaNodes == null) {
+                    this.vMVirtualNumaNodes = new VMVirtualNumaNodes(proxy, this);
+                }
+            }
+        }
+        return vMVirtualNumaNodes;
+    }
+    /**
      * Gets the value of the VMPermissions property.
      *
      * @return
@@ -232,22 +248,6 @@ public class VM extends
             }
         }
         return vMTags;
-    }
-    /**
-     * Gets the value of the VMVirtualNumaNodes property.
-     *
-     * @return
-     *     {@link VMVirtualNumaNodes }
-     */
-    public VMVirtualNumaNodes getVirtualNumaNodes() {
-        if (this.vMVirtualNumaNodes == null) {
-            synchronized (this.LOCK) {
-                if (this.vMVirtualNumaNodes == null) {
-                    this.vMVirtualNumaNodes = new VMVirtualNumaNodes(proxy, this);
-                }
-            }
-        }
-        return vMVirtualNumaNodes;
     }
     /**
      * Gets the value of the VMWatchDogs property.
@@ -909,6 +909,7 @@ public class VM extends
      *    [action.async]
      *    [action.force]
      *    [action.grace_period.expiry]
+     *    [action.cluster.id]
      *    </pre>
      *
      * @return
@@ -942,6 +943,7 @@ public class VM extends
      *    [action.async]
      *    [action.force]
      *    [action.grace_period.expiry]
+     *    [action.cluster.id]
      *    </pre>
      *
      * @param correlationId
@@ -1268,6 +1270,8 @@ public class VM extends
      *    [action.vm.os.boot]
      *    [action.vm.domain.user.password]
      *    [action.vm.initialization.cloud_init.host.address]
+     *    [action.vm.custom_emulated_machine]
+     *    [action.vm.custom_cpu_model]
      *    [action.vm.initialization.cloud_init.network_configuration.nics.nic]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.servers.host]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.search_domains.host]
@@ -1320,6 +1324,8 @@ public class VM extends
      *    [action.vm.os.boot]
      *    [action.vm.domain.user.password]
      *    [action.vm.initialization.cloud_init.host.address]
+     *    [action.vm.custom_emulated_machine]
+     *    [action.vm.custom_cpu_model]
      *    [action.vm.initialization.cloud_init.network_configuration.nics.nic]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.servers.host]
      *    [action.vm.initialization.cloud_init.network_configuration.dns.search_domains.host]
@@ -1685,6 +1691,8 @@ public class VM extends
      *    [vm.migration_downtime]
      *    [vm.virtio_scsi.enabled]
      *    [vm.soundcard_enabled]
+     *    [vm.custom_emulated_machine]
+     *    [vm.custom_cpu_model]
      *    [vm.use_latest_template_version]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
@@ -1694,6 +1702,8 @@ public class VM extends
      *    [vm.numa_tune_mode]
      *    [vm.start_paused]
      *    [vm.cpu_profile.id]
+     *    [vm.migration.auto_converge]
+     *    [vm.migration.compressed]
      *    </pre>
      *
      * @return
@@ -1776,6 +1786,8 @@ public class VM extends
      *    [vm.migration_downtime]
      *    [vm.virtio_scsi.enabled]
      *    [vm.soundcard_enabled]
+     *    [vm.custom_emulated_machine]
+     *    [vm.custom_cpu_model]
      *    [vm.use_latest_template_version]
      *    [vm.payloads.payload]
      *    [vm.cpu.cpu_tune.vcpu_pin]
@@ -1785,6 +1797,8 @@ public class VM extends
      *    [vm.numa_tune_mode]
      *    [vm.start_paused]
      *    [vm.cpu_profile.id]
+     *    [vm.migration.auto_converge]
+     *    [vm.migration.compressed]
      *    </pre>
      *
      * @param correlationId

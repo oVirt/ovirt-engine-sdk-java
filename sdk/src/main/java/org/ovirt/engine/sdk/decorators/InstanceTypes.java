@@ -139,6 +139,8 @@ public class InstanceTypes extends
      *    [instance_type.migration_downtime]
      *    [instance_type.virtio_scsi.enabled]
      *    [instance_type.soundcard_enabled]
+     *    [instance_type.custom_emulated_machine]
+     *    [instance_type.custom_cpu_model]
      *    </pre>
      *
      * @return
@@ -191,6 +193,8 @@ public class InstanceTypes extends
      *    [instance_type.migration_downtime]
      *    [instance_type.virtio_scsi.enabled]
      *    [instance_type.soundcard_enabled]
+     *    [instance_type.custom_emulated_machine]
+     *    [instance_type.custom_cpu_model]
      *    </pre>
      *
      * @param expect
@@ -251,6 +255,8 @@ public class InstanceTypes extends
      *    [instance_type.migration_downtime]
      *    [instance_type.virtio_scsi.enabled]
      *    [instance_type.soundcard_enabled]
+     *    [instance_type.custom_emulated_machine]
+     *    [instance_type.custom_cpu_model]
      *    </pre>
      *
      * @param expect

@@ -102,7 +102,7 @@ public class Disk extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    storagedomain.id|name
+     *    action.storage_domain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -134,7 +134,7 @@ public class Disk extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    storagedomain.id|name
+     *    action.storage_domain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -275,7 +275,7 @@ public class Disk extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    storagedomain.id|name
+     *    action.storage_domain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -307,7 +307,7 @@ public class Disk extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    storagedomain.id|name
+     *    action.storage_domain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -347,7 +347,7 @@ public class Disk extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    storagedomain.id|name
+     *    action.storage_domain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -379,7 +379,7 @@ public class Disk extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    storagedomain.id|name
+     *    action.storage_domain.id|name
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>

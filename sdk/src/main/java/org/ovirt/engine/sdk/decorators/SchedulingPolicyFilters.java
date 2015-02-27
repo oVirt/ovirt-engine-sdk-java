@@ -123,6 +123,11 @@ public class SchedulingPolicyFilters extends
      * Adds Filter object.
      *
      * @param filter {@link org.ovirt.engine.sdk.entities.Filter}
+     *    <pre>
+     *    filter.scheduling_policy_unit.id
+     *    [filter.scheduling_policy_unit.position]
+     *    </pre>
+     *
      * @return
      *     {@link SchedulingPolicyFilter }
      *
@@ -145,6 +150,137 @@ public class SchedulingPolicyFilters extends
 
         return getProxy().add(url, filter,
                 org.ovirt.engine.sdk.entities.Filter.class,
+                SchedulingPolicyFilter.class, headers);
+    }
+    /**
+     * Adds Filter object.
+     *
+     * @param filter {@link org.ovirt.engine.sdk.entities.Filter}
+     *    <pre>
+     *    filter.scheduling_policy_unit.id
+     *    [filter.scheduling_policy_unit.position]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link SchedulingPolicyFilter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public SchedulingPolicyFilter add(org.ovirt.engine.sdk.entities.Filter filter, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, filter,
+                org.ovirt.engine.sdk.entities.Filter.class,
+                SchedulingPolicyFilter.class, headers);
+    }
+    /**
+     * Adds Filter object.
+     *
+     * @param filter {@link org.ovirt.engine.sdk.entities.Filter}
+     *    <pre>
+     *    filter.scheduling_policy_unit.id
+     *    [filter.scheduling_policy_unit.position]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link SchedulingPolicyFilter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public SchedulingPolicyFilter add(org.ovirt.engine.sdk.entities.Filter filter, String expect, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, filter,
+                org.ovirt.engine.sdk.entities.Filter.class,
+                SchedulingPolicyFilter.class, headers);
+    }
+    /**
+     * Lists SchedulingPolicyFilter objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link SchedulingPolicyFilter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<SchedulingPolicyFilter> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Filters.class,
                 SchedulingPolicyFilter.class, headers);
     }
 

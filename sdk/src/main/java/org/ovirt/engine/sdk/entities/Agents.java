@@ -36,11 +36,11 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Agents">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element name="agent" type="{}Agent" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -51,7 +51,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Agents", propOrder = {
     "agents"
 })
-public class Agents {
+public class Agents
+    extends BaseResources
+{
 
     @XmlElement(name = "agent")
     protected List<Agent> agents;

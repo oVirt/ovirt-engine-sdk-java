@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element name="allow_duplicates" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="allow_duplicates" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="default_pool" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}ranges" minOccurs="0"/>
  *       &lt;/sequence>
@@ -58,7 +58,7 @@ public class MacPool
 {
 
     @XmlElement(name = "allow_duplicates")
-    protected boolean allowDuplicates;
+    protected Boolean allowDuplicates;
     @XmlElement(name = "default_pool")
     protected Boolean defaultPool;
     protected Ranges ranges;
@@ -66,21 +66,29 @@ public class MacPool
     /**
      * Gets the value of the allowDuplicates property.
      *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
      */
-    public boolean isAllowDuplicates() {
+    public Boolean getAllowDuplicates() {
         return allowDuplicates;
     }
 
     /**
      * Sets the value of the allowDuplicates property.
      *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
      */
-    public void setAllowDuplicates(boolean value) {
+    public void setAllowDuplicates(Boolean value) {
         this.allowDuplicates = value;
     }
 
     public boolean isSetAllowDuplicates() {
-        return true;
+        return (this.allowDuplicates!= null);
     }
 
     /**

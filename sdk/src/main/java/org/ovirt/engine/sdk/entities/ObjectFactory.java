@@ -52,6 +52,8 @@ public class ObjectFactory {
     private final static QName _Selinux_QNAME = new QName("", "selinux");
     private final static QName _Sso_QNAME = new QName("", "sso");
     private final static QName _StepTypes_QNAME = new QName("", "step_types");
+    private final static QName _DnsServers_QNAME = new QName("", "dns_servers");
+    private final static QName _InheritableBooleans_QNAME = new QName("", "inheritable_booleans");
     private final static QName _ParametersSet_QNAME = new QName("", "parameters_set");
     private final static QName _Qos_QNAME = new QName("", "qos");
     private final static QName _MemoryPool_QNAME = new QName("", "memory_pool");
@@ -66,9 +68,11 @@ public class ObjectFactory {
     private final static QName _PmProxies_QNAME = new QName("", "pm_proxies");
     private final static QName _Cdroms_QNAME = new QName("", "cdroms");
     private final static QName _VmStates_QNAME = new QName("", "vm_states");
+    private final static QName _ExternalHost_QNAME = new QName("", "external_host");
     private final static QName _Hosts_QNAME = new QName("", "hosts");
     private final static QName _AuthorizedKeys_QNAME = new QName("", "authorized_keys");
     private final static QName _DataCenter_QNAME = new QName("", "data_center");
+    private final static QName _Packages_QNAME = new QName("", "packages");
     private final static QName _Version_QNAME = new QName("", "version");
     private final static QName _Ips_QNAME = new QName("", "ips");
     private final static QName _NfsProfileDetail_QNAME = new QName("", "nfs_profile_detail");
@@ -77,6 +81,7 @@ public class ObjectFactory {
     private final static QName _ConfigurationTypes_QNAME = new QName("", "configuration_types");
     private final static QName _PortMirroring_QNAME = new QName("", "port_mirroring");
     private final static QName _UsageMessage_QNAME = new QName("", "usage_message");
+    private final static QName _Certificates_QNAME = new QName("", "certificates");
     private final static QName _Permits_QNAME = new QName("", "permits");
     private final static QName _BrickProfileDetails_QNAME = new QName("", "brick_profile_details");
     private final static QName _Domain_QNAME = new QName("", "domain");
@@ -93,6 +98,7 @@ public class ObjectFactory {
     private final static QName _VmNumaNode_QNAME = new QName("", "vm_numa_node");
     private final static QName _DataCenters_QNAME = new QName("", "data_centers");
     private final static QName _Balances_QNAME = new QName("", "balances");
+    private final static QName _ExternalHostGroups_QNAME = new QName("", "external_host_groups");
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
     private final static QName _CpuProfiles_QNAME = new QName("", "cpu_profiles");
     private final static QName _Initialization_QNAME = new QName("", "initialization");
@@ -103,6 +109,7 @@ public class ObjectFactory {
     private final static QName _StorageManager_QNAME = new QName("", "storage_manager");
     private final static QName _Jobs_QNAME = new QName("", "jobs");
     private final static QName _CreationStates_QNAME = new QName("", "creation_states");
+    private final static QName _ExternalHosts_QNAME = new QName("", "external_hosts");
     private final static QName _ErrorHandling_QNAME = new QName("", "error_handling");
     private final static QName _Cdrom_QNAME = new QName("", "cdrom");
     private final static QName _VolumeProfileDetails_QNAME = new QName("", "volume_profile_details");
@@ -113,6 +120,7 @@ public class ObjectFactory {
     private final static QName _SkipIfConnectivityBroken_QNAME = new QName("", "skip_if_connectivity_broken");
     private final static QName _MemoryPools_QNAME = new QName("", "memory_pools");
     private final static QName _StorageDomain_QNAME = new QName("", "storage_domain");
+    private final static QName _OpenstackImageProvider_QNAME = new QName("", "openstack_image_provider");
     private final static QName _Agent_QNAME = new QName("", "agent");
     private final static QName _BootMenu_QNAME = new QName("", "boot_menu");
     private final static QName _GlusterVolumes_QNAME = new QName("", "gluster_volumes");
@@ -121,6 +129,7 @@ public class ObjectFactory {
     private final static QName _SelinuxModes_QNAME = new QName("", "selinux_modes");
     private final static QName _Source_QNAME = new QName("", "source");
     private final static QName _NumaNodePins_QNAME = new QName("", "numa_node_pins");
+    private final static QName _ExternalHostGroup_QNAME = new QName("", "external_host_group");
     private final static QName _Bookmarks_QNAME = new QName("", "bookmarks");
     private final static QName _Features_QNAME = new QName("", "features");
     private final static QName _ProfileDetail_QNAME = new QName("", "profile_detail");
@@ -134,6 +143,7 @@ public class ObjectFactory {
     private final static QName _NicInterfaces_QNAME = new QName("", "nic_interfaces");
     private final static QName _VmNumaNodes_QNAME = new QName("", "vm_numa_nodes");
     private final static QName _FopStatistic_QNAME = new QName("", "fop_statistic");
+    private final static QName _OpenstackNetwork_QNAME = new QName("", "openstack_network");
     private final static QName _Weight_QNAME = new QName("", "weight");
     private final static QName _HostNumaNode_QNAME = new QName("", "host_numa_node");
     private final static QName _PreviewVms_QNAME = new QName("", "preview_vms");
@@ -143,6 +153,7 @@ public class ObjectFactory {
     private final static QName _Floppies_QNAME = new QName("", "floppies");
     private final static QName _Bookmark_QNAME = new QName("", "bookmark");
     private final static QName _Vm_QNAME = new QName("", "vm");
+    private final static QName _OpenstackNetworkProviders_QNAME = new QName("", "openstack_network_providers");
     private final static QName _Rsdl_QNAME = new QName("", "rsdl");
     private final static QName _BlockStatistic_QNAME = new QName("", "block_statistic");
     private final static QName _Vmpool_QNAME = new QName("", "vmpool");
@@ -153,9 +164,12 @@ public class ObjectFactory {
     private final static QName _Roles_QNAME = new QName("", "roles");
     private final static QName _Qoss_QNAME = new QName("", "qoss");
     private final static QName _StorageConnection_QNAME = new QName("", "storage_connection");
+    private final static QName _OpenstackImageProviders_QNAME = new QName("", "openstack_image_providers");
     private final static QName _NicConfiguration_QNAME = new QName("", "nic_configuration");
     private final static QName _AuthenticationMethods_QNAME = new QName("", "authentication_methods");
     private final static QName _Usages_QNAME = new QName("", "usages");
+    private final static QName _AgentConfiguration_QNAME = new QName("", "agent_configuration");
+    private final static QName _ExternalHostProvider_QNAME = new QName("", "external_host_provider");
     private final static QName _Clusters_QNAME = new QName("", "clusters");
     private final static QName _Summary_QNAME = new QName("", "summary");
     private final static QName _Headers_QNAME = new QName("", "headers");
@@ -168,13 +182,19 @@ public class ObjectFactory {
     private final static QName _Label_QNAME = new QName("", "label");
     private final static QName _HostNic_QNAME = new QName("", "host_nic");
     private final static QName _OperatingSystems_QNAME = new QName("", "operating_systems");
+    private final static QName _OpenstackProvider_QNAME = new QName("", "openstack_provider");
+    private final static QName _OpenstackImages_QNAME = new QName("", "openstack_images");
     private final static QName _Permit_QNAME = new QName("", "permit");
+    private final static QName _Migration_QNAME = new QName("", "migration");
     private final static QName _RngDevice_QNAME = new QName("", "rng_device");
     private final static QName _EntityProfileDetail_QNAME = new QName("", "entity_profile_detail");
     private final static QName _Step_QNAME = new QName("", "step");
+    private final static QName _ExternalComputeResources_QNAME = new QName("", "external_compute_resources");
+    private final static QName _ExternalHostProviders_QNAME = new QName("", "external_host_providers");
     private final static QName _Applications_QNAME = new QName("", "applications");
     private final static QName _DiskSnapshot_QNAME = new QName("", "disk_snapshot");
     private final static QName _SchedulingPolicy_QNAME = new QName("", "scheduling_policy");
+    private final static QName _OpenstackSubnet_QNAME = new QName("", "openstack_subnet");
     private final static QName _SchedulingPolicies_QNAME = new QName("", "scheduling_policies");
     private final static QName _Hook_QNAME = new QName("", "hook");
     private final static QName _Cores_QNAME = new QName("", "cores");
@@ -197,11 +217,14 @@ public class ObjectFactory {
     private final static QName _ReportedDevices_QNAME = new QName("", "reported_devices");
     private final static QName _Ip_QNAME = new QName("", "ip");
     private final static QName _Templates_QNAME = new QName("", "templates");
+    private final static QName _OpenstackNetworkProvider_QNAME = new QName("", "openstack_network_provider");
     private final static QName _BootProtocols_QNAME = new QName("", "boot_protocols");
     private final static QName _Dns_QNAME = new QName("", "dns");
     private final static QName _StorageDomains_QNAME = new QName("", "storage_domains");
+    private final static QName _OpenstackNetworks_QNAME = new QName("", "openstack_networks");
     private final static QName _FencingPolicy_QNAME = new QName("", "fencing_policy");
     private final static QName _QosTypes_QNAME = new QName("", "qos_types");
+    private final static QName _KatelloErrata_QNAME = new QName("", "katello_errata");
     private final static QName _GlusterVolumeStates_QNAME = new QName("", "gluster_volume_states");
     private final static QName _GeneralMetadata_QNAME = new QName("", "general_metadata");
     private final static QName _LogicalUnit_QNAME = new QName("", "logical_unit");
@@ -210,6 +233,7 @@ public class ObjectFactory {
     private final static QName _Status_QNAME = new QName("", "status");
     private final static QName _BrickDetails_QNAME = new QName("", "brick_details");
     private final static QName _Template_QNAME = new QName("", "template");
+    private final static QName _KatelloErratum_QNAME = new QName("", "katello_erratum");
     private final static QName _ReportedDeviceTypes_QNAME = new QName("", "reported_device_types");
     private final static QName _Floppy_QNAME = new QName("", "floppy");
     private final static QName _BrickMemoryinfo_QNAME = new QName("", "brick_memoryinfo");
@@ -224,8 +248,10 @@ public class ObjectFactory {
     private final static QName _Vlan_QNAME = new QName("", "vlan");
     private final static QName _HookStates_QNAME = new QName("", "hook_states");
     private final static QName _Nics_QNAME = new QName("", "nics");
+    private final static QName _ExternalDiscoveredHost_QNAME = new QName("", "external_discovered_host");
     private final static QName _Event_QNAME = new QName("", "event");
     private final static QName _CpuModes_QNAME = new QName("", "cpu_modes");
+    private final static QName _OpenstackSubnets_QNAME = new QName("", "openstack_subnets");
     private final static QName _DiskInterfaces_QNAME = new QName("", "disk_interfaces");
     private final static QName _PmProxyTypes_QNAME = new QName("", "pm_proxy_types");
     private final static QName _Display_QNAME = new QName("", "display");
@@ -267,6 +293,7 @@ public class ObjectFactory {
     private final static QName _Tag_QNAME = new QName("", "tag");
     private final static QName _Group_QNAME = new QName("", "group");
     private final static QName _PowerManagementStates_QNAME = new QName("", "power_management_states");
+    private final static QName _Package_QNAME = new QName("", "package");
     private final static QName _SnapshotStatuses_QNAME = new QName("", "snapshot_statuses");
     private final static QName _Cpu_QNAME = new QName("", "cpu");
     private final static QName _Domains_QNAME = new QName("", "domains");
@@ -280,6 +307,7 @@ public class ObjectFactory {
     private final static QName _Core_QNAME = new QName("", "core");
     private final static QName _Disk_QNAME = new QName("", "disk");
     private final static QName _TemplateStates_QNAME = new QName("", "template_states");
+    private final static QName _NetworkPluginTypes_QNAME = new QName("", "network_plugin_types");
     private final static QName _Files_QNAME = new QName("", "files");
     private final static QName _Header_QNAME = new QName("", "header");
     private final static QName _GlusterHooks_QNAME = new QName("", "gluster_hooks");
@@ -288,6 +316,7 @@ public class ObjectFactory {
     private final static QName _StorageDomainTypes_QNAME = new QName("", "storage_domain_types");
     private final static QName _InstanceTypes_QNAME = new QName("", "instance_types");
     private final static QName _Request_QNAME = new QName("", "request");
+    private final static QName _ExternalDiscoveredHosts_QNAME = new QName("", "external_discovered_hosts");
     private final static QName _Disks_QNAME = new QName("", "disks");
     private final static QName _Configuration_QNAME = new QName("", "configuration");
     private final static QName _Values_QNAME = new QName("", "values");
@@ -297,11 +326,13 @@ public class ObjectFactory {
     private final static QName _CpuTune_QNAME = new QName("", "cpu_tune");
     private final static QName _FenceTypes_QNAME = new QName("", "fence_types");
     private final static QName _Storage_QNAME = new QName("", "storage");
+    private final static QName _MessageBrokerTypes_QNAME = new QName("", "message_broker_types");
     private final static QName _Network_QNAME = new QName("", "network");
     private final static QName _NetworkConfiguration_QNAME = new QName("", "network_configuration");
     private final static QName _GlusterHook_QNAME = new QName("", "gluster_hook");
     private final static QName _PowerManagement_QNAME = new QName("", "power_management");
     private final static QName _HostNumaNodes_QNAME = new QName("", "host_numa_nodes");
+    private final static QName _OpenstackImage_QNAME = new QName("", "openstack_image");
     private final static QName _TransparentHugepages_QNAME = new QName("", "transparent_hugepages");
     private final static QName _Parameter_QNAME = new QName("", "parameter");
     private final static QName _Brick_QNAME = new QName("", "brick");
@@ -310,6 +341,7 @@ public class ObjectFactory {
     private final static QName _RngSources_QNAME = new QName("", "rng_sources");
     private final static QName _Bricks_QNAME = new QName("", "bricks");
     private final static QName _Console_QNAME = new QName("", "console");
+    private final static QName _HostProtocols_QNAME = new QName("", "host_protocols");
     private final static QName _Cpus_QNAME = new QName("", "cpus");
     private final static QName _CpuProfile_QNAME = new QName("", "cpu_profile");
     private final static QName _TransportTypes_QNAME = new QName("", "transport_types");
@@ -319,6 +351,7 @@ public class ObjectFactory {
     private final static QName _IscsiBonds_QNAME = new QName("", "iscsi_bonds");
     private final static QName _DiskProfile_QNAME = new QName("", "disk_profile");
     private final static QName _NumaNodePin_QNAME = new QName("", "numa_node_pin");
+    private final static QName _ExternalComputeResource_QNAME = new QName("", "external_compute_resource");
     private final static QName _Application_QNAME = new QName("", "application");
     private final static QName _VmPauseDetails_QNAME = new QName("", "vm_pause_details");
     private final static QName _SerialNumberPolicies_QNAME = new QName("", "serial_number_policies");
@@ -407,6 +440,22 @@ public class ObjectFactory {
      */
     public StepTypes createStepTypes() {
         return new StepTypes();
+    }
+
+    /**
+     * Create an instance of {@link DnsServers }
+     *
+     */
+    public DnsServers createDnsServers() {
+        return new DnsServers();
+    }
+
+    /**
+     * Create an instance of {@link InheritableBooleans }
+     *
+     */
+    public InheritableBooleans createInheritableBooleans() {
+        return new InheritableBooleans();
     }
 
     /**
@@ -522,6 +571,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExternalHost }
+     *
+     */
+    public ExternalHost createExternalHost() {
+        return new ExternalHost();
+    }
+
+    /**
      * Create an instance of {@link Hosts }
      *
      */
@@ -543,6 +600,14 @@ public class ObjectFactory {
      */
     public DataCenter createDataCenter() {
         return new DataCenter();
+    }
+
+    /**
+     * Create an instance of {@link Packages }
+     *
+     */
+    public Packages createPackages() {
+        return new Packages();
     }
 
     /**
@@ -607,6 +672,14 @@ public class ObjectFactory {
      */
     public UsageMessage createUsageMessage() {
         return new UsageMessage();
+    }
+
+    /**
+     * Create an instance of {@link Certificates }
+     *
+     */
+    public Certificates createCertificates() {
+        return new Certificates();
     }
 
     /**
@@ -738,6 +811,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExternalHostGroups }
+     *
+     */
+    public ExternalHostGroups createExternalHostGroups() {
+        return new ExternalHostGroups();
+    }
+
+    /**
      * Create an instance of {@link Version }
      *
      */
@@ -815,6 +896,14 @@ public class ObjectFactory {
      */
     public CreationStates createCreationStates() {
         return new CreationStates();
+    }
+
+    /**
+     * Create an instance of {@link ExternalHosts }
+     *
+     */
+    public ExternalHosts createExternalHosts() {
+        return new ExternalHosts();
     }
 
     /**
@@ -898,6 +987,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OpenStackImageProvider }
+     *
+     */
+    public OpenStackImageProvider createOpenStackImageProvider() {
+        return new OpenStackImageProvider();
+    }
+
+    /**
      * Create an instance of {@link Agent }
      *
      */
@@ -951,6 +1048,14 @@ public class ObjectFactory {
      */
     public NumaNodePins createNumaNodePins() {
         return new NumaNodePins();
+    }
+
+    /**
+     * Create an instance of {@link ExternalHostGroup }
+     *
+     */
+    public ExternalHostGroup createExternalHostGroup() {
+        return new ExternalHostGroup();
     }
 
     /**
@@ -1058,6 +1163,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OpenStackNetwork }
+     *
+     */
+    public OpenStackNetwork createOpenStackNetwork() {
+        return new OpenStackNetwork();
+    }
+
+    /**
      * Create an instance of {@link Weight }
      *
      */
@@ -1127,6 +1240,14 @@ public class ObjectFactory {
      */
     public VM createVM() {
         return new VM();
+    }
+
+    /**
+     * Create an instance of {@link OpenStackNetworkProviders }
+     *
+     */
+    public OpenStackNetworkProviders createOpenStackNetworkProviders() {
+        return new OpenStackNetworkProviders();
     }
 
     /**
@@ -1210,6 +1331,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OpenStackImageProviders }
+     *
+     */
+    public OpenStackImageProviders createOpenStackImageProviders() {
+        return new OpenStackImageProviders();
+    }
+
+    /**
      * Create an instance of {@link GuestNicConfiguration }
      *
      */
@@ -1231,6 +1360,22 @@ public class ObjectFactory {
      */
     public Usages createUsages() {
         return new Usages();
+    }
+
+    /**
+     * Create an instance of {@link AgentConfiguration }
+     *
+     */
+    public AgentConfiguration createAgentConfiguration() {
+        return new AgentConfiguration();
+    }
+
+    /**
+     * Create an instance of {@link ExternalHostProvider }
+     *
+     */
+    public ExternalHostProvider createExternalHostProvider() {
+        return new ExternalHostProvider();
     }
 
     /**
@@ -1330,11 +1475,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OpenStackProvider }
+     *
+     */
+    public OpenStackProvider createOpenStackProvider() {
+        return new OpenStackProvider();
+    }
+
+    /**
+     * Create an instance of {@link OpenStackImages }
+     *
+     */
+    public OpenStackImages createOpenStackImages() {
+        return new OpenStackImages();
+    }
+
+    /**
      * Create an instance of {@link Permit }
      *
      */
     public Permit createPermit() {
         return new Permit();
+    }
+
+    /**
+     * Create an instance of {@link MigrationOptions }
+     *
+     */
+    public MigrationOptions createMigrationOptions() {
+        return new MigrationOptions();
     }
 
     /**
@@ -1362,6 +1531,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExternalComputeResources }
+     *
+     */
+    public ExternalComputeResources createExternalComputeResources() {
+        return new ExternalComputeResources();
+    }
+
+    /**
+     * Create an instance of {@link ExternalHostProviders }
+     *
+     */
+    public ExternalHostProviders createExternalHostProviders() {
+        return new ExternalHostProviders();
+    }
+
+    /**
      * Create an instance of {@link Applications }
      *
      */
@@ -1383,6 +1568,14 @@ public class ObjectFactory {
      */
     public SchedulingPolicy createSchedulingPolicy() {
         return new SchedulingPolicy();
+    }
+
+    /**
+     * Create an instance of {@link OpenStackSubnet }
+     *
+     */
+    public OpenStackSubnet createOpenStackSubnet() {
+        return new OpenStackSubnet();
     }
 
     /**
@@ -1554,6 +1747,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OpenStackNetworkProvider }
+     *
+     */
+    public OpenStackNetworkProvider createOpenStackNetworkProvider() {
+        return new OpenStackNetworkProvider();
+    }
+
+    /**
      * Create an instance of {@link BootProtocols }
      *
      */
@@ -1578,6 +1779,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OpenStackNetworks }
+     *
+     */
+    public OpenStackNetworks createOpenStackNetworks() {
+        return new OpenStackNetworks();
+    }
+
+    /**
      * Create an instance of {@link FencingPolicy }
      *
      */
@@ -1591,6 +1800,14 @@ public class ObjectFactory {
      */
     public QosTypes createQosTypes() {
         return new QosTypes();
+    }
+
+    /**
+     * Create an instance of {@link KatelloErrata }
+     *
+     */
+    public KatelloErrata createKatelloErrata() {
+        return new KatelloErrata();
     }
 
     /**
@@ -1647,6 +1864,14 @@ public class ObjectFactory {
      */
     public Template createTemplate() {
         return new Template();
+    }
+
+    /**
+     * Create an instance of {@link KatelloErratum }
+     *
+     */
+    public KatelloErratum createKatelloErratum() {
+        return new KatelloErratum();
     }
 
     /**
@@ -1762,6 +1987,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExternalDiscoveredHost }
+     *
+     */
+    public ExternalDiscoveredHost createExternalDiscoveredHost() {
+        return new ExternalDiscoveredHost();
+    }
+
+    /**
      * Create an instance of {@link Event }
      *
      */
@@ -1775,6 +2008,14 @@ public class ObjectFactory {
      */
     public CpuModes createCpuModes() {
         return new CpuModes();
+    }
+
+    /**
+     * Create an instance of {@link OpenStackSubnets }
+     *
+     */
+    public OpenStackSubnets createOpenStackSubnets() {
+        return new OpenStackSubnets();
     }
 
     /**
@@ -2106,6 +2347,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Package }
+     *
+     */
+    public Package createPackage() {
+        return new Package();
+    }
+
+    /**
      * Create an instance of {@link SnapshotStatuses }
      *
      */
@@ -2210,6 +2459,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link NetworkPluginTypes }
+     *
+     */
+    public NetworkPluginTypes createNetworkPluginTypes() {
+        return new NetworkPluginTypes();
+    }
+
+    /**
      * Create an instance of {@link Files }
      *
      */
@@ -2271,6 +2528,14 @@ public class ObjectFactory {
      */
     public Request createRequest() {
         return new Request();
+    }
+
+    /**
+     * Create an instance of {@link ExternalDiscoveredHosts }
+     *
+     */
+    public ExternalDiscoveredHosts createExternalDiscoveredHosts() {
+        return new ExternalDiscoveredHosts();
     }
 
     /**
@@ -2346,6 +2611,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MessageBrokerTypes }
+     *
+     */
+    public MessageBrokerTypes createMessageBrokerTypes() {
+        return new MessageBrokerTypes();
+    }
+
+    /**
      * Create an instance of {@link Network }
      *
      */
@@ -2383,6 +2656,14 @@ public class ObjectFactory {
      */
     public NumaNodes createNumaNodes() {
         return new NumaNodes();
+    }
+
+    /**
+     * Create an instance of {@link OpenStackImage }
+     *
+     */
+    public OpenStackImage createOpenStackImage() {
+        return new OpenStackImage();
     }
 
     /**
@@ -2447,6 +2728,14 @@ public class ObjectFactory {
      */
     public Console createConsole() {
         return new Console();
+    }
+
+    /**
+     * Create an instance of {@link HostProtocols }
+     *
+     */
+    public HostProtocols createHostProtocols() {
+        return new HostProtocols();
     }
 
     /**
@@ -2519,6 +2808,14 @@ public class ObjectFactory {
      */
     public NumaNodePin createNumaNodePin() {
         return new NumaNodePin();
+    }
+
+    /**
+     * Create an instance of {@link ExternalComputeResource }
+     *
+     */
+    public ExternalComputeResource createExternalComputeResource() {
+        return new ExternalComputeResource();
     }
 
     /**
@@ -2679,6 +2976,14 @@ public class ObjectFactory {
      */
     public CustomProperty createCustomProperty() {
         return new CustomProperty();
+    }
+
+    /**
+     * Create an instance of {@link ExternalProvider }
+     *
+     */
+    public ExternalProvider createExternalProvider() {
+        return new ExternalProvider();
     }
 
     /**
@@ -2907,6 +3212,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DnsServers }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "dns_servers")
+    public JAXBElement<DnsServers> createDnsServers(DnsServers value) {
+        return new JAXBElement<DnsServers>(_DnsServers_QNAME, DnsServers.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InheritableBooleans }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "inheritable_booleans")
+    public JAXBElement<InheritableBooleans> createInheritableBooleans(InheritableBooleans value) {
+        return new JAXBElement<InheritableBooleans>(_InheritableBooleans_QNAME, InheritableBooleans.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ParametersSet }{@code >}}
      *
      */
@@ -3033,6 +3356,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalHost }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_host")
+    public JAXBElement<ExternalHost> createExternalHost(ExternalHost value) {
+        return new JAXBElement<ExternalHost>(_ExternalHost_QNAME, ExternalHost.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Hosts }{@code >}}
      *
      */
@@ -3057,6 +3389,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "data_center")
     public JAXBElement<DataCenter> createDataCenter(DataCenter value) {
         return new JAXBElement<DataCenter>(_DataCenter_QNAME, DataCenter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Packages }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "packages")
+    public JAXBElement<Packages> createPackages(Packages value) {
+        return new JAXBElement<Packages>(_Packages_QNAME, Packages.class, null, value);
     }
 
     /**
@@ -3129,6 +3470,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "usage_message")
     public JAXBElement<UsageMessage> createUsageMessage(UsageMessage value) {
         return new JAXBElement<UsageMessage>(_UsageMessage_QNAME, UsageMessage.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Certificates }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "certificates")
+    public JAXBElement<Certificates> createCertificates(Certificates value) {
+        return new JAXBElement<Certificates>(_Certificates_QNAME, Certificates.class, null, value);
     }
 
     /**
@@ -3276,6 +3626,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalHostGroups }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_host_groups")
+    public JAXBElement<ExternalHostGroups> createExternalHostGroups(ExternalHostGroups value) {
+        return new JAXBElement<ExternalHostGroups>(_ExternalHostGroups_QNAME, ExternalHostGroups.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Version }{@code >}}
      *
      */
@@ -3363,6 +3722,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "creation_states")
     public JAXBElement<CreationStates> createCreationStates(CreationStates value) {
         return new JAXBElement<CreationStates>(_CreationStates_QNAME, CreationStates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalHosts }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_hosts")
+    public JAXBElement<ExternalHosts> createExternalHosts(ExternalHosts value) {
+        return new JAXBElement<ExternalHosts>(_ExternalHosts_QNAME, ExternalHosts.class, null, value);
     }
 
     /**
@@ -3456,6 +3824,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackImageProvider }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_image_provider")
+    public JAXBElement<OpenStackImageProvider> createOpenstackImageProvider(OpenStackImageProvider value) {
+        return new JAXBElement<OpenStackImageProvider>(_OpenstackImageProvider_QNAME, OpenStackImageProvider.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Agent }{@code >}}
      *
      */
@@ -3525,6 +3902,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "numa_node_pins")
     public JAXBElement<NumaNodePins> createNumaNodePins(NumaNodePins value) {
         return new JAXBElement<NumaNodePins>(_NumaNodePins_QNAME, NumaNodePins.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalHostGroup }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_host_group")
+    public JAXBElement<ExternalHostGroup> createExternalHostGroup(ExternalHostGroup value) {
+        return new JAXBElement<ExternalHostGroup>(_ExternalHostGroup_QNAME, ExternalHostGroup.class, null, value);
     }
 
     /**
@@ -3645,6 +4031,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackNetwork }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_network")
+    public JAXBElement<OpenStackNetwork> createOpenstackNetwork(OpenStackNetwork value) {
+        return new JAXBElement<OpenStackNetwork>(_OpenstackNetwork_QNAME, OpenStackNetwork.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Weight }{@code >}}
      *
      */
@@ -3723,6 +4118,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "vm")
     public JAXBElement<VM> createVm(VM value) {
         return new JAXBElement<VM>(_Vm_QNAME, VM.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackNetworkProviders }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_network_providers")
+    public JAXBElement<OpenStackNetworkProviders> createOpenstackNetworkProviders(OpenStackNetworkProviders value) {
+        return new JAXBElement<OpenStackNetworkProviders>(_OpenstackNetworkProviders_QNAME, OpenStackNetworkProviders.class, null, value);
     }
 
     /**
@@ -3816,6 +4220,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackImageProviders }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_image_providers")
+    public JAXBElement<OpenStackImageProviders> createOpenstackImageProviders(OpenStackImageProviders value) {
+        return new JAXBElement<OpenStackImageProviders>(_OpenstackImageProviders_QNAME, OpenStackImageProviders.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GuestNicConfiguration }{@code >}}
      *
      */
@@ -3840,6 +4253,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "usages")
     public JAXBElement<Usages> createUsages(Usages value) {
         return new JAXBElement<Usages>(_Usages_QNAME, Usages.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AgentConfiguration }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "agent_configuration")
+    public JAXBElement<AgentConfiguration> createAgentConfiguration(AgentConfiguration value) {
+        return new JAXBElement<AgentConfiguration>(_AgentConfiguration_QNAME, AgentConfiguration.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalHostProvider }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_host_provider")
+    public JAXBElement<ExternalHostProvider> createExternalHostProvider(ExternalHostProvider value) {
+        return new JAXBElement<ExternalHostProvider>(_ExternalHostProvider_QNAME, ExternalHostProvider.class, null, value);
     }
 
     /**
@@ -3951,12 +4382,39 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackProvider }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_provider")
+    public JAXBElement<OpenStackProvider> createOpenstackProvider(OpenStackProvider value) {
+        return new JAXBElement<OpenStackProvider>(_OpenstackProvider_QNAME, OpenStackProvider.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackImages }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_images")
+    public JAXBElement<OpenStackImages> createOpenstackImages(OpenStackImages value) {
+        return new JAXBElement<OpenStackImages>(_OpenstackImages_QNAME, OpenStackImages.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Permit }{@code >}}
      *
      */
     @XmlElementDecl(namespace = "", name = "permit")
     public JAXBElement<Permit> createPermit(Permit value) {
         return new JAXBElement<Permit>(_Permit_QNAME, Permit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MigrationOptions }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "migration")
+    public JAXBElement<MigrationOptions> createMigration(MigrationOptions value) {
+        return new JAXBElement<MigrationOptions>(_Migration_QNAME, MigrationOptions.class, null, value);
     }
 
     /**
@@ -3987,6 +4445,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalComputeResources }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_compute_resources")
+    public JAXBElement<ExternalComputeResources> createExternalComputeResources(ExternalComputeResources value) {
+        return new JAXBElement<ExternalComputeResources>(_ExternalComputeResources_QNAME, ExternalComputeResources.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalHostProviders }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_host_providers")
+    public JAXBElement<ExternalHostProviders> createExternalHostProviders(ExternalHostProviders value) {
+        return new JAXBElement<ExternalHostProviders>(_ExternalHostProviders_QNAME, ExternalHostProviders.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Applications }{@code >}}
      *
      */
@@ -4011,6 +4487,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "scheduling_policy")
     public JAXBElement<SchedulingPolicy> createSchedulingPolicy(SchedulingPolicy value) {
         return new JAXBElement<SchedulingPolicy>(_SchedulingPolicy_QNAME, SchedulingPolicy.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackSubnet }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_subnet")
+    public JAXBElement<OpenStackSubnet> createOpenstackSubnet(OpenStackSubnet value) {
+        return new JAXBElement<OpenStackSubnet>(_OpenstackSubnet_QNAME, OpenStackSubnet.class, null, value);
     }
 
     /**
@@ -4212,6 +4697,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackNetworkProvider }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_network_provider")
+    public JAXBElement<OpenStackNetworkProvider> createOpenstackNetworkProvider(OpenStackNetworkProvider value) {
+        return new JAXBElement<OpenStackNetworkProvider>(_OpenstackNetworkProvider_QNAME, OpenStackNetworkProvider.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BootProtocols }{@code >}}
      *
      */
@@ -4239,6 +4733,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackNetworks }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_networks")
+    public JAXBElement<OpenStackNetworks> createOpenstackNetworks(OpenStackNetworks value) {
+        return new JAXBElement<OpenStackNetworks>(_OpenstackNetworks_QNAME, OpenStackNetworks.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FencingPolicy }{@code >}}
      *
      */
@@ -4254,6 +4757,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "qos_types")
     public JAXBElement<QosTypes> createQosTypes(QosTypes value) {
         return new JAXBElement<QosTypes>(_QosTypes_QNAME, QosTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KatelloErrata }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "katello_errata")
+    public JAXBElement<KatelloErrata> createKatelloErrata(KatelloErrata value) {
+        return new JAXBElement<KatelloErrata>(_KatelloErrata_QNAME, KatelloErrata.class, null, value);
     }
 
     /**
@@ -4326,6 +4838,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "template")
     public JAXBElement<Template> createTemplate(Template value) {
         return new JAXBElement<Template>(_Template_QNAME, Template.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link KatelloErratum }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "katello_erratum")
+    public JAXBElement<KatelloErratum> createKatelloErratum(KatelloErratum value) {
+        return new JAXBElement<KatelloErratum>(_KatelloErratum_QNAME, KatelloErratum.class, null, value);
     }
 
     /**
@@ -4455,6 +4976,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalDiscoveredHost }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_discovered_host")
+    public JAXBElement<ExternalDiscoveredHost> createExternalDiscoveredHost(ExternalDiscoveredHost value) {
+        return new JAXBElement<ExternalDiscoveredHost>(_ExternalDiscoveredHost_QNAME, ExternalDiscoveredHost.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Event }{@code >}}
      *
      */
@@ -4470,6 +5000,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "cpu_modes")
     public JAXBElement<CpuModes> createCpuModes(CpuModes value) {
         return new JAXBElement<CpuModes>(_CpuModes_QNAME, CpuModes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackSubnets }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_subnets")
+    public JAXBElement<OpenStackSubnets> createOpenstackSubnets(OpenStackSubnets value) {
+        return new JAXBElement<OpenStackSubnets>(_OpenstackSubnets_QNAME, OpenStackSubnets.class, null, value);
     }
 
     /**
@@ -4842,6 +5381,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Package }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "package")
+    public JAXBElement<Package> createPackage(Package value) {
+        return new JAXBElement<Package>(_Package_QNAME, Package.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SnapshotStatuses }{@code >}}
      *
      */
@@ -4959,6 +5507,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NetworkPluginTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "network_plugin_types")
+    public JAXBElement<NetworkPluginTypes> createNetworkPluginTypes(NetworkPluginTypes value) {
+        return new JAXBElement<NetworkPluginTypes>(_NetworkPluginTypes_QNAME, NetworkPluginTypes.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Files }{@code >}}
      *
      */
@@ -5028,6 +5585,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "request")
     public JAXBElement<Request> createRequest(Request value) {
         return new JAXBElement<Request>(_Request_QNAME, Request.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalDiscoveredHosts }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_discovered_hosts")
+    public JAXBElement<ExternalDiscoveredHosts> createExternalDiscoveredHosts(ExternalDiscoveredHosts value) {
+        return new JAXBElement<ExternalDiscoveredHosts>(_ExternalDiscoveredHosts_QNAME, ExternalDiscoveredHosts.class, null, value);
     }
 
     /**
@@ -5112,6 +5678,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MessageBrokerTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "message_broker_types")
+    public JAXBElement<MessageBrokerTypes> createMessageBrokerTypes(MessageBrokerTypes value) {
+        return new JAXBElement<MessageBrokerTypes>(_MessageBrokerTypes_QNAME, MessageBrokerTypes.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Network }{@code >}}
      *
      */
@@ -5154,6 +5729,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "host_numa_nodes")
     public JAXBElement<NumaNodes> createHostNumaNodes(NumaNodes value) {
         return new JAXBElement<NumaNodes>(_HostNumaNodes_QNAME, NumaNodes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackImage }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_image")
+    public JAXBElement<OpenStackImage> createOpenstackImage(OpenStackImage value) {
+        return new JAXBElement<OpenStackImage>(_OpenstackImage_QNAME, OpenStackImage.class, null, value);
     }
 
     /**
@@ -5226,6 +5810,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "console")
     public JAXBElement<Console> createConsole(Console value) {
         return new JAXBElement<Console>(_Console_QNAME, Console.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostProtocols }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "host_protocols")
+    public JAXBElement<HostProtocols> createHostProtocols(HostProtocols value) {
+        return new JAXBElement<HostProtocols>(_HostProtocols_QNAME, HostProtocols.class, null, value);
     }
 
     /**
@@ -5307,6 +5900,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "numa_node_pin")
     public JAXBElement<NumaNodePin> createNumaNodePin(NumaNodePin value) {
         return new JAXBElement<NumaNodePin>(_NumaNodePin_QNAME, NumaNodePin.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalComputeResource }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_compute_resource")
+    public JAXBElement<ExternalComputeResource> createExternalComputeResource(ExternalComputeResource value) {
+        return new JAXBElement<ExternalComputeResource>(_ExternalComputeResource_QNAME, ExternalComputeResource.class, null, value);
     }
 
     /**

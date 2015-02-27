@@ -387,12 +387,16 @@ public class Template extends
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    [template.soundcard_enabled]
+     *    [template.custom_emulated_machine]
+     *    [template.custom_cpu_model]
      *    [template.version.version_name]
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
      *    [template.start_paused]
      *    [template.cpu_profile.id]
+     *    [template.migration.auto_converge]
+     *    [template.migration.compressed]
      *    </pre>
      *
      * @return
@@ -469,12 +473,16 @@ public class Template extends
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    [template.soundcard_enabled]
+     *    [template.custom_emulated_machine]
+     *    [template.custom_cpu_model]
      *    [template.version.version_name]
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
      *    [template.start_paused]
      *    [template.cpu_profile.id]
+     *    [template.migration.auto_converge]
+     *    [template.migration.compressed]
      *    </pre>
      *
      * @param correlationId

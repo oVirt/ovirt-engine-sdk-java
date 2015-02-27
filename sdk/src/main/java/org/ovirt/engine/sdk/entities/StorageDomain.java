@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element ref="{}data_center" minOccurs="0"/>
+ *         &lt;element ref="{}data_centers" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element name="master" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -48,6 +49,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="used" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="committed" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="storage_format" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="wipe_after_delete" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="import" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="is_attached" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -59,6 +63,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "StorageDomain", propOrder = {
     "dataCenter",
+    "dataCenters",
     "type",
     "status",
     "master",
@@ -69,7 +74,10 @@ import javax.xml.bind.annotation.XmlType;
     "available",
     "used",
     "committed",
-    "storageFormat"
+    "storageFormat",
+    "wipeAfterDelete",
+    "_import",
+    "isAttached"
 })
 public class StorageDomain
     extends BaseResource
@@ -77,6 +85,8 @@ public class StorageDomain
 
     @XmlElement(name = "data_center")
     protected DataCenter dataCenter;
+    @XmlElement(name = "data_centers")
+    protected DataCenters dataCenters;
     protected String type;
     protected Status status;
     protected Boolean master;
@@ -89,6 +99,12 @@ public class StorageDomain
     protected Long committed;
     @XmlElement(name = "storage_format")
     protected String storageFormat;
+    @XmlElement(name = "wipe_after_delete")
+    protected Boolean wipeAfterDelete;
+    @XmlElement(name = "import")
+    protected Boolean _import;
+    @XmlElement(name = "is_attached")
+    protected Boolean isAttached;
 
     /**
      * Gets the value of the dataCenter property.
@@ -116,6 +132,34 @@ public class StorageDomain
 
     public boolean isSetDataCenter() {
         return (this.dataCenter!= null);
+    }
+
+    /**
+     * Gets the value of the dataCenters property.
+     *
+     * @return
+     *     possible object is
+     *     {@link DataCenters }
+     *
+     */
+    public DataCenters getDataCenters() {
+        return dataCenters;
+    }
+
+    /**
+     * Sets the value of the dataCenters property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link DataCenters }
+     *
+     */
+    public void setDataCenters(DataCenters value) {
+        this.dataCenters = value;
+    }
+
+    public boolean isSetDataCenters() {
+        return (this.dataCenters!= null);
     }
 
     /**
@@ -424,6 +468,90 @@ public class StorageDomain
 
     public boolean isSetStorageFormat() {
         return (this.storageFormat!= null);
+    }
+
+    /**
+     * Gets the value of the wipeAfterDelete property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getWipeAfterDelete() {
+        return wipeAfterDelete;
+    }
+
+    /**
+     * Sets the value of the wipeAfterDelete property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setWipeAfterDelete(Boolean value) {
+        this.wipeAfterDelete = value;
+    }
+
+    public boolean isSetWipeAfterDelete() {
+        return (this.wipeAfterDelete!= null);
+    }
+
+    /**
+     * Gets the value of the import property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getImport() {
+        return _import;
+    }
+
+    /**
+     * Sets the value of the import property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setImport(Boolean value) {
+        this._import = value;
+    }
+
+    public boolean isSetImport() {
+        return (this._import!= null);
+    }
+
+    /**
+     * Gets the value of the isAttached property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getIsAttached() {
+        return isAttached;
+    }
+
+    /**
+     * Sets the value of the isAttached property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setIsAttached(Boolean value) {
+        this.isAttached = value;
+    }
+
+    public boolean isSetIsAttached() {
+        return (this.isAttached!= null);
     }
 
 }

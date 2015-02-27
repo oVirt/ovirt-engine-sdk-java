@@ -176,6 +176,8 @@ public class VMs extends
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.soundcard_enabled]
+     *      [vm.custom_emulated_machine]
+     *      [vm.custom_cpu_model]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
@@ -187,6 +189,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *
      *    Overload 2:
      *
@@ -243,6 +247,8 @@ public class VMs extends
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.soundcard_enabled]
+     *      [vm.custom_emulated_machine]
+     *      [vm.custom_cpu_model]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *      [vm.serial_number.policy]
@@ -251,6 +257,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *
      *    Overload 3:
      *
@@ -318,6 +326,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *    </pre>
      *
      * @return
@@ -407,6 +417,8 @@ public class VMs extends
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.soundcard_enabled]
+     *      [vm.custom_emulated_machine]
+     *      [vm.custom_cpu_model]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
@@ -418,6 +430,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *
      *    Overload 2:
      *
@@ -474,6 +488,8 @@ public class VMs extends
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.soundcard_enabled]
+     *      [vm.custom_emulated_machine]
+     *      [vm.custom_cpu_model]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *      [vm.serial_number.policy]
@@ -482,6 +498,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *
      *    Overload 3:
      *
@@ -549,6 +567,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *    </pre>
      *
      * @param correlationId
@@ -646,6 +666,8 @@ public class VMs extends
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.soundcard_enabled]
+     *      [vm.custom_emulated_machine]
+     *      [vm.custom_cpu_model]
      *      [vm.payloads.payload]
      *      [vm.initialization.configuration.type]
      *      [vm.initialization.configuration.data]
@@ -657,6 +679,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *
      *    Overload 2:
      *
@@ -713,6 +737,8 @@ public class VMs extends
      *      [vm.migration_downtime]
      *      [vm.virtio_scsi.enabled]
      *      [vm.soundcard_enabled]
+     *      [vm.custom_emulated_machine]
+     *      [vm.custom_cpu_model]
      *      [vm.payloads.payload]
      *      [vm.cpu.cpu_tune.vcpu_pin]
      *      [vm.serial_number.policy]
@@ -721,6 +747,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *
      *    Overload 3:
      *
@@ -788,6 +816,8 @@ public class VMs extends
      *      [vm.numa_tune_mode]
      *      [vm.start_paused]
      *      [vm.cpu_profile.id]
+     *      [vm.migration.auto_converge]
+     *      [vm.migration.compressed]
      *    </pre>
      *
      * @param correlationId

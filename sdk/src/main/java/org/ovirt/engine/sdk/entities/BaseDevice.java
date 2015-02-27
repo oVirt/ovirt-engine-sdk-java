@@ -36,8 +36,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element ref="{}vm" minOccurs="0"/>
  *         &lt;element ref="{}template" minOccurs="0"/>
+ *         &lt;element ref="{}vms" minOccurs="0"/>
+ *         &lt;element ref="{}vm" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -48,8 +49,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BaseDevice", propOrder = {
-    "vm",
-    "template"
+    "template",
+    "vms",
+    "vm"
 })
 @XmlSeeAlso({
     NIC.class,
@@ -62,36 +64,9 @@ public class BaseDevice
     extends BaseResource
 {
 
-    protected VM vm;
     protected Template template;
-
-    /**
-     * Gets the value of the vm property.
-     *
-     * @return
-     *     possible object is
-     *     {@link VM }
-     *
-     */
-    public VM getVm() {
-        return vm;
-    }
-
-    /**
-     * Sets the value of the vm property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link VM }
-     *
-     */
-    public void setVm(VM value) {
-        this.vm = value;
-    }
-
-    public boolean isSetVm() {
-        return (this.vm!= null);
-    }
+    protected VMs vms;
+    protected VM vm;
 
     /**
      * Gets the value of the template property.
@@ -119,6 +94,62 @@ public class BaseDevice
 
     public boolean isSetTemplate() {
         return (this.template!= null);
+    }
+
+    /**
+     * Gets the value of the vms property.
+     *
+     * @return
+     *     possible object is
+     *     {@link VMs }
+     *
+     */
+    public VMs getVms() {
+        return vms;
+    }
+
+    /**
+     * Sets the value of the vms property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VMs }
+     *
+     */
+    public void setVms(VMs value) {
+        this.vms = value;
+    }
+
+    public boolean isSetVms() {
+        return (this.vms!= null);
+    }
+
+    /**
+     * Gets the value of the vm property.
+     *
+     * @return
+     *     possible object is
+     *     {@link VM }
+     *
+     */
+    public VM getVm() {
+        return vm;
+    }
+
+    /**
+     * Sets the value of the vm property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VM }
+     *
+     */
+    public void setVm(VM value) {
+        this.vm = value;
+    }
+
+    public boolean isSetVm() {
+        return (this.vm!= null);
     }
 
 }

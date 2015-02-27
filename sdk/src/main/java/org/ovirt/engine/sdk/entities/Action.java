@@ -88,6 +88,8 @@ import javax.xml.bind.annotation.XmlType;
     "job",
     "importAsTemplate",
     "maintenanceEnabled",
+    "storageDomains",
+    "disk",
     "status",
     "fault",
     "iscsiTargets",
@@ -145,6 +147,9 @@ public class Action
     protected Boolean importAsTemplate;
     @XmlElement(name = "maintenance_enabled")
     protected Boolean maintenanceEnabled;
+    @XmlElement(name = "storage_domains")
+    protected StorageDomains storageDomains;
+    protected Disk disk;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -1130,6 +1135,62 @@ public class Action
 
     public boolean isSetMaintenanceEnabled() {
         return (this.maintenanceEnabled!= null);
+    }
+
+    /**
+     * Gets the value of the storageDomains property.
+     *
+     * @return
+     *     possible object is
+     *     {@link StorageDomains }
+     *
+     */
+    public StorageDomains getStorageDomains() {
+        return storageDomains;
+    }
+
+    /**
+     * Sets the value of the storageDomains property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link StorageDomains }
+     *
+     */
+    public void setStorageDomains(StorageDomains value) {
+        this.storageDomains = value;
+    }
+
+    public boolean isSetStorageDomains() {
+        return (this.storageDomains!= null);
+    }
+
+    /**
+     * Gets the value of the disk property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Disk }
+     *
+     */
+    public Disk getDisk() {
+        return disk;
+    }
+
+    /**
+     * Sets the value of the disk property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Disk }
+     *
+     */
+    public void setDisk(Disk value) {
+        this.disk = value;
+    }
+
+    public boolean isSetDisk() {
+        return (this.disk!= null);
     }
 
     /**

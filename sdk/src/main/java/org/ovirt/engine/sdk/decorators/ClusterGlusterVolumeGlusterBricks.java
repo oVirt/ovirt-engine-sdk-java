@@ -382,9 +382,9 @@ public class ClusterGlusterVolumeGlusterBricks extends
     /**
      * Lists ClusterGlusterVolumeGlusterBrick objects.
      *
-     * @param max
+     * @param allContent
      *    <pre>
-     *    [max results]
+     *    [true|false]
      *    </pre>
      *
      *
@@ -397,17 +397,16 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<ClusterGlusterVolumeGlusterBrick> list(Integer max) throws ClientProtocolException,
+    public List<ClusterGlusterVolumeGlusterBrick> list(String allContent) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class,

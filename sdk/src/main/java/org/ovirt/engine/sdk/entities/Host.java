@@ -71,6 +71,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="auto_numa_status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="numa_supported" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="live_snapshot_support" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}katello_errata" minOccurs="0"/>
+ *         &lt;element ref="{}external_host_provider" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -114,7 +116,9 @@ import javax.xml.bind.annotation.XmlType;
     "selinux",
     "autoNumaStatus",
     "numaSupported",
-    "liveSnapshotSupport"
+    "liveSnapshotSupport",
+    "katelloErrata",
+    "externalHostProvider"
 })
 public class Host
     extends BaseResource
@@ -169,6 +173,10 @@ public class Host
     protected Boolean numaSupported;
     @XmlElement(name = "live_snapshot_support")
     protected Boolean liveSnapshotSupport;
+    @XmlElement(name = "katello_errata")
+    protected KatelloErrata katelloErrata;
+    @XmlElement(name = "external_host_provider")
+    protected ExternalHostProvider externalHostProvider;
 
     /**
      * Gets the value of the address property.
@@ -1120,6 +1128,62 @@ public class Host
 
     public boolean isSetLiveSnapshotSupport() {
         return (this.liveSnapshotSupport!= null);
+    }
+
+    /**
+     * Gets the value of the katelloErrata property.
+     *
+     * @return
+     *     possible object is
+     *     {@link KatelloErrata }
+     *
+     */
+    public Object getKatelloErrata() {
+        return katelloErrata;
+    }
+
+    /**
+     * Sets the value of the katelloErrata property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link KatelloErrata }
+     *
+     */
+    public void setKatelloErrata(KatelloErrata value) {
+        this.katelloErrata = value;
+    }
+
+    public boolean isSetKatelloErrata() {
+        return (this.katelloErrata!= null);
+    }
+
+    /**
+     * Gets the value of the externalHostProvider property.
+     *
+     * @return
+     *     possible object is
+     *     {@link ExternalHostProvider }
+     *
+     */
+    public ExternalHostProvider getExternalHostProvider() {
+        return externalHostProvider;
+    }
+
+    /**
+     * Sets the value of the externalHostProvider property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ExternalHostProvider }
+     *
+     */
+    public void setExternalHostProvider(ExternalHostProvider value) {
+        this.externalHostProvider = value;
+    }
+
+    public boolean isSetExternalHostProvider() {
+        return (this.externalHostProvider!= null);
     }
 
 }

@@ -148,6 +148,7 @@ public class Clusters extends
      *    [cluster.fencing_policy.skip_if_sd_active.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
+     *    [cluster.management_network.id|name]
      *    </pre>
      *
      * @return
@@ -209,6 +210,7 @@ public class Clusters extends
      *    [cluster.fencing_policy.skip_if_sd_active.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
+     *    [cluster.management_network.id|name]
      *    </pre>
      *
      * @param expect
@@ -278,6 +280,7 @@ public class Clusters extends
      *    [cluster.fencing_policy.skip_if_sd_active.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
+     *    [cluster.management_network.id|name]
      *    </pre>
      *
      * @param expect

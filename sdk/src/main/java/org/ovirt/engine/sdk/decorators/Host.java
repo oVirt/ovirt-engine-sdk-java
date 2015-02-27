@@ -45,11 +45,14 @@ public class Host extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile HostAgents hostAgents;
     private volatile HostHooks hostHooks;
+    private volatile HostKatelloErrata hostKatelloErrata;
     private volatile HostNICs hostNICs;
     private volatile HostNumaNodes hostNumaNodes;
     private volatile HostPermissions hostPermissions;
     private volatile HostStatistics hostStatistics;
+    private volatile HostStorages hostStorages;
     private volatile HostTags hostTags;
 
 
@@ -68,6 +71,22 @@ public class Host extends
     }
 
     /**
+     * Gets the value of the HostAgents property.
+     *
+     * @return
+     *     {@link HostAgents }
+     */
+    public HostAgents getAgents() {
+        if (this.hostAgents == null) {
+            synchronized (this.LOCK) {
+                if (this.hostAgents == null) {
+                    this.hostAgents = new HostAgents(proxy, this);
+                }
+            }
+        }
+        return hostAgents;
+    }
+    /**
      * Gets the value of the HostHooks property.
      *
      * @return
@@ -82,6 +101,22 @@ public class Host extends
             }
         }
         return hostHooks;
+    }
+    /**
+     * Gets the value of the HostKatelloErrata property.
+     *
+     * @return
+     *     {@link HostKatelloErrata }
+     */
+    public HostKatelloErrata getKatelloErrata() {
+        if (this.hostKatelloErrata == null) {
+            synchronized (this.LOCK) {
+                if (this.hostKatelloErrata == null) {
+                    this.hostKatelloErrata = new HostKatelloErrata(proxy, this);
+                }
+            }
+        }
+        return hostKatelloErrata;
     }
     /**
      * Gets the value of the HostNICs property.
@@ -146,6 +181,22 @@ public class Host extends
             }
         }
         return hostStatistics;
+    }
+    /**
+     * Gets the value of the HostStorages property.
+     *
+     * @return
+     *     {@link HostStorages }
+     */
+    public HostStorages getHostStorage() {
+        if (this.hostStorages == null) {
+            synchronized (this.LOCK) {
+                if (this.hostStorages == null) {
+                    this.hostStorages = new HostStorages(proxy, this);
+                }
+            }
+        }
+        return hostStorages;
     }
     /**
      * Gets the value of the HostTags property.
@@ -848,6 +899,7 @@ public class Host extends
      *
      *      [action.root_password]
      *      [action.image]
+     *      [action.host.override_iptables]
      *
      *    Overload 2:
      *
@@ -865,6 +917,7 @@ public class Host extends
      *      [action.image]
      *      [action.async]
      *      [action.grace_period.expiry]
+     *      [action.host.override_iptables]
      *    </pre>
      *
      * @return
@@ -905,6 +958,7 @@ public class Host extends
      *
      *      [action.root_password]
      *      [action.image]
+     *      [action.host.override_iptables]
      *
      *    Overload 2:
      *
@@ -922,6 +976,7 @@ public class Host extends
      *      [action.image]
      *      [action.async]
      *      [action.grace_period.expiry]
+     *      [action.host.override_iptables]
      *    </pre>
      *
      * @param correlationId
@@ -1101,6 +1156,76 @@ public class Host extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
+     * Performs unregisteredstoragedomainsdiscover action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.iscsi.address
+     *    action.target
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action unregisteredstoragedomainsdiscover(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/unregisteredstoragedomainsdiscover";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs unregisteredstoragedomainsdiscover action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.iscsi.address
+     *    action.target
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action unregisteredstoragedomainsdiscover(Action action, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/unregisteredstoragedomainsdiscover";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
      * Updates Host object.
      *
      * @param host {@link org.ovirt.engine.sdk.entities.Host}
@@ -1130,6 +1255,7 @@ public class Host extends
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
      *      [host.power_management.kdump_detection]
+     *      [host.external_host_provider.id]
      *
      *    Overload 2:
      *
@@ -1214,6 +1340,7 @@ public class Host extends
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
      *      [host.power_management.kdump_detection]
+     *      [host.external_host_provider.id]
      *
      *    Overload 2:
      *
@@ -1307,6 +1434,7 @@ public class Host extends
      *      [host.power_management.pm_proxy]
      *      [host.power_management.agents.agent]
      *      [host.power_management.kdump_detection]
+     *      [host.external_host_provider.id]
      *
      *    Overload 2:
      *

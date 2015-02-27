@@ -133,8 +133,24 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 2:
+     *
+     *      Import an existing block
+     *      storage domain to the system
+     *      using the targets already
+     *      connected to the host
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.import
+     *      [storagedomain.storage.address]
+     *      [storagedomain.format]
+     *      [storagedomain.comment]
+     *
+     *    Overload 3:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -149,8 +165,9 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
-     *    Overload 3:
+     *    Overload 4:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -165,8 +182,9 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
-     *    Overload 4:
+     *    Overload 5:
      *
      *      add a new storage domain to
      *      the system using the gluster
@@ -183,6 +201,7 @@ public class StorageDomains extends
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      * @return
@@ -229,8 +248,24 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 2:
+     *
+     *      Import an existing block
+     *      storage domain to the system
+     *      using the targets already
+     *      connected to the host
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.import
+     *      [storagedomain.storage.address]
+     *      [storagedomain.format]
+     *      [storagedomain.comment]
+     *
+     *    Overload 3:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -245,8 +280,9 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
-     *    Overload 3:
+     *    Overload 4:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -261,8 +297,9 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
-     *    Overload 4:
+     *    Overload 5:
      *
      *      add a new storage domain to
      *      the system using the gluster
@@ -279,6 +316,7 @@ public class StorageDomains extends
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      * @param async
@@ -334,8 +372,24 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 2:
+     *
+     *      Import an existing block
+     *      storage domain to the system
+     *      using the targets already
+     *      connected to the host
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.import
+     *      [storagedomain.storage.address]
+     *      [storagedomain.format]
+     *      [storagedomain.comment]
+     *
+     *    Overload 3:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -350,8 +404,9 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
-     *    Overload 3:
+     *    Overload 4:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -366,8 +421,9 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
-     *    Overload 4:
+     *    Overload 5:
      *
      *      add a new storage domain to
      *      the system using the gluster
@@ -384,6 +440,7 @@ public class StorageDomains extends
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      * @param expect
@@ -447,8 +504,24 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 2:
+     *
+     *      Import an existing block
+     *      storage domain to the system
+     *      using the targets already
+     *      connected to the host
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.type
+     *      storagedomain.storage.type
+     *      storagedomain.import
+     *      [storagedomain.storage.address]
+     *      [storagedomain.format]
+     *      [storagedomain.comment]
+     *
+     *    Overload 3:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -463,8 +536,9 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
-     *    Overload 3:
+     *    Overload 4:
      *
      *      add a new storage domain to
      *      the system using the storage
@@ -479,8 +553,9 @@ public class StorageDomains extends
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *
-     *    Overload 4:
+     *    Overload 5:
      *
      *      add a new storage domain to
      *      the system using the gluster
@@ -497,6 +572,7 @@ public class StorageDomains extends
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      * @param expect

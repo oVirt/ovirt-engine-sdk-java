@@ -161,6 +161,8 @@ public class Templates extends
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    [template.soundcard_enabled]
+     *    [template.custom_emulated_machine]
+     *    [template.custom_cpu_model]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
      *    [template.version.version_name]
@@ -173,6 +175,8 @@ public class Templates extends
      *    [template.cluster.name]
      *    [template.start_paused]
      *    [template.cpu_profile.id]
+     *    [template.migration.auto_converge]
+     *    [template.migration.compressed]
      *    </pre>
      *
      * @return
@@ -247,6 +251,8 @@ public class Templates extends
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    [template.soundcard_enabled]
+     *    [template.custom_emulated_machine]
+     *    [template.custom_cpu_model]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
      *    [template.version.version_name]
@@ -259,6 +265,8 @@ public class Templates extends
      *    [template.cluster.name]
      *    [template.start_paused]
      *    [template.cpu_profile.id]
+     *    [template.migration.auto_converge]
+     *    [template.migration.compressed]
      *    </pre>
      *
      * @param expect
@@ -341,6 +349,8 @@ public class Templates extends
      *    [template.migration_downtime]
      *    [template.virtio_scsi.enabled]
      *    [template.soundcard_enabled]
+     *    [template.custom_emulated_machine]
+     *    [template.custom_cpu_model]
      *    [template.vm.disks.disk]
      *    [template.permissions.clone]
      *    [template.version.version_name]
@@ -353,6 +363,8 @@ public class Templates extends
      *    [template.cluster.name]
      *    [template.start_paused]
      *    [template.cpu_profile.id]
+     *    [template.migration.auto_converge]
+     *    [template.migration.compressed]
      *    </pre>
      *
      * @param expect

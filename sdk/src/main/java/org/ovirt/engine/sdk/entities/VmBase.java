@@ -67,6 +67,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}serial_number" minOccurs="0"/>
  *         &lt;element name="start_paused" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}cpu_profile" minOccurs="0"/>
+ *         &lt;element ref="{}migration" minOccurs="0"/>
+ *         &lt;element name="custom_properties" type="{}CustomProperties" minOccurs="0"/>
+ *         &lt;element name="custom_emulated_machine" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="custom_cpu_model" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -104,7 +108,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "virtioScsi",
     "serialNumber",
     "startPaused",
-    "cpuProfile"
+    "cpuProfile",
+    "migration",
+    "customProperties",
+    "customEmulatedMachine",
+    "customCpuModel"
 })
 @XmlSeeAlso({
     VM.class,
@@ -156,6 +164,13 @@ public class VmBase
     protected Boolean startPaused;
     @XmlElement(name = "cpu_profile")
     protected CpuProfile cpuProfile;
+    protected MigrationOptions migration;
+    @XmlElement(name = "custom_properties")
+    protected CustomProperties customProperties;
+    @XmlElement(name = "custom_emulated_machine")
+    protected String customEmulatedMachine;
+    @XmlElement(name = "custom_cpu_model")
+    protected String customCpuModel;
 
     /**
      * Gets the value of the type property.
@@ -939,6 +954,118 @@ public class VmBase
 
     public boolean isSetCpuProfile() {
         return (this.cpuProfile!= null);
+    }
+
+    /**
+     * Gets the value of the migration property.
+     *
+     * @return
+     *     possible object is
+     *     {@link MigrationOptions }
+     *
+     */
+    public MigrationOptions getMigration() {
+        return migration;
+    }
+
+    /**
+     * Sets the value of the migration property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link MigrationOptions }
+     *
+     */
+    public void setMigration(MigrationOptions value) {
+        this.migration = value;
+    }
+
+    public boolean isSetMigration() {
+        return (this.migration!= null);
+    }
+
+    /**
+     * Gets the value of the customProperties property.
+     *
+     * @return
+     *     possible object is
+     *     {@link CustomProperties }
+     *
+     */
+    public CustomProperties getCustomProperties() {
+        return customProperties;
+    }
+
+    /**
+     * Sets the value of the customProperties property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link CustomProperties }
+     *
+     */
+    public void setCustomProperties(CustomProperties value) {
+        this.customProperties = value;
+    }
+
+    public boolean isSetCustomProperties() {
+        return (this.customProperties!= null);
+    }
+
+    /**
+     * Gets the value of the customEmulatedMachine property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getCustomEmulatedMachine() {
+        return customEmulatedMachine;
+    }
+
+    /**
+     * Sets the value of the customEmulatedMachine property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setCustomEmulatedMachine(String value) {
+        this.customEmulatedMachine = value;
+    }
+
+    public boolean isSetCustomEmulatedMachine() {
+        return (this.customEmulatedMachine!= null);
+    }
+
+    /**
+     * Gets the value of the customCpuModel property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getCustomCpuModel() {
+        return customCpuModel;
+    }
+
+    /**
+     * Sets the value of the customCpuModel property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setCustomCpuModel(String value) {
+        this.customCpuModel = value;
+    }
+
+    public boolean isSetCustomCpuModel() {
+        return (this.customCpuModel!= null);
     }
 
 }

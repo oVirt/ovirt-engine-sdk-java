@@ -123,6 +123,10 @@ public class SchedulingPolicyBalances extends
      * Adds Balance object.
      *
      * @param balance {@link org.ovirt.engine.sdk.entities.Balance}
+     *    <pre>
+     *    balance.scheduling_policy_unit.id
+     *    </pre>
+     *
      * @return
      *     {@link SchedulingPolicyBalance }
      *
@@ -145,6 +149,135 @@ public class SchedulingPolicyBalances extends
 
         return getProxy().add(url, balance,
                 org.ovirt.engine.sdk.entities.Balance.class,
+                SchedulingPolicyBalance.class, headers);
+    }
+    /**
+     * Adds Balance object.
+     *
+     * @param balance {@link org.ovirt.engine.sdk.entities.Balance}
+     *    <pre>
+     *    balance.scheduling_policy_unit.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link SchedulingPolicyBalance }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public SchedulingPolicyBalance add(org.ovirt.engine.sdk.entities.Balance balance, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, balance,
+                org.ovirt.engine.sdk.entities.Balance.class,
+                SchedulingPolicyBalance.class, headers);
+    }
+    /**
+     * Adds Balance object.
+     *
+     * @param balance {@link org.ovirt.engine.sdk.entities.Balance}
+     *    <pre>
+     *    balance.scheduling_policy_unit.id
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link SchedulingPolicyBalance }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public SchedulingPolicyBalance add(org.ovirt.engine.sdk.entities.Balance balance, String expect, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, balance,
+                org.ovirt.engine.sdk.entities.Balance.class,
+                SchedulingPolicyBalance.class, headers);
+    }
+    /**
+     * Lists SchedulingPolicyBalance objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link SchedulingPolicyBalance }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<SchedulingPolicyBalance> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Balances.class,
                 SchedulingPolicyBalance.class, headers);
     }
 

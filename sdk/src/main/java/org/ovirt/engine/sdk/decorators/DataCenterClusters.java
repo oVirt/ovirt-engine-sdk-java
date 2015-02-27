@@ -146,6 +146,7 @@ public class DataCenterClusters extends
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
      *    [cluster.ksm.enabled]
+     *    [cluster.management_network.id|name]
      *    </pre>
      *
      * @return
@@ -199,6 +200,7 @@ public class DataCenterClusters extends
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
      *    [cluster.ksm.enabled]
+     *    [cluster.management_network.id|name]
      *    </pre>
      *
      * @param expect
@@ -260,6 +262,7 @@ public class DataCenterClusters extends
      *    [cluster.cpu.architecture]
      *    [cluster.display.proxy]
      *    [cluster.ksm.enabled]
+     *    [cluster.management_network.id|name]
      *    </pre>
      *
      * @param expect
