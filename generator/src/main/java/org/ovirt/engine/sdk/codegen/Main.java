@@ -22,6 +22,7 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 
 import org.ovirt.engine.sdk.codegen.rsdl.RsdlCodegen;
+import org.ovirt.engine.sdk.codegen.rsdl.RsdlData;
 import org.ovirt.engine.sdk.codegen.xsd.XsdCodegen;
 import org.ovirt.engine.sdk.codegen.xsd.XsdData;
 
@@ -30,27 +31,27 @@ public class Main {
 
     public static void main(String[] args) throws IOException, JAXBException {
         // Parse the command line parameters:
-        String xsdPath = null;
-        String xjbPath = null;
-        String rsdlPath = null;
+        File xsdFile = null;
+        File xjbFile = null;
+        File rsdlFile = null;
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
             case "--xsd":
                 i++;
                 if (i < args.length) {
-                    xsdPath = args[i];
+                    xsdFile = new File(args[i]);
                 }
                 break;
             case "--xjb":
                 i++;
                 if (i < args.length) {
-                    xjbPath = args[i];
+                    xjbFile = new File(args[i]);
                 }
                 break;
             case "--rsdl":
                 i++;
                 if (i < args.length) {
-                    rsdlPath = args[i];
+                    rsdlFile = new File(args[i]);
                 }
                 break;
             default:
@@ -58,7 +59,7 @@ public class Main {
                 System.exit(1);
             }
         }
-        if (xsdPath == null || xjbPath == null || rsdlPath == null) {
+        if (xsdFile == null || xjbFile == null || rsdlFile == null) {
             System.err.println("Missing required parameters.");
             System.exit(1);
         }
@@ -66,13 +67,14 @@ public class Main {
         // Adjust the destination path to the platform:
         String distPath = DIST_PATH.replace('/', File.separatorChar);
 
-        // Load and analyze the XML schema:
-        XsdData.getInstance().load(xsdPath);
+        // Load the XML schema and the RSDL metadata:
+        XsdData.getInstance().load(xsdFile);
+        RsdlData.getInstance().load(rsdlFile);
 
         // Generate entities classes:
-        new XsdCodegen(xsdPath, xjbPath).generate(distPath);
+        new XsdCodegen(xsdFile, xjbFile).generate(distPath);
 
         // Generate decorator classes:
-        new RsdlCodegen(rsdlPath).generate(distPath);
+        new RsdlCodegen().generate(distPath);
     }
 }

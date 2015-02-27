@@ -44,16 +44,16 @@ public class XsdCodegen {
     /**
      * The location of the XSD file.
      */
-    private String xsdPath;
+    private File xsdFile;
 
     /**
      * The location of the JAXB bindings file.
      */
-    private String xjbPath;
+    private File xjbFile;
 
-    public XsdCodegen(String xsdPath, String xjbPath) {
-        this.xsdPath = xsdPath;
-        this.xjbPath = xjbPath;
+    public XsdCodegen(File xsdFile, File xjbFile) {
+        this.xsdFile = xsdFile;
+        this.xjbFile = xjbFile;
     }
 
     /**
@@ -79,8 +79,8 @@ public class XsdCodegen {
                     "-enableIntrospection",
                     "-d", distPath,
                     "-p", ENTITIES_PACKAGE,
-                    "-b", xjbPath,
-                    xsdPath
+                    "-b", xjbFile.getAbsolutePath(),
+                    xsdFile.getAbsolutePath()
                 },
                 System.out,
                 System.err
