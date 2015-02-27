@@ -1,0 +1,59 @@
+//
+// Copyright (c) 2012 Red Hat, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//           http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+package org.ovirt.engine.sdk.codegen.java.utils;
+
+import org.ovirt.engine.sdk.codegen.java.utils.FormatUtils;
+
+/**
+ * Provides URL related services
+ */
+public class UrlUtils {
+
+    /**
+     * Formats parameter context in to UrlParameterType member
+     * 
+     * @param context
+     *            context to format
+     * 
+     * @return UrlParameterType name
+     */
+    public static String toParamType(final String context) {
+        if (context.equals("query")) {
+            return "QUERY";
+        } else if (context.equals("matrix")) {
+            return "MATRIX";
+        }
+        throw new RuntimeException("Unsupported url parameter type \"" + context + "\".");
+    }
+
+    /**
+     * Decorates parameters names
+     * 
+     * @param parameterName
+     *            actual name
+     * 
+     * @return converted name
+     */
+    public static String toQueryParam(String parameterName) {
+        if (parameterName.equals("search")) {
+            return "query";
+        } else if (parameterName.contains("_")) {
+            return FormatUtils.toJava(parameterName);
+        }
+        return parameterName;
+    }
+}
