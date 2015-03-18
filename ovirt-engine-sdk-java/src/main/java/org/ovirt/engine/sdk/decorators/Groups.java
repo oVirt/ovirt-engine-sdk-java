@@ -166,6 +166,8 @@ public class Groups extends
      * @param group {@link org.ovirt.engine.sdk.entities.Group}
      *    <pre>
      *    group.name
+     *    [group.namespace]
+     *    [group.principal]
      *    </pre>
      *
      * @return
@@ -198,6 +200,8 @@ public class Groups extends
      * @param group {@link org.ovirt.engine.sdk.entities.Group}
      *    <pre>
      *    group.name
+     *    [group.namespace]
+     *    [group.principal]
      *    </pre>
      *
      * @param correlationId

@@ -167,6 +167,8 @@ public class Users extends
      *    <pre>
      *    user.user_name
      *    user.domain.id|name
+     *    [user.namespace]
+     *    [user.principal]
      *    </pre>
      *
      * @return
@@ -200,6 +202,8 @@ public class Users extends
      *    <pre>
      *    user.user_name
      *    user.domain.id|name
+     *    [user.namespace]
+     *    [user.principal]
      *    </pre>
      *
      * @param expect
@@ -241,6 +245,8 @@ public class Users extends
      *    <pre>
      *    user.user_name
      *    user.domain.id|name
+     *    [user.namespace]
+     *    [user.principal]
      *    </pre>
      *
      * @param expect
