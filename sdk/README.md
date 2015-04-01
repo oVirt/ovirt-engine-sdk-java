@@ -71,9 +71,14 @@ diff`, for example) to make sure that no backwards compatibility breaking
 changes are introduced.
 
 Once you have inspected the code, and if everything looks correct, commit the
-modified metadata and source files. The commit message for this change should
-include a reference to the commit or tag of the engine that was used to
-download the updated metadata. For example:
+modified metadata and source files.
+
+The process will also potentially modify the `memory.properties` file
+used by the generator. Changes to this file must also be commited.
+
+The commit message for this change should include a reference to the
+commit or tag of the engine that was used to download the updated
+metadata. For example:
 
     sdk: Regenerate against the latest API
 

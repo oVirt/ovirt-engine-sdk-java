@@ -16,7 +16,6 @@
 
 package org.ovirt.engine.sdk.generator.java.utils;
 
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -28,6 +27,11 @@ import org.ovirt.engine.sdk.entities.Headers;
 import org.ovirt.engine.sdk.entities.Parameter;
 import org.ovirt.engine.sdk.entities.ParametersSet;
 import org.ovirt.engine.sdk.entities.Request;
+import org.ovirt.engine.sdk.generator.Memory;
+
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
+import static org.ovirt.engine.sdk.generator.java.utils.ExceptionsAwareComparator.exceptions;
 
 public class LinkUtils {
     /**
@@ -39,6 +43,11 @@ public class LinkUtils {
         HEADERS_EXCEPTIONS.add("Content-Type");
         HEADERS_EXCEPTIONS.add("Filter");
     }
+
+    /**
+     * Key used to store the order of header parameters in the memory.
+     */
+    private static final String HEADERS_ORDER_KEY = "headers.order";
 
     /**
      * Get the list of URL parameters that are available in the given link.
@@ -59,6 +68,7 @@ public class LinkUtils {
      * Get the list of headers available in the given link, filtering out the ones that should be ignored.
      */
     public static List<Header> getHeaders(DetailedLink dl) {
+        // Extract the header definitions from the link:
         List<Header> result = new ArrayList<>();
         Request request = dl.getRequest();
         if (request != null) {
@@ -71,6 +81,20 @@ public class LinkUtils {
                 }
             }
         }
+
+        // Get the order of the headers from the memory:
+        Memory memory = Memory.getInstance();
+        List<String> oldOrder = memory.getList(dl, HEADERS_ORDER_KEY);
+
+        // Sort the headers by name, taking into account the exceptions:
+        result.sort(comparing(Header::getName, exceptions(String::compareTo, oldOrder)));
+
+        // Make sure that we remember the new order for the next execution:
+        List<String> newOrder = result.stream().map(Header::getName).collect(toList());
+        if (!newOrder.isEmpty()) {
+            memory.putList(dl, HEADERS_ORDER_KEY, newOrder);
+        }
+
         return result;
     }
 }

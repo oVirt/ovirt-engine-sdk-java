@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
+import org.ovirt.engine.sdk.generator.Memory;
 import org.ovirt.engine.sdk.generator.RsdlData;
 import org.ovirt.engine.sdk.generator.XsdData;
 
@@ -29,11 +30,18 @@ public class Main {
 
     public static void main(String[] args) throws IOException, JAXBException {
         // Parse the command line parameters:
+        File memoryFile = null;
         File xsdFile = null;
         File xjbFile = null;
         File rsdlFile = null;
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
+            case "--memory":
+                i++;
+                if (i < args.length) {
+                    memoryFile = new File(args[i]);
+                }
+                break;
             case "--xsd":
                 i++;
                 if (i < args.length) {
@@ -57,13 +65,17 @@ public class Main {
                 System.exit(1);
             }
         }
-        if (xsdFile == null || xjbFile == null || rsdlFile == null) {
+        if (xsdFile == null || xjbFile == null || rsdlFile == null || memoryFile == null) {
             System.err.println("Missing required parameters.");
             System.exit(1);
         }
 
         // Adjust the destination path to the platform:
         String distPath = DIST_PATH.replace('/', File.separatorChar);
+
+        // Load the memory:
+        Memory memory = Memory.getInstance();
+        memory.load(memoryFile);
 
         // Load the XML schema and the RSDL metadata:
         XsdData.getInstance().load(xsdFile);
@@ -74,5 +86,8 @@ public class Main {
 
         // Generate decorator classes:
         new RsdlCodegen().generate(distPath);
+
+        // Save the memory:
+        memory.save(memoryFile);
     }
 }

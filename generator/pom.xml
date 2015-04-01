@@ -180,6 +180,8 @@
                 <configuration>
                   <mainClass>org.ovirt.engine.sdk.generator.java.Main</mainClass>
                   <arguments>
+                    <argument>--memory</argument>
+                    <argument>${basedir}/src/main/resources/memory.properties</argument>
                     <argument>--xsd</argument>
                     <argument>${basedir}/src/main/resources/api.xsd</argument>
                     <argument>--xjb</argument>
