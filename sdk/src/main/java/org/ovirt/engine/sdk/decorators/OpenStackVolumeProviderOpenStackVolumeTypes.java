@@ -39,27 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>Bookmarks providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.Bookmarks }.
+ * <p>OpenStackVolumeProviderOpenStackVolumeTypes providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.OpenStackVolumeTypes }.
  */
 @SuppressWarnings("unused")
-public class Bookmarks extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.Bookmark,
-                            org.ovirt.engine.sdk.entities.Bookmarks,
-                            Bookmark> {
+public class OpenStackVolumeProviderOpenStackVolumeTypes extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.OpenStackVolumeType,
+                            org.ovirt.engine.sdk.entities.OpenStackVolumeTypes,
+                            OpenStackVolumeProviderOpenStackVolumeType> {
+
+    private OpenStackVolumeProvider parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent OpenStackVolumeProvider
      */
-    public Bookmarks(HttpProxyBroker proxy) {
-        super(proxy, "bookmarks");
+    public OpenStackVolumeProviderOpenStackVolumeTypes(HttpProxyBroker proxy, OpenStackVolumeProvider parent) {
+        super(proxy, "volumetypes");
+        this.parent = parent;
     }
 
     /**
-     * Lists Bookmark objects.
+     * Lists OpenStackVolumeProviderOpenStackVolumeType objects.
      *
      * @return
-     *     List of {@link Bookmark }
+     *     List of {@link OpenStackVolumeProviderOpenStackVolumeType }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -69,16 +73,17 @@ public class Bookmarks extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<Bookmark> list() throws ClientProtocolException,
+    public List<OpenStackVolumeProviderOpenStackVolumeType> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.Bookmarks.class, Bookmark.class);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.OpenStackVolumeTypes.class, OpenStackVolumeProviderOpenStackVolumeType.class);
     }
 
     /**
-     * Fetches Bookmark object by id.
+     * Fetches OpenStackVolumeProviderOpenStackVolumeType object by id.
      *
-     * @return {@link Bookmark }
+     * @return
+     *     {@link OpenStackVolumeProviderOpenStackVolumeType }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -88,16 +93,17 @@ public class Bookmarks extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public Bookmark get(UUID id) throws ClientProtocolException,
+    public OpenStackVolumeProviderOpenStackVolumeType get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Bookmark.class, Bookmark.class);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.OpenStackVolumeType.class, OpenStackVolumeProviderOpenStackVolumeType.class);
     }
 
     /**
-     * Fetches Bookmark object by id.
+     * Fetches OpenStackVolumeProviderOpenStackVolumeType object by id.
      *
-     * @return {@link Bookmark }
+     * @return
+     *     {@link OpenStackVolumeProviderOpenStackVolumeType }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -107,23 +113,22 @@ public class Bookmarks extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public Bookmark getById(String id) throws ClientProtocolException,
+    public OpenStackVolumeProviderOpenStackVolumeType getById(String id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = SLASH + getName() + SLASH + id;
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.Bookmark.class, Bookmark.class);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.OpenStackVolumeType.class, OpenStackVolumeProviderOpenStackVolumeType.class);
     }
 
     /**
-     * Adds Bookmark object.
+     * Lists OpenStackVolumeProviderOpenStackVolumeType objects.
      *
-     * @param bookmark {@link org.ovirt.engine.sdk.entities.Bookmark}
+     * @param max
      *    <pre>
-     *    bookmark.name
-     *    bookmark.value
+     *    [max results]
      *    </pre>
      *
-     * @return
-     *     {@link Bookmark }
+     *
+     * @return List of {@link OpenStackVolumeProviderOpenStackVolumeType }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -132,60 +137,21 @@ public class Bookmarks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Bookmark add(org.ovirt.engine.sdk.entities.Bookmark bookmark) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = SLASH + getName();
+    public List<OpenStackVolumeProviderOpenStackVolumeType> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().add(url, bookmark,
-                org.ovirt.engine.sdk.entities.Bookmark.class,
-                Bookmark.class, headers);
-    }
-    /**
-     * Adds Bookmark object.
-     *
-     * @param bookmark {@link org.ovirt.engine.sdk.entities.Bookmark}
-     *    <pre>
-     *    bookmark.name
-     *    bookmark.value
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Bookmark }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Bookmark add(org.ovirt.engine.sdk.entities.Bookmark bookmark, String correlationId) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
-        List<Header> headers = headersBuilder.build();
 
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
+        String url = urlBuilder.build();
 
-        return getProxy().add(url, bookmark,
-                org.ovirt.engine.sdk.entities.Bookmark.class,
-                Bookmark.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.OpenStackVolumeTypes.class,
+                OpenStackVolumeProviderOpenStackVolumeType.class, headers);
     }
 
 }

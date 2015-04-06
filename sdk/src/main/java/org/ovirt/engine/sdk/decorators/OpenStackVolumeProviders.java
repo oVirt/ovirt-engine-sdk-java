@@ -39,31 +39,27 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>ClusterAffinityGroups providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.AffinityGroups }.
+ * <p>OpenStackVolumeProviders providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProviders }.
  */
 @SuppressWarnings("unused")
-public class ClusterAffinityGroups extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.AffinityGroup,
-                            org.ovirt.engine.sdk.entities.AffinityGroups,
-                            ClusterAffinityGroup> {
-
-    private Cluster parent;
+public class OpenStackVolumeProviders extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.OpenStackVolumeProvider,
+                            org.ovirt.engine.sdk.entities.OpenStackVolumeProviders,
+                            OpenStackVolumeProvider> {
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent Cluster
      */
-    public ClusterAffinityGroups(HttpProxyBroker proxy, Cluster parent) {
-        super(proxy, "affinitygroups");
-        this.parent = parent;
+    public OpenStackVolumeProviders(HttpProxyBroker proxy) {
+        super(proxy, "openstackvolumeproviders");
     }
 
     /**
-     * Lists ClusterAffinityGroup objects.
+     * Lists OpenStackVolumeProvider objects.
      *
      * @return
-     *     List of {@link ClusterAffinityGroup }
+     *     List of {@link OpenStackVolumeProvider }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +69,16 @@ public class ClusterAffinityGroups extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<ClusterAffinityGroup> list() throws ClientProtocolException,
+    public List<OpenStackVolumeProvider> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.AffinityGroups.class, ClusterAffinityGroup.class);
+        String url = SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.OpenStackVolumeProviders.class, OpenStackVolumeProvider.class);
     }
 
     /**
-     * Fetches ClusterAffinityGroup object by id.
+     * Fetches OpenStackVolumeProvider object by id.
      *
-     * @return
-     *     {@link ClusterAffinityGroup }
+     * @return {@link OpenStackVolumeProvider }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,17 +88,16 @@ public class ClusterAffinityGroups extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public ClusterAffinityGroup get(UUID id) throws ClientProtocolException,
+    public OpenStackVolumeProvider get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.AffinityGroup.class, ClusterAffinityGroup.class);
+        String url = SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class, OpenStackVolumeProvider.class);
     }
 
     /**
-     * Fetches ClusterAffinityGroup object by id.
+     * Fetches OpenStackVolumeProvider object by id.
      *
-     * @return
-     *     {@link ClusterAffinityGroup }
+     * @return {@link OpenStackVolumeProvider }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -113,24 +107,30 @@ public class ClusterAffinityGroups extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public ClusterAffinityGroup getById(String id) throws ClientProtocolException,
+    public OpenStackVolumeProvider getById(String id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.AffinityGroup.class, ClusterAffinityGroup.class);
+        String url = SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class, OpenStackVolumeProvider.class);
     }
 
     /**
-     * Adds AffinityGroup object.
+     * Adds OpenStackVolumeProvider object.
      *
-     * @param affinitygroup {@link org.ovirt.engine.sdk.entities.AffinityGroup}
+     * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
      *    <pre>
-     *    affinitygroup.name
-     *    affinitygroup.positive
-     *    affinitygroup.enforcing
+     *    openstack_volume_provider.name
+     *    openstack_volume_provider.data_center.id|name
+     *    [openstack_volume_provider.description]
+     *    [openstack_volume_provider.url]
+     *    [openstack_volume_provider.requires_authentication]
+     *    [openstack_volume_provider.username]
+     *    [openstack_volume_provider.password]
+     *    [openstack_volume_provider.authentication_url]
+     *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
      * @return
-     *     {@link ClusterAffinityGroup }
+     *     {@link OpenStackVolumeProvider }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -139,9 +139,9 @@ public class ClusterAffinityGroups extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public ClusterAffinityGroup add(org.ovirt.engine.sdk.entities.AffinityGroup affinitygroup) throws
+    public OpenStackVolumeProvider add(org.ovirt.engine.sdk.entities.OpenStackVolumeProvider openstackvolumeprovider) throws
             ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
+        String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -149,73 +149,33 @@ public class ClusterAffinityGroups extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().add(url, affinitygroup,
-                org.ovirt.engine.sdk.entities.AffinityGroup.class,
-                ClusterAffinityGroup.class, headers);
+        return getProxy().add(url, openstackvolumeprovider,
+                org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class,
+                OpenStackVolumeProvider.class, headers);
     }
     /**
-     * Adds AffinityGroup object.
+     * Adds OpenStackVolumeProvider object.
      *
-     * @param affinitygroup {@link org.ovirt.engine.sdk.entities.AffinityGroup}
+     * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
      *    <pre>
-     *    affinitygroup.name
-     *    affinitygroup.positive
-     *    affinitygroup.enforcing
+     *    openstack_volume_provider.name
+     *    openstack_volume_provider.data_center.id|name
+     *    [openstack_volume_provider.description]
+     *    [openstack_volume_provider.url]
+     *    [openstack_volume_provider.requires_authentication]
+     *    [openstack_volume_provider.username]
+     *    [openstack_volume_provider.password]
+     *    [openstack_volume_provider.authentication_url]
+     *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
-     *
-     * @return
-     *     {@link ClusterAffinityGroup }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public ClusterAffinityGroup add(org.ovirt.engine.sdk.entities.AffinityGroup affinitygroup, String expect) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().add(url, affinitygroup,
-                org.ovirt.engine.sdk.entities.AffinityGroup.class,
-                ClusterAffinityGroup.class, headers);
-    }
-    /**
-     * Adds AffinityGroup object.
-     *
-     * @param affinitygroup {@link org.ovirt.engine.sdk.entities.AffinityGroup}
-     *    <pre>
-     *    affinitygroup.name
-     *    affinitygroup.positive
-     *    affinitygroup.enforcing
-     *    </pre>
-     *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
      *
      * @return
-     *     {@link ClusterAffinityGroup }
+     *     {@link OpenStackVolumeProvider }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -224,14 +184,11 @@ public class ClusterAffinityGroups extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public ClusterAffinityGroup add(org.ovirt.engine.sdk.entities.AffinityGroup affinitygroup, String expect, String correlationId) throws
+    public OpenStackVolumeProvider add(org.ovirt.engine.sdk.entities.OpenStackVolumeProvider openstackvolumeprovider, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
+        String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
         }
@@ -240,20 +197,37 @@ public class ClusterAffinityGroups extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().add(url, affinitygroup,
-                org.ovirt.engine.sdk.entities.AffinityGroup.class,
-                ClusterAffinityGroup.class, headers);
+        return getProxy().add(url, openstackvolumeprovider,
+                org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class,
+                OpenStackVolumeProvider.class, headers);
     }
     /**
-     * Lists ClusterAffinityGroup objects.
+     * Adds OpenStackVolumeProvider object.
      *
-     * @param max
+     * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
      *    <pre>
-     *    [max results]
+     *    openstack_volume_provider.name
+     *    openstack_volume_provider.data_center.id|name
+     *    [openstack_volume_provider.description]
+     *    [openstack_volume_provider.url]
+     *    [openstack_volume_provider.requires_authentication]
+     *    [openstack_volume_provider.username]
+     *    [openstack_volume_provider.password]
+     *    [openstack_volume_provider.authentication_url]
+     *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      *
-     * @return List of {@link ClusterAffinityGroup }
+     * @return
+     *     {@link OpenStackVolumeProvider }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -262,21 +236,59 @@ public class ClusterAffinityGroups extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<ClusterAffinityGroup> list(Integer max) throws ClientProtocolException,
+    public OpenStackVolumeProvider add(org.ovirt.engine.sdk.entities.OpenStackVolumeProvider openstackvolumeprovider, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, openstackvolumeprovider,
+                org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class,
+                OpenStackVolumeProvider.class, headers);
+    }
+    /**
+     * Lists OpenStackVolumeProvider objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link OpenStackVolumeProvider }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<OpenStackVolumeProvider> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
 
         String url = urlBuilder.build();
 
-        return list(url, org.ovirt.engine.sdk.entities.AffinityGroups.class,
-                ClusterAffinityGroup.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.OpenStackVolumeProviders.class,
+                OpenStackVolumeProvider.class, headers);
     }
 
 }

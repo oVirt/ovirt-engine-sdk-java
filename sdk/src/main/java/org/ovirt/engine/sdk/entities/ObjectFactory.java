@@ -60,6 +60,7 @@ public class ObjectFactory {
     private final static QName _Quota_QNAME = new QName("", "quota");
     private final static QName _SchedulingPolicyUnit_QNAME = new QName("", "scheduling_policy_unit");
     private final static QName _ServerHooks_QNAME = new QName("", "server_hooks");
+    private final static QName _OpenstackVolumeType_QNAME = new QName("", "openstack_volume_type");
     private final static QName _Api_QNAME = new QName("", "api");
     private final static QName _VolumeGroup_QNAME = new QName("", "volume_group");
     private final static QName _Events_QNAME = new QName("", "events");
@@ -111,6 +112,7 @@ public class ObjectFactory {
     private final static QName _CreationStates_QNAME = new QName("", "creation_states");
     private final static QName _ExternalHosts_QNAME = new QName("", "external_hosts");
     private final static QName _ErrorHandling_QNAME = new QName("", "error_handling");
+    private final static QName _OpenstackVolumeProviders_QNAME = new QName("", "openstack_volume_providers");
     private final static QName _Cdrom_QNAME = new QName("", "cdrom");
     private final static QName _VolumeProfileDetails_QNAME = new QName("", "volume_profile_details");
     private final static QName _DiskProfiles_QNAME = new QName("", "disk_profiles");
@@ -131,6 +133,7 @@ public class ObjectFactory {
     private final static QName _NumaNodePins_QNAME = new QName("", "numa_node_pins");
     private final static QName _ExternalHostGroup_QNAME = new QName("", "external_host_group");
     private final static QName _Bookmarks_QNAME = new QName("", "bookmarks");
+    private final static QName _OpenstackVolumeTypes_QNAME = new QName("", "openstack_volume_types");
     private final static QName _Features_QNAME = new QName("", "features");
     private final static QName _ProfileDetail_QNAME = new QName("", "profile_detail");
     private final static QName _Payload_QNAME = new QName("", "payload");
@@ -155,6 +158,7 @@ public class ObjectFactory {
     private final static QName _Vm_QNAME = new QName("", "vm");
     private final static QName _OpenstackNetworkProviders_QNAME = new QName("", "openstack_network_providers");
     private final static QName _Rsdl_QNAME = new QName("", "rsdl");
+    private final static QName _OpenstackVolumeProvider_QNAME = new QName("", "openstack_volume_provider");
     private final static QName _BlockStatistic_QNAME = new QName("", "block_statistic");
     private final static QName _Vmpool_QNAME = new QName("", "vmpool");
     private final static QName _Ranges_QNAME = new QName("", "ranges");
@@ -504,6 +508,14 @@ public class ObjectFactory {
      */
     public GlusterServerHooks createGlusterServerHooks() {
         return new GlusterServerHooks();
+    }
+
+    /**
+     * Create an instance of {@link OpenStackVolumeType }
+     *
+     */
+    public OpenStackVolumeType createOpenStackVolumeType() {
+        return new OpenStackVolumeType();
     }
 
     /**
@@ -915,6 +927,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OpenStackVolumeProviders }
+     *
+     */
+    public OpenStackVolumeProviders createOpenStackVolumeProviders() {
+        return new OpenStackVolumeProviders();
+    }
+
+    /**
      * Create an instance of {@link CdRom }
      *
      */
@@ -1064,6 +1084,14 @@ public class ObjectFactory {
      */
     public Bookmarks createBookmarks() {
         return new Bookmarks();
+    }
+
+    /**
+     * Create an instance of {@link OpenStackVolumeTypes }
+     *
+     */
+    public OpenStackVolumeTypes createOpenStackVolumeTypes() {
+        return new OpenStackVolumeTypes();
     }
 
     /**
@@ -1256,6 +1284,14 @@ public class ObjectFactory {
      */
     public RSDL createRSDL() {
         return new RSDL();
+    }
+
+    /**
+     * Create an instance of {@link OpenStackVolumeProvider }
+     *
+     */
+    public OpenStackVolumeProvider createOpenStackVolumeProvider() {
+        return new OpenStackVolumeProvider();
     }
 
     /**
@@ -3284,6 +3320,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackVolumeType }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_volume_type")
+    public JAXBElement<OpenStackVolumeType> createOpenstackVolumeType(OpenStackVolumeType value) {
+        return new JAXBElement<OpenStackVolumeType>(_OpenstackVolumeType_QNAME, OpenStackVolumeType.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link API }{@code >}}
      *
      */
@@ -3743,6 +3788,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackVolumeProviders }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_volume_providers")
+    public JAXBElement<OpenStackVolumeProviders> createOpenstackVolumeProviders(OpenStackVolumeProviders value) {
+        return new JAXBElement<OpenStackVolumeProviders>(_OpenstackVolumeProviders_QNAME, OpenStackVolumeProviders.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CdRom }{@code >}}
      *
      */
@@ -3920,6 +3974,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "bookmarks")
     public JAXBElement<Bookmarks> createBookmarks(Bookmarks value) {
         return new JAXBElement<Bookmarks>(_Bookmarks_QNAME, Bookmarks.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackVolumeTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_volume_types")
+    public JAXBElement<OpenStackVolumeTypes> createOpenstackVolumeTypes(OpenStackVolumeTypes value) {
+        return new JAXBElement<OpenStackVolumeTypes>(_OpenstackVolumeTypes_QNAME, OpenStackVolumeTypes.class, null, value);
     }
 
     /**
@@ -4136,6 +4199,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "rsdl")
     public JAXBElement<RSDL> createRsdl(RSDL value) {
         return new JAXBElement<RSDL>(_Rsdl_QNAME, RSDL.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackVolumeProvider }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_volume_provider")
+    public JAXBElement<OpenStackVolumeProvider> createOpenstackVolumeProvider(OpenStackVolumeProvider value) {
+        return new JAXBElement<OpenStackVolumeProvider>(_OpenstackVolumeProvider_QNAME, OpenStackVolumeProvider.class, null, value);
     }
 
     /**

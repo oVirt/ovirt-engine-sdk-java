@@ -147,5 +147,41 @@ public class DataCenterIscsiBondNetworks extends
                 org.ovirt.engine.sdk.entities.Network.class,
                 DataCenterIscsiBondNetwork.class, headers);
     }
+    /**
+     * Adds Network object.
+     *
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenterIscsiBondNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterIscsiBondNetwork add(org.ovirt.engine.sdk.entities.Network network, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                DataCenterIscsiBondNetwork.class, headers);
+    }
 
 }

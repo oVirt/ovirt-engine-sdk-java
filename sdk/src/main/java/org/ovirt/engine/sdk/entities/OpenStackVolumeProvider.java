@@ -23,21 +23,20 @@ package org.ovirt.engine.sdk.entities;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for OpenStackProvider complex type.
+ * <p>Java class for OpenStackVolumeProvider complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="OpenStackProvider">
+ * &lt;complexType name="OpenStackVolumeProvider">
  *   &lt;complexContent>
- *     &lt;extension base="{}ExternalProvider">
+ *     &lt;extension base="{}OpenStackProvider">
  *       &lt;sequence>
- *         &lt;element name="tenant_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element ref="{}data_center" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -47,47 +46,42 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "OpenStackProvider", propOrder = {
-    "tenantName"
+@XmlType(name = "OpenStackVolumeProvider", propOrder = {
+    "dataCenter"
 })
-@XmlSeeAlso({
-    OpenStackImageProvider.class,
-    OpenStackVolumeProvider.class,
-    OpenStackNetworkProvider.class
-})
-public class OpenStackProvider
-    extends ExternalProvider
+public class OpenStackVolumeProvider
+    extends OpenStackProvider
 {
 
-    @XmlElement(name = "tenant_name", required = true)
-    protected String tenantName;
+    @XmlElement(name = "data_center")
+    protected DataCenter dataCenter;
 
     /**
-     * Gets the value of the tenantName property.
+     * Gets the value of the dataCenter property.
      *
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link DataCenter }
      *
      */
-    public String getTenantName() {
-        return tenantName;
+    public DataCenter getDataCenter() {
+        return dataCenter;
     }
 
     /**
-     * Sets the value of the tenantName property.
+     * Sets the value of the dataCenter property.
      *
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link DataCenter }
      *
      */
-    public void setTenantName(String value) {
-        this.tenantName = value;
+    public void setDataCenter(DataCenter value) {
+        this.dataCenter = value;
     }
 
-    public boolean isSetTenantName() {
-        return (this.tenantName!= null);
+    public boolean isSetDataCenter() {
+        return (this.dataCenter!= null);
     }
 
 }

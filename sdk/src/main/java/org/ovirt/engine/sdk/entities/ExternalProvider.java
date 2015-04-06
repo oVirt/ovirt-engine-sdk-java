@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="requires_authentication" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="authentication_url" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}properties" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -56,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
     "requiresAuthentication",
     "username",
     "password",
+    "authenticationUrl",
     "properties"
 })
 @XmlSeeAlso({
@@ -71,6 +73,8 @@ public class ExternalProvider
     protected Boolean requiresAuthentication;
     protected String username;
     protected String password;
+    @XmlElement(name = "authentication_url")
+    protected String authenticationUrl;
     protected Properties properties;
 
     /**
@@ -183,6 +187,34 @@ public class ExternalProvider
 
     public boolean isSetPassword() {
         return (this.password!= null);
+    }
+
+    /**
+     * Gets the value of the authenticationUrl property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getAuthenticationUrl() {
+        return authenticationUrl;
+    }
+
+    /**
+     * Sets the value of the authenticationUrl property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setAuthenticationUrl(String value) {
+        this.authenticationUrl = value;
+    }
+
+    public boolean isSetAuthenticationUrl() {
+        return (this.authenticationUrl!= null);
     }
 
     /**

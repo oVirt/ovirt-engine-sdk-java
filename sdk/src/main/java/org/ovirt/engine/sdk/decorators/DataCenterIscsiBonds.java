@@ -191,5 +191,52 @@ public class DataCenterIscsiBonds extends
                 org.ovirt.engine.sdk.entities.IscsiBond.class,
                 DataCenterIscsiBond.class, headers);
     }
+    /**
+     * Adds IscsiBond object.
+     *
+     * @param iscsibond {@link org.ovirt.engine.sdk.entities.IscsiBond}
+     *    <pre>
+     *    iscsibond.name
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenterIscsiBond }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterIscsiBond add(org.ovirt.engine.sdk.entities.IscsiBond iscsibond, String expect, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, iscsibond,
+                org.ovirt.engine.sdk.entities.IscsiBond.class,
+                DataCenterIscsiBond.class, headers);
+    }
 
 }

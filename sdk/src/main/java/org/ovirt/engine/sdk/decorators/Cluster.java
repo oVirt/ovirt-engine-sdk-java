@@ -299,6 +299,8 @@ public class Cluster extends
      *    [cluster.fencing_policy.skip_if_sd_active.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
+     *    [cluster.maintenance_reason_required]
+     *    [cluster.management_network.id|name]
      *    </pre>
      *
      * @return
@@ -361,6 +363,8 @@ public class Cluster extends
      *    [cluster.fencing_policy.skip_if_sd_active.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
+     *    [cluster.maintenance_reason_required]
+     *    [cluster.management_network.id|name]
      *    </pre>
      *
      * @param correlationId

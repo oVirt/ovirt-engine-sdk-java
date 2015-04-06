@@ -485,6 +485,7 @@ public class Host extends
      *    <pre>
      *    [action.async]
      *    [action.grace_period.expiry]
+     *    [action.reason]
      *    </pre>
      *
      * @return
@@ -516,6 +517,7 @@ public class Host extends
      *    <pre>
      *    [action.async]
      *    [action.grace_period.expiry]
+     *    [action.reason]
      *    </pre>
      *
      * @param correlationId
@@ -1230,8 +1232,8 @@ public class Host extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    action.iscsi.address
-     *    action.target
+     *    [action.iscsi.address]
+     *    [action.iscsi_target]
      *    </pre>
      *
      * @return
@@ -1261,8 +1263,8 @@ public class Host extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    action.iscsi.address
-     *    action.target
+     *    [action.iscsi.address]
+     *    [action.iscsi_target]
      *    </pre>
      *
      * @param correlationId

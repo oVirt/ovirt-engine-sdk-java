@@ -90,6 +90,7 @@ import javax.xml.bind.annotation.XmlType;
     "maintenanceEnabled",
     "storageDomains",
     "disk",
+    "reason",
     "status",
     "fault",
     "iscsiTargets",
@@ -150,6 +151,7 @@ public class Action
     @XmlElement(name = "storage_domains")
     protected StorageDomains storageDomains;
     protected Disk disk;
+    protected String reason;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -1191,6 +1193,34 @@ public class Action
 
     public boolean isSetDisk() {
         return (this.disk!= null);
+    }
+
+    /**
+     * Gets the value of the reason property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getReason() {
+        return reason;
+    }
+
+    /**
+     * Sets the value of the reason property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setReason(String value) {
+        this.reason = value;
+    }
+
+    public boolean isSetReason() {
+        return (this.reason!= null);
     }
 
     /**

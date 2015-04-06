@@ -131,6 +131,7 @@ public class HostAgents extends
      *    agent.password
      *    [agent.port]
      *    [agent.options]
+     *    [encrypt_options]
      *    </pre>
      *
      * @return
@@ -169,6 +170,7 @@ public class HostAgents extends
      *    agent.password
      *    [agent.port]
      *    [agent.options]
+     *    [encrypt_options]
      *    </pre>
      *
      * @param expect
@@ -215,6 +217,7 @@ public class HostAgents extends
      *    agent.password
      *    [agent.port]
      *    [agent.options]
+     *    [encrypt_options]
      *    </pre>
      *
      * @param expect

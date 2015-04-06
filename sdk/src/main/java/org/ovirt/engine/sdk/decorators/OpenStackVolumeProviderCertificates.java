@@ -22,52 +22,48 @@ package org.ovirt.engine.sdk.decorators;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
-import org.ovirt.engine.sdk.entities.Action;
-import org.ovirt.engine.sdk.entities.Response;
+import org.ovirt.engine.sdk.common.CollectionDecorator;
 import org.ovirt.engine.sdk.exceptions.ServerException;
+import org.ovirt.engine.sdk.utils.CollectionUtils;
 import org.ovirt.engine.sdk.utils.HttpHeaderBuilder;
 import org.ovirt.engine.sdk.utils.HttpHeaderUtils;
 import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlBuilder;
+import org.ovirt.engine.sdk.utils.UrlHelper;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
+import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>StorageDomainStorageConnection providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.StorageConnection }.
+ * <p>OpenStackVolumeProviderCertificates providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Certificates }.
  */
 @SuppressWarnings("unused")
-public class StorageDomainStorageConnection extends
-        org.ovirt.engine.sdk.entities.StorageConnection {
+public class OpenStackVolumeProviderCertificates extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Certificate,
+                            org.ovirt.engine.sdk.entities.Certificates,
+                            OpenStackVolumeProviderCertificate> {
 
-    private HttpProxyBroker proxy;
-    private final Object LOCK = new Object();
-
-
+    private OpenStackVolumeProvider parent;
 
     /**
      * @param proxy HttpProxyBroker
+     * @param parent OpenStackVolumeProvider
      */
-    public StorageDomainStorageConnection(HttpProxyBroker proxy) {
-        this.proxy = proxy;
+    public OpenStackVolumeProviderCertificates(HttpProxyBroker proxy, OpenStackVolumeProvider parent) {
+        super(proxy, "certificates");
+        this.parent = parent;
     }
 
     /**
-     * @return HttpProxyBroker
-     */
-    private HttpProxyBroker getProxy() {
-        return proxy;
-    }
-
-
-
-    /**
-     * Deletes object.
+     * Lists OpenStackVolumeProviderCertificate objects.
      *
      * @return
-     *     {@link Response }
+     *     List of {@link OpenStackVolumeProviderCertificate }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -76,28 +72,18 @@ public class StorageDomainStorageConnection extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete() throws ClientProtocolException,
+    @Override
+    public List<OpenStackVolumeProviderCertificate> list() throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
+        String url = this.parent.getHref() + SLASH + getName();
+        return list(url, org.ovirt.engine.sdk.entities.Certificates.class, OpenStackVolumeProviderCertificate.class);
     }
+
     /**
-     * Deletes object.
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
+     * Fetches OpenStackVolumeProviderCertificate object by id.
      *
      * @return
-     *     {@link Response }
+     *     {@link OpenStackVolumeProviderCertificate }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -106,37 +92,18 @@ public class StorageDomainStorageConnection extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(Boolean async) throws ClientProtocolException,
+    @Override
+    public OpenStackVolumeProviderCertificate get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Certificate.class, OpenStackVolumeProviderCertificate.class);
     }
+
     /**
-     * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
+     * Fetches OpenStackVolumeProviderCertificate object by id.
      *
      * @return
-     *     {@link Response }
+     *     {@link OpenStackVolumeProviderCertificate }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -145,24 +112,12 @@ public class StorageDomainStorageConnection extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+    @Override
+    public OpenStackVolumeProviderCertificate getById(String id) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
-        url = urlBuilder.build();
-
-        return getProxy().delete(url, Response.class, headers);
+        String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Certificate.class, OpenStackVolumeProviderCertificate.class);
     }
+
 
 }

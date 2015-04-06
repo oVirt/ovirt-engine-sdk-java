@@ -70,6 +70,7 @@ import javax.xml.bind.annotation.XmlType;
     QoS.class,
     Quota.class,
     SchedulingPolicyUnit.class,
+    OpenStackVolumeType.class,
     API.class,
     ExternalHost.class,
     DataCenter.class,

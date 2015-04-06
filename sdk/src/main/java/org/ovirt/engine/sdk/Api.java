@@ -66,6 +66,7 @@ public class Api implements AutoCloseable {
     private volatile Networks networks;
     private volatile OpenStackImageProviders openStackImageProviders;
     private volatile OpenStackNetworkProviders openStackNetworkProviders;
+    private volatile OpenStackVolumeProviders openStackVolumeProviders;
     private volatile OperatingSystemInfos operatingSystemInfos;
     private volatile Permissions permissions;
     private volatile Roles roles;
@@ -1063,6 +1064,23 @@ public class Api implements AutoCloseable {
             }
         }
         return openStackNetworkProviders;
+    }
+    /**
+     * Gets the value of the OpenStackVolumeProviders property.
+     *
+     * @return
+     *     {@link OpenStackVolumeProviders }
+     *
+     */
+    public OpenStackVolumeProviders getOpenStackVolumeProviders() {
+        if (this.openStackVolumeProviders == null) {
+            synchronized (this.LOCK) {
+                if (this.openStackVolumeProviders == null) {
+                    this.openStackVolumeProviders = new OpenStackVolumeProviders(proxy);
+                }
+            }
+        }
+        return openStackVolumeProviders;
     }
     /**
      * Gets the value of the OperatingSystemInfos property.

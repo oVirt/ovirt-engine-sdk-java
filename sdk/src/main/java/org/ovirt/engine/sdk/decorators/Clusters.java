@@ -149,6 +149,7 @@ public class Clusters extends
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    [cluster.management_network.id|name]
+     *    [cluster.maintenance_reason_required]
      *    </pre>
      *
      * @return
@@ -211,6 +212,7 @@ public class Clusters extends
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    [cluster.management_network.id|name]
+     *    [cluster.maintenance_reason_required]
      *    </pre>
      *
      * @param expect
@@ -281,6 +283,7 @@ public class Clusters extends
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    [cluster.management_network.id|name]
+     *    [cluster.maintenance_reason_required]
      *    </pre>
      *
      * @param expect

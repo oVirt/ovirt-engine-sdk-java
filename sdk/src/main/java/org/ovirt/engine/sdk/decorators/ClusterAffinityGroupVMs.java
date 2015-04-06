@@ -192,6 +192,53 @@ public class ClusterAffinityGroupVMs extends
                 ClusterAffinityGroupVM.class, headers);
     }
     /**
+     * Adds VM object.
+     *
+     * @param vm {@link org.ovirt.engine.sdk.entities.VM}
+     *    <pre>
+     *    vm.id|name
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @return
+     *     {@link ClusterAffinityGroupVM }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterAffinityGroupVM add(org.ovirt.engine.sdk.entities.VM vm, String expect, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, vm,
+                org.ovirt.engine.sdk.entities.VM.class,
+                ClusterAffinityGroupVM.class, headers);
+    }
+    /**
      * Lists ClusterAffinityGroupVM objects.
      *
      * @param max

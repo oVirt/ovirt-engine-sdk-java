@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="trusted_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="ha_reservation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="optional_reason" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="maintenance_reason_required" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="ballooning_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}display" minOccurs="0"/>
  *         &lt;element ref="{}ksm" minOccurs="0"/>
@@ -82,6 +83,7 @@ import javax.xml.bind.annotation.XmlType;
     "trustedService",
     "haReservation",
     "optionalReason",
+    "maintenanceReasonRequired",
     "ballooningEnabled",
     "display",
     "ksm",
@@ -121,6 +123,8 @@ public class Cluster
     protected Boolean haReservation;
     @XmlElement(name = "optional_reason")
     protected Boolean optionalReason;
+    @XmlElement(name = "maintenance_reason_required")
+    protected Boolean maintenanceReasonRequired;
     @XmlElement(name = "ballooning_enabled")
     protected Boolean ballooningEnabled;
     protected Display display;
@@ -525,6 +529,34 @@ public class Cluster
 
     public boolean isSetOptionalReason() {
         return (this.optionalReason!= null);
+    }
+
+    /**
+     * Gets the value of the maintenanceReasonRequired property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getMaintenanceReasonRequired() {
+        return maintenanceReasonRequired;
+    }
+
+    /**
+     * Sets the value of the maintenanceReasonRequired property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setMaintenanceReasonRequired(Boolean value) {
+        this.maintenanceReasonRequired = value;
+    }
+
+    public boolean isSetMaintenanceReasonRequired() {
+        return (this.maintenanceReasonRequired!= null);
     }
 
     /**

@@ -35,27 +35,24 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>ExternalHostProvider providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.ExternalHostProvider }.
+ * <p>OpenStackVolumeProvider providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider }.
  */
 @SuppressWarnings("unused")
-public class ExternalHostProvider extends
-        org.ovirt.engine.sdk.entities.ExternalHostProvider {
+public class OpenStackVolumeProvider extends
+        org.ovirt.engine.sdk.entities.OpenStackVolumeProvider {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile ExternalHostProviderCertificates externalHostProviderCertificates;
-    private volatile ExternalHostProviderExternalComputeResources externalHostProviderExternalComputeResources;
-    private volatile ExternalHostProviderExternalDiscoveredHosts externalHostProviderExternalDiscoveredHosts;
-    private volatile ExternalHostProviderExternalHostGroups externalHostProviderExternalHostGroups;
-    private volatile ExternalHostProviderExternalHosts externalHostProviderExternalHosts;
+    private volatile OpenStackVolumeProviderCertificates openStackVolumeProviderCertificates;
+    private volatile OpenStackVolumeProviderOpenStackVolumeTypes openStackVolumeProviderOpenStackVolumeTypes;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public ExternalHostProvider(HttpProxyBroker proxy) {
+    public OpenStackVolumeProvider(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -67,84 +64,36 @@ public class ExternalHostProvider extends
     }
 
     /**
-     * Gets the value of the ExternalHostProviderCertificates property.
+     * Gets the value of the OpenStackVolumeProviderCertificates property.
      *
      * @return
-     *     {@link ExternalHostProviderCertificates }
+     *     {@link OpenStackVolumeProviderCertificates }
      */
-    public ExternalHostProviderCertificates getCertificates() {
-        if (this.externalHostProviderCertificates == null) {
+    public OpenStackVolumeProviderCertificates getCertificates() {
+        if (this.openStackVolumeProviderCertificates == null) {
             synchronized (this.LOCK) {
-                if (this.externalHostProviderCertificates == null) {
-                    this.externalHostProviderCertificates = new ExternalHostProviderCertificates(proxy, this);
+                if (this.openStackVolumeProviderCertificates == null) {
+                    this.openStackVolumeProviderCertificates = new OpenStackVolumeProviderCertificates(proxy, this);
                 }
             }
         }
-        return externalHostProviderCertificates;
+        return openStackVolumeProviderCertificates;
     }
     /**
-     * Gets the value of the ExternalHostProviderExternalComputeResources property.
+     * Gets the value of the OpenStackVolumeProviderOpenStackVolumeTypes property.
      *
      * @return
-     *     {@link ExternalHostProviderExternalComputeResources }
+     *     {@link OpenStackVolumeProviderOpenStackVolumeTypes }
      */
-    public ExternalHostProviderExternalComputeResources getExternalComputeResources() {
-        if (this.externalHostProviderExternalComputeResources == null) {
+    public OpenStackVolumeProviderOpenStackVolumeTypes getOpenStackVolumeTypes() {
+        if (this.openStackVolumeProviderOpenStackVolumeTypes == null) {
             synchronized (this.LOCK) {
-                if (this.externalHostProviderExternalComputeResources == null) {
-                    this.externalHostProviderExternalComputeResources = new ExternalHostProviderExternalComputeResources(proxy, this);
+                if (this.openStackVolumeProviderOpenStackVolumeTypes == null) {
+                    this.openStackVolumeProviderOpenStackVolumeTypes = new OpenStackVolumeProviderOpenStackVolumeTypes(proxy, this);
                 }
             }
         }
-        return externalHostProviderExternalComputeResources;
-    }
-    /**
-     * Gets the value of the ExternalHostProviderExternalDiscoveredHosts property.
-     *
-     * @return
-     *     {@link ExternalHostProviderExternalDiscoveredHosts }
-     */
-    public ExternalHostProviderExternalDiscoveredHosts getExternalDiscoveredHosts() {
-        if (this.externalHostProviderExternalDiscoveredHosts == null) {
-            synchronized (this.LOCK) {
-                if (this.externalHostProviderExternalDiscoveredHosts == null) {
-                    this.externalHostProviderExternalDiscoveredHosts = new ExternalHostProviderExternalDiscoveredHosts(proxy, this);
-                }
-            }
-        }
-        return externalHostProviderExternalDiscoveredHosts;
-    }
-    /**
-     * Gets the value of the ExternalHostProviderExternalHostGroups property.
-     *
-     * @return
-     *     {@link ExternalHostProviderExternalHostGroups }
-     */
-    public ExternalHostProviderExternalHostGroups getExternalHostGroups() {
-        if (this.externalHostProviderExternalHostGroups == null) {
-            synchronized (this.LOCK) {
-                if (this.externalHostProviderExternalHostGroups == null) {
-                    this.externalHostProviderExternalHostGroups = new ExternalHostProviderExternalHostGroups(proxy, this);
-                }
-            }
-        }
-        return externalHostProviderExternalHostGroups;
-    }
-    /**
-     * Gets the value of the ExternalHostProviderExternalHosts property.
-     *
-     * @return
-     *     {@link ExternalHostProviderExternalHosts }
-     */
-    public ExternalHostProviderExternalHosts getExternalHosts() {
-        if (this.externalHostProviderExternalHosts == null) {
-            synchronized (this.LOCK) {
-                if (this.externalHostProviderExternalHosts == null) {
-                    this.externalHostProviderExternalHosts = new ExternalHostProviderExternalHosts(proxy, this);
-                }
-            }
-        }
-        return externalHostProviderExternalHosts;
+        return openStackVolumeProviderOpenStackVolumeTypes;
     }
 
 
@@ -253,9 +202,6 @@ public class ExternalHostProvider extends
      * Performs importcertificates action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -279,49 +225,9 @@ public class ExternalHostProvider extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs importcertificates action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action importcertificates(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/importcertificates";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
      * Performs testconnectivity action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -345,19 +251,22 @@ public class ExternalHostProvider extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs testconnectivity action.
+     * Updates OpenStackVolumeProvider object.
      *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
      *    <pre>
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
+     *    [openstack_volume_provider.name]
+     *    [openstack_volume_provider.description]
+     *    [openstack_volume_provider.data_center.id|name]
+     *    [openstack_volume_provider.requires_authentication]
+     *    [openstack_volume_provider.username]
+     *    [openstack_volume_provider.password]
+     *    [openstack_volume_provider.authentication_url]
+     *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
      * @return
-     *     {@link Action }
+     *     {@link OpenStackVolumeProvider }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -366,45 +275,7 @@ public class ExternalHostProvider extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action testconnectivity(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/testconnectivity";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Updates ExternalHostProvider object.
-     *
-     * @param externalhostprovider {@link org.ovirt.engine.sdk.entities.ExternalHostProvider}
-     *    <pre>
-     *    [external_host_provider.name]
-     *    [external_host_provider.description]
-     *    [external_host_provider.requires_authentication]
-     *    [external_host_provider.username]
-     *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
-     *    </pre>
-     *
-     * @return
-     *     {@link ExternalHostProvider }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public ExternalHostProvider update() throws ClientProtocolException,
+    public OpenStackVolumeProvider update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -417,21 +288,23 @@ public class ExternalHostProvider extends
         return getProxy().update(
                 url,
                 this,
-                org.ovirt.engine.sdk.entities.ExternalHostProvider.class,
-                ExternalHostProvider.class,
+                org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class,
+                OpenStackVolumeProvider.class,
                 headers);
     }
     /**
-     * Updates ExternalHostProvider object.
+     * Updates OpenStackVolumeProvider object.
      *
-     * @param externalhostprovider {@link org.ovirt.engine.sdk.entities.ExternalHostProvider}
+     * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
      *    <pre>
-     *    [external_host_provider.name]
-     *    [external_host_provider.description]
-     *    [external_host_provider.requires_authentication]
-     *    [external_host_provider.username]
-     *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
+     *    [openstack_volume_provider.name]
+     *    [openstack_volume_provider.description]
+     *    [openstack_volume_provider.data_center.id|name]
+     *    [openstack_volume_provider.requires_authentication]
+     *    [openstack_volume_provider.username]
+     *    [openstack_volume_provider.password]
+     *    [openstack_volume_provider.authentication_url]
+     *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
      * @param correlationId
@@ -440,7 +313,7 @@ public class ExternalHostProvider extends
      *    </pre>
      *
      * @return
-     *     {@link ExternalHostProvider }
+     *     {@link OpenStackVolumeProvider }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -449,7 +322,7 @@ public class ExternalHostProvider extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public ExternalHostProvider update(String correlationId) throws ClientProtocolException,
+    public OpenStackVolumeProvider update(String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -465,8 +338,8 @@ public class ExternalHostProvider extends
         return getProxy().update(
                 url,
                 this,
-                org.ovirt.engine.sdk.entities.ExternalHostProvider.class,
-                ExternalHostProvider.class,
+                org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class,
+                OpenStackVolumeProvider.class,
                 headers);
     }
 

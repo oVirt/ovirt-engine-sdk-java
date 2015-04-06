@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="size" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}cluster" minOccurs="0"/>
  *         &lt;element ref="{}template" minOccurs="0"/>
+ *         &lt;element ref="{}vm" minOccurs="0"/>
  *         &lt;element name="prestarted_vms" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="max_user_vms" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element ref="{}display" minOccurs="0"/>
@@ -57,6 +58,7 @@ import javax.xml.bind.annotation.XmlType;
     "size",
     "cluster",
     "template",
+    "vm",
     "prestartedVms",
     "maxUserVms",
     "display",
@@ -70,6 +72,7 @@ public class VmPool
     protected Integer size;
     protected Cluster cluster;
     protected Template template;
+    protected VM vm;
     @XmlElement(name = "prestarted_vms")
     protected Integer prestartedVms;
     @XmlElement(name = "max_user_vms")
@@ -162,6 +165,34 @@ public class VmPool
 
     public boolean isSetTemplate() {
         return (this.template!= null);
+    }
+
+    /**
+     * Gets the value of the vm property.
+     *
+     * @return
+     *     possible object is
+     *     {@link VM }
+     *
+     */
+    public VM getVm() {
+        return vm;
+    }
+
+    /**
+     * Sets the value of the vm property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VM }
+     *
+     */
+    public void setVm(VM value) {
+        this.vm = value;
+    }
+
+    public boolean isSetVm() {
+        return (this.vm!= null);
     }
 
     /**

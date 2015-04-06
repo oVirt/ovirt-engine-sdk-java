@@ -23,6 +23,7 @@ package org.ovirt.engine.sdk.entities;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -40,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}options" minOccurs="0"/>
+ *         &lt;element name="encrypt_options" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="concurrent" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="order" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="port" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -59,6 +61,7 @@ import javax.xml.bind.annotation.XmlType;
     "username",
     "password",
     "options",
+    "encryptOptions",
     "concurrent",
     "order",
     "port",
@@ -72,6 +75,8 @@ public class Agent
     protected String username;
     protected String password;
     protected Options options;
+    @XmlElement(name = "encrypt_options")
+    protected Boolean encryptOptions;
     protected Boolean concurrent;
     protected Integer order;
     protected Integer port;
@@ -189,6 +194,34 @@ public class Agent
 
     public boolean isSetOptions() {
         return (this.options!= null);
+    }
+
+    /**
+     * Gets the value of the encryptOptions property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getEncryptOptions() {
+        return encryptOptions;
+    }
+
+    /**
+     * Sets the value of the encryptOptions property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setEncryptOptions(Boolean value) {
+        this.encryptOptions = value;
+    }
+
+    public boolean isSetEncryptOptions() {
+        return (this.encryptOptions!= null);
     }
 
     /**
