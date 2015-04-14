@@ -5,7 +5,7 @@ PROJ_DIR=sdk
 
 .PHONY: dist
 dist:
-	env rpmsuffix=$(GIT_RELEASE) $(MAKE) -C $(PROJ_DIR) dist; mv $(PROJ_DIR)/*.gz .
+	env rpmsuffix=$(GIT_RELEASE) $(MAKE) -C $(PROJ_DIR) tarball; mv $(PROJ_DIR)/*.gz .
 
 clean:
 	$(MAKE) -C $(PROJ_DIR) clean; rm *gz

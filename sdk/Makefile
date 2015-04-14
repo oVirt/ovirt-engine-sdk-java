@@ -13,32 +13,33 @@ SPEC=$(NAME).spec
 TARBALL=$(NAME)-$(pomversion).tar.gz
 SRPM=$(RPMTOP)/SRPMS/$(NAME)-$(rpmversion)-$(rpmrelease).src.rpm
 
-$(SPEC): spec$(rpmdist).in
+.PHONY:
+spec: spec$(rpmdist).in
 	sed \
 		-e 's/@POM_VERSION@/$(pomversion)/g' \
 		-e 's/@RPM_VERSION@/$(rpmversion)/g' \
 		-e 's/@RPM_RELEASE@/$(rpmrelease)/g' \
 		-e 's/@TARBALL@/$(TARBALL)/g' \
 		< $< \
-		> $@
+		> $(SPEC)
 
-.PHONY: dist tarball
-tarball: dist
-dist: $(TARBALL)
-$(TARBALL): Makefile $(NAME).spec #$(TESTS)
-	git ls-files | tar --transform='s#^#$(NAME)/#' --files-from /proc/self/fd/0 -czf $(TARBALL) $(NAME).spec
+.PHONY: tarball
+tarball: spec
+	git ls-files | tar --transform='s|^|$(NAME)/|' --files-from /proc/self/fd/0 -czf $(TARBALL) $(SPEC)
 
-.PHONY: srpm rpm
-srpm: $(SRPM)
-$(SRPM): $(TARBALL)
-	mkdir -p $(RPMTOP)/{RPMS,SRPMS,SOURCES,BUILD}
-	rpmbuild -ts \
-	    --define="_topdir $(RPMTOP)" \
-	    $(TARBALL)
+.PHONY: srpm
+srpm: tarball
+	rpmbuild \
+		--define="_topdir $(RPMTOP)" \
+		-ts $(TARBALL)
 
-rpm: $(SRPM)
-	rpmbuild --define="_topdir $(RPMTOP)" --rebuild $<
+.PHONY: rpm
+rpm: srpm
+	rpmbuild \
+		--define="_topdir $(RPMTOP)" \
+		--rebuild $(SRPM)
 
+.PHONY: clean
 clean:
 	$(RM) $(NAME)*.tar.gz $(SPEC)
 	$(RM) -r rpmtop
