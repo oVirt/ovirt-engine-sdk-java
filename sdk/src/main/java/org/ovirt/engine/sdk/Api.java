@@ -632,9 +632,6 @@ public class Api implements AutoCloseable {
                     rootLogger.getLoggerRepository()
                             .getLogger("org.apache.http");
             pkgLogger.setLevel(Level.DEBUG);
-            pkgLogger.addAppender(new ConsoleAppender(
-                    new PatternLayout(patternLayout)));
-
         } else {
             Logger rootLogger = Logger.getRootLogger();
             if (!rootLogger.getAllAppenders().hasMoreElements()) {
