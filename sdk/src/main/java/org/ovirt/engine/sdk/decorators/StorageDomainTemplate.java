@@ -233,9 +233,9 @@ public class StorageDomainTemplate extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -248,7 +248,58 @@ public class StorageDomainTemplate extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action importTemplate(Action action, String correlationId) throws ClientProtocolException,
+    public Action importTemplate(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/import";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs importTemplate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.cluster.id|name
+     *    [action.storage_domain.id|name]
+     *    [action.clone]
+     *    [action.exclusive]
+     *    [action.template.name]
+     *    [action.vm.disks.disk]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action importTemplate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/import";
 
@@ -259,6 +310,10 @@ public class StorageDomainTemplate extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -272,6 +327,8 @@ public class StorageDomainTemplate extends
      *    [action.clone]
      *    [action.exclusive]
      *    [action.template.name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -305,11 +362,13 @@ public class StorageDomainTemplate extends
      *    [action.clone]
      *    [action.exclusive]
      *    [action.template.name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -322,7 +381,56 @@ public class StorageDomainTemplate extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action register(Action action, String correlationId) throws ClientProtocolException,
+    public Action register(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/register";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs register action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.cluster.id|name
+     *    [action.clone]
+     *    [action.exclusive]
+     *    [action.template.name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action register(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/register";
 
@@ -333,6 +441,10 @@ public class StorageDomainTemplate extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);

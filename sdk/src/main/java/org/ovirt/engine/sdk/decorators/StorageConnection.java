@@ -170,6 +170,8 @@ public class StorageConnection extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.host.id|name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param async
@@ -210,6 +212,8 @@ public class StorageConnection extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.host.id|name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -377,9 +381,9 @@ public class StorageConnection extends
      *      [storage_connection.path]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -392,7 +396,97 @@ public class StorageConnection extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageConnection update(String correlationId) throws ClientProtocolException,
+    public StorageConnection update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageConnection.class,
+                headers);
+    }
+    /**
+     * Updates StorageConnection object.
+     *
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the specified iSCSI
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.port]
+     *      [storage_connection.username]
+     *      [storage_connection.password]
+     *      [storage_connection.iqn]
+     *      [storage_connection.address]
+     *
+     *    Overload 2:
+     *
+     *      update the specified nfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.nfs_retrans]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 3:
+     *
+     *      update the specified vfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.mount_options]
+     *      [storage_connection.vfs_type]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 4:
+     *
+     *      update the specified local
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.path]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageConnection update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -403,6 +497,110 @@ public class StorageConnection extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageConnection.class,
+                headers);
+    }
+    /**
+     * Updates StorageConnection object.
+     *
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the specified iSCSI
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.port]
+     *      [storage_connection.username]
+     *      [storage_connection.password]
+     *      [storage_connection.iqn]
+     *      [storage_connection.address]
+     *
+     *    Overload 2:
+     *
+     *      update the specified nfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.nfs_retrans]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 3:
+     *
+     *      update the specified vfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.mount_options]
+     *      [storage_connection.vfs_type]
+     *      [storage_connection.address]
+     *      [storage_connection.path]
+     *
+     *    Overload 4:
+     *
+     *      update the specified local
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.path]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageConnection update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

@@ -221,9 +221,9 @@ public class VMSnapshot extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.restore_memory]
+     *    [action.disks.disk]
      *    [action.async]
      *    [action.grace_period.expiry]
-     *    [action.disks.disk]
      *    </pre>
      *
      * @return
@@ -254,14 +254,14 @@ public class VMSnapshot extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    [action.restore_memory]
+     *    [action.disks.disk]
      *    [action.async]
      *    [action.grace_period.expiry]
-     *    [action.disks.disk]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -274,7 +274,54 @@ public class VMSnapshot extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action restore(Action action, String correlationId) throws ClientProtocolException,
+    public Action restore(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/restore";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs restore action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.restore_memory]
+     *    [action.disks.disk]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action restore(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/restore";
 
@@ -285,6 +332,10 @@ public class VMSnapshot extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);

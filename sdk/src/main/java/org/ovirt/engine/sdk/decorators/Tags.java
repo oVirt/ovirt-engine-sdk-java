@@ -190,6 +190,55 @@ public class Tags extends
                 Tag.class, headers);
     }
     /**
+     * Adds Tag object.
+     *
+     * @param tag {@link org.ovirt.engine.sdk.entities.Tag}
+     *    <pre>
+     *    tag.name
+     *    [tag.description]
+     *    [tag.parent.tag.id|name]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link Tag }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Tag add(org.ovirt.engine.sdk.entities.Tag tag, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, tag,
+                org.ovirt.engine.sdk.entities.Tag.class,
+                Tag.class, headers);
+    }
+    /**
      * Lists Tag objects.
      *
      * @param max

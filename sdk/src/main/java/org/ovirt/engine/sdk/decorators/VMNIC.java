@@ -127,9 +127,9 @@ public class VMNIC extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -142,7 +142,47 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action activate(Action action, String correlationId) throws ClientProtocolException,
+    public Action activate(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/activate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs activate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action activate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/activate";
 
@@ -153,6 +193,10 @@ public class VMNIC extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -187,9 +231,9 @@ public class VMNIC extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -202,7 +246,47 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action deactivate(Action action, String correlationId) throws ClientProtocolException,
+    public Action deactivate(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/deactivate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs deactivate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action deactivate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/deactivate";
 
@@ -213,6 +297,10 @@ public class VMNIC extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -409,9 +497,9 @@ public class VMNIC extends
      *      [nic.plugged]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -424,7 +512,80 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMNIC update(String correlationId) throws ClientProtocolException,
+    public VMNIC update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.NIC.class,
+                VMNIC.class,
+                headers);
+    }
+    /**
+     * Updates VMNIC object.
+     *
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the network interface
+     *      for the given virtual machine
+     *
+     *      [nic.vnic_profile.id]
+     *      [nic.linked]
+     *      [nic.name]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.plugged]
+     *
+     *    Overload 2:
+     *
+     *      update the network interface
+     *      for the given virtual machine
+     *      with port mirroring options
+     *
+     *      [nic.network.id|name]
+     *      [nic.linked]
+     *      [nic.name]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.port_mirroring.networks.network]
+     *      [nic.plugged]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMNIC update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -435,6 +596,93 @@ public class VMNIC extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.NIC.class,
+                VMNIC.class,
+                headers);
+    }
+    /**
+     * Updates VMNIC object.
+     *
+     * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the network interface
+     *      for the given virtual machine
+     *
+     *      [nic.vnic_profile.id]
+     *      [nic.linked]
+     *      [nic.name]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.plugged]
+     *
+     *    Overload 2:
+     *
+     *      update the network interface
+     *      for the given virtual machine
+     *      with port mirroring options
+     *
+     *      [nic.network.id|name]
+     *      [nic.linked]
+     *      [nic.name]
+     *      [nic.mac.address]
+     *      [nic.interface]
+     *      [nic.port_mirroring.networks.network]
+     *      [nic.plugged]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link VMNIC }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VMNIC update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

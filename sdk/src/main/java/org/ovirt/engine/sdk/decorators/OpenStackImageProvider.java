@@ -203,6 +203,8 @@ public class OpenStackImageProvider extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -232,11 +234,13 @@ public class OpenStackImageProvider extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -249,7 +253,52 @@ public class OpenStackImageProvider extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action importcertificates(Action action, String correlationId) throws ClientProtocolException,
+    public Action importcertificates(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/importcertificates";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs importcertificates action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action importcertificates(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/importcertificates";
 
@@ -260,6 +309,10 @@ public class OpenStackImageProvider extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -269,6 +322,8 @@ public class OpenStackImageProvider extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -298,11 +353,13 @@ public class OpenStackImageProvider extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -315,7 +372,52 @@ public class OpenStackImageProvider extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action testconnectivity(Action action, String correlationId) throws ClientProtocolException,
+    public Action testconnectivity(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/testconnectivity";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs testconnectivity action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action testconnectivity(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/testconnectivity";
 
@@ -326,6 +428,10 @@ public class OpenStackImageProvider extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -383,9 +489,9 @@ public class OpenStackImageProvider extends
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -398,7 +504,61 @@ public class OpenStackImageProvider extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public OpenStackImageProvider update(String correlationId) throws ClientProtocolException,
+    public OpenStackImageProvider update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.OpenStackImageProvider.class,
+                OpenStackImageProvider.class,
+                headers);
+    }
+    /**
+     * Updates OpenStackImageProvider object.
+     *
+     * @param openstackimageprovider {@link org.ovirt.engine.sdk.entities.OpenStackImageProvider}
+     *    <pre>
+     *    [openstack_image_provider.name]
+     *    [openstack_image_provider.description]
+     *    [openstack_image_provider.requires_authentication]
+     *    [openstack_image_provider.username]
+     *    [openstack_image_provider.password]
+     *    [openstack_image_provider.properties.property]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link OpenStackImageProvider }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public OpenStackImageProvider update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -409,6 +569,74 @@ public class OpenStackImageProvider extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.OpenStackImageProvider.class,
+                OpenStackImageProvider.class,
+                headers);
+    }
+    /**
+     * Updates OpenStackImageProvider object.
+     *
+     * @param openstackimageprovider {@link org.ovirt.engine.sdk.entities.OpenStackImageProvider}
+     *    <pre>
+     *    [openstack_image_provider.name]
+     *    [openstack_image_provider.description]
+     *    [openstack_image_provider.requires_authentication]
+     *    [openstack_image_provider.username]
+     *    [openstack_image_provider.password]
+     *    [openstack_image_provider.properties.property]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link OpenStackImageProvider }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public OpenStackImageProvider update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

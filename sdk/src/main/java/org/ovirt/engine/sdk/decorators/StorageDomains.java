@@ -319,140 +319,11 @@ public class StorageDomains extends
      *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return
-     *     {@link StorageDomain }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, Boolean async) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
-        url = urlBuilder.build();
-
-        return getProxy().add(url, storagedomain,
-                org.ovirt.engine.sdk.entities.StorageDomain.class,
-                StorageDomain.class, headers);
-    }
-    /**
-     * Adds StorageDomain object.
-     *
-     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      add a new storage domain to
-     *      the system using a direct lun
-     *
-     *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
-     *      storagedomain.format
-     *      storagedomain.storage.address
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
-     *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *
-     *    Overload 2:
-     *
-     *      Import an existing block
-     *      storage domain to the system
-     *      using the targets already
-     *      connected to the host
-     *
-     *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
-     *      storagedomain.import
-     *      [storagedomain.storage.address]
-     *      [storagedomain.format]
-     *      [storagedomain.comment]
-     *
-     *    Overload 3:
-     *
-     *      add a new storage domain to
-     *      the system using the storage
-     *      on the given host and path
-     *
-     *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
-     *      storagedomain.format
-     *      storagedomain.storage.address
-     *      storagedomain.storage.path
-     *      [storagedomain.name]
-     *      [storagedomain.comment]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *
-     *    Overload 4:
-     *
-     *      add a new storage domain to
-     *      the system using the storage
-     *      on the localhost at the given
-     *      path
-     *
-     *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
-     *      storagedomain.format
-     *      storagedomain.storage.path
-     *      [storagedomain.name]
-     *      [storagedomain.comment]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *
-     *    Overload 5:
-     *
-     *      add a new storage domain to
-     *      the system using the gluster
-     *      or posixfs storage
-     *
-     *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
-     *      storagedomain.format
-     *      storagedomain.storage.path
-     *      storagedomain.storage.vfs_type
-     *      [storagedomain.name]
-     *      [storagedomain.comment]
-     *      [storagedomain.storage.address]
-     *      [storagedomain.storage.mount_options]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *    </pre>
-     *
      * @param expect
      *    <pre>
      *    [201-created]
      *    </pre>
      *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link StorageDomain }
      *
@@ -463,7 +334,7 @@ public class StorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, Boolean async, String expect) throws
+    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -474,10 +345,6 @@ public class StorageDomains extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().add(url, storagedomain,
@@ -584,11 +451,6 @@ public class StorageDomains extends
      *    [any string]
      *    </pre>
      *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link StorageDomain }
      *
@@ -599,7 +461,7 @@ public class StorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, Boolean async, String expect, String correlationId) throws
+    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, String expect, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
@@ -613,10 +475,6 @@ public class StorageDomains extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().add(url, storagedomain,

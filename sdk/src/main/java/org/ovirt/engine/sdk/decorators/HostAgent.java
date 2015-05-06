@@ -221,9 +221,9 @@ public class HostAgent extends
      *    [encrypt_options]
      *    </pre>
      *
-     * @param expect
+     * @param async
      *    <pre>
-     *    [201-created]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -236,17 +236,18 @@ public class HostAgent extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public HostAgent update(String expect) throws ClientProtocolException,
+    public HostAgent update(Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -273,11 +274,12 @@ public class HostAgent extends
      *
      * @param expect
      *    <pre>
-     *    [201-created]
+     *    [202-accepted]
      *    </pre>
-     * @param correlationId
+     *
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -290,7 +292,70 @@ public class HostAgent extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public HostAgent update(String expect, String correlationId) throws ClientProtocolException,
+    public HostAgent update(Boolean async, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Agent.class,
+                HostAgent.class,
+                headers);
+    }
+    /**
+     * Updates HostAgent object.
+     *
+     * @param agent {@link org.ovirt.engine.sdk.entities.Agent}
+     *    <pre>
+     *    [agent.address]
+     *    [agent.order]
+     *    [agent.type]
+     *    [agent.username]
+     *    [agent.password]
+     *    [agent.port]
+     *    [agent.options]
+     *    [encrypt_options]
+     *    </pre>
+     *
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link HostAgent }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public HostAgent update(Boolean async, String expect, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -304,6 +369,10 @@ public class HostAgent extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

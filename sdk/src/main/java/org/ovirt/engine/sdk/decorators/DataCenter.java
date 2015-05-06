@@ -434,9 +434,9 @@ public class DataCenter extends
      *    [datacenter.mac_pool.id]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -449,7 +449,64 @@ public class DataCenter extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenter update(String correlationId) throws ClientProtocolException,
+    public DataCenter update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class,
+                headers);
+    }
+    /**
+     * Updates DataCenter object.
+     *
+     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
+     *    <pre>
+     *    [datacenter.name]
+     *    [datacenter.description]
+     *    [datacenter.comment]
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
+     *    [datacenter.version.major]
+     *    [datacenter.version.minor]
+     *    [datacenter.storage_format]
+     *    [datacenter.mac_pool.id]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenter update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -460,6 +517,77 @@ public class DataCenter extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.DataCenter.class,
+                DataCenter.class,
+                headers);
+    }
+    /**
+     * Updates DataCenter object.
+     *
+     * @param datacenter {@link org.ovirt.engine.sdk.entities.DataCenter}
+     *    <pre>
+     *    [datacenter.name]
+     *    [datacenter.description]
+     *    [datacenter.comment]
+     *    [datacenter.storage_type]
+     *    [datacenter.local]
+     *    [datacenter.version.major]
+     *    [datacenter.version.minor]
+     *    [datacenter.storage_format]
+     *    [datacenter.mac_pool.id]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenter update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

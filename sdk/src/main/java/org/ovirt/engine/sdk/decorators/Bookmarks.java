@@ -187,5 +187,53 @@ public class Bookmarks extends
                 org.ovirt.engine.sdk.entities.Bookmark.class,
                 Bookmark.class, headers);
     }
+    /**
+     * Adds Bookmark object.
+     *
+     * @param bookmark {@link org.ovirt.engine.sdk.entities.Bookmark}
+     *    <pre>
+     *    bookmark.name
+     *    bookmark.value
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link Bookmark }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Bookmark add(org.ovirt.engine.sdk.entities.Bookmark bookmark, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, bookmark,
+                org.ovirt.engine.sdk.entities.Bookmark.class,
+                Bookmark.class, headers);
+    }
 
 }

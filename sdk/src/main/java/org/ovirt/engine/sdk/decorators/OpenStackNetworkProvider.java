@@ -225,6 +225,41 @@ public class OpenStackNetworkProvider extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
+     * Performs importcertificates action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action importcertificates(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/importcertificates";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
      * Performs testconnectivity action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
@@ -246,6 +281,41 @@ public class OpenStackNetworkProvider extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs testconnectivity action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action testconnectivity(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/testconnectivity";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -303,9 +373,9 @@ public class OpenStackNetworkProvider extends
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -318,7 +388,61 @@ public class OpenStackNetworkProvider extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public OpenStackNetworkProvider update(String correlationId) throws ClientProtocolException,
+    public OpenStackNetworkProvider update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.OpenStackNetworkProvider.class,
+                OpenStackNetworkProvider.class,
+                headers);
+    }
+    /**
+     * Updates OpenStackNetworkProvider object.
+     *
+     * @param openstacknetworkprovider {@link org.ovirt.engine.sdk.entities.OpenStackNetworkProvider}
+     *    <pre>
+     *    [openstack_network_provider.name]
+     *    [openstack_network_provider.description]
+     *    [openstack_network_provider.requires_authentication]
+     *    [openstack_network_provider.username]
+     *    [openstack_network_provider.password]
+     *    [openstack_network_provider.properties.property]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link OpenStackNetworkProvider }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public OpenStackNetworkProvider update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -329,6 +453,74 @@ public class OpenStackNetworkProvider extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.OpenStackNetworkProvider.class,
+                OpenStackNetworkProvider.class,
+                headers);
+    }
+    /**
+     * Updates OpenStackNetworkProvider object.
+     *
+     * @param openstacknetworkprovider {@link org.ovirt.engine.sdk.entities.OpenStackNetworkProvider}
+     *    <pre>
+     *    [openstack_network_provider.name]
+     *    [openstack_network_provider.description]
+     *    [openstack_network_provider.requires_authentication]
+     *    [openstack_network_provider.username]
+     *    [openstack_network_provider.password]
+     *    [openstack_network_provider.properties.property]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link OpenStackNetworkProvider }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public OpenStackNetworkProvider update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

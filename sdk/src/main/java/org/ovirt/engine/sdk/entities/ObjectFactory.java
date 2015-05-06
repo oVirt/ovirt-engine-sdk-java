@@ -352,6 +352,7 @@ public class ObjectFactory {
     private final static QName _Fault_QNAME = new QName("", "fault");
     private final static QName _Groups_QNAME = new QName("", "groups");
     private final static QName _CloudInit_QNAME = new QName("", "cloud_init");
+    private final static QName _DiskStorageTypes_QNAME = new QName("", "disk_storage_types");
     private final static QName _IscsiBonds_QNAME = new QName("", "iscsi_bonds");
     private final static QName _DiskProfile_QNAME = new QName("", "disk_profile");
     private final static QName _NumaNodePin_QNAME = new QName("", "numa_node_pin");
@@ -2820,6 +2821,14 @@ public class ObjectFactory {
      */
     public CloudInit createCloudInit() {
         return new CloudInit();
+    }
+
+    /**
+     * Create an instance of {@link DiskStorageTypes }
+     *
+     */
+    public DiskStorageTypes createDiskStorageTypes() {
+        return new DiskStorageTypes();
     }
 
     /**
@@ -5945,6 +5954,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "cloud_init")
     public JAXBElement<CloudInit> createCloudInit(CloudInit value) {
         return new JAXBElement<CloudInit>(_CloudInit_QNAME, CloudInit.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DiskStorageTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "disk_storage_types")
+    public JAXBElement<DiskStorageTypes> createDiskStorageTypes(DiskStorageTypes value) {
+        return new JAXBElement<DiskStorageTypes>(_DiskStorageTypes_QNAME, DiskStorageTypes.class, null, value);
     }
 
     /**

@@ -4,7 +4,7 @@ PWD=$(shell bash -c "pwd -P")
 pomversion=$(shell $(PWD)/version.py --pom)
 rpmversion=$(shell $(PWD)/version.py --rpm)
 rpmdist=$(shell rpm --eval '%dist')
-rpmrelease=0.7$(rpmsuffix)$(rpmdist)
+rpmrelease=0.8$(rpmsuffix)$(rpmdist)
 
 RPMTOP=$(PWD)/rpmtop
 NAME=ovirt-engine-sdk-java

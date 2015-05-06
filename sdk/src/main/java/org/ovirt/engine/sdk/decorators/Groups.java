@@ -190,6 +190,55 @@ public class Groups extends
                 Group.class, headers);
     }
     /**
+     * Adds Group object.
+     *
+     * @param group {@link org.ovirt.engine.sdk.entities.Group}
+     *    <pre>
+     *    group.name
+     *    [group.namespace]
+     *    [group.principal]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     *
+     * @return
+     *     {@link Group }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Group add(org.ovirt.engine.sdk.entities.Group group, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, group,
+                org.ovirt.engine.sdk.entities.Group.class,
+                Group.class, headers);
+    }
+    /**
      * Lists Group objects.
      *
      * @param query

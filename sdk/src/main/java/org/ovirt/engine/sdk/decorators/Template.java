@@ -272,8 +272,8 @@ public class Template extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.storage_domain.id|name
-     *    [action.async]
      *    [action.exclusive]
+     *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
      *
@@ -305,14 +305,14 @@ public class Template extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.storage_domain.id|name
-     *    [action.async]
      *    [action.exclusive]
+     *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -325,7 +325,54 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportTemplate(Action action, String correlationId) throws ClientProtocolException,
+    public Action exportTemplate(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/export";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs exportTemplate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.storage_domain.id|name
+     *    [action.exclusive]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action exportTemplate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 
@@ -336,6 +383,10 @@ public class Template extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -485,9 +536,9 @@ public class Template extends
      *    [template.migration.compressed]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -500,7 +551,107 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Template update(String correlationId) throws ClientProtocolException,
+    public Template update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Template.class,
+                Template.class,
+                headers);
+    }
+    /**
+     * Updates Template object.
+     *
+     * @param template {@link org.ovirt.engine.sdk.entities.Template}
+     *    <pre>
+     *    [template.name]
+     *    [template.memory]
+     *    [template.cpu.topology.cores]
+     *    [template.high_availability.enabled]
+     *    [template.os.cmdline]
+     *    [template.origin]
+     *    [template.high_availability.priority]
+     *    [template.timezone]
+     *    [template.domain.name]
+     *    [template.type]
+     *    [template.stateless]
+     *    [template.delete_protected]
+     *    [template.sso.methods.method]
+     *    [vm.rng_device.rate.bytes]
+     *    [vm.rng_device.rate.period]
+     *    [vm.rng_device.source]
+     *    [template.console.enabled]
+     *    [template.placement_policy.affinity]
+     *    [template.description]
+     *    [template.comment]
+     *    [template.custom_properties.custom_property]
+     *    [template.os.type]
+     *    [template.os.boot]
+     *    [template.cpu.topology.sockets]
+     *    [template.cpu_shares]
+     *    [template.cpu.architecture]
+     *    [template.os.kernel]
+     *    [template.display.type]
+     *    [template.display.monitors]
+     *    [vm.display.single_qxl_pci]
+     *    [template.display.allow_override]
+     *    [template.display.smartcard_enabled]
+     *    [vm.display.file_transfer_enabled]
+     *    [vm.display.copy_paste_enabled]
+     *    [template.display.keyboard_layout]
+     *    [template.os.initRd]
+     *    [template.usb.enabled]
+     *    [template.usb.type]
+     *    [template.tunnel_migration]
+     *    [template.migration_downtime]
+     *    [template.virtio_scsi.enabled]
+     *    [template.soundcard_enabled]
+     *    [template.custom_emulated_machine]
+     *    [template.custom_cpu_model]
+     *    [template.version.version_name]
+     *    [template.serial_number.policy]
+     *    [template.serial_number.value]
+     *    [template.bios.boot_menu.enabled]
+     *    [template.start_paused]
+     *    [template.cpu_profile.id]
+     *    [template.migration.auto_converge]
+     *    [template.migration.compressed]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Template update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -511,6 +662,120 @@ public class Template extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Template.class,
+                Template.class,
+                headers);
+    }
+    /**
+     * Updates Template object.
+     *
+     * @param template {@link org.ovirt.engine.sdk.entities.Template}
+     *    <pre>
+     *    [template.name]
+     *    [template.memory]
+     *    [template.cpu.topology.cores]
+     *    [template.high_availability.enabled]
+     *    [template.os.cmdline]
+     *    [template.origin]
+     *    [template.high_availability.priority]
+     *    [template.timezone]
+     *    [template.domain.name]
+     *    [template.type]
+     *    [template.stateless]
+     *    [template.delete_protected]
+     *    [template.sso.methods.method]
+     *    [vm.rng_device.rate.bytes]
+     *    [vm.rng_device.rate.period]
+     *    [vm.rng_device.source]
+     *    [template.console.enabled]
+     *    [template.placement_policy.affinity]
+     *    [template.description]
+     *    [template.comment]
+     *    [template.custom_properties.custom_property]
+     *    [template.os.type]
+     *    [template.os.boot]
+     *    [template.cpu.topology.sockets]
+     *    [template.cpu_shares]
+     *    [template.cpu.architecture]
+     *    [template.os.kernel]
+     *    [template.display.type]
+     *    [template.display.monitors]
+     *    [vm.display.single_qxl_pci]
+     *    [template.display.allow_override]
+     *    [template.display.smartcard_enabled]
+     *    [vm.display.file_transfer_enabled]
+     *    [vm.display.copy_paste_enabled]
+     *    [template.display.keyboard_layout]
+     *    [template.os.initRd]
+     *    [template.usb.enabled]
+     *    [template.usb.type]
+     *    [template.tunnel_migration]
+     *    [template.migration_downtime]
+     *    [template.virtio_scsi.enabled]
+     *    [template.soundcard_enabled]
+     *    [template.custom_emulated_machine]
+     *    [template.custom_cpu_model]
+     *    [template.version.version_name]
+     *    [template.serial_number.policy]
+     *    [template.serial_number.value]
+     *    [template.bios.boot_menu.enabled]
+     *    [template.start_paused]
+     *    [template.cpu_profile.id]
+     *    [template.migration.auto_converge]
+     *    [template.migration.compressed]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Template update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

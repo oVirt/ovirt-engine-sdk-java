@@ -413,6 +413,8 @@ public class StorageDomain extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.host.id
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @return
@@ -443,6 +445,8 @@ public class StorageDomain extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.host.id
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param async
@@ -482,6 +486,8 @@ public class StorageDomain extends
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
      *    action.host.id
+     *    [action.async]
+     *    [action.grace_period.expiry]
      *    </pre>
      *
      * @param correlationId
@@ -682,6 +688,80 @@ public class StorageDomain extends
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageDomain.class,
+                StorageDomain.class,
+                headers);
+    }
+    /**
+     * Updates StorageDomain object.
+     *
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the storage domain
+     *
+     *      [storagedomain.name]
+     *
+     *    Overload 2:
+     *
+     *      update the storage domain
+     *
+     *      storagedomain.host.id|name
+     *      storagedomain.storage.logical_unit
+     *      [storagedomain.name]
+     *      [storagedomain.comment]
+     *      [storagedomain.storage.override_luns]
+     *      [storagedomain.wipe_after_delete]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomain update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 

@@ -59,9 +59,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element name="lun_storage" type="{}Storage" minOccurs="0"/>
  *         &lt;element name="sgio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="uses_scsi_reservation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}snapshot" minOccurs="0"/>
  *         &lt;element ref="{}disk_profile" minOccurs="0"/>
  *         &lt;element name="logical_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="storage_type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -94,9 +96,11 @@ import javax.xml.bind.annotation.XmlType;
     "quota",
     "lunStorage",
     "sgio",
+    "usesScsiReservation",
     "snapshot",
     "diskProfile",
-    "logicalName"
+    "logicalName",
+    "storageType"
 })
 @XmlSeeAlso({
     DiskSnapshot.class
@@ -137,11 +141,15 @@ public class Disk
     @XmlElement(name = "lun_storage")
     protected Storage lunStorage;
     protected String sgio;
+    @XmlElement(name = "uses_scsi_reservation")
+    protected Boolean usesScsiReservation;
     protected Snapshot snapshot;
     @XmlElement(name = "disk_profile")
     protected DiskProfile diskProfile;
     @XmlElement(name = "logical_name")
     protected String logicalName;
+    @XmlElement(name = "storage_type")
+    protected String storageType;
 
     /**
      * Gets the value of the alias property.
@@ -760,6 +768,34 @@ public class Disk
     }
 
     /**
+     * Gets the value of the usesScsiReservation property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUsesScsiReservation() {
+        return usesScsiReservation;
+    }
+
+    /**
+     * Sets the value of the usesScsiReservation property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUsesScsiReservation(Boolean value) {
+        this.usesScsiReservation = value;
+    }
+
+    public boolean isSetUsesScsiReservation() {
+        return (this.usesScsiReservation!= null);
+    }
+
+    /**
      * Gets the value of the snapshot property.
      *
      * @return
@@ -841,6 +877,34 @@ public class Disk
 
     public boolean isSetLogicalName() {
         return (this.logicalName!= null);
+    }
+
+    /**
+     * Gets the value of the storageType property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getStorageType() {
+        return storageType;
+    }
+
+    /**
+     * Sets the value of the storageType property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setStorageType(String value) {
+        this.storageType = value;
+    }
+
+    public boolean isSetStorageType() {
+        return (this.storageType!= null);
     }
 
 }

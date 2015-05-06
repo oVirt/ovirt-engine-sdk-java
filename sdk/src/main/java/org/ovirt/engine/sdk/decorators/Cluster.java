@@ -267,6 +267,110 @@ public class Cluster extends
         return getProxy().delete(url, Response.class, headers);
     }
     /**
+     * Performs resetemulatedmachine action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action resetemulatedmachine(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/resetemulatedmachine";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs resetemulatedmachine action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action resetemulatedmachine(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/resetemulatedmachine";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs resetemulatedmachine action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action resetemulatedmachine(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/resetemulatedmachine";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
      * Updates Cluster object.
      *
      * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
@@ -367,9 +471,9 @@ public class Cluster extends
      *    [cluster.management_network.id|name]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -382,7 +486,85 @@ public class Cluster extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster update(String correlationId) throws ClientProtocolException,
+    public Cluster update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                Cluster.class,
+                headers);
+    }
+    /**
+     * Updates Cluster object.
+     *
+     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     *    <pre>
+     *    [cluster.name]
+     *    [cluster.description]
+     *    [cluster.comment]
+     *    [cluster.data_center.id]
+     *    [cluster.cpu.id]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.policy]
+     *    [cluster.scheduling_policy.thresholds.low]
+     *    [cluster.scheduling_policy.thresholds.high]
+     *    [cluster.scheduling_policy.thresholds.duration]
+     *    [cluster.scheduling_policy.id]
+     *    [cluster.scheduling_policy.properties.property]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.virt_service]
+     *    [cluster.gluster_service]
+     *    [cluster.threads_as_cores]
+     *    [cluster.tunnel_migration]
+     *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
+     *    [cluster.fencing_policy.enabled]
+     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
+     *    [cluster.maintenance_reason_required]
+     *    [cluster.management_network.id|name]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Cluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Cluster update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -393,6 +575,98 @@ public class Cluster extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                Cluster.class,
+                headers);
+    }
+    /**
+     * Updates Cluster object.
+     *
+     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     *    <pre>
+     *    [cluster.name]
+     *    [cluster.description]
+     *    [cluster.comment]
+     *    [cluster.data_center.id]
+     *    [cluster.cpu.id]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.policy]
+     *    [cluster.scheduling_policy.thresholds.low]
+     *    [cluster.scheduling_policy.thresholds.high]
+     *    [cluster.scheduling_policy.thresholds.duration]
+     *    [cluster.scheduling_policy.id]
+     *    [cluster.scheduling_policy.properties.property]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.virt_service]
+     *    [cluster.gluster_service]
+     *    [cluster.threads_as_cores]
+     *    [cluster.tunnel_migration]
+     *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
+     *    [cluster.display.proxy]
+     *    [cluster.ksm.enabled]
+     *    [cluster.fencing_policy.enabled]
+     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
+     *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
+     *    [cluster.maintenance_reason_required]
+     *    [cluster.management_network.id|name]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Cluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Cluster update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

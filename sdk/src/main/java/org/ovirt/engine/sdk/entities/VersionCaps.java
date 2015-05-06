@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}nic_interfaces" minOccurs="0"/>
  *         &lt;element ref="{}os_types" minOccurs="0"/>
  *         &lt;element ref="{}disk_formats" minOccurs="0"/>
+ *         &lt;element ref="{}disk_storage_types" minOccurs="0"/>
  *         &lt;element ref="{}disk_interfaces" minOccurs="0"/>
  *         &lt;element ref="{}vm_affinities" minOccurs="0"/>
  *         &lt;element ref="{}custom_properties" minOccurs="0"/>
@@ -128,6 +129,7 @@ import javax.xml.bind.annotation.XmlType;
     "nicInterfaces",
     "osTypes",
     "diskFormats",
+    "diskStorageTypes",
     "diskInterfaces",
     "vmAffinities",
     "customProperties",
@@ -212,6 +214,8 @@ public class VersionCaps
     protected OsTypes osTypes;
     @XmlElement(name = "disk_formats")
     protected DiskFormats diskFormats;
+    @XmlElement(name = "disk_storage_types")
+    protected DiskStorageTypes diskStorageTypes;
     @XmlElement(name = "disk_interfaces")
     protected DiskInterfaces diskInterfaces;
     @XmlElement(name = "vm_affinities")
@@ -708,6 +712,34 @@ public class VersionCaps
 
     public boolean isSetDiskFormats() {
         return (this.diskFormats!= null);
+    }
+
+    /**
+     * Gets the value of the diskStorageTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link DiskStorageTypes }
+     *
+     */
+    public DiskStorageTypes getDiskStorageTypes() {
+        return diskStorageTypes;
+    }
+
+    /**
+     * Sets the value of the diskStorageTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link DiskStorageTypes }
+     *
+     */
+    public void setDiskStorageTypes(DiskStorageTypes value) {
+        this.diskStorageTypes = value;
+    }
+
+    public boolean isSetDiskStorageTypes() {
+        return (this.diskStorageTypes!= null);
     }
 
     /**

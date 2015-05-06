@@ -225,6 +225,41 @@ public class OpenStackVolumeProvider extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
+     * Performs importcertificates action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action importcertificates(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/importcertificates";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
      * Performs testconnectivity action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
@@ -246,6 +281,41 @@ public class OpenStackVolumeProvider extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs testconnectivity action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action testconnectivity(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/testconnectivity";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -307,9 +377,9 @@ public class OpenStackVolumeProvider extends
      *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      *
      * @return
@@ -322,7 +392,63 @@ public class OpenStackVolumeProvider extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public OpenStackVolumeProvider update(String correlationId) throws ClientProtocolException,
+    public OpenStackVolumeProvider update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class,
+                OpenStackVolumeProvider.class,
+                headers);
+    }
+    /**
+     * Updates OpenStackVolumeProvider object.
+     *
+     * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
+     *    <pre>
+     *    [openstack_volume_provider.name]
+     *    [openstack_volume_provider.description]
+     *    [openstack_volume_provider.data_center.id|name]
+     *    [openstack_volume_provider.requires_authentication]
+     *    [openstack_volume_provider.username]
+     *    [openstack_volume_provider.password]
+     *    [openstack_volume_provider.authentication_url]
+     *    [openstack_volume_provider.properties.property]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link OpenStackVolumeProvider }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public OpenStackVolumeProvider update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -333,6 +459,76 @@ public class OpenStackVolumeProvider extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.OpenStackVolumeProvider.class,
+                OpenStackVolumeProvider.class,
+                headers);
+    }
+    /**
+     * Updates OpenStackVolumeProvider object.
+     *
+     * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
+     *    <pre>
+     *    [openstack_volume_provider.name]
+     *    [openstack_volume_provider.description]
+     *    [openstack_volume_provider.data_center.id|name]
+     *    [openstack_volume_provider.requires_authentication]
+     *    [openstack_volume_provider.username]
+     *    [openstack_volume_provider.password]
+     *    [openstack_volume_provider.authentication_url]
+     *    [openstack_volume_provider.properties.property]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link OpenStackVolumeProvider }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public OpenStackVolumeProvider update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(

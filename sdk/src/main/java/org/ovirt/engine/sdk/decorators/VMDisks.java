@@ -137,6 +137,7 @@ public class VMDisks extends
      *      [disk.name]
      *      [disk.size]
      *      [disk.sparse]
+     *      [disk.description]
      *      [disk.bootable]
      *      [disk.shareable]
      *      [disk.propagate_errors]
@@ -158,12 +159,14 @@ public class VMDisks extends
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
      *      [disk.sparse]
+     *      [disk.description]
      *      [disk.bootable]
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.uses_scsi_reservation]
      *      [disk.lun_storage.host]
      *
      *    Overload 3:
@@ -226,6 +229,7 @@ public class VMDisks extends
      *      [disk.name]
      *      [disk.size]
      *      [disk.sparse]
+     *      [disk.description]
      *      [disk.bootable]
      *      [disk.shareable]
      *      [disk.propagate_errors]
@@ -247,12 +251,14 @@ public class VMDisks extends
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
      *      [disk.sparse]
+     *      [disk.description]
      *      [disk.bootable]
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.uses_scsi_reservation]
      *      [disk.lun_storage.host]
      *
      *    Overload 3:
@@ -323,6 +329,7 @@ public class VMDisks extends
      *      [disk.name]
      *      [disk.size]
      *      [disk.sparse]
+     *      [disk.description]
      *      [disk.bootable]
      *      [disk.shareable]
      *      [disk.propagate_errors]
@@ -344,12 +351,14 @@ public class VMDisks extends
      *      disk.lun_storage.logical_unit
      *      [disk.alias]
      *      [disk.sparse]
+     *      [disk.description]
      *      [disk.bootable]
      *      [disk.shareable]
      *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.uses_scsi_reservation]
      *      [disk.lun_storage.host]
      *
      *    Overload 3:
