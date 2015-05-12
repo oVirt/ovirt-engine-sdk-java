@@ -52,6 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="wipe_after_delete" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="import" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="is_attached" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="warning_low_space_indicator" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="critical_space_action_blocker" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -77,7 +79,9 @@ import javax.xml.bind.annotation.XmlType;
     "storageFormat",
     "wipeAfterDelete",
     "_import",
-    "isAttached"
+    "isAttached",
+    "warningLowSpaceIndicator",
+    "criticalSpaceActionBlocker"
 })
 public class StorageDomain
     extends BaseResource
@@ -105,6 +109,10 @@ public class StorageDomain
     protected Boolean _import;
     @XmlElement(name = "is_attached")
     protected Boolean isAttached;
+    @XmlElement(name = "warning_low_space_indicator")
+    protected Integer warningLowSpaceIndicator;
+    @XmlElement(name = "critical_space_action_blocker")
+    protected Integer criticalSpaceActionBlocker;
 
     /**
      * Gets the value of the dataCenter property.
@@ -552,6 +560,62 @@ public class StorageDomain
 
     public boolean isSetIsAttached() {
         return (this.isAttached!= null);
+    }
+
+    /**
+     * Gets the value of the warningLowSpaceIndicator property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getWarningLowSpaceIndicator() {
+        return warningLowSpaceIndicator;
+    }
+
+    /**
+     * Sets the value of the warningLowSpaceIndicator property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setWarningLowSpaceIndicator(Integer value) {
+        this.warningLowSpaceIndicator = value;
+    }
+
+    public boolean isSetWarningLowSpaceIndicator() {
+        return (this.warningLowSpaceIndicator!= null);
+    }
+
+    /**
+     * Gets the value of the criticalSpaceActionBlocker property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getCriticalSpaceActionBlocker() {
+        return criticalSpaceActionBlocker;
+    }
+
+    /**
+     * Sets the value of the criticalSpaceActionBlocker property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setCriticalSpaceActionBlocker(Integer value) {
+        this.criticalSpaceActionBlocker = value;
+    }
+
+    public boolean isSetCriticalSpaceActionBlocker() {
+        return (this.criticalSpaceActionBlocker!= null);
     }
 
 }

@@ -67,6 +67,16 @@ public class OpenStackImageProviderOpenStackImage extends
      * Performs importImage action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.storagedomain.id|name
+     *    [action.import_as_template]
+     *    [action.cluster.id|name]
+     *    [action.disk.alias|name]
+     *    [action.template.name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @return
      *     {@link Action }
      *
@@ -93,6 +103,16 @@ public class OpenStackImageProviderOpenStackImage extends
      * Performs importImage action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.storagedomain.id|name
+     *    [action.import_as_template]
+     *    [action.cluster.id|name]
+     *    [action.disk.alias|name]
+     *    [action.template.name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param async
      *    <pre>
      *    [true|false]
@@ -113,6 +133,59 @@ public class OpenStackImageProviderOpenStackImage extends
         String url = this.getHref() + "/import";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs importImage action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.storagedomain.id|name
+     *    [action.import_as_template]
+     *    [action.cluster.id|name]
+     *    [action.disk.alias|name]
+     *    [action.template.name]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action importImage(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/import";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);

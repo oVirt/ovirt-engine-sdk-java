@@ -332,6 +332,10 @@ public class ClusterGlusterVolumes extends
      *    <pre>
      *    [true|false]
      *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
      *
      *
      * @return List of {@link ClusterGlusterVolume }
@@ -343,7 +347,7 @@ public class ClusterGlusterVolumes extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<ClusterGlusterVolume> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+    public List<ClusterGlusterVolume> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -356,6 +360,10 @@ public class ClusterGlusterVolumes extends
 
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
 
         String url = urlBuilder.build();

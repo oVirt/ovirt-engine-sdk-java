@@ -119,5 +119,39 @@ public class DataCenterClusterGlusterHooks extends
         return getProxy().get(url, org.ovirt.engine.sdk.entities.GlusterHook.class, DataCenterClusterGlusterHook.class);
     }
 
+    /**
+     * Lists DataCenterClusterGlusterHook objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link DataCenterClusterGlusterHook }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenterClusterGlusterHook> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.GlusterHooks.class,
+                DataCenterClusterGlusterHook.class, headers);
+    }
 
 }

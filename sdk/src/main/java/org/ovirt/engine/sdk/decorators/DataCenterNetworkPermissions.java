@@ -147,5 +147,39 @@ public class DataCenterNetworkPermissions extends
                 org.ovirt.engine.sdk.entities.Permission.class,
                 DataCenterNetworkPermission.class, headers);
     }
+    /**
+     * Lists DataCenterNetworkPermission objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link DataCenterNetworkPermission }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenterNetworkPermission> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                DataCenterNetworkPermission.class, headers);
+    }
 
 }

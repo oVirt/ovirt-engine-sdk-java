@@ -280,5 +280,39 @@ public class DataCenterPermissions extends
                 org.ovirt.engine.sdk.entities.Permission.class,
                 DataCenterPermission.class, headers);
     }
+    /**
+     * Lists DataCenterPermission objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link DataCenterPermission }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenterPermission> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Permissions.class,
+                DataCenterPermission.class, headers);
+    }
 
 }

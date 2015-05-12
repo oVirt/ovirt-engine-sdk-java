@@ -550,6 +550,8 @@ public class StorageDomain extends
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
      * @return
@@ -600,6 +602,8 @@ public class StorageDomain extends
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
      * @param async
@@ -659,6 +663,8 @@ public class StorageDomain extends
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
      * @param correlationId
@@ -726,6 +732,8 @@ public class StorageDomain extends
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
      * @param correlationId

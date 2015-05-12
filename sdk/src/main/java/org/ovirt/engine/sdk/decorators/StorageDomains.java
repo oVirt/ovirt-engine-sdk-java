@@ -134,6 +134,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 2:
      *
@@ -149,6 +151,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.address]
      *      [storagedomain.format]
      *      [storagedomain.comment]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 3:
      *
@@ -166,6 +170,8 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 4:
      *
@@ -183,6 +189,8 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 5:
      *
@@ -202,6 +210,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
      * @return
@@ -249,6 +259,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 2:
      *
@@ -264,6 +276,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.address]
      *      [storagedomain.format]
      *      [storagedomain.comment]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 3:
      *
@@ -281,6 +295,8 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 4:
      *
@@ -298,6 +314,8 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 5:
      *
@@ -317,6 +335,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
      * @param expect
@@ -372,6 +392,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 2:
      *
@@ -387,6 +409,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.address]
      *      [storagedomain.format]
      *      [storagedomain.comment]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 3:
      *
@@ -404,6 +428,8 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 4:
      *
@@ -421,6 +447,8 @@ public class StorageDomains extends
      *      [storagedomain.comment]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *
      *    Overload 5:
      *
@@ -440,6 +468,8 @@ public class StorageDomains extends
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
      *      [storagedomain.wipe_after_delete]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
      * @param expect

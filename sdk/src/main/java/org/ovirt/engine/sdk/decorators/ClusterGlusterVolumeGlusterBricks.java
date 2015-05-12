@@ -433,9 +433,9 @@ public class ClusterGlusterVolumeGlusterBricks extends
     /**
      * Lists ClusterGlusterVolumeGlusterBrick objects.
      *
-     * @param allContent
+     * @param max
      *    <pre>
-     *    [true|false]
+     *    [max results]
      *    </pre>
      *
      *
@@ -448,7 +448,46 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<ClusterGlusterVolumeGlusterBrick> list(String allContent) throws ClientProtocolException,
+    public List<ClusterGlusterVolumeGlusterBrick> list(Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
+     * Lists ClusterGlusterVolumeGlusterBrick objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     *
+     * @return List of {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<ClusterGlusterVolumeGlusterBrick> list(Integer max, String allContent) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -458,6 +497,10 @@ public class ClusterGlusterVolumeGlusterBricks extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
         String url = urlBuilder.build();
 
         return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class,

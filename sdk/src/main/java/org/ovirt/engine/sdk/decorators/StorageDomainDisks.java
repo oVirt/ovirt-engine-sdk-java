@@ -460,13 +460,13 @@ public class StorageDomainDisks extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
      * @param unregistered
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
      *    </pre>
      *
      *
@@ -479,7 +479,7 @@ public class StorageDomainDisks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<StorageDomainDisk> list(String query, Boolean caseSensitive, Integer max, Boolean unregistered) throws ClientProtocolException,
+    public List<StorageDomainDisk> list(String query, Boolean caseSensitive, Boolean unregistered, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -494,12 +494,12 @@ public class StorageDomainDisks extends
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-
         if (unregistered != null) {
             urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
 
         String url = urlBuilder.build();
