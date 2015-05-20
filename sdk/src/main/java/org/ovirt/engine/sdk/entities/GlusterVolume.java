@@ -42,6 +42,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}transport_types" minOccurs="0"/>
  *         &lt;element name="replica_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="stripe_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
+ *         &lt;element name="disperse_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
+ *         &lt;element name="redundancy_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element ref="{}bricks" minOccurs="0"/>
  *         &lt;element ref="{}options" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
@@ -60,6 +62,8 @@ import javax.xml.bind.annotation.XmlType;
     "transportTypes",
     "replicaCount",
     "stripeCount",
+    "disperseCount",
+    "redundancyCount",
     "bricks",
     "options",
     "status"
@@ -79,6 +83,12 @@ public class GlusterVolume
     @XmlElement(name = "stripe_count")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer stripeCount;
+    @XmlElement(name = "disperse_count")
+    @XmlSchemaType(name = "unsignedShort")
+    protected Integer disperseCount;
+    @XmlElement(name = "redundancy_count")
+    @XmlSchemaType(name = "unsignedShort")
+    protected Integer redundancyCount;
     protected GlusterBricks bricks;
     protected Options options;
     protected Status status;
@@ -221,6 +231,62 @@ public class GlusterVolume
 
     public boolean isSetStripeCount() {
         return (this.stripeCount!= null);
+    }
+
+    /**
+     * Gets the value of the disperseCount property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getDisperseCount() {
+        return disperseCount;
+    }
+
+    /**
+     * Sets the value of the disperseCount property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setDisperseCount(Integer value) {
+        this.disperseCount = value;
+    }
+
+    public boolean isSetDisperseCount() {
+        return (this.disperseCount!= null);
+    }
+
+    /**
+     * Gets the value of the redundancyCount property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getRedundancyCount() {
+        return redundancyCount;
+    }
+
+    /**
+     * Sets the value of the redundancyCount property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setRedundancyCount(Integer value) {
+        this.redundancyCount = value;
+    }
+
+    public boolean isSetRedundancyCount() {
+        return (this.redundancyCount!= null);
     }
 
     /**

@@ -73,6 +73,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="live_snapshot_support" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}katello_errata" minOccurs="0"/>
  *         &lt;element ref="{}external_host_provider" minOccurs="0"/>
+ *         &lt;element name="update_available" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -118,7 +119,8 @@ import javax.xml.bind.annotation.XmlType;
     "numaSupported",
     "liveSnapshotSupport",
     "katelloErrata",
-    "externalHostProvider"
+    "externalHostProvider",
+    "updateAvailable"
 })
 public class Host
     extends BaseResource
@@ -177,6 +179,8 @@ public class Host
     protected KatelloErrata katelloErrata;
     @XmlElement(name = "external_host_provider")
     protected ExternalHostProvider externalHostProvider;
+    @XmlElement(name = "update_available")
+    protected Boolean updateAvailable;
 
     /**
      * Gets the value of the address property.
@@ -1184,6 +1188,34 @@ public class Host
 
     public boolean isSetExternalHostProvider() {
         return (this.externalHostProvider!= null);
+    }
+
+    /**
+     * Gets the value of the updateAvailable property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUpdateAvailable() {
+        return updateAvailable;
+    }
+
+    /**
+     * Sets the value of the updateAvailable property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUpdateAvailable(Boolean value) {
+        this.updateAvailable = value;
+    }
+
+    public boolean isSetUpdateAvailable() {
+        return (this.updateAvailable!= null);
     }
 
 }

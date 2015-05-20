@@ -124,7 +124,6 @@ public class ExternalHostProviders extends
      *    [external_host_provider.requires_authentication]
      *    [external_host_provider.username]
      *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
      *    </pre>
      *
      * @return
@@ -162,7 +161,6 @@ public class ExternalHostProviders extends
      *    [external_host_provider.requires_authentication]
      *    [external_host_provider.username]
      *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
      *    </pre>
      *
      * @param expect
@@ -208,7 +206,6 @@ public class ExternalHostProviders extends
      *    [external_host_provider.requires_authentication]
      *    [external_host_provider.username]
      *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
      *    </pre>
      *
      * @param expect

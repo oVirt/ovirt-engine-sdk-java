@@ -45,6 +45,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="summary" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}packages" minOccurs="0"/>
  *         &lt;element ref="{}host" minOccurs="0"/>
+ *         &lt;element ref="{}vm" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -62,7 +63,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "solution",
     "summary",
     "packages",
-    "host"
+    "host",
+    "vm"
 })
 public class KatelloErratum
     extends BaseResource
@@ -77,6 +79,7 @@ public class KatelloErratum
     protected String summary;
     protected Packages packages;
     protected Host host;
+    protected VM vm;
 
     /**
      * Gets the value of the title property.
@@ -300,6 +303,34 @@ public class KatelloErratum
 
     public boolean isSetHost() {
         return (this.host!= null);
+    }
+
+    /**
+     * Gets the value of the vm property.
+     *
+     * @return
+     *     possible object is
+     *     {@link VM }
+     *
+     */
+    public VM getVm() {
+        return vm;
+    }
+
+    /**
+     * Sets the value of the vm property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VM }
+     *
+     */
+    public void setVm(VM value) {
+        this.vm = value;
+    }
+
+    public boolean isSetVm() {
+        return (this.vm!= null);
     }
 
 }

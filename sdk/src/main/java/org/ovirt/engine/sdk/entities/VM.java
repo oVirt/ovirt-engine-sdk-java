@@ -66,6 +66,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="next_run_configuration_exists" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="numa_tune_mode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}permissions" minOccurs="0"/>
+ *         &lt;element ref="{}external_host_provider" minOccurs="0"/>
+ *         &lt;element ref="{}katello_errata" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -102,7 +104,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "useLatestTemplateVersion",
     "nextRunConfigurationExists",
     "numaTuneMode",
-    "permissions"
+    "permissions",
+    "externalHostProvider",
+    "katelloErrata"
 })
 @XmlSeeAlso({
     Snapshot.class
@@ -153,6 +157,10 @@ public class VM
     @XmlElement(name = "numa_tune_mode")
     protected String numaTuneMode;
     protected Permissions permissions;
+    @XmlElement(name = "external_host_provider")
+    protected ExternalHostProvider externalHostProvider;
+    @XmlElement(name = "katello_errata")
+    protected KatelloErrata katelloErrata;
 
     /**
      * Gets the value of the stopReason property.
@@ -908,6 +916,62 @@ public class VM
 
     public boolean isSetPermissions() {
         return (this.permissions!= null);
+    }
+
+    /**
+     * Gets the value of the externalHostProvider property.
+     *
+     * @return
+     *     possible object is
+     *     {@link ExternalHostProvider }
+     *
+     */
+    public ExternalHostProvider getExternalHostProvider() {
+        return externalHostProvider;
+    }
+
+    /**
+     * Sets the value of the externalHostProvider property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ExternalHostProvider }
+     *
+     */
+    public void setExternalHostProvider(ExternalHostProvider value) {
+        this.externalHostProvider = value;
+    }
+
+    public boolean isSetExternalHostProvider() {
+        return (this.externalHostProvider!= null);
+    }
+
+    /**
+     * Gets the value of the katelloErrata property.
+     *
+     * @return
+     *     possible object is
+     *     {@link KatelloErrata }
+     *
+     */
+    public Object getKatelloErrata() {
+        return katelloErrata;
+    }
+
+    /**
+     * Sets the value of the katelloErrata property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link KatelloErrata }
+     *
+     */
+    public void setKatelloErrata(KatelloErrata value) {
+        this.katelloErrata = value;
+    }
+
+    public boolean isSetKatelloErrata() {
+        return (this.katelloErrata!= null);
     }
 
 }

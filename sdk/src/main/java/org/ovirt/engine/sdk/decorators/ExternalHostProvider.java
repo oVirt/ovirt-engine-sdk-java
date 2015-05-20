@@ -497,7 +497,6 @@ public class ExternalHostProvider extends
      *    [external_host_provider.requires_authentication]
      *    [external_host_provider.username]
      *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
      *    </pre>
      *
      * @return
@@ -537,7 +536,6 @@ public class ExternalHostProvider extends
      *    [external_host_provider.requires_authentication]
      *    [external_host_provider.username]
      *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
      *    </pre>
      *
      * @param async
@@ -586,7 +584,6 @@ public class ExternalHostProvider extends
      *    [external_host_provider.requires_authentication]
      *    [external_host_provider.username]
      *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
      *    </pre>
      *
      * @param correlationId
@@ -643,7 +640,6 @@ public class ExternalHostProvider extends
      *    [external_host_provider.requires_authentication]
      *    [external_host_provider.username]
      *    [external_host_provider.password]
-     *    [external_host_provider.authentication_url]
      *    </pre>
      *
      * @param correlationId

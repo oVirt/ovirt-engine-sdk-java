@@ -124,6 +124,7 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.requires_authentication]
      *    [openstack_image_provider.username]
      *    [openstack_image_provider.password]
+     *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *
@@ -162,6 +163,7 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.requires_authentication]
      *    [openstack_image_provider.username]
      *    [openstack_image_provider.password]
+     *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *
@@ -208,6 +210,7 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.requires_authentication]
      *    [openstack_image_provider.username]
      *    [openstack_image_provider.password]
+     *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *

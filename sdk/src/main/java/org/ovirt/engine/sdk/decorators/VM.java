@@ -48,6 +48,7 @@ public class VM extends
     private volatile VMApplications vMApplications;
     private volatile VMCdRoms vMCdRoms;
     private volatile VMDisks vMDisks;
+    private volatile VMKatelloErrata vMKatelloErrata;
     private volatile VMNICs vMNICs;
     private volatile VMPermissions vMPermissions;
     private volatile VMReportedDevices vMReportedDevices;
@@ -120,6 +121,22 @@ public class VM extends
             }
         }
         return vMDisks;
+    }
+    /**
+     * Gets the value of the VMKatelloErrata property.
+     *
+     * @return
+     *     {@link VMKatelloErrata }
+     */
+    public VMKatelloErrata getKatelloErrata() {
+        if (this.vMKatelloErrata == null) {
+            synchronized (this.LOCK) {
+                if (this.vMKatelloErrata == null) {
+                    this.vMKatelloErrata = new VMKatelloErrata(proxy, this);
+                }
+            }
+        }
+        return vMKatelloErrata;
     }
     /**
      * Gets the value of the VMNICs property.
@@ -2559,6 +2576,7 @@ public class VM extends
      *    [vm.cpu_profile.id]
      *    [vm.migration.auto_converge]
      *    [vm.migration.compressed]
+     *    [vm.external_host_provider.id]
      *    </pre>
      *
      * @return
@@ -2654,6 +2672,7 @@ public class VM extends
      *    [vm.cpu_profile.id]
      *    [vm.migration.auto_converge]
      *    [vm.migration.compressed]
+     *    [vm.external_host_provider.id]
      *    </pre>
      *
      * @param async
@@ -2758,6 +2777,7 @@ public class VM extends
      *    [vm.cpu_profile.id]
      *    [vm.migration.auto_converge]
      *    [vm.migration.compressed]
+     *    [vm.external_host_provider.id]
      *    </pre>
      *
      * @param correlationId
@@ -2870,6 +2890,7 @@ public class VM extends
      *    [vm.cpu_profile.id]
      *    [vm.migration.auto_converge]
      *    [vm.migration.compressed]
+     *    [vm.external_host_provider.id]
      *    </pre>
      *
      * @param correlationId

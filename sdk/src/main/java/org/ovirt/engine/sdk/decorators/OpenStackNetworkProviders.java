@@ -124,6 +124,7 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.requires_authentication]
      *    [openstack_network_provider.username]
      *    [openstack_network_provider.password]
+     *    [openstack_network_provider.authentication_url]
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *
@@ -162,6 +163,7 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.requires_authentication]
      *    [openstack_network_provider.username]
      *    [openstack_network_provider.password]
+     *    [openstack_network_provider.authentication_url]
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *
@@ -208,6 +210,7 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.requires_authentication]
      *    [openstack_network_provider.username]
      *    [openstack_network_provider.password]
+     *    [openstack_network_provider.authentication_url]
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *

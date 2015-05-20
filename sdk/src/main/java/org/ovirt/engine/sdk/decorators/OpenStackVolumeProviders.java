@@ -119,9 +119,9 @@ public class OpenStackVolumeProviders extends
      * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
      *    <pre>
      *    openstack_volume_provider.name
-     *    openstack_volume_provider.data_center.id|name
      *    [openstack_volume_provider.description]
      *    [openstack_volume_provider.url]
+     *    [openstack_volume_provider.data_center.id|name]
      *    [openstack_volume_provider.requires_authentication]
      *    [openstack_volume_provider.username]
      *    [openstack_volume_provider.password]
@@ -159,9 +159,9 @@ public class OpenStackVolumeProviders extends
      * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
      *    <pre>
      *    openstack_volume_provider.name
-     *    openstack_volume_provider.data_center.id|name
      *    [openstack_volume_provider.description]
      *    [openstack_volume_provider.url]
+     *    [openstack_volume_provider.data_center.id|name]
      *    [openstack_volume_provider.requires_authentication]
      *    [openstack_volume_provider.username]
      *    [openstack_volume_provider.password]
@@ -207,9 +207,9 @@ public class OpenStackVolumeProviders extends
      * @param openstackvolumeprovider {@link org.ovirt.engine.sdk.entities.OpenStackVolumeProvider}
      *    <pre>
      *    openstack_volume_provider.name
-     *    openstack_volume_provider.data_center.id|name
      *    [openstack_volume_provider.description]
      *    [openstack_volume_provider.url]
+     *    [openstack_volume_provider.data_center.id|name]
      *    [openstack_volume_provider.requires_authentication]
      *    [openstack_volume_provider.username]
      *    [openstack_volume_provider.password]
