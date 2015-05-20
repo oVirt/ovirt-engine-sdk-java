@@ -30,6 +30,7 @@ import org.apache.http.entity.StringEntity;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.mapping.Mapper;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
+import org.ovirt.engine.sdk.utils.StringUtils;
 import org.ovirt.engine.sdk.utils.UrlHelper;
 
 /**
@@ -98,7 +99,7 @@ public class HttpProxyBroker {
         HttpPut httpput = new HttpPut(this.urlHelper.combine(url));
 
         String xmlReq = SerializationHelper.marshall(from, entity);
-        HttpEntity httpentity = new StringEntity(xmlReq);
+        HttpEntity httpentity = new StringEntity(xmlReq, StringUtils.UTF8);
         httpput.setEntity(httpentity);
 
         String xmlRes = this.proxy.execute(httpput, headers, null);
@@ -203,7 +204,7 @@ public class HttpProxyBroker {
         HttpPost httpost = new HttpPost(this.urlHelper.combine(url));
 
         String xmlReq = SerializationHelper.marshall(from, entity);
-        HttpEntity httpentity = new StringEntity(xmlReq);
+        HttpEntity httpentity = new StringEntity(xmlReq, StringUtils.UTF8);
         httpost.setEntity(httpentity);
 
         String xmlRes = this.proxy.execute(httpost, headers, null);
@@ -300,7 +301,7 @@ public class HttpProxyBroker {
 
         if (entity != null && from != null) {
             String xmlReq = SerializationHelper.marshall(from, entity);
-            HttpEntity httpentity = new StringEntity(xmlReq);
+            HttpEntity httpentity = new StringEntity(xmlReq, StringUtils.UTF8);
             httdelete.setEntity(httpentity);
         }
 

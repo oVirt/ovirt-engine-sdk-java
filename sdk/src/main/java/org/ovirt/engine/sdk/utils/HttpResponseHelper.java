@@ -23,7 +23,7 @@ public class HttpResponseHelper {
      */
     public static synchronized String getEntity(HttpEntity entity) throws ParseException, IOException {
         if (entity != null) {
-            return EntityUtils.toString(entity);
+            return EntityUtils.toString(entity, StringUtils.UTF8);
         } else {
             return null;
         }
