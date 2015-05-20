@@ -220,6 +220,7 @@ public class SerializationHelper {
             if (marshaller == null) {
                 marshaller = context.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+                marshaller.setProperty(Marshaller.JAXB_ENCODING, StringUtils.UTF8.toString());
             }
             return marshaller;
         }

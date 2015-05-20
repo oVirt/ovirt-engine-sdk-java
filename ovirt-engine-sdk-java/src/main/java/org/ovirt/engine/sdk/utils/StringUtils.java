@@ -16,7 +16,14 @@
 
 package org.ovirt.engine.sdk.utils;
 
+import java.nio.charset.Charset;
+
 public class StringUtils {
+    /**
+     * Reference to the UTF-8 charset used to avoid looking it up every time it is needed.
+     */
+    public static final Charset UTF8 = Charset.forName("UTF-8");
+
     /**
      * Removes trailing and leading brackets from the string
      * 
