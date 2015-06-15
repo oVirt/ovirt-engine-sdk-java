@@ -16,8 +16,6 @@
 
 package org.ovirt.engine.sdk.generator;
 
-import org.ovirt.engine.sdk.entities.DetailedLink;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,11 +28,9 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * This class stores information that the generator needs to remember. Thss information will be loaded when the
+ * This class stores information that the generator needs to remember. This information will be loaded when the
  * generator starts (usually from an {@code memory.properties} file), potentially updated during the execution, and
- * saved when the generator finishes. In addition to the typical methods to get and put properties this class also
- * provides some methods to simplify handling properties associated to instances of the {@link DetailedLink} class, as
- * that is what the generator will actually use.
+ * saved when the generator finishes.
  */
 public class Memory {
     /**
@@ -114,51 +110,14 @@ public class Memory {
     }
 
     /**
-     * Returns the value associated with the given prefix and link. This is intended to store multiple items related
-     * to a link, for example, to store the order of header parameters for a link the file will contain the following
-     * properties:
+     * Returns the list of values associated with a given key.
      *
-     * <pre>
-     * link.vms.vm_id..get.headers=Expect Correlation-Id
-     * </pre>
-     *
-     * Then the caller will be able to retrieve this as follows:
-     *
-     * <pre>
-     * DetailedLink link = ...;
-     * Memory memory = Memory.getInstance();
-     * String headers = memory.get(link, "headers");
-     * </pre>
-     *
-     * @param link the link
-     * @param key the prefix
-     * @return value associated with the given link and key, or {@code null} if there is no such value
-     */
-    public String get(DetailedLink link, String key) {
-        return get(makeKey(link, key));
-    }
-
-    /**
-     * Associates a value to a given link and key.
-     *
-     * @param link the link
      * @param key the key
-     * @param value the new value
-     */
-    public void put(DetailedLink link, String key, String value) {
-        put(makeKey(link, key), value);
-    }
-
-    /**
-     * Returns the list of values associated with a given link and key.
-     *
-     * @param link the link
-     * @param key the key
-     * @return the list of values associated with the given link and key, or an empty list if no such key exists or
+     * @return the list of values associated with the given key, or an empty list if no such key exists or
      *     the list of values is empty, will never return {@code null}
      */
-    public List<String> getList(DetailedLink link, String key) {
-        String value = get(link, key);
+    public List<String> getList(String key) {
+        String value = get(key);
         if (value == null || value.isEmpty()) {
             return Collections.emptyList();
         }
@@ -168,29 +127,14 @@ public class Memory {
     /**
      * Associates a list of values associated with the given link and key.
      *
-     * @param link the link
      * @param key the key
+     * @param values the list of values
      */
-    public void putList(DetailedLink link, String key, List<String> values) {
+    public void putList(String key, List<String> values) {
         if (values == null) {
             values = Collections.emptyList();
         }
         String value = String.join(" ", values);
-        put(link, key, value);
-    }
-
-    /**
-     * Generates a unique key for a link and a non-unique key.
-     *
-     * @param link the link
-     * @param key the key
-     * @returns the unique key
-     */
-    private String makeKey(DetailedLink link, String key) {
-        String href = link.getHref();
-        href = href.replaceAll("/", ".");
-        href = href.replaceAll("[{}]", "");
-        href = href.replaceAll(":", "_");
-        return "link." + href + "." + link.getRel() + "." + key;
+        put(key, value);
     }
 }

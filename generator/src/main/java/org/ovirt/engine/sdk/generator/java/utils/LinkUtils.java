@@ -27,11 +27,9 @@ import org.ovirt.engine.sdk.entities.Headers;
 import org.ovirt.engine.sdk.entities.Parameter;
 import org.ovirt.engine.sdk.entities.ParametersSet;
 import org.ovirt.engine.sdk.entities.Request;
-import org.ovirt.engine.sdk.generator.Memory;
-
-import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.toList;
-import static org.ovirt.engine.sdk.generator.java.utils.ExceptionsAwareComparator.exceptions;
+import org.ovirt.engine.sdk.generator.java.ParameterContext;
+import org.ovirt.engine.sdk.generator.java.ParameterData;
+import org.ovirt.engine.sdk.generator.java.ParameterType;
 
 public class LinkUtils {
     /**
@@ -45,20 +43,46 @@ public class LinkUtils {
     }
 
     /**
-     * Key used to store the order of header parameters in the memory.
+     * Get the list of parameters that are available in the given link.
      */
-    private static final String HEADERS_ORDER_KEY = "headers.order";
+    public static List<ParameterData> getParameters(DetailedLink dl) {
+        List<ParameterData> result = new ArrayList<>();
+        result.addAll(getUrlParameters(dl));
+        result.addAll(getHeaderParameters(dl));
+        return result;
+    }
 
     /**
      * Get the list of URL parameters that are available in the given link.
      */
-    public static List<Parameter> getUrlParameters(DetailedLink dl) {
-        List<Parameter> result = new ArrayList<>();
+    public static List<ParameterData> getUrlParameters(DetailedLink dl) {
+        List<ParameterData> result = new ArrayList<>();
         if (dl.isSetRequest() && dl.getRequest().isSetUrl() &&
             dl.getRequest().getUrl().isSetParametersSets() &&
             !dl.getRequest().getUrl().getParametersSets().isEmpty()) {
             for (ParametersSet parametersSet : dl.getRequest().getUrl().getParametersSets()) {
-                result.addAll(parametersSet.getParameters());
+                for (Parameter parameter : parametersSet.getParameters()) {
+                    ParameterData parameterData = new ParameterData();
+                    parameterData.setName(parameter.getName());
+                    parameterData.setType(ParameterType.URL);
+                    switch (parameter.getContext()) {
+                    case "query":
+                        parameterData.setContext(ParameterContext.QUERY);
+                        break;
+                    case "matrix":
+                        parameterData.setContext(ParameterContext.MATRIX);
+                        break;
+                    default:
+                        throw new IllegalArgumentException(
+                            "The value \"" + parameter.getContext() + "\" isn't a valid URL parameter context."
+                        );
+                    }
+                    parameterData.setRequired(parameter.isRequired() != null && parameter.isRequired());
+                    parameterData.setValues(parameter.getValue());
+                    parameterData.setJavaName(UrlUtils.toQueryParam(parameter.getName()));
+                    parameterData.setJavaType(TypeUtils.toJava(parameter.getType()));
+                    result.add(parameterData);
+                }
             }
         }
         return result;
@@ -67,34 +91,26 @@ public class LinkUtils {
     /**
      * Get the list of headers available in the given link, filtering out the ones that should be ignored.
      */
-    public static List<Header> getHeaders(DetailedLink dl) {
-        // Extract the header definitions from the link:
-        List<Header> result = new ArrayList<>();
+    public static List<ParameterData> getHeaderParameters(DetailedLink dl) {
+        List<ParameterData> result = new ArrayList<>();
         Request request = dl.getRequest();
         if (request != null) {
             Headers headers = request.getHeaders();
             if (headers != null) {
                 for (Header header : headers.getHeaders()) {
                     if (!HEADERS_EXCEPTIONS.contains(header.getName())) {
-                        result.add(header);
+                        ParameterData parameterData = new ParameterData();
+                        parameterData.setName(header.getName());
+                        parameterData.setType(ParameterType.HEADER);
+                        parameterData.setJavaName(FormatUtils.toJava(header.getName()));
+                        parameterData.setRequired(header.isRequired() != null && header.isRequired());
+                        parameterData.setValues(header.getValue());
+                        parameterData.setJavaType("String");
+                        result.add(parameterData);
                     }
                 }
             }
         }
-
-        // Get the order of the headers from the memory:
-        Memory memory = Memory.getInstance();
-        List<String> oldOrder = memory.getList(dl, HEADERS_ORDER_KEY);
-
-        // Sort the headers by name, taking into account the exceptions:
-        result.sort(comparing(Header::getName, exceptions(String::compareTo, oldOrder)));
-
-        // Make sure that we remember the new order for the next execution:
-        List<String> newOrder = result.stream().map(Header::getName).collect(toList());
-        if (!newOrder.isEmpty()) {
-            memory.putList(dl, HEADERS_ORDER_KEY, newOrder);
-        }
-
         return result;
     }
 }

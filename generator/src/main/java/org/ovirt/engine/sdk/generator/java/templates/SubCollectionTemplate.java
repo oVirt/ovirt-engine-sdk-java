@@ -30,7 +30,7 @@ import java.util.Map;
 import static org.ovirt.engine.sdk.generator.java.utils.StringUtils.concatenateValues;
 
 public class SubCollectionTemplate extends AbstractTemplate {
-    public String evaluate(Tree<Location> collectionTree) {
+    public String evaluate(String className, Tree<Location> collectionTree) {
         Tree<Location> parentTree = collectionTree.getParent();
         Tree<Location> entityTree = collectionTree.getChild(LocationRules::isEntity);
 
@@ -50,11 +50,11 @@ public class SubCollectionTemplate extends AbstractTemplate {
             String methodName = methodLink.getRel();
             switch (methodName) {
             case "add":
-                String addMethod = new SubCollectionAddMethodTemplate().evaluate(collectionTree, methodLink);
+                String addMethod = new SubCollectionAddMethodTemplate().evaluate(className, collectionTree, methodLink);
                 methodsMap.put(methodName, addMethod);
                 break;
             case "get":
-                String listMethod = new SubCollectionListMethodTemplate().evaluate(collectionTree, methodLink);
+                String listMethod = new SubCollectionListMethodTemplate().evaluate(className, collectionTree, methodLink);
                 methodsMap.put(methodName, listMethod);
                 break;
             }
@@ -63,7 +63,7 @@ public class SubCollectionTemplate extends AbstractTemplate {
         // Generate the code for the action methods:
         for (Tree<Location> actionTree : collectionTree.getChildren(LocationRules::isAction)) {
             String actionName = LocationRules.getName(actionTree);
-            String actionMethod = new CollectionActionMethodTemplate().evaluate(actionTree);
+            String actionMethod = new CollectionActionMethodTemplate().evaluate(className, actionTree);
             methodsMap.put(actionName, actionMethod);
         }
 

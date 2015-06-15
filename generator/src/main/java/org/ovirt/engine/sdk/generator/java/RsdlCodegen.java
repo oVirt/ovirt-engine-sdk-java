@@ -74,46 +74,43 @@ public class RsdlCodegen {
     }
 
     private void generateCode(Tree<Location> tree) {
+        String className = BrokerRules.getBrokerType(tree);
+        String classCode = null;
         if (isEntity(tree)) {
             if (isSubEntity(tree)) {
-                addSubResource(tree);
+                classCode = addSubResource(className, tree);
             }
             else {
-                addResource(tree);
+                classCode = addResource(className, tree);
             }
         }
         else if (isCollection(tree)) {
             if (isSubCollection(tree)) {
-                addSubCollection(tree);
+                classCode = addSubCollection(className, tree);
             }
             else {
-                addCollection(tree);
+                classCode = addCollection(className, tree);
             }
+        }
+        if (classCode != null) {
+            code.put(className, classCode);
         }
     }
 
-    private void addResource(Tree<Location> entityTree) {
-        String className = BrokerRules.getBrokerType(entityTree);
-        String classCode = new ResourceTemplate().evaluate(entityTree);
-        code.put(className, classCode);
+    private String addResource(String className, Tree<Location> entityTree) {
+        return new ResourceTemplate().evaluate(className, entityTree);
     }
 
-    private void addSubResource(Tree<Location> entityTree) {
-        String className = BrokerRules.getBrokerType(entityTree);
-        String classCode = new SubResourceTemplate().evaluate(entityTree);
-        code.put(className, classCode);
+    private String addSubResource(String className, Tree<Location> entityTree) {
+        return new SubResourceTemplate().evaluate(className, entityTree);
     }
 
-    private void addCollection(Tree<Location> collectionTree) {
-        String className = BrokerRules.getBrokerType(collectionTree);
-        String classCode = new CollectionTemplate().evaluate(collectionTree);
-        code.put(className, classCode);
+    private String addCollection(String className, Tree<Location> collectionTree) {
+        return new CollectionTemplate().evaluate(className, collectionTree);
     }
 
-    private void addSubCollection(Tree<Location> collectionTree) {
-        String className = BrokerRules.getBrokerType(collectionTree);
-        String classCode = new SubCollectionTemplate().evaluate(collectionTree);
-        code.put(className, classCode);
+    private String addSubCollection(String className, Tree<Location> collectionTree) {
+        return new SubCollectionTemplate().evaluate(className, collectionTree);
     }
 
     private Map<String, List<String>> getPublicAccessors() {

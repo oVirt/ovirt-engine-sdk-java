@@ -16,8 +16,10 @@
 
 package org.ovirt.engine.sdk.generator.java.documentation;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.ovirt.engine.sdk.generator.java.ParameterData;
 import org.ovirt.engine.sdk.generator.java.utils.FormatUtils;
 import org.ovirt.engine.sdk.generator.java.utils.StringUtils;
 import org.ovirt.engine.sdk.generator.java.utils.UrlUtils;
@@ -25,6 +27,8 @@ import org.ovirt.engine.sdk.entities.DetailedLink;
 import org.ovirt.engine.sdk.entities.Header;
 import org.ovirt.engine.sdk.entities.Parameter;
 import org.ovirt.engine.sdk.entities.ParametersSet;
+
+import static java.util.stream.Collectors.joining;
 
 /**
  * Provides documentation related codegen capabilities
@@ -131,8 +135,55 @@ public class DocsGen {
         return buffer.toString();
     }
 
+
     /**
-     * Generates the docuemntation for the URL parameters available in the given link.
+     * Generates the documentation for the given parameters.
+     *
+     * @param parameters the list of parameters
+     * @result a list containing the lines of the documentation
+     */
+    public static String generateParameters(List<ParameterData> parameters) {
+        List<String> lines = generateParameterLines(parameters);
+        if (lines.isEmpty()) {
+            return PREFIX;
+        }
+        return String.join(NEW_LINE, lines);
+    }
+
+    /**
+     * Generates the documentation for the given parameters.
+     *
+     * @param parameters the list of parameters
+     * @result a list containing the lines of the documentation
+     */
+    private static List<String> generateParameterLines(List<ParameterData> parameters) {
+        List<String> lines = new ArrayList<>();
+        parameters.forEach(x -> lines.addAll(generateParameterLines(x)));
+        return lines;
+    }
+
+    /**
+     * Generates the documentation for the given parameter.
+     *
+     * @param parameter the parameter
+     * @return a list containing the lines of the documentation
+     */
+    private static List<String> generateParameterLines(ParameterData parameter) {
+        List<String> lines = new ArrayList<>();
+        lines.add(PARAM  + parameter.getJavaName());
+        lines.add(PREFIX + PARAM_DETAILS_OFFSET + PRE_OPEN);
+        if (parameter.isRequired()) {
+            lines.add(PREFIX + PARAM_DETAILS_OFFSET + parameter.getValues());
+        }
+        else {
+            lines.add(PREFIX + PARAM_DETAILS_OFFSET + BREACKS_OPEN + parameter.getValues() + BREACKS_CLOSE);
+        }
+        lines.add(PREFIX + PARAM_DETAILS_OFFSET + PRE_CLOSE);
+        return lines;
+    }
+
+    /**
+     * Generates the documentation for the URL parameters available in the given link.
      */
     public static String generateUrlParameters(DetailedLink detailedLink) {
         StringBuffer docParams = new StringBuffer();

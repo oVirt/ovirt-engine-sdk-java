@@ -27,7 +27,7 @@ import java.util.List;
  * <pre>
  * List<String> names = ...;
  * List<String> exceptions = Arrays.asList("mary", "joe");
- * names.sort(new ExceptionsComparator<>(Person::getName, String::compareTo, exceptions);
+ * names.sort(new ExceptionsComparator<>(Person::getJavaName, String::compareTo, exceptions);
  * </pre>
  *
  * @param <T> the type of the objects to compare

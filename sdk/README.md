@@ -74,7 +74,10 @@ Once you have inspected the code, and if everything looks correct, commit the
 modified metadata and source files.
 
 The process will also potentially modify the `memory.properties` file
-used by the generator. Changes to this file must also be commited.
+used by the generator. Changes to this file must also be commited if the
+SDK is going to be released. If the SDK isn't going to be released then
+it isn't necessary to update the memory, as there is no commitment of
+backwards compatibility between non released versions.
 
 The commit message for this change should include a reference to the
 commit or tag of the engine that was used to download the updated

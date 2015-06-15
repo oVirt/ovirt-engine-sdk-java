@@ -16,12 +16,13 @@
 
 package org.ovirt.engine.sdk.generator.java.templates;
 
+import org.ovirt.engine.sdk.generator.java.ParameterData;
 import org.ovirt.engine.sdk.generator.templates.AbstractTemplate;
 
 public class HeaderBuilderParameterTemplate extends AbstractTemplate {
-    public String evaluate(String realUrlParamName, String headerParamName) {
-        set("realUrlParamName", realUrlParamName);
-        set("headerParamName", headerParamName);
+    public String evaluate(ParameterData parameter) {
+        set("headerName", parameter.getName());
+        set("javaName", parameter.getJavaName());
         return evaluate();
     }
 }

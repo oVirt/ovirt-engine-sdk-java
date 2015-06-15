@@ -30,7 +30,7 @@ import java.util.Map;
 import static org.ovirt.engine.sdk.generator.java.utils.StringUtils.concatenateValues;
 
 public class CollectionTemplate extends AbstractTemplate {
-    public String evaluate(Tree<Location> collectionTree) {
+    public String evaluate(String className, Tree<Location> collectionTree) {
         Tree<Location> entityTree = collectionTree.getChild(LocationRules::isEntity);
 
         String collectionBrokerType = BrokerRules.getBrokerType(collectionTree);
@@ -48,11 +48,11 @@ public class CollectionTemplate extends AbstractTemplate {
             String methodName = methodLink.getRel();
             switch (methodName) {
             case "add":
-                String addMethod = new CollectionAddMethodTemplate().evaluate(collectionTree, methodLink);
+                String addMethod = new CollectionAddMethodTemplate().evaluate(className, collectionTree, methodLink);
                 methodsMap.put(methodName, addMethod);
                 break;
             case "get":
-                String listMethod = new CollectionListMethodTemplate().evaluate(collectionTree, methodLink);
+                String listMethod = new CollectionListMethodTemplate().evaluate(className, collectionTree, methodLink);
                 methodsMap.put(methodName, listMethod);
                 break;
             }

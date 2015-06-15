@@ -50,6 +50,7 @@ public class StringUtils {
         StringBuffer buffer = new StringBuffer(source);
         if (strings != null) {
             for (String str : strings) {
+                buffer.append("\n");
                 buffer.append(str);
             }
         }

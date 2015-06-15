@@ -16,91 +16,52 @@
 
 package org.ovirt.engine.sdk.generator.java.templates;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.ovirt.engine.sdk.generator.java.documentation.DocsGen;
 import org.ovirt.engine.sdk.generator.Location;
+import org.ovirt.engine.sdk.generator.java.ParameterData;
+import org.ovirt.engine.sdk.generator.java.documentation.DocsGen;
 import org.ovirt.engine.sdk.generator.java.utils.LinkUtils;
-import org.ovirt.engine.sdk.generator.java.utils.StringUtils;
+import org.ovirt.engine.sdk.generator.java.utils.MethodUtils;
 import org.ovirt.engine.sdk.generator.utils.Tree;
 import org.ovirt.engine.sdk.entities.DetailedLink;
-import org.ovirt.engine.sdk.entities.Header;
-import org.ovirt.engine.sdk.entities.Parameter;
 
 public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
-    private String evaluate(List<Parameter> urlParameters, List<Header> headers, String docParams) {
-        // Generate the parameter declarations, for both URL parameters and headers:
-        List<String> paramDecls = new ArrayList<>();
-        paramDecls.addAll(getUrlParameterDeclarations(urlParameters));
-        paramDecls.addAll(getHeaderDeclarations(headers));
-        String paramList = StringUtils.formatList(paramDecls, ", ");
-
+    private String evaluate(List<ParameterData> parameters) {
         // Generate the code that populates the list of URL parameters to send tot the server:
-        String urlBuilderCode = getUrlBuilderCode(urlParameters);
-        String headerBuilderCode = getHeaderBuilderCode(headers);
+        String urlBuilderCode = getUrlBuilderCode(parameters);
+        String headerBuilderCode = getHeaderBuilderCode(parameters);
 
         // Generate the method:
-        set("docParams", docParams);
-        set("paramList", paramList);
+        set("docParams", DocsGen.generateParameters(parameters));
+        set("paramList", MethodUtils.formatParameters(parameters));
         set("headersToBuild", headerBuilderCode);
         set("urlParamsToBuild", urlBuilderCode);
 
         return evaluate();
     }
 
-    public String evaluate(Tree<Location> entityTree, DetailedLink dl) {
+    public String evaluate(String className, Tree<Location> entityTree, DetailedLink dl) {
         StringBuilder buffer = new StringBuilder();
 
         if (dl.isSetRequest() && dl.getRequest().isSetBody() && dl.getRequest().getBody().isSetType() && !
                 dl.getRequest().getBody().getType().equals("") && dl.getRequest().getBody().isRequired() != null
                 && dl.getRequest().getBody().isRequired().equals(Boolean.TRUE)) {
             // add delete() with body overload (body is mandatory)
-            buffer.append(new DeleteMethodWithBodyTemplate().evaluate(dl));
-        } else {
-            // Generate URL and header parameters:
-            List<Parameter> urlParameters = LinkUtils.getUrlParameters(dl);
-            List<Header> headers = LinkUtils.getHeaders(dl);
+            buffer.append(new DeleteMethodWithBodyTemplate().evaluate(className, dl));
+        }
+        else {
+            // Get the list of parameters:
+            List<ParameterData> parameters = LinkUtils.getParameters(dl);
 
-            // Add default method, without URL or header parameters:
-            buffer.append(
-                evaluate(
-                    new ArrayList<>(0),
-                    new ArrayList<>(0),
-                    DOC_SEPARATOR
-                )
-            );
+            // Reorder the parameters declarations for backwards compatibility:
+            parameters = MethodUtils.reorderParameters(className, "delete", parameters);
 
-            // Add method overload containing all the URL parameters but none of the header parameters:
-            if (!urlParameters.isEmpty()) {
-                buffer.append(
-                    evaluate(
-                        urlParameters,
-                        new ArrayList<>(0),
-                        StringUtils.combine(
-                            DOC_SEPARATOR,
-                            DocsGen.generateUrlParameters(dl)
-                        )
-                    )
-                );
-            }
-
-            // Add method overloads containg all the URL parameters and all the sublists of the header parameters:
-            if (!headers.isEmpty()) {
-                for (int i = 1; i <= headers.size(); i++) {
-                    List<Header> headerSublist = headers.subList(0, i);
-                    buffer.append(
-                        evaluate(
-                            urlParameters,
-                            headerSublist,
-                            StringUtils.combine(
-                                DOC_SEPARATOR,
-                                DocsGen.generateHeaders(headerSublist),
-                                DocsGen.generateUrlParameters(dl)
-                            )
-                        )
-                    );
-                }
+            // Generate a version of the method for each prefix of the list of parameter declarations, including the
+            // empty prefix and the complete list:
+            for (int i = 0; i <= parameters.size(); i++) {
+                List<ParameterData> prefix = parameters.subList(0, i);
+                buffer.append(evaluate(prefix));
             }
 
             // add delete() with body overload (body is optional)
@@ -110,7 +71,7 @@ public class DeleteMethodTemplate extends AbstractOverloadableTemplate {
                     && !dl.getRequest().getBody().isRequired().equals(Boolean.TRUE))
                     ||
                     dl.getRequest().getBody().isRequired() == null)) {
-                buffer.append(new DeleteMethodWithBodyTemplate().evaluate(dl));
+                buffer.append(new DeleteMethodWithBodyTemplate().evaluate(className, dl));
             }
         }
 

@@ -31,7 +31,7 @@ import java.util.Map;
 import static org.ovirt.engine.sdk.generator.java.utils.StringUtils.concatenateValues;
 
 public class ResourceTemplate extends AbstractTemplate {
-    public String evaluate(Tree<Location> entityTree) {
+    public String evaluate(String className, Tree<Location> entityTree) {
         String brokerType = BrokerRules.getBrokerType(entityTree);
         String entityType = SchemaRules.getSchemaType(entityTree);
 
@@ -64,11 +64,11 @@ public class ResourceTemplate extends AbstractTemplate {
             String methodName = methodLink.getRel();
             switch (methodName) {
             case "delete":
-                String deleteMethod = new DeleteMethodTemplate().evaluate(entityTree, methodLink);
+                String deleteMethod = new DeleteMethodTemplate().evaluate(className, entityTree, methodLink);
                 methodsMap.put(methodName, deleteMethod);
                 break;
             case "update":
-                String updateMethod = new UpdateMethodTemplate().evaluate(entityTree, methodLink);
+                String updateMethod = new UpdateMethodTemplate().evaluate(className, entityTree, methodLink);
                 methodsMap.put(methodName, updateMethod);
                 break;
             }
@@ -77,7 +77,7 @@ public class ResourceTemplate extends AbstractTemplate {
         // Generate the code for the actions:
         for (Tree<Location> actionTree : entityTree.getChildren(LocationRules::isAction)) {
             String actionName = LocationRules.getName(actionTree);
-            String actionMethod = new ResourceActionMethodTemplate().evaluate(actionTree);
+            String actionMethod = new ResourceActionMethodTemplate().evaluate(className, actionTree);
             methodsMap.put(actionName, actionMethod);
         }
 

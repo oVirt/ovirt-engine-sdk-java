@@ -1,3 +1,3 @@
-        if ($urlParamName$ != null) {
-            urlBuilder.add("$realUrlParamName$", $urlParamName$, UrlParameterType.$urlParamType$);
+        if ($javaName$ != null) {
+            urlBuilder.add("$parameterName$", $javaName$, UrlParameterType.$parameterContext$);
         }
