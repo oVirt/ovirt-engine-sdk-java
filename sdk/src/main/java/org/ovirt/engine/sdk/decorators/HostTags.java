@@ -127,6 +127,7 @@ public class HostTags extends
      *    tag.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link HostTag }
      *
@@ -163,7 +164,6 @@ public class HostTags extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link HostTag }
      *
@@ -207,7 +207,6 @@ public class HostTags extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link HostTag }
      *
@@ -245,7 +244,6 @@ public class HostTags extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link HostTag }
      *

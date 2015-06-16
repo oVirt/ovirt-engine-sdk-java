@@ -123,6 +123,7 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -154,7 +155,6 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -186,6 +186,7 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      * Adds GlusterBrick object.
      *
      * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     *
      * @return
      *     {@link DataCenterClusterGlusterVolumeGlusterBrick }
      *
@@ -218,7 +219,6 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link DataCenterClusterGlusterVolumeGlusterBrick }
      *
      * @throws ClientProtocolException
@@ -248,6 +248,7 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      * Performs migrate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -279,7 +280,6 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -311,6 +311,7 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      * Performs stopmigrate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -342,7 +343,6 @@ public class DataCenterClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *

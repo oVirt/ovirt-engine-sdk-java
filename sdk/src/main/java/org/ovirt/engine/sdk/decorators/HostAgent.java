@@ -90,12 +90,10 @@ public class HostAgent extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -124,17 +122,14 @@ public class HostAgent extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -178,6 +173,7 @@ public class HostAgent extends
      *    [agent.options]
      *    [encrypt_options]
      *    </pre>
+     *
      *
      * @return
      *     {@link HostAgent }
@@ -225,7 +221,6 @@ public class HostAgent extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link HostAgent }
      *
@@ -272,16 +267,14 @@ public class HostAgent extends
      *    [encrypt_options]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [202-accepted]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link HostAgent }
      *
@@ -292,13 +285,13 @@ public class HostAgent extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public HostAgent update(Boolean async, String expect) throws ClientProtocolException,
+    public HostAgent update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -331,20 +324,18 @@ public class HostAgent extends
      *    [encrypt_options]
      *    </pre>
      *
-     * @param expect
+     * @param async
      *    <pre>
-     *    [202-accepted]
+     *    [true|false]
      *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
-     *
-     * @param async
+     * @param expect
      *    <pre>
-     *    [true|false]
+     *    [202-accepted]
      *    </pre>
-     *
      * @return
      *     {@link HostAgent }
      *
@@ -355,16 +346,16 @@ public class HostAgent extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public HostAgent update(Boolean async, String expect, String correlationId) throws ClientProtocolException,
+    public HostAgent update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 

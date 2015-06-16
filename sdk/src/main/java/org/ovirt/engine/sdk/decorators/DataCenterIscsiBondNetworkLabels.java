@@ -123,6 +123,7 @@ public class DataCenterIscsiBondNetworkLabels extends
      * Adds Label object.
      *
      * @param label {@link org.ovirt.engine.sdk.entities.Label}
+     *
      * @return
      *     {@link DataCenterIscsiBondNetworkLabel }
      *
@@ -154,7 +155,6 @@ public class DataCenterIscsiBondNetworkLabels extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterIscsiBondNetworkLabel }
      *

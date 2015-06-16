@@ -141,12 +141,10 @@ public class SchedulingPolicy extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -175,17 +173,14 @@ public class SchedulingPolicy extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -224,6 +219,7 @@ public class SchedulingPolicy extends
      *    [schedulingpolicy.description]
      *    [schedulingpolicy.properties.property]
      *    </pre>
+     *
      *
      * @return
      *     {@link SchedulingPolicy }
@@ -266,7 +262,6 @@ public class SchedulingPolicy extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link SchedulingPolicy }
      *
@@ -308,16 +303,14 @@ public class SchedulingPolicy extends
      *    [schedulingpolicy.properties.property]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link SchedulingPolicy }
      *
@@ -362,6 +355,10 @@ public class SchedulingPolicy extends
      *    [schedulingpolicy.properties.property]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -370,12 +367,6 @@ public class SchedulingPolicy extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link SchedulingPolicy }
      *

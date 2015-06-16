@@ -120,11 +120,43 @@ public class SchedulingPolicyUnits extends
      *    <pre>
      *    [true|false]
      *    </pre>
+     *
+     * @return List of {@link SchedulingPolicyUnit }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<SchedulingPolicyUnit> list(Boolean caseSensitive) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.SchedulingPolicyUnits.class,
+                SchedulingPolicyUnit.class, headers);
+    }
+    /**
+     * Lists SchedulingPolicyUnit objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link SchedulingPolicyUnit }
      *

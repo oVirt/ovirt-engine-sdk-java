@@ -127,7 +127,6 @@ public class HostHooks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link HostHook }
      *
      * @throws ClientProtocolException

@@ -128,6 +128,7 @@ public class TemplateWatchDogs extends
      *    watchdog.model
      *    </pre>
      *
+     *
      * @return
      *     {@link TemplateWatchDog }
      *
@@ -165,7 +166,6 @@ public class TemplateWatchDogs extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link TemplateWatchDog }
      *
@@ -210,7 +210,6 @@ public class TemplateWatchDogs extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link TemplateWatchDog }
      *
@@ -248,7 +247,6 @@ public class TemplateWatchDogs extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link TemplateWatchDog }
      *

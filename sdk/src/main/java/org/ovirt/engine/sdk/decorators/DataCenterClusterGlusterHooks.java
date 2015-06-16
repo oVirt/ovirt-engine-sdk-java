@@ -127,7 +127,6 @@ public class DataCenterClusterGlusterHooks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link DataCenterClusterGlusterHook }
      *
      * @throws ClientProtocolException

@@ -143,6 +143,7 @@ public class NetworkPermissions extends
      *      permission.role.id
      *    </pre>
      *
+     *
      * @return
      *     {@link NetworkPermission }
      *
@@ -195,7 +196,6 @@ public class NetworkPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link NetworkPermission }
      *
@@ -255,7 +255,6 @@ public class NetworkPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link NetworkPermission }
      *
@@ -293,7 +292,6 @@ public class NetworkPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link NetworkPermission }
      *

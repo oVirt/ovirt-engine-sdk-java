@@ -124,6 +124,7 @@ public class CpuProfiles extends
      *    [cpuprofile.qos.id]
      *    </pre>
      *
+     *
      * @return
      *     {@link CpuProfile }
      *
@@ -163,7 +164,6 @@ public class CpuProfiles extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link CpuProfile }
      *
@@ -210,7 +210,6 @@ public class CpuProfiles extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link CpuProfile }
      *
@@ -248,7 +247,6 @@ public class CpuProfiles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link CpuProfile }
      *

@@ -127,6 +127,7 @@ public class ClusterAffinityGroupVMs extends
      *    vm.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link ClusterAffinityGroupVM }
      *
@@ -163,7 +164,6 @@ public class ClusterAffinityGroupVMs extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link ClusterAffinityGroupVM }
      *
@@ -207,7 +207,6 @@ public class ClusterAffinityGroupVMs extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link ClusterAffinityGroupVM }
      *
@@ -245,7 +244,6 @@ public class ClusterAffinityGroupVMs extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link ClusterAffinityGroupVM }
      *

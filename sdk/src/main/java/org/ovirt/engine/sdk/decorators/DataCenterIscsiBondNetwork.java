@@ -141,12 +141,10 @@ public class DataCenterIscsiBondNetwork extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -177,6 +175,7 @@ public class DataCenterIscsiBondNetwork extends
      * Updates DataCenterIscsiBondNetwork object.
      *
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *
      * @return
      *     {@link DataCenterIscsiBondNetwork }
      *
@@ -212,7 +211,6 @@ public class DataCenterIscsiBondNetwork extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterIscsiBondNetwork }
      *

@@ -143,6 +143,7 @@ public class StorageDomainPermissions extends
      *      permission.group.id
      *    </pre>
      *
+     *
      * @return
      *     {@link StorageDomainPermission }
      *
@@ -195,7 +196,6 @@ public class StorageDomainPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link StorageDomainPermission }
      *
@@ -255,7 +255,6 @@ public class StorageDomainPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link StorageDomainPermission }
      *
@@ -293,7 +292,6 @@ public class StorageDomainPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link StorageDomainPermission }
      *

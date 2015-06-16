@@ -127,6 +127,7 @@ public class UserTags extends
      *    tag.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link UserTag }
      *
@@ -163,7 +164,6 @@ public class UserTags extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link UserTag }
      *
@@ -207,7 +207,6 @@ public class UserTags extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link UserTag }
      *
@@ -245,7 +244,6 @@ public class UserTags extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link UserTag }
      *

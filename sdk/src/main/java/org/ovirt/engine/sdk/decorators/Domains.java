@@ -121,7 +121,6 @@ public class Domains extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link Domain }
      *
      * @throws ClientProtocolException

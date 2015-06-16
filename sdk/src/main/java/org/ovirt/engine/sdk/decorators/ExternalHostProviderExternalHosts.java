@@ -127,7 +127,6 @@ public class ExternalHostProviderExternalHosts extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link ExternalHostProviderExternalHost }
      *
      * @throws ClientProtocolException

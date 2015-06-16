@@ -129,6 +129,7 @@ public class DataCenters extends
      *    [datacenter.mac_pool.id]
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenter }
      *
@@ -173,7 +174,6 @@ public class DataCenters extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenter }
      *
@@ -225,7 +225,6 @@ public class DataCenters extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenter }
      *
@@ -263,6 +262,80 @@ public class DataCenters extends
      *    <pre>
      *    [search query]
      *    </pre>
+     *
+     * @return List of {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenter> list(String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class,
+                DataCenter.class, headers);
+    }
+    /**
+     * Lists DataCenter objects.
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return List of {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenter> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class,
+                DataCenter.class, headers);
+    }
+    /**
+     * Lists DataCenter objects.
+     *
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -271,7 +344,6 @@ public class DataCenters extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenter }
      *

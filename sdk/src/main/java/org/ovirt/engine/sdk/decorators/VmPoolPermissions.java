@@ -141,6 +141,7 @@ public class VmPoolPermissions extends
      *      permission.group.id
      *    </pre>
      *
+     *
      * @return
      *     {@link VmPoolPermission }
      *
@@ -191,7 +192,6 @@ public class VmPoolPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VmPoolPermission }
      *
@@ -249,7 +249,6 @@ public class VmPoolPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VmPoolPermission }
      *
@@ -287,7 +286,6 @@ public class VmPoolPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VmPoolPermission }
      *

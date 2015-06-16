@@ -127,6 +127,7 @@ public class RolePermits extends
      *    permit.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link RolePermit }
      *
@@ -163,7 +164,6 @@ public class RolePermits extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link RolePermit }
      *
@@ -207,7 +207,6 @@ public class RolePermits extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link RolePermit }
      *
@@ -245,7 +244,6 @@ public class RolePermits extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link RolePermit }
      *

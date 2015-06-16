@@ -128,6 +128,7 @@ public class DataCenterClusterNetworks extends
      *    [network.usages.usage]
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterClusterNetwork }
      *
@@ -165,7 +166,6 @@ public class DataCenterClusterNetworks extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterClusterNetwork }
      *
@@ -210,7 +210,6 @@ public class DataCenterClusterNetworks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterClusterNetwork }
      *
@@ -248,7 +247,6 @@ public class DataCenterClusterNetworks extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterClusterNetwork }
      *

@@ -123,6 +123,7 @@ public class DataCenterIscsiBondStorageConnections extends
      * Adds StorageConnection object.
      *
      * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *
      * @return
      *     {@link DataCenterIscsiBondStorageConnection }
      *
@@ -154,7 +155,6 @@ public class DataCenterIscsiBondStorageConnections extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterIscsiBondStorageConnection }
      *

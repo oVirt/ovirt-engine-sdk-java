@@ -127,6 +127,7 @@ public class TemplateTags extends
      *    tag.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link TemplateTag }
      *
@@ -163,7 +164,6 @@ public class TemplateTags extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link TemplateTag }
      *
@@ -207,7 +207,6 @@ public class TemplateTags extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link TemplateTag }
      *
@@ -245,7 +244,6 @@ public class TemplateTags extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link TemplateTag }
      *

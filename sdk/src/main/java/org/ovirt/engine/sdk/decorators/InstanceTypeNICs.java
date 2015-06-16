@@ -123,6 +123,7 @@ public class InstanceTypeNICs extends
      * Adds NIC object.
      *
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *
      * @return
      *     {@link InstanceTypeNIC }
      *
@@ -154,7 +155,6 @@ public class InstanceTypeNICs extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link InstanceTypeNIC }
      *

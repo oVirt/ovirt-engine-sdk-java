@@ -127,7 +127,6 @@ public class ExternalHostProviderCertificates extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link ExternalHostProviderCertificate }
      *
      * @throws ClientProtocolException

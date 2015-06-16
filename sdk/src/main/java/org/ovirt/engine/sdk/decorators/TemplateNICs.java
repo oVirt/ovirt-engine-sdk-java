@@ -154,6 +154,7 @@ public class TemplateNICs extends
      *      [nic.port_mirroring.networks.network]
      *    </pre>
      *
+     *
      * @return
      *     {@link TemplateNIC }
      *
@@ -217,7 +218,6 @@ public class TemplateNICs extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link TemplateNIC }
      *
@@ -288,7 +288,6 @@ public class TemplateNICs extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link TemplateNIC }
      *
@@ -326,7 +325,6 @@ public class TemplateNICs extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link TemplateNIC }
      *

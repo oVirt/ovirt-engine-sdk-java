@@ -90,12 +90,10 @@ public class VMVirtualNumaNode extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -124,17 +122,14 @@ public class VMVirtualNumaNode extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -174,6 +169,7 @@ public class VMVirtualNumaNode extends
      *    [vm_numa_node.cpu.cores.core]
      *    [vm_numa_node.numa_node_pins.numa_node_pin]
      *    </pre>
+     *
      *
      * @return
      *     {@link VMVirtualNumaNode }
@@ -217,7 +213,6 @@ public class VMVirtualNumaNode extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link VMVirtualNumaNode }
      *
@@ -260,16 +255,14 @@ public class VMVirtualNumaNode extends
      *    [vm_numa_node.numa_node_pins.numa_node_pin]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link VMVirtualNumaNode }
      *
@@ -315,6 +308,10 @@ public class VMVirtualNumaNode extends
      *    [vm_numa_node.numa_node_pins.numa_node_pin]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -323,12 +320,6 @@ public class VMVirtualNumaNode extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link VMVirtualNumaNode }
      *

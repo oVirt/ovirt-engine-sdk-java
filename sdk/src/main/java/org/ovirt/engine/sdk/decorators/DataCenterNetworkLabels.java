@@ -127,6 +127,7 @@ public class DataCenterNetworkLabels extends
      *    label.id
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterNetworkLabel }
      *
@@ -163,7 +164,6 @@ public class DataCenterNetworkLabels extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterNetworkLabel }
      *
@@ -207,7 +207,6 @@ public class DataCenterNetworkLabels extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterNetworkLabel }
      *
@@ -245,7 +244,6 @@ public class DataCenterNetworkLabels extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterNetworkLabel }
      *

@@ -143,6 +143,7 @@ public class CpuProfilePermissions extends
      *      permission.role.id
      *    </pre>
      *
+     *
      * @return
      *     {@link CpuProfilePermission }
      *
@@ -195,7 +196,6 @@ public class CpuProfilePermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link CpuProfilePermission }
      *
@@ -255,7 +255,6 @@ public class CpuProfilePermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link CpuProfilePermission }
      *
@@ -293,7 +292,6 @@ public class CpuProfilePermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link CpuProfilePermission }
      *

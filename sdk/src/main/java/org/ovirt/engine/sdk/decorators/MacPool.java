@@ -90,12 +90,10 @@ public class MacPool extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -124,17 +122,14 @@ public class MacPool extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -175,6 +170,7 @@ public class MacPool extends
      *    [macpool.default_pool]
      *    [macpool.ranges.range]
      *    </pre>
+     *
      *
      * @return
      *     {@link MacPool }
@@ -219,7 +215,6 @@ public class MacPool extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link MacPool }
      *
@@ -263,16 +258,14 @@ public class MacPool extends
      *    [macpool.ranges.range]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link MacPool }
      *
@@ -319,6 +312,10 @@ public class MacPool extends
      *    [macpool.ranges.range]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -327,12 +324,6 @@ public class MacPool extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link MacPool }
      *

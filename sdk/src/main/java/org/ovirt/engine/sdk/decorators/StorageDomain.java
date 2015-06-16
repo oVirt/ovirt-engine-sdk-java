@@ -243,12 +243,10 @@ public class StorageDomain extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -277,17 +275,14 @@ public class StorageDomain extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -326,11 +321,43 @@ public class StorageDomain extends
      *    [storagedomain.format]
      *    </pre>
      *
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(org.ovirt.engine.sdk.entities.StorageDomain storagedomain) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, storagedomain,
+                org.ovirt.engine.sdk.entities.StorageDomain.class, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param storagedomain {@link org.ovirt.engine.sdk.entities.StorageDomain}
+     *    <pre>
+     *    storagedomain.host.id|name
+     *    [storagedomain.format]
+     *    </pre>
+     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -367,16 +394,14 @@ public class StorageDomain extends
      *    [storagedomain.format]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -417,6 +442,7 @@ public class StorageDomain extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -453,7 +479,6 @@ public class StorageDomain extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -490,16 +515,14 @@ public class StorageDomain extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Action }
      *
@@ -553,6 +576,7 @@ public class StorageDomain extends
      *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
      *    </pre>
+     *
      *
      * @return
      *     {@link StorageDomain }
@@ -610,7 +634,6 @@ public class StorageDomain extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link StorageDomain }
      *
@@ -667,16 +690,14 @@ public class StorageDomain extends
      *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link StorageDomain }
      *
@@ -736,6 +757,10 @@ public class StorageDomain extends
      *      [storagedomain.critical_space_action_blocker]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -744,12 +769,6 @@ public class StorageDomain extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link StorageDomain }
      *

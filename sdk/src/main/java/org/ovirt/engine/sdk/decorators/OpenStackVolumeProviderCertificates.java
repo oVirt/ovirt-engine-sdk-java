@@ -127,7 +127,6 @@ public class OpenStackVolumeProviderCertificates extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link OpenStackVolumeProviderCertificate }
      *
      * @throws ClientProtocolException

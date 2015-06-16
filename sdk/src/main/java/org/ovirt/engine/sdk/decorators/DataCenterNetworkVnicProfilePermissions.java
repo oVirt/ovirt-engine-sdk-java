@@ -123,6 +123,7 @@ public class DataCenterNetworkVnicProfilePermissions extends
      * Adds Permission object.
      *
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *
      * @return
      *     {@link DataCenterNetworkVnicProfilePermission }
      *
@@ -154,7 +155,6 @@ public class DataCenterNetworkVnicProfilePermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterNetworkVnicProfilePermission }
      *

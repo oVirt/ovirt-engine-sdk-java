@@ -130,6 +130,7 @@ public class VMVirtualNumaNodes extends
      *    [vm_numa_node.numa_node_pins.numa_node_pin]
      *    </pre>
      *
+     *
      * @return
      *     {@link VMVirtualNumaNode }
      *
@@ -169,7 +170,6 @@ public class VMVirtualNumaNodes extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VMVirtualNumaNode }
      *
@@ -216,7 +216,6 @@ public class VMVirtualNumaNodes extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VMVirtualNumaNode }
      *
@@ -254,7 +253,6 @@ public class VMVirtualNumaNodes extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VMVirtualNumaNode }
      *

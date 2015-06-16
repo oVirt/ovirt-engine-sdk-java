@@ -124,12 +124,10 @@ public class OpenStackVolumeProvider extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -158,17 +156,14 @@ public class OpenStackVolumeProvider extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -202,6 +197,7 @@ public class OpenStackVolumeProvider extends
      * Performs importcertificates action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -232,7 +228,6 @@ public class OpenStackVolumeProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -263,6 +258,7 @@ public class OpenStackVolumeProvider extends
      * Performs testconnectivity action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -293,7 +289,6 @@ public class OpenStackVolumeProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -334,6 +329,7 @@ public class OpenStackVolumeProvider extends
      *    [openstack_volume_provider.authentication_url]
      *    [openstack_volume_provider.properties.property]
      *    </pre>
+     *
      *
      * @return
      *     {@link OpenStackVolumeProvider }
@@ -381,7 +377,6 @@ public class OpenStackVolumeProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link OpenStackVolumeProvider }
      *
@@ -428,16 +423,14 @@ public class OpenStackVolumeProvider extends
      *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link OpenStackVolumeProvider }
      *
@@ -487,6 +480,10 @@ public class OpenStackVolumeProvider extends
      *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -495,12 +492,6 @@ public class OpenStackVolumeProvider extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link OpenStackVolumeProvider }
      *

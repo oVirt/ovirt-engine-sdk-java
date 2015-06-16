@@ -127,7 +127,6 @@ public class VMSnapshotNics extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMSnapshotNIC }
      *
      * @throws ClientProtocolException

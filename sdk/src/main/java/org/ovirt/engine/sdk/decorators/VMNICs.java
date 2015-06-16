@@ -152,6 +152,7 @@ public class VMNICs extends
      *      [nic.plugged]
      *    </pre>
      *
+     *
      * @return
      *     {@link VMNIC }
      *
@@ -213,7 +214,6 @@ public class VMNICs extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VMNIC }
      *
@@ -282,7 +282,6 @@ public class VMNICs extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VMNIC }
      *
@@ -321,7 +320,6 @@ public class VMNICs extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMNIC }
      *
      * @throws ClientProtocolException
@@ -350,16 +348,14 @@ public class VMNICs extends
     /**
      * Lists VMNIC objects.
      *
-     * @param allContent
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
-     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      * @return List of {@link VMNIC }
      *

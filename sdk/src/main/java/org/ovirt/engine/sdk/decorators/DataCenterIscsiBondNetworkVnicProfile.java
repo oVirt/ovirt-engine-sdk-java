@@ -107,12 +107,10 @@ public class DataCenterIscsiBondNetworkVnicProfile extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *

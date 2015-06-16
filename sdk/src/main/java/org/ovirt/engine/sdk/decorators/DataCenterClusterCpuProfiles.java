@@ -123,6 +123,7 @@ public class DataCenterClusterCpuProfiles extends
      * Adds CpuProfile object.
      *
      * @param cpuprofile {@link org.ovirt.engine.sdk.entities.CpuProfile}
+     *
      * @return
      *     {@link DataCenterClusterCpuProfile }
      *
@@ -154,7 +155,6 @@ public class DataCenterClusterCpuProfiles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterClusterCpuProfile }
      *

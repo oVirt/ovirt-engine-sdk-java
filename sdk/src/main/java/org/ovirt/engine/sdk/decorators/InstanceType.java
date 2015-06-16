@@ -124,12 +124,10 @@ public class InstanceType extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -158,17 +156,14 @@ public class InstanceType extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -202,6 +197,7 @@ public class InstanceType extends
      * Updates InstanceType object.
      *
      * @param instancetype {@link org.ovirt.engine.sdk.entities.InstanceType}
+     *
      * @return
      *     {@link InstanceType }
      *
@@ -237,7 +233,6 @@ public class InstanceType extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link InstanceType }
      *

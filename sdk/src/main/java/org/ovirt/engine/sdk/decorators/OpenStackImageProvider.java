@@ -124,12 +124,10 @@ public class OpenStackImageProvider extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -158,17 +156,14 @@ public class OpenStackImageProvider extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -207,6 +202,7 @@ public class OpenStackImageProvider extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -242,7 +238,6 @@ public class OpenStackImageProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -278,16 +273,14 @@ public class OpenStackImageProvider extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Action }
      *
@@ -326,6 +319,7 @@ public class OpenStackImageProvider extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -361,7 +355,6 @@ public class OpenStackImageProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -397,16 +390,14 @@ public class OpenStackImageProvider extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Action }
      *
@@ -449,6 +440,7 @@ public class OpenStackImageProvider extends
      *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
      *    </pre>
+     *
      *
      * @return
      *     {@link OpenStackImageProvider }
@@ -495,7 +487,6 @@ public class OpenStackImageProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link OpenStackImageProvider }
      *
@@ -541,16 +532,14 @@ public class OpenStackImageProvider extends
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link OpenStackImageProvider }
      *
@@ -599,6 +588,10 @@ public class OpenStackImageProvider extends
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -607,12 +600,6 @@ public class OpenStackImageProvider extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link OpenStackImageProvider }
      *

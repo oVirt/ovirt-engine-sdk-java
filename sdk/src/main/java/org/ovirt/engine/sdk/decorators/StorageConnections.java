@@ -160,6 +160,7 @@ public class StorageConnections extends
      *      storage_connection.path
      *    </pre>
      *
+     *
      * @return
      *     {@link StorageConnection }
      *
@@ -235,7 +236,6 @@ public class StorageConnections extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link StorageConnection }
      *
@@ -318,7 +318,6 @@ public class StorageConnections extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link StorageConnection }
      *
@@ -356,7 +355,6 @@ public class StorageConnections extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link StorageConnection }
      *

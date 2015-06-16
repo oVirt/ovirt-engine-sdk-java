@@ -127,6 +127,7 @@ public class DataCenterIscsiBonds extends
      *    iscsibond.name
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterIscsiBond }
      *
@@ -163,7 +164,6 @@ public class DataCenterIscsiBonds extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterIscsiBond }
      *
@@ -207,7 +207,6 @@ public class DataCenterIscsiBonds extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterIscsiBond }
      *
@@ -245,7 +244,6 @@ public class DataCenterIscsiBonds extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterIscsiBond }
      *

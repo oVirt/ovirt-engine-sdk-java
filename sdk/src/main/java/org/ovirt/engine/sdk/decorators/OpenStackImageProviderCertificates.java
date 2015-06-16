@@ -127,7 +127,6 @@ public class OpenStackImageProviderCertificates extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link OpenStackImageProviderCertificate }
      *
      * @throws ClientProtocolException

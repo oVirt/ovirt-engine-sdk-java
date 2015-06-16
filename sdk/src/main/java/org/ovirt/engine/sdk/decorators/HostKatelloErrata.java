@@ -127,7 +127,6 @@ public class HostKatelloErrata extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link HostKatelloErratum }
      *
      * @throws ClientProtocolException

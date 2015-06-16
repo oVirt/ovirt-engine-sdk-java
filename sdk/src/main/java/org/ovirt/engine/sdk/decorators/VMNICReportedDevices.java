@@ -127,7 +127,6 @@ public class VMNICReportedDevices extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMNICReportedDevice }
      *
      * @throws ClientProtocolException

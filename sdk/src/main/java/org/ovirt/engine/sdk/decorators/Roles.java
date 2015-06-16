@@ -124,6 +124,7 @@ public class Roles extends
      *    [role.administrative]
      *    </pre>
      *
+     *
      * @return
      *     {@link Role }
      *
@@ -163,7 +164,6 @@ public class Roles extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link Role }
      *
@@ -210,7 +210,6 @@ public class Roles extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Role }
      *
@@ -248,7 +247,6 @@ public class Roles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link Role }
      *

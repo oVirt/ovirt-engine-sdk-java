@@ -123,6 +123,7 @@ public class DataCenterNetworkVnicProfiles extends
      * Adds VnicProfile object.
      *
      * @param vnicprofile {@link org.ovirt.engine.sdk.entities.VnicProfile}
+     *
      * @return
      *     {@link DataCenterNetworkVnicProfile }
      *
@@ -154,7 +155,6 @@ public class DataCenterNetworkVnicProfiles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterNetworkVnicProfile }
      *

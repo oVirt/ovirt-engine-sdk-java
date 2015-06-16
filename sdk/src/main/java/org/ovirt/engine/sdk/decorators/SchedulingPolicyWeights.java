@@ -128,6 +128,7 @@ public class SchedulingPolicyWeights extends
      *    [weight.scheduling_policy_unit.factor]
      *    </pre>
      *
+     *
      * @return
      *     {@link SchedulingPolicyWeight }
      *
@@ -161,11 +162,10 @@ public class SchedulingPolicyWeights extends
      *    [weight.scheduling_policy_unit.factor]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link SchedulingPolicyWeight }
      *
@@ -176,13 +176,13 @@ public class SchedulingPolicyWeights extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public SchedulingPolicyWeight add(org.ovirt.engine.sdk.entities.Weight weight, String expect) throws
+    public SchedulingPolicyWeight add(org.ovirt.engine.sdk.entities.Weight weight, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -202,15 +202,14 @@ public class SchedulingPolicyWeights extends
      *    [weight.scheduling_policy_unit.factor]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
-     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @return
      *     {@link SchedulingPolicyWeight }
      *
@@ -221,16 +220,16 @@ public class SchedulingPolicyWeights extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public SchedulingPolicyWeight add(org.ovirt.engine.sdk.entities.Weight weight, String expect, String correlationId) throws
+    public SchedulingPolicyWeight add(org.ovirt.engine.sdk.entities.Weight weight, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -248,11 +247,43 @@ public class SchedulingPolicyWeights extends
      *    <pre>
      *    [true|false]
      *    </pre>
+     *
+     * @return List of {@link SchedulingPolicyWeight }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<SchedulingPolicyWeight> list(Boolean caseSensitive) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Weights.class,
+                SchedulingPolicyWeight.class, headers);
+    }
+    /**
+     * Lists SchedulingPolicyWeight objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link SchedulingPolicyWeight }
      *

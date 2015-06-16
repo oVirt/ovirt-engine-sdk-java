@@ -127,7 +127,6 @@ public class StorageDomainVMDisks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link StorageDomainVMDisk }
      *
      * @throws ClientProtocolException

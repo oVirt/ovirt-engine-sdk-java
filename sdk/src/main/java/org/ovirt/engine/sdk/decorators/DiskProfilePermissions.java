@@ -143,6 +143,7 @@ public class DiskProfilePermissions extends
      *      permission.role.id
      *    </pre>
      *
+     *
      * @return
      *     {@link DiskProfilePermission }
      *
@@ -195,7 +196,6 @@ public class DiskProfilePermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DiskProfilePermission }
      *
@@ -255,7 +255,6 @@ public class DiskProfilePermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DiskProfilePermission }
      *
@@ -293,7 +292,6 @@ public class DiskProfilePermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DiskProfilePermission }
      *

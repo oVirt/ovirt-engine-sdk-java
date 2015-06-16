@@ -127,6 +127,7 @@ public class VMCdRoms extends
      *    cdrom.file.id
      *    </pre>
      *
+     *
      * @return
      *     {@link VMCdRom }
      *
@@ -163,7 +164,6 @@ public class VMCdRoms extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VMCdRom }
      *
@@ -207,7 +207,6 @@ public class VMCdRoms extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VMCdRom }
      *
@@ -241,15 +240,10 @@ public class VMCdRoms extends
     /**
      * Lists VMCdRom objects.
      *
-     * @param current
-     *    <pre>
-     *    [true|false]
-     *    </pre>
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VMCdRom }
      *
@@ -260,19 +254,56 @@ public class VMCdRoms extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<VMCdRom> list(Boolean current, Integer max) throws ClientProtocolException,
+    public List<VMCdRom> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (current != null) {
-            urlBuilder.add("current", current, UrlParameterType.MATRIX);
-        }
-
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.CdRoms.class,
+                VMCdRom.class, headers);
+    }
+    /**
+     * Lists VMCdRom objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param current
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return List of {@link VMCdRom }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<VMCdRom> list(Integer max, Boolean current) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (current != null) {
+            urlBuilder.add("current", current, UrlParameterType.MATRIX);
         }
 
         String url = urlBuilder.build();

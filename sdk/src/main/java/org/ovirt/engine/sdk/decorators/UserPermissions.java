@@ -181,6 +181,7 @@ public class UserPermissions extends
      *      permission.template.id
      *    </pre>
      *
+     *
      * @return
      *     {@link UserPermission }
      *
@@ -271,7 +272,6 @@ public class UserPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link UserPermission }
      *
@@ -369,7 +369,6 @@ public class UserPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link UserPermission }
      *
@@ -407,7 +406,6 @@ public class UserPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link UserPermission }
      *

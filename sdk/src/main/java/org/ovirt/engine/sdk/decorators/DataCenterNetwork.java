@@ -141,12 +141,10 @@ public class DataCenterNetwork extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -175,17 +173,14 @@ public class DataCenterNetwork extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -224,6 +219,7 @@ public class DataCenterNetwork extends
      *    [network.usages.usage]
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterNetwork }
      *
@@ -260,11 +256,10 @@ public class DataCenterNetwork extends
      *    [network.usages.usage]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterNetwork }
      *
@@ -275,18 +270,17 @@ public class DataCenterNetwork extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterNetwork update(Boolean async) throws ClientProtocolException,
+    public DataCenterNetwork update(String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -309,12 +303,10 @@ public class DataCenterNetwork extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterNetwork }
      *
@@ -325,7 +317,7 @@ public class DataCenterNetwork extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterNetwork update(Boolean async, String correlationId) throws ClientProtocolException,
+    public DataCenterNetwork update(String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -362,16 +354,14 @@ public class DataCenterNetwork extends
      *    <pre>
      *    [any string]
      *    </pre>
-     * @param expect
-     *    <pre>
-     *    [202-accepted]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
      * @return
      *     {@link DataCenterNetwork }
      *
@@ -382,7 +372,7 @@ public class DataCenterNetwork extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterNetwork update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+    public DataCenterNetwork update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

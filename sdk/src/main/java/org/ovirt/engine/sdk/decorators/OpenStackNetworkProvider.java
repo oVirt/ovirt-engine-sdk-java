@@ -124,12 +124,10 @@ public class OpenStackNetworkProvider extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -158,17 +156,14 @@ public class OpenStackNetworkProvider extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -202,6 +197,7 @@ public class OpenStackNetworkProvider extends
      * Performs importcertificates action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -232,7 +228,6 @@ public class OpenStackNetworkProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -263,6 +258,7 @@ public class OpenStackNetworkProvider extends
      * Performs testconnectivity action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -293,7 +289,6 @@ public class OpenStackNetworkProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -333,6 +328,7 @@ public class OpenStackNetworkProvider extends
      *    [openstack_network_provider.authentication_url]
      *    [openstack_network_provider.properties.property]
      *    </pre>
+     *
      *
      * @return
      *     {@link OpenStackNetworkProvider }
@@ -379,7 +375,6 @@ public class OpenStackNetworkProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link OpenStackNetworkProvider }
      *
@@ -425,16 +420,14 @@ public class OpenStackNetworkProvider extends
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link OpenStackNetworkProvider }
      *
@@ -483,6 +476,10 @@ public class OpenStackNetworkProvider extends
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -491,12 +488,6 @@ public class OpenStackNetworkProvider extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link OpenStackNetworkProvider }
      *

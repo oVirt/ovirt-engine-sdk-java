@@ -124,12 +124,10 @@ public class DataCenterClusterGlusterVolume extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -160,6 +158,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs rebalance action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -190,7 +189,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -221,6 +219,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs resetalloptions action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -251,7 +250,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -282,6 +280,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs resetoption action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -312,7 +311,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -343,6 +341,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs setoption action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -373,7 +372,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -404,6 +402,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs start action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -434,7 +433,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -465,6 +463,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs startprofile action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -495,7 +494,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -526,6 +524,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs stop action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -556,7 +555,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -587,6 +585,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs stopprofile action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -617,7 +616,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -648,6 +646,7 @@ public class DataCenterClusterGlusterVolume extends
      * Performs stoprebalance action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -678,7 +677,6 @@ public class DataCenterClusterGlusterVolume extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *

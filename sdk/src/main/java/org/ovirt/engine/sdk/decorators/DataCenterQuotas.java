@@ -127,7 +127,6 @@ public class DataCenterQuotas extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link DataCenterQuota }
      *
      * @throws ClientProtocolException

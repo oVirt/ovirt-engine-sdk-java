@@ -127,7 +127,6 @@ public class TemplateDisks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link TemplateDisk }
      *
      * @throws ClientProtocolException

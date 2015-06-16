@@ -127,7 +127,6 @@ public class TemplateCdRoms extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link TemplateCdRom }
      *
      * @throws ClientProtocolException

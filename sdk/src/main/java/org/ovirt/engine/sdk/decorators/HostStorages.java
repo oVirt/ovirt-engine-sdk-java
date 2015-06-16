@@ -127,7 +127,6 @@ public class HostStorages extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link HostStorage }
      *
      * @throws ClientProtocolException

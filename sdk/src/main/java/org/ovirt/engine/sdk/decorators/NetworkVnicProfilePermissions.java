@@ -123,6 +123,7 @@ public class NetworkVnicProfilePermissions extends
      * Adds Permission object.
      *
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *
      * @return
      *     {@link NetworkVnicProfilePermission }
      *
@@ -154,7 +155,6 @@ public class NetworkVnicProfilePermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link NetworkVnicProfilePermission }
      *

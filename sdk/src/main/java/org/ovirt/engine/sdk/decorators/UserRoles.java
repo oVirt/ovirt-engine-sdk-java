@@ -127,7 +127,6 @@ public class UserRoles extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link UserRole }
      *
      * @throws ClientProtocolException

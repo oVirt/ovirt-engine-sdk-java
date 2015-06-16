@@ -137,6 +137,7 @@ public class DataCenterNetworks extends
      *    [network.usages.usage]
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterNetwork }
      *
@@ -183,7 +184,6 @@ public class DataCenterNetworks extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterNetwork }
      *
@@ -237,7 +237,6 @@ public class DataCenterNetworks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterNetwork }
      *
@@ -275,7 +274,6 @@ public class DataCenterNetworks extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterNetwork }
      *

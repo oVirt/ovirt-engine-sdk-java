@@ -90,12 +90,10 @@ public class InstanceTypeWatchDog extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -126,6 +124,7 @@ public class InstanceTypeWatchDog extends
      * Updates InstanceTypeWatchDog object.
      *
      * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     *
      * @return
      *     {@link InstanceTypeWatchDog }
      *
@@ -161,7 +160,6 @@ public class InstanceTypeWatchDog extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link InstanceTypeWatchDog }
      *

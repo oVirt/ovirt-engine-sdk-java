@@ -127,6 +127,7 @@ public class VMTags extends
      *    tag.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link VMTag }
      *
@@ -163,7 +164,6 @@ public class VMTags extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VMTag }
      *
@@ -207,7 +207,6 @@ public class VMTags extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VMTag }
      *
@@ -245,7 +244,6 @@ public class VMTags extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VMTag }
      *

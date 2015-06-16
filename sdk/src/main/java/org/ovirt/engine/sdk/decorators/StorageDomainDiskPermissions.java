@@ -123,6 +123,7 @@ public class StorageDomainDiskPermissions extends
      * Adds Permission object.
      *
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *
      * @return
      *     {@link StorageDomainDiskPermission }
      *
@@ -154,7 +155,6 @@ public class StorageDomainDiskPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link StorageDomainDiskPermission }
      *

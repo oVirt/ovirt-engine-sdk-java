@@ -130,6 +130,7 @@ public class NetworkVnicProfiles extends
      *    [vnicprofile.custom_properties.custom_property]
      *    </pre>
      *
+     *
      * @return
      *     {@link NetworkVnicProfile }
      *
@@ -169,7 +170,6 @@ public class NetworkVnicProfiles extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link NetworkVnicProfile }
      *
@@ -216,7 +216,6 @@ public class NetworkVnicProfiles extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link NetworkVnicProfile }
      *
@@ -254,7 +253,6 @@ public class NetworkVnicProfiles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link NetworkVnicProfile }
      *

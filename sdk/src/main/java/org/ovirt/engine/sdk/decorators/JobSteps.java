@@ -130,6 +130,7 @@ public class JobSteps extends
      *    [step.parent_step.id]
      *    </pre>
      *
+     *
      * @return
      *     {@link JobStep }
      *
@@ -169,7 +170,6 @@ public class JobSteps extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link JobStep }
      *
@@ -216,7 +216,6 @@ public class JobSteps extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link JobStep }
      *
@@ -254,7 +253,6 @@ public class JobSteps extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link JobStep }
      *

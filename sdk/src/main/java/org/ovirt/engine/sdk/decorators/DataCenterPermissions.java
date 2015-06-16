@@ -141,6 +141,7 @@ public class DataCenterPermissions extends
      *      permission.group.id
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterPermission }
      *
@@ -191,7 +192,6 @@ public class DataCenterPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterPermission }
      *
@@ -249,7 +249,6 @@ public class DataCenterPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterPermission }
      *
@@ -287,7 +286,6 @@ public class DataCenterPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterPermission }
      *

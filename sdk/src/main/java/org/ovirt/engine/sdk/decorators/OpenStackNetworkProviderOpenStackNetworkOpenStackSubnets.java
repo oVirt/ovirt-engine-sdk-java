@@ -123,6 +123,7 @@ public class OpenStackNetworkProviderOpenStackNetworkOpenStackSubnets extends
      * Adds OpenStackSubnet object.
      *
      * @param openstacksubnet {@link org.ovirt.engine.sdk.entities.OpenStackSubnet}
+     *
      * @return
      *     {@link OpenStackNetworkProviderOpenStackNetworkOpenStackSubnet }
      *
@@ -154,7 +155,6 @@ public class OpenStackNetworkProviderOpenStackNetworkOpenStackSubnets extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link OpenStackNetworkProviderOpenStackNetworkOpenStackSubnet }
      *

@@ -288,6 +288,7 @@ public class VM extends
      * Performs cancelmigration action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -318,7 +319,6 @@ public class VM extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -355,6 +355,7 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -387,11 +388,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -402,18 +402,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action clone(Action action, Boolean async) throws ClientProtocolException,
+    public Action clone(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/clone";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -432,12 +431,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -448,7 +445,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action clone(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action clone(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/clone";
 
@@ -471,6 +468,7 @@ public class VM extends
      * Performs commit_snapshot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -497,11 +495,10 @@ public class VM extends
      * Performs commit_snapshot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -512,18 +509,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action commit_snapshot(Action action, Boolean async) throws ClientProtocolException,
+    public Action commit_snapshot(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/commit_snapshot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -536,12 +532,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -552,7 +546,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action commit_snapshot(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action commit_snapshot(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/commit_snapshot";
 
@@ -598,12 +592,10 @@ public class VM extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -632,17 +624,14 @@ public class VM extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -683,11 +672,45 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(org.ovirt.engine.sdk.entities.Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, action,
+                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.force]
+     *    [action.vm.disks.detach_only]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -726,16 +749,14 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -775,6 +796,7 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -806,11 +828,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -821,18 +842,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action detach(Action action, Boolean async) throws ClientProtocolException,
+    public Action detach(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/detach";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -850,12 +870,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -866,7 +884,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action detach(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action detach(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/detach";
 
@@ -896,6 +914,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -931,11 +950,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -946,18 +964,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportVm(Action action, Boolean async) throws ClientProtocolException,
+    public Action exportVm(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -978,12 +995,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -994,7 +1009,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportVm(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action exportVm(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 
@@ -1021,6 +1036,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -1053,11 +1069,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1068,18 +1083,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action logon(Action action, Boolean async) throws ClientProtocolException,
+    public Action logon(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/logon";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -1097,12 +1111,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1113,7 +1125,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action logon(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action logon(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/logon";
 
@@ -1141,6 +1153,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -1174,11 +1187,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1189,18 +1201,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action maintenance(Action action, Boolean async) throws ClientProtocolException,
+    public Action maintenance(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/maintenance";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -1219,12 +1230,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1235,7 +1244,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action maintenance(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action maintenance(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/maintenance";
 
@@ -1265,6 +1274,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -1300,11 +1310,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1315,18 +1324,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action, Boolean async) throws ClientProtocolException,
+    public Action migrate(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/migrate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -1347,12 +1355,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1363,7 +1369,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action migrate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/migrate";
 
@@ -1391,6 +1397,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -1424,11 +1431,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1439,18 +1445,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action move(Action action, Boolean async) throws ClientProtocolException,
+    public Action move(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/move";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -1469,12 +1474,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1485,7 +1488,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action move(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action move(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/move";
 
@@ -1515,6 +1518,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -1550,11 +1554,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1565,18 +1568,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action preview_snapshot(Action action, Boolean async) throws ClientProtocolException,
+    public Action preview_snapshot(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/preview_snapshot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -1597,12 +1599,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1613,7 +1613,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action preview_snapshot(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action preview_snapshot(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/preview_snapshot";
 
@@ -1636,6 +1636,7 @@ public class VM extends
      * Performs reboot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -1662,11 +1663,10 @@ public class VM extends
      * Performs reboot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1677,18 +1677,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action reboot(Action action, Boolean async) throws ClientProtocolException,
+    public Action reboot(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/reboot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -1701,12 +1700,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1717,7 +1714,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action reboot(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action reboot(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/reboot";
 
@@ -1744,6 +1741,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -1776,11 +1774,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1791,18 +1788,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action shutdown(Action action, Boolean async) throws ClientProtocolException,
+    public Action shutdown(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/shutdown";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -1820,12 +1816,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1836,7 +1830,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action shutdown(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action shutdown(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/shutdown";
 
@@ -1887,6 +1881,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -1943,11 +1938,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -1958,18 +1952,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action start(Action action, Boolean async) throws ClientProtocolException,
+    public Action start(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/start";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -2011,12 +2004,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2027,7 +2018,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action start(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action start(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/start";
 
@@ -2054,6 +2045,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -2086,11 +2078,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2101,18 +2092,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action stop(Action action, Boolean async) throws ClientProtocolException,
+    public Action stop(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/stop";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -2130,12 +2120,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2146,7 +2134,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action stop(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action stop(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/stop";
 
@@ -2173,6 +2161,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -2205,11 +2194,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2220,18 +2208,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action suspend(Action action, Boolean async) throws ClientProtocolException,
+    public Action suspend(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/suspend";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -2249,12 +2236,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2265,7 +2250,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action suspend(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action suspend(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/suspend";
 
@@ -2293,6 +2278,7 @@ public class VM extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -2326,11 +2312,10 @@ public class VM extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2341,18 +2326,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action ticket(Action action, Boolean async) throws ClientProtocolException,
+    public Action ticket(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/ticket";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -2371,12 +2355,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2387,7 +2369,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action ticket(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action ticket(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/ticket";
 
@@ -2410,6 +2392,7 @@ public class VM extends
      * Performs undo_snapshot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -2436,11 +2419,10 @@ public class VM extends
      * Performs undo_snapshot action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2451,18 +2433,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action undo_snapshot(Action action, Boolean async) throws ClientProtocolException,
+    public Action undo_snapshot(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/undo_snapshot";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -2475,12 +2456,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -2491,7 +2470,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action undo_snapshot(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action undo_snapshot(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/undo_snapshot";
 
@@ -2578,6 +2557,7 @@ public class VM extends
      *    [vm.migration.compressed]
      *    [vm.external_host_provider.id]
      *    </pre>
+     *
      *
      * @return
      *     {@link VM }
@@ -2675,11 +2655,10 @@ public class VM extends
      *    [vm.external_host_provider.id]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VM }
      *
@@ -2690,18 +2669,17 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VM update(Boolean async) throws ClientProtocolException,
+    public VM update(String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -2784,12 +2762,10 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link VM }
      *
@@ -2800,7 +2776,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VM update(Boolean async, String correlationId) throws ClientProtocolException,
+    public VM update(String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -2897,16 +2873,14 @@ public class VM extends
      *    <pre>
      *    [any string]
      *    </pre>
-     * @param expect
-     *    <pre>
-     *    [202-accepted]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
      * @return
      *     {@link VM }
      *
@@ -2917,7 +2891,7 @@ public class VM extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VM update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+    public VM update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

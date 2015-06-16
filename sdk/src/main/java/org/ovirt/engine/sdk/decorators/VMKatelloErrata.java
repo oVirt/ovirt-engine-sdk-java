@@ -127,7 +127,6 @@ public class VMKatelloErrata extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMKatelloErratum }
      *
      * @throws ClientProtocolException

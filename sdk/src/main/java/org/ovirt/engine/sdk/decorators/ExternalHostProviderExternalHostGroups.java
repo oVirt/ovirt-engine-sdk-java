@@ -127,7 +127,6 @@ public class ExternalHostProviderExternalHostGroups extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link ExternalHostProviderExternalHostGroup }
      *
      * @throws ClientProtocolException

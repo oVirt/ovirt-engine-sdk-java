@@ -149,6 +149,7 @@ public class DataCenterClusters extends
      *    [cluster.management_network.id|name]
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterCluster }
      *
@@ -207,7 +208,6 @@ public class DataCenterClusters extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterCluster }
      *
@@ -273,7 +273,6 @@ public class DataCenterClusters extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterCluster }
      *
@@ -311,7 +310,6 @@ public class DataCenterClusters extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterCluster }
      *

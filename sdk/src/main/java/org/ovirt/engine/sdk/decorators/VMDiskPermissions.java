@@ -123,6 +123,7 @@ public class VMDiskPermissions extends
      * Adds Permission object.
      *
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *
      * @return
      *     {@link VMDiskPermission }
      *
@@ -154,7 +155,6 @@ public class VMDiskPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VMDiskPermission }
      *

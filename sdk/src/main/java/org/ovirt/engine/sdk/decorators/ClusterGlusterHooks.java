@@ -127,7 +127,6 @@ public class ClusterGlusterHooks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link ClusterGlusterHook }
      *
      * @throws ClientProtocolException

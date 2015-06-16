@@ -127,7 +127,6 @@ public class VMApplications extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMApplication }
      *
      * @throws ClientProtocolException

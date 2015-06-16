@@ -141,6 +141,7 @@ public class ClusterPermissions extends
      *      permission.group.id
      *    </pre>
      *
+     *
      * @return
      *     {@link ClusterPermission }
      *
@@ -191,7 +192,6 @@ public class ClusterPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link ClusterPermission }
      *
@@ -249,7 +249,6 @@ public class ClusterPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link ClusterPermission }
      *
@@ -287,7 +286,6 @@ public class ClusterPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link ClusterPermission }
      *

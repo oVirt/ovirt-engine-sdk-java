@@ -122,6 +122,7 @@ public class Jobs extends
      *    [job.auto_cleared]
      *    </pre>
      *
+     *
      * @return
      *     {@link Job }
      *
@@ -159,7 +160,6 @@ public class Jobs extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link Job }
      *
@@ -204,7 +204,6 @@ public class Jobs extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Job }
      *
@@ -242,7 +241,6 @@ public class Jobs extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link Job }
      *

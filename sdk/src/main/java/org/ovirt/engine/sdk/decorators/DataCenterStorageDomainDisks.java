@@ -168,6 +168,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.sgio]
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterStorageDomainDisk }
      *
@@ -245,7 +246,6 @@ public class DataCenterStorageDomainDisks extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterStorageDomainDisk }
      *
@@ -323,16 +323,14 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.sgio]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
-     *
      * @param unregistered
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @return
      *     {@link DataCenterStorageDomainDisk }
      *
@@ -413,6 +411,10 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.sgio]
      *    </pre>
      *
+     * @param unregistered
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param expect
      *    <pre>
      *    [201-created]
@@ -421,12 +423,6 @@ public class DataCenterStorageDomainDisks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
-     * @param unregistered
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link DataCenterStorageDomainDisk }
      *
@@ -468,19 +464,6 @@ public class DataCenterStorageDomainDisks extends
      *    <pre>
      *    [query]
      *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param unregistered
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
      *
      * @return List of {@link DataCenterStorageDomainDisk }
      *
@@ -491,7 +474,44 @@ public class DataCenterStorageDomainDisks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<DataCenterStorageDomainDisk> list(String query, Boolean caseSensitive, Boolean unregistered, Integer max) throws ClientProtocolException,
+    public List<DataCenterStorageDomainDisk> list(String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
+                DataCenterStorageDomainDisk.class, headers);
+    }
+    /**
+     * Lists DataCenterStorageDomainDisk objects.
+     *
+     * @param query
+     *    <pre>
+     *    [query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return List of {@link DataCenterStorageDomainDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenterStorageDomainDisk> list(String query, Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -506,12 +526,110 @@ public class DataCenterStorageDomainDisks extends
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
-        if (unregistered != null) {
-            urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
+                DataCenterStorageDomainDisk.class, headers);
+    }
+    /**
+     * Lists DataCenterStorageDomainDisk objects.
+     *
+     * @param query
+     *    <pre>
+     *    [query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     * @return List of {@link DataCenterStorageDomainDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenterStorageDomainDisk> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
+                DataCenterStorageDomainDisk.class, headers);
+    }
+    /**
+     * Lists DataCenterStorageDomainDisk objects.
+     *
+     * @param query
+     *    <pre>
+     *    [query]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param unregistered
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return List of {@link DataCenterStorageDomainDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenterStorageDomainDisk> list(String query, Boolean caseSensitive, Integer max, Boolean unregistered) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (unregistered != null) {
+            urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
         }
 
         String url = urlBuilder.build();

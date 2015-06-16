@@ -143,6 +143,7 @@ public class InstanceTypes extends
      *    [instance_type.custom_cpu_model]
      *    </pre>
      *
+     *
      * @return
      *     {@link InstanceType }
      *
@@ -201,7 +202,6 @@ public class InstanceTypes extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link InstanceType }
      *
@@ -267,7 +267,6 @@ public class InstanceTypes extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link InstanceType }
      *
@@ -305,7 +304,6 @@ public class InstanceTypes extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link InstanceType }
      *

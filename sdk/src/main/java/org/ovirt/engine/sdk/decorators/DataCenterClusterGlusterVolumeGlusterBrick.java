@@ -107,12 +107,10 @@ public class DataCenterClusterGlusterVolumeGlusterBrick extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -143,6 +141,7 @@ public class DataCenterClusterGlusterVolumeGlusterBrick extends
      * Performs replace action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -173,7 +172,6 @@ public class DataCenterClusterGlusterVolumeGlusterBrick extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *

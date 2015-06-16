@@ -187,6 +187,7 @@ public class GroupPermissions extends
      *      permission.template.id
      *    </pre>
      *
+     *
      * @return
      *     {@link GroupPermission }
      *
@@ -283,7 +284,6 @@ public class GroupPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link GroupPermission }
      *
@@ -387,7 +387,6 @@ public class GroupPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link GroupPermission }
      *
@@ -425,7 +424,6 @@ public class GroupPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link GroupPermission }
      *

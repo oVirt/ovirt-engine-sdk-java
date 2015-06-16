@@ -145,6 +145,7 @@ public class VnicProfilePermissions extends
      *      permission.role.id
      *    </pre>
      *
+     *
      * @return
      *     {@link VnicProfilePermission }
      *
@@ -199,7 +200,6 @@ public class VnicProfilePermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VnicProfilePermission }
      *
@@ -261,7 +261,6 @@ public class VnicProfilePermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VnicProfilePermission }
      *
@@ -299,7 +298,6 @@ public class VnicProfilePermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VnicProfilePermission }
      *

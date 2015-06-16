@@ -129,6 +129,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -162,11 +163,10 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -177,19 +177,18 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action activate(Action action, Boolean async) throws ClientProtocolException,
+    public Action activate(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "activate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -208,12 +207,10 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -224,7 +221,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action activate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action activate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "activate";
@@ -253,6 +250,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [replica_count]
      *    [stripe_count]
      *    </pre>
+     *
      *
      * @return
      *     {@link ClusterGlusterVolumeGlusterBrick }
@@ -292,7 +290,6 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link ClusterGlusterVolumeGlusterBrick }
      *
@@ -331,16 +328,14 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [stripe_count]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
-     *
      * @param force
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @return
      *     {@link ClusterGlusterVolumeGlusterBrick }
      *
@@ -382,6 +377,10 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [stripe_count]
      *    </pre>
      *
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param expect
      *    <pre>
      *    [201-created]
@@ -390,12 +389,6 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
-     * @param force
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link ClusterGlusterVolumeGlusterBrick }
      *
@@ -438,7 +431,6 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link ClusterGlusterVolumeGlusterBrick }
      *
      * @throws ClientProtocolException
@@ -467,16 +459,14 @@ public class ClusterGlusterVolumeGlusterBricks extends
     /**
      * Lists ClusterGlusterVolumeGlusterBrick objects.
      *
-     * @param allContent
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
-     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      * @return List of {@link ClusterGlusterVolumeGlusterBrick }
      *
@@ -516,6 +506,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -549,11 +540,10 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -564,19 +554,18 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action, Boolean async) throws ClientProtocolException,
+    public Action migrate(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "migrate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -595,12 +584,10 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -611,7 +598,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action migrate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "migrate";
@@ -640,6 +627,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
+     *
      *
      * @return
      *     {@link Action }
@@ -674,11 +662,10 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -689,19 +676,18 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action stopmigrate(Action action, Boolean async) throws ClientProtocolException,
+    public Action stopmigrate(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "stopmigrate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -720,12 +706,10 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -736,7 +720,7 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action stopmigrate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action stopmigrate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "stopmigrate";

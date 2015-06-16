@@ -107,12 +107,10 @@ public class ClusterAffinityGroup extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -141,17 +139,14 @@ public class ClusterAffinityGroup extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -190,6 +185,7 @@ public class ClusterAffinityGroup extends
      *    [affinitygroup.positive]
      *    [affinitygroup.enforcing]
      *    </pre>
+     *
      *
      * @return
      *     {@link ClusterAffinityGroup }
@@ -232,7 +228,6 @@ public class ClusterAffinityGroup extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link ClusterAffinityGroup }
      *
@@ -274,16 +269,14 @@ public class ClusterAffinityGroup extends
      *    [affinitygroup.enforcing]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link ClusterAffinityGroup }
      *
@@ -328,6 +321,10 @@ public class ClusterAffinityGroup extends
      *    [affinitygroup.enforcing]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -336,12 +333,6 @@ public class ClusterAffinityGroup extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link ClusterAffinityGroup }
      *

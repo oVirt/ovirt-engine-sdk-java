@@ -187,6 +187,7 @@ public class VMDisks extends
      *      [disk.active]
      *    </pre>
      *
+     *
      * @return
      *     {@link VMDisk }
      *
@@ -283,7 +284,6 @@ public class VMDisks extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VMDisk }
      *
@@ -387,7 +387,6 @@ public class VMDisks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VMDisk }
      *
@@ -425,7 +424,6 @@ public class VMDisks extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VMDisk }
      *

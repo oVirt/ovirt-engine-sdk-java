@@ -127,7 +127,6 @@ public class OpenStackImageProviderOpenStackImages extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link OpenStackImageProviderOpenStackImage }
      *
      * @throws ClientProtocolException

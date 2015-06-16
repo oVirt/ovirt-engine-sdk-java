@@ -123,6 +123,7 @@ public class DataCenterIscsiBondNetworkVnicProfiles extends
      * Adds VnicProfile object.
      *
      * @param vnicprofile {@link org.ovirt.engine.sdk.entities.VnicProfile}
+     *
      * @return
      *     {@link DataCenterIscsiBondNetworkVnicProfile }
      *
@@ -154,7 +155,6 @@ public class DataCenterIscsiBondNetworkVnicProfiles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterIscsiBondNetworkVnicProfile }
      *

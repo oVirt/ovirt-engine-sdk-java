@@ -124,12 +124,10 @@ public class DataCenterIscsiBond extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -158,17 +156,14 @@ public class DataCenterIscsiBond extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -205,6 +200,7 @@ public class DataCenterIscsiBond extends
      *    <pre>
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterIscsiBond }
      *
@@ -239,11 +235,10 @@ public class DataCenterIscsiBond extends
      *    <pre>
      *    </pre>
      *
-     * @param async
+     * @param expect
      *    <pre>
-     *    [true|false]
+     *    [202-accepted]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterIscsiBond }
      *
@@ -254,18 +249,17 @@ public class DataCenterIscsiBond extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterIscsiBond update(Boolean async) throws ClientProtocolException,
+    public DataCenterIscsiBond update(String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -286,12 +280,10 @@ public class DataCenterIscsiBond extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterIscsiBond }
      *
@@ -302,7 +294,7 @@ public class DataCenterIscsiBond extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterIscsiBond update(Boolean async, String expect) throws ClientProtocolException,
+    public DataCenterIscsiBond update(String expect, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -337,16 +329,14 @@ public class DataCenterIscsiBond extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link DataCenterIscsiBond }
      *
@@ -357,7 +347,7 @@ public class DataCenterIscsiBond extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterIscsiBond update(Boolean async, String expect, String correlationId) throws ClientProtocolException,
+    public DataCenterIscsiBond update(String expect, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

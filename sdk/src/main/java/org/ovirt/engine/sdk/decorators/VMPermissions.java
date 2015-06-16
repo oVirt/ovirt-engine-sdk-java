@@ -143,6 +143,7 @@ public class VMPermissions extends
      *      permission.group.id
      *    </pre>
      *
+     *
      * @return
      *     {@link VMPermission }
      *
@@ -195,7 +196,6 @@ public class VMPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VMPermission }
      *
@@ -255,7 +255,6 @@ public class VMPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VMPermission }
      *
@@ -293,7 +292,6 @@ public class VMPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VMPermission }
      *

@@ -129,6 +129,7 @@ public class ClusterCpuProfiles extends
      *    [cpuprofile.qos.id]
      *    </pre>
      *
+     *
      * @return
      *     {@link ClusterCpuProfile }
      *
@@ -167,7 +168,6 @@ public class ClusterCpuProfiles extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link ClusterCpuProfile }
      *
@@ -213,7 +213,6 @@ public class ClusterCpuProfiles extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link ClusterCpuProfile }
      *
@@ -251,7 +250,6 @@ public class ClusterCpuProfiles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link ClusterCpuProfile }
      *

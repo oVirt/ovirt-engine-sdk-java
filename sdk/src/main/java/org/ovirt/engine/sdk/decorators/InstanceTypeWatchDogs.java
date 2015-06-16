@@ -123,6 +123,7 @@ public class InstanceTypeWatchDogs extends
      * Adds WatchDog object.
      *
      * @param watchdog {@link org.ovirt.engine.sdk.entities.WatchDog}
+     *
      * @return
      *     {@link InstanceTypeWatchDog }
      *
@@ -154,7 +155,6 @@ public class InstanceTypeWatchDogs extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link InstanceTypeWatchDog }
      *

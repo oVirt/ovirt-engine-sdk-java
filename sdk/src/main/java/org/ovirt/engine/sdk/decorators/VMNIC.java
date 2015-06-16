@@ -101,6 +101,7 @@ public class VMNIC extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -127,11 +128,10 @@ public class VMNIC extends
      * Performs activate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -142,18 +142,17 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action activate(Action action, Boolean async) throws ClientProtocolException,
+    public Action activate(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/activate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -166,12 +165,10 @@ public class VMNIC extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -182,7 +179,7 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action activate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action activate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/activate";
 
@@ -205,6 +202,7 @@ public class VMNIC extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -231,11 +229,10 @@ public class VMNIC extends
      * Performs deactivate action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -246,18 +243,17 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action deactivate(Action action, Boolean async) throws ClientProtocolException,
+    public Action deactivate(Action action, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/deactivate";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -270,12 +266,10 @@ public class VMNIC extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -286,7 +280,7 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action deactivate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action deactivate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/deactivate";
 
@@ -332,12 +326,10 @@ public class VMNIC extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -366,17 +358,14 @@ public class VMNIC extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -438,6 +427,7 @@ public class VMNIC extends
      *      [nic.plugged]
      *    </pre>
      *
+     *
      * @return
      *     {@link VMNIC }
      *
@@ -497,11 +487,10 @@ public class VMNIC extends
      *      [nic.plugged]
      *    </pre>
      *
-     * @param async
+     * @param correlationId
      *    <pre>
-     *    [true|false]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VMNIC }
      *
@@ -512,18 +501,17 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMNIC update(Boolean async) throws ClientProtocolException,
+    public VMNIC update(String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (async != null) {
-            urlBuilder.add("async", async, UrlParameterType.MATRIX);
-        }
-
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -569,12 +557,10 @@ public class VMNIC extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link VMNIC }
      *
@@ -585,7 +571,7 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMNIC update(Boolean async, String correlationId) throws ClientProtocolException,
+    public VMNIC update(String correlationId, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -645,16 +631,14 @@ public class VMNIC extends
      *    <pre>
      *    [any string]
      *    </pre>
-     * @param expect
-     *    <pre>
-     *    [202-accepted]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
      * @return
      *     {@link VMNIC }
      *
@@ -665,7 +649,7 @@ public class VMNIC extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMNIC update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
+    public VMNIC update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

@@ -127,7 +127,6 @@ public class HostNumaNodes extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link HostNumaNode }
      *
      * @throws ClientProtocolException

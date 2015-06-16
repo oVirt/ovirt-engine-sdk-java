@@ -123,6 +123,7 @@ public class DataCenterClusterAffinityGroups extends
      * Adds AffinityGroup object.
      *
      * @param affinitygroup {@link org.ovirt.engine.sdk.entities.AffinityGroup}
+     *
      * @return
      *     {@link DataCenterClusterAffinityGroup }
      *
@@ -154,7 +155,6 @@ public class DataCenterClusterAffinityGroups extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterClusterAffinityGroup }
      *

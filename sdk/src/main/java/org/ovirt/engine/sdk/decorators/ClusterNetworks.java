@@ -128,6 +128,7 @@ public class ClusterNetworks extends
      *    [network.usages.usage]
      *    </pre>
      *
+     *
      * @return
      *     {@link ClusterNetwork }
      *
@@ -165,7 +166,6 @@ public class ClusterNetworks extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link ClusterNetwork }
      *
@@ -210,7 +210,6 @@ public class ClusterNetworks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link ClusterNetwork }
      *
@@ -248,7 +247,6 @@ public class ClusterNetworks extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link ClusterNetwork }
      *

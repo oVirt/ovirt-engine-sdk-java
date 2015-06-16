@@ -127,7 +127,6 @@ public class OpenStackVolumeProviderOpenStackVolumeTypes extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link OpenStackVolumeProviderOpenStackVolumeType }
      *
      * @throws ClientProtocolException

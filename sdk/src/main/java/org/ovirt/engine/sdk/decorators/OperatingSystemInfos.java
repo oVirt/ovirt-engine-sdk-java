@@ -121,7 +121,6 @@ public class OperatingSystemInfos extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link OperatingSystemInfo }
      *
      * @throws ClientProtocolException

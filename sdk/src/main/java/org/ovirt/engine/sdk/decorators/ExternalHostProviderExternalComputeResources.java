@@ -127,7 +127,6 @@ public class ExternalHostProviderExternalComputeResources extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link ExternalHostProviderExternalComputeResource }
      *
      * @throws ClientProtocolException

@@ -127,7 +127,6 @@ public class StorageDomainTemplateDisks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link StorageDomainTemplateDisk }
      *
      * @throws ClientProtocolException

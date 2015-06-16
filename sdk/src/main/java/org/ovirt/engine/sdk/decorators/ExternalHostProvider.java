@@ -175,12 +175,10 @@ public class ExternalHostProvider extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -209,17 +207,14 @@ public class ExternalHostProvider extends
     }
     /**
      * Deletes object.
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Response }
      *
@@ -258,6 +253,7 @@ public class ExternalHostProvider extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -293,7 +289,6 @@ public class ExternalHostProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -329,16 +324,14 @@ public class ExternalHostProvider extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Action }
      *
@@ -377,6 +370,7 @@ public class ExternalHostProvider extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
+     *
      * @return
      *     {@link Action }
      *
@@ -412,7 +406,6 @@ public class ExternalHostProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -448,16 +441,14 @@ public class ExternalHostProvider extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link Action }
      *
@@ -498,6 +489,7 @@ public class ExternalHostProvider extends
      *    [external_host_provider.username]
      *    [external_host_provider.password]
      *    </pre>
+     *
      *
      * @return
      *     {@link ExternalHostProvider }
@@ -542,7 +534,6 @@ public class ExternalHostProvider extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link ExternalHostProvider }
      *
@@ -586,16 +577,14 @@ public class ExternalHostProvider extends
      *    [external_host_provider.password]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
      * @return
      *     {@link ExternalHostProvider }
      *
@@ -642,6 +631,10 @@ public class ExternalHostProvider extends
      *    [external_host_provider.password]
      *    </pre>
      *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -650,12 +643,6 @@ public class ExternalHostProvider extends
      *    <pre>
      *    [202-accepted]
      *    </pre>
-     *
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @return
      *     {@link ExternalHostProvider }
      *

@@ -127,7 +127,6 @@ public class VMReportedDevices extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMReportedDevice }
      *
      * @throws ClientProtocolException

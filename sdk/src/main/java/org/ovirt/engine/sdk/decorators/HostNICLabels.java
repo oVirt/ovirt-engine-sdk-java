@@ -127,6 +127,7 @@ public class HostNICLabels extends
      *    label.id
      *    </pre>
      *
+     *
      * @return
      *     {@link HostNICLabel }
      *
@@ -163,7 +164,6 @@ public class HostNICLabels extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link HostNICLabel }
      *
@@ -207,7 +207,6 @@ public class HostNICLabels extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link HostNICLabel }
      *
@@ -245,7 +244,6 @@ public class HostNICLabels extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link HostNICLabel }
      *

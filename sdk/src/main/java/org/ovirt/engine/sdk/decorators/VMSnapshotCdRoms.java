@@ -127,7 +127,6 @@ public class VMSnapshotCdRoms extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMSnapshotCdRom }
      *
      * @throws ClientProtocolException

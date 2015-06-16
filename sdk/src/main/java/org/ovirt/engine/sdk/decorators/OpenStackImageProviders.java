@@ -128,6 +128,7 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *
+     *
      * @return
      *     {@link OpenStackImageProvider }
      *
@@ -167,11 +168,10 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link OpenStackImageProvider }
      *
@@ -182,13 +182,13 @@ public class OpenStackImageProviders extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public OpenStackImageProvider add(org.ovirt.engine.sdk.entities.OpenStackImageProvider openstackimageprovider, String expect) throws
+    public OpenStackImageProvider add(org.ovirt.engine.sdk.entities.OpenStackImageProvider openstackimageprovider, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -214,15 +214,14 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.properties.property]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
-     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @return
      *     {@link OpenStackImageProvider }
      *
@@ -233,16 +232,16 @@ public class OpenStackImageProviders extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public OpenStackImageProvider add(org.ovirt.engine.sdk.entities.OpenStackImageProvider openstackimageprovider, String expect, String correlationId) throws
+    public OpenStackImageProvider add(org.ovirt.engine.sdk.entities.OpenStackImageProvider openstackimageprovider, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -260,7 +259,6 @@ public class OpenStackImageProviders extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link OpenStackImageProvider }
      *

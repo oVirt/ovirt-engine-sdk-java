@@ -90,12 +90,10 @@ public class InstanceTypeNIC extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -126,6 +124,7 @@ public class InstanceTypeNIC extends
      * Updates InstanceTypeNIC object.
      *
      * @param nic {@link org.ovirt.engine.sdk.entities.NIC}
+     *
      * @return
      *     {@link InstanceTypeNIC }
      *
@@ -161,7 +160,6 @@ public class InstanceTypeNIC extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link InstanceTypeNIC }
      *

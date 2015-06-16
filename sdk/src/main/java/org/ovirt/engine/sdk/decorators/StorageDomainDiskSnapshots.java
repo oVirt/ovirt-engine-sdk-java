@@ -127,7 +127,6 @@ public class StorageDomainDiskSnapshots extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link StorageDomainDiskSnapshot }
      *
      * @throws ClientProtocolException

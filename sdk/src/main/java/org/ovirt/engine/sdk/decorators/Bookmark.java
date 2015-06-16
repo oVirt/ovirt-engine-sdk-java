@@ -90,12 +90,10 @@ public class Bookmark extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -126,6 +124,7 @@ public class Bookmark extends
      * Updates Bookmark object.
      *
      * @param bookmark {@link org.ovirt.engine.sdk.entities.Bookmark}
+     *
      * @return
      *     {@link Bookmark }
      *
@@ -161,7 +160,6 @@ public class Bookmark extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Bookmark }
      *

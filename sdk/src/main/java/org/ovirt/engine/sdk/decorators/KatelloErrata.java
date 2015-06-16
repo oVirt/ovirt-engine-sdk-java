@@ -121,7 +121,6 @@ public class KatelloErrata extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link KatelloErratum }
      *
      * @throws ClientProtocolException

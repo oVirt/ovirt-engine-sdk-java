@@ -123,6 +123,7 @@ public class DataCenterStorageDomainDiskPermissions extends
      * Adds Permission object.
      *
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *
      * @return
      *     {@link DataCenterStorageDomainDiskPermission }
      *
@@ -154,7 +155,6 @@ public class DataCenterStorageDomainDiskPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterStorageDomainDiskPermission }
      *

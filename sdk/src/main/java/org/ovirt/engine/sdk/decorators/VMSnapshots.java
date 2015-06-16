@@ -129,6 +129,7 @@ public class VMSnapshots extends
      *    [snapshot.disks.disk]
      *    </pre>
      *
+     *
      * @return
      *     {@link VMSnapshot }
      *
@@ -167,7 +168,6 @@ public class VMSnapshots extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VMSnapshot }
      *
@@ -213,7 +213,6 @@ public class VMSnapshots extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VMSnapshot }
      *
@@ -252,7 +251,6 @@ public class VMSnapshots extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMSnapshot }
      *
      * @throws ClientProtocolException
@@ -281,16 +279,14 @@ public class VMSnapshots extends
     /**
      * Lists VMSnapshot objects.
      *
-     * @param allContent
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
-     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      *
      * @return List of {@link VMSnapshot }
      *

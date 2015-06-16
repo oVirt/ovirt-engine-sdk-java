@@ -127,6 +127,7 @@ public class GroupRolePermits extends
      *    permit.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link GroupRolePermit }
      *
@@ -163,7 +164,6 @@ public class GroupRolePermits extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link GroupRolePermit }
      *
@@ -207,7 +207,6 @@ public class GroupRolePermits extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link GroupRolePermit }
      *
@@ -245,7 +244,6 @@ public class GroupRolePermits extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link GroupRolePermit }
      *

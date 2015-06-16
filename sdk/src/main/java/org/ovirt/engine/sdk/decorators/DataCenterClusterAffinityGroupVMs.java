@@ -123,6 +123,7 @@ public class DataCenterClusterAffinityGroupVMs extends
      * Adds VM object.
      *
      * @param vm {@link org.ovirt.engine.sdk.entities.VM}
+     *
      * @return
      *     {@link DataCenterClusterAffinityGroupVM }
      *
@@ -154,7 +155,6 @@ public class DataCenterClusterAffinityGroupVMs extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterClusterAffinityGroupVM }
      *

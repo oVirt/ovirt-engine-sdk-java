@@ -123,6 +123,7 @@ public class Tags extends
      *    [tag.parent.tag.id|name]
      *    </pre>
      *
+     *
      * @return
      *     {@link Tag }
      *
@@ -161,7 +162,6 @@ public class Tags extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Tag }
      *
@@ -207,7 +207,6 @@ public class Tags extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link Tag }
      *
@@ -245,7 +244,6 @@ public class Tags extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link Tag }
      *

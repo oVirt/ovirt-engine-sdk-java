@@ -123,6 +123,7 @@ public class DataCenterClusterGlusterVolumes extends
      * Adds GlusterVolume object.
      *
      * @param glustervolume {@link org.ovirt.engine.sdk.entities.GlusterVolume}
+     *
      * @return
      *     {@link DataCenterClusterGlusterVolume }
      *
@@ -154,7 +155,6 @@ public class DataCenterClusterGlusterVolumes extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterClusterGlusterVolume }
      *

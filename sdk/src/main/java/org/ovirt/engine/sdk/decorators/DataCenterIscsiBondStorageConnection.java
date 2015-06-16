@@ -90,12 +90,10 @@ public class DataCenterIscsiBondStorageConnection extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -126,11 +124,38 @@ public class DataCenterIscsiBondStorageConnection extends
      * Deletes object.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
+     * @return
+     *     {@link Response }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Response delete(org.ovirt.engine.sdk.entities.Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().delete(url, action,
+                org.ovirt.engine.sdk.entities.Action.class, Response.class, headers);
+    }
+    /**
+     * Deletes object.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -162,6 +187,7 @@ public class DataCenterIscsiBondStorageConnection extends
      * Updates DataCenterIscsiBondStorageConnection object.
      *
      * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *
      * @return
      *     {@link DataCenterIscsiBondStorageConnection }
      *
@@ -197,7 +223,6 @@ public class DataCenterIscsiBondStorageConnection extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterIscsiBondStorageConnection }
      *

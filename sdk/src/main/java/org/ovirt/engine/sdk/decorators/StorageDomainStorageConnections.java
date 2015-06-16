@@ -127,6 +127,7 @@ public class StorageDomainStorageConnections extends
      *    storageconnection.id
      *    </pre>
      *
+     *
      * @return
      *     {@link StorageDomainStorageConnection }
      *
@@ -163,7 +164,6 @@ public class StorageDomainStorageConnections extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link StorageDomainStorageConnection }
      *
@@ -207,7 +207,6 @@ public class StorageDomainStorageConnections extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link StorageDomainStorageConnection }
      *
@@ -245,7 +244,6 @@ public class StorageDomainStorageConnections extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link StorageDomainStorageConnection }
      *

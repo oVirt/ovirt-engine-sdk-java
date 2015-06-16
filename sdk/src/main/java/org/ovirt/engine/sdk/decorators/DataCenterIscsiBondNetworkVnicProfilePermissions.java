@@ -123,6 +123,7 @@ public class DataCenterIscsiBondNetworkVnicProfilePermissions extends
      * Adds Permission object.
      *
      * @param permission {@link org.ovirt.engine.sdk.entities.Permission}
+     *
      * @return
      *     {@link DataCenterIscsiBondNetworkVnicProfilePermission }
      *
@@ -154,7 +155,6 @@ public class DataCenterIscsiBondNetworkVnicProfilePermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterIscsiBondNetworkVnicProfilePermission }
      *

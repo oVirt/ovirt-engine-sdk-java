@@ -90,12 +90,10 @@ public class OpenStackNetworkProviderOpenStackNetworkOpenStackSubnet extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *

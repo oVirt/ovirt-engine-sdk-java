@@ -129,6 +129,7 @@ public class OpenStackVolumeProviders extends
      *    [openstack_volume_provider.properties.property]
      *    </pre>
      *
+     *
      * @return
      *     {@link OpenStackVolumeProvider }
      *
@@ -173,7 +174,6 @@ public class OpenStackVolumeProviders extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link OpenStackVolumeProvider }
      *
@@ -225,7 +225,6 @@ public class OpenStackVolumeProviders extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link OpenStackVolumeProvider }
      *
@@ -263,7 +262,6 @@ public class OpenStackVolumeProviders extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link OpenStackVolumeProvider }
      *

@@ -127,7 +127,6 @@ public class OpenStackNetworkProviderCertificates extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link OpenStackNetworkProviderCertificate }
      *
      * @throws ClientProtocolException

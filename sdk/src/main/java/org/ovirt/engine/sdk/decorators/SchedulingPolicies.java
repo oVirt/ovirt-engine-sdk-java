@@ -123,6 +123,7 @@ public class SchedulingPolicies extends
      *    [schedulingpolicy.properties.property]
      *    </pre>
      *
+     *
      * @return
      *     {@link SchedulingPolicy }
      *
@@ -161,7 +162,6 @@ public class SchedulingPolicies extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link SchedulingPolicy }
      *
@@ -207,7 +207,6 @@ public class SchedulingPolicies extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link SchedulingPolicy }
      *
@@ -245,11 +244,43 @@ public class SchedulingPolicies extends
      *    <pre>
      *    [true|false]
      *    </pre>
+     *
+     * @return List of {@link SchedulingPolicy }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<SchedulingPolicy> list(Boolean caseSensitive) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.SchedulingPolicies.class,
+                SchedulingPolicy.class, headers);
+    }
+    /**
+     * Lists SchedulingPolicy objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link SchedulingPolicy }
      *

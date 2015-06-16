@@ -128,6 +128,7 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *
+     *
      * @return
      *     {@link OpenStackNetworkProvider }
      *
@@ -167,11 +168,10 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link OpenStackNetworkProvider }
      *
@@ -182,13 +182,13 @@ public class OpenStackNetworkProviders extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public OpenStackNetworkProvider add(org.ovirt.engine.sdk.entities.OpenStackNetworkProvider openstacknetworkprovider, String expect) throws
+    public OpenStackNetworkProvider add(org.ovirt.engine.sdk.entities.OpenStackNetworkProvider openstacknetworkprovider, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -214,15 +214,14 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.properties.property]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
-     *
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
      * @return
      *     {@link OpenStackNetworkProvider }
      *
@@ -233,16 +232,16 @@ public class OpenStackNetworkProviders extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public OpenStackNetworkProvider add(org.ovirt.engine.sdk.entities.OpenStackNetworkProvider openstacknetworkprovider, String expect, String correlationId) throws
+    public OpenStackNetworkProvider add(org.ovirt.engine.sdk.entities.OpenStackNetworkProvider openstacknetworkprovider, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -260,7 +259,6 @@ public class OpenStackNetworkProviders extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link OpenStackNetworkProvider }
      *

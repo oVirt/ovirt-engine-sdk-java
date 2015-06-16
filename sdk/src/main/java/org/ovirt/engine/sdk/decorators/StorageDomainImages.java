@@ -127,7 +127,6 @@ public class StorageDomainImages extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link StorageDomainImage }
      *
      * @throws ClientProtocolException

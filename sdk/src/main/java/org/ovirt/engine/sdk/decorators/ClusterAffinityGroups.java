@@ -129,6 +129,7 @@ public class ClusterAffinityGroups extends
      *    affinitygroup.enforcing
      *    </pre>
      *
+     *
      * @return
      *     {@link ClusterAffinityGroup }
      *
@@ -167,7 +168,6 @@ public class ClusterAffinityGroups extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link ClusterAffinityGroup }
      *
@@ -213,7 +213,6 @@ public class ClusterAffinityGroups extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link ClusterAffinityGroup }
      *
@@ -251,7 +250,6 @@ public class ClusterAffinityGroups extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link ClusterAffinityGroup }
      *

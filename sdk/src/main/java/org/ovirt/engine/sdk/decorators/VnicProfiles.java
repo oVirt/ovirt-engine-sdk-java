@@ -125,6 +125,7 @@ public class VnicProfiles extends
      *    [vnicprofile.custom_properties.custom_property]
      *    </pre>
      *
+     *
      * @return
      *     {@link VnicProfile }
      *
@@ -165,7 +166,6 @@ public class VnicProfiles extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link VnicProfile }
      *
@@ -213,7 +213,6 @@ public class VnicProfiles extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link VnicProfile }
      *
@@ -251,7 +250,6 @@ public class VnicProfiles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link VnicProfile }
      *

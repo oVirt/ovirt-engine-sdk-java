@@ -127,6 +127,7 @@ public class GroupTags extends
      *    tag.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link GroupTag }
      *
@@ -163,7 +164,6 @@ public class GroupTags extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link GroupTag }
      *
@@ -207,7 +207,6 @@ public class GroupTags extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link GroupTag }
      *
@@ -245,7 +244,6 @@ public class GroupTags extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link GroupTag }
      *

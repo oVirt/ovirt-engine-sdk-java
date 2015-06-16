@@ -122,6 +122,7 @@ public class Bookmarks extends
      *    bookmark.value
      *    </pre>
      *
+     *
      * @return
      *     {@link Bookmark }
      *
@@ -159,7 +160,6 @@ public class Bookmarks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link Bookmark }
      *
@@ -204,7 +204,6 @@ public class Bookmarks extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link Bookmark }
      *
@@ -242,7 +241,6 @@ public class Bookmarks extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link Bookmark }
      *

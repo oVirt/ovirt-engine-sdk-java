@@ -127,6 +127,7 @@ public class UserRolePermits extends
      *    permit.id|name
      *    </pre>
      *
+     *
      * @return
      *     {@link UserRolePermit }
      *
@@ -163,7 +164,6 @@ public class UserRolePermits extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link UserRolePermit }
      *
@@ -207,7 +207,6 @@ public class UserRolePermits extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link UserRolePermit }
      *
@@ -245,7 +244,6 @@ public class UserRolePermits extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link UserRolePermit }
      *

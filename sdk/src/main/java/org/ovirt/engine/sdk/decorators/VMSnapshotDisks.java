@@ -127,7 +127,6 @@ public class VMSnapshotDisks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMSnapshotDisk }
      *
      * @throws ClientProtocolException

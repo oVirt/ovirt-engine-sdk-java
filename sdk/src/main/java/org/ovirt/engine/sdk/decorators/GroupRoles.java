@@ -127,7 +127,6 @@ public class GroupRoles extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link GroupRole }
      *
      * @throws ClientProtocolException

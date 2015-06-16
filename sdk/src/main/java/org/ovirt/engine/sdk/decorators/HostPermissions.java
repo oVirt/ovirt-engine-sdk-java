@@ -141,6 +141,7 @@ public class HostPermissions extends
      *      permission.group.id
      *    </pre>
      *
+     *
      * @return
      *     {@link HostPermission }
      *
@@ -191,7 +192,6 @@ public class HostPermissions extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link HostPermission }
      *
@@ -249,7 +249,6 @@ public class HostPermissions extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link HostPermission }
      *
@@ -287,7 +286,6 @@ public class HostPermissions extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link HostPermission }
      *

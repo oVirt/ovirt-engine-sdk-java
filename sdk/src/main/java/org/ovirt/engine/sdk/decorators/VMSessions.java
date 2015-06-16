@@ -127,7 +127,6 @@ public class VMSessions extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link VMSession }
      *
      * @throws ClientProtocolException

@@ -142,6 +142,7 @@ public class DataCenterQoSs extends
      *    [qos.outbound_burst]
      *    </pre>
      *
+     *
      * @return
      *     {@link DataCenterQoS }
      *
@@ -193,7 +194,6 @@ public class DataCenterQoSs extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterQoS }
      *
@@ -252,7 +252,6 @@ public class DataCenterQoSs extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterQoS }
      *
@@ -290,7 +289,6 @@ public class DataCenterQoSs extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterQoS }
      *

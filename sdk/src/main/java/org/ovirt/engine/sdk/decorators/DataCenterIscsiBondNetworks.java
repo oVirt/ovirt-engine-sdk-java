@@ -123,6 +123,7 @@ public class DataCenterIscsiBondNetworks extends
      * Adds Network object.
      *
      * @param network {@link org.ovirt.engine.sdk.entities.Network}
+     *
      * @return
      *     {@link DataCenterIscsiBondNetwork }
      *
@@ -155,7 +156,6 @@ public class DataCenterIscsiBondNetworks extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterIscsiBondNetwork }
      *
@@ -195,7 +195,6 @@ public class DataCenterIscsiBondNetworks extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterIscsiBondNetwork }
      *
@@ -233,7 +232,6 @@ public class DataCenterIscsiBondNetworks extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link DataCenterIscsiBondNetwork }
      *

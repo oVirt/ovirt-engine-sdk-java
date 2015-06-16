@@ -107,12 +107,10 @@ public class DataCenterClusterAffinityGroup extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -143,6 +141,7 @@ public class DataCenterClusterAffinityGroup extends
      * Updates DataCenterClusterAffinityGroup object.
      *
      * @param affinitygroup {@link org.ovirt.engine.sdk.entities.AffinityGroup}
+     *
      * @return
      *     {@link DataCenterClusterAffinityGroup }
      *
@@ -178,7 +177,6 @@ public class DataCenterClusterAffinityGroup extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link DataCenterClusterAffinityGroup }
      *

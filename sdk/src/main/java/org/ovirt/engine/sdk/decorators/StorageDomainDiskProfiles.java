@@ -129,6 +129,7 @@ public class StorageDomainDiskProfiles extends
      *    [diskprofile.qos.id]
      *    </pre>
      *
+     *
      * @return
      *     {@link StorageDomainDiskProfile }
      *
@@ -167,7 +168,6 @@ public class StorageDomainDiskProfiles extends
      *    <pre>
      *    [201-created]
      *    </pre>
-     *
      * @return
      *     {@link StorageDomainDiskProfile }
      *
@@ -213,7 +213,6 @@ public class StorageDomainDiskProfiles extends
      *    <pre>
      *    [any string]
      *    </pre>
-     *
      * @return
      *     {@link StorageDomainDiskProfile }
      *
@@ -251,7 +250,6 @@ public class StorageDomainDiskProfiles extends
      *    <pre>
      *    [max results]
      *    </pre>
-     *
      *
      * @return List of {@link StorageDomainDiskProfile }
      *

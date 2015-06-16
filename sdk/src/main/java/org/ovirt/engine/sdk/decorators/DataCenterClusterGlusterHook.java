@@ -90,12 +90,10 @@ public class DataCenterClusterGlusterHook extends
     }
     /**
      * Deletes object.
-     *
      * @param async
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Response }
      *
@@ -126,6 +124,7 @@ public class DataCenterClusterGlusterHook extends
      * Performs disable action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -156,7 +155,6 @@ public class DataCenterClusterGlusterHook extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -187,6 +185,7 @@ public class DataCenterClusterGlusterHook extends
      * Performs enable action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -217,7 +216,6 @@ public class DataCenterClusterGlusterHook extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *
@@ -248,6 +246,7 @@ public class DataCenterClusterGlusterHook extends
      * Performs resolve action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *
      * @return
      *     {@link Action }
      *
@@ -278,7 +277,6 @@ public class DataCenterClusterGlusterHook extends
      *    <pre>
      *    [true|false]
      *    </pre>
-     *
      * @return
      *     {@link Action }
      *

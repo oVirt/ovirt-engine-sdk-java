@@ -127,7 +127,6 @@ public class OpenStackNetworkProviderOpenStackNetworks extends
      *    [max results]
      *    </pre>
      *
-     *
      * @return List of {@link OpenStackNetworkProviderOpenStackNetwork }
      *
      * @throws ClientProtocolException
