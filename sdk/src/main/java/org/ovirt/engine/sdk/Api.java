@@ -59,6 +59,7 @@ public class Api implements AutoCloseable {
     private volatile ExternalHostProviders externalHostProviders;
     private volatile Groups groups;
     private volatile Hosts hosts;
+    private volatile Icons icons;
     private volatile InstanceTypes instanceTypes;
     private volatile Jobs jobs;
     private volatile KatelloErrata katelloErrata;
@@ -945,6 +946,23 @@ public class Api implements AutoCloseable {
             }
         }
         return hosts;
+    }
+    /**
+     * Gets the value of the Icons property.
+     *
+     * @return
+     *     {@link Icons }
+     *
+     */
+    public Icons getIcons() {
+        if (this.icons == null) {
+            synchronized (this.LOCK) {
+                if (this.icons == null) {
+                    this.icons = new Icons(proxy);
+                }
+            }
+        }
+        return icons;
     }
     /**
      * Gets the value of the InstanceTypes property.

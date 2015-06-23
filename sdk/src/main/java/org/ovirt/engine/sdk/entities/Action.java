@@ -91,6 +91,7 @@ import javax.xml.bind.annotation.XmlType;
     "storageDomains",
     "disk",
     "reason",
+    "logicalUnits",
     "status",
     "fault",
     "iscsiTargets",
@@ -152,6 +153,8 @@ public class Action
     protected StorageDomains storageDomains;
     protected Disk disk;
     protected String reason;
+    @XmlElement(name = "logical_units")
+    protected LogicalUnits logicalUnits;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -1221,6 +1224,34 @@ public class Action
 
     public boolean isSetReason() {
         return (this.reason!= null);
+    }
+
+    /**
+     * Gets the value of the logicalUnits property.
+     *
+     * @return
+     *     possible object is
+     *     {@link LogicalUnits }
+     *
+     */
+    public LogicalUnits getLogicalUnits() {
+        return logicalUnits;
+    }
+
+    /**
+     * Sets the value of the logicalUnits property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link LogicalUnits }
+     *
+     */
+    public void setLogicalUnits(LogicalUnits value) {
+        this.logicalUnits = value;
+    }
+
+    public boolean isSetLogicalUnits() {
+        return (this.logicalUnits!= null);
     }
 
     /**

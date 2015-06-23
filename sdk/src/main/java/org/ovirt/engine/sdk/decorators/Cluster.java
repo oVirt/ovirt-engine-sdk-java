@@ -398,6 +398,8 @@ public class Cluster extends
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    [cluster.maintenance_reason_required]
      *    [cluster.management_network.id|name]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.merge_across_nodes]
      *    </pre>
      *
      *
@@ -463,6 +465,8 @@ public class Cluster extends
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    [cluster.maintenance_reason_required]
      *    [cluster.management_network.id|name]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.merge_across_nodes]
      *    </pre>
      *
      * @param correlationId
@@ -534,6 +538,8 @@ public class Cluster extends
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    [cluster.maintenance_reason_required]
      *    [cluster.management_network.id|name]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.merge_across_nodes]
      *    </pre>
      *
      * @param correlationId
@@ -613,6 +619,8 @@ public class Cluster extends
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
      *    [cluster.maintenance_reason_required]
      *    [cluster.management_network.id|name]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.merge_across_nodes]
      *    </pre>
      *
      * @param correlationId

@@ -146,6 +146,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
@@ -220,6 +221,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
@@ -301,6 +303,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
@@ -389,6 +392,7 @@ public class DataCenterStorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *

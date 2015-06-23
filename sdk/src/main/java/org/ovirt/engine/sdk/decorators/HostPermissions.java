@@ -130,14 +130,14 @@ public class HostPermissions extends
      *      permission for the host
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission for the host
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.group.id
      *    </pre>
      *
@@ -177,14 +177,14 @@ public class HostPermissions extends
      *      permission for the host
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission for the host
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.group.id
      *    </pre>
      *
@@ -230,14 +230,14 @@ public class HostPermissions extends
      *      permission for the host
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission for the host
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.group.id
      *    </pre>
      *

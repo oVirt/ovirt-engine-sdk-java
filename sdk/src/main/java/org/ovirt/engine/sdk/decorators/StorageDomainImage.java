@@ -71,6 +71,7 @@ public class StorageDomainImage extends
      *    storagedomain.id|name
      *    [action.import_as_template]
      *    [action.cluster.id|name]
+     *    [action.disk.alias|name]
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -106,6 +107,7 @@ public class StorageDomainImage extends
      *    storagedomain.id|name
      *    [action.import_as_template]
      *    [action.cluster.id|name]
+     *    [action.disk.alias|name]
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -148,6 +150,7 @@ public class StorageDomainImage extends
      *    storagedomain.id|name
      *    [action.import_as_template]
      *    [action.cluster.id|name]
+     *    [action.disk.alias|name]
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>

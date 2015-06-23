@@ -126,6 +126,7 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.password]
      *    [openstack_network_provider.authentication_url]
      *    [openstack_network_provider.properties.property]
+     *    [openstack_network_provider.tenant_name]
      *    </pre>
      *
      *
@@ -166,6 +167,7 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.password]
      *    [openstack_network_provider.authentication_url]
      *    [openstack_network_provider.properties.property]
+     *    [openstack_network_provider.tenant_name]
      *    </pre>
      *
      * @param correlationId
@@ -212,6 +214,7 @@ public class OpenStackNetworkProviders extends
      *    [openstack_network_provider.password]
      *    [openstack_network_provider.authentication_url]
      *    [openstack_network_provider.properties.property]
+     *    [openstack_network_provider.tenant_name]
      *    </pre>
      *
      * @param correlationId

@@ -145,6 +145,7 @@ public class StorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
@@ -216,6 +217,7 @@ public class StorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
@@ -294,6 +296,7 @@ public class StorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
@@ -379,6 +382,7 @@ public class StorageDomainDisks extends
      *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *

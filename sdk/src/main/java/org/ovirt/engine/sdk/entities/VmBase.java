@@ -68,9 +68,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="start_paused" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}cpu_profile" minOccurs="0"/>
  *         &lt;element ref="{}migration" minOccurs="0"/>
+ *         &lt;element ref="{}io" minOccurs="0"/>
  *         &lt;element name="custom_properties" type="{}CustomProperties" minOccurs="0"/>
  *         &lt;element name="custom_emulated_machine" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="custom_cpu_model" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="time_zone" type="{}TimeZone" minOccurs="0"/>
+ *         &lt;element name="small_icon" type="{}Icon" minOccurs="0"/>
+ *         &lt;element name="large_icon" type="{}Icon" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -110,9 +114,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "startPaused",
     "cpuProfile",
     "migration",
+    "io",
     "customProperties",
     "customEmulatedMachine",
-    "customCpuModel"
+    "customCpuModel",
+    "timeZone",
+    "smallIcon",
+    "largeIcon"
 })
 @XmlSeeAlso({
     VM.class,
@@ -165,12 +173,19 @@ public class VmBase
     @XmlElement(name = "cpu_profile")
     protected CpuProfile cpuProfile;
     protected MigrationOptions migration;
+    protected IO io;
     @XmlElement(name = "custom_properties")
     protected CustomProperties customProperties;
     @XmlElement(name = "custom_emulated_machine")
     protected String customEmulatedMachine;
     @XmlElement(name = "custom_cpu_model")
     protected String customCpuModel;
+    @XmlElement(name = "time_zone")
+    protected TimeZone timeZone;
+    @XmlElement(name = "small_icon")
+    protected Icon smallIcon;
+    @XmlElement(name = "large_icon")
+    protected Icon largeIcon;
 
     /**
      * Gets the value of the type property.
@@ -985,6 +1000,34 @@ public class VmBase
     }
 
     /**
+     * Gets the value of the io property.
+     *
+     * @return
+     *     possible object is
+     *     {@link IO }
+     *
+     */
+    public IO getIo() {
+        return io;
+    }
+
+    /**
+     * Sets the value of the io property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link IO }
+     *
+     */
+    public void setIo(IO value) {
+        this.io = value;
+    }
+
+    public boolean isSetIo() {
+        return (this.io!= null);
+    }
+
+    /**
      * Gets the value of the customProperties property.
      *
      * @return
@@ -1066,6 +1109,90 @@ public class VmBase
 
     public boolean isSetCustomCpuModel() {
         return (this.customCpuModel!= null);
+    }
+
+    /**
+     * Gets the value of the timeZone property.
+     *
+     * @return
+     *     possible object is
+     *     {@link TimeZone }
+     *
+     */
+    public TimeZone getTimeZone() {
+        return timeZone;
+    }
+
+    /**
+     * Sets the value of the timeZone property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link TimeZone }
+     *
+     */
+    public void setTimeZone(TimeZone value) {
+        this.timeZone = value;
+    }
+
+    public boolean isSetTimeZone() {
+        return (this.timeZone!= null);
+    }
+
+    /**
+     * Gets the value of the smallIcon property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Icon }
+     *
+     */
+    public Icon getSmallIcon() {
+        return smallIcon;
+    }
+
+    /**
+     * Sets the value of the smallIcon property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Icon }
+     *
+     */
+    public void setSmallIcon(Icon value) {
+        this.smallIcon = value;
+    }
+
+    public boolean isSetSmallIcon() {
+        return (this.smallIcon!= null);
+    }
+
+    /**
+     * Gets the value of the largeIcon property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Icon }
+     *
+     */
+    public Icon getLargeIcon() {
+        return largeIcon;
+    }
+
+    /**
+     * Sets the value of the largeIcon property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Icon }
+     *
+     */
+    public void setLargeIcon(Icon value) {
+        this.largeIcon = value;
+    }
+
+    public boolean isSetLargeIcon() {
+        return (this.largeIcon!= null);
     }
 
 }

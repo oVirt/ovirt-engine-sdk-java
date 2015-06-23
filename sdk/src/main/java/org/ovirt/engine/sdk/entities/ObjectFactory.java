@@ -50,6 +50,7 @@ public class ObjectFactory {
     private final static QName _Nic_QNAME = new QName("", "nic");
     private final static QName _BrickStates_QNAME = new QName("", "brick_states");
     private final static QName _Selinux_QNAME = new QName("", "selinux");
+    private final static QName _DisplayDisconnectActions_QNAME = new QName("", "display_disconnect_actions");
     private final static QName _Sso_QNAME = new QName("", "sso");
     private final static QName _StepTypes_QNAME = new QName("", "step_types");
     private final static QName _DnsServers_QNAME = new QName("", "dns_servers");
@@ -92,11 +93,13 @@ public class ObjectFactory {
     private final static QName _Schema_QNAME = new QName("", "schema");
     private final static QName _DiskFormats_QNAME = new QName("", "disk_formats");
     private final static QName _Role_QNAME = new QName("", "role");
+    private final static QName _Icon_QNAME = new QName("", "icon");
     private final static QName _NetworkStates_QNAME = new QName("", "network_states");
     private final static QName _CustomProperties_QNAME = new QName("", "custom_properties");
     private final static QName _Networks_QNAME = new QName("", "networks");
     private final static QName _DetailedLinks_QNAME = new QName("", "detailedLinks");
     private final static QName _VmNumaNode_QNAME = new QName("", "vm_numa_node");
+    private final static QName _StorageQuotaLimits_QNAME = new QName("", "storage_quota_limits");
     private final static QName _DataCenters_QNAME = new QName("", "data_centers");
     private final static QName _Balances_QNAME = new QName("", "balances");
     private final static QName _ExternalHostGroups_QNAME = new QName("", "external_host_groups");
@@ -170,6 +173,7 @@ public class ObjectFactory {
     private final static QName _StorageConnection_QNAME = new QName("", "storage_connection");
     private final static QName _OpenstackImageProviders_QNAME = new QName("", "openstack_image_providers");
     private final static QName _NicConfiguration_QNAME = new QName("", "nic_configuration");
+    private final static QName _GraphicsTypes_QNAME = new QName("", "graphics_types");
     private final static QName _AuthenticationMethods_QNAME = new QName("", "authentication_methods");
     private final static QName _Usages_QNAME = new QName("", "usages");
     private final static QName _AgentConfiguration_QNAME = new QName("", "agent_configuration");
@@ -185,6 +189,7 @@ public class ObjectFactory {
     private final static QName _Filters_QNAME = new QName("", "filters");
     private final static QName _Label_QNAME = new QName("", "label");
     private final static QName _HostNic_QNAME = new QName("", "host_nic");
+    private final static QName _Icons_QNAME = new QName("", "icons");
     private final static QName _OperatingSystems_QNAME = new QName("", "operating_systems");
     private final static QName _OpenstackProvider_QNAME = new QName("", "openstack_provider");
     private final static QName _OpenstackImages_QNAME = new QName("", "openstack_images");
@@ -199,6 +204,7 @@ public class ObjectFactory {
     private final static QName _DiskSnapshot_QNAME = new QName("", "disk_snapshot");
     private final static QName _SchedulingPolicy_QNAME = new QName("", "scheduling_policy");
     private final static QName _OpenstackSubnet_QNAME = new QName("", "openstack_subnet");
+    private final static QName _ClusterQuotaLimit_QNAME = new QName("", "cluster_quota_limit");
     private final static QName _SchedulingPolicies_QNAME = new QName("", "scheduling_policies");
     private final static QName _Hook_QNAME = new QName("", "hook");
     private final static QName _Cores_QNAME = new QName("", "cores");
@@ -218,6 +224,7 @@ public class ObjectFactory {
     private final static QName _VnicProfiles_QNAME = new QName("", "vnic_profiles");
     private final static QName _Sessions_QNAME = new QName("", "sessions");
     private final static QName _Method_QNAME = new QName("", "method");
+    private final static QName _Io_QNAME = new QName("", "io");
     private final static QName _ReportedDevices_QNAME = new QName("", "reported_devices");
     private final static QName _Ip_QNAME = new QName("", "ip");
     private final static QName _Templates_QNAME = new QName("", "templates");
@@ -238,6 +245,7 @@ public class ObjectFactory {
     private final static QName _BrickDetails_QNAME = new QName("", "brick_details");
     private final static QName _Template_QNAME = new QName("", "template");
     private final static QName _KatelloErratum_QNAME = new QName("", "katello_erratum");
+    private final static QName _OpenstackVolumeAuthenticationKeys_QNAME = new QName("", "openstack_volume_authentication_keys");
     private final static QName _ReportedDeviceTypes_QNAME = new QName("", "reported_device_types");
     private final static QName _Floppy_QNAME = new QName("", "floppy");
     private final static QName _BrickMemoryinfo_QNAME = new QName("", "brick_memoryinfo");
@@ -284,10 +292,12 @@ public class ObjectFactory {
     private final static QName _SpmStates_QNAME = new QName("", "spm_states");
     private final static QName _Statistics_QNAME = new QName("", "statistics");
     private final static QName _SchedulingPolicyUnits_QNAME = new QName("", "scheduling_policy_units");
+    private final static QName _StorageQuotaLimit_QNAME = new QName("", "storage_quota_limit");
     private final static QName _Quotas_QNAME = new QName("", "quotas");
     private final static QName _DetailedLink_QNAME = new QName("", "detailedLink");
     private final static QName _VmDeviceTypes_QNAME = new QName("", "vm_device_types");
     private final static QName _Usb_QNAME = new QName("", "usb");
+    private final static QName _GraphicsConsole_QNAME = new QName("", "graphics_console");
     private final static QName _ProductInfo_QNAME = new QName("", "product_info");
     private final static QName _Body_QNAME = new QName("", "body");
     private final static QName _ArchitectureCapability_QNAME = new QName("", "architecture_capability");
@@ -297,6 +307,7 @@ public class ObjectFactory {
     private final static QName _Tag_QNAME = new QName("", "tag");
     private final static QName _Group_QNAME = new QName("", "group");
     private final static QName _PowerManagementStates_QNAME = new QName("", "power_management_states");
+    private final static QName _LogicalUnits_QNAME = new QName("", "logical_units");
     private final static QName _Package_QNAME = new QName("", "package");
     private final static QName _SnapshotStatuses_QNAME = new QName("", "snapshot_statuses");
     private final static QName _Cpu_QNAME = new QName("", "cpu");
@@ -311,8 +322,11 @@ public class ObjectFactory {
     private final static QName _Core_QNAME = new QName("", "core");
     private final static QName _Disk_QNAME = new QName("", "disk");
     private final static QName _TemplateStates_QNAME = new QName("", "template_states");
+    private final static QName _ExternalStatuses_QNAME = new QName("", "external_statuses");
+    private final static QName _ClusterQuotaLimits_QNAME = new QName("", "cluster_quota_limits");
     private final static QName _NetworkPluginTypes_QNAME = new QName("", "network_plugin_types");
     private final static QName _Files_QNAME = new QName("", "files");
+    private final static QName _GraphicsConsoles_QNAME = new QName("", "graphics_consoles");
     private final static QName _Header_QNAME = new QName("", "header");
     private final static QName _GlusterHooks_QNAME = new QName("", "gluster_hooks");
     private final static QName _Job_QNAME = new QName("", "job");
@@ -333,12 +347,14 @@ public class ObjectFactory {
     private final static QName _MessageBrokerTypes_QNAME = new QName("", "message_broker_types");
     private final static QName _Network_QNAME = new QName("", "network");
     private final static QName _NetworkConfiguration_QNAME = new QName("", "network_configuration");
+    private final static QName _QuotaModeTypes_QNAME = new QName("", "quota_mode_types");
     private final static QName _GlusterHook_QNAME = new QName("", "gluster_hook");
     private final static QName _PowerManagement_QNAME = new QName("", "power_management");
     private final static QName _HostNumaNodes_QNAME = new QName("", "host_numa_nodes");
     private final static QName _OpenstackImage_QNAME = new QName("", "openstack_image");
     private final static QName _TransparentHugepages_QNAME = new QName("", "transparent_hugepages");
     private final static QName _Parameter_QNAME = new QName("", "parameter");
+    private final static QName _OpenstackVolumeAuthenticationKey_QNAME = new QName("", "openstack_volume_authentication_key");
     private final static QName _Brick_QNAME = new QName("", "brick");
     private final static QName _Value_QNAME = new QName("", "value");
     private final static QName _AffinityGroups_QNAME = new QName("", "affinity_groups");
@@ -429,6 +445,14 @@ public class ObjectFactory {
      */
     public SELinux createSELinux() {
         return new SELinux();
+    }
+
+    /**
+     * Create an instance of {@link DisplayDisconnectActions }
+     *
+     */
+    public DisplayDisconnectActions createDisplayDisconnectActions() {
+        return new DisplayDisconnectActions();
     }
 
     /**
@@ -768,6 +792,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Icon }
+     *
+     */
+    public Icon createIcon() {
+        return new Icon();
+    }
+
+    /**
      * Create an instance of {@link NetworkStates }
      *
      */
@@ -805,6 +837,14 @@ public class ObjectFactory {
      */
     public VirtualNumaNode createVirtualNumaNode() {
         return new VirtualNumaNode();
+    }
+
+    /**
+     * Create an instance of {@link QuotaStorageLimits }
+     *
+     */
+    public QuotaStorageLimits createQuotaStorageLimits() {
+        return new QuotaStorageLimits();
     }
 
     /**
@@ -1384,6 +1424,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GraphicsTypes }
+     *
+     */
+    public GraphicsTypes createGraphicsTypes() {
+        return new GraphicsTypes();
+    }
+
+    /**
      * Create an instance of {@link AuthenticationMethod }
      *
      */
@@ -1504,6 +1552,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Icons }
+     *
+     */
+    public Icons createIcons() {
+        return new Icons();
+    }
+
+    /**
      * Create an instance of {@link OperatingSystemInfos }
      *
      */
@@ -1613,6 +1669,14 @@ public class ObjectFactory {
      */
     public OpenStackSubnet createOpenStackSubnet() {
         return new OpenStackSubnet();
+    }
+
+    /**
+     * Create an instance of {@link QuotaClusterLimit }
+     *
+     */
+    public QuotaClusterLimit createQuotaClusterLimit() {
+        return new QuotaClusterLimit();
     }
 
     /**
@@ -1757,6 +1821,14 @@ public class ObjectFactory {
      */
     public Method createMethod() {
         return new Method();
+    }
+
+    /**
+     * Create an instance of {@link IO }
+     *
+     */
+    public IO createIO() {
+        return new IO();
     }
 
     /**
@@ -1909,6 +1981,14 @@ public class ObjectFactory {
      */
     public KatelloErratum createKatelloErratum() {
         return new KatelloErratum();
+    }
+
+    /**
+     * Create an instance of {@link OpenstackVolumeAuthenticationKeys }
+     *
+     */
+    public OpenstackVolumeAuthenticationKeys createOpenstackVolumeAuthenticationKeys() {
+        return new OpenstackVolumeAuthenticationKeys();
     }
 
     /**
@@ -2280,6 +2360,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link QuotaStorageLimit }
+     *
+     */
+    public QuotaStorageLimit createQuotaStorageLimit() {
+        return new QuotaStorageLimit();
+    }
+
+    /**
      * Create an instance of {@link Quotas }
      *
      */
@@ -2309,6 +2397,14 @@ public class ObjectFactory {
      */
     public Usb createUsb() {
         return new Usb();
+    }
+
+    /**
+     * Create an instance of {@link GraphicsConsole }
+     *
+     */
+    public GraphicsConsole createGraphicsConsole() {
+        return new GraphicsConsole();
     }
 
     /**
@@ -2381,6 +2477,14 @@ public class ObjectFactory {
      */
     public PowerManagementStates createPowerManagementStates() {
         return new PowerManagementStates();
+    }
+
+    /**
+     * Create an instance of {@link LogicalUnits }
+     *
+     */
+    public LogicalUnits createLogicalUnits() {
+        return new LogicalUnits();
     }
 
     /**
@@ -2496,6 +2600,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExternalStatuses }
+     *
+     */
+    public ExternalStatuses createExternalStatuses() {
+        return new ExternalStatuses();
+    }
+
+    /**
+     * Create an instance of {@link QuotaClusterLimits }
+     *
+     */
+    public QuotaClusterLimits createQuotaClusterLimits() {
+        return new QuotaClusterLimits();
+    }
+
+    /**
      * Create an instance of {@link NetworkPluginTypes }
      *
      */
@@ -2509,6 +2629,14 @@ public class ObjectFactory {
      */
     public Files createFiles() {
         return new Files();
+    }
+
+    /**
+     * Create an instance of {@link GraphicsConsoles }
+     *
+     */
+    public GraphicsConsoles createGraphicsConsoles() {
+        return new GraphicsConsoles();
     }
 
     /**
@@ -2672,6 +2800,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link QuotaModeTypes }
+     *
+     */
+    public QuotaModeTypes createQuotaModeTypes() {
+        return new QuotaModeTypes();
+    }
+
+    /**
      * Create an instance of {@link GlusterHook }
      *
      */
@@ -2717,6 +2853,14 @@ public class ObjectFactory {
      */
     public Parameter createParameter() {
         return new Parameter();
+    }
+
+    /**
+     * Create an instance of {@link OpenstackVolumeAuthenticationKey }
+     *
+     */
+    public OpenstackVolumeAuthenticationKey createOpenstackVolumeAuthenticationKey() {
+        return new OpenstackVolumeAuthenticationKey();
     }
 
     /**
@@ -2952,6 +3096,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TimeZone }
+     *
+     */
+    public TimeZone createTimeZone() {
+        return new TimeZone();
+    }
+
+    /**
      * Create an instance of {@link MemoryOverCommit }
      *
      */
@@ -3080,6 +3232,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GuestOperatingSystem }
+     *
+     */
+    public GuestOperatingSystem createGuestOperatingSystem() {
+        return new GuestOperatingSystem();
+    }
+
+    /**
      * Create an instance of {@link GuestInfo }
      *
      */
@@ -3141,6 +3301,14 @@ public class ObjectFactory {
      */
     public TemplateVersion createTemplateVersion() {
         return new TemplateVersion();
+    }
+
+    /**
+     * Create an instance of {@link Kernel }
+     *
+     */
+    public Kernel createKernel() {
+        return new Kernel();
     }
 
     /**
@@ -3236,6 +3404,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "selinux")
     public JAXBElement<SELinux> createSelinux(SELinux value) {
         return new JAXBElement<SELinux>(_Selinux_QNAME, SELinux.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DisplayDisconnectActions }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "display_disconnect_actions")
+    public JAXBElement<DisplayDisconnectActions> createDisplayDisconnectActions(DisplayDisconnectActions value) {
+        return new JAXBElement<DisplayDisconnectActions>(_DisplayDisconnectActions_QNAME, DisplayDisconnectActions.class, null, value);
     }
 
     /**
@@ -3617,6 +3794,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Icon }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "icon")
+    public JAXBElement<Icon> createIcon(Icon value) {
+        return new JAXBElement<Icon>(_Icon_QNAME, Icon.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NetworkStates }{@code >}}
      *
      */
@@ -3659,6 +3845,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "vm_numa_node")
     public JAXBElement<VirtualNumaNode> createVmNumaNode(VirtualNumaNode value) {
         return new JAXBElement<VirtualNumaNode>(_VmNumaNode_QNAME, VirtualNumaNode.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QuotaStorageLimits }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_quota_limits")
+    public JAXBElement<QuotaStorageLimits> createStorageQuotaLimits(QuotaStorageLimits value) {
+        return new JAXBElement<QuotaStorageLimits>(_StorageQuotaLimits_QNAME, QuotaStorageLimits.class, null, value);
     }
 
     /**
@@ -4319,6 +4514,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GraphicsTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "graphics_types")
+    public JAXBElement<GraphicsTypes> createGraphicsTypes(GraphicsTypes value) {
+        return new JAXBElement<GraphicsTypes>(_GraphicsTypes_QNAME, GraphicsTypes.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AuthenticationMethod }{@code >}}
      *
      */
@@ -4454,6 +4658,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Icons }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "icons")
+    public JAXBElement<Icons> createIcons(Icons value) {
+        return new JAXBElement<Icons>(_Icons_QNAME, Icons.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link OperatingSystemInfos }{@code >}}
      *
      */
@@ -4577,6 +4790,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "openstack_subnet")
     public JAXBElement<OpenStackSubnet> createOpenstackSubnet(OpenStackSubnet value) {
         return new JAXBElement<OpenStackSubnet>(_OpenstackSubnet_QNAME, OpenStackSubnet.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QuotaClusterLimit }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "cluster_quota_limit")
+    public JAXBElement<QuotaClusterLimit> createClusterQuotaLimit(QuotaClusterLimit value) {
+        return new JAXBElement<QuotaClusterLimit>(_ClusterQuotaLimit_QNAME, QuotaClusterLimit.class, null, value);
     }
 
     /**
@@ -4748,6 +4970,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "method")
     public JAXBElement<Method> createMethod(Method value) {
         return new JAXBElement<Method>(_Method_QNAME, Method.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IO }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "io")
+    public JAXBElement<IO> createIo(IO value) {
+        return new JAXBElement<IO>(_Io_QNAME, IO.class, null, value);
     }
 
     /**
@@ -4928,6 +5159,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "katello_erratum")
     public JAXBElement<KatelloErratum> createKatelloErratum(KatelloErratum value) {
         return new JAXBElement<KatelloErratum>(_KatelloErratum_QNAME, KatelloErratum.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenstackVolumeAuthenticationKeys }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_volume_authentication_keys")
+    public JAXBElement<OpenstackVolumeAuthenticationKeys> createOpenstackVolumeAuthenticationKeys(OpenstackVolumeAuthenticationKeys value) {
+        return new JAXBElement<OpenstackVolumeAuthenticationKeys>(_OpenstackVolumeAuthenticationKeys_QNAME, OpenstackVolumeAuthenticationKeys.class, null, value);
     }
 
     /**
@@ -5345,6 +5585,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QuotaStorageLimit }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_quota_limit")
+    public JAXBElement<QuotaStorageLimit> createStorageQuotaLimit(QuotaStorageLimit value) {
+        return new JAXBElement<QuotaStorageLimit>(_StorageQuotaLimit_QNAME, QuotaStorageLimit.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Quotas }{@code >}}
      *
      */
@@ -5378,6 +5627,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "usb")
     public JAXBElement<Usb> createUsb(Usb value) {
         return new JAXBElement<Usb>(_Usb_QNAME, Usb.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GraphicsConsole }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "graphics_console")
+    public JAXBElement<GraphicsConsole> createGraphicsConsole(GraphicsConsole value) {
+        return new JAXBElement<GraphicsConsole>(_GraphicsConsole_QNAME, GraphicsConsole.class, null, value);
     }
 
     /**
@@ -5459,6 +5717,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "power_management_states")
     public JAXBElement<PowerManagementStates> createPowerManagementStates(PowerManagementStates value) {
         return new JAXBElement<PowerManagementStates>(_PowerManagementStates_QNAME, PowerManagementStates.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogicalUnits }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "logical_units")
+    public JAXBElement<LogicalUnits> createLogicalUnits(LogicalUnits value) {
+        return new JAXBElement<LogicalUnits>(_LogicalUnits_QNAME, LogicalUnits.class, null, value);
     }
 
     /**
@@ -5588,6 +5855,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalStatuses }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "external_statuses")
+    public JAXBElement<ExternalStatuses> createExternalStatuses(ExternalStatuses value) {
+        return new JAXBElement<ExternalStatuses>(_ExternalStatuses_QNAME, ExternalStatuses.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QuotaClusterLimits }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "cluster_quota_limits")
+    public JAXBElement<QuotaClusterLimits> createClusterQuotaLimits(QuotaClusterLimits value) {
+        return new JAXBElement<QuotaClusterLimits>(_ClusterQuotaLimits_QNAME, QuotaClusterLimits.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NetworkPluginTypes }{@code >}}
      *
      */
@@ -5603,6 +5888,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "files")
     public JAXBElement<Files> createFiles(Files value) {
         return new JAXBElement<Files>(_Files_QNAME, Files.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GraphicsConsoles }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "graphics_consoles")
+    public JAXBElement<GraphicsConsoles> createGraphicsConsoles(GraphicsConsoles value) {
+        return new JAXBElement<GraphicsConsoles>(_GraphicsConsoles_QNAME, GraphicsConsoles.class, null, value);
     }
 
     /**
@@ -5786,6 +6080,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link QuotaModeTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "quota_mode_types")
+    public JAXBElement<QuotaModeTypes> createQuotaModeTypes(QuotaModeTypes value) {
+        return new JAXBElement<QuotaModeTypes>(_QuotaModeTypes_QNAME, QuotaModeTypes.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GlusterHook }{@code >}}
      *
      */
@@ -5837,6 +6140,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "parameter")
     public JAXBElement<Parameter> createParameter(Parameter value) {
         return new JAXBElement<Parameter>(_Parameter_QNAME, Parameter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OpenstackVolumeAuthenticationKey }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "openstack_volume_authentication_key")
+    public JAXBElement<OpenstackVolumeAuthenticationKey> createOpenstackVolumeAuthenticationKey(OpenstackVolumeAuthenticationKey value) {
+        return new JAXBElement<OpenstackVolumeAuthenticationKey>(_OpenstackVolumeAuthenticationKey_QNAME, OpenstackVolumeAuthenticationKey.class, null, value);
     }
 
     /**

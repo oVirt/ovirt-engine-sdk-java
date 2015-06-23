@@ -129,6 +129,7 @@ public class VMs extends
      *      [vm.instance_type.id|name]
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -144,10 +145,12 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.cpu.architecture]
      *      [vm.memory]
+     *      [vm.io.threads]
      *      [vm.memory_policy.guaranteed]
      *      [vm.memory_policy.ballooning]
      *      [vm.high_availability.priority]
@@ -190,6 +193,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *
      *    Overload 2:
      *
@@ -203,6 +210,7 @@ public class VMs extends
      *      vm.snapshots.snapshot
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -218,6 +226,7 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.cpu_shares]
@@ -258,6 +267,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *
      *    Overload 3:
      *
@@ -272,6 +285,7 @@ public class VMs extends
      *      [vm.name]
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -286,6 +300,7 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.memory]
@@ -327,6 +342,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *    </pre>
      *
      *
@@ -370,6 +389,7 @@ public class VMs extends
      *      [vm.instance_type.id|name]
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -385,10 +405,12 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.cpu.architecture]
      *      [vm.memory]
+     *      [vm.io.threads]
      *      [vm.memory_policy.guaranteed]
      *      [vm.memory_policy.ballooning]
      *      [vm.high_availability.priority]
@@ -431,6 +453,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *
      *    Overload 2:
      *
@@ -444,6 +470,7 @@ public class VMs extends
      *      vm.snapshots.snapshot
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -459,6 +486,7 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.cpu_shares]
@@ -499,6 +527,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *
      *    Overload 3:
      *
@@ -513,6 +545,7 @@ public class VMs extends
      *      [vm.name]
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -527,6 +560,7 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.memory]
@@ -568,6 +602,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *    </pre>
      *
      * @param correlationId
@@ -617,6 +655,7 @@ public class VMs extends
      *      [vm.instance_type.id|name]
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -632,10 +671,12 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.cpu.architecture]
      *      [vm.memory]
+     *      [vm.io.threads]
      *      [vm.memory_policy.guaranteed]
      *      [vm.memory_policy.ballooning]
      *      [vm.high_availability.priority]
@@ -678,6 +719,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *
      *    Overload 2:
      *
@@ -691,6 +736,7 @@ public class VMs extends
      *      vm.snapshots.snapshot
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -706,6 +752,7 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.cpu_shares]
@@ -746,6 +793,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *
      *    Overload 3:
      *
@@ -760,6 +811,7 @@ public class VMs extends
      *      [vm.name]
      *      [vm.quota.id]
      *      [vm.timezone]
+     *      [vm.time_zone.name]
      *      [vm.os.boot]
      *      [vm.custom_properties.custom_property]
      *      [vm.os.type]
@@ -774,6 +826,7 @@ public class VMs extends
      *      [vm.display.file_transfer_enabled]
      *      [vm.display.copy_paste_enabled]
      *      [vm.display.keyboard_layout]
+     *      [vm.display.disconnect_action]
      *      [vm.os.cmdline]
      *      [vm.cpu.topology.cores]
      *      [vm.memory]
@@ -815,6 +868,10 @@ public class VMs extends
      *      [vm.cpu_profile.id]
      *      [vm.migration.auto_converge]
      *      [vm.migration.compressed]
+     *      [vm.small_icon.id]
+     *      [vm.large_icon.id]
+     *      [vm.large_icon.media_type]
+     *      [vm.large_icon.data]
      *    </pre>
      *
      * @param correlationId

@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="address" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}certificate" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
+ *         &lt;element name="external_status" type="{}Status" minOccurs="0"/>
  *         &lt;element name="cluster" type="{}Cluster" minOccurs="0"/>
  *         &lt;element name="port" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -87,6 +88,7 @@ import javax.xml.bind.annotation.XmlType;
     "address",
     "certificate",
     "status",
+    "externalStatus",
     "cluster",
     "port",
     "type",
@@ -129,6 +131,8 @@ public class Host
     protected String address;
     protected Certificate certificate;
     protected Status status;
+    @XmlElement(name = "external_status")
+    protected Status externalStatus;
     protected Cluster cluster;
     @XmlSchemaType(name = "unsignedShort")
     protected Integer port;
@@ -264,6 +268,34 @@ public class Host
 
     public boolean isSetStatus() {
         return (this.status!= null);
+    }
+
+    /**
+     * Gets the value of the externalStatus property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Status }
+     *
+     */
+    public Status getExternalStatus() {
+        return externalStatus;
+    }
+
+    /**
+     * Sets the value of the externalStatus property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Status }
+     *
+     */
+    public void setExternalStatus(Status value) {
+        this.externalStatus = value;
+    }
+
+    public boolean isSetExternalStatus() {
+        return (this.externalStatus!= null);
     }
 
     /**

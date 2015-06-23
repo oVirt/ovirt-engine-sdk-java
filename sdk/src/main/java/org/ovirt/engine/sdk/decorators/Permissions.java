@@ -124,15 +124,15 @@ public class Permissions extends
      *      permission on the system
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission on the system
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      *
@@ -171,15 +171,15 @@ public class Permissions extends
      *      permission on the system
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission on the system
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect
@@ -224,15 +224,15 @@ public class Permissions extends
      *      permission on the system
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission on the system
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect

@@ -131,7 +131,7 @@ public class DiskProfilePermissions extends
      *      in the system
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
@@ -140,7 +140,7 @@ public class DiskProfilePermissions extends
      *      in the system
      *
      *      permission.group.id
-     *      permission.role.id
+     *      permission.role.id|name
      *    </pre>
      *
      *
@@ -180,7 +180,7 @@ public class DiskProfilePermissions extends
      *      in the system
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
@@ -189,7 +189,7 @@ public class DiskProfilePermissions extends
      *      in the system
      *
      *      permission.group.id
-     *      permission.role.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect
@@ -235,7 +235,7 @@ public class DiskProfilePermissions extends
      *      in the system
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
@@ -244,7 +244,7 @@ public class DiskProfilePermissions extends
      *      in the system
      *
      *      permission.group.id
-     *      permission.role.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect

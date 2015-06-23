@@ -22,6 +22,7 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -34,6 +35,10 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="OperatingSystemInfo">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
+ *       &lt;sequence>
+ *         &lt;element name="large_icon" type="{}Icon" minOccurs="0"/>
+ *         &lt;element name="small_icon" type="{}Icon" minOccurs="0"/>
+ *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -42,10 +47,73 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "OperatingSystemInfo")
+@XmlType(name = "OperatingSystemInfo", propOrder = {
+    "largeIcon",
+    "smallIcon"
+})
 public class OperatingSystemInfo
     extends BaseResource
 {
 
+    @XmlElement(name = "large_icon")
+    protected Icon largeIcon;
+    @XmlElement(name = "small_icon")
+    protected Icon smallIcon;
+
+    /**
+     * Gets the value of the largeIcon property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Icon }
+     *
+     */
+    public Icon getLargeIcon() {
+        return largeIcon;
+    }
+
+    /**
+     * Sets the value of the largeIcon property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Icon }
+     *
+     */
+    public void setLargeIcon(Icon value) {
+        this.largeIcon = value;
+    }
+
+    public boolean isSetLargeIcon() {
+        return (this.largeIcon!= null);
+    }
+
+    /**
+     * Gets the value of the smallIcon property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Icon }
+     *
+     */
+    public Icon getSmallIcon() {
+        return smallIcon;
+    }
+
+    /**
+     * Sets the value of the smallIcon property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Icon }
+     *
+     */
+    public void setSmallIcon(Icon value) {
+        this.smallIcon = value;
+    }
+
+    public boolean isSetSmallIcon() {
+        return (this.smallIcon!= null);
+    }
 
 }

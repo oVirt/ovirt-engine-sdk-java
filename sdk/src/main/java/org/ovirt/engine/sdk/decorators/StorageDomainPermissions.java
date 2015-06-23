@@ -131,7 +131,7 @@ public class StorageDomainPermissions extends
      *      domain
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
@@ -139,8 +139,8 @@ public class StorageDomainPermissions extends
      *      permission on the storage
      *      domain
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      *
@@ -180,7 +180,7 @@ public class StorageDomainPermissions extends
      *      domain
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
@@ -188,8 +188,8 @@ public class StorageDomainPermissions extends
      *      permission on the storage
      *      domain
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect
@@ -235,7 +235,7 @@ public class StorageDomainPermissions extends
      *      domain
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
@@ -243,8 +243,8 @@ public class StorageDomainPermissions extends
      *      permission on the storage
      *      domain
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect

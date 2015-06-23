@@ -130,7 +130,7 @@ public class GroupPermissions extends
      *      data center to the group in
      *      the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.data_center.id
      *
      *    Overload 2:
@@ -139,7 +139,7 @@ public class GroupPermissions extends
      *      cluster to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.cluster.id
      *
      *    Overload 3:
@@ -148,7 +148,7 @@ public class GroupPermissions extends
      *      host to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.host.id
      *
      *    Overload 4:
@@ -157,7 +157,7 @@ public class GroupPermissions extends
      *      storage domain to the group in
      *      the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.storage_domain.id
      *
      *    Overload 5:
@@ -165,7 +165,7 @@ public class GroupPermissions extends
      *      add a new permission on the vm
      *      to the group in the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.vm.id
      *
      *    Overload 6:
@@ -174,7 +174,7 @@ public class GroupPermissions extends
      *      pool to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.vmpool.id
      *
      *    Overload 7:
@@ -183,7 +183,7 @@ public class GroupPermissions extends
      *      template to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.template.id
      *    </pre>
      *
@@ -223,7 +223,7 @@ public class GroupPermissions extends
      *      data center to the group in
      *      the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.data_center.id
      *
      *    Overload 2:
@@ -232,7 +232,7 @@ public class GroupPermissions extends
      *      cluster to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.cluster.id
      *
      *    Overload 3:
@@ -241,7 +241,7 @@ public class GroupPermissions extends
      *      host to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.host.id
      *
      *    Overload 4:
@@ -250,7 +250,7 @@ public class GroupPermissions extends
      *      storage domain to the group in
      *      the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.storage_domain.id
      *
      *    Overload 5:
@@ -258,7 +258,7 @@ public class GroupPermissions extends
      *      add a new permission on the vm
      *      to the group in the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.vm.id
      *
      *    Overload 6:
@@ -267,7 +267,7 @@ public class GroupPermissions extends
      *      pool to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.vmpool.id
      *
      *    Overload 7:
@@ -276,7 +276,7 @@ public class GroupPermissions extends
      *      template to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.template.id
      *    </pre>
      *
@@ -322,7 +322,7 @@ public class GroupPermissions extends
      *      data center to the group in
      *      the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.data_center.id
      *
      *    Overload 2:
@@ -331,7 +331,7 @@ public class GroupPermissions extends
      *      cluster to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.cluster.id
      *
      *    Overload 3:
@@ -340,7 +340,7 @@ public class GroupPermissions extends
      *      host to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.host.id
      *
      *    Overload 4:
@@ -349,7 +349,7 @@ public class GroupPermissions extends
      *      storage domain to the group in
      *      the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.storage_domain.id
      *
      *    Overload 5:
@@ -357,7 +357,7 @@ public class GroupPermissions extends
      *      add a new permission on the vm
      *      to the group in the system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.vm.id
      *
      *    Overload 6:
@@ -366,7 +366,7 @@ public class GroupPermissions extends
      *      pool to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.vmpool.id
      *
      *    Overload 7:
@@ -375,7 +375,7 @@ public class GroupPermissions extends
      *      template to the group in the
      *      system
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.template.id
      *    </pre>
      *

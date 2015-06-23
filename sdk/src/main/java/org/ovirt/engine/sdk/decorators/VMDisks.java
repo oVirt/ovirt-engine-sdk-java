@@ -145,6 +145,7 @@ public class VMDisks extends
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
@@ -238,6 +239,7 @@ public class VMDisks extends
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
@@ -337,6 +339,7 @@ public class VMDisks extends
      *      [disk.quota.id]
      *      [disk.disk_profile.id]
      *      [disk.storage_domains.storage_domain]
+     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *

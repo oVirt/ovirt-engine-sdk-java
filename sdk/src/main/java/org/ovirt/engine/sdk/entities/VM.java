@@ -68,6 +68,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}permissions" minOccurs="0"/>
  *         &lt;element ref="{}external_host_provider" minOccurs="0"/>
  *         &lt;element ref="{}katello_errata" minOccurs="0"/>
+ *         &lt;element name="guest_time_zone" type="{}TimeZone" minOccurs="0"/>
+ *         &lt;element name="guest_operating_system" type="{}GuestOperatingSystem" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -106,7 +108,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "numaTuneMode",
     "permissions",
     "externalHostProvider",
-    "katelloErrata"
+    "katelloErrata",
+    "guestTimeZone",
+    "guestOperatingSystem"
 })
 @XmlSeeAlso({
     Snapshot.class
@@ -161,6 +165,10 @@ public class VM
     protected ExternalHostProvider externalHostProvider;
     @XmlElement(name = "katello_errata")
     protected KatelloErrata katelloErrata;
+    @XmlElement(name = "guest_time_zone")
+    protected TimeZone guestTimeZone;
+    @XmlElement(name = "guest_operating_system")
+    protected GuestOperatingSystem guestOperatingSystem;
 
     /**
      * Gets the value of the stopReason property.
@@ -972,6 +980,62 @@ public class VM
 
     public boolean isSetKatelloErrata() {
         return (this.katelloErrata!= null);
+    }
+
+    /**
+     * Gets the value of the guestTimeZone property.
+     *
+     * @return
+     *     possible object is
+     *     {@link TimeZone }
+     *
+     */
+    public TimeZone getGuestTimeZone() {
+        return guestTimeZone;
+    }
+
+    /**
+     * Sets the value of the guestTimeZone property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link TimeZone }
+     *
+     */
+    public void setGuestTimeZone(TimeZone value) {
+        this.guestTimeZone = value;
+    }
+
+    public boolean isSetGuestTimeZone() {
+        return (this.guestTimeZone!= null);
+    }
+
+    /**
+     * Gets the value of the guestOperatingSystem property.
+     *
+     * @return
+     *     possible object is
+     *     {@link GuestOperatingSystem }
+     *
+     */
+    public GuestOperatingSystem getGuestOperatingSystem() {
+        return guestOperatingSystem;
+    }
+
+    /**
+     * Sets the value of the guestOperatingSystem property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link GuestOperatingSystem }
+     *
+     */
+    public void setGuestOperatingSystem(GuestOperatingSystem value) {
+        this.guestOperatingSystem = value;
+    }
+
+    public boolean isSetGuestOperatingSystem() {
+        return (this.guestOperatingSystem!= null);
     }
 
 }

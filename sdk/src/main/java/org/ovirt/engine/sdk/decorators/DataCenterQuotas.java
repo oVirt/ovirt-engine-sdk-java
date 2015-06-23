@@ -120,6 +120,139 @@ public class DataCenterQuotas extends
     }
 
     /**
+     * Adds Quota object.
+     *
+     * @param quota {@link org.ovirt.engine.sdk.entities.Quota}
+     *    <pre>
+     *    quota.name
+     *    [quota.description]
+     *    [quota.cluster_soft_limit_pct]
+     *    [quota.cluster_hard_limit_pct]
+     *    [quota.storage_soft_limit_pct]
+     *    [quota.storage_hard_limit_pct]
+     *    </pre>
+     *
+     *
+     * @return
+     *     {@link DataCenterQuota }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterQuota add(org.ovirt.engine.sdk.entities.Quota quota) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, quota,
+                org.ovirt.engine.sdk.entities.Quota.class,
+                DataCenterQuota.class, headers);
+    }
+    /**
+     * Adds Quota object.
+     *
+     * @param quota {@link org.ovirt.engine.sdk.entities.Quota}
+     *    <pre>
+     *    quota.name
+     *    [quota.description]
+     *    [quota.cluster_soft_limit_pct]
+     *    [quota.cluster_hard_limit_pct]
+     *    [quota.storage_soft_limit_pct]
+     *    [quota.storage_hard_limit_pct]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @return
+     *     {@link DataCenterQuota }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterQuota add(org.ovirt.engine.sdk.entities.Quota quota, String correlationId) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, quota,
+                org.ovirt.engine.sdk.entities.Quota.class,
+                DataCenterQuota.class, headers);
+    }
+    /**
+     * Adds Quota object.
+     *
+     * @param quota {@link org.ovirt.engine.sdk.entities.Quota}
+     *    <pre>
+     *    quota.name
+     *    [quota.description]
+     *    [quota.cluster_soft_limit_pct]
+     *    [quota.cluster_hard_limit_pct]
+     *    [quota.storage_soft_limit_pct]
+     *    [quota.storage_hard_limit_pct]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @return
+     *     {@link DataCenterQuota }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterQuota add(org.ovirt.engine.sdk.entities.Quota quota, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, quota,
+                org.ovirt.engine.sdk.entities.Quota.class,
+                DataCenterQuota.class, headers);
+    }
+    /**
      * Lists DataCenterQuota objects.
      *
      * @param max

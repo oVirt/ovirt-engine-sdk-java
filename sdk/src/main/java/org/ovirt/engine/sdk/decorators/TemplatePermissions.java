@@ -130,14 +130,14 @@ public class TemplatePermissions extends
      *      permission on the template
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new role permission on the template
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      *
@@ -176,14 +176,14 @@ public class TemplatePermissions extends
      *      permission on the template
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new role permission on the template
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect
@@ -228,14 +228,14 @@ public class TemplatePermissions extends
      *      permission on the template
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new role permission on the template
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect

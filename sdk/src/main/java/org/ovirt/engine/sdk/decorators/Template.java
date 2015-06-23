@@ -390,12 +390,14 @@ public class Template extends
      *    <pre>
      *    [template.name]
      *    [template.memory]
+     *    [template.io.threads]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
      *    [template.timezone]
+     *    [template.time_zone.name]
      *    [template.domain.name]
      *    [template.type]
      *    [template.stateless]
@@ -423,6 +425,7 @@ public class Template extends
      *    [vm.display.file_transfer_enabled]
      *    [vm.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
+     *    [template.display.disconnect_action]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
@@ -440,6 +443,10 @@ public class Template extends
      *    [template.cpu_profile.id]
      *    [template.migration.auto_converge]
      *    [template.migration.compressed]
+     *    [template.small_icon.id]
+     *    [template.large_icon.id]
+     *    [template.large_icon.media_type]
+     *    [template.large_icon.data]
      *    </pre>
      *
      *
@@ -477,12 +484,14 @@ public class Template extends
      *    <pre>
      *    [template.name]
      *    [template.memory]
+     *    [template.io.threads]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
      *    [template.timezone]
+     *    [template.time_zone.name]
      *    [template.domain.name]
      *    [template.type]
      *    [template.stateless]
@@ -510,6 +519,7 @@ public class Template extends
      *    [vm.display.file_transfer_enabled]
      *    [vm.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
+     *    [template.display.disconnect_action]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
@@ -527,6 +537,10 @@ public class Template extends
      *    [template.cpu_profile.id]
      *    [template.migration.auto_converge]
      *    [template.migration.compressed]
+     *    [template.small_icon.id]
+     *    [template.large_icon.id]
+     *    [template.large_icon.media_type]
+     *    [template.large_icon.data]
      *    </pre>
      *
      * @param correlationId
@@ -570,12 +584,14 @@ public class Template extends
      *    <pre>
      *    [template.name]
      *    [template.memory]
+     *    [template.io.threads]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
      *    [template.timezone]
+     *    [template.time_zone.name]
      *    [template.domain.name]
      *    [template.type]
      *    [template.stateless]
@@ -603,6 +619,7 @@ public class Template extends
      *    [vm.display.file_transfer_enabled]
      *    [vm.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
+     *    [template.display.disconnect_action]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
@@ -620,6 +637,10 @@ public class Template extends
      *    [template.cpu_profile.id]
      *    [template.migration.auto_converge]
      *    [template.migration.compressed]
+     *    [template.small_icon.id]
+     *    [template.large_icon.id]
+     *    [template.large_icon.media_type]
+     *    [template.large_icon.data]
      *    </pre>
      *
      * @param correlationId
@@ -671,12 +692,14 @@ public class Template extends
      *    <pre>
      *    [template.name]
      *    [template.memory]
+     *    [template.io.threads]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
      *    [template.timezone]
+     *    [template.time_zone.name]
      *    [template.domain.name]
      *    [template.type]
      *    [template.stateless]
@@ -704,6 +727,7 @@ public class Template extends
      *    [vm.display.file_transfer_enabled]
      *    [vm.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
+     *    [template.display.disconnect_action]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
@@ -721,6 +745,10 @@ public class Template extends
      *    [template.cpu_profile.id]
      *    [template.migration.auto_converge]
      *    [template.migration.compressed]
+     *    [template.small_icon.id]
+     *    [template.large_icon.id]
+     *    [template.large_icon.media_type]
+     *    [template.large_icon.data]
      *    </pre>
      *
      * @param correlationId

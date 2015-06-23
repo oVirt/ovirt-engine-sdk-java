@@ -48,6 +48,7 @@ public class VM extends
     private volatile VMApplications vMApplications;
     private volatile VMCdRoms vMCdRoms;
     private volatile VMDisks vMDisks;
+    private volatile VMGraphicsConsoles vMGraphicsConsoles;
     private volatile VMKatelloErrata vMKatelloErrata;
     private volatile VMNICs vMNICs;
     private volatile VMPermissions vMPermissions;
@@ -121,6 +122,22 @@ public class VM extends
             }
         }
         return vMDisks;
+    }
+    /**
+     * Gets the value of the VMGraphicsConsoles property.
+     *
+     * @return
+     *     {@link VMGraphicsConsoles }
+     */
+    public VMGraphicsConsoles getGraphicsConsoles() {
+        if (this.vMGraphicsConsoles == null) {
+            synchronized (this.LOCK) {
+                if (this.vMGraphicsConsoles == null) {
+                    this.vMGraphicsConsoles = new VMGraphicsConsoles(proxy, this);
+                }
+            }
+        }
+        return vMGraphicsConsoles;
     }
     /**
      * Gets the value of the VMKatelloErrata property.
@@ -2498,6 +2515,7 @@ public class VM extends
      *    [vm.name]
      *    [vm.cluster.id|name]
      *    [vm.timezone]
+     *    [vm.time_zone.name]
      *    [vm.os.boot]
      *    [vm.custom_properties.custom_property]
      *    [vm.os.type]
@@ -2519,6 +2537,7 @@ public class VM extends
      *    [vm.cpu.topology.cores]
      *    [vm.cpu_shares]
      *    [vm.memory]
+     *    [vm.io.threads]
      *    [vm.memory_policy.guaranteed]
      *    [vm.memory_policy.ballooning]
      *    [vm.high_availability.priority]
@@ -2556,6 +2575,10 @@ public class VM extends
      *    [vm.migration.auto_converge]
      *    [vm.migration.compressed]
      *    [vm.external_host_provider.id]
+     *    [vm.small_icon.id]
+     *    [vm.large_icon.id]
+     *    [vm.large_icon.media_type]
+     *    [vm.large_icon.data]
      *    </pre>
      *
      *
@@ -2595,6 +2618,7 @@ public class VM extends
      *    [vm.name]
      *    [vm.cluster.id|name]
      *    [vm.timezone]
+     *    [vm.time_zone.name]
      *    [vm.os.boot]
      *    [vm.custom_properties.custom_property]
      *    [vm.os.type]
@@ -2616,6 +2640,7 @@ public class VM extends
      *    [vm.cpu.topology.cores]
      *    [vm.cpu_shares]
      *    [vm.memory]
+     *    [vm.io.threads]
      *    [vm.memory_policy.guaranteed]
      *    [vm.memory_policy.ballooning]
      *    [vm.high_availability.priority]
@@ -2653,6 +2678,10 @@ public class VM extends
      *    [vm.migration.auto_converge]
      *    [vm.migration.compressed]
      *    [vm.external_host_provider.id]
+     *    [vm.small_icon.id]
+     *    [vm.large_icon.id]
+     *    [vm.large_icon.media_type]
+     *    [vm.large_icon.data]
      *    </pre>
      *
      * @param correlationId
@@ -2698,6 +2727,7 @@ public class VM extends
      *    [vm.name]
      *    [vm.cluster.id|name]
      *    [vm.timezone]
+     *    [vm.time_zone.name]
      *    [vm.os.boot]
      *    [vm.custom_properties.custom_property]
      *    [vm.os.type]
@@ -2719,6 +2749,7 @@ public class VM extends
      *    [vm.cpu.topology.cores]
      *    [vm.cpu_shares]
      *    [vm.memory]
+     *    [vm.io.threads]
      *    [vm.memory_policy.guaranteed]
      *    [vm.memory_policy.ballooning]
      *    [vm.high_availability.priority]
@@ -2756,6 +2787,10 @@ public class VM extends
      *    [vm.migration.auto_converge]
      *    [vm.migration.compressed]
      *    [vm.external_host_provider.id]
+     *    [vm.small_icon.id]
+     *    [vm.large_icon.id]
+     *    [vm.large_icon.media_type]
+     *    [vm.large_icon.data]
      *    </pre>
      *
      * @param correlationId
@@ -2809,6 +2844,7 @@ public class VM extends
      *    [vm.name]
      *    [vm.cluster.id|name]
      *    [vm.timezone]
+     *    [vm.time_zone.name]
      *    [vm.os.boot]
      *    [vm.custom_properties.custom_property]
      *    [vm.os.type]
@@ -2830,6 +2866,7 @@ public class VM extends
      *    [vm.cpu.topology.cores]
      *    [vm.cpu_shares]
      *    [vm.memory]
+     *    [vm.io.threads]
      *    [vm.memory_policy.guaranteed]
      *    [vm.memory_policy.ballooning]
      *    [vm.high_availability.priority]
@@ -2867,6 +2904,10 @@ public class VM extends
      *    [vm.migration.auto_converge]
      *    [vm.migration.compressed]
      *    [vm.external_host_provider.id]
+     *    [vm.small_icon.id]
+     *    [vm.large_icon.id]
+     *    [vm.large_icon.media_type]
+     *    [vm.large_icon.data]
      *    </pre>
      *
      * @param correlationId

@@ -47,6 +47,7 @@ public class OpenStackVolumeProvider extends
 
     private volatile OpenStackVolumeProviderCertificates openStackVolumeProviderCertificates;
     private volatile OpenStackVolumeProviderOpenStackVolumeTypes openStackVolumeProviderOpenStackVolumeTypes;
+    private volatile OpenStackVolumeProviderOpenstackVolumeAuthenticationKeys openStackVolumeProviderOpenstackVolumeAuthenticationKeys;
 
 
     /**
@@ -63,6 +64,22 @@ public class OpenStackVolumeProvider extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the OpenStackVolumeProviderOpenstackVolumeAuthenticationKeys property.
+     *
+     * @return
+     *     {@link OpenStackVolumeProviderOpenstackVolumeAuthenticationKeys }
+     */
+    public OpenStackVolumeProviderOpenstackVolumeAuthenticationKeys getOpenstackVolumeAuthenticationKeys() {
+        if (this.openStackVolumeProviderOpenstackVolumeAuthenticationKeys == null) {
+            synchronized (this.LOCK) {
+                if (this.openStackVolumeProviderOpenstackVolumeAuthenticationKeys == null) {
+                    this.openStackVolumeProviderOpenstackVolumeAuthenticationKeys = new OpenStackVolumeProviderOpenstackVolumeAuthenticationKeys(proxy, this);
+                }
+            }
+        }
+        return openStackVolumeProviderOpenstackVolumeAuthenticationKeys;
+    }
     /**
      * Gets the value of the OpenStackVolumeProviderCertificates property.
      *
@@ -328,6 +345,7 @@ public class OpenStackVolumeProvider extends
      *    [openstack_volume_provider.password]
      *    [openstack_volume_provider.authentication_url]
      *    [openstack_volume_provider.properties.property]
+     *    [openstack_volume_provider.tenant_name]
      *    </pre>
      *
      *
@@ -371,6 +389,7 @@ public class OpenStackVolumeProvider extends
      *    [openstack_volume_provider.password]
      *    [openstack_volume_provider.authentication_url]
      *    [openstack_volume_provider.properties.property]
+     *    [openstack_volume_provider.tenant_name]
      *    </pre>
      *
      * @param async
@@ -421,6 +440,7 @@ public class OpenStackVolumeProvider extends
      *    [openstack_volume_provider.password]
      *    [openstack_volume_provider.authentication_url]
      *    [openstack_volume_provider.properties.property]
+     *    [openstack_volume_provider.tenant_name]
      *    </pre>
      *
      * @param async
@@ -478,6 +498,7 @@ public class OpenStackVolumeProvider extends
      *    [openstack_volume_provider.password]
      *    [openstack_volume_provider.authentication_url]
      *    [openstack_volume_provider.properties.property]
+     *    [openstack_volume_provider.tenant_name]
      *    </pre>
      *
      * @param async

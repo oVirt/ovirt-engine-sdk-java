@@ -126,6 +126,7 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.password]
      *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
+     *    [openstack_image_provider.tenant_name]
      *    </pre>
      *
      *
@@ -166,6 +167,7 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.password]
      *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
+     *    [openstack_image_provider.tenant_name]
      *    </pre>
      *
      * @param correlationId
@@ -212,6 +214,7 @@ public class OpenStackImageProviders extends
      *    [openstack_image_provider.password]
      *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
+     *    [openstack_image_provider.tenant_name]
      *    </pre>
      *
      * @param correlationId

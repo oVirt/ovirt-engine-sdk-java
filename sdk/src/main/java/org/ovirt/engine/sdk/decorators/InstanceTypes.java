@@ -120,6 +120,7 @@ public class InstanceTypes extends
      *    <pre>
      *    instance_type.name
      *    [instance_type.memory]
+     *    [instance_type.io.threads]
      *    [instance_type.cpu.topology.cores]
      *    [instance_type.high_availability.enabled]
      *    [instance_type.origin]
@@ -175,6 +176,7 @@ public class InstanceTypes extends
      *    <pre>
      *    instance_type.name
      *    [instance_type.memory]
+     *    [instance_type.io.threads]
      *    [instance_type.cpu.topology.cores]
      *    [instance_type.high_availability.enabled]
      *    [instance_type.origin]
@@ -236,6 +238,7 @@ public class InstanceTypes extends
      *    <pre>
      *    instance_type.name
      *    [instance_type.memory]
+     *    [instance_type.io.threads]
      *    [instance_type.cpu.topology.cores]
      *    [instance_type.high_availability.enabled]
      *    [instance_type.origin]

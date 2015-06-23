@@ -121,12 +121,14 @@ public class Templates extends
      *    template.vm.id|name
      *    template.name
      *    [template.memory]
+     *    [template.io.threads]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
      *    [template.timezone]
+     *    [template.time_zone.name]
      *    [template.storage_domain.id]
      *    [template.domain.name]
      *    [template.type]
@@ -155,6 +157,7 @@ public class Templates extends
      *    [template.display.file_transfer_enabled]
      *    [template.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
+     *    [template.display.disconnect_action]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
@@ -178,6 +181,10 @@ public class Templates extends
      *    [template.cpu_profile.id]
      *    [template.migration.auto_converge]
      *    [template.migration.compressed]
+     *    [template.small_icon.id]
+     *    [template.large_icon.id]
+     *    [template.large_icon.media_type]
+     *    [template.large_icon.data]
      *    </pre>
      *
      *
@@ -213,12 +220,14 @@ public class Templates extends
      *    template.vm.id|name
      *    template.name
      *    [template.memory]
+     *    [template.io.threads]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
      *    [template.timezone]
+     *    [template.time_zone.name]
      *    [template.storage_domain.id]
      *    [template.domain.name]
      *    [template.type]
@@ -247,6 +256,7 @@ public class Templates extends
      *    [template.display.file_transfer_enabled]
      *    [template.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
+     *    [template.display.disconnect_action]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
@@ -270,6 +280,10 @@ public class Templates extends
      *    [template.cpu_profile.id]
      *    [template.migration.auto_converge]
      *    [template.migration.compressed]
+     *    [template.small_icon.id]
+     *    [template.large_icon.id]
+     *    [template.large_icon.media_type]
+     *    [template.large_icon.data]
      *    </pre>
      *
      * @param expect
@@ -311,12 +325,14 @@ public class Templates extends
      *    template.vm.id|name
      *    template.name
      *    [template.memory]
+     *    [template.io.threads]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
      *    [template.timezone]
+     *    [template.time_zone.name]
      *    [template.storage_domain.id]
      *    [template.domain.name]
      *    [template.type]
@@ -345,6 +361,7 @@ public class Templates extends
      *    [template.display.file_transfer_enabled]
      *    [template.display.copy_paste_enabled]
      *    [template.display.keyboard_layout]
+     *    [template.display.disconnect_action]
      *    [template.os.initRd]
      *    [template.usb.enabled]
      *    [template.usb.type]
@@ -368,6 +385,10 @@ public class Templates extends
      *    [template.cpu_profile.id]
      *    [template.migration.auto_converge]
      *    [template.migration.compressed]
+     *    [template.small_icon.id]
+     *    [template.large_icon.id]
+     *    [template.large_icon.media_type]
+     *    [template.large_icon.data]
      *    </pre>
      *
      * @param expect

@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}data_centers" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
+ *         &lt;element name="external_status" type="{}Status" minOccurs="0"/>
  *         &lt;element name="master" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}storage" minOccurs="0"/>
  *         &lt;element ref="{}host" minOccurs="0"/>
@@ -68,6 +69,7 @@ import javax.xml.bind.annotation.XmlType;
     "dataCenters",
     "type",
     "status",
+    "externalStatus",
     "master",
     "storage",
     "host",
@@ -93,6 +95,8 @@ public class StorageDomain
     protected DataCenters dataCenters;
     protected String type;
     protected Status status;
+    @XmlElement(name = "external_status")
+    protected Status externalStatus;
     protected Boolean master;
     protected Storage storage;
     protected Host host;
@@ -224,6 +228,34 @@ public class StorageDomain
 
     public boolean isSetStatus() {
         return (this.status!= null);
+    }
+
+    /**
+     * Gets the value of the externalStatus property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Status }
+     *
+     */
+    public Status getExternalStatus() {
+        return externalStatus;
+    }
+
+    /**
+     * Sets the value of the externalStatus property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Status }
+     *
+     */
+    public void setExternalStatus(Status value) {
+        this.externalStatus = value;
+    }
+
+    public boolean isSetExternalStatus() {
+        return (this.externalStatus!= null);
     }
 
     /**

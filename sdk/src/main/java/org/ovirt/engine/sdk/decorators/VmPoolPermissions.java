@@ -129,7 +129,7 @@ public class VmPoolPermissions extends
      *      add a new user level
      *      permission on the vm pool
      *
-     *      permission.user.id
+     *      permission.user.id|name
      *      permission.role.id
      *
      *    Overload 2:
@@ -137,7 +137,7 @@ public class VmPoolPermissions extends
      *      add a new group level
      *      permission on the vm pool
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.group.id
      *    </pre>
      *
@@ -176,7 +176,7 @@ public class VmPoolPermissions extends
      *      add a new user level
      *      permission on the vm pool
      *
-     *      permission.user.id
+     *      permission.user.id|name
      *      permission.role.id
      *
      *    Overload 2:
@@ -184,7 +184,7 @@ public class VmPoolPermissions extends
      *      add a new group level
      *      permission on the vm pool
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.group.id
      *    </pre>
      *
@@ -229,7 +229,7 @@ public class VmPoolPermissions extends
      *      add a new user level
      *      permission on the vm pool
      *
-     *      permission.user.id
+     *      permission.user.id|name
      *      permission.role.id
      *
      *    Overload 2:
@@ -237,7 +237,7 @@ public class VmPoolPermissions extends
      *      add a new group level
      *      permission on the vm pool
      *
-     *      permission.role.id
+     *      permission.role.id|name
      *      permission.group.id
      *    </pre>
      *

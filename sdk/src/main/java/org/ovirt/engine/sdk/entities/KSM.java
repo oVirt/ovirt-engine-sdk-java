@@ -22,6 +22,7 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="merge_across_nodes" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -46,11 +48,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "KSM", propOrder = {
-    "enabled"
+    "enabled",
+    "mergeAcrossNodes"
 })
 public class KSM {
 
     protected Boolean enabled;
+    @XmlElement(name = "merge_across_nodes")
+    protected Boolean mergeAcrossNodes;
 
     /**
      * Gets the value of the enabled property.
@@ -78,6 +83,34 @@ public class KSM {
 
     public boolean isSetEnabled() {
         return (this.enabled!= null);
+    }
+
+    /**
+     * Gets the value of the mergeAcrossNodes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getMergeAcrossNodes() {
+        return mergeAcrossNodes;
+    }
+
+    /**
+     * Sets the value of the mergeAcrossNodes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setMergeAcrossNodes(Boolean value) {
+        this.mergeAcrossNodes = value;
+    }
+
+    public boolean isSetMergeAcrossNodes() {
+        return (this.mergeAcrossNodes!= null);
     }
 
 }

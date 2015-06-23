@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}nic_interfaces" minOccurs="0"/>
  *         &lt;element ref="{}os_types" minOccurs="0"/>
  *         &lt;element ref="{}disk_formats" minOccurs="0"/>
+ *         &lt;element ref="{}graphics_types" minOccurs="0"/>
  *         &lt;element ref="{}disk_storage_types" minOccurs="0"/>
  *         &lt;element ref="{}disk_interfaces" minOccurs="0"/>
  *         &lt;element ref="{}vm_affinities" minOccurs="0"/>
@@ -60,6 +61,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}creation_states" minOccurs="0"/>
  *         &lt;element ref="{}power_management_states" minOccurs="0"/>
  *         &lt;element ref="{}host_states" minOccurs="0"/>
+ *         &lt;element ref="{}external_statuses" minOccurs="0"/>
  *         &lt;element ref="{}host_protocols" minOccurs="0"/>
  *         &lt;element ref="{}host_non_operational_details" minOccurs="0"/>
  *         &lt;element ref="{}network_states" minOccurs="0"/>
@@ -105,6 +107,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}inheritable_booleans" minOccurs="0"/>
  *         &lt;element ref="{}network_plugin_types" minOccurs="0"/>
  *         &lt;element ref="{}message_broker_types" minOccurs="0"/>
+ *         &lt;element ref="{}display_disconnect_actions" minOccurs="0"/>
+ *         &lt;element ref="{}quota_mode_types" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -129,6 +133,7 @@ import javax.xml.bind.annotation.XmlType;
     "nicInterfaces",
     "osTypes",
     "diskFormats",
+    "graphicsTypes",
     "diskStorageTypes",
     "diskInterfaces",
     "vmAffinities",
@@ -139,6 +144,7 @@ import javax.xml.bind.annotation.XmlType;
     "creationStates",
     "powerManagementStates",
     "hostStates",
+    "externalStatuses",
     "hostProtocols",
     "hostNonOperationalDetails",
     "networkStates",
@@ -183,7 +189,9 @@ import javax.xml.bind.annotation.XmlType;
     "qosTypes",
     "inheritableBooleans",
     "networkPluginTypes",
-    "messageBrokerTypes"
+    "messageBrokerTypes",
+    "displayDisconnectActions",
+    "quotaModeTypes"
 })
 public class VersionCaps
     extends Version
@@ -214,6 +222,8 @@ public class VersionCaps
     protected OsTypes osTypes;
     @XmlElement(name = "disk_formats")
     protected DiskFormats diskFormats;
+    @XmlElement(name = "graphics_types")
+    protected GraphicsTypes graphicsTypes;
     @XmlElement(name = "disk_storage_types")
     protected DiskStorageTypes diskStorageTypes;
     @XmlElement(name = "disk_interfaces")
@@ -234,6 +244,8 @@ public class VersionCaps
     protected PowerManagementStates powerManagementStates;
     @XmlElement(name = "host_states")
     protected HostStates hostStates;
+    @XmlElement(name = "external_statuses")
+    protected ExternalStatuses externalStatuses;
     @XmlElement(name = "host_protocols")
     protected HostProtocols hostProtocols;
     @XmlElement(name = "host_non_operational_details")
@@ -321,6 +333,10 @@ public class VersionCaps
     protected NetworkPluginTypes networkPluginTypes;
     @XmlElement(name = "message_broker_types")
     protected MessageBrokerTypes messageBrokerTypes;
+    @XmlElement(name = "display_disconnect_actions")
+    protected DisplayDisconnectActions displayDisconnectActions;
+    @XmlElement(name = "quota_mode_types")
+    protected QuotaModeTypes quotaModeTypes;
 
     /**
      * Gets the value of the current property.
@@ -715,6 +731,34 @@ public class VersionCaps
     }
 
     /**
+     * Gets the value of the graphicsTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link GraphicsTypes }
+     *
+     */
+    public GraphicsTypes getGraphicsTypes() {
+        return graphicsTypes;
+    }
+
+    /**
+     * Sets the value of the graphicsTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link GraphicsTypes }
+     *
+     */
+    public void setGraphicsTypes(GraphicsTypes value) {
+        this.graphicsTypes = value;
+    }
+
+    public boolean isSetGraphicsTypes() {
+        return (this.graphicsTypes!= null);
+    }
+
+    /**
      * Gets the value of the diskStorageTypes property.
      *
      * @return
@@ -992,6 +1036,34 @@ public class VersionCaps
 
     public boolean isSetHostStates() {
         return (this.hostStates!= null);
+    }
+
+    /**
+     * Gets the value of the externalStatuses property.
+     *
+     * @return
+     *     possible object is
+     *     {@link ExternalStatuses }
+     *
+     */
+    public ExternalStatuses getExternalStatuses() {
+        return externalStatuses;
+    }
+
+    /**
+     * Sets the value of the externalStatuses property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ExternalStatuses }
+     *
+     */
+    public void setExternalStatuses(ExternalStatuses value) {
+        this.externalStatuses = value;
+    }
+
+    public boolean isSetExternalStatuses() {
+        return (this.externalStatuses!= null);
     }
 
     /**
@@ -2252,6 +2324,62 @@ public class VersionCaps
 
     public boolean isSetMessageBrokerTypes() {
         return (this.messageBrokerTypes!= null);
+    }
+
+    /**
+     * Gets the value of the displayDisconnectActions property.
+     *
+     * @return
+     *     possible object is
+     *     {@link DisplayDisconnectActions }
+     *
+     */
+    public DisplayDisconnectActions getDisplayDisconnectActions() {
+        return displayDisconnectActions;
+    }
+
+    /**
+     * Sets the value of the displayDisconnectActions property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link DisplayDisconnectActions }
+     *
+     */
+    public void setDisplayDisconnectActions(DisplayDisconnectActions value) {
+        this.displayDisconnectActions = value;
+    }
+
+    public boolean isSetDisplayDisconnectActions() {
+        return (this.displayDisconnectActions!= null);
+    }
+
+    /**
+     * Gets the value of the quotaModeTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link QuotaModeTypes }
+     *
+     */
+    public QuotaModeTypes getQuotaModeTypes() {
+        return quotaModeTypes;
+    }
+
+    /**
+     * Sets the value of the quotaModeTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link QuotaModeTypes }
+     *
+     */
+    public void setQuotaModeTypes(QuotaModeTypes value) {
+        this.quotaModeTypes = value;
+    }
+
+    public boolean isSetQuotaModeTypes() {
+        return (this.quotaModeTypes!= null);
     }
 
 }

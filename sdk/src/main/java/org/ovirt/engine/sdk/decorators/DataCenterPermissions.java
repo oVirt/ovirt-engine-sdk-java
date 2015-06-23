@@ -130,15 +130,15 @@ public class DataCenterPermissions extends
      *      permission on the data center
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new role permission on
      *      the data center
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      *
@@ -177,15 +177,15 @@ public class DataCenterPermissions extends
      *      permission on the data center
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new role permission on
      *      the data center
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect
@@ -230,15 +230,15 @@ public class DataCenterPermissions extends
      *      permission on the data center
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new role permission on
      *      the data center
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect

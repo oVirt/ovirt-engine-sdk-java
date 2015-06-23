@@ -64,6 +64,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}disk_profile" minOccurs="0"/>
  *         &lt;element name="logical_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="storage_type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element ref="{}openstack_volume_type" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -100,7 +101,8 @@ import javax.xml.bind.annotation.XmlType;
     "snapshot",
     "diskProfile",
     "logicalName",
-    "storageType"
+    "storageType",
+    "openstackVolumeType"
 })
 @XmlSeeAlso({
     DiskSnapshot.class
@@ -150,6 +152,8 @@ public class Disk
     protected String logicalName;
     @XmlElement(name = "storage_type")
     protected String storageType;
+    @XmlElement(name = "openstack_volume_type")
+    protected OpenStackVolumeType openstackVolumeType;
 
     /**
      * Gets the value of the alias property.
@@ -905,6 +909,34 @@ public class Disk
 
     public boolean isSetStorageType() {
         return (this.storageType!= null);
+    }
+
+    /**
+     * Gets the value of the openstackVolumeType property.
+     *
+     * @return
+     *     possible object is
+     *     {@link OpenStackVolumeType }
+     *
+     */
+    public OpenStackVolumeType getOpenstackVolumeType() {
+        return openstackVolumeType;
+    }
+
+    /**
+     * Sets the value of the openstackVolumeType property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link OpenStackVolumeType }
+     *
+     */
+    public void setOpenstackVolumeType(OpenStackVolumeType value) {
+        this.openstackVolumeType = value;
+    }
+
+    public boolean isSetOpenstackVolumeType() {
+        return (this.openstackVolumeType!= null);
     }
 
 }

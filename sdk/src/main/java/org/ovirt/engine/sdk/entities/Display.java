@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="proxy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="file_transfer_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="copy_paste_enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="disconnect_action" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -72,7 +73,8 @@ import javax.xml.bind.annotation.XmlType;
     "keyboardLayout",
     "proxy",
     "fileTransferEnabled",
-    "copyPasteEnabled"
+    "copyPasteEnabled",
+    "disconnectAction"
 })
 public class Display {
 
@@ -98,6 +100,8 @@ public class Display {
     protected Boolean fileTransferEnabled;
     @XmlElement(name = "copy_paste_enabled")
     protected Boolean copyPasteEnabled;
+    @XmlElement(name = "disconnect_action")
+    protected String disconnectAction;
 
     /**
      * Gets the value of the type property.
@@ -461,6 +465,34 @@ public class Display {
 
     public boolean isSetCopyPasteEnabled() {
         return (this.copyPasteEnabled!= null);
+    }
+
+    /**
+     * Gets the value of the disconnectAction property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getDisconnectAction() {
+        return disconnectAction;
+    }
+
+    /**
+     * Sets the value of the disconnectAction property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setDisconnectAction(String value) {
+        this.disconnectAction = value;
+    }
+
+    public boolean isSetDisconnectAction() {
+        return (this.disconnectAction!= null);
     }
 
 }

@@ -127,6 +127,7 @@ public class OpenStackVolumeProviders extends
      *    [openstack_volume_provider.password]
      *    [openstack_volume_provider.authentication_url]
      *    [openstack_volume_provider.properties.property]
+     *    [openstack_volume_provider.tenant_name]
      *    </pre>
      *
      *
@@ -168,6 +169,7 @@ public class OpenStackVolumeProviders extends
      *    [openstack_volume_provider.password]
      *    [openstack_volume_provider.authentication_url]
      *    [openstack_volume_provider.properties.property]
+     *    [openstack_volume_provider.tenant_name]
      *    </pre>
      *
      * @param correlationId
@@ -215,6 +217,7 @@ public class OpenStackVolumeProviders extends
      *    [openstack_volume_provider.password]
      *    [openstack_volume_provider.authentication_url]
      *    [openstack_volume_provider.properties.property]
+     *    [openstack_volume_provider.tenant_name]
      *    </pre>
      *
      * @param correlationId

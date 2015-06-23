@@ -793,6 +793,8 @@ public class VMDisk extends
      *    <pre>
      *    [size]
      *    [provisioned_size]
+     *    [disk.name]
+     *    [disk.alias]
      *    [disk.interface]
      *    [disk.format]
      *    [disk.sparse]
@@ -844,6 +846,8 @@ public class VMDisk extends
      *    <pre>
      *    [size]
      *    [provisioned_size]
+     *    [disk.name]
+     *    [disk.alias]
      *    [disk.interface]
      *    [disk.format]
      *    [disk.sparse]
@@ -901,6 +905,8 @@ public class VMDisk extends
      *    <pre>
      *    [size]
      *    [provisioned_size]
+     *    [disk.name]
+     *    [disk.alias]
      *    [disk.interface]
      *    [disk.format]
      *    [disk.sparse]
@@ -966,6 +972,8 @@ public class VMDisk extends
      *    <pre>
      *    [size]
      *    [provisioned_size]
+     *    [disk.name]
+     *    [disk.alias]
      *    [disk.interface]
      *    [disk.format]
      *    [disk.sparse]

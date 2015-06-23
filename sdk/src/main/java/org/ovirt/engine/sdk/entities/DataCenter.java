@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="supported_versions" type="{}SupportedVersions" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element ref="{}mac_pool" minOccurs="0"/>
+ *         &lt;element name="quota_mode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -59,7 +60,8 @@ import javax.xml.bind.annotation.XmlType;
     "version",
     "supportedVersions",
     "status",
-    "macPool"
+    "macPool",
+    "quotaMode"
 })
 public class DataCenter
     extends BaseResource
@@ -76,6 +78,8 @@ public class DataCenter
     protected Status status;
     @XmlElement(name = "mac_pool")
     protected MacPool macPool;
+    @XmlElement(name = "quota_mode")
+    protected String quotaMode;
 
     /**
      * Gets the value of the storageType property.
@@ -271,6 +275,34 @@ public class DataCenter
 
     public boolean isSetMacPool() {
         return (this.macPool!= null);
+    }
+
+    /**
+     * Gets the value of the quotaMode property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getQuotaMode() {
+        return quotaMode;
+    }
+
+    /**
+     * Sets the value of the quotaMode property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setQuotaMode(String value) {
+        this.quotaMode = value;
+    }
+
+    public boolean isSetQuotaMode() {
+        return (this.quotaMode!= null);
     }
 
 }

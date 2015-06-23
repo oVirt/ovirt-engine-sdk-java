@@ -130,15 +130,15 @@ public class ClusterPermissions extends
      *      permission on the cluster
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission on the cluster
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      *
@@ -177,15 +177,15 @@ public class ClusterPermissions extends
      *      permission on the cluster
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission on the cluster
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect
@@ -230,15 +230,15 @@ public class ClusterPermissions extends
      *      permission on the cluster
      *
      *      permission.user.id
-     *      permission.role.id
+     *      permission.role.id|name
      *
      *    Overload 2:
      *
      *      add a new group level
      *      permission on the cluster
      *
-     *      permission.role.id
      *      permission.group.id
+     *      permission.role.id|name
      *    </pre>
      *
      * @param expect

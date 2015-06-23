@@ -439,6 +439,7 @@ public class OpenStackImageProvider extends
      *    [openstack_image_provider.password]
      *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
+     *    [openstack_image_provider.tenant_name]
      *    </pre>
      *
      *
@@ -481,6 +482,7 @@ public class OpenStackImageProvider extends
      *    [openstack_image_provider.password]
      *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
+     *    [openstack_image_provider.tenant_name]
      *    </pre>
      *
      * @param async
@@ -530,6 +532,7 @@ public class OpenStackImageProvider extends
      *    [openstack_image_provider.password]
      *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
+     *    [openstack_image_provider.tenant_name]
      *    </pre>
      *
      * @param async
@@ -586,6 +589,7 @@ public class OpenStackImageProvider extends
      *    [openstack_image_provider.password]
      *    [openstack_image_provider.authentication_url]
      *    [openstack_image_provider.properties.property]
+     *    [openstack_image_provider.tenant_name]
      *    </pre>
      *
      * @param async
