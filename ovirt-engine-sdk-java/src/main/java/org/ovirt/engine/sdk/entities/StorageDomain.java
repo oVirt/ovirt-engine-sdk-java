@@ -50,7 +50,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="committed" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="storage_format" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="import" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="is_attached" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -73,8 +72,7 @@ import javax.xml.bind.annotation.XmlType;
     "used",
     "committed",
     "storageFormat",
-    "_import",
-    "isAttached"
+    "_import"
 })
 public class StorageDomain
     extends BaseResource
@@ -96,8 +94,6 @@ public class StorageDomain
     protected String storageFormat;
     @XmlElement(name = "import")
     protected Boolean _import;
-    @XmlElement(name = "is_attached")
-    protected Boolean isAttached;
 
     /**
      * Gets the value of the dataCenter property.
@@ -461,34 +457,6 @@ public class StorageDomain
 
     public boolean isSetImport() {
         return (this._import!= null);
-    }
-
-    /**
-     * Gets the value of the isAttached property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getIsAttached() {
-        return isAttached;
-    }
-
-    /**
-     * Sets the value of the isAttached property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setIsAttached(Boolean value) {
-        this.isAttached = value;
-    }
-
-    public boolean isSetIsAttached() {
-        return (this.isAttached!= null);
     }
 
 }

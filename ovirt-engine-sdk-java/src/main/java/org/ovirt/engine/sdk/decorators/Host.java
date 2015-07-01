@@ -1052,8 +1052,8 @@ public class Host extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    action.iscsi.address
-     *    action.target
+     *    [action.iscsi.address]
+     *    [action.target]
      *    </pre>
      *
      * @return
@@ -1083,8 +1083,8 @@ public class Host extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    action.iscsi.address
-     *    action.target
+     *    [action.iscsi.address]
+     *    [action.target]
      *    </pre>
      *
      * @param correlationId

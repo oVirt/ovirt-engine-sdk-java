@@ -93,7 +93,8 @@ import javax.xml.bind.annotation.XmlType;
     "status",
     "fault",
     "iscsiTargets",
-    "powerManagement"
+    "powerManagement",
+    "isAttached"
 })
 public class Action
     extends BaseResource
@@ -155,6 +156,8 @@ public class Action
     protected List<String> iscsiTargets;
     @XmlElement(name = "power_management")
     protected PowerManagement powerManagement;
+    @XmlElement(name = "is_attached")
+    protected Boolean isAttached;
 
     /**
      * Gets the value of the async property.
@@ -1283,6 +1286,34 @@ public class Action
 
     public boolean isSetPowerManagement() {
         return (this.powerManagement!= null);
+    }
+
+    /**
+     * Gets the value of the isAttached property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getIsAttached() {
+        return isAttached;
+    }
+
+    /**
+     * Sets the value of the isAttached property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setIsAttached(Boolean value) {
+        this.isAttached = value;
+    }
+
+    public boolean isSetIsAttached() {
+        return (this.isAttached!= null);
     }
 
 }
