@@ -47,6 +47,7 @@ public class Host extends
 
     private volatile HostAgents hostAgents;
     private volatile HostHooks hostHooks;
+    private volatile HostHostDevices hostHostDevices;
     private volatile HostKatelloErrata hostKatelloErrata;
     private volatile HostNICs hostNICs;
     private volatile HostNumaNodes hostNumaNodes;
@@ -70,6 +71,22 @@ public class Host extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the HostHostDevices property.
+     *
+     * @return
+     *     {@link HostHostDevices }
+     */
+    public HostHostDevices getHostDevices() {
+        if (this.hostHostDevices == null) {
+            synchronized (this.LOCK) {
+                if (this.hostHostDevices == null) {
+                    this.hostHostDevices = new HostHostDevices(proxy, this);
+                }
+            }
+        }
+        return hostHostDevices;
+    }
     /**
      * Gets the value of the HostAgents property.
      *
@@ -1660,7 +1677,7 @@ public class Host extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs refreshcapabilities action.
+     * Performs refresh action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -1679,9 +1696,9 @@ public class Host extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action refreshcapabilities(Action action) throws ClientProtocolException,
+    public Action refresh(Action action) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/refreshcapabilities";
+        String url = this.getHref() + "/refresh";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -1692,7 +1709,7 @@ public class Host extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs refreshcapabilities action.
+     * Performs refresh action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -1714,9 +1731,9 @@ public class Host extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action refreshcapabilities(Action action, Boolean async) throws ClientProtocolException,
+    public Action refresh(Action action, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/refreshcapabilities";
+        String url = this.getHref() + "/refresh";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
@@ -1731,7 +1748,7 @@ public class Host extends
         return getProxy().action(url, action, Action.class, Action.class, headers);
     }
     /**
-     * Performs refreshcapabilities action.
+     * Performs refresh action.
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
@@ -1757,9 +1774,9 @@ public class Host extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action refreshcapabilities(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+    public Action refresh(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
-        String url = this.getHref() + "/refreshcapabilities";
+        String url = this.getHref() + "/refresh";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {

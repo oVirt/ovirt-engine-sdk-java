@@ -557,7 +557,7 @@ public class StorageDomain extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    action.logical_units.logical_unit
+     *    [action.logical_units.logical_unit]
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -590,7 +590,7 @@ public class StorageDomain extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    action.logical_units.logical_unit
+     *    [action.logical_units.logical_unit]
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -630,7 +630,7 @@ public class StorageDomain extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
-     *    action.logical_units.logical_unit
+     *    [action.logical_units.logical_unit]
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>

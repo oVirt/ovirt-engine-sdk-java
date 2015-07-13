@@ -52,7 +52,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="storage_format" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="wipe_after_delete" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="import" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="is_attached" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="warning_low_space_indicator" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="critical_space_action_blocker" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
@@ -81,7 +80,6 @@ import javax.xml.bind.annotation.XmlType;
     "storageFormat",
     "wipeAfterDelete",
     "_import",
-    "isAttached",
     "warningLowSpaceIndicator",
     "criticalSpaceActionBlocker"
 })
@@ -111,8 +109,6 @@ public class StorageDomain
     protected Boolean wipeAfterDelete;
     @XmlElement(name = "import")
     protected Boolean _import;
-    @XmlElement(name = "is_attached")
-    protected Boolean isAttached;
     @XmlElement(name = "warning_low_space_indicator")
     protected Integer warningLowSpaceIndicator;
     @XmlElement(name = "critical_space_action_blocker")
@@ -564,34 +560,6 @@ public class StorageDomain
 
     public boolean isSetImport() {
         return (this._import!= null);
-    }
-
-    /**
-     * Gets the value of the isAttached property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getIsAttached() {
-        return isAttached;
-    }
-
-    /**
-     * Sets the value of the isAttached property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setIsAttached(Boolean value) {
-        this.isAttached = value;
-    }
-
-    public boolean isSetIsAttached() {
-        return (this.isAttached!= null);
     }
 
     /**

@@ -124,29 +124,29 @@ public class StorageConnections extends
      *      to the system
      *
      *      storage_connection.address
-     *      storage_connection.type
-     *      storage_connection.iqn
      *      storage_connection.port
-     *      [storage_connection.username]
+     *      storage_connection.target
+     *      storage_connection.type
      *      [storage_connection.password]
+     *      [storage_connection.username]
      *
      *    Overload 2:
      *
      *      add a nfs storage connection to the system
      *
      *      storage_connection.address
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
+     *      [storage_connection.nfs_retrans]
      *      [storage_connection.nfs_timeo]
      *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
      *
      *    Overload 3:
      *
      *      add a vfs storage connection to the system
      *
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
      *      storage_connection.vfs_type
      *      [storage_connection.address]
      *      [storage_connection.mount_options]
@@ -156,8 +156,8 @@ public class StorageConnections extends
      *      add a local storage connection
      *      to the system
      *
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
      *    </pre>
      *
      *
@@ -196,29 +196,29 @@ public class StorageConnections extends
      *      to the system
      *
      *      storage_connection.address
-     *      storage_connection.type
-     *      storage_connection.iqn
      *      storage_connection.port
-     *      [storage_connection.username]
+     *      storage_connection.target
+     *      storage_connection.type
      *      [storage_connection.password]
+     *      [storage_connection.username]
      *
      *    Overload 2:
      *
      *      add a nfs storage connection to the system
      *
      *      storage_connection.address
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
+     *      [storage_connection.nfs_retrans]
      *      [storage_connection.nfs_timeo]
      *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
      *
      *    Overload 3:
      *
      *      add a vfs storage connection to the system
      *
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
      *      storage_connection.vfs_type
      *      [storage_connection.address]
      *      [storage_connection.mount_options]
@@ -228,8 +228,8 @@ public class StorageConnections extends
      *      add a local storage connection
      *      to the system
      *
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
      *    </pre>
      *
      * @param expect
@@ -274,29 +274,29 @@ public class StorageConnections extends
      *      to the system
      *
      *      storage_connection.address
-     *      storage_connection.type
-     *      storage_connection.iqn
      *      storage_connection.port
-     *      [storage_connection.username]
+     *      storage_connection.target
+     *      storage_connection.type
      *      [storage_connection.password]
+     *      [storage_connection.username]
      *
      *    Overload 2:
      *
      *      add a nfs storage connection to the system
      *
      *      storage_connection.address
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
+     *      [storage_connection.nfs_retrans]
      *      [storage_connection.nfs_timeo]
      *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
      *
      *    Overload 3:
      *
      *      add a vfs storage connection to the system
      *
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
      *      storage_connection.vfs_type
      *      [storage_connection.address]
      *      [storage_connection.mount_options]
@@ -306,8 +306,8 @@ public class StorageConnections extends
      *      add a local storage connection
      *      to the system
      *
-     *      storage_connection.type
      *      storage_connection.path
+     *      storage_connection.type
      *    </pre>
      *
      * @param expect

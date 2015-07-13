@@ -103,6 +103,7 @@ public class ObjectFactory {
     private final static QName _DataCenters_QNAME = new QName("", "data_centers");
     private final static QName _Balances_QNAME = new QName("", "balances");
     private final static QName _ExternalHostGroups_QNAME = new QName("", "external_host_groups");
+    private final static QName _Vendor_QNAME = new QName("", "vendor");
     private final static QName _SystemVersion_QNAME = new QName("", "system_version");
     private final static QName _CpuProfiles_QNAME = new QName("", "cpu_profiles");
     private final static QName _Initialization_QNAME = new QName("", "initialization");
@@ -264,6 +265,7 @@ public class ObjectFactory {
     private final static QName _Event_QNAME = new QName("", "event");
     private final static QName _CpuModes_QNAME = new QName("", "cpu_modes");
     private final static QName _OpenstackSubnets_QNAME = new QName("", "openstack_subnets");
+    private final static QName _Product_QNAME = new QName("", "product");
     private final static QName _DiskInterfaces_QNAME = new QName("", "disk_interfaces");
     private final static QName _PmProxyTypes_QNAME = new QName("", "pm_proxy_types");
     private final static QName _Display_QNAME = new QName("", "display");
@@ -292,6 +294,7 @@ public class ObjectFactory {
     private final static QName _SpmStates_QNAME = new QName("", "spm_states");
     private final static QName _Statistics_QNAME = new QName("", "statistics");
     private final static QName _SchedulingPolicyUnits_QNAME = new QName("", "scheduling_policy_units");
+    private final static QName _DevicePassthrough_QNAME = new QName("", "device_passthrough");
     private final static QName _StorageQuotaLimit_QNAME = new QName("", "storage_quota_limit");
     private final static QName _Quotas_QNAME = new QName("", "quotas");
     private final static QName _DetailedLink_QNAME = new QName("", "detailedLink");
@@ -304,6 +307,7 @@ public class ObjectFactory {
     private final static QName _BrickProfileDetail_QNAME = new QName("", "brick_profile_detail");
     private final static QName _Host_QNAME = new QName("", "host");
     private final static QName _StorageConnections_QNAME = new QName("", "storage_connections");
+    private final static QName _HostDevices_QNAME = new QName("", "host_devices");
     private final static QName _Tag_QNAME = new QName("", "tag");
     private final static QName _Group_QNAME = new QName("", "group");
     private final static QName _PowerManagementStates_QNAME = new QName("", "power_management_states");
@@ -313,6 +317,7 @@ public class ObjectFactory {
     private final static QName _Cpu_QNAME = new QName("", "cpu");
     private final static QName _Domains_QNAME = new QName("", "domains");
     private final static QName _Weights_QNAME = new QName("", "weights");
+    private final static QName _HostDevice_QNAME = new QName("", "host_device");
     private final static QName _Steps_QNAME = new QName("", "steps");
     private final static QName _SpecialObjects_QNAME = new QName("", "special_objects");
     private final static QName _GlusterClients_QNAME = new QName("", "gluster_clients");
@@ -869,6 +874,14 @@ public class ObjectFactory {
      */
     public ExternalHostGroups createExternalHostGroups() {
         return new ExternalHostGroups();
+    }
+
+    /**
+     * Create an instance of {@link Vendor }
+     *
+     */
+    public Vendor createVendor() {
+        return new Vendor();
     }
 
     /**
@@ -2136,6 +2149,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Product }
+     *
+     */
+    public Product createProduct() {
+        return new Product();
+    }
+
+    /**
      * Create an instance of {@link DiskInterfaces }
      *
      */
@@ -2360,6 +2381,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HostDevicePassthrough }
+     *
+     */
+    public HostDevicePassthrough createHostDevicePassthrough() {
+        return new HostDevicePassthrough();
+    }
+
+    /**
      * Create an instance of {@link QuotaStorageLimit }
      *
      */
@@ -2456,6 +2485,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HostDevices }
+     *
+     */
+    public HostDevices createHostDevices() {
+        return new HostDevices();
+    }
+
+    /**
      * Create an instance of {@link Tag }
      *
      */
@@ -2525,6 +2562,14 @@ public class ObjectFactory {
      */
     public Weights createWeights() {
         return new Weights();
+    }
+
+    /**
+     * Create an instance of {@link HostDevice }
+     *
+     */
+    public HostDevice createHostDevice() {
+        return new HostDevice();
     }
 
     /**
@@ -3881,6 +3926,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "external_host_groups")
     public JAXBElement<ExternalHostGroups> createExternalHostGroups(ExternalHostGroups value) {
         return new JAXBElement<ExternalHostGroups>(_ExternalHostGroups_QNAME, ExternalHostGroups.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Vendor }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vendor")
+    public JAXBElement<Vendor> createVendor(Vendor value) {
+        return new JAXBElement<Vendor>(_Vendor_QNAME, Vendor.class, null, value);
     }
 
     /**
@@ -5333,6 +5387,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Product }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "product")
+    public JAXBElement<Product> createProduct(Product value) {
+        return new JAXBElement<Product>(_Product_QNAME, Product.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DiskInterfaces }{@code >}}
      *
      */
@@ -5585,6 +5648,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostDevicePassthrough }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "device_passthrough")
+    public JAXBElement<HostDevicePassthrough> createDevicePassthrough(HostDevicePassthrough value) {
+        return new JAXBElement<HostDevicePassthrough>(_DevicePassthrough_QNAME, HostDevicePassthrough.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link QuotaStorageLimit }{@code >}}
      *
      */
@@ -5693,6 +5765,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostDevices }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "host_devices")
+    public JAXBElement<HostDevices> createHostDevices(HostDevices value) {
+        return new JAXBElement<HostDevices>(_HostDevices_QNAME, HostDevices.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Tag }{@code >}}
      *
      */
@@ -5771,6 +5852,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "weights")
     public JAXBElement<Weights> createWeights(Weights value) {
         return new JAXBElement<Weights>(_Weights_QNAME, Weights.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostDevice }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "host_device")
+    public JAXBElement<HostDevice> createHostDevice(HostDevice value) {
+        return new JAXBElement<HostDevice>(_HostDevice_QNAME, HostDevice.class, null, value);
     }
 
     /**

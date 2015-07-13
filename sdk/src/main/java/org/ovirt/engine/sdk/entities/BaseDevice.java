@@ -22,6 +22,7 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element ref="{}template" minOccurs="0"/>
+ *         &lt;element ref="{}instance_type" minOccurs="0"/>
  *         &lt;element ref="{}vms" minOccurs="0"/>
  *         &lt;element ref="{}vm" minOccurs="0"/>
  *       &lt;/sequence>
@@ -50,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BaseDevice", propOrder = {
     "template",
+    "instanceType",
     "vms",
     "vm"
 })
@@ -65,6 +68,8 @@ public class BaseDevice
 {
 
     protected Template template;
+    @XmlElement(name = "instance_type")
+    protected InstanceType instanceType;
     protected VMs vms;
     protected VM vm;
 
@@ -94,6 +99,34 @@ public class BaseDevice
 
     public boolean isSetTemplate() {
         return (this.template!= null);
+    }
+
+    /**
+     * Gets the value of the instanceType property.
+     *
+     * @return
+     *     possible object is
+     *     {@link InstanceType }
+     *
+     */
+    public InstanceType getInstanceType() {
+        return instanceType;
+    }
+
+    /**
+     * Sets the value of the instanceType property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link InstanceType }
+     *
+     */
+    public void setInstanceType(InstanceType value) {
+        this.instanceType = value;
+    }
+
+    public boolean isSetInstanceType() {
+        return (this.instanceType!= null);
     }
 
     /**

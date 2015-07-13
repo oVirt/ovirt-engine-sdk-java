@@ -92,10 +92,13 @@ import javax.xml.bind.annotation.XmlType;
     "disk",
     "reason",
     "logicalUnits",
+    "useSysprep",
+    "useCloudInit",
     "status",
     "fault",
     "iscsiTargets",
-    "powerManagement"
+    "powerManagement",
+    "isAttached"
 })
 public class Action
     extends BaseResource
@@ -155,12 +158,18 @@ public class Action
     protected String reason;
     @XmlElement(name = "logical_units")
     protected LogicalUnits logicalUnits;
+    @XmlElement(name = "use_sysprep")
+    protected Boolean useSysprep;
+    @XmlElement(name = "use_cloud_init")
+    protected Boolean useCloudInit;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
     protected List<String> iscsiTargets;
     @XmlElement(name = "power_management")
     protected PowerManagement powerManagement;
+    @XmlElement(name = "is_attached")
+    protected Boolean isAttached;
 
     /**
      * Gets the value of the async property.
@@ -1255,6 +1264,62 @@ public class Action
     }
 
     /**
+     * Gets the value of the useSysprep property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUseSysprep() {
+        return useSysprep;
+    }
+
+    /**
+     * Sets the value of the useSysprep property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUseSysprep(Boolean value) {
+        this.useSysprep = value;
+    }
+
+    public boolean isSetUseSysprep() {
+        return (this.useSysprep!= null);
+    }
+
+    /**
+     * Gets the value of the useCloudInit property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUseCloudInit() {
+        return useCloudInit;
+    }
+
+    /**
+     * Sets the value of the useCloudInit property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUseCloudInit(Boolean value) {
+        this.useCloudInit = value;
+    }
+
+    public boolean isSetUseCloudInit() {
+        return (this.useCloudInit!= null);
+    }
+
+    /**
      * Gets the value of the status property.
      *
      * @return
@@ -1373,6 +1438,34 @@ public class Action
 
     public boolean isSetPowerManagement() {
         return (this.powerManagement!= null);
+    }
+
+    /**
+     * Gets the value of the isAttached property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getIsAttached() {
+        return isAttached;
+    }
+
+    /**
+     * Sets the value of the isAttached property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setIsAttached(Boolean value) {
+        this.isAttached = value;
+    }
+
+    public boolean isSetIsAttached() {
+        return (this.isAttached!= null);
     }
 
 }

@@ -75,6 +75,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}katello_errata" minOccurs="0"/>
  *         &lt;element ref="{}external_host_provider" minOccurs="0"/>
  *         &lt;element name="update_available" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element ref="{}device_passthrough" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -122,7 +123,8 @@ import javax.xml.bind.annotation.XmlType;
     "liveSnapshotSupport",
     "katelloErrata",
     "externalHostProvider",
-    "updateAvailable"
+    "updateAvailable",
+    "devicePassthrough"
 })
 public class Host
     extends BaseResource
@@ -185,6 +187,8 @@ public class Host
     protected ExternalHostProvider externalHostProvider;
     @XmlElement(name = "update_available")
     protected Boolean updateAvailable;
+    @XmlElement(name = "device_passthrough")
+    protected HostDevicePassthrough devicePassthrough;
 
     /**
      * Gets the value of the address property.
@@ -1248,6 +1252,34 @@ public class Host
 
     public boolean isSetUpdateAvailable() {
         return (this.updateAvailable!= null);
+    }
+
+    /**
+     * Gets the value of the devicePassthrough property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostDevicePassthrough }
+     *
+     */
+    public HostDevicePassthrough getDevicePassthrough() {
+        return devicePassthrough;
+    }
+
+    /**
+     * Sets the value of the devicePassthrough property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostDevicePassthrough }
+     *
+     */
+    public void setDevicePassthrough(HostDevicePassthrough value) {
+        this.devicePassthrough = value;
+    }
+
+    public boolean isSetDevicePassthrough() {
+        return (this.devicePassthrough!= null);
     }
 
 }

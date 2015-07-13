@@ -126,7 +126,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.address
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]
@@ -149,7 +148,6 @@ public class StorageDomains extends
      *      storagedomain.storage.type
      *      storagedomain.import
      *      [storagedomain.storage.address]
-     *      [storagedomain.format]
      *      [storagedomain.comment]
      *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
@@ -163,7 +161,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.address
      *      storagedomain.storage.path
      *      [storagedomain.name]
@@ -183,7 +180,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.path
      *      [storagedomain.name]
      *      [storagedomain.comment]
@@ -201,7 +197,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.path
      *      storagedomain.storage.vfs_type
      *      [storagedomain.name]
@@ -252,7 +247,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.address
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]
@@ -275,7 +269,6 @@ public class StorageDomains extends
      *      storagedomain.storage.type
      *      storagedomain.import
      *      [storagedomain.storage.address]
-     *      [storagedomain.format]
      *      [storagedomain.comment]
      *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
@@ -289,7 +282,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.address
      *      storagedomain.storage.path
      *      [storagedomain.name]
@@ -309,7 +301,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.path
      *      [storagedomain.name]
      *      [storagedomain.comment]
@@ -327,7 +318,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.path
      *      storagedomain.storage.vfs_type
      *      [storagedomain.name]
@@ -384,7 +374,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.address
      *      storagedomain.storage.logical_unit
      *      [storagedomain.name]
@@ -407,7 +396,6 @@ public class StorageDomains extends
      *      storagedomain.storage.type
      *      storagedomain.import
      *      [storagedomain.storage.address]
-     *      [storagedomain.format]
      *      [storagedomain.comment]
      *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
@@ -421,7 +409,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.address
      *      storagedomain.storage.path
      *      [storagedomain.name]
@@ -441,7 +428,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.path
      *      [storagedomain.name]
      *      [storagedomain.comment]
@@ -459,7 +445,6 @@ public class StorageDomains extends
      *      storagedomain.host.id|name
      *      storagedomain.type
      *      storagedomain.storage.type
-     *      storagedomain.format
      *      storagedomain.storage.path
      *      storagedomain.storage.vfs_type
      *      [storagedomain.name]

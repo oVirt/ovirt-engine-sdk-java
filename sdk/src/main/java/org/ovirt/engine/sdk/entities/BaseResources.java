@@ -116,6 +116,7 @@ import javax.xml.bind.annotation.XmlType;
     SchedulingPolicyUnits.class,
     Quotas.class,
     StorageConnections.class,
+    HostDevices.class,
     LogicalUnits.class,
     Domains.class,
     Weights.class,

@@ -293,11 +293,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
-     *      [storage_connection.port]
-     *      [storage_connection.username]
      *      [storage_connection.password]
-     *      [storage_connection.iqn]
-     *      [storage_connection.address]
+     *      [storage_connection.port]
+     *      [storage_connection.target]
+     *      [storage_connection.username]
      *
      *    Overload 2:
      *
@@ -305,10 +304,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
+     *      [storage_connection.address]
+     *      [storage_connection.nfs_retrans]
      *      [storage_connection.nfs_timeo]
      *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
-     *      [storage_connection.address]
      *      [storage_connection.path]
      *
      *    Overload 3:
@@ -317,10 +316,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
-     *      [storage_connection.mount_options]
-     *      [storage_connection.vfs_type]
      *      [storage_connection.address]
+     *      [storage_connection.mount_options]
      *      [storage_connection.path]
+     *      [storage_connection.vfs_type]
      *
      *    Overload 4:
      *
@@ -370,11 +369,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
-     *      [storage_connection.port]
-     *      [storage_connection.username]
      *      [storage_connection.password]
-     *      [storage_connection.iqn]
-     *      [storage_connection.address]
+     *      [storage_connection.port]
+     *      [storage_connection.target]
+     *      [storage_connection.username]
      *
      *    Overload 2:
      *
@@ -382,10 +380,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
+     *      [storage_connection.address]
+     *      [storage_connection.nfs_retrans]
      *      [storage_connection.nfs_timeo]
      *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
-     *      [storage_connection.address]
      *      [storage_connection.path]
      *
      *    Overload 3:
@@ -394,10 +392,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
-     *      [storage_connection.mount_options]
-     *      [storage_connection.vfs_type]
      *      [storage_connection.address]
+     *      [storage_connection.mount_options]
      *      [storage_connection.path]
+     *      [storage_connection.vfs_type]
      *
      *    Overload 4:
      *
@@ -453,11 +451,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
-     *      [storage_connection.port]
-     *      [storage_connection.username]
      *      [storage_connection.password]
-     *      [storage_connection.iqn]
-     *      [storage_connection.address]
+     *      [storage_connection.port]
+     *      [storage_connection.target]
+     *      [storage_connection.username]
      *
      *    Overload 2:
      *
@@ -465,10 +462,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
+     *      [storage_connection.address]
+     *      [storage_connection.nfs_retrans]
      *      [storage_connection.nfs_timeo]
      *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
-     *      [storage_connection.address]
      *      [storage_connection.path]
      *
      *    Overload 3:
@@ -477,10 +474,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
-     *      [storage_connection.mount_options]
-     *      [storage_connection.vfs_type]
      *      [storage_connection.address]
+     *      [storage_connection.mount_options]
      *      [storage_connection.path]
+     *      [storage_connection.vfs_type]
      *
      *    Overload 4:
      *
@@ -544,11 +541,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
-     *      [storage_connection.port]
-     *      [storage_connection.username]
      *      [storage_connection.password]
-     *      [storage_connection.iqn]
-     *      [storage_connection.address]
+     *      [storage_connection.port]
+     *      [storage_connection.target]
+     *      [storage_connection.username]
      *
      *    Overload 2:
      *
@@ -556,10 +552,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
+     *      [storage_connection.address]
+     *      [storage_connection.nfs_retrans]
      *      [storage_connection.nfs_timeo]
      *      [storage_connection.nfs_version]
-     *      [storage_connection.nfs_retrans]
-     *      [storage_connection.address]
      *      [storage_connection.path]
      *
      *    Overload 3:
@@ -568,10 +564,10 @@ public class StorageConnection extends
      *      storage connection in the
      *      system
      *
-     *      [storage_connection.mount_options]
-     *      [storage_connection.vfs_type]
      *      [storage_connection.address]
+     *      [storage_connection.mount_options]
      *      [storage_connection.path]
+     *      [storage_connection.vfs_type]
      *
      *    Overload 4:
      *
