@@ -36,6 +36,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import org.apache.http.HttpHost;
+import org.apache.http.auth.AuthSchemeRegistry;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -46,6 +47,9 @@ import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.impl.auth.BasicSchemeFactory;
+import org.apache.http.impl.auth.DigestSchemeFactory;
+import org.apache.http.impl.auth.NTLMSchemeFactory;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
@@ -259,8 +263,15 @@ public class ConnectionsPoolBuilder {
         }
 
         AuthScope authScope = new AuthScope(getHost(url), port_, AuthScope.ANY_REALM, AuthScope.ANY_SCHEME);
+
+        // Create a new empty scheme registry to make sure that only the schemes that we are going to explicitly
+        // register are available:
+        AuthSchemeRegistry schemeRegistry = new AuthSchemeRegistry();
+        client.setAuthSchemes(schemeRegistry);
+
+        // Register the SPNEGO scheme factory if the caller activated Kerberos:
         if (kerberos != null && kerberos) {
-            client.getAuthSchemes().register(AuthPolicy.SPNEGO, new SPNegoSchemeFactory(true));
+            schemeRegistry.register(AuthPolicy.SPNEGO, new SPNegoSchemeFactory(true));
             Credentials credentials = new Credentials() {
                 @Override
                 public Principal getUserPrincipal() {
@@ -274,7 +285,12 @@ public class ConnectionsPoolBuilder {
             };
             client.getCredentialsProvider().setCredentials(authScope, credentials);
         }
-        else if (!StringUtils.isNulOrEmpty(username)) {
+
+        // Register the password based schemes if the caller provided a user name:
+        if (!StringUtils.isNulOrEmpty(username)) {
+            schemeRegistry.register(AuthPolicy.BASIC, new BasicSchemeFactory());
+            schemeRegistry.register(AuthPolicy.DIGEST, new DigestSchemeFactory());
+            schemeRegistry.register(AuthPolicy.NTLM, new NTLMSchemeFactory());
             Credentials credentials = new UsernamePasswordCredentials(username, password);
             client.getCredentialsProvider().setCredentials(authScope, credentials);
         }
