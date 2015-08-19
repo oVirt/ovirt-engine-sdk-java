@@ -35,12 +35,12 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>VMGraphicsConsole providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.GraphicsConsole }.
+ * <p>HostUnmanagedNetwork providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.UnmanagedNetwork }.
  */
 @SuppressWarnings("unused")
-public class VMGraphicsConsole extends
-        org.ovirt.engine.sdk.entities.GraphicsConsole {
+public class HostUnmanagedNetwork extends
+        org.ovirt.engine.sdk.entities.UnmanagedNetwork {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
@@ -50,7 +50,7 @@ public class VMGraphicsConsole extends
     /**
      * @param proxy HttpProxyBroker
      */
-    public VMGraphicsConsole(HttpProxyBroker proxy) {
+    public HostUnmanagedNetwork(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 

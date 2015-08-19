@@ -687,8 +687,8 @@ public class StorageDomain extends
      *
      *      update the storage domain
      *
-     *      storagedomain.host.id|name
      *      storagedomain.storage.logical_unit
+     *      [storagedomain.host.id]
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
@@ -740,8 +740,8 @@ public class StorageDomain extends
      *
      *      update the storage domain
      *
-     *      storagedomain.host.id|name
      *      storagedomain.storage.logical_unit
+     *      [storagedomain.host.id]
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
@@ -800,8 +800,8 @@ public class StorageDomain extends
      *
      *      update the storage domain
      *
-     *      storagedomain.host.id|name
      *      storagedomain.storage.logical_unit
+     *      [storagedomain.host.id]
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]
@@ -867,8 +867,8 @@ public class StorageDomain extends
      *
      *      update the storage domain
      *
-     *      storagedomain.host.id|name
      *      storagedomain.storage.logical_unit
+     *      [storagedomain.host.id]
      *      [storagedomain.name]
      *      [storagedomain.comment]
      *      [storagedomain.storage.override_luns]

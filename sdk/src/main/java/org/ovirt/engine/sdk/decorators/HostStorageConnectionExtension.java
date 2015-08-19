@@ -35,12 +35,12 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>VMGraphicsConsole providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.GraphicsConsole }.
+ * <p>HostStorageConnectionExtension providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageConnectionExtension }.
  */
 @SuppressWarnings("unused")
-public class VMGraphicsConsole extends
-        org.ovirt.engine.sdk.entities.GraphicsConsole {
+public class HostStorageConnectionExtension extends
+        org.ovirt.engine.sdk.entities.StorageConnectionExtension {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
@@ -50,7 +50,7 @@ public class VMGraphicsConsole extends
     /**
      * @param proxy HttpProxyBroker
      */
-    public VMGraphicsConsole(HttpProxyBroker proxy) {
+    public HostStorageConnectionExtension(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -121,17 +121,12 @@ public class VMGraphicsConsole extends
         return getProxy().delete(url, Response.class, headers);
     }
     /**
-     * Deletes object.
-     * @param async
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
+     * Updates HostStorageConnectionExtension object.
+     *
+     * @param storageconnectionextension {@link org.ovirt.engine.sdk.entities.StorageConnectionExtension}
+     *
      * @return
-     *     {@link Response }
+     *     {@link HostStorageConnectionExtension }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -140,14 +135,46 @@ public class VMGraphicsConsole extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Response delete(Boolean async, String correlationId) throws ClientProtocolException,
+    public HostStorageConnectionExtension update() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageConnectionExtension.class,
+                HostStorageConnectionExtension.class,
+                headers);
+    }
+    /**
+     * Updates HostStorageConnectionExtension object.
+     *
+     * @param storageconnectionextension {@link org.ovirt.engine.sdk.entities.StorageConnectionExtension}
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @return
+     *     {@link HostStorageConnectionExtension }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public HostStorageConnectionExtension update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
@@ -157,7 +184,12 @@ public class VMGraphicsConsole extends
 
         url = urlBuilder.build();
 
-        return getProxy().delete(url, Response.class, headers);
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageConnectionExtension.class,
+                HostStorageConnectionExtension.class,
+                headers);
     }
 
 }

@@ -47,6 +47,7 @@ public class Template extends
 
     private volatile TemplateCdRoms templateCdRoms;
     private volatile TemplateDisks templateDisks;
+    private volatile TemplateGraphicsConsoles templateGraphicsConsoles;
     private volatile TemplateNICs templateNICs;
     private volatile TemplatePermissions templatePermissions;
     private volatile TemplateTags templateTags;
@@ -98,6 +99,22 @@ public class Template extends
             }
         }
         return templateDisks;
+    }
+    /**
+     * Gets the value of the TemplateGraphicsConsoles property.
+     *
+     * @return
+     *     {@link TemplateGraphicsConsoles }
+     */
+    public TemplateGraphicsConsoles getGraphicsConsoles() {
+        if (this.templateGraphicsConsoles == null) {
+            synchronized (this.LOCK) {
+                if (this.templateGraphicsConsoles == null) {
+                    this.templateGraphicsConsoles = new TemplateGraphicsConsoles(proxy, this);
+                }
+            }
+        }
+        return templateGraphicsConsoles;
     }
     /**
      * Gets the value of the TemplateNICs property.

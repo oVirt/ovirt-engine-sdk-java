@@ -35,11 +35,11 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>VMGraphicsConsole providing relation and functional services
+ * <p>InstanceTypeGraphicsConsole providing relation and functional services
  * <p>to {@link org.ovirt.engine.sdk.entities.GraphicsConsole }.
  */
 @SuppressWarnings("unused")
-public class VMGraphicsConsole extends
+public class InstanceTypeGraphicsConsole extends
         org.ovirt.engine.sdk.entities.GraphicsConsole {
 
     private HttpProxyBroker proxy;
@@ -50,7 +50,7 @@ public class VMGraphicsConsole extends
     /**
      * @param proxy HttpProxyBroker
      */
-    public VMGraphicsConsole(HttpProxyBroker proxy) {
+    public InstanceTypeGraphicsConsole(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 

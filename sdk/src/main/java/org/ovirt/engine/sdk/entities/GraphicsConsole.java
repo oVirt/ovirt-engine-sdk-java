@@ -37,6 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element ref="{}vm" minOccurs="0"/>
+ *         &lt;element ref="{}template" minOccurs="0"/>
+ *         &lt;element ref="{}instance_type" minOccurs="0"/>
  *         &lt;element name="protocol" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="port" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="tls_port" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -52,6 +54,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GraphicsConsole", propOrder = {
     "vm",
+    "template",
+    "instanceType",
     "protocol",
     "port",
     "tlsPort",
@@ -62,6 +66,9 @@ public class GraphicsConsole
 {
 
     protected VM vm;
+    protected Template template;
+    @XmlElement(name = "instance_type")
+    protected InstanceType instanceType;
     protected String protocol;
     protected Integer port;
     @XmlElement(name = "tls_port")
@@ -94,6 +101,62 @@ public class GraphicsConsole
 
     public boolean isSetVm() {
         return (this.vm!= null);
+    }
+
+    /**
+     * Gets the value of the template property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Template }
+     *
+     */
+    public Template getTemplate() {
+        return template;
+    }
+
+    /**
+     * Sets the value of the template property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Template }
+     *
+     */
+    public void setTemplate(Template value) {
+        this.template = value;
+    }
+
+    public boolean isSetTemplate() {
+        return (this.template!= null);
+    }
+
+    /**
+     * Gets the value of the instanceType property.
+     *
+     * @return
+     *     possible object is
+     *     {@link InstanceType }
+     *
+     */
+    public InstanceType getInstanceType() {
+        return instanceType;
+    }
+
+    /**
+     * Sets the value of the instanceType property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link InstanceType }
+     *
+     */
+    public void setInstanceType(InstanceType value) {
+        this.instanceType = value;
+    }
+
+    public boolean isSetInstanceType() {
+        return (this.instanceType!= null);
     }
 
     /**

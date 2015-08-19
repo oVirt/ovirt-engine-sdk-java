@@ -55,6 +55,7 @@ import javax.xml.bind.annotation.XmlType;
     "active"
 })
 @XmlSeeAlso({
+    NetworkAttachments.class,
     GlusterServerHooks.class,
     Events.class,
     MacPools.class,
@@ -115,6 +116,7 @@ import javax.xml.bind.annotation.XmlType;
     Statistics.class,
     SchedulingPolicyUnits.class,
     Quotas.class,
+    StorageConnectionExtensions.class,
     StorageConnections.class,
     HostDevices.class,
     LogicalUnits.class,
@@ -128,6 +130,7 @@ import javax.xml.bind.annotation.XmlType;
     GlusterHooks.class,
     InstanceTypes.class,
     ExternalDiscoveredHosts.class,
+    UnmanagedNetworks.class,
     NumaNodes.class,
     AffinityGroups.class,
     GlusterBricks.class,

@@ -76,6 +76,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}external_host_provider" minOccurs="0"/>
  *         &lt;element name="update_available" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}device_passthrough" minOccurs="0"/>
+ *         &lt;element ref="{}storage_connection_extensions" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -124,7 +125,8 @@ import javax.xml.bind.annotation.XmlType;
     "katelloErrata",
     "externalHostProvider",
     "updateAvailable",
-    "devicePassthrough"
+    "devicePassthrough",
+    "storageConnectionExtensions"
 })
 public class Host
     extends BaseResource
@@ -189,6 +191,8 @@ public class Host
     protected Boolean updateAvailable;
     @XmlElement(name = "device_passthrough")
     protected HostDevicePassthrough devicePassthrough;
+    @XmlElement(name = "storage_connection_extensions")
+    protected StorageConnectionExtensions storageConnectionExtensions;
 
     /**
      * Gets the value of the address property.
@@ -1280,6 +1284,34 @@ public class Host
 
     public boolean isSetDevicePassthrough() {
         return (this.devicePassthrough!= null);
+    }
+
+    /**
+     * Gets the value of the storageConnectionExtensions property.
+     *
+     * @return
+     *     possible object is
+     *     {@link StorageConnectionExtensions }
+     *
+     */
+    public Object getStorageConnectionExtensions() {
+        return storageConnectionExtensions;
+    }
+
+    /**
+     * Sets the value of the storageConnectionExtensions property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link StorageConnectionExtensions }
+     *
+     */
+    public void setStorageConnectionExtensions(StorageConnectionExtensions value) {
+        this.storageConnectionExtensions = value;
+    }
+
+    public boolean isSetStorageConnectionExtensions() {
+        return (this.storageConnectionExtensions!= null);
     }
 
 }

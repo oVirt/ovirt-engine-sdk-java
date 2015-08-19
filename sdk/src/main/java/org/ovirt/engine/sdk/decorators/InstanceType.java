@@ -45,6 +45,7 @@ public class InstanceType extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile InstanceTypeGraphicsConsoles instanceTypeGraphicsConsoles;
     private volatile InstanceTypeNICs instanceTypeNICs;
     private volatile InstanceTypeWatchDogs instanceTypeWatchDogs;
 
@@ -63,6 +64,22 @@ public class InstanceType extends
         return proxy;
     }
 
+    /**
+     * Gets the value of the InstanceTypeGraphicsConsoles property.
+     *
+     * @return
+     *     {@link InstanceTypeGraphicsConsoles }
+     */
+    public InstanceTypeGraphicsConsoles getGraphicsConsoles() {
+        if (this.instanceTypeGraphicsConsoles == null) {
+            synchronized (this.LOCK) {
+                if (this.instanceTypeGraphicsConsoles == null) {
+                    this.instanceTypeGraphicsConsoles = new InstanceTypeGraphicsConsoles(proxy, this);
+                }
+            }
+        }
+        return instanceTypeGraphicsConsoles;
+    }
     /**
      * Gets the value of the InstanceTypeNICs property.
      *

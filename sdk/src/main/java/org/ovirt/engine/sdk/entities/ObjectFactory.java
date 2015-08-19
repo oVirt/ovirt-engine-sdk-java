@@ -48,6 +48,7 @@ public class ObjectFactory {
     private final static QName _AuthorizedKey_QNAME = new QName("", "authorized_key");
     private final static QName _Ssh_QNAME = new QName("", "ssh");
     private final static QName _Nic_QNAME = new QName("", "nic");
+    private final static QName _NetworkAttachments_QNAME = new QName("", "network_attachments");
     private final static QName _BrickStates_QNAME = new QName("", "brick_states");
     private final static QName _Selinux_QNAME = new QName("", "selinux");
     private final static QName _DisplayDisconnectActions_QNAME = new QName("", "display_disconnect_actions");
@@ -68,6 +69,7 @@ public class ObjectFactory {
     private final static QName _DisplayTypes_QNAME = new QName("", "display_types");
     private final static QName _MacPools_QNAME = new QName("", "mac_pools");
     private final static QName _PmProxies_QNAME = new QName("", "pm_proxies");
+    private final static QName _StorageConnectionExtension_QNAME = new QName("", "storage_connection_extension");
     private final static QName _Cdroms_QNAME = new QName("", "cdroms");
     private final static QName _VmStates_QNAME = new QName("", "vm_states");
     private final static QName _ExternalHost_QNAME = new QName("", "external_host");
@@ -160,6 +162,7 @@ public class ObjectFactory {
     private final static QName _Floppies_QNAME = new QName("", "floppies");
     private final static QName _Bookmark_QNAME = new QName("", "bookmark");
     private final static QName _Vm_QNAME = new QName("", "vm");
+    private final static QName _NetworkAttachment_QNAME = new QName("", "network_attachment");
     private final static QName _OpenstackNetworkProviders_QNAME = new QName("", "openstack_network_providers");
     private final static QName _Rsdl_QNAME = new QName("", "rsdl");
     private final static QName _OpenstackVolumeProvider_QNAME = new QName("", "openstack_volume_provider");
@@ -264,6 +267,7 @@ public class ObjectFactory {
     private final static QName _ExternalDiscoveredHost_QNAME = new QName("", "external_discovered_host");
     private final static QName _Event_QNAME = new QName("", "event");
     private final static QName _CpuModes_QNAME = new QName("", "cpu_modes");
+    private final static QName _UnmanagedNetwork_QNAME = new QName("", "unmanaged_network");
     private final static QName _OpenstackSubnets_QNAME = new QName("", "openstack_subnets");
     private final static QName _Product_QNAME = new QName("", "product");
     private final static QName _DiskInterfaces_QNAME = new QName("", "disk_interfaces");
@@ -302,6 +306,7 @@ public class ObjectFactory {
     private final static QName _Usb_QNAME = new QName("", "usb");
     private final static QName _GraphicsConsole_QNAME = new QName("", "graphics_console");
     private final static QName _ProductInfo_QNAME = new QName("", "product_info");
+    private final static QName _StorageConnectionExtensions_QNAME = new QName("", "storage_connection_extensions");
     private final static QName _Body_QNAME = new QName("", "body");
     private final static QName _ArchitectureCapability_QNAME = new QName("", "architecture_capability");
     private final static QName _BrickProfileDetail_QNAME = new QName("", "brick_profile_detail");
@@ -355,6 +360,7 @@ public class ObjectFactory {
     private final static QName _QuotaModeTypes_QNAME = new QName("", "quota_mode_types");
     private final static QName _GlusterHook_QNAME = new QName("", "gluster_hook");
     private final static QName _PowerManagement_QNAME = new QName("", "power_management");
+    private final static QName _UnmanagedNetworks_QNAME = new QName("", "unmanaged_networks");
     private final static QName _HostNumaNodes_QNAME = new QName("", "host_numa_nodes");
     private final static QName _OpenstackImage_QNAME = new QName("", "openstack_image");
     private final static QName _TransparentHugepages_QNAME = new QName("", "transparent_hugepages");
@@ -434,6 +440,14 @@ public class ObjectFactory {
      */
     public NIC createNIC() {
         return new NIC();
+    }
+
+    /**
+     * Create an instance of {@link NetworkAttachments }
+     *
+     */
+    public NetworkAttachments createNetworkAttachments() {
+        return new NetworkAttachments();
     }
 
     /**
@@ -594,6 +608,14 @@ public class ObjectFactory {
      */
     public PmProxies createPmProxies() {
         return new PmProxies();
+    }
+
+    /**
+     * Create an instance of {@link StorageConnectionExtension }
+     *
+     */
+    public StorageConnectionExtension createStorageConnectionExtension() {
+        return new StorageConnectionExtension();
     }
 
     /**
@@ -1322,6 +1344,14 @@ public class ObjectFactory {
      */
     public VM createVM() {
         return new VM();
+    }
+
+    /**
+     * Create an instance of {@link NetworkAttachment }
+     *
+     */
+    public NetworkAttachment createNetworkAttachment() {
+        return new NetworkAttachment();
     }
 
     /**
@@ -2141,6 +2171,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UnmanagedNetwork }
+     *
+     */
+    public UnmanagedNetwork createUnmanagedNetwork() {
+        return new UnmanagedNetwork();
+    }
+
+    /**
      * Create an instance of {@link OpenStackSubnets }
      *
      */
@@ -2442,6 +2480,14 @@ public class ObjectFactory {
      */
     public ProductInfo createProductInfo() {
         return new ProductInfo();
+    }
+
+    /**
+     * Create an instance of {@link StorageConnectionExtensions }
+     *
+     */
+    public StorageConnectionExtensions createStorageConnectionExtensions() {
+        return new StorageConnectionExtensions();
     }
 
     /**
@@ -2869,6 +2915,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UnmanagedNetworks }
+     *
+     */
+    public UnmanagedNetworks createUnmanagedNetworks() {
+        return new UnmanagedNetworks();
+    }
+
+    /**
      * Create an instance of {@link NumaNodes }
      *
      */
@@ -3149,14 +3203,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MemoryOverCommit }
-     *
-     */
-    public MemoryOverCommit createMemoryOverCommit() {
-        return new MemoryOverCommit();
-    }
-
-    /**
      * Create an instance of {@link MemoryPolicy }
      *
      */
@@ -3173,43 +3219,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Ticket }
-     *
-     */
-    public Ticket createTicket() {
-        return new Ticket();
-    }
-
-    /**
      * Create an instance of {@link ErrorHandling }
      *
      */
     public ErrorHandling createErrorHandling() {
         return new ErrorHandling();
-    }
-
-    /**
-     * Create an instance of {@link HighAvailability }
-     *
-     */
-    public HighAvailability createHighAvailability() {
-        return new HighAvailability();
-    }
-
-    /**
-     * Create an instance of {@link CpuTopology }
-     *
-     */
-    public CpuTopology createCpuTopology() {
-        return new CpuTopology();
-    }
-
-    /**
-     * Create an instance of {@link ActionableResource }
-     *
-     */
-    public ActionableResource createActionableResource() {
-        return new ActionableResource();
     }
 
     /**
@@ -3229,43 +3243,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VmSummary }
-     *
-     */
-    public VmSummary createVmSummary() {
-        return new VmSummary();
-    }
-
-    /**
      * Create an instance of {@link Bios }
      *
      */
     public Bios createBios() {
         return new Bios();
-    }
-
-    /**
-     * Create an instance of {@link SchedulingPolicyThresholds }
-     *
-     */
-    public SchedulingPolicyThresholds createSchedulingPolicyThresholds() {
-        return new SchedulingPolicyThresholds();
-    }
-
-    /**
-     * Create an instance of {@link VmBase }
-     *
-     */
-    public VmBase createVmBase() {
-        return new VmBase();
-    }
-
-    /**
-     * Create an instance of {@link VmPlacementPolicy }
-     *
-     */
-    public VmPlacementPolicy createVmPlacementPolicy() {
-        return new VmPlacementPolicy();
     }
 
     /**
@@ -3277,35 +3259,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GuestOperatingSystem }
-     *
-     */
-    public GuestOperatingSystem createGuestOperatingSystem() {
-        return new GuestOperatingSystem();
-    }
-
-    /**
      * Create an instance of {@link GuestInfo }
      *
      */
     public GuestInfo createGuestInfo() {
         return new GuestInfo();
-    }
-
-    /**
-     * Create an instance of {@link Boot }
-     *
-     */
-    public Boot createBoot() {
-        return new Boot();
-    }
-
-    /**
-     * Create an instance of {@link BaseDevice }
-     *
-     */
-    public BaseDevice createBaseDevice() {
-        return new BaseDevice();
     }
 
     /**
@@ -3330,14 +3288,6 @@ public class ObjectFactory {
      */
     public Rate createRate() {
         return new Rate();
-    }
-
-    /**
-     * Create an instance of {@link BaseResources }
-     *
-     */
-    public BaseResources createBaseResources() {
-        return new BaseResources();
     }
 
     /**
@@ -3378,6 +3328,150 @@ public class ObjectFactory {
      */
     public SupportedVersions createSupportedVersions() {
         return new SupportedVersions();
+    }
+
+    /**
+     * Create an instance of {@link IpAddressAssignments }
+     *
+     */
+    public IpAddressAssignments createIpAddressAssignments() {
+        return new IpAddressAssignments();
+    }
+
+    /**
+     * Create an instance of {@link MemoryOverCommit }
+     *
+     */
+    public MemoryOverCommit createMemoryOverCommit() {
+        return new MemoryOverCommit();
+    }
+
+    /**
+     * Create an instance of {@link Ticket }
+     *
+     */
+    public Ticket createTicket() {
+        return new Ticket();
+    }
+
+    /**
+     * Create an instance of {@link HighAvailability }
+     *
+     */
+    public HighAvailability createHighAvailability() {
+        return new HighAvailability();
+    }
+
+    /**
+     * Create an instance of {@link IpAddressAssignment }
+     *
+     */
+    public IpAddressAssignment createIpAddressAssignment() {
+        return new IpAddressAssignment();
+    }
+
+    /**
+     * Create an instance of {@link CpuTopology }
+     *
+     */
+    public CpuTopology createCpuTopology() {
+        return new CpuTopology();
+    }
+
+    /**
+     * Create an instance of {@link ActionableResource }
+     *
+     */
+    public ActionableResource createActionableResource() {
+        return new ActionableResource();
+    }
+
+    /**
+     * Create an instance of {@link ReportedConfigurations }
+     *
+     */
+    public ReportedConfigurations createReportedConfigurations() {
+        return new ReportedConfigurations();
+    }
+
+    /**
+     * Create an instance of {@link VmSummary }
+     *
+     */
+    public VmSummary createVmSummary() {
+        return new VmSummary();
+    }
+
+    /**
+     * Create an instance of {@link ReportedConfiguration }
+     *
+     */
+    public ReportedConfiguration createReportedConfiguration() {
+        return new ReportedConfiguration();
+    }
+
+    /**
+     * Create an instance of {@link SchedulingPolicyThresholds }
+     *
+     */
+    public SchedulingPolicyThresholds createSchedulingPolicyThresholds() {
+        return new SchedulingPolicyThresholds();
+    }
+
+    /**
+     * Create an instance of {@link VmBase }
+     *
+     */
+    public VmBase createVmBase() {
+        return new VmBase();
+    }
+
+    /**
+     * Create an instance of {@link VmPlacementPolicy }
+     *
+     */
+    public VmPlacementPolicy createVmPlacementPolicy() {
+        return new VmPlacementPolicy();
+    }
+
+    /**
+     * Create an instance of {@link GuestOperatingSystem }
+     *
+     */
+    public GuestOperatingSystem createGuestOperatingSystem() {
+        return new GuestOperatingSystem();
+    }
+
+    /**
+     * Create an instance of {@link Boot }
+     *
+     */
+    public Boot createBoot() {
+        return new Boot();
+    }
+
+    /**
+     * Create an instance of {@link BaseDevice }
+     *
+     */
+    public BaseDevice createBaseDevice() {
+        return new BaseDevice();
+    }
+
+    /**
+     * Create an instance of {@link BaseResources }
+     *
+     */
+    public BaseResources createBaseResources() {
+        return new BaseResources();
+    }
+
+    /**
+     * Create an instance of {@link ProxyTicket }
+     *
+     */
+    public ProxyTicket createProxyTicket() {
+        return new ProxyTicket();
     }
 
     /**
@@ -3431,6 +3525,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "nic")
     public JAXBElement<NIC> createNic(NIC value) {
         return new JAXBElement<NIC>(_Nic_QNAME, NIC.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NetworkAttachments }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "network_attachments")
+    public JAXBElement<NetworkAttachments> createNetworkAttachments(NetworkAttachments value) {
+        return new JAXBElement<NetworkAttachments>(_NetworkAttachments_QNAME, NetworkAttachments.class, null, value);
     }
 
     /**
@@ -3611,6 +3714,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "pm_proxies")
     public JAXBElement<PmProxies> createPmProxies(PmProxies value) {
         return new JAXBElement<PmProxies>(_PmProxies_QNAME, PmProxies.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageConnectionExtension }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_connection_extension")
+    public JAXBElement<StorageConnectionExtension> createStorageConnectionExtension(StorageConnectionExtension value) {
+        return new JAXBElement<StorageConnectionExtension>(_StorageConnectionExtension_QNAME, StorageConnectionExtension.class, null, value);
     }
 
     /**
@@ -4439,6 +4551,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "vm")
     public JAXBElement<VM> createVm(VM value) {
         return new JAXBElement<VM>(_Vm_QNAME, VM.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NetworkAttachment }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "network_attachment")
+    public JAXBElement<NetworkAttachment> createNetworkAttachment(NetworkAttachment value) {
+        return new JAXBElement<NetworkAttachment>(_NetworkAttachment_QNAME, NetworkAttachment.class, null, value);
     }
 
     /**
@@ -5378,6 +5499,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UnmanagedNetwork }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "unmanaged_network")
+    public JAXBElement<UnmanagedNetwork> createUnmanagedNetwork(UnmanagedNetwork value) {
+        return new JAXBElement<UnmanagedNetwork>(_UnmanagedNetwork_QNAME, UnmanagedNetwork.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link OpenStackSubnets }{@code >}}
      *
      */
@@ -5717,6 +5847,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "product_info")
     public JAXBElement<ProductInfo> createProductInfo(ProductInfo value) {
         return new JAXBElement<ProductInfo>(_ProductInfo_QNAME, ProductInfo.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StorageConnectionExtensions }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "storage_connection_extensions")
+    public JAXBElement<StorageConnectionExtensions> createStorageConnectionExtensions(StorageConnectionExtensions value) {
+        return new JAXBElement<StorageConnectionExtensions>(_StorageConnectionExtensions_QNAME, StorageConnectionExtensions.class, null, value);
     }
 
     /**
@@ -6194,6 +6333,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "power_management")
     public JAXBElement<PowerManagement> createPowerManagement(PowerManagement value) {
         return new JAXBElement<PowerManagement>(_PowerManagement_QNAME, PowerManagement.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UnmanagedNetworks }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "unmanaged_networks")
+    public JAXBElement<UnmanagedNetworks> createUnmanagedNetworks(UnmanagedNetworks value) {
+        return new JAXBElement<UnmanagedNetworks>(_UnmanagedNetworks_QNAME, UnmanagedNetworks.class, null, value);
     }
 
     /**

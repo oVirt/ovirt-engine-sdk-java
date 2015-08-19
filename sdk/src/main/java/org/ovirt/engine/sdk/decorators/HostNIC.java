@@ -45,6 +45,7 @@ public class HostNIC extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile HostHostNICNetworkAttachments hostHostNICNetworkAttachments;
     private volatile HostNICLabels hostNICLabels;
     private volatile HostNICStatistics hostNICStatistics;
 
@@ -78,6 +79,22 @@ public class HostNIC extends
             }
         }
         return hostNICLabels;
+    }
+    /**
+     * Gets the value of the HostHostNICNetworkAttachments property.
+     *
+     * @return
+     *     {@link HostHostNICNetworkAttachments }
+     */
+    public HostHostNICNetworkAttachments getNetworkAttachments() {
+        if (this.hostHostNICNetworkAttachments == null) {
+            synchronized (this.LOCK) {
+                if (this.hostHostNICNetworkAttachments == null) {
+                    this.hostHostNICNetworkAttachments = new HostHostNICNetworkAttachments(proxy, this);
+                }
+            }
+        }
+        return hostHostNICNetworkAttachments;
     }
     /**
      * Gets the value of the HostNICStatistics property.

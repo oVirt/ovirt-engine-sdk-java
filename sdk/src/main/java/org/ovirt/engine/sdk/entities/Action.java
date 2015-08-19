@@ -62,6 +62,7 @@ import javax.xml.bind.annotation.XmlType;
     "image",
     "fenceType",
     "ticket",
+    "proxyTicket",
     "iscsi",
     "storageDomain",
     "cluster",
@@ -71,6 +72,13 @@ import javax.xml.bind.annotation.XmlType;
     "snapshot",
     "template",
     "hostNics",
+    "modifiedNetworkAttachments",
+    "removedNetworkAttachments",
+    "synchronizedNetworkAttachments",
+    "modifiedBonds",
+    "removedBonds",
+    "modifiedLabels",
+    "removedLabels",
     "checkConnectivity",
     "connectivityTimeout",
     "pause",
@@ -116,6 +124,8 @@ public class Action
     @XmlElement(name = "fence_type")
     protected String fenceType;
     protected Ticket ticket;
+    @XmlElement(name = "proxy_ticket")
+    protected ProxyTicket proxyTicket;
     protected IscsiDetails iscsi;
     @XmlElement(name = "storage_domain")
     protected StorageDomain storageDomain;
@@ -128,6 +138,20 @@ public class Action
     protected Template template;
     @XmlElement(name = "host_nics")
     protected HostNics hostNics;
+    @XmlElement(name = "modified_network_attachments")
+    protected NetworkAttachments modifiedNetworkAttachments;
+    @XmlElement(name = "removed_network_attachments")
+    protected NetworkAttachments removedNetworkAttachments;
+    @XmlElement(name = "synchronized_network_attachments")
+    protected NetworkAttachments synchronizedNetworkAttachments;
+    @XmlElement(name = "modified_bonds")
+    protected HostNics modifiedBonds;
+    @XmlElement(name = "removed_bonds")
+    protected HostNics removedBonds;
+    @XmlElement(name = "modified_labels")
+    protected Labels modifiedLabels;
+    @XmlElement(name = "removed_labels")
+    protected Labels removedLabels;
     @XmlElement(name = "check_connectivity")
     protected Boolean checkConnectivity;
     @XmlElement(name = "connectivity_timeout")
@@ -424,6 +448,34 @@ public class Action
     }
 
     /**
+     * Gets the value of the proxyTicket property.
+     *
+     * @return
+     *     possible object is
+     *     {@link ProxyTicket }
+     *
+     */
+    public ProxyTicket getProxyTicket() {
+        return proxyTicket;
+    }
+
+    /**
+     * Sets the value of the proxyTicket property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ProxyTicket }
+     *
+     */
+    public void setProxyTicket(ProxyTicket value) {
+        this.proxyTicket = value;
+    }
+
+    public boolean isSetProxyTicket() {
+        return (this.proxyTicket!= null);
+    }
+
+    /**
      * Gets the value of the iscsi property.
      *
      * @return
@@ -673,6 +725,202 @@ public class Action
 
     public boolean isSetHostNics() {
         return (this.hostNics!= null);
+    }
+
+    /**
+     * Gets the value of the modifiedNetworkAttachments property.
+     *
+     * @return
+     *     possible object is
+     *     {@link NetworkAttachments }
+     *
+     */
+    public NetworkAttachments getModifiedNetworkAttachments() {
+        return modifiedNetworkAttachments;
+    }
+
+    /**
+     * Sets the value of the modifiedNetworkAttachments property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link NetworkAttachments }
+     *
+     */
+    public void setModifiedNetworkAttachments(NetworkAttachments value) {
+        this.modifiedNetworkAttachments = value;
+    }
+
+    public boolean isSetModifiedNetworkAttachments() {
+        return (this.modifiedNetworkAttachments!= null);
+    }
+
+    /**
+     * Gets the value of the removedNetworkAttachments property.
+     *
+     * @return
+     *     possible object is
+     *     {@link NetworkAttachments }
+     *
+     */
+    public NetworkAttachments getRemovedNetworkAttachments() {
+        return removedNetworkAttachments;
+    }
+
+    /**
+     * Sets the value of the removedNetworkAttachments property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link NetworkAttachments }
+     *
+     */
+    public void setRemovedNetworkAttachments(NetworkAttachments value) {
+        this.removedNetworkAttachments = value;
+    }
+
+    public boolean isSetRemovedNetworkAttachments() {
+        return (this.removedNetworkAttachments!= null);
+    }
+
+    /**
+     * Gets the value of the synchronizedNetworkAttachments property.
+     *
+     * @return
+     *     possible object is
+     *     {@link NetworkAttachments }
+     *
+     */
+    public NetworkAttachments getSynchronizedNetworkAttachments() {
+        return synchronizedNetworkAttachments;
+    }
+
+    /**
+     * Sets the value of the synchronizedNetworkAttachments property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link NetworkAttachments }
+     *
+     */
+    public void setSynchronizedNetworkAttachments(NetworkAttachments value) {
+        this.synchronizedNetworkAttachments = value;
+    }
+
+    public boolean isSetSynchronizedNetworkAttachments() {
+        return (this.synchronizedNetworkAttachments!= null);
+    }
+
+    /**
+     * Gets the value of the modifiedBonds property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostNics }
+     *
+     */
+    public HostNics getModifiedBonds() {
+        return modifiedBonds;
+    }
+
+    /**
+     * Sets the value of the modifiedBonds property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostNics }
+     *
+     */
+    public void setModifiedBonds(HostNics value) {
+        this.modifiedBonds = value;
+    }
+
+    public boolean isSetModifiedBonds() {
+        return (this.modifiedBonds!= null);
+    }
+
+    /**
+     * Gets the value of the removedBonds property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostNics }
+     *
+     */
+    public HostNics getRemovedBonds() {
+        return removedBonds;
+    }
+
+    /**
+     * Sets the value of the removedBonds property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostNics }
+     *
+     */
+    public void setRemovedBonds(HostNics value) {
+        this.removedBonds = value;
+    }
+
+    public boolean isSetRemovedBonds() {
+        return (this.removedBonds!= null);
+    }
+
+    /**
+     * Gets the value of the modifiedLabels property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Labels }
+     *
+     */
+    public Labels getModifiedLabels() {
+        return modifiedLabels;
+    }
+
+    /**
+     * Sets the value of the modifiedLabels property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Labels }
+     *
+     */
+    public void setModifiedLabels(Labels value) {
+        this.modifiedLabels = value;
+    }
+
+    public boolean isSetModifiedLabels() {
+        return (this.modifiedLabels!= null);
+    }
+
+    /**
+     * Gets the value of the removedLabels property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Labels }
+     *
+     */
+    public Labels getRemovedLabels() {
+        return removedLabels;
+    }
+
+    /**
+     * Sets the value of the removedLabels property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Labels }
+     *
+     */
+    public void setRemovedLabels(Labels value) {
+        this.removedLabels = value;
+    }
+
+    public boolean isSetRemovedLabels() {
+        return (this.removedLabels!= null);
     }
 
     /**

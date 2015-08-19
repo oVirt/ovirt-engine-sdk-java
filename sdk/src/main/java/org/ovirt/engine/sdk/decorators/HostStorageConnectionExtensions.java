@@ -39,31 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>VMGraphicsConsoles providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.GraphicsConsoles }.
+ * <p>HostStorageConnectionExtensions providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.StorageConnectionExtensions }.
  */
 @SuppressWarnings("unused")
-public class VMGraphicsConsoles extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.GraphicsConsole,
-                            org.ovirt.engine.sdk.entities.GraphicsConsoles,
-                            VMGraphicsConsole> {
+public class HostStorageConnectionExtensions extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.StorageConnectionExtension,
+                            org.ovirt.engine.sdk.entities.StorageConnectionExtensions,
+                            HostStorageConnectionExtension> {
 
-    private VM parent;
+    private Host parent;
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent VM
+     * @param parent Host
      */
-    public VMGraphicsConsoles(HttpProxyBroker proxy, VM parent) {
-        super(proxy, "graphicsconsoles");
+    public HostStorageConnectionExtensions(HttpProxyBroker proxy, Host parent) {
+        super(proxy, "storageconnectionextensions");
         this.parent = parent;
     }
 
     /**
-     * Lists VMGraphicsConsole objects.
+     * Lists HostStorageConnectionExtension objects.
      *
      * @return
-     *     List of {@link VMGraphicsConsole }
+     *     List of {@link HostStorageConnectionExtension }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +73,17 @@ public class VMGraphicsConsoles extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<VMGraphicsConsole> list() throws ClientProtocolException,
+    public List<HostStorageConnectionExtension> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.GraphicsConsoles.class, VMGraphicsConsole.class);
+        return list(url, org.ovirt.engine.sdk.entities.StorageConnectionExtensions.class, HostStorageConnectionExtension.class);
     }
 
     /**
-     * Fetches VMGraphicsConsole object by id.
+     * Fetches HostStorageConnectionExtension object by id.
      *
      * @return
-     *     {@link VMGraphicsConsole }
+     *     {@link HostStorageConnectionExtension }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,17 +93,17 @@ public class VMGraphicsConsoles extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMGraphicsConsole get(UUID id) throws ClientProtocolException,
+    public HostStorageConnectionExtension get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.GraphicsConsole.class, VMGraphicsConsole.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageConnectionExtension.class, HostStorageConnectionExtension.class);
     }
 
     /**
-     * Fetches VMGraphicsConsole object by id.
+     * Fetches HostStorageConnectionExtension object by id.
      *
      * @return
-     *     {@link VMGraphicsConsole }
+     *     {@link HostStorageConnectionExtension }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -113,23 +113,25 @@ public class VMGraphicsConsoles extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public VMGraphicsConsole getById(String id) throws ClientProtocolException,
+    public HostStorageConnectionExtension getById(String id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.GraphicsConsole.class, VMGraphicsConsole.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.StorageConnectionExtension.class, HostStorageConnectionExtension.class);
     }
 
     /**
-     * Adds GraphicsConsole object.
+     * Adds StorageConnectionExtension object.
      *
-     * @param graphicsconsole {@link org.ovirt.engine.sdk.entities.GraphicsConsole}
+     * @param storageconnectionextension {@link org.ovirt.engine.sdk.entities.StorageConnectionExtension}
      *    <pre>
-     *    graphics_console.protocol
+     *    storageconnectionextension.target
+     *    storageconnectionextension.username
+     *    storageconnectionextension.password
      *    </pre>
      *
      *
      * @return
-     *     {@link VMGraphicsConsole }
+     *     {@link HostStorageConnectionExtension }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -138,7 +140,7 @@ public class VMGraphicsConsoles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMGraphicsConsole add(org.ovirt.engine.sdk.entities.GraphicsConsole graphicsconsole) throws
+    public HostStorageConnectionExtension add(org.ovirt.engine.sdk.entities.StorageConnectionExtension storageconnectionextension) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -148,16 +150,18 @@ public class VMGraphicsConsoles extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().add(url, graphicsconsole,
-                org.ovirt.engine.sdk.entities.GraphicsConsole.class,
-                VMGraphicsConsole.class, headers);
+        return getProxy().add(url, storageconnectionextension,
+                org.ovirt.engine.sdk.entities.StorageConnectionExtension.class,
+                HostStorageConnectionExtension.class, headers);
     }
     /**
-     * Adds GraphicsConsole object.
+     * Adds StorageConnectionExtension object.
      *
-     * @param graphicsconsole {@link org.ovirt.engine.sdk.entities.GraphicsConsole}
+     * @param storageconnectionextension {@link org.ovirt.engine.sdk.entities.StorageConnectionExtension}
      *    <pre>
-     *    graphics_console.protocol
+     *    storageconnectionextension.target
+     *    storageconnectionextension.username
+     *    storageconnectionextension.password
      *    </pre>
      *
      * @param correlationId
@@ -165,7 +169,7 @@ public class VMGraphicsConsoles extends
      *    [any string]
      *    </pre>
      * @return
-     *     {@link VMGraphicsConsole }
+     *     {@link HostStorageConnectionExtension }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -174,7 +178,7 @@ public class VMGraphicsConsoles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMGraphicsConsole add(org.ovirt.engine.sdk.entities.GraphicsConsole graphicsconsole, String correlationId) throws
+    public HostStorageConnectionExtension add(org.ovirt.engine.sdk.entities.StorageConnectionExtension storageconnectionextension, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -187,16 +191,18 @@ public class VMGraphicsConsoles extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().add(url, graphicsconsole,
-                org.ovirt.engine.sdk.entities.GraphicsConsole.class,
-                VMGraphicsConsole.class, headers);
+        return getProxy().add(url, storageconnectionextension,
+                org.ovirt.engine.sdk.entities.StorageConnectionExtension.class,
+                HostStorageConnectionExtension.class, headers);
     }
     /**
-     * Adds GraphicsConsole object.
+     * Adds StorageConnectionExtension object.
      *
-     * @param graphicsconsole {@link org.ovirt.engine.sdk.entities.GraphicsConsole}
+     * @param storageconnectionextension {@link org.ovirt.engine.sdk.entities.StorageConnectionExtension}
      *    <pre>
-     *    graphics_console.protocol
+     *    storageconnectionextension.target
+     *    storageconnectionextension.username
+     *    storageconnectionextension.password
      *    </pre>
      *
      * @param correlationId
@@ -208,7 +214,7 @@ public class VMGraphicsConsoles extends
      *    [201-created]
      *    </pre>
      * @return
-     *     {@link VMGraphicsConsole }
+     *     {@link HostStorageConnectionExtension }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -217,7 +223,7 @@ public class VMGraphicsConsoles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VMGraphicsConsole add(org.ovirt.engine.sdk.entities.GraphicsConsole graphicsconsole, String correlationId, String expect) throws
+    public HostStorageConnectionExtension add(org.ovirt.engine.sdk.entities.StorageConnectionExtension storageconnectionextension, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -233,56 +239,19 @@ public class VMGraphicsConsoles extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().add(url, graphicsconsole,
-                org.ovirt.engine.sdk.entities.GraphicsConsole.class,
-                VMGraphicsConsole.class, headers);
+        return getProxy().add(url, storageconnectionextension,
+                org.ovirt.engine.sdk.entities.StorageConnectionExtension.class,
+                HostStorageConnectionExtension.class, headers);
     }
     /**
-     * Lists VMGraphicsConsole objects.
+     * Lists HostStorageConnectionExtension objects.
      *
-     * @param current
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return List of {@link VMGraphicsConsole }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<VMGraphicsConsole> list(Boolean current) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (current != null) {
-            urlBuilder.add("current", current, UrlParameterType.MATRIX);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.GraphicsConsoles.class,
-                VMGraphicsConsole.class, headers);
-    }
-    /**
-     * Lists VMGraphicsConsole objects.
-     *
-     * @param current
-     *    <pre>
-     *    [true|false]
-     *    </pre>
      * @param max
      *    <pre>
      *    [max results]
      *    </pre>
      *
-     * @return List of {@link VMGraphicsConsole }
+     * @return List of {@link HostStorageConnectionExtension }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -291,25 +260,21 @@ public class VMGraphicsConsoles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<VMGraphicsConsole> list(Boolean current, Integer max) throws ClientProtocolException,
+    public List<HostStorageConnectionExtension> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (current != null) {
-            urlBuilder.add("current", current, UrlParameterType.MATRIX);
-        }
-
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
         }
 
         String url = urlBuilder.build();
 
-        return list(url, org.ovirt.engine.sdk.entities.GraphicsConsoles.class,
-                VMGraphicsConsole.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.StorageConnectionExtensions.class,
+                HostStorageConnectionExtension.class, headers);
     }
 
 }
