@@ -30,6 +30,7 @@ import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.ClientConnectionManager;
@@ -45,7 +46,7 @@ public class ConnectionsPool {
 
     private static int MAX_RETRY_REQUEST = 5;
 
-    private DefaultHttpClient client = null;
+    private HttpClient client = null;
     private CookieStore cookieStore;
     private IdleConnectionMonitorThread idleConnectionsWatchdog;
     private URL url = null;
@@ -66,10 +67,10 @@ public class ConnectionsPool {
      */
     public ConnectionsPool(DefaultHttpClient client, URL url, Integer sessionTimeout, long checkTtL, long closeTtl) {
         this.client = client;
-        this.cookieStore = this.client.getCookieStore();
+        this.cookieStore = client.getCookieStore();
         this.url = url;
         this.sessionTimeout = sessionTimeout;
-        injectHttpRequestRetryHandler(this.client);
+        injectHttpRequestRetryHandler(client);
         idleConnectionsWatchdog =
                 new IdleConnectionMonitorThread(
                         this.client.getConnectionManager(),
