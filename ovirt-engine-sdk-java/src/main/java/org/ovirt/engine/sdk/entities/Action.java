@@ -90,6 +90,8 @@ import javax.xml.bind.annotation.XmlType;
     "importAsTemplate",
     "maintenanceEnabled",
     "storageDomains",
+    "useSysprep",
+    "useCloudInit",
     "status",
     "fault",
     "iscsiTargets",
@@ -150,6 +152,10 @@ public class Action
     protected Boolean maintenanceEnabled;
     @XmlElement(name = "storage_domains")
     protected StorageDomains storageDomains;
+    @XmlElement(name = "use_sysprep")
+    protected Boolean useSysprep;
+    @XmlElement(name = "use_cloud_init")
+    protected Boolean useCloudInit;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -1165,6 +1171,62 @@ public class Action
 
     public boolean isSetStorageDomains() {
         return (this.storageDomains!= null);
+    }
+
+    /**
+     * Gets the value of the useSysprep property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUseSysprep() {
+        return useSysprep;
+    }
+
+    /**
+     * Sets the value of the useSysprep property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUseSysprep(Boolean value) {
+        this.useSysprep = value;
+    }
+
+    public boolean isSetUseSysprep() {
+        return (this.useSysprep!= null);
+    }
+
+    /**
+     * Gets the value of the useCloudInit property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUseCloudInit() {
+        return useCloudInit;
+    }
+
+    /**
+     * Sets the value of the useCloudInit property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUseCloudInit(Boolean value) {
+        this.useCloudInit = value;
+    }
+
+    public boolean isSetUseCloudInit() {
+        return (this.useCloudInit!= null);
     }
 
     /**
