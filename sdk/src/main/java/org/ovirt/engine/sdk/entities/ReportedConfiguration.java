@@ -36,9 +36,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="in_sync" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="expected_value" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="actual_value" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="in_sync" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -50,17 +51,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReportedConfiguration", propOrder = {
     "name",
-    "value",
+    "expectedValue",
+    "actualValue",
     "inSync"
 })
 public class ReportedConfiguration {
 
-    @XmlElement(required = true)
     protected String name;
-    @XmlElement(required = true)
-    protected String value;
+    @XmlElement(name = "expected_value")
+    protected String expectedValue;
+    @XmlElement(name = "actual_value")
+    protected String actualValue;
     @XmlElement(name = "in_sync")
-    protected boolean inSync;
+    protected Boolean inSync;
 
     /**
      * Gets the value of the name property.
@@ -91,51 +94,87 @@ public class ReportedConfiguration {
     }
 
     /**
-     * Gets the value of the value property.
+     * Gets the value of the expectedValue property.
      *
      * @return
      *     possible object is
      *     {@link String }
      *
      */
-    public String getValue() {
-        return value;
+    public String getExpectedValue() {
+        return expectedValue;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets the value of the expectedValue property.
      *
      * @param value
      *     allowed object is
      *     {@link String }
      *
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setExpectedValue(String value) {
+        this.expectedValue = value;
     }
 
-    public boolean isSetValue() {
-        return (this.value!= null);
+    public boolean isSetExpectedValue() {
+        return (this.expectedValue!= null);
+    }
+
+    /**
+     * Gets the value of the actualValue property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getActualValue() {
+        return actualValue;
+    }
+
+    /**
+     * Sets the value of the actualValue property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setActualValue(String value) {
+        this.actualValue = value;
+    }
+
+    public boolean isSetActualValue() {
+        return (this.actualValue!= null);
     }
 
     /**
      * Gets the value of the inSync property.
      *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
      */
-    public boolean isInSync() {
+    public Boolean getInSync() {
         return inSync;
     }
 
     /**
      * Sets the value of the inSync property.
      *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
      */
-    public void setInSync(boolean value) {
+    public void setInSync(Boolean value) {
         this.inSync = value;
     }
 
     public boolean isSetInSync() {
-        return true;
+        return (this.inSync!= null);
     }
 
 }

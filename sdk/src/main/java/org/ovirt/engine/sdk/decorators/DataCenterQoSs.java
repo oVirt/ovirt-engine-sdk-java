@@ -140,6 +140,9 @@ public class DataCenterQoSs extends
      *    [qos.outbound_average]
      *    [qos.outbound_peak]
      *    [qos.outbound_burst]
+     *    [qos.outbound_average_linkshare]
+     *    [qos.outbound_average_upperlimit]
+     *    [qos.outbound_average_realtime]
      *    </pre>
      *
      *
@@ -188,6 +191,9 @@ public class DataCenterQoSs extends
      *    [qos.outbound_average]
      *    [qos.outbound_peak]
      *    [qos.outbound_burst]
+     *    [qos.outbound_average_linkshare]
+     *    [qos.outbound_average_upperlimit]
+     *    [qos.outbound_average_realtime]
      *    </pre>
      *
      * @param expect
@@ -242,6 +248,9 @@ public class DataCenterQoSs extends
      *    [qos.outbound_average]
      *    [qos.outbound_peak]
      *    [qos.outbound_burst]
+     *    [qos.outbound_average_linkshare]
+     *    [qos.outbound_average_upperlimit]
+     *    [qos.outbound_average_realtime]
      *    </pre>
      *
      * @param expect

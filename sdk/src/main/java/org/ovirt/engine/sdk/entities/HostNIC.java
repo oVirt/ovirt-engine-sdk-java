@@ -54,6 +54,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="override_configuration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}labels" minOccurs="0"/>
  *         &lt;element ref="{}properties" minOccurs="0"/>
+ *         &lt;element ref="{}qos" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -81,7 +82,8 @@ import javax.xml.bind.annotation.XmlType;
     "customConfiguration",
     "overrideConfiguration",
     "labels",
-    "properties"
+    "properties",
+    "qos"
 })
 public class HostNIC
     extends BaseResource
@@ -110,6 +112,7 @@ public class HostNIC
     protected Boolean overrideConfiguration;
     protected Labels labels;
     protected Properties properties;
+    protected QoS qos;
 
     /**
      * Gets the value of the host property.
@@ -613,6 +616,34 @@ public class HostNIC
 
     public boolean isSetProperties() {
         return (this.properties!= null);
+    }
+
+    /**
+     * Gets the value of the qos property.
+     *
+     * @return
+     *     possible object is
+     *     {@link QoS }
+     *
+     */
+    public QoS getQos() {
+        return qos;
+    }
+
+    /**
+     * Sets the value of the qos property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link QoS }
+     *
+     */
+    public void setQos(QoS value) {
+        this.qos = value;
+    }
+
+    public boolean isSetQos() {
+        return (this.qos!= null);
     }
 
 }

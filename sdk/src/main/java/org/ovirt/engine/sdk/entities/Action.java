@@ -102,6 +102,7 @@ import javax.xml.bind.annotation.XmlType;
     "logicalUnits",
     "useSysprep",
     "useCloudInit",
+    "certificates",
     "status",
     "fault",
     "iscsiTargets",
@@ -186,6 +187,7 @@ public class Action
     protected Boolean useSysprep;
     @XmlElement(name = "use_cloud_init")
     protected Boolean useCloudInit;
+    protected Certificates certificates;
     protected Status status;
     protected Fault fault;
     @XmlElement(name = "iscsi_target")
@@ -1565,6 +1567,34 @@ public class Action
 
     public boolean isSetUseCloudInit() {
         return (this.useCloudInit!= null);
+    }
+
+    /**
+     * Gets the value of the certificates property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Certificates }
+     *
+     */
+    public Certificates getCertificates() {
+        return certificates;
+    }
+
+    /**
+     * Sets the value of the certificates property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Certificates }
+     *
+     */
+    public void setCertificates(Certificates value) {
+        this.certificates = value;
+    }
+
+    public boolean isSetCertificates() {
+        return (this.certificates!= null);
     }
 
     /**

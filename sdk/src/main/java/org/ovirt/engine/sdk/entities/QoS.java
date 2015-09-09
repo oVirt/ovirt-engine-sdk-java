@@ -51,6 +51,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="outbound_average" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="outbound_peak" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="outbound_burst" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="outbound_average_linkshare" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="outbound_average_upperlimit" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="outbound_average_realtime" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/extension>
@@ -75,7 +78,10 @@ import javax.xml.bind.annotation.XmlType;
     "inboundBurst",
     "outboundAverage",
     "outboundPeak",
-    "outboundBurst"
+    "outboundBurst",
+    "outboundAverageLinkshare",
+    "outboundAverageUpperlimit",
+    "outboundAverageRealtime"
 })
 public class QoS
     extends BaseResource
@@ -109,6 +115,12 @@ public class QoS
     protected Integer outboundPeak;
     @XmlElement(name = "outbound_burst")
     protected Integer outboundBurst;
+    @XmlElement(name = "outbound_average_linkshare")
+    protected Integer outboundAverageLinkshare;
+    @XmlElement(name = "outbound_average_upperlimit")
+    protected Integer outboundAverageUpperlimit;
+    @XmlElement(name = "outbound_average_realtime")
+    protected Integer outboundAverageRealtime;
     @XmlAttribute(name = "type")
     protected String type;
 
@@ -502,6 +514,90 @@ public class QoS
 
     public boolean isSetOutboundBurst() {
         return (this.outboundBurst!= null);
+    }
+
+    /**
+     * Gets the value of the outboundAverageLinkshare property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getOutboundAverageLinkshare() {
+        return outboundAverageLinkshare;
+    }
+
+    /**
+     * Sets the value of the outboundAverageLinkshare property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setOutboundAverageLinkshare(Integer value) {
+        this.outboundAverageLinkshare = value;
+    }
+
+    public boolean isSetOutboundAverageLinkshare() {
+        return (this.outboundAverageLinkshare!= null);
+    }
+
+    /**
+     * Gets the value of the outboundAverageUpperlimit property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getOutboundAverageUpperlimit() {
+        return outboundAverageUpperlimit;
+    }
+
+    /**
+     * Sets the value of the outboundAverageUpperlimit property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setOutboundAverageUpperlimit(Integer value) {
+        this.outboundAverageUpperlimit = value;
+    }
+
+    public boolean isSetOutboundAverageUpperlimit() {
+        return (this.outboundAverageUpperlimit!= null);
+    }
+
+    /**
+     * Gets the value of the outboundAverageRealtime property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *
+     */
+    public Integer getOutboundAverageRealtime() {
+        return outboundAverageRealtime;
+    }
+
+    /**
+     * Sets the value of the outboundAverageRealtime property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *
+     */
+    public void setOutboundAverageRealtime(Integer value) {
+        this.outboundAverageRealtime = value;
+    }
+
+    public boolean isSetOutboundAverageRealtime() {
+        return (this.outboundAverageRealtime!= null);
     }
 
     /**

@@ -179,6 +179,9 @@ public class DataCenterQoS extends
      *    [qos.outbound_average]
      *    [qos.outbound_peak]
      *    [qos.outbound_burst]
+     *    [qos.outbound_average_linkshare]
+     *    [qos.outbound_average_upperlimit]
+     *    [qos.outbound_average_realtime]
      *    </pre>
      *
      *
@@ -229,6 +232,9 @@ public class DataCenterQoS extends
      *    [qos.outbound_average]
      *    [qos.outbound_peak]
      *    [qos.outbound_burst]
+     *    [qos.outbound_average_linkshare]
+     *    [qos.outbound_average_upperlimit]
+     *    [qos.outbound_average_realtime]
      *    </pre>
      *
      * @param correlationId
@@ -285,6 +291,9 @@ public class DataCenterQoS extends
      *    [qos.outbound_average]
      *    [qos.outbound_peak]
      *    [qos.outbound_burst]
+     *    [qos.outbound_average_linkshare]
+     *    [qos.outbound_average_upperlimit]
+     *    [qos.outbound_average_realtime]
      *    </pre>
      *
      * @param correlationId
@@ -349,6 +358,9 @@ public class DataCenterQoS extends
      *    [qos.outbound_average]
      *    [qos.outbound_peak]
      *    [qos.outbound_burst]
+     *    [qos.outbound_average_linkshare]
+     *    [qos.outbound_average_upperlimit]
+     *    [qos.outbound_average_realtime]
      *    </pre>
      *
      * @param correlationId

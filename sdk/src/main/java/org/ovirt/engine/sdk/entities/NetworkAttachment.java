@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}properties" minOccurs="0"/>
  *         &lt;element name="reported_configurations" type="{}ReportedConfigurations" minOccurs="0"/>
  *         &lt;element ref="{}host" minOccurs="0"/>
+ *         &lt;element ref="{}qos" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -57,7 +58,8 @@ import javax.xml.bind.annotation.XmlType;
     "ipAddressAssignments",
     "properties",
     "reportedConfigurations",
-    "host"
+    "host",
+    "qos"
 })
 public class NetworkAttachment
     extends BaseResource
@@ -72,6 +74,7 @@ public class NetworkAttachment
     @XmlElement(name = "reported_configurations")
     protected ReportedConfigurations reportedConfigurations;
     protected Host host;
+    protected QoS qos;
 
     /**
      * Gets the value of the network property.
@@ -239,6 +242,34 @@ public class NetworkAttachment
 
     public boolean isSetHost() {
         return (this.host!= null);
+    }
+
+    /**
+     * Gets the value of the qos property.
+     *
+     * @return
+     *     possible object is
+     *     {@link QoS }
+     *
+     */
+    public QoS getQos() {
+        return qos;
+    }
+
+    /**
+     * Sets the value of the qos property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link QoS }
+     *
+     */
+    public void setQos(QoS value) {
+        this.qos = value;
+    }
+
+    public boolean isSetQos() {
+        return (this.qos!= null);
     }
 
 }
