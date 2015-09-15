@@ -75,6 +75,7 @@ import javax.xml.bind.annotation.XmlType;
     StorageConnectionExtension.class,
     ExternalHost.class,
     DataCenter.class,
+    SSHPublicKey.class,
     Domain.class,
     ReportedDevice.class,
     Role.class,

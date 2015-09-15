@@ -120,6 +120,7 @@ import javax.xml.bind.annotation.XmlType;
     StorageConnections.class,
     HostDevices.class,
     LogicalUnits.class,
+    SSHPublicKeys.class,
     Domains.class,
     Weights.class,
     Steps.class,

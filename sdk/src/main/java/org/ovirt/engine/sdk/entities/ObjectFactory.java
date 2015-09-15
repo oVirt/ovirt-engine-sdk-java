@@ -82,6 +82,7 @@ public class ObjectFactory {
     private final static QName _NfsProfileDetail_QNAME = new QName("", "nfs_profile_detail");
     private final static QName _Labels_QNAME = new QName("", "labels");
     private final static QName _Tags_QNAME = new QName("", "tags");
+    private final static QName _SshPublicKey_QNAME = new QName("", "ssh_public_key");
     private final static QName _ConfigurationTypes_QNAME = new QName("", "configuration_types");
     private final static QName _PortMirroring_QNAME = new QName("", "port_mirroring");
     private final static QName _UsageMessage_QNAME = new QName("", "usage_message");
@@ -319,6 +320,7 @@ public class ObjectFactory {
     private final static QName _LogicalUnits_QNAME = new QName("", "logical_units");
     private final static QName _Package_QNAME = new QName("", "package");
     private final static QName _SnapshotStatuses_QNAME = new QName("", "snapshot_statuses");
+    private final static QName _SshPublicKeys_QNAME = new QName("", "ssh_public_keys");
     private final static QName _Cpu_QNAME = new QName("", "cpu");
     private final static QName _Domains_QNAME = new QName("", "domains");
     private final static QName _Weights_QNAME = new QName("", "weights");
@@ -712,6 +714,14 @@ public class ObjectFactory {
      */
     public Tags createTags() {
         return new Tags();
+    }
+
+    /**
+     * Create an instance of {@link SSHPublicKey }
+     *
+     */
+    public SSHPublicKey createSSHPublicKey() {
+        return new SSHPublicKey();
     }
 
     /**
@@ -2587,6 +2597,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SSHPublicKeys }
+     *
+     */
+    public SSHPublicKeys createSSHPublicKeys() {
+        return new SSHPublicKeys();
+    }
+
+    /**
      * Create an instance of {@link CPU }
      *
      */
@@ -3831,6 +3849,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "tags")
     public JAXBElement<Tags> createTags(Tags value) {
         return new JAXBElement<Tags>(_Tags_QNAME, Tags.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SSHPublicKey }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "ssh_public_key")
+    public JAXBElement<SSHPublicKey> createSshPublicKey(SSHPublicKey value) {
+        return new JAXBElement<SSHPublicKey>(_SshPublicKey_QNAME, SSHPublicKey.class, null, value);
     }
 
     /**
@@ -5964,6 +5991,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "snapshot_statuses")
     public JAXBElement<SnapshotStatuses> createSnapshotStatuses(SnapshotStatuses value) {
         return new JAXBElement<SnapshotStatuses>(_SnapshotStatuses_QNAME, SnapshotStatuses.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SSHPublicKeys }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "ssh_public_keys")
+    public JAXBElement<SSHPublicKeys> createSshPublicKeys(SSHPublicKeys value) {
+        return new JAXBElement<SSHPublicKeys>(_SshPublicKeys_QNAME, SSHPublicKeys.class, null, value);
     }
 
     /**

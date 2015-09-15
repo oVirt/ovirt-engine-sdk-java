@@ -35,26 +35,22 @@ import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.UrlParameterType;
 
 /**
- * <p>User providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.User }.
+ * <p>UserSSHPublicKey providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.SSHPublicKey }.
  */
 @SuppressWarnings("unused")
-public class User extends
-        org.ovirt.engine.sdk.entities.User {
+public class UserSSHPublicKey extends
+        org.ovirt.engine.sdk.entities.SSHPublicKey {
 
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile UserPermissions userPermissions;
-    private volatile UserRoles userRoles;
-    private volatile UserSSHPublicKeys userSSHPublicKeys;
-    private volatile UserTags userTags;
 
 
     /**
      * @param proxy HttpProxyBroker
      */
-    public User(HttpProxyBroker proxy) {
+    public UserSSHPublicKey(HttpProxyBroker proxy) {
         this.proxy = proxy;
     }
 
@@ -65,70 +61,6 @@ public class User extends
         return proxy;
     }
 
-    /**
-     * Gets the value of the UserPermissions property.
-     *
-     * @return
-     *     {@link UserPermissions }
-     */
-    public UserPermissions getPermissions() {
-        if (this.userPermissions == null) {
-            synchronized (this.LOCK) {
-                if (this.userPermissions == null) {
-                    this.userPermissions = new UserPermissions(proxy, this);
-                }
-            }
-        }
-        return userPermissions;
-    }
-    /**
-     * Gets the value of the UserRoles property.
-     *
-     * @return
-     *     {@link UserRoles }
-     */
-    public UserRoles getRoles() {
-        if (this.userRoles == null) {
-            synchronized (this.LOCK) {
-                if (this.userRoles == null) {
-                    this.userRoles = new UserRoles(proxy, this);
-                }
-            }
-        }
-        return userRoles;
-    }
-    /**
-     * Gets the value of the UserSSHPublicKeys property.
-     *
-     * @return
-     *     {@link UserSSHPublicKeys }
-     */
-    public UserSSHPublicKeys getSSHPublicKeys() {
-        if (this.userSSHPublicKeys == null) {
-            synchronized (this.LOCK) {
-                if (this.userSSHPublicKeys == null) {
-                    this.userSSHPublicKeys = new UserSSHPublicKeys(proxy, this);
-                }
-            }
-        }
-        return userSSHPublicKeys;
-    }
-    /**
-     * Gets the value of the UserTags property.
-     *
-     * @return
-     *     {@link UserTags }
-     */
-    public UserTags getTags() {
-        if (this.userTags == null) {
-            synchronized (this.LOCK) {
-                if (this.userTags == null) {
-                    this.userTags = new UserTags(proxy, this);
-                }
-            }
-        }
-        return userTags;
-    }
 
 
     /**
@@ -226,6 +158,77 @@ public class User extends
         url = urlBuilder.build();
 
         return getProxy().delete(url, Response.class, headers);
+    }
+    /**
+     * Updates UserSSHPublicKey object.
+     *
+     * @param sshpublickey {@link org.ovirt.engine.sdk.entities.SSHPublicKey}
+     *
+     * @return
+     *     {@link UserSSHPublicKey }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public UserSSHPublicKey update() throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.SSHPublicKey.class,
+                UserSSHPublicKey.class,
+                headers);
+    }
+    /**
+     * Updates UserSSHPublicKey object.
+     *
+     * @param sshpublickey {@link org.ovirt.engine.sdk.entities.SSHPublicKey}
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @return
+     *     {@link UserSSHPublicKey }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public UserSSHPublicKey update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.SSHPublicKey.class,
+                UserSSHPublicKey.class,
+                headers);
     }
 
 }
