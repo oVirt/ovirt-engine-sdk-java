@@ -127,6 +127,7 @@ public class VmPools extends
      *    [vmpool.display.proxy]
      *    [vmpool.description]
      *    [vmpool.soundcard_enabled]
+     *    [vmpool.type]
      *    </pre>
      *
      *
@@ -168,6 +169,7 @@ public class VmPools extends
      *    [vmpool.display.proxy]
      *    [vmpool.description]
      *    [vmpool.soundcard_enabled]
+     *    [vmpool.type]
      *    </pre>
      *
      * @param expect
@@ -215,6 +217,7 @@ public class VmPools extends
      *    [vmpool.display.proxy]
      *    [vmpool.description]
      *    [vmpool.soundcard_enabled]
+     *    [vmpool.type]
      *    </pre>
      *
      * @param expect

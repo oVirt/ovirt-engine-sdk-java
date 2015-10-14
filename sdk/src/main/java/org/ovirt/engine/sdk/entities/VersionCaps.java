@@ -85,6 +85,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}authentication_methods" minOccurs="0"/>
  *         &lt;element ref="{}kdump_states" minOccurs="0"/>
  *         &lt;element ref="{}spm_states" minOccurs="0"/>
+ *         &lt;element ref="{}vm_pool_types" minOccurs="0"/>
  *         &lt;element ref="{}step_types" minOccurs="0"/>
  *         &lt;element ref="{}payload_encodings" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
@@ -168,6 +169,7 @@ import javax.xml.bind.annotation.XmlType;
     "authenticationMethods",
     "kdumpStates",
     "spmStates",
+    "vmPoolTypes",
     "stepTypes",
     "payloadEncodings",
     "glusterVolumeTypes",
@@ -290,6 +292,8 @@ public class VersionCaps
     protected KdumpStates kdumpStates;
     @XmlElement(name = "spm_states")
     protected SpmStates spmStates;
+    @XmlElement(name = "vm_pool_types")
+    protected VmPoolTypes vmPoolTypes;
     @XmlElement(name = "step_types")
     protected StepTypes stepTypes;
     @XmlElement(name = "payload_encodings")
@@ -1708,6 +1712,34 @@ public class VersionCaps
 
     public boolean isSetSpmStates() {
         return (this.spmStates!= null);
+    }
+
+    /**
+     * Gets the value of the vmPoolTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link VmPoolTypes }
+     *
+     */
+    public VmPoolTypes getVmPoolTypes() {
+        return vmPoolTypes;
+    }
+
+    /**
+     * Sets the value of the vmPoolTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VmPoolTypes }
+     *
+     */
+    public void setVmPoolTypes(VmPoolTypes value) {
+        this.vmPoolTypes = value;
+    }
+
+    public boolean isSetVmPoolTypes() {
+        return (this.vmPoolTypes!= null);
     }
 
     /**

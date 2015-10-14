@@ -239,6 +239,7 @@ public class ObjectFactory {
     private final static QName _StorageDomains_QNAME = new QName("", "storage_domains");
     private final static QName _OpenstackNetworks_QNAME = new QName("", "openstack_networks");
     private final static QName _FencingPolicy_QNAME = new QName("", "fencing_policy");
+    private final static QName _VmPoolTypes_QNAME = new QName("", "vm_pool_types");
     private final static QName _QosTypes_QNAME = new QName("", "qos_types");
     private final static QName _KatelloErrata_QNAME = new QName("", "katello_errata");
     private final static QName _GlusterVolumeStates_QNAME = new QName("", "gluster_volume_states");
@@ -1954,6 +1955,14 @@ public class ObjectFactory {
      */
     public FencingPolicy createFencingPolicy() {
         return new FencingPolicy();
+    }
+
+    /**
+     * Create an instance of {@link VmPoolTypes }
+     *
+     */
+    public VmPoolTypes createVmPoolTypes() {
+        return new VmPoolTypes();
     }
 
     /**
@@ -5262,6 +5271,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "fencing_policy")
     public JAXBElement<FencingPolicy> createFencingPolicy(FencingPolicy value) {
         return new JAXBElement<FencingPolicy>(_FencingPolicy_QNAME, FencingPolicy.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VmPoolTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vm_pool_types")
+    public JAXBElement<VmPoolTypes> createVmPoolTypes(VmPoolTypes value) {
+        return new JAXBElement<VmPoolTypes>(_VmPoolTypes_QNAME, VmPoolTypes.class, null, value);
     }
 
     /**
