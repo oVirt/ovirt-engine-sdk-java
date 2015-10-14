@@ -45,6 +45,9 @@ This package contains the API documentation for %{name}.
 %license LICENSE.txt
 
 %changelog
+* Wed Oct 14 2015 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.0.3-1
+- Add support for VM pool type #1244841.
+
 * Wed Sep 16 2015 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.0.2-1
 - Added support for user SSH public keys.
 
