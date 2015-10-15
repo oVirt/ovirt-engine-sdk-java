@@ -20,8 +20,6 @@
 
 package org.ovirt.engine.sdk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -38,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}vcpu_pin" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}vcpu_pins" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -49,48 +47,39 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CpuTune", propOrder = {
-    "vCpuPin"
+    "vcpuPins"
 })
 public class CpuTune {
 
-    @XmlElement(name = "vcpu_pin")
-    protected List<VCpuPin> vCpuPin;
+    @XmlElement(name = "vcpu_pins")
+    protected VcpuPins vcpuPins;
 
     /**
-     * Gets the value of the vCpuPin property.
+     * Gets the value of the vcpuPins property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the vCpuPin property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getVCpuPin().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link VCpuPin }
-     *
+     * @return
+     *     possible object is
+     *     {@link VcpuPins }
      *
      */
-    public List<VCpuPin> getVCpuPin() {
-        if (vCpuPin == null) {
-            vCpuPin = new ArrayList<VCpuPin>();
-        }
-        return this.vCpuPin;
+    public VcpuPins getVcpuPins() {
+        return vcpuPins;
     }
 
-    public boolean isSetVCpuPin() {
-        return ((this.vCpuPin!= null)&&(!this.vCpuPin.isEmpty()));
+    /**
+     * Sets the value of the vcpuPins property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VcpuPins }
+     *
+     */
+    public void setVcpuPins(VcpuPins value) {
+        this.vcpuPins = value;
     }
 
-    public void unsetVCpuPin() {
-        this.vCpuPin = null;
+    public boolean isSetVcpuPins() {
+        return (this.vcpuPins!= null);
     }
 
 }

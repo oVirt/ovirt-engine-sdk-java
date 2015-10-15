@@ -109,7 +109,7 @@ public class Initialization {
     @XmlElement(name = "dns_search")
     protected String dnsSearch;
     @XmlElement(name = "nic_configurations")
-    protected GuestNicsConfiguration nicConfigurations;
+    protected NicConfigurations nicConfigurations;
     @XmlElement(name = "windows_license_key")
     protected String windowsLicenseKey;
     @XmlElement(name = "root_password")
@@ -416,10 +416,10 @@ public class Initialization {
      *
      * @return
      *     possible object is
-     *     {@link GuestNicsConfiguration }
+     *     {@link NicConfigurations }
      *
      */
-    public GuestNicsConfiguration getNicConfigurations() {
+    public NicConfigurations getNicConfigurations() {
         return nicConfigurations;
     }
 
@@ -428,10 +428,10 @@ public class Initialization {
      *
      * @param value
      *     allowed object is
-     *     {@link GuestNicsConfiguration }
+     *     {@link NicConfigurations }
      *
      */
-    public void setNicConfigurations(GuestNicsConfiguration value) {
+    public void setNicConfigurations(NicConfigurations value) {
         this.nicConfigurations = value;
     }
 

@@ -61,9 +61,9 @@ public class ReportedDevice
 
     @XmlElement(required = true)
     protected String type;
-    protected MAC mac;
-    protected IPs ips;
-    protected VM vm;
+    protected Mac mac;
+    protected Ips ips;
+    protected Vm vm;
 
     /**
      * Gets the value of the type property.
@@ -98,10 +98,10 @@ public class ReportedDevice
      *
      * @return
      *     possible object is
-     *     {@link MAC }
+     *     {@link Mac }
      *
      */
-    public MAC getMac() {
+    public Mac getMac() {
         return mac;
     }
 
@@ -110,10 +110,10 @@ public class ReportedDevice
      *
      * @param value
      *     allowed object is
-     *     {@link MAC }
+     *     {@link Mac }
      *
      */
-    public void setMac(MAC value) {
+    public void setMac(Mac value) {
         this.mac = value;
     }
 
@@ -126,10 +126,10 @@ public class ReportedDevice
      *
      * @return
      *     possible object is
-     *     {@link IPs }
+     *     {@link Ips }
      *
      */
-    public IPs getIps() {
+    public Ips getIps() {
         return ips;
     }
 
@@ -138,10 +138,10 @@ public class ReportedDevice
      *
      * @param value
      *     allowed object is
-     *     {@link IPs }
+     *     {@link Ips }
      *
      */
-    public void setIps(IPs value) {
+    public void setIps(Ips value) {
         this.ips = value;
     }
 
@@ -154,10 +154,10 @@ public class ReportedDevice
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -166,10 +166,10 @@ public class ReportedDevice
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

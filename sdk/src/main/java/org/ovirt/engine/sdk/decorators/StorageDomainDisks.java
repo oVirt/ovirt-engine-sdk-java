@@ -131,39 +131,39 @@ public class StorageDomainDisks extends
      *      allocating space from the
      *      storage domain
      *
-     *      provisioned_size
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      provisioned_size
      *      [disk.alias]
+     *      [disk.bootable]
+     *      [disk.description]
+     *      [disk.disk_profile.id]
      *      [disk.name]
+     *      [disk.openstack_volume_type.name]
+     *      [disk.propagate_errors]
+     *      [disk.quota.id]
+     *      [disk.shareable]
      *      [disk.size]
      *      [disk.sparse]
-     *      [disk.description]
-     *      [disk.bootable]
-     *      [disk.shareable]
-     *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
-     *      [disk.quota.id]
-     *      [disk.disk_profile.id]
-     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
      *      add a new lun disk to the storage domain
      *
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      disk.lun_storage.logical_units.logical_unit
      *      disk.lun_storage.type
-     *      disk.lun_storage.logical_unit
      *      [disk.alias]
-     *      [disk.sparse]
-     *      [disk.description]
      *      [disk.bootable]
-     *      [disk.shareable]
+     *      [disk.description]
      *      [disk.propagate_errors]
-     *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
+     *      [disk.shareable]
+     *      [disk.sparse]
+     *      [disk.wipe_after_delete]
      *    </pre>
      *
      *
@@ -203,214 +203,41 @@ public class StorageDomainDisks extends
      *      allocating space from the
      *      storage domain
      *
-     *      provisioned_size
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      provisioned_size
      *      [disk.alias]
+     *      [disk.bootable]
+     *      [disk.description]
+     *      [disk.disk_profile.id]
      *      [disk.name]
+     *      [disk.openstack_volume_type.name]
+     *      [disk.propagate_errors]
+     *      [disk.quota.id]
+     *      [disk.shareable]
      *      [disk.size]
      *      [disk.sparse]
-     *      [disk.description]
-     *      [disk.bootable]
-     *      [disk.shareable]
-     *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
-     *      [disk.quota.id]
-     *      [disk.disk_profile.id]
-     *      [disk.openstack_volume_type.name]
      *
      *    Overload 2:
      *
      *      add a new lun disk to the storage domain
      *
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      disk.lun_storage.logical_units.logical_unit
      *      disk.lun_storage.type
-     *      disk.lun_storage.logical_unit
      *      [disk.alias]
-     *      [disk.sparse]
-     *      [disk.description]
      *      [disk.bootable]
-     *      [disk.shareable]
+     *      [disk.description]
      *      [disk.propagate_errors]
-     *      [disk.wipe_after_delete]
      *      [disk.quota.id]
      *      [disk.sgio]
-     *    </pre>
-     *
-     * @param unregistered
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @return
-     *     {@link StorageDomainDisk }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public StorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, Boolean unregistered) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (unregistered != null) {
-            urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
-        }
-
-        url = urlBuilder.build();
-
-        return getProxy().add(url, disk,
-                org.ovirt.engine.sdk.entities.Disk.class,
-                StorageDomainDisk.class, headers);
-    }
-    /**
-     * Adds Disk object.
-     *
-     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      add a new disk to the storage
-     *      domain with the specified size
-     *      allocating space from the
-     *      storage domain
-     *
-     *      provisioned_size
-     *      disk.interface
-     *      disk.format
-     *      [disk.alias]
-     *      [disk.name]
-     *      [disk.size]
-     *      [disk.sparse]
-     *      [disk.description]
-     *      [disk.bootable]
      *      [disk.shareable]
-     *      [disk.propagate_errors]
-     *      [disk.wipe_after_delete]
-     *      [disk.quota.id]
-     *      [disk.disk_profile.id]
-     *      [disk.openstack_volume_type.name]
-     *
-     *    Overload 2:
-     *
-     *      add a new lun disk to the storage domain
-     *
-     *      disk.interface
-     *      disk.format
-     *      disk.lun_storage.type
-     *      disk.lun_storage.logical_unit
-     *      [disk.alias]
      *      [disk.sparse]
-     *      [disk.description]
-     *      [disk.bootable]
-     *      [disk.shareable]
-     *      [disk.propagate_errors]
      *      [disk.wipe_after_delete]
-     *      [disk.quota.id]
-     *      [disk.sgio]
      *    </pre>
      *
-     * @param unregistered
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
-     * @return
-     *     {@link StorageDomainDisk }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public StorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, Boolean unregistered, String expect) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (unregistered != null) {
-            urlBuilder.add("unregistered", unregistered, UrlParameterType.MATRIX);
-        }
-
-        url = urlBuilder.build();
-
-        return getProxy().add(url, disk,
-                org.ovirt.engine.sdk.entities.Disk.class,
-                StorageDomainDisk.class, headers);
-    }
-    /**
-     * Adds Disk object.
-     *
-     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
-     *    <pre>
-     *    Overload 1:
-     *
-     *      add a new disk to the storage
-     *      domain with the specified size
-     *      allocating space from the
-     *      storage domain
-     *
-     *      provisioned_size
-     *      disk.interface
-     *      disk.format
-     *      [disk.alias]
-     *      [disk.name]
-     *      [disk.size]
-     *      [disk.sparse]
-     *      [disk.description]
-     *      [disk.bootable]
-     *      [disk.shareable]
-     *      [disk.propagate_errors]
-     *      [disk.wipe_after_delete]
-     *      [disk.quota.id]
-     *      [disk.disk_profile.id]
-     *      [disk.openstack_volume_type.name]
-     *
-     *    Overload 2:
-     *
-     *      add a new lun disk to the storage domain
-     *
-     *      disk.interface
-     *      disk.format
-     *      disk.lun_storage.type
-     *      disk.lun_storage.logical_unit
-     *      [disk.alias]
-     *      [disk.sparse]
-     *      [disk.description]
-     *      [disk.bootable]
-     *      [disk.shareable]
-     *      [disk.propagate_errors]
-     *      [disk.wipe_after_delete]
-     *      [disk.quota.id]
-     *      [disk.sgio]
-     *    </pre>
-     *
-     * @param unregistered
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -425,16 +252,187 @@ public class StorageDomainDisks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, Boolean unregistered, String expect, String correlationId) throws
+    public StorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, disk,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                StorageDomainDisk.class, headers);
+    }
+    /**
+     * Adds Disk object.
+     *
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a new disk to the storage
+     *      domain with the specified size
+     *      allocating space from the
+     *      storage domain
+     *
+     *      disk.format
+     *      disk.interface
+     *      provisioned_size
+     *      [disk.alias]
+     *      [disk.bootable]
+     *      [disk.description]
+     *      [disk.disk_profile.id]
+     *      [disk.name]
+     *      [disk.openstack_volume_type.name]
+     *      [disk.propagate_errors]
+     *      [disk.quota.id]
+     *      [disk.shareable]
+     *      [disk.size]
+     *      [disk.sparse]
+     *      [disk.wipe_after_delete]
+     *
+     *    Overload 2:
+     *
+     *      add a new lun disk to the storage domain
+     *
+     *      disk.format
+     *      disk.interface
+     *      disk.lun_storage.logical_units.logical_unit
+     *      disk.lun_storage.type
+     *      [disk.alias]
+     *      [disk.bootable]
+     *      [disk.description]
+     *      [disk.propagate_errors]
+     *      [disk.quota.id]
+     *      [disk.sgio]
+     *      [disk.shareable]
+     *      [disk.sparse]
+     *      [disk.wipe_after_delete]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @return
+     *     {@link StorageDomainDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         if (expect != null) {
             headersBuilder.add("Expect", expect);
         }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, disk,
+                org.ovirt.engine.sdk.entities.Disk.class,
+                StorageDomainDisk.class, headers);
+    }
+    /**
+     * Adds Disk object.
+     *
+     * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      add a new disk to the storage
+     *      domain with the specified size
+     *      allocating space from the
+     *      storage domain
+     *
+     *      disk.format
+     *      disk.interface
+     *      provisioned_size
+     *      [disk.alias]
+     *      [disk.bootable]
+     *      [disk.description]
+     *      [disk.disk_profile.id]
+     *      [disk.name]
+     *      [disk.openstack_volume_type.name]
+     *      [disk.propagate_errors]
+     *      [disk.quota.id]
+     *      [disk.shareable]
+     *      [disk.size]
+     *      [disk.sparse]
+     *      [disk.wipe_after_delete]
+     *
+     *    Overload 2:
+     *
+     *      add a new lun disk to the storage domain
+     *
+     *      disk.format
+     *      disk.interface
+     *      disk.lun_storage.logical_units.logical_unit
+     *      disk.lun_storage.type
+     *      [disk.alias]
+     *      [disk.bootable]
+     *      [disk.description]
+     *      [disk.propagate_errors]
+     *      [disk.quota.id]
+     *      [disk.sgio]
+     *      [disk.shareable]
+     *      [disk.sparse]
+     *      [disk.wipe_after_delete]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param unregistered
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @return
+     *     {@link StorageDomainDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageDomainDisk add(org.ovirt.engine.sdk.entities.Disk disk, String correlationId, String expect, Boolean unregistered) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -452,43 +450,6 @@ public class StorageDomainDisks extends
     /**
      * Lists StorageDomainDisk objects.
      *
-     * @param query
-     *    <pre>
-     *    [query]
-     *    </pre>
-     *
-     * @return List of {@link StorageDomainDisk }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<StorageDomainDisk> list(String query) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
-                StorageDomainDisk.class, headers);
-    }
-    /**
-     * Lists StorageDomainDisk objects.
-     *
-     * @param query
-     *    <pre>
-     *    [query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -503,17 +464,13 @@ public class StorageDomainDisks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<StorageDomainDisk> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+    public List<StorageDomainDisk> list(Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -526,10 +483,6 @@ public class StorageDomainDisks extends
     /**
      * Lists StorageDomainDisk objects.
      *
-     * @param query
-     *    <pre>
-     *    [query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -548,17 +501,13 @@ public class StorageDomainDisks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<StorageDomainDisk> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+    public List<StorageDomainDisk> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -575,10 +524,6 @@ public class StorageDomainDisks extends
     /**
      * Lists StorageDomainDisk objects.
      *
-     * @param query
-     *    <pre>
-     *    [query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -586,6 +531,59 @@ public class StorageDomainDisks extends
      * @param max
      *    <pre>
      *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [query]
+     *    </pre>
+     *
+     * @return List of {@link StorageDomainDisk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<StorageDomainDisk> list(Boolean caseSensitive, Integer max, String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
+                StorageDomainDisk.class, headers);
+    }
+    /**
+     * Lists StorageDomainDisk objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [query]
      *    </pre>
      * @param unregistered
      *    <pre>
@@ -601,23 +599,23 @@ public class StorageDomainDisks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<StorageDomainDisk> list(String query, Boolean caseSensitive, Integer max, Boolean unregistered) throws ClientProtocolException,
+    public List<StorageDomainDisk> list(Boolean caseSensitive, Integer max, String query, Boolean unregistered) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
 
         if (unregistered != null) {

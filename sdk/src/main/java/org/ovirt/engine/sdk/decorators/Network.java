@@ -272,9 +272,9 @@ public class Network extends
      *    [network.mtu]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      * @return
      *     {@link Network }
@@ -286,17 +286,18 @@ public class Network extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Network update(String correlationId) throws ClientProtocolException,
+    public Network update(Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -323,13 +324,13 @@ public class Network extends
      *    [network.mtu]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @return
      *     {@link Network }
@@ -341,7 +342,7 @@ public class Network extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Network update(String correlationId, Boolean async) throws ClientProtocolException,
+    public Network update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -382,13 +383,13 @@ public class Network extends
      *    [network.mtu]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @param expect
      *    <pre>
@@ -404,7 +405,7 @@ public class Network extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Network update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
+    public Network update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

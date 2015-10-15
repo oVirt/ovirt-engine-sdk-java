@@ -52,17 +52,17 @@ public class Application
     extends BaseResource
 {
 
-    protected VM vm;
+    protected Vm vm;
 
     /**
      * Gets the value of the vm property.
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -71,10 +71,10 @@ public class Application
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

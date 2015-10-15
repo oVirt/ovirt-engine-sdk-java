@@ -22,7 +22,6 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -35,7 +34,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="Console">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;sequence>
+ *         &lt;element name="enabled" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -44,10 +45,11 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Console")
+@XmlType(name = "Console", propOrder = {
+    "enabled"
+})
 public class Console {
 
-    @XmlAttribute(name = "enabled")
     protected Boolean enabled;
 
     /**
@@ -58,7 +60,7 @@ public class Console {
      *     {@link Boolean }
      *
      */
-    public boolean getEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
@@ -70,16 +72,12 @@ public class Console {
      *     {@link Boolean }
      *
      */
-    public void setEnabled(boolean value) {
+    public void setEnabled(Boolean value) {
         this.enabled = value;
     }
 
     public boolean isSetEnabled() {
         return (this.enabled!= null);
-    }
-
-    public void unsetEnabled() {
-        this.enabled = null;
     }
 
 }

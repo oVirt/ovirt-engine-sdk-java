@@ -20,6 +20,8 @@
 
 package org.ovirt.engine.sdk.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -42,7 +44,17 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="product_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="uuid" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="family" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="supported_rng_sources" type="{}RngSources" minOccurs="0"/>
+ *         &lt;element name="supported_rng_sources" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="supported_rng_source" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -72,7 +84,7 @@ public class HardwareInformation {
     protected String uuid;
     protected String family;
     @XmlElement(name = "supported_rng_sources")
-    protected RngSources supportedRngSources;
+    protected HardwareInformation.SupportedRngSourcesList supportedRngSources;
 
     /**
      * Gets the value of the manufacturer property.
@@ -247,10 +259,10 @@ public class HardwareInformation {
      *
      * @return
      *     possible object is
-     *     {@link RngSources }
+     *     {@link HardwareInformation.SupportedRngSourcesList }
      *
      */
-    public RngSources getSupportedRngSources() {
+    public HardwareInformation.SupportedRngSourcesList getSupportedRngSources() {
         return supportedRngSources;
     }
 
@@ -259,15 +271,83 @@ public class HardwareInformation {
      *
      * @param value
      *     allowed object is
-     *     {@link RngSources }
+     *     {@link HardwareInformation.SupportedRngSourcesList }
      *
      */
-    public void setSupportedRngSources(RngSources value) {
+    public void setSupportedRngSources(HardwareInformation.SupportedRngSourcesList value) {
         this.supportedRngSources = value;
     }
 
     public boolean isSetSupportedRngSources() {
         return (this.supportedRngSources!= null);
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="supported_rng_source" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "supportedRngSources"
+    })
+    public static class SupportedRngSourcesList {
+
+        @XmlElement(name = "supported_rng_source")
+        protected List<String> supportedRngSources;
+
+        /**
+         * Gets the value of the supportedRngSources property.
+         *
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the supportedRngSources property.
+         *
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getSupportedRngSources().add(newItem);
+         * </pre>
+         *
+         *
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link String }
+         *
+         *
+         */
+        public List<String> getSupportedRngSources() {
+            if (supportedRngSources == null) {
+                supportedRngSources = new ArrayList<String>();
+            }
+            return this.supportedRngSources;
+        }
+
+        public boolean isSetSupportedRngSources() {
+            return ((this.supportedRngSources!= null)&&(!this.supportedRngSources.isEmpty()));
+        }
+
+        public void unsetSupportedRngSources() {
+            this.supportedRngSources = null;
+        }
+
     }
 
 }

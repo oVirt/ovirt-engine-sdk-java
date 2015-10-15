@@ -20,6 +20,8 @@
 
 package org.ovirt.engine.sdk.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -41,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="memory_policy" type="{}MemoryPolicy" minOccurs="0"/>
  *         &lt;element name="scheduling_policy" type="{}SchedulingPolicy" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
- *         &lt;element name="supported_versions" type="{}SupportedVersions" minOccurs="0"/>
+ *         &lt;element name="supported_versions" type="{}Versions" minOccurs="0"/>
  *         &lt;element name="error_handling" type="{}ErrorHandling" minOccurs="0"/>
  *         &lt;element name="virt_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="gluster_service" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -55,7 +57,17 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}display" minOccurs="0"/>
  *         &lt;element ref="{}ksm" minOccurs="0"/>
  *         &lt;element ref="{}serial_number" minOccurs="0"/>
- *         &lt;element name="required_rng_sources" type="{}RngSources" minOccurs="0"/>
+ *         &lt;element name="required_rng_sources" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="required_rng_source" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element ref="{}fencing_policy" minOccurs="0"/>
  *         &lt;element ref="{}migration" minOccurs="0"/>
  *         &lt;element name="management_network" type="{}Network" minOccurs="0"/>
@@ -97,7 +109,7 @@ public class Cluster
     extends BaseResource
 {
 
-    protected CPU cpu;
+    protected Cpu cpu;
     @XmlElement(name = "data_center")
     protected DataCenter dataCenter;
     @XmlElement(name = "memory_policy")
@@ -106,7 +118,7 @@ public class Cluster
     protected SchedulingPolicy schedulingPolicy;
     protected Version version;
     @XmlElement(name = "supported_versions")
-    protected SupportedVersions supportedVersions;
+    protected Versions supportedVersions;
     @XmlElement(name = "error_handling")
     protected ErrorHandling errorHandling;
     @XmlElement(name = "virt_service")
@@ -128,11 +140,11 @@ public class Cluster
     @XmlElement(name = "ballooning_enabled")
     protected Boolean ballooningEnabled;
     protected Display display;
-    protected KSM ksm;
+    protected Ksm ksm;
     @XmlElement(name = "serial_number")
     protected SerialNumber serialNumber;
     @XmlElement(name = "required_rng_sources")
-    protected RngSources requiredRngSources;
+    protected Cluster.RequiredRngSourcesList requiredRngSources;
     @XmlElement(name = "fencing_policy")
     protected FencingPolicy fencingPolicy;
     protected MigrationOptions migration;
@@ -144,10 +156,10 @@ public class Cluster
      *
      * @return
      *     possible object is
-     *     {@link CPU }
+     *     {@link Cpu }
      *
      */
-    public CPU getCpu() {
+    public Cpu getCpu() {
         return cpu;
     }
 
@@ -156,10 +168,10 @@ public class Cluster
      *
      * @param value
      *     allowed object is
-     *     {@link CPU }
+     *     {@link Cpu }
      *
      */
-    public void setCpu(CPU value) {
+    public void setCpu(Cpu value) {
         this.cpu = value;
     }
 
@@ -284,10 +296,10 @@ public class Cluster
      *
      * @return
      *     possible object is
-     *     {@link SupportedVersions }
+     *     {@link Versions }
      *
      */
-    public SupportedVersions getSupportedVersions() {
+    public Versions getSupportedVersions() {
         return supportedVersions;
     }
 
@@ -296,10 +308,10 @@ public class Cluster
      *
      * @param value
      *     allowed object is
-     *     {@link SupportedVersions }
+     *     {@link Versions }
      *
      */
-    public void setSupportedVersions(SupportedVersions value) {
+    public void setSupportedVersions(Versions value) {
         this.supportedVersions = value;
     }
 
@@ -620,10 +632,10 @@ public class Cluster
      *
      * @return
      *     possible object is
-     *     {@link KSM }
+     *     {@link Ksm }
      *
      */
-    public KSM getKsm() {
+    public Ksm getKsm() {
         return ksm;
     }
 
@@ -632,10 +644,10 @@ public class Cluster
      *
      * @param value
      *     allowed object is
-     *     {@link KSM }
+     *     {@link Ksm }
      *
      */
-    public void setKsm(KSM value) {
+    public void setKsm(Ksm value) {
         this.ksm = value;
     }
 
@@ -676,10 +688,10 @@ public class Cluster
      *
      * @return
      *     possible object is
-     *     {@link RngSources }
+     *     {@link Cluster.RequiredRngSourcesList }
      *
      */
-    public RngSources getRequiredRngSources() {
+    public Cluster.RequiredRngSourcesList getRequiredRngSources() {
         return requiredRngSources;
     }
 
@@ -688,10 +700,10 @@ public class Cluster
      *
      * @param value
      *     allowed object is
-     *     {@link RngSources }
+     *     {@link Cluster.RequiredRngSourcesList }
      *
      */
-    public void setRequiredRngSources(RngSources value) {
+    public void setRequiredRngSources(Cluster.RequiredRngSourcesList value) {
         this.requiredRngSources = value;
     }
 
@@ -781,6 +793,74 @@ public class Cluster
 
     public boolean isSetManagementNetwork() {
         return (this.managementNetwork!= null);
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="required_rng_source" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "requiredRngSources"
+    })
+    public static class RequiredRngSourcesList {
+
+        @XmlElement(name = "required_rng_source")
+        protected List<String> requiredRngSources;
+
+        /**
+         * Gets the value of the requiredRngSources property.
+         *
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the requiredRngSources property.
+         *
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getRequiredRngSources().add(newItem);
+         * </pre>
+         *
+         *
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link String }
+         *
+         *
+         */
+        public List<String> getRequiredRngSources() {
+            if (requiredRngSources == null) {
+                requiredRngSources = new ArrayList<String>();
+            }
+            return this.requiredRngSources;
+        }
+
+        public boolean isSetRequiredRngSources() {
+            return ((this.requiredRngSources!= null)&&(!this.requiredRngSources.isEmpty()));
+        }
+
+        public void unsetRequiredRngSources() {
+            this.requiredRngSources = null;
+        }
+
     }
 
 }

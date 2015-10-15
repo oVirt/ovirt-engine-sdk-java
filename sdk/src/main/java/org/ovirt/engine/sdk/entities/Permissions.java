@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element ref="{}permission" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="clone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -50,8 +49,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Permissions", propOrder = {
-    "permissions",
-    "clone"
+    "permissions"
 })
 public class Permissions
     extends BaseResources
@@ -59,7 +57,6 @@ public class Permissions
 
     @XmlElement(name = "permission")
     protected List<Permission> permissions;
-    protected Boolean clone;
 
     /**
      * Gets the value of the permissions property.
@@ -96,34 +93,6 @@ public class Permissions
 
     public void unsetPermissions() {
         this.permissions = null;
-    }
-
-    /**
-     * Gets the value of the clone property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getClone() {
-        return clone;
-    }
-
-    /**
-     * Sets the value of the clone property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setClone(Boolean value) {
-        this.clone = value;
-    }
-
-    public boolean isSetClone() {
-        return (this.clone!= null);
     }
 
 }

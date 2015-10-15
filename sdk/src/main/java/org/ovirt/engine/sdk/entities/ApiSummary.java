@@ -50,46 +50,45 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ApiSummary", propOrder = {
-    "vMs",
+    "vms",
     "hosts",
     "users",
     "storageDomains"
 })
 public class ApiSummary {
 
-    @XmlElement(name = "vms")
-    protected VMs vMs;
+    protected Vms vms;
     protected Hosts hosts;
     protected Users users;
     @XmlElement(name = "storage_domains")
     protected StorageDomains storageDomains;
 
     /**
-     * Gets the value of the vMs property.
+     * Gets the value of the vms property.
      *
      * @return
      *     possible object is
-     *     {@link VMs }
+     *     {@link Vms }
      *
      */
-    public VMs getVMs() {
-        return vMs;
+    public Vms getVms() {
+        return vms;
     }
 
     /**
-     * Sets the value of the vMs property.
+     * Sets the value of the vms property.
      *
      * @param value
      *     allowed object is
-     *     {@link VMs }
+     *     {@link Vms }
      *
      */
-    public void setVMs(VMs value) {
-        this.vMs = value;
+    public void setVms(Vms value) {
+        this.vms = value;
     }
 
-    public boolean isSetVMs() {
-        return (this.vMs!= null);
+    public boolean isSetVms() {
+        return (this.vms!= null);
     }
 
     /**

@@ -20,8 +20,6 @@
 
 package org.ovirt.engine.sdk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -40,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element ref="{}logical_unit" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}logical_units" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -58,8 +56,8 @@ import javax.xml.bind.annotation.XmlType;
 public class VolumeGroup {
 
     protected String name;
-    @XmlElement(name = "logical_unit")
-    protected List<LogicalUnit> logicalUnits;
+    @XmlElement(name = "logical_units")
+    protected LogicalUnits logicalUnits;
     @XmlAttribute(name = "id")
     protected String id;
 
@@ -94,38 +92,29 @@ public class VolumeGroup {
     /**
      * Gets the value of the logicalUnits property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the logicalUnits property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLogicalUnits().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link LogicalUnit }
-     *
+     * @return
+     *     possible object is
+     *     {@link LogicalUnits }
      *
      */
-    public List<LogicalUnit> getLogicalUnits() {
-        if (logicalUnits == null) {
-            logicalUnits = new ArrayList<LogicalUnit>();
-        }
-        return this.logicalUnits;
+    public LogicalUnits getLogicalUnits() {
+        return logicalUnits;
+    }
+
+    /**
+     * Sets the value of the logicalUnits property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link LogicalUnits }
+     *
+     */
+    public void setLogicalUnits(LogicalUnits value) {
+        this.logicalUnits = value;
     }
 
     public boolean isSetLogicalUnits() {
-        return ((this.logicalUnits!= null)&&(!this.logicalUnits.isEmpty()));
-    }
-
-    public void unsetLogicalUnits() {
-        this.logicalUnits = null;
+        return (this.logicalUnits!= null);
     }
 
     /**

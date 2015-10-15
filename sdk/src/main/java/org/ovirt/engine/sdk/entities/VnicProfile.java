@@ -64,7 +64,7 @@ public class VnicProfile
     protected Boolean portMirroring;
     @XmlElement(name = "custom_properties")
     protected CustomProperties customProperties;
-    protected QoS qos;
+    protected Qos qos;
 
     /**
      * Gets the value of the network property.
@@ -155,10 +155,10 @@ public class VnicProfile
      *
      * @return
      *     possible object is
-     *     {@link QoS }
+     *     {@link Qos }
      *
      */
-    public QoS getQos() {
+    public Qos getQos() {
         return qos;
     }
 
@@ -167,10 +167,10 @@ public class VnicProfile
      *
      * @param value
      *     allowed object is
-     *     {@link QoS }
+     *     {@link Qos }
      *
      */
-    public void setQos(QoS value) {
+    public void setQos(Qos value) {
         this.qos = value;
     }
 

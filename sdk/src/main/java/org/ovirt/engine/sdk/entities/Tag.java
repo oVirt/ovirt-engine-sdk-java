@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}template" minOccurs="0"/>
  *         &lt;element ref="{}user" minOccurs="0"/>
  *         &lt;element ref="{}group" minOccurs="0"/>
- *         &lt;element name="parent" type="{}TagParent" minOccurs="0"/>
+ *         &lt;element name="parent" type="{}Tag" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -63,11 +63,11 @@ public class Tag
 {
 
     protected Host host;
-    protected VM vm;
+    protected Vm vm;
     protected Template template;
     protected User user;
     protected Group group;
-    protected TagParent parent;
+    protected Tag parent;
 
     /**
      * Gets the value of the host property.
@@ -102,10 +102,10 @@ public class Tag
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -114,10 +114,10 @@ public class Tag
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 
@@ -214,10 +214,10 @@ public class Tag
      *
      * @return
      *     possible object is
-     *     {@link TagParent }
+     *     {@link Tag }
      *
      */
-    public TagParent getParent() {
+    public Tag getParent() {
         return parent;
     }
 
@@ -226,10 +226,10 @@ public class Tag
      *
      * @param value
      *     allowed object is
-     *     {@link TagParent }
+     *     {@link Tag }
      *
      */
-    public void setParent(TagParent value) {
+    public void setParent(Tag value) {
         this.parent = value;
     }
 

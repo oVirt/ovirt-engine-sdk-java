@@ -180,9 +180,9 @@ public class Events extends
      *    [event.data_center.id]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
      * @return
      *     {@link Event }
@@ -194,13 +194,13 @@ public class Events extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Event add(org.ovirt.engine.sdk.entities.Event event, String expect) throws
+    public Event add(org.ovirt.engine.sdk.entities.Event event, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -232,13 +232,13 @@ public class Events extends
      *    [event.data_center.id]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
      *    </pre>
      * @return
      *     {@link Event }
@@ -250,16 +250,16 @@ public class Events extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Event add(org.ovirt.engine.sdk.entities.Event event, String expect, String correlationId) throws
+    public Event add(org.ovirt.engine.sdk.entities.Event event, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -273,43 +273,6 @@ public class Events extends
     /**
      * Lists Event objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     *
-     * @return List of {@link Event }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Event> list(String query) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Events.class,
-                Event.class, headers);
-    }
-    /**
-     * Lists Event objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -324,17 +287,13 @@ public class Events extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Event> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+    public List<Event> list(Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -347,10 +306,6 @@ public class Events extends
     /**
      * Lists Event objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -369,17 +324,13 @@ public class Events extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Event> list(String query, Boolean caseSensitive, String from) throws ClientProtocolException,
+    public List<Event> list(Boolean caseSensitive, String from) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -396,10 +347,6 @@ public class Events extends
     /**
      * Lists Event objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -422,17 +369,13 @@ public class Events extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Event> list(String query, Boolean caseSensitive, String from, Integer max) throws ClientProtocolException,
+    public List<Event> list(Boolean caseSensitive, String from, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -443,6 +386,63 @@ public class Events extends
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Events.class,
+                Event.class, headers);
+    }
+    /**
+     * Lists Event objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param from
+     *    <pre>
+     *    [event_id]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     *
+     * @return List of {@link Event }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Event> list(Boolean caseSensitive, String from, Integer max, String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (from != null) {
+            urlBuilder.add("from", from, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
 
         String url = urlBuilder.build();

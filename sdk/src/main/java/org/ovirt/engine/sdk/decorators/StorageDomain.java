@@ -53,7 +53,7 @@ public class StorageDomain extends
     private volatile StorageDomainPermissions storageDomainPermissions;
     private volatile StorageDomainStorageConnections storageDomainStorageConnections;
     private volatile StorageDomainTemplates storageDomainTemplates;
-    private volatile StorageDomainVMs storageDomainVMs;
+    private volatile StorageDomainVms storageDomainVms;
 
 
     /**
@@ -199,20 +199,20 @@ public class StorageDomain extends
         return storageDomainTemplates;
     }
     /**
-     * Gets the value of the StorageDomainVMs property.
+     * Gets the value of the StorageDomainVms property.
      *
      * @return
-     *     {@link StorageDomainVMs }
+     *     {@link StorageDomainVms }
      */
-    public StorageDomainVMs getVMs() {
-        if (this.storageDomainVMs == null) {
+    public StorageDomainVms getVms() {
+        if (this.storageDomainVms == null) {
             synchronized (this.LOCK) {
-                if (this.storageDomainVMs == null) {
-                    this.storageDomainVMs = new StorageDomainVMs(proxy, this);
+                if (this.storageDomainVms == null) {
+                    this.storageDomainVms = new StorageDomainVms(proxy, this);
                 }
             }
         }
-        return storageDomainVMs;
+        return storageDomainVms;
     }
 
 
@@ -687,14 +687,14 @@ public class StorageDomain extends
      *
      *      update the storage domain
      *
-     *      storagedomain.host.id|name
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
+     *      storagedomain.storage.logical_units.logical_unit
      *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.host.id]
+     *      [storagedomain.name]
+     *      [storagedomain.storage.override_luns]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      *
@@ -740,14 +740,14 @@ public class StorageDomain extends
      *
      *      update the storage domain
      *
-     *      storagedomain.host.id|name
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
+     *      storagedomain.storage.logical_units.logical_unit
      *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.host.id]
+     *      [storagedomain.name]
+     *      [storagedomain.storage.override_luns]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      * @param async
@@ -800,14 +800,14 @@ public class StorageDomain extends
      *
      *      update the storage domain
      *
-     *      storagedomain.host.id|name
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
+     *      storagedomain.storage.logical_units.logical_unit
      *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.host.id]
+     *      [storagedomain.name]
+     *      [storagedomain.storage.override_luns]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      * @param async
@@ -867,14 +867,14 @@ public class StorageDomain extends
      *
      *      update the storage domain
      *
-     *      storagedomain.host.id|name
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
+     *      storagedomain.storage.logical_units.logical_unit
      *      [storagedomain.comment]
-     *      [storagedomain.storage.override_luns]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.host.id]
+     *      [storagedomain.name]
+     *      [storagedomain.storage.override_luns]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      * @param async

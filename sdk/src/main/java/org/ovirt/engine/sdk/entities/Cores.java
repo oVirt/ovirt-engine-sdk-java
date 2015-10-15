@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -48,25 +49,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Cores", propOrder = {
-    "core"
+    "cores"
 })
 public class Cores {
 
-    protected List<Core> core;
+    @XmlElement(name = "core")
+    protected List<Core> cores;
 
     /**
-     * Gets the value of the core property.
+     * Gets the value of the cores property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the core property.
+     * This is why there is not a <CODE>set</CODE> method for the cores property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCore().add(newItem);
+     *    getCores().add(newItem);
      * </pre>
      *
      *
@@ -76,19 +78,19 @@ public class Cores {
      *
      *
      */
-    public List<Core> getCore() {
-        if (core == null) {
-            core = new ArrayList<Core>();
+    public List<Core> getCores() {
+        if (cores == null) {
+            cores = new ArrayList<Core>();
         }
-        return this.core;
+        return this.cores;
     }
 
-    public boolean isSetCore() {
-        return ((this.core!= null)&&(!this.core.isEmpty()));
+    public boolean isSetCores() {
+        return ((this.cores!= null)&&(!this.cores.isEmpty()));
     }
 
-    public void unsetCore() {
-        this.core = null;
+    public void unsetCores() {
+        this.cores = null;
     }
 
 }

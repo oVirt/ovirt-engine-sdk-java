@@ -166,7 +166,7 @@ public class Tag extends
      *    <pre>
      *    [tag.name]
      *    [tag.description]
-     *    [tag.parent.tag.id|name]
+     *    [tag.parent.id|name]
      *    </pre>
      *
      *
@@ -204,12 +204,12 @@ public class Tag extends
      *    <pre>
      *    [tag.name]
      *    [tag.description]
-     *    [tag.parent.tag.id|name]
+     *    [tag.parent.id|name]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      * @return
      *     {@link Tag }
@@ -221,17 +221,18 @@ public class Tag extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Tag update(String correlationId) throws ClientProtocolException,
+    public Tag update(Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -248,16 +249,16 @@ public class Tag extends
      *    <pre>
      *    [tag.name]
      *    [tag.description]
-     *    [tag.parent.tag.id|name]
+     *    [tag.parent.id|name]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @return
      *     {@link Tag }
@@ -269,7 +270,7 @@ public class Tag extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Tag update(String correlationId, Boolean async) throws ClientProtocolException,
+    public Tag update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -300,16 +301,16 @@ public class Tag extends
      *    <pre>
      *    [tag.name]
      *    [tag.description]
-     *    [tag.parent.tag.id|name]
+     *    [tag.parent.id|name]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @param expect
      *    <pre>
@@ -325,7 +326,7 @@ public class Tag extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Tag update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
+    public Tag update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

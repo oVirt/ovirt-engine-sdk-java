@@ -45,12 +45,13 @@ public class Template extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile TemplateCdRoms templateCdRoms;
+    private volatile TemplateCdroms templateCdroms;
     private volatile TemplateDisks templateDisks;
-    private volatile TemplateNICs templateNICs;
+    private volatile TemplateGraphicsConsoles templateGraphicsConsoles;
+    private volatile TemplateNics templateNics;
     private volatile TemplatePermissions templatePermissions;
     private volatile TemplateTags templateTags;
-    private volatile TemplateWatchDogs templateWatchDogs;
+    private volatile TemplateWatchdogs templateWatchdogs;
 
 
     /**
@@ -68,20 +69,20 @@ public class Template extends
     }
 
     /**
-     * Gets the value of the TemplateCdRoms property.
+     * Gets the value of the TemplateCdroms property.
      *
      * @return
-     *     {@link TemplateCdRoms }
+     *     {@link TemplateCdroms }
      */
-    public TemplateCdRoms getCdRoms() {
-        if (this.templateCdRoms == null) {
+    public TemplateCdroms getCdroms() {
+        if (this.templateCdroms == null) {
             synchronized (this.LOCK) {
-                if (this.templateCdRoms == null) {
-                    this.templateCdRoms = new TemplateCdRoms(proxy, this);
+                if (this.templateCdroms == null) {
+                    this.templateCdroms = new TemplateCdroms(proxy, this);
                 }
             }
         }
-        return templateCdRoms;
+        return templateCdroms;
     }
     /**
      * Gets the value of the TemplateDisks property.
@@ -100,20 +101,36 @@ public class Template extends
         return templateDisks;
     }
     /**
-     * Gets the value of the TemplateNICs property.
+     * Gets the value of the TemplateGraphicsConsoles property.
      *
      * @return
-     *     {@link TemplateNICs }
+     *     {@link TemplateGraphicsConsoles }
      */
-    public TemplateNICs getNics() {
-        if (this.templateNICs == null) {
+    public TemplateGraphicsConsoles getGraphicsConsoles() {
+        if (this.templateGraphicsConsoles == null) {
             synchronized (this.LOCK) {
-                if (this.templateNICs == null) {
-                    this.templateNICs = new TemplateNICs(proxy, this);
+                if (this.templateGraphicsConsoles == null) {
+                    this.templateGraphicsConsoles = new TemplateGraphicsConsoles(proxy, this);
                 }
             }
         }
-        return templateNICs;
+        return templateGraphicsConsoles;
+    }
+    /**
+     * Gets the value of the TemplateNics property.
+     *
+     * @return
+     *     {@link TemplateNics }
+     */
+    public TemplateNics getNics() {
+        if (this.templateNics == null) {
+            synchronized (this.LOCK) {
+                if (this.templateNics == null) {
+                    this.templateNics = new TemplateNics(proxy, this);
+                }
+            }
+        }
+        return templateNics;
     }
     /**
      * Gets the value of the TemplatePermissions property.
@@ -148,20 +165,20 @@ public class Template extends
         return templateTags;
     }
     /**
-     * Gets the value of the TemplateWatchDogs property.
+     * Gets the value of the TemplateWatchdogs property.
      *
      * @return
-     *     {@link TemplateWatchDogs }
+     *     {@link TemplateWatchdogs }
      */
-    public TemplateWatchDogs getWatchDogs() {
-        if (this.templateWatchDogs == null) {
+    public TemplateWatchdogs getWatchdogs() {
+        if (this.templateWatchdogs == null) {
             synchronized (this.LOCK) {
-                if (this.templateWatchDogs == null) {
-                    this.templateWatchDogs = new TemplateWatchDogs(proxy, this);
+                if (this.templateWatchdogs == null) {
+                    this.templateWatchdogs = new TemplateWatchdogs(proxy, this);
                 }
             }
         }
-        return templateWatchDogs;
+        return templateWatchdogs;
     }
 
 
@@ -306,9 +323,9 @@ public class Template extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      * @return
      *     {@link Action }
@@ -320,17 +337,18 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportTemplate(Action action, String correlationId) throws ClientProtocolException,
+    public Action exportTemplate(Action action, Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().action(url, action, Action.class, Action.class, headers);
@@ -346,13 +364,13 @@ public class Template extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @return
      *     {@link Action }
@@ -364,7 +382,7 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action exportTemplate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
+    public Action exportTemplate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/export";
 
@@ -391,12 +409,13 @@ public class Template extends
      *    [template.name]
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
-     *    [template.timezone]
      *    [template.time_zone.name]
      *    [template.domain.name]
      *    [template.type]
@@ -412,7 +431,7 @@ public class Template extends
      *    [template.comment]
      *    [template.custom_properties.custom_property]
      *    [template.os.type]
-     *    [template.os.boot]
+     *    [template.os.boot.devices.device]
      *    [template.cpu.topology.sockets]
      *    [template.cpu_shares]
      *    [template.cpu.architecture]
@@ -447,6 +466,8 @@ public class Template extends
      *    [template.large_icon.id]
      *    [template.large_icon.media_type]
      *    [template.large_icon.data]
+     *    [template.initialization.configuration.type]
+     *    [template.initialization.configuration.data]
      *    </pre>
      *
      *
@@ -485,12 +506,13 @@ public class Template extends
      *    [template.name]
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
-     *    [template.timezone]
      *    [template.time_zone.name]
      *    [template.domain.name]
      *    [template.type]
@@ -506,7 +528,7 @@ public class Template extends
      *    [template.comment]
      *    [template.custom_properties.custom_property]
      *    [template.os.type]
-     *    [template.os.boot]
+     *    [template.os.boot.devices.device]
      *    [template.cpu.topology.sockets]
      *    [template.cpu_shares]
      *    [template.cpu.architecture]
@@ -541,11 +563,13 @@ public class Template extends
      *    [template.large_icon.id]
      *    [template.large_icon.media_type]
      *    [template.large_icon.data]
+     *    [template.initialization.configuration.type]
+     *    [template.initialization.configuration.data]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      * @return
      *     {@link Template }
@@ -557,17 +581,18 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Template update(String correlationId) throws ClientProtocolException,
+    public Template update(Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -585,12 +610,13 @@ public class Template extends
      *    [template.name]
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
-     *    [template.timezone]
      *    [template.time_zone.name]
      *    [template.domain.name]
      *    [template.type]
@@ -606,7 +632,7 @@ public class Template extends
      *    [template.comment]
      *    [template.custom_properties.custom_property]
      *    [template.os.type]
-     *    [template.os.boot]
+     *    [template.os.boot.devices.device]
      *    [template.cpu.topology.sockets]
      *    [template.cpu_shares]
      *    [template.cpu.architecture]
@@ -641,15 +667,17 @@ public class Template extends
      *    [template.large_icon.id]
      *    [template.large_icon.media_type]
      *    [template.large_icon.data]
+     *    [template.initialization.configuration.type]
+     *    [template.initialization.configuration.data]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @return
      *     {@link Template }
@@ -661,7 +689,7 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Template update(String correlationId, Boolean async) throws ClientProtocolException,
+    public Template update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -693,12 +721,13 @@ public class Template extends
      *    [template.name]
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
-     *    [template.timezone]
      *    [template.time_zone.name]
      *    [template.domain.name]
      *    [template.type]
@@ -714,7 +743,7 @@ public class Template extends
      *    [template.comment]
      *    [template.custom_properties.custom_property]
      *    [template.os.type]
-     *    [template.os.boot]
+     *    [template.os.boot.devices.device]
      *    [template.cpu.topology.sockets]
      *    [template.cpu_shares]
      *    [template.cpu.architecture]
@@ -749,15 +778,17 @@ public class Template extends
      *    [template.large_icon.id]
      *    [template.large_icon.media_type]
      *    [template.large_icon.data]
+     *    [template.initialization.configuration.type]
+     *    [template.initialization.configuration.data]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @param expect
      *    <pre>
@@ -773,7 +804,7 @@ public class Template extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Template update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
+    public Template update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="current" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="features" type="{}Features" minOccurs="0"/>
  *         &lt;element ref="{}cpus" minOccurs="0"/>
- *         &lt;element ref="{}power_managers" minOccurs="0"/>
+ *         &lt;element name="power_management" type="{}Agents" minOccurs="0"/>
  *         &lt;element ref="{}fence_types" minOccurs="0"/>
  *         &lt;element ref="{}storage_types" minOccurs="0"/>
  *         &lt;element ref="{}configuration_types" minOccurs="0"/>
@@ -74,7 +74,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}data_center_states" minOccurs="0"/>
  *         &lt;element ref="{}vm_device_types" minOccurs="0"/>
  *         &lt;element ref="{}permits" minOccurs="0"/>
- *         &lt;element ref="{}scheduling_policies" minOccurs="0"/>
  *         &lt;element ref="{}usages" minOccurs="0"/>
  *         &lt;element ref="{}nfs_versions" minOccurs="0"/>
  *         &lt;element ref="{}pm_proxy_types" minOccurs="0"/>
@@ -85,6 +84,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}authentication_methods" minOccurs="0"/>
  *         &lt;element ref="{}kdump_states" minOccurs="0"/>
  *         &lt;element ref="{}spm_states" minOccurs="0"/>
+ *         &lt;element ref="{}vm_pool_types" minOccurs="0"/>
  *         &lt;element ref="{}step_types" minOccurs="0"/>
  *         &lt;element ref="{}payload_encodings" minOccurs="0"/>
  *         &lt;element ref="{}gluster_volume_types" minOccurs="0"/>
@@ -122,7 +122,7 @@ import javax.xml.bind.annotation.XmlType;
     "current",
     "features",
     "cpus",
-    "powerManagers",
+    "powerManagement",
     "fenceTypes",
     "storageTypes",
     "configurationTypes",
@@ -157,7 +157,6 @@ import javax.xml.bind.annotation.XmlType;
     "dataCenterStates",
     "vmDeviceTypes",
     "permits",
-    "schedulingPolicies",
     "usages",
     "nfsVersions",
     "pmProxyTypes",
@@ -168,6 +167,7 @@ import javax.xml.bind.annotation.XmlType;
     "authenticationMethods",
     "kdumpStates",
     "spmStates",
+    "vmPoolTypes",
     "stepTypes",
     "payloadEncodings",
     "glusterVolumeTypes",
@@ -199,9 +199,9 @@ public class VersionCaps
 
     protected Boolean current;
     protected Features features;
-    protected CPUs cpus;
-    @XmlElement(name = "power_managers")
-    protected PowerManagers powerManagers;
+    protected Cpus cpus;
+    @XmlElement(name = "power_management")
+    protected Agents powerManagement;
     @XmlElement(name = "fence_types")
     protected FenceTypes fenceTypes;
     @XmlElement(name = "storage_types")
@@ -263,14 +263,12 @@ public class VersionCaps
     @XmlElement(name = "disk_states")
     protected DiskStates diskStates;
     @XmlElement(name = "host_nic_states")
-    protected HostNICStates hostNicStates;
+    protected HostNicStates hostNicStates;
     @XmlElement(name = "data_center_states")
     protected DataCenterStates dataCenterStates;
     @XmlElement(name = "vm_device_types")
     protected VmDeviceTypes vmDeviceTypes;
     protected Permits permits;
-    @XmlElement(name = "scheduling_policies")
-    protected SchedulingPolicies schedulingPolicies;
     protected Usages usages;
     @XmlElement(name = "nfs_versions")
     protected NfsVersions nfsVersions;
@@ -290,6 +288,8 @@ public class VersionCaps
     protected KdumpStates kdumpStates;
     @XmlElement(name = "spm_states")
     protected SpmStates spmStates;
+    @XmlElement(name = "vm_pool_types")
+    protected VmPoolTypes vmPoolTypes;
     @XmlElement(name = "step_types")
     protected StepTypes stepTypes;
     @XmlElement(name = "payload_encodings")
@@ -399,10 +399,10 @@ public class VersionCaps
      *
      * @return
      *     possible object is
-     *     {@link CPUs }
+     *     {@link Cpus }
      *
      */
-    public CPUs getCpus() {
+    public Cpus getCpus() {
         return cpus;
     }
 
@@ -411,10 +411,10 @@ public class VersionCaps
      *
      * @param value
      *     allowed object is
-     *     {@link CPUs }
+     *     {@link Cpus }
      *
      */
-    public void setCpus(CPUs value) {
+    public void setCpus(Cpus value) {
         this.cpus = value;
     }
 
@@ -423,31 +423,31 @@ public class VersionCaps
     }
 
     /**
-     * Gets the value of the powerManagers property.
+     * Gets the value of the powerManagement property.
      *
      * @return
      *     possible object is
-     *     {@link PowerManagers }
+     *     {@link Agents }
      *
      */
-    public PowerManagers getPowerManagers() {
-        return powerManagers;
+    public Agents getPowerManagement() {
+        return powerManagement;
     }
 
     /**
-     * Sets the value of the powerManagers property.
+     * Sets the value of the powerManagement property.
      *
      * @param value
      *     allowed object is
-     *     {@link PowerManagers }
+     *     {@link Agents }
      *
      */
-    public void setPowerManagers(PowerManagers value) {
-        this.powerManagers = value;
+    public void setPowerManagement(Agents value) {
+        this.powerManagement = value;
     }
 
-    public boolean isSetPowerManagers() {
-        return (this.powerManagers!= null);
+    public boolean isSetPowerManagement() {
+        return (this.powerManagement!= null);
     }
 
     /**
@@ -1295,10 +1295,10 @@ public class VersionCaps
      *
      * @return
      *     possible object is
-     *     {@link HostNICStates }
+     *     {@link HostNicStates }
      *
      */
-    public HostNICStates getHostNicStates() {
+    public HostNicStates getHostNicStates() {
         return hostNicStates;
     }
 
@@ -1307,10 +1307,10 @@ public class VersionCaps
      *
      * @param value
      *     allowed object is
-     *     {@link HostNICStates }
+     *     {@link HostNicStates }
      *
      */
-    public void setHostNicStates(HostNICStates value) {
+    public void setHostNicStates(HostNicStates value) {
         this.hostNicStates = value;
     }
 
@@ -1400,34 +1400,6 @@ public class VersionCaps
 
     public boolean isSetPermits() {
         return (this.permits!= null);
-    }
-
-    /**
-     * Gets the value of the schedulingPolicies property.
-     *
-     * @return
-     *     possible object is
-     *     {@link SchedulingPolicies }
-     *
-     */
-    public SchedulingPolicies getSchedulingPolicies() {
-        return schedulingPolicies;
-    }
-
-    /**
-     * Sets the value of the schedulingPolicies property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link SchedulingPolicies }
-     *
-     */
-    public void setSchedulingPolicies(SchedulingPolicies value) {
-        this.schedulingPolicies = value;
-    }
-
-    public boolean isSetSchedulingPolicies() {
-        return (this.schedulingPolicies!= null);
     }
 
     /**
@@ -1708,6 +1680,34 @@ public class VersionCaps
 
     public boolean isSetSpmStates() {
         return (this.spmStates!= null);
+    }
+
+    /**
+     * Gets the value of the vmPoolTypes property.
+     *
+     * @return
+     *     possible object is
+     *     {@link VmPoolTypes }
+     *
+     */
+    public VmPoolTypes getVmPoolTypes() {
+        return vmPoolTypes;
+    }
+
+    /**
+     * Sets the value of the vmPoolTypes property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VmPoolTypes }
+     *
+     */
+    public void setVmPoolTypes(VmPoolTypes value) {
+        this.vmPoolTypes = value;
+    }
+
+    public boolean isSetVmPoolTypes() {
+        return (this.vmPoolTypes!= null);
     }
 
     /**

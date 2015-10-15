@@ -54,7 +54,7 @@ public class CpuProfile
     extends BaseResource
 {
 
-    protected QoS qos;
+    protected Qos qos;
     protected Cluster cluster;
 
     /**
@@ -62,10 +62,10 @@ public class CpuProfile
      *
      * @return
      *     possible object is
-     *     {@link QoS }
+     *     {@link Qos }
      *
      */
-    public QoS getQos() {
+    public Qos getQos() {
         return qos;
     }
 
@@ -74,10 +74,10 @@ public class CpuProfile
      *
      * @param value
      *     allowed object is
-     *     {@link QoS }
+     *     {@link Qos }
      *
      */
-    public void setQos(QoS value) {
+    public void setQos(Qos value) {
         this.qos = value;
     }
 

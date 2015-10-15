@@ -60,7 +60,7 @@ public class Template
     extends VmBase
 {
 
-    protected VM vm;
+    protected Vm vm;
     protected TemplateVersion version;
     protected Permissions permissions;
 
@@ -69,10 +69,10 @@ public class Template
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -81,10 +81,10 @@ public class Template
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

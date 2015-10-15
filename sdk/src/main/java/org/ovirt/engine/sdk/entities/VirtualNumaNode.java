@@ -55,7 +55,7 @@ public class VirtualNumaNode
     extends NumaNode
 {
 
-    protected VM vm;
+    protected Vm vm;
     @XmlElement(name = "numa_node_pins")
     protected NumaNodePins numaNodePins;
 
@@ -64,10 +64,10 @@ public class VirtualNumaNode
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -76,10 +76,10 @@ public class VirtualNumaNode
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

@@ -21,7 +21,7 @@ import org.ovirt.engine.sdk.generator.Location;
 import org.ovirt.engine.sdk.generator.LocationRules;
 import org.ovirt.engine.sdk.generator.templates.AbstractTemplate;
 import org.ovirt.engine.sdk.generator.utils.Tree;
-import org.ovirt.engine.sdk.entities.API;
+import org.ovirt.engine.sdk.entities.Api;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -59,7 +59,7 @@ public class ApiTemplate extends AbstractTemplate {
         }
 
         // Generate the code for the methods:
-        for (Method method : API.class.getMethods()) {
+        for (Method method : Api.class.getMethods()) {
             String methodName = method.getName();
             if (methodName.startsWith("get")) {
                 String propertyName = methodName.replaceAll("^get", "");

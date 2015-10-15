@@ -123,7 +123,6 @@ public class DataCenters extends
      *    [datacenter.comment]
      *    [datacenter.description]
      *    [datacenter.storage_format]
-     *    [datacenter.storage_type]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
      *    [datacenter.mac_pool.id]
@@ -164,15 +163,14 @@ public class DataCenters extends
      *    [datacenter.comment]
      *    [datacenter.description]
      *    [datacenter.storage_format]
-     *    [datacenter.storage_type]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
      *    [datacenter.mac_pool.id]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
      * @return
      *     {@link DataCenter }
@@ -184,13 +182,13 @@ public class DataCenters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter, String expect) throws
+    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -211,19 +209,18 @@ public class DataCenters extends
      *    [datacenter.comment]
      *    [datacenter.description]
      *    [datacenter.storage_format]
-     *    [datacenter.storage_type]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
      *    [datacenter.mac_pool.id]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
      *    </pre>
      * @return
      *     {@link DataCenter }
@@ -235,16 +232,16 @@ public class DataCenters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter, String expect, String correlationId) throws
+    public DataCenter add(org.ovirt.engine.sdk.entities.DataCenter datacenter, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -258,43 +255,6 @@ public class DataCenters extends
     /**
      * Lists DataCenter objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     *
-     * @return List of {@link DataCenter }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<DataCenter> list(String query) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class,
-                DataCenter.class, headers);
-    }
-    /**
-     * Lists DataCenter objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -309,17 +269,13 @@ public class DataCenters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<DataCenter> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+    public List<DataCenter> list(Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -332,10 +288,6 @@ public class DataCenters extends
     /**
      * Lists DataCenter objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -354,23 +306,68 @@ public class DataCenters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<DataCenter> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+    public List<DataCenter> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.DataCenters.class,
+                DataCenter.class, headers);
+    }
+    /**
+     * Lists DataCenter objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     *
+     * @return List of {@link DataCenter }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<DataCenter> list(Boolean caseSensitive, Integer max, String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
 
         String url = urlBuilder.build();

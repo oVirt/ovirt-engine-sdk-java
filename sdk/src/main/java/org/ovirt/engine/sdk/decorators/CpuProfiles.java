@@ -160,9 +160,9 @@ public class CpuProfiles extends
      *    [cpuprofile.qos.id]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
      * @return
      *     {@link CpuProfile }
@@ -174,13 +174,13 @@ public class CpuProfiles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public CpuProfile add(org.ovirt.engine.sdk.entities.CpuProfile cpuprofile, String expect) throws
+    public CpuProfile add(org.ovirt.engine.sdk.entities.CpuProfile cpuprofile, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -202,13 +202,13 @@ public class CpuProfiles extends
      *    [cpuprofile.qos.id]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
      *    </pre>
      * @return
      *     {@link CpuProfile }
@@ -220,16 +220,16 @@ public class CpuProfiles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public CpuProfile add(org.ovirt.engine.sdk.entities.CpuProfile cpuprofile, String expect, String correlationId) throws
+    public CpuProfile add(org.ovirt.engine.sdk.entities.CpuProfile cpuprofile, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 

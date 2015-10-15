@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
- *         &lt;element ref="{}vmpool" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}vm_pool" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -55,7 +55,7 @@ public class VmPools
     extends BaseResources
 {
 
-    @XmlElement(name = "vmpool")
+    @XmlElement(name = "vm_pool")
     protected List<VmPool> vmPools;
 
     /**

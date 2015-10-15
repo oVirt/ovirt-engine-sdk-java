@@ -127,14 +127,14 @@ public class StorageDomains extends
      *      storagedomain.type
      *      storagedomain.storage.type
      *      storagedomain.storage.address
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
+     *      storagedomain.storage.logical_units.logical_unit
      *      [storagedomain.comment]
+     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
      *      [storagedomain.warning_low_space_indicator]
-     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 2:
      *
@@ -144,13 +144,13 @@ public class StorageDomains extends
      *      connected to the host
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.import
-     *      [storagedomain.storage.address]
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.comment]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.storage.address]
+     *      [storagedomain.warning_low_space_indicator]
      *
      *    Overload 3:
      *
@@ -159,16 +159,16 @@ public class StorageDomains extends
      *      on the given host and path
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.address
      *      storagedomain.storage.path
-     *      [storagedomain.name]
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.comment]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
+     *      [storagedomain.storage_format]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 4:
      *
@@ -178,15 +178,15 @@ public class StorageDomains extends
      *      path
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.path
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.name]
      *      [storagedomain.comment]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.storage_format]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 5:
      *
@@ -195,18 +195,18 @@ public class StorageDomains extends
      *      or posixfs storage
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.path
+     *      storagedomain.storage.type
      *      storagedomain.storage.vfs_type
-     *      [storagedomain.name]
+     *      storagedomain.type
      *      [storagedomain.comment]
+     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
      *      [storagedomain.warning_low_space_indicator]
-     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
      *
@@ -248,14 +248,14 @@ public class StorageDomains extends
      *      storagedomain.type
      *      storagedomain.storage.type
      *      storagedomain.storage.address
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
+     *      storagedomain.storage.logical_units.logical_unit
      *      [storagedomain.comment]
+     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
      *      [storagedomain.warning_low_space_indicator]
-     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 2:
      *
@@ -265,13 +265,13 @@ public class StorageDomains extends
      *      connected to the host
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.import
-     *      [storagedomain.storage.address]
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.comment]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.storage.address]
+     *      [storagedomain.warning_low_space_indicator]
      *
      *    Overload 3:
      *
@@ -280,16 +280,16 @@ public class StorageDomains extends
      *      on the given host and path
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.address
      *      storagedomain.storage.path
-     *      [storagedomain.name]
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.comment]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
+     *      [storagedomain.storage_format]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 4:
      *
@@ -299,15 +299,15 @@ public class StorageDomains extends
      *      path
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.path
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.name]
      *      [storagedomain.comment]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.storage_format]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 5:
      *
@@ -316,23 +316,23 @@ public class StorageDomains extends
      *      or posixfs storage
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.path
+     *      storagedomain.storage.type
      *      storagedomain.storage.vfs_type
-     *      [storagedomain.name]
+     *      storagedomain.type
      *      [storagedomain.comment]
+     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
      *      [storagedomain.warning_low_space_indicator]
-     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
      * @return
      *     {@link StorageDomain }
@@ -344,13 +344,13 @@ public class StorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, String expect) throws
+    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -375,14 +375,14 @@ public class StorageDomains extends
      *      storagedomain.type
      *      storagedomain.storage.type
      *      storagedomain.storage.address
-     *      storagedomain.storage.logical_unit
-     *      [storagedomain.name]
+     *      storagedomain.storage.logical_units.logical_unit
      *      [storagedomain.comment]
+     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
      *      [storagedomain.storage.override_luns]
      *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
      *      [storagedomain.warning_low_space_indicator]
-     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 2:
      *
@@ -392,13 +392,13 @@ public class StorageDomains extends
      *      connected to the host
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.import
-     *      [storagedomain.storage.address]
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.comment]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.storage.address]
+     *      [storagedomain.warning_low_space_indicator]
      *
      *    Overload 3:
      *
@@ -407,16 +407,16 @@ public class StorageDomains extends
      *      on the given host and path
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.address
      *      storagedomain.storage.path
-     *      [storagedomain.name]
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.comment]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
+     *      [storagedomain.storage_format]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 4:
      *
@@ -426,15 +426,15 @@ public class StorageDomains extends
      *      path
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.path
+     *      storagedomain.storage.type
+     *      storagedomain.type
      *      [storagedomain.name]
      *      [storagedomain.comment]
-     *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
-     *      [storagedomain.warning_low_space_indicator]
      *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.storage_format]
+     *      [storagedomain.warning_low_space_indicator]
+     *      [storagedomain.wipe_after_delete]
      *
      *    Overload 5:
      *
@@ -443,27 +443,27 @@ public class StorageDomains extends
      *      or posixfs storage
      *
      *      storagedomain.host.id|name
-     *      storagedomain.type
-     *      storagedomain.storage.type
      *      storagedomain.storage.path
+     *      storagedomain.storage.type
      *      storagedomain.storage.vfs_type
-     *      [storagedomain.name]
+     *      storagedomain.type
      *      [storagedomain.comment]
+     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.name]
      *      [storagedomain.storage.address]
      *      [storagedomain.storage.mount_options]
      *      [storagedomain.storage_format]
-     *      [storagedomain.wipe_after_delete]
      *      [storagedomain.warning_low_space_indicator]
-     *      [storagedomain.critical_space_action_blocker]
+     *      [storagedomain.wipe_after_delete]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
      *    </pre>
      * @return
      *     {@link StorageDomain }
@@ -475,16 +475,16 @@ public class StorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, String expect, String correlationId) throws
+    public StorageDomain add(org.ovirt.engine.sdk.entities.StorageDomain storagedomain, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -498,43 +498,6 @@ public class StorageDomains extends
     /**
      * Lists StorageDomain objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     *
-     * @return List of {@link StorageDomain }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<StorageDomain> list(String query) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.StorageDomains.class,
-                StorageDomain.class, headers);
-    }
-    /**
-     * Lists StorageDomain objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -549,17 +512,13 @@ public class StorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<StorageDomain> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+    public List<StorageDomain> list(Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -572,10 +531,6 @@ public class StorageDomains extends
     /**
      * Lists StorageDomain objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -594,23 +549,68 @@ public class StorageDomains extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<StorageDomain> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+    public List<StorageDomain> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.StorageDomains.class,
+                StorageDomain.class, headers);
+    }
+    /**
+     * Lists StorageDomain objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     *
+     * @return List of {@link StorageDomain }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<StorageDomain> list(Boolean caseSensitive, Integer max, String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
 
         String url = urlBuilder.build();

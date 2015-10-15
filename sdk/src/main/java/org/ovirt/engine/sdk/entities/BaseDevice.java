@@ -57,9 +57,9 @@ import javax.xml.bind.annotation.XmlType;
     "vm"
 })
 @XmlSeeAlso({
-    NIC.class,
-    CdRom.class,
-    WatchDog.class,
+    Nic.class,
+    Cdrom.class,
+    Watchdog.class,
     Floppy.class,
     Disk.class
 })
@@ -70,8 +70,8 @@ public class BaseDevice
     protected Template template;
     @XmlElement(name = "instance_type")
     protected InstanceType instanceType;
-    protected VMs vms;
-    protected VM vm;
+    protected Vms vms;
+    protected Vm vm;
 
     /**
      * Gets the value of the template property.
@@ -134,10 +134,10 @@ public class BaseDevice
      *
      * @return
      *     possible object is
-     *     {@link VMs }
+     *     {@link Vms }
      *
      */
-    public VMs getVms() {
+    public Vms getVms() {
         return vms;
     }
 
@@ -146,10 +146,10 @@ public class BaseDevice
      *
      * @param value
      *     allowed object is
-     *     {@link VMs }
+     *     {@link Vms }
      *
      */
-    public void setVms(VMs value) {
+    public void setVms(Vms value) {
         this.vms = value;
     }
 
@@ -162,10 +162,10 @@ public class BaseDevice
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -174,10 +174,10 @@ public class BaseDevice
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="DiskSnapshots">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseDevices">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element ref="{}disk_snapshot" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -52,7 +52,7 @@ import javax.xml.bind.annotation.XmlType;
     "diskSnapshots"
 })
 public class DiskSnapshots
-    extends BaseDevices
+    extends BaseResources
 {
 
     @XmlElement(name = "disk_snapshot")

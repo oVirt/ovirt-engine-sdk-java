@@ -20,6 +20,8 @@
 
 package org.ovirt.engine.sdk.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -36,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
- *         &lt;element ref="{}balance" minOccurs="0"/>
+ *         &lt;element ref="{}balance" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -54,34 +56,43 @@ public class Balances
 {
 
     @XmlElement(name = "balance")
-    protected Balance balances;
+    protected List<Balance> balances;
 
     /**
      * Gets the value of the balances property.
      *
-     * @return
-     *     possible object is
-     *     {@link Balance }
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the balances property.
+     *
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getBalances().add(newItem);
+     * </pre>
+     *
+     *
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Balance }
+     *
      *
      */
-    public Balance getBalances() {
-        return balances;
-    }
-
-    /**
-     * Sets the value of the balances property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Balance }
-     *
-     */
-    public void setBalances(Balance value) {
-        this.balances = value;
+    public List<Balance> getBalances() {
+        if (balances == null) {
+            balances = new ArrayList<Balance>();
+        }
+        return this.balances;
     }
 
     public boolean isSetBalances() {
-        return (this.balances!= null);
+        return ((this.balances!= null)&&(!this.balances.isEmpty()));
+    }
+
+    public void unsetBalances() {
+        this.balances = null;
     }
 
 }

@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}host" minOccurs="0"/>
  *         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="memory" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="cpu" type="{}CPU" minOccurs="0"/>
+ *         &lt;element name="cpu" type="{}Cpu" minOccurs="0"/>
  *         &lt;element name="statistics" type="{}Statistics" minOccurs="0"/>
  *         &lt;element name="node_distance" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -70,7 +70,7 @@ public class NumaNode
     protected Host host;
     protected Integer index;
     protected Long memory;
-    protected CPU cpu;
+    protected Cpu cpu;
     protected Statistics statistics;
     @XmlElement(name = "node_distance")
     protected String nodeDistance;
@@ -164,10 +164,10 @@ public class NumaNode
      *
      * @return
      *     possible object is
-     *     {@link CPU }
+     *     {@link Cpu }
      *
      */
-    public CPU getCpu() {
+    public Cpu getCpu() {
         return cpu;
     }
 
@@ -176,10 +176,10 @@ public class NumaNode
      *
      * @param value
      *     allowed object is
-     *     {@link CPU }
+     *     {@link Cpu }
      *
      */
-    public void setCpu(CPU value) {
+    public void setCpu(Cpu value) {
         this.cpu = value;
     }
 

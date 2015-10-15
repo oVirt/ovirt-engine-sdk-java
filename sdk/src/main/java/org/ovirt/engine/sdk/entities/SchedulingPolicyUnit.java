@@ -23,7 +23,6 @@ package org.ovirt.engine.sdk.entities;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -53,7 +52,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SchedulingPolicyUnit", propOrder = {
     "internal",
     "enabled",
-    "propertiesMetaData"
+    "properties"
 })
 public class SchedulingPolicyUnit
     extends BaseResource
@@ -61,8 +60,7 @@ public class SchedulingPolicyUnit
 
     protected Boolean internal;
     protected Boolean enabled;
-    @XmlElement(name = "properties")
-    protected Properties propertiesMetaData;
+    protected Properties properties;
     @XmlAttribute(name = "type")
     protected String type;
 
@@ -123,31 +121,31 @@ public class SchedulingPolicyUnit
     }
 
     /**
-     * Gets the value of the propertiesMetaData property.
+     * Gets the value of the properties property.
      *
      * @return
      *     possible object is
      *     {@link Properties }
      *
      */
-    public Properties getPropertiesMetaData() {
-        return propertiesMetaData;
+    public Properties getProperties() {
+        return properties;
     }
 
     /**
-     * Sets the value of the propertiesMetaData property.
+     * Sets the value of the properties property.
      *
      * @param value
      *     allowed object is
      *     {@link Properties }
      *
      */
-    public void setPropertiesMetaData(Properties value) {
-        this.propertiesMetaData = value;
+    public void setProperties(Properties value) {
+        this.properties = value;
     }
 
-    public boolean isSetPropertiesMetaData() {
-        return (this.propertiesMetaData!= null);
+    public boolean isSetProperties() {
+        return (this.properties!= null);
     }
 
     /**

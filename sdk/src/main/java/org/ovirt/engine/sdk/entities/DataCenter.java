@@ -36,11 +36,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
- *         &lt;element name="storage_type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="local" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="storage_format" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
- *         &lt;element name="supported_versions" type="{}SupportedVersions" minOccurs="0"/>
+ *         &lt;element name="supported_versions" type="{}Versions" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element ref="{}mac_pool" minOccurs="0"/>
  *         &lt;element name="quota_mode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -54,7 +53,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DataCenter", propOrder = {
-    "storageType",
     "local",
     "storageFormat",
     "version",
@@ -67,47 +65,17 @@ public class DataCenter
     extends BaseResource
 {
 
-    @XmlElement(name = "storage_type")
-    protected String storageType;
     protected Boolean local;
     @XmlElement(name = "storage_format")
     protected String storageFormat;
     protected Version version;
     @XmlElement(name = "supported_versions")
-    protected SupportedVersions supportedVersions;
+    protected Versions supportedVersions;
     protected Status status;
     @XmlElement(name = "mac_pool")
     protected MacPool macPool;
     @XmlElement(name = "quota_mode")
     protected String quotaMode;
-
-    /**
-     * Gets the value of the storageType property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getStorageType() {
-        return storageType;
-    }
-
-    /**
-     * Sets the value of the storageType property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setStorageType(String value) {
-        this.storageType = value;
-    }
-
-    public boolean isSetStorageType() {
-        return (this.storageType!= null);
-    }
 
     /**
      * Gets the value of the local property.
@@ -198,10 +166,10 @@ public class DataCenter
      *
      * @return
      *     possible object is
-     *     {@link SupportedVersions }
+     *     {@link Versions }
      *
      */
-    public SupportedVersions getSupportedVersions() {
+    public Versions getSupportedVersions() {
         return supportedVersions;
     }
 
@@ -210,10 +178,10 @@ public class DataCenter
      *
      * @param value
      *     allowed object is
-     *     {@link SupportedVersions }
+     *     {@link Versions }
      *
      */
-    public void setSupportedVersions(SupportedVersions value) {
+    public void setSupportedVersions(Versions value) {
         this.supportedVersions = value;
     }
 

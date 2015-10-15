@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResource">
  *       &lt;sequence>
  *         &lt;element ref="{}values"/>
- *         &lt;element name="type" type="{}StatisticType"/>
+ *         &lt;element name="kind" type="{}StatisticKind"/>
+ *         &lt;element name="type" type="{}ValueType"/>
  *         &lt;element name="unit" type="{}StatisticUnit"/>
  *         &lt;element ref="{}disk" minOccurs="0"/>
  *         &lt;element ref="{}host" minOccurs="0"/>
@@ -59,6 +60,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Statistic", propOrder = {
     "values",
+    "kind",
     "type",
     "unit",
     "disk",
@@ -78,17 +80,19 @@ public class Statistic
     @XmlElement(required = true)
     protected Values values;
     @XmlElement(required = true)
-    protected StatisticType type;
+    protected StatisticKind kind;
+    @XmlElement(required = true)
+    protected ValueType type;
     @XmlElement(required = true)
     protected StatisticUnit unit;
     protected Disk disk;
     protected Host host;
     @XmlElement(name = "host_nic")
-    protected HostNIC hostNic;
+    protected HostNic hostNic;
     @XmlElement(name = "host_numa_node")
     protected NumaNode hostNumaNode;
-    protected NIC nic;
-    protected VM vm;
+    protected Nic nic;
+    protected Vm vm;
     protected GlusterBrick brick;
     protected Step step;
     @XmlElement(name = "gluster_volume")
@@ -123,14 +127,42 @@ public class Statistic
     }
 
     /**
+     * Gets the value of the kind property.
+     *
+     * @return
+     *     possible object is
+     *     {@link StatisticKind }
+     *
+     */
+    public StatisticKind getKind() {
+        return kind;
+    }
+
+    /**
+     * Sets the value of the kind property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link StatisticKind }
+     *
+     */
+    public void setKind(StatisticKind value) {
+        this.kind = value;
+    }
+
+    public boolean isSetKind() {
+        return (this.kind!= null);
+    }
+
+    /**
      * Gets the value of the type property.
      *
      * @return
      *     possible object is
-     *     {@link StatisticType }
+     *     {@link ValueType }
      *
      */
-    public StatisticType getType() {
+    public ValueType getType() {
         return type;
     }
 
@@ -139,10 +171,10 @@ public class Statistic
      *
      * @param value
      *     allowed object is
-     *     {@link StatisticType }
+     *     {@link ValueType }
      *
      */
-    public void setType(StatisticType value) {
+    public void setType(ValueType value) {
         this.type = value;
     }
 
@@ -239,10 +271,10 @@ public class Statistic
      *
      * @return
      *     possible object is
-     *     {@link HostNIC }
+     *     {@link HostNic }
      *
      */
-    public HostNIC getHostNic() {
+    public HostNic getHostNic() {
         return hostNic;
     }
 
@@ -251,10 +283,10 @@ public class Statistic
      *
      * @param value
      *     allowed object is
-     *     {@link HostNIC }
+     *     {@link HostNic }
      *
      */
-    public void setHostNic(HostNIC value) {
+    public void setHostNic(HostNic value) {
         this.hostNic = value;
     }
 
@@ -295,10 +327,10 @@ public class Statistic
      *
      * @return
      *     possible object is
-     *     {@link NIC }
+     *     {@link Nic }
      *
      */
-    public NIC getNic() {
+    public Nic getNic() {
         return nic;
     }
 
@@ -307,10 +339,10 @@ public class Statistic
      *
      * @param value
      *     allowed object is
-     *     {@link NIC }
+     *     {@link Nic }
      *
      */
-    public void setNic(NIC value) {
+    public void setNic(Nic value) {
         this.nic = value;
     }
 
@@ -323,10 +355,10 @@ public class Statistic
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -335,10 +367,10 @@ public class Statistic
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

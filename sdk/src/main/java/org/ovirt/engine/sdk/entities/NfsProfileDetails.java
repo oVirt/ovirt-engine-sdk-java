@@ -49,26 +49,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NfsProfileDetails", propOrder = {
-    "nfsProfileDetail"
+    "nfsProfileDetails"
 })
 public class NfsProfileDetails {
 
     @XmlElement(name = "nfs_profile_detail")
-    protected List<NfsProfileDetail> nfsProfileDetail;
+    protected List<NfsProfileDetail> nfsProfileDetails;
 
     /**
-     * Gets the value of the nfsProfileDetail property.
+     * Gets the value of the nfsProfileDetails property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nfsProfileDetail property.
+     * This is why there is not a <CODE>set</CODE> method for the nfsProfileDetails property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getNfsProfileDetail().add(newItem);
+     *    getNfsProfileDetails().add(newItem);
      * </pre>
      *
      *
@@ -78,19 +78,19 @@ public class NfsProfileDetails {
      *
      *
      */
-    public List<NfsProfileDetail> getNfsProfileDetail() {
-        if (nfsProfileDetail == null) {
-            nfsProfileDetail = new ArrayList<NfsProfileDetail>();
+    public List<NfsProfileDetail> getNfsProfileDetails() {
+        if (nfsProfileDetails == null) {
+            nfsProfileDetails = new ArrayList<NfsProfileDetail>();
         }
-        return this.nfsProfileDetail;
+        return this.nfsProfileDetails;
     }
 
-    public boolean isSetNfsProfileDetail() {
-        return ((this.nfsProfileDetail!= null)&&(!this.nfsProfileDetail.isEmpty()));
+    public boolean isSetNfsProfileDetails() {
+        return ((this.nfsProfileDetails!= null)&&(!this.nfsProfileDetails.isEmpty()));
     }
 
-    public void unsetNfsProfileDetail() {
-        this.nfsProfileDetail = null;
+    public void unsetNfsProfileDetails() {
+        this.nfsProfileDetails = null;
     }
 
 }

@@ -121,48 +121,6 @@ public class VmPool extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action allocatevm(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref() + "/allocatevm";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs allocatevm action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
@@ -177,7 +135,50 @@ public class VmPool extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action allocatevm(Action action, String correlationId, Boolean async) throws ClientProtocolException,
+    public Action allocatevm(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/allocatevm";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs allocatevm action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action allocatevm(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref() + "/allocatevm";
 
@@ -297,14 +298,14 @@ public class VmPool extends
      *
      * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
      *    <pre>
-     *    [vmpool.cluster.id|name]
-     *    [vmpool.template.id|name]
-     *    [vmpool.name]
-     *    [vmpool.comment]
-     *    [vmpool.size]
-     *    [vmpool.max_user_vms]
-     *    [vmpool.display.proxy]
-     *    [vmpool.description]
+     *    [vm_pool.cluster.id|name]
+     *    [vm_pool.comment]
+     *    [vm_pool.description]
+     *    [vm_pool.display.proxy]
+     *    [vm_pool.max_user_vms]
+     *    [vm_pool.name]
+     *    [vm_pool.size]
+     *    [vm_pool.template.id|name]
      *    </pre>
      *
      *
@@ -340,69 +341,16 @@ public class VmPool extends
      *
      * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
      *    <pre>
-     *    [vmpool.cluster.id|name]
-     *    [vmpool.template.id|name]
-     *    [vmpool.name]
-     *    [vmpool.comment]
-     *    [vmpool.size]
-     *    [vmpool.max_user_vms]
-     *    [vmpool.display.proxy]
-     *    [vmpool.description]
+     *    [vm_pool.cluster.id|name]
+     *    [vm_pool.comment]
+     *    [vm_pool.description]
+     *    [vm_pool.display.proxy]
+     *    [vm_pool.max_user_vms]
+     *    [vm_pool.name]
+     *    [vm_pool.size]
+     *    [vm_pool.template.id|name]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @return
-     *     {@link VmPool }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public VmPool update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.VmPool.class,
-                VmPool.class,
-                headers);
-    }
-    /**
-     * Updates VmPool object.
-     *
-     * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
-     *    <pre>
-     *    [vmpool.cluster.id|name]
-     *    [vmpool.template.id|name]
-     *    [vmpool.name]
-     *    [vmpool.comment]
-     *    [vmpool.size]
-     *    [vmpool.max_user_vms]
-     *    [vmpool.display.proxy]
-     *    [vmpool.description]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
@@ -417,7 +365,61 @@ public class VmPool extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VmPool update(String correlationId, Boolean async) throws ClientProtocolException,
+    public VmPool update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.VmPool.class,
+                VmPool.class,
+                headers);
+    }
+    /**
+     * Updates VmPool object.
+     *
+     * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
+     *    <pre>
+     *    [vm_pool.cluster.id|name]
+     *    [vm_pool.comment]
+     *    [vm_pool.description]
+     *    [vm_pool.display.proxy]
+     *    [vm_pool.max_user_vms]
+     *    [vm_pool.name]
+     *    [vm_pool.size]
+     *    [vm_pool.template.id|name]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @return
+     *     {@link VmPool }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public VmPool update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -446,23 +448,23 @@ public class VmPool extends
      *
      * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
      *    <pre>
-     *    [vmpool.cluster.id|name]
-     *    [vmpool.template.id|name]
-     *    [vmpool.name]
-     *    [vmpool.comment]
-     *    [vmpool.size]
-     *    [vmpool.max_user_vms]
-     *    [vmpool.display.proxy]
-     *    [vmpool.description]
+     *    [vm_pool.cluster.id|name]
+     *    [vm_pool.comment]
+     *    [vm_pool.description]
+     *    [vm_pool.display.proxy]
+     *    [vm_pool.max_user_vms]
+     *    [vm_pool.name]
+     *    [vm_pool.size]
+     *    [vm_pool.template.id|name]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @param expect
      *    <pre>
@@ -478,7 +480,7 @@ public class VmPool extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VmPool update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
+    public VmPool update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

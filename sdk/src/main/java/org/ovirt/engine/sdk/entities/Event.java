@@ -90,7 +90,7 @@ public class Event
     @XmlElement(name = "correlation_id")
     protected String correlationId;
     protected User user;
-    protected VM vm;
+    protected Vm vm;
     @XmlElement(name = "storage_domain")
     protected StorageDomain storageDomain;
     protected Host host;
@@ -251,10 +251,10 @@ public class Event
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -263,10 +263,10 @@ public class Event
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

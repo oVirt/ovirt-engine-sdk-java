@@ -49,26 +49,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PmProxies", propOrder = {
-    "pmProxy"
+    "pmProxies"
 })
 public class PmProxies {
 
     @XmlElement(name = "pm_proxy")
-    protected List<PmProxy> pmProxy;
+    protected List<PmProxy> pmProxies;
 
     /**
-     * Gets the value of the pmProxy property.
+     * Gets the value of the pmProxies property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the pmProxy property.
+     * This is why there is not a <CODE>set</CODE> method for the pmProxies property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPmProxy().add(newItem);
+     *    getPmProxies().add(newItem);
      * </pre>
      *
      *
@@ -78,19 +78,19 @@ public class PmProxies {
      *
      *
      */
-    public List<PmProxy> getPmProxy() {
-        if (pmProxy == null) {
-            pmProxy = new ArrayList<PmProxy>();
+    public List<PmProxy> getPmProxies() {
+        if (pmProxies == null) {
+            pmProxies = new ArrayList<PmProxy>();
         }
-        return this.pmProxy;
+        return this.pmProxies;
     }
 
-    public boolean isSetPmProxy() {
-        return ((this.pmProxy!= null)&&(!this.pmProxy.isEmpty()));
+    public boolean isSetPmProxies() {
+        return ((this.pmProxies!= null)&&(!this.pmProxies.isEmpty()));
     }
 
-    public void unsetPmProxy() {
-        this.pmProxy = null;
+    public void unsetPmProxies() {
+        this.pmProxies = null;
     }
 
 }

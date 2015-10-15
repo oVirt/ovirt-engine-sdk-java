@@ -175,7 +175,7 @@ public class GroupPermissions extends
      *      system
      *
      *      permission.role.id|name
-     *      permission.vmpool.id
+     *      permission.vm_pool.id
      *
      *    Overload 7:
      *
@@ -268,7 +268,7 @@ public class GroupPermissions extends
      *      system
      *
      *      permission.role.id|name
-     *      permission.vmpool.id
+     *      permission.vm_pool.id
      *
      *    Overload 7:
      *
@@ -280,9 +280,9 @@ public class GroupPermissions extends
      *      permission.template.id
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
      * @return
      *     {@link GroupPermission }
@@ -294,13 +294,13 @@ public class GroupPermissions extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public GroupPermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect) throws
+    public GroupPermission add(org.ovirt.engine.sdk.entities.Permission permission, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -367,7 +367,7 @@ public class GroupPermissions extends
      *      system
      *
      *      permission.role.id|name
-     *      permission.vmpool.id
+     *      permission.vm_pool.id
      *
      *    Overload 7:
      *
@@ -379,13 +379,13 @@ public class GroupPermissions extends
      *      permission.template.id
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
      *    </pre>
      * @return
      *     {@link GroupPermission }
@@ -397,16 +397,16 @@ public class GroupPermissions extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public GroupPermission add(org.ovirt.engine.sdk.entities.Permission permission, String expect, String correlationId) throws
+    public GroupPermission add(org.ovirt.engine.sdk.entities.Permission permission, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 

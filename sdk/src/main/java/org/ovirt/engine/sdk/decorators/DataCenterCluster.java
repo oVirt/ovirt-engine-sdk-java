@@ -327,30 +327,25 @@ public class DataCenterCluster extends
      *
      * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
      *    <pre>
-     *    [cluster.name]
-     *    [cluster.description]
-     *    [cluster.cpu.id]
-     *    [cluster.version.major]
-     *    [cluster.version.minor]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.scheduling_policy.id]
-     *    [cluster.scheduling_policy.properties.property]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.trusted_service]
-     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
+     *    [cluster.cpu.type]
+     *    [cluster.description]
      *    [cluster.display.proxy]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.gluster_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ksm.enabled]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.name]
+     *    [cluster.scheduling_policy.id]
+     *    [cluster.threads_as_cores]
+     *    [cluster.trusted_service]
+     *    [cluster.tunnel_migration]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.virt_service]
      *    </pre>
      *
      *
@@ -386,101 +381,27 @@ public class DataCenterCluster extends
      *
      * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
      *    <pre>
-     *    [cluster.name]
-     *    [cluster.description]
-     *    [cluster.cpu.id]
-     *    [cluster.version.major]
-     *    [cluster.version.minor]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.scheduling_policy.id]
-     *    [cluster.scheduling_policy.properties.property]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.trusted_service]
-     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
-     *    [cluster.display.proxy]
-     *    [cluster.ksm.enabled]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @return
-     *     {@link DataCenterCluster }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public DataCenterCluster update(String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.getHref();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().update(
-                url,
-                this,
-                org.ovirt.engine.sdk.entities.Cluster.class,
-                DataCenterCluster.class,
-                headers);
-    }
-    /**
-     * Updates DataCenterCluster object.
-     *
-     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
-     *    <pre>
-     *    [cluster.name]
+     *    [cluster.cpu.type]
      *    [cluster.description]
-     *    [cluster.cpu.id]
-     *    [cluster.version.major]
-     *    [cluster.version.minor]
+     *    [cluster.display.proxy]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.gluster_service]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.enabled]
      *    [cluster.memory_policy.overcommit.percent]
      *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
+     *    [cluster.name]
      *    [cluster.scheduling_policy.id]
-     *    [cluster.scheduling_policy.properties.property]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
      *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
      *    [cluster.trusted_service]
-     *    [cluster.ha_reservation]
-     *    [cluster.ballooning_enabled]
-     *    [cluster.cpu.architecture]
-     *    [cluster.display.proxy]
-     *    [cluster.ksm.enabled]
+     *    [cluster.tunnel_migration]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.virt_service]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
@@ -495,7 +416,72 @@ public class DataCenterCluster extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterCluster update(String correlationId, Boolean async) throws ClientProtocolException,
+    public DataCenterCluster update(Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.Cluster.class,
+                DataCenterCluster.class,
+                headers);
+    }
+    /**
+     * Updates DataCenterCluster object.
+     *
+     * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
+     *    <pre>
+     *    [cluster.ballooning_enabled]
+     *    [cluster.cpu.architecture]
+     *    [cluster.cpu.type]
+     *    [cluster.description]
+     *    [cluster.display.proxy]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.gluster_service]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.enabled]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.name]
+     *    [cluster.scheduling_policy.id]
+     *    [cluster.threads_as_cores]
+     *    [cluster.trusted_service]
+     *    [cluster.tunnel_migration]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.virt_service]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @return
+     *     {@link DataCenterCluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public DataCenterCluster update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -524,39 +510,34 @@ public class DataCenterCluster extends
      *
      * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
      *    <pre>
-     *    [cluster.name]
-     *    [cluster.description]
-     *    [cluster.cpu.id]
-     *    [cluster.version.major]
-     *    [cluster.version.minor]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.scheduling_policy.id]
-     *    [cluster.scheduling_policy.properties.property]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.trusted_service]
-     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
      *    [cluster.cpu.architecture]
+     *    [cluster.cpu.type]
+     *    [cluster.description]
      *    [cluster.display.proxy]
+     *    [cluster.error_handling.on_error]
+     *    [cluster.gluster_service]
+     *    [cluster.ha_reservation]
      *    [cluster.ksm.enabled]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.name]
+     *    [cluster.scheduling_policy.id]
+     *    [cluster.threads_as_cores]
+     *    [cluster.trusted_service]
+     *    [cluster.tunnel_migration]
+     *    [cluster.version.major]
+     *    [cluster.version.minor]
+     *    [cluster.virt_service]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @param expect
      *    <pre>
@@ -572,7 +553,7 @@ public class DataCenterCluster extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenterCluster update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
+    public DataCenterCluster update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

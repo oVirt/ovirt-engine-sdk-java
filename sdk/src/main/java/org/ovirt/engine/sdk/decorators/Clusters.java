@@ -118,39 +118,34 @@ public class Clusters extends
      *
      * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
      *    <pre>
+     *    cluster.cpu.type
      *    cluster.data_center.id|name
      *    cluster.name
      *    cluster.version.major
      *    cluster.version.minor
-     *    cluster.cpu.id
-     *    [cluster.description]
-     *    [cluster.comment]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.scheduling_policy.id]
-     *    [cluster.scheduling_policy.properties.property]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.trusted_service]
-     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
+     *    [cluster.comment]
      *    [cluster.cpu.architecture]
+     *    [cluster.description]
      *    [cluster.display.proxy]
-     *    [cluster.ksm.enabled]
-     *    [cluster.ksm.merge_across_nodes]
+     *    [cluster.error_handling.on_error]
      *    [cluster.fencing_policy.enabled]
-     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
-     *    [cluster.management_network.id|name]
+     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
+     *    [cluster.gluster_service]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.enabled]
+     *    [cluster.ksm.merge_across_nodes]
      *    [cluster.maintenance_reason_required]
+     *    [cluster.management_network.id|name]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.id]
+     *    [cluster.threads_as_cores]
+     *    [cluster.trusted_service]
+     *    [cluster.tunnel_migration]
+     *    [cluster.virt_service]
      *    </pre>
      *
      *
@@ -183,44 +178,39 @@ public class Clusters extends
      *
      * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
      *    <pre>
+     *    cluster.cpu.type
      *    cluster.data_center.id|name
      *    cluster.name
      *    cluster.version.major
      *    cluster.version.minor
-     *    cluster.cpu.id
-     *    [cluster.description]
-     *    [cluster.comment]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.scheduling_policy.id]
-     *    [cluster.scheduling_policy.properties.property]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.trusted_service]
-     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
+     *    [cluster.comment]
      *    [cluster.cpu.architecture]
+     *    [cluster.description]
      *    [cluster.display.proxy]
-     *    [cluster.ksm.enabled]
-     *    [cluster.ksm.merge_across_nodes]
+     *    [cluster.error_handling.on_error]
      *    [cluster.fencing_policy.enabled]
-     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
-     *    [cluster.management_network.id|name]
+     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
+     *    [cluster.gluster_service]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.enabled]
+     *    [cluster.ksm.merge_across_nodes]
      *    [cluster.maintenance_reason_required]
+     *    [cluster.management_network.id|name]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.id]
+     *    [cluster.threads_as_cores]
+     *    [cluster.trusted_service]
+     *    [cluster.tunnel_migration]
+     *    [cluster.virt_service]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
      * @return
      *     {@link Cluster }
@@ -232,13 +222,13 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect) throws
+    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -254,48 +244,43 @@ public class Clusters extends
      *
      * @param cluster {@link org.ovirt.engine.sdk.entities.Cluster}
      *    <pre>
+     *    cluster.cpu.type
      *    cluster.data_center.id|name
      *    cluster.name
      *    cluster.version.major
      *    cluster.version.minor
-     *    cluster.cpu.id
-     *    [cluster.description]
-     *    [cluster.comment]
-     *    [cluster.memory_policy.overcommit.percent]
-     *    [cluster.memory_policy.transparent_hugepages.enabled]
-     *    [cluster.scheduling_policy.policy]
-     *    [cluster.scheduling_policy.thresholds.low]
-     *    [cluster.scheduling_policy.thresholds.high]
-     *    [cluster.scheduling_policy.thresholds.duration]
-     *    [cluster.scheduling_policy.id]
-     *    [cluster.scheduling_policy.properties.property]
-     *    [cluster.error_handling.on_error]
-     *    [cluster.virt_service]
-     *    [cluster.gluster_service]
-     *    [cluster.threads_as_cores]
-     *    [cluster.tunnel_migration]
-     *    [cluster.trusted_service]
-     *    [cluster.ha_reservation]
      *    [cluster.ballooning_enabled]
+     *    [cluster.comment]
      *    [cluster.cpu.architecture]
+     *    [cluster.description]
      *    [cluster.display.proxy]
-     *    [cluster.ksm.enabled]
-     *    [cluster.ksm.merge_across_nodes]
+     *    [cluster.error_handling.on_error]
      *    [cluster.fencing_policy.enabled]
-     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.enabled]
      *    [cluster.fencing_policy.skip_if_connectivity_broken.threshold]
-     *    [cluster.management_network.id|name]
+     *    [cluster.fencing_policy.skip_if_sd_active.enabled]
+     *    [cluster.gluster_service]
+     *    [cluster.ha_reservation]
+     *    [cluster.ksm.enabled]
+     *    [cluster.ksm.merge_across_nodes]
      *    [cluster.maintenance_reason_required]
+     *    [cluster.management_network.id|name]
+     *    [cluster.memory_policy.overcommit.percent]
+     *    [cluster.memory_policy.transparent_hugepages.enabled]
+     *    [cluster.scheduling_policy.id]
+     *    [cluster.threads_as_cores]
+     *    [cluster.trusted_service]
+     *    [cluster.tunnel_migration]
+     *    [cluster.virt_service]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
      *    </pre>
      * @return
      *     {@link Cluster }
@@ -307,16 +292,16 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String expect, String correlationId) throws
+    public Cluster add(org.ovirt.engine.sdk.entities.Cluster cluster, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -330,43 +315,6 @@ public class Clusters extends
     /**
      * Lists Cluster objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     *
-     * @return List of {@link Cluster }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Cluster> list(String query) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Clusters.class,
-                Cluster.class, headers);
-    }
-    /**
-     * Lists Cluster objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -381,17 +329,13 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Cluster> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+    public List<Cluster> list(Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -404,10 +348,6 @@ public class Clusters extends
     /**
      * Lists Cluster objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -426,23 +366,68 @@ public class Clusters extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Cluster> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+    public List<Cluster> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Clusters.class,
+                Cluster.class, headers);
+    }
+    /**
+     * Lists Cluster objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     *
+     * @return List of {@link Cluster }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Cluster> list(Boolean caseSensitive, Integer max, String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
 
         String url = urlBuilder.build();

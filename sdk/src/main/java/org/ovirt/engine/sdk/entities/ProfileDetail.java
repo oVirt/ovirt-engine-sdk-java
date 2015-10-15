@@ -20,8 +20,6 @@
 
 package org.ovirt.engine.sdk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -40,9 +38,9 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="profile_type" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element ref="{}statistic" maxOccurs="2" minOccurs="0"/>
- *         &lt;element ref="{}block_statistic" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element ref="{}fop_statistic" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}statistics" minOccurs="0"/>
+ *         &lt;element ref="{}block_statistics" minOccurs="0"/>
+ *         &lt;element ref="{}fop_statistics" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -55,20 +53,20 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ProfileDetail", propOrder = {
     "profileType",
     "duration",
-    "statistic",
-    "blockStatistic",
-    "fopStatistic"
+    "statistics",
+    "blockStatistics",
+    "fopStatistics"
 })
 public class ProfileDetail {
 
     @XmlElement(name = "profile_type", required = true)
     protected String profileType;
     protected Integer duration;
-    protected List<Statistic> statistic;
-    @XmlElement(name = "block_statistic")
-    protected List<BlockStatistic> blockStatistic;
-    @XmlElement(name = "fop_statistic")
-    protected List<FopStatistic> fopStatistic;
+    protected Statistics statistics;
+    @XmlElement(name = "block_statistics")
+    protected BlockStatistics blockStatistics;
+    @XmlElement(name = "fop_statistics")
+    protected FopStatistics fopStatistics;
 
     /**
      * Gets the value of the profileType property.
@@ -127,114 +125,87 @@ public class ProfileDetail {
     }
 
     /**
-     * Gets the value of the statistic property.
+     * Gets the value of the statistics property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the statistic property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getStatistic().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Statistic }
-     *
+     * @return
+     *     possible object is
+     *     {@link Statistics }
      *
      */
-    public List<Statistic> getStatistic() {
-        if (statistic == null) {
-            statistic = new ArrayList<Statistic>();
-        }
-        return this.statistic;
-    }
-
-    public boolean isSetStatistic() {
-        return ((this.statistic!= null)&&(!this.statistic.isEmpty()));
-    }
-
-    public void unsetStatistic() {
-        this.statistic = null;
+    public Statistics getStatistics() {
+        return statistics;
     }
 
     /**
-     * Gets the value of the blockStatistic property.
+     * Sets the value of the statistics property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the blockStatistic property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBlockStatistic().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link BlockStatistic }
-     *
+     * @param value
+     *     allowed object is
+     *     {@link Statistics }
      *
      */
-    public List<BlockStatistic> getBlockStatistic() {
-        if (blockStatistic == null) {
-            blockStatistic = new ArrayList<BlockStatistic>();
-        }
-        return this.blockStatistic;
+    public void setStatistics(Statistics value) {
+        this.statistics = value;
     }
 
-    public boolean isSetBlockStatistic() {
-        return ((this.blockStatistic!= null)&&(!this.blockStatistic.isEmpty()));
-    }
-
-    public void unsetBlockStatistic() {
-        this.blockStatistic = null;
+    public boolean isSetStatistics() {
+        return (this.statistics!= null);
     }
 
     /**
-     * Gets the value of the fopStatistic property.
+     * Gets the value of the blockStatistics property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the fopStatistic property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getFopStatistic().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link FopStatistic }
-     *
+     * @return
+     *     possible object is
+     *     {@link BlockStatistics }
      *
      */
-    public List<FopStatistic> getFopStatistic() {
-        if (fopStatistic == null) {
-            fopStatistic = new ArrayList<FopStatistic>();
-        }
-        return this.fopStatistic;
+    public BlockStatistics getBlockStatistics() {
+        return blockStatistics;
     }
 
-    public boolean isSetFopStatistic() {
-        return ((this.fopStatistic!= null)&&(!this.fopStatistic.isEmpty()));
+    /**
+     * Sets the value of the blockStatistics property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link BlockStatistics }
+     *
+     */
+    public void setBlockStatistics(BlockStatistics value) {
+        this.blockStatistics = value;
     }
 
-    public void unsetFopStatistic() {
-        this.fopStatistic = null;
+    public boolean isSetBlockStatistics() {
+        return (this.blockStatistics!= null);
+    }
+
+    /**
+     * Gets the value of the fopStatistics property.
+     *
+     * @return
+     *     possible object is
+     *     {@link FopStatistics }
+     *
+     */
+    public FopStatistics getFopStatistics() {
+        return fopStatistics;
+    }
+
+    /**
+     * Sets the value of the fopStatistics property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link FopStatistics }
+     *
+     */
+    public void setFopStatistics(FopStatistics value) {
+        this.fopStatistics = value;
+    }
+
+    public boolean isSetFopStatistics() {
+        return (this.fopStatistics!= null);
     }
 
 }

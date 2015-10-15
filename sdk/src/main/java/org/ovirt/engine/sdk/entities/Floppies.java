@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Floppies">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseDevices">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element ref="{}floppy" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -52,7 +52,7 @@ import javax.xml.bind.annotation.XmlType;
     "floppies"
 })
 public class Floppies
-    extends BaseDevices
+    extends BaseResources
 {
 
     @XmlElement(name = "floppy")

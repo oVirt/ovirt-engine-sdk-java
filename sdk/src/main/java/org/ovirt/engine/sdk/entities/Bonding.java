@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}options" minOccurs="0"/>
- *         &lt;element ref="{}slaves" minOccurs="0"/>
+ *         &lt;element name="slaves" type="{}HostNics" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -53,7 +53,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Bonding {
 
     protected Options options;
-    protected Slaves slaves;
+    protected HostNics slaves;
 
     /**
      * Gets the value of the options property.
@@ -88,10 +88,10 @@ public class Bonding {
      *
      * @return
      *     possible object is
-     *     {@link Slaves }
+     *     {@link HostNics }
      *
      */
-    public Slaves getSlaves() {
+    public HostNics getSlaves() {
         return slaves;
     }
 
@@ -100,10 +100,10 @@ public class Bonding {
      *
      * @param value
      *     allowed object is
-     *     {@link Slaves }
+     *     {@link HostNics }
      *
      */
-    public void setSlaves(Slaves value) {
+    public void setSlaves(HostNics value) {
         this.slaves = value;
     }
 

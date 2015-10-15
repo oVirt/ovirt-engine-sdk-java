@@ -22,7 +22,7 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
@@ -37,11 +37,13 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="Version">
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResource">
- *       &lt;attribute name="major" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" />
- *       &lt;attribute name="minor" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" />
- *       &lt;attribute name="build" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" />
- *       &lt;attribute name="revision" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" />
- *       &lt;attribute name="full_version" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;sequence>
+ *         &lt;element name="major" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
+ *         &lt;element name="minor" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
+ *         &lt;element name="build" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
+ *         &lt;element name="revision" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
+ *         &lt;element name="full_version" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -50,7 +52,13 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Version")
+@XmlType(name = "Version", propOrder = {
+    "major",
+    "minor",
+    "build",
+    "revision",
+    "fullVersion"
+})
 @XmlSeeAlso({
     VersionCaps.class
 })
@@ -58,19 +66,15 @@ public class Version
     extends BaseResource
 {
 
-    @XmlAttribute(name = "major")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer major;
-    @XmlAttribute(name = "minor")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer minor;
-    @XmlAttribute(name = "build")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer build;
-    @XmlAttribute(name = "revision")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer revision;
-    @XmlAttribute(name = "full_version")
+    @XmlElement(name = "full_version")
     protected String fullVersion;
 
     /**
@@ -97,6 +101,10 @@ public class Version
         this.major = value;
     }
 
+    public boolean isSetMajor() {
+        return (this.major!= null);
+    }
+
     /**
      * Gets the value of the minor property.
      *
@@ -119,6 +127,10 @@ public class Version
      */
     public void setMinor(Integer value) {
         this.minor = value;
+    }
+
+    public boolean isSetMinor() {
+        return (this.minor!= null);
     }
 
     /**
@@ -145,6 +157,10 @@ public class Version
         this.build = value;
     }
 
+    public boolean isSetBuild() {
+        return (this.build!= null);
+    }
+
     /**
      * Gets the value of the revision property.
      *
@@ -169,6 +185,10 @@ public class Version
         this.revision = value;
     }
 
+    public boolean isSetRevision() {
+        return (this.revision!= null);
+    }
+
     /**
      * Gets the value of the fullVersion property.
      *
@@ -191,6 +211,10 @@ public class Version
      */
     public void setFullVersion(String value) {
         this.fullVersion = value;
+    }
+
+    public boolean isSetFullVersion() {
+        return (this.fullVersion!= null);
     }
 
 }

@@ -57,7 +57,7 @@ public class FencingPolicy {
 
     protected Boolean enabled;
     @XmlElement(name = "skip_if_sd_active")
-    protected SkipIfSDActive skipIfSdActive;
+    protected SkipIfSdActive skipIfSdActive;
     @XmlElement(name = "skip_if_connectivity_broken")
     protected SkipIfConnectivityBroken skipIfConnectivityBroken;
 
@@ -94,10 +94,10 @@ public class FencingPolicy {
      *
      * @return
      *     possible object is
-     *     {@link SkipIfSDActive }
+     *     {@link SkipIfSdActive }
      *
      */
-    public SkipIfSDActive getSkipIfSdActive() {
+    public SkipIfSdActive getSkipIfSdActive() {
         return skipIfSdActive;
     }
 
@@ -106,10 +106,10 @@ public class FencingPolicy {
      *
      * @param value
      *     allowed object is
-     *     {@link SkipIfSDActive }
+     *     {@link SkipIfSdActive }
      *
      */
-    public void setSkipIfSdActive(SkipIfSDActive value) {
+    public void setSkipIfSdActive(SkipIfSdActive value) {
         this.skipIfSdActive = value;
     }
 

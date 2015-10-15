@@ -47,6 +47,7 @@ public class User extends
 
     private volatile UserPermissions userPermissions;
     private volatile UserRoles userRoles;
+    private volatile UserSshPublicKeys userSshPublicKeys;
     private volatile UserTags userTags;
 
 
@@ -95,6 +96,22 @@ public class User extends
             }
         }
         return userRoles;
+    }
+    /**
+     * Gets the value of the UserSshPublicKeys property.
+     *
+     * @return
+     *     {@link UserSshPublicKeys }
+     */
+    public UserSshPublicKeys getSshPublicKeys() {
+        if (this.userSshPublicKeys == null) {
+            synchronized (this.LOCK) {
+                if (this.userSshPublicKeys == null) {
+                    this.userSshPublicKeys = new UserSshPublicKeys(proxy, this);
+                }
+            }
+        }
+        return userSshPublicKeys;
     }
     /**
      * Gets the value of the UserTags property.

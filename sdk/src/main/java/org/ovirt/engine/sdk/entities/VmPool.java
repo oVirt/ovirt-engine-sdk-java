@@ -45,6 +45,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}display" minOccurs="0"/>
  *         &lt;element ref="{}rng_device" minOccurs="0"/>
  *         &lt;element ref="{}soundcard_enabled" minOccurs="0"/>
+ *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -63,7 +64,8 @@ import javax.xml.bind.annotation.XmlType;
     "maxUserVms",
     "display",
     "rngDevice",
-    "soundcardEnabled"
+    "soundcardEnabled",
+    "type"
 })
 public class VmPool
     extends BaseResource
@@ -72,7 +74,7 @@ public class VmPool
     protected Integer size;
     protected Cluster cluster;
     protected Template template;
-    protected VM vm;
+    protected Vm vm;
     @XmlElement(name = "prestarted_vms")
     protected Integer prestartedVms;
     @XmlElement(name = "max_user_vms")
@@ -82,6 +84,7 @@ public class VmPool
     protected RngDevice rngDevice;
     @XmlElement(name = "soundcard_enabled")
     protected Boolean soundcardEnabled;
+    protected String type;
 
     /**
      * Gets the value of the size property.
@@ -172,10 +175,10 @@ public class VmPool
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -184,10 +187,10 @@ public class VmPool
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 
@@ -333,6 +336,34 @@ public class VmPool
 
     public boolean isSetSoundcardEnabled() {
         return (this.soundcardEnabled!= null);
+    }
+
+    /**
+     * Gets the value of the type property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setType(String value) {
+        this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
     }
 
 }

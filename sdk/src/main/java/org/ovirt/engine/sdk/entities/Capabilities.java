@@ -39,8 +39,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element name="version" type="{}VersionCaps" maxOccurs="unbounded"/>
- *         &lt;element name="permits" type="{}Permits" minOccurs="0"/>
- *         &lt;element name="scheduling_policies" type="{}SchedulingPolicies" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -51,9 +49,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Capabilities", propOrder = {
-    "versions",
-    "permits",
-    "schedulingPolicies"
+    "versions"
 })
 public class Capabilities
     extends BaseResources
@@ -61,9 +57,6 @@ public class Capabilities
 
     @XmlElement(name = "version", required = true)
     protected List<VersionCaps> versions;
-    protected Permits permits;
-    @XmlElement(name = "scheduling_policies")
-    protected SchedulingPolicies schedulingPolicies;
 
     /**
      * Gets the value of the versions property.
@@ -100,62 +93,6 @@ public class Capabilities
 
     public void unsetVersions() {
         this.versions = null;
-    }
-
-    /**
-     * Gets the value of the permits property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Permits }
-     *
-     */
-    public Permits getPermits() {
-        return permits;
-    }
-
-    /**
-     * Sets the value of the permits property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Permits }
-     *
-     */
-    public void setPermits(Permits value) {
-        this.permits = value;
-    }
-
-    public boolean isSetPermits() {
-        return (this.permits!= null);
-    }
-
-    /**
-     * Gets the value of the schedulingPolicies property.
-     *
-     * @return
-     *     possible object is
-     *     {@link SchedulingPolicies }
-     *
-     */
-    public SchedulingPolicies getSchedulingPolicies() {
-        return schedulingPolicies;
-    }
-
-    /**
-     * Sets the value of the schedulingPolicies property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link SchedulingPolicies }
-     *
-     */
-    public void setSchedulingPolicies(SchedulingPolicies value) {
-        this.schedulingPolicies = value;
-    }
-
-    public boolean isSetSchedulingPolicies() {
-        return (this.schedulingPolicies!= null);
     }
 
 }

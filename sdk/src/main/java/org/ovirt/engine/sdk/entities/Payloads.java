@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -48,25 +49,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Payloads", propOrder = {
-    "payload"
+    "payloads"
 })
 public class Payloads {
 
-    protected List<Payload> payload;
+    @XmlElement(name = "payload")
+    protected List<Payload> payloads;
 
     /**
-     * Gets the value of the payload property.
+     * Gets the value of the payloads property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the payload property.
+     * This is why there is not a <CODE>set</CODE> method for the payloads property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPayload().add(newItem);
+     *    getPayloads().add(newItem);
      * </pre>
      *
      *
@@ -76,19 +78,19 @@ public class Payloads {
      *
      *
      */
-    public List<Payload> getPayload() {
-        if (payload == null) {
-            payload = new ArrayList<Payload>();
+    public List<Payload> getPayloads() {
+        if (payloads == null) {
+            payloads = new ArrayList<Payload>();
         }
-        return this.payload;
+        return this.payloads;
     }
 
-    public boolean isSetPayload() {
-        return ((this.payload!= null)&&(!this.payload.isEmpty()));
+    public boolean isSetPayloads() {
+        return ((this.payloads!= null)&&(!this.payloads.isEmpty()));
     }
 
-    public void unsetPayload() {
-        this.payload = null;
+    public void unsetPayloads() {
+        this.payloads = null;
     }
 
 }

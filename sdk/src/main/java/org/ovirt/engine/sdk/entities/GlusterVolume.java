@@ -20,6 +20,8 @@
 
 package org.ovirt.engine.sdk.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -39,7 +41,17 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element ref="{}cluster" minOccurs="0"/>
  *         &lt;element name="volume_type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element ref="{}transport_types" minOccurs="0"/>
+ *         &lt;element name="transport_types" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="transport_type" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element name="replica_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="stripe_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="disperse_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
@@ -76,7 +88,7 @@ public class GlusterVolume
     @XmlElement(name = "volume_type")
     protected String volumeType;
     @XmlElement(name = "transport_types")
-    protected TransportTypes transportTypes;
+    protected GlusterVolume.TransportTypesList transportTypes;
     @XmlElement(name = "replica_count")
     @XmlSchemaType(name = "unsignedShort")
     protected Integer replicaCount;
@@ -154,10 +166,10 @@ public class GlusterVolume
      *
      * @return
      *     possible object is
-     *     {@link TransportTypes }
+     *     {@link GlusterVolume.TransportTypesList }
      *
      */
-    public TransportTypes getTransportTypes() {
+    public GlusterVolume.TransportTypesList getTransportTypes() {
         return transportTypes;
     }
 
@@ -166,10 +178,10 @@ public class GlusterVolume
      *
      * @param value
      *     allowed object is
-     *     {@link TransportTypes }
+     *     {@link GlusterVolume.TransportTypesList }
      *
      */
-    public void setTransportTypes(TransportTypes value) {
+    public void setTransportTypes(GlusterVolume.TransportTypesList value) {
         this.transportTypes = value;
     }
 
@@ -371,6 +383,74 @@ public class GlusterVolume
 
     public boolean isSetStatus() {
         return (this.status!= null);
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="transport_type" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "transportTypes"
+    })
+    public static class TransportTypesList {
+
+        @XmlElement(name = "transport_type")
+        protected List<String> transportTypes;
+
+        /**
+         * Gets the value of the transportTypes property.
+         *
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the transportTypes property.
+         *
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getTransportTypes().add(newItem);
+         * </pre>
+         *
+         *
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link String }
+         *
+         *
+         */
+        public List<String> getTransportTypes() {
+            if (transportTypes == null) {
+                transportTypes = new ArrayList<String>();
+            }
+            return this.transportTypes;
+        }
+
+        public boolean isSetTransportTypes() {
+            return ((this.transportTypes!= null)&&(!this.transportTypes.isEmpty()));
+        }
+
+        public void unsetTransportTypes() {
+            this.transportTypes = null;
+        }
+
     }
 
 }

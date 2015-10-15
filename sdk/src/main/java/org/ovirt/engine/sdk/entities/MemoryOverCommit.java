@@ -22,7 +22,6 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -35,7 +34,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="MemoryOverCommit">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="percent" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;sequence>
+ *         &lt;element name="percent" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -44,10 +45,11 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MemoryOverCommit")
+@XmlType(name = "MemoryOverCommit", propOrder = {
+    "percent"
+})
 public class MemoryOverCommit {
 
-    @XmlAttribute(name = "percent")
     protected Integer percent;
 
     /**
@@ -72,6 +74,10 @@ public class MemoryOverCommit {
      */
     public void setPercent(Integer value) {
         this.percent = value;
+    }
+
+    public boolean isSetPercent() {
+        return (this.percent!= null);
     }
 
 }

@@ -84,7 +84,7 @@ public class HostDevice
     @XmlElement(name = "virtual_functions")
     protected Integer virtualFunctions;
     protected Boolean placeholder;
-    protected VM vm;
+    protected Vm vm;
 
     /**
      * Gets the value of the host property.
@@ -343,10 +343,10 @@ public class HostDevice
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -355,10 +355,10 @@ public class HostDevice
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

@@ -134,18 +134,11 @@ public class Hosts extends
      *      [host.port]
      *      [host.display.address]
      *      [host.spm.priority]
-     *      [host.power_management.type]
      *      [host.power_management.enabled]
-     *      [host.power_management.address]
-     *      [host.power_management.username]
      *      [host.power_management.automatic_pm_enabled]
-     *      [host.power_management.password]
-     *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
-     *      [host.power_management.agents.agent]
-     *      [host.reboot_after_installation]
-     *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.override_iptables]
      *      [host.protocol]
      *
      *    Overload 2:
@@ -166,16 +159,9 @@ public class Hosts extends
      *      [host.port]
      *      [host.display.address]
      *      [host.spm.priority]
-     *      [host.power_management.type]
      *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
-     *      [host.power_management.address]
-     *      [host.power_management.username]
-     *      [host.power_management.password]
-     *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
-     *      [host.power_management.agents.agent]
-     *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
      *      [host.protocol]
@@ -227,18 +213,11 @@ public class Hosts extends
      *      [host.port]
      *      [host.display.address]
      *      [host.spm.priority]
-     *      [host.power_management.type]
      *      [host.power_management.enabled]
-     *      [host.power_management.address]
-     *      [host.power_management.username]
      *      [host.power_management.automatic_pm_enabled]
-     *      [host.power_management.password]
-     *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
-     *      [host.power_management.agents.agent]
-     *      [host.reboot_after_installation]
-     *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.override_iptables]
      *      [host.protocol]
      *
      *    Overload 2:
@@ -259,24 +238,17 @@ public class Hosts extends
      *      [host.port]
      *      [host.display.address]
      *      [host.spm.priority]
-     *      [host.power_management.type]
      *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
-     *      [host.power_management.address]
-     *      [host.power_management.username]
-     *      [host.power_management.password]
-     *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
-     *      [host.power_management.agents.agent]
-     *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
      *      [host.protocol]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
      * @return
      *     {@link Host }
@@ -288,13 +260,13 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Host add(org.ovirt.engine.sdk.entities.Host host, String expect) throws
+    public Host add(org.ovirt.engine.sdk.entities.Host host, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -326,18 +298,11 @@ public class Hosts extends
      *      [host.port]
      *      [host.display.address]
      *      [host.spm.priority]
-     *      [host.power_management.type]
      *      [host.power_management.enabled]
-     *      [host.power_management.address]
-     *      [host.power_management.username]
      *      [host.power_management.automatic_pm_enabled]
-     *      [host.power_management.password]
-     *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
-     *      [host.power_management.agents.agent]
-     *      [host.reboot_after_installation]
-     *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
+     *      [host.override_iptables]
      *      [host.protocol]
      *
      *    Overload 2:
@@ -358,28 +323,21 @@ public class Hosts extends
      *      [host.port]
      *      [host.display.address]
      *      [host.spm.priority]
-     *      [host.power_management.type]
      *      [host.power_management.automatic_pm_enabled]
      *      [host.power_management.enabled]
-     *      [host.power_management.address]
-     *      [host.power_management.username]
-     *      [host.power_management.password]
-     *      [host.power_management.options.option]
      *      [host.power_management.pm_proxy]
-     *      [host.power_management.agents.agent]
-     *      [host.reboot_after_installation]
      *      [host.override_iptables]
      *      [host.power_management.kdump_detection]
      *      [host.protocol]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
      *    </pre>
      * @return
      *     {@link Host }
@@ -391,16 +349,16 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Host add(org.ovirt.engine.sdk.entities.Host host, String expect, String correlationId) throws
+    public Host add(org.ovirt.engine.sdk.entities.Host host, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -414,141 +372,6 @@ public class Hosts extends
     /**
      * Lists Host objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     *
-     * @return List of {@link Host }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Host> list(String query) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Hosts.class,
-                Host.class, headers);
-    }
-    /**
-     * Lists Host objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return List of {@link Host }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Host> list(String query, Boolean caseSensitive) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Hosts.class,
-                Host.class, headers);
-    }
-    /**
-     * Lists Host objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     * @return List of {@link Host }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Host> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Hosts.class,
-                Host.class, headers);
-    }
-    /**
-     * Lists Host objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
      * @param allContent
      *    <pre>
      *    [true|false]
@@ -563,7 +386,7 @@ public class Hosts extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Host> list(String query, Boolean caseSensitive, Integer max, String allContent) throws ClientProtocolException,
+    public List<Host> list(String allContent) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -573,16 +396,148 @@ public class Hosts extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Hosts.class,
+                Host.class, headers);
+    }
+    /**
+     * Lists Host objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return List of {@link Host }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Host> list(String allContent, Boolean caseSensitive) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Hosts.class,
+                Host.class, headers);
+    }
+    /**
+     * Lists Host objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     * @return List of {@link Host }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Host> list(String allContent, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Hosts.class,
+                Host.class, headers);
+    }
+    /**
+     * Lists Host objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     *
+     * @return List of {@link Host }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Host> list(String allContent, Boolean caseSensitive, Integer max, String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
 
         String url = urlBuilder.build();

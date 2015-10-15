@@ -36,11 +36,9 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Disks">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseDevices">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element ref="{}disk" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="clone" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="detach_only" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -51,19 +49,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Disks", propOrder = {
-    "disks",
-    "clone",
-    "detachOnly"
+    "disks"
 })
 public class Disks
-    extends BaseDevices
+    extends BaseResources
 {
 
     @XmlElement(name = "disk")
     protected List<Disk> disks;
-    protected Boolean clone;
-    @XmlElement(name = "detach_only")
-    protected Boolean detachOnly;
 
     /**
      * Gets the value of the disks property.
@@ -100,62 +93,6 @@ public class Disks
 
     public void unsetDisks() {
         this.disks = null;
-    }
-
-    /**
-     * Gets the value of the clone property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getClone() {
-        return clone;
-    }
-
-    /**
-     * Sets the value of the clone property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setClone(Boolean value) {
-        this.clone = value;
-    }
-
-    public boolean isSetClone() {
-        return (this.clone!= null);
-    }
-
-    /**
-     * Gets the value of the detachOnly property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getDetachOnly() {
-        return detachOnly;
-    }
-
-    /**
-     * Sets the value of the detachOnly property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setDetachOnly(Boolean value) {
-        this.detachOnly = value;
-    }
-
-    public boolean isSetDetachOnly() {
-        return (this.detachOnly!= null);
     }
 
 }

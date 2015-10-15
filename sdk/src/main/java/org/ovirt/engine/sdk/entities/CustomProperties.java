@@ -49,26 +49,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CustomProperties", propOrder = {
-    "customProperty"
+    "customProperties"
 })
 public class CustomProperties {
 
     @XmlElement(name = "custom_property")
-    protected List<CustomProperty> customProperty;
+    protected List<CustomProperty> customProperties;
 
     /**
-     * Gets the value of the customProperty property.
+     * Gets the value of the customProperties property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the customProperty property.
+     * This is why there is not a <CODE>set</CODE> method for the customProperties property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCustomProperty().add(newItem);
+     *    getCustomProperties().add(newItem);
      * </pre>
      *
      *
@@ -78,19 +78,19 @@ public class CustomProperties {
      *
      *
      */
-    public List<CustomProperty> getCustomProperty() {
-        if (customProperty == null) {
-            customProperty = new ArrayList<CustomProperty>();
+    public List<CustomProperty> getCustomProperties() {
+        if (customProperties == null) {
+            customProperties = new ArrayList<CustomProperty>();
         }
-        return this.customProperty;
+        return this.customProperties;
     }
 
-    public boolean isSetCustomProperty() {
-        return ((this.customProperty!= null)&&(!this.customProperty.isEmpty()));
+    public boolean isSetCustomProperties() {
+        return ((this.customProperties!= null)&&(!this.customProperties.isEmpty()));
     }
 
-    public void unsetCustomProperty() {
-        this.customProperty = null;
+    public void unsetCustomProperties() {
+        this.customProperties = null;
     }
 
 }

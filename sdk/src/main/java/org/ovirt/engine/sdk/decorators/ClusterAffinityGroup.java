@@ -45,7 +45,7 @@ public class ClusterAffinityGroup extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile ClusterAffinityGroupVMs clusterAffinityGroupVMs;
+    private volatile ClusterAffinityGroupVms clusterAffinityGroupVms;
 
 
     /**
@@ -63,20 +63,20 @@ public class ClusterAffinityGroup extends
     }
 
     /**
-     * Gets the value of the ClusterAffinityGroupVMs property.
+     * Gets the value of the ClusterAffinityGroupVms property.
      *
      * @return
-     *     {@link ClusterAffinityGroupVMs }
+     *     {@link ClusterAffinityGroupVms }
      */
-    public ClusterAffinityGroupVMs getVMs() {
-        if (this.clusterAffinityGroupVMs == null) {
+    public ClusterAffinityGroupVms getVms() {
+        if (this.clusterAffinityGroupVms == null) {
             synchronized (this.LOCK) {
-                if (this.clusterAffinityGroupVMs == null) {
-                    this.clusterAffinityGroupVMs = new ClusterAffinityGroupVMs(proxy, this);
+                if (this.clusterAffinityGroupVms == null) {
+                    this.clusterAffinityGroupVms = new ClusterAffinityGroupVms(proxy, this);
                 }
             }
         }
-        return clusterAffinityGroupVMs;
+        return clusterAffinityGroupVms;
     }
 
 

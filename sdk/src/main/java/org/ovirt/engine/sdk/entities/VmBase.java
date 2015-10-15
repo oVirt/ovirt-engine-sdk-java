@@ -42,7 +42,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element name="memory" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="cpu" type="{}CPU" minOccurs="0"/>
+ *         &lt;element name="cpu" type="{}Cpu" minOccurs="0"/>
  *         &lt;element name="cpu_shares" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="bios" type="{}Bios" minOccurs="0"/>
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
@@ -57,7 +57,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element ref="{}sso" minOccurs="0"/>
  *         &lt;element ref="{}rng_device" minOccurs="0"/>
  *         &lt;element ref="{}console" minOccurs="0"/>
- *         &lt;element name="timezone" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}domain" minOccurs="0"/>
  *         &lt;element ref="{}usb" minOccurs="0"/>
  *         &lt;element ref="{}soundcard_enabled" minOccurs="0"/>
@@ -75,6 +74,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="time_zone" type="{}TimeZone" minOccurs="0"/>
  *         &lt;element name="small_icon" type="{}Icon" minOccurs="0"/>
  *         &lt;element name="large_icon" type="{}Icon" minOccurs="0"/>
+ *         &lt;element ref="{}initialization" minOccurs="0"/>
+ *         &lt;element name="memory_policy" type="{}MemoryPolicy" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -103,7 +104,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "sso",
     "rngDevice",
     "console",
-    "timezone",
     "domain",
     "usb",
     "soundcardEnabled",
@@ -120,10 +120,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "customCpuModel",
     "timeZone",
     "smallIcon",
-    "largeIcon"
+    "largeIcon",
+    "initialization",
+    "memoryPolicy"
 })
 @XmlSeeAlso({
-    VM.class,
+    Vm.class,
     Template.class
 })
 public class VmBase
@@ -133,7 +135,7 @@ public class VmBase
     protected String type;
     protected Status status;
     protected Long memory;
-    protected CPU cpu;
+    protected Cpu cpu;
     @XmlElement(name = "cpu_shares")
     protected Integer cpuShares;
     protected Bios bios;
@@ -155,7 +157,6 @@ public class VmBase
     @XmlElement(name = "rng_device")
     protected RngDevice rngDevice;
     protected Console console;
-    protected String timezone;
     protected Domain domain;
     protected Usb usb;
     @XmlElement(name = "soundcard_enabled")
@@ -165,7 +166,7 @@ public class VmBase
     @XmlElement(name = "migration_downtime")
     protected Integer migrationDowntime;
     @XmlElement(name = "virtio_scsi")
-    protected VirtIOSCSI virtioScsi;
+    protected VirtioScsi virtioScsi;
     @XmlElement(name = "serial_number")
     protected SerialNumber serialNumber;
     @XmlElement(name = "start_paused")
@@ -173,7 +174,7 @@ public class VmBase
     @XmlElement(name = "cpu_profile")
     protected CpuProfile cpuProfile;
     protected MigrationOptions migration;
-    protected IO io;
+    protected Io io;
     @XmlElement(name = "custom_properties")
     protected CustomProperties customProperties;
     @XmlElement(name = "custom_emulated_machine")
@@ -186,6 +187,9 @@ public class VmBase
     protected Icon smallIcon;
     @XmlElement(name = "large_icon")
     protected Icon largeIcon;
+    protected Initialization initialization;
+    @XmlElement(name = "memory_policy")
+    protected MemoryPolicy memoryPolicy;
 
     /**
      * Gets the value of the type property.
@@ -276,10 +280,10 @@ public class VmBase
      *
      * @return
      *     possible object is
-     *     {@link CPU }
+     *     {@link Cpu }
      *
      */
-    public CPU getCpu() {
+    public Cpu getCpu() {
         return cpu;
     }
 
@@ -288,10 +292,10 @@ public class VmBase
      *
      * @param value
      *     allowed object is
-     *     {@link CPU }
+     *     {@link Cpu }
      *
      */
-    public void setCpu(CPU value) {
+    public void setCpu(Cpu value) {
         this.cpu = value;
     }
 
@@ -692,34 +696,6 @@ public class VmBase
     }
 
     /**
-     * Gets the value of the timezone property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getTimezone() {
-        return timezone;
-    }
-
-    /**
-     * Sets the value of the timezone property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setTimezone(String value) {
-        this.timezone = value;
-    }
-
-    public boolean isSetTimezone() {
-        return (this.timezone!= null);
-    }
-
-    /**
      * Gets the value of the domain property.
      *
      * @return
@@ -864,10 +840,10 @@ public class VmBase
      *
      * @return
      *     possible object is
-     *     {@link VirtIOSCSI }
+     *     {@link VirtioScsi }
      *
      */
-    public VirtIOSCSI getVirtioScsi() {
+    public VirtioScsi getVirtioScsi() {
         return virtioScsi;
     }
 
@@ -876,10 +852,10 @@ public class VmBase
      *
      * @param value
      *     allowed object is
-     *     {@link VirtIOSCSI }
+     *     {@link VirtioScsi }
      *
      */
-    public void setVirtioScsi(VirtIOSCSI value) {
+    public void setVirtioScsi(VirtioScsi value) {
         this.virtioScsi = value;
     }
 
@@ -1004,10 +980,10 @@ public class VmBase
      *
      * @return
      *     possible object is
-     *     {@link IO }
+     *     {@link Io }
      *
      */
-    public IO getIo() {
+    public Io getIo() {
         return io;
     }
 
@@ -1016,10 +992,10 @@ public class VmBase
      *
      * @param value
      *     allowed object is
-     *     {@link IO }
+     *     {@link Io }
      *
      */
-    public void setIo(IO value) {
+    public void setIo(Io value) {
         this.io = value;
     }
 
@@ -1193,6 +1169,62 @@ public class VmBase
 
     public boolean isSetLargeIcon() {
         return (this.largeIcon!= null);
+    }
+
+    /**
+     * Gets the value of the initialization property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Initialization }
+     *
+     */
+    public Initialization getInitialization() {
+        return initialization;
+    }
+
+    /**
+     * Sets the value of the initialization property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Initialization }
+     *
+     */
+    public void setInitialization(Initialization value) {
+        this.initialization = value;
+    }
+
+    public boolean isSetInitialization() {
+        return (this.initialization!= null);
+    }
+
+    /**
+     * Gets the value of the memoryPolicy property.
+     *
+     * @return
+     *     possible object is
+     *     {@link MemoryPolicy }
+     *
+     */
+    public MemoryPolicy getMemoryPolicy() {
+        return memoryPolicy;
+    }
+
+    /**
+     * Sets the value of the memoryPolicy property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link MemoryPolicy }
+     *
+     */
+    public void setMemoryPolicy(MemoryPolicy value) {
+        this.memoryPolicy = value;
+    }
+
+    public boolean isSetMemoryPolicy() {
+        return (this.memoryPolicy!= null);
     }
 
 }

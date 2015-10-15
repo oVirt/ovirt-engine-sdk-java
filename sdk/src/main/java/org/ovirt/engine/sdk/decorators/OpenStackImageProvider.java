@@ -198,6 +198,7 @@ public class OpenStackImageProvider extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    certificates.certificate
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -230,6 +231,7 @@ public class OpenStackImageProvider extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    certificates.certificate
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>
@@ -269,6 +271,7 @@ public class OpenStackImageProvider extends
      *
      * @param action {@link org.ovirt.engine.sdk.entities.Action}
      *    <pre>
+     *    certificates.certificate
      *    [action.async]
      *    [action.grace_period.expiry]
      *    </pre>

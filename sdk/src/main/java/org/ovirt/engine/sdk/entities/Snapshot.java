@@ -36,7 +36,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <pre>
  * &lt;complexType name="Snapshot">
  *   &lt;complexContent>
- *     &lt;extension base="{}VM">
+ *     &lt;extension base="{}Vm">
  *       &lt;sequence>
  *         &lt;element ref="{}vm" minOccurs="0"/>
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
@@ -58,10 +58,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "persistMemorystate"
 })
 public class Snapshot
-    extends VM
+    extends Vm
 {
 
-    protected VM vm;
+    protected Vm vm;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar date;
     @XmlElement(name = "snapshot_status")
@@ -74,10 +74,10 @@ public class Snapshot
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -86,10 +86,10 @@ public class Snapshot
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

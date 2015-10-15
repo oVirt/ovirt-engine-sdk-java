@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element name="external_status" type="{}Status" minOccurs="0"/>
  *         &lt;element name="master" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element ref="{}storage" minOccurs="0"/>
+ *         &lt;element name="storage" type="{}HostStorage" minOccurs="0"/>
  *         &lt;element ref="{}host" minOccurs="0"/>
  *         &lt;element name="format" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="destroy" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -96,7 +96,7 @@ public class StorageDomain
     @XmlElement(name = "external_status")
     protected Status externalStatus;
     protected Boolean master;
-    protected Storage storage;
+    protected HostStorage storage;
     protected Host host;
     protected Boolean format;
     protected Boolean destroy;
@@ -287,10 +287,10 @@ public class StorageDomain
      *
      * @return
      *     possible object is
-     *     {@link Storage }
+     *     {@link HostStorage }
      *
      */
-    public Storage getStorage() {
+    public HostStorage getStorage() {
         return storage;
     }
 
@@ -299,10 +299,10 @@ public class StorageDomain
      *
      * @param value
      *     allowed object is
-     *     {@link Storage }
+     *     {@link HostStorage }
      *
      */
-    public void setStorage(Storage value) {
+    public void setStorage(HostStorage value) {
         this.storage = value;
     }
 

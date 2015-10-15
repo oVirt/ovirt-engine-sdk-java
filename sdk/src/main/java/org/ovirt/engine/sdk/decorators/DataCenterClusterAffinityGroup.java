@@ -45,7 +45,7 @@ public class DataCenterClusterAffinityGroup extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile DataCenterClusterAffinityGroupVMs dataCenterClusterAffinityGroupVMs;
+    private volatile DataCenterClusterAffinityGroupVms dataCenterClusterAffinityGroupVms;
 
 
     /**
@@ -63,20 +63,20 @@ public class DataCenterClusterAffinityGroup extends
     }
 
     /**
-     * Gets the value of the DataCenterClusterAffinityGroupVMs property.
+     * Gets the value of the DataCenterClusterAffinityGroupVms property.
      *
      * @return
-     *     {@link DataCenterClusterAffinityGroupVMs }
+     *     {@link DataCenterClusterAffinityGroupVms }
      */
-    public DataCenterClusterAffinityGroupVMs getVMs() {
-        if (this.dataCenterClusterAffinityGroupVMs == null) {
+    public DataCenterClusterAffinityGroupVms getVms() {
+        if (this.dataCenterClusterAffinityGroupVms == null) {
             synchronized (this.LOCK) {
-                if (this.dataCenterClusterAffinityGroupVMs == null) {
-                    this.dataCenterClusterAffinityGroupVMs = new DataCenterClusterAffinityGroupVMs(proxy, this);
+                if (this.dataCenterClusterAffinityGroupVms == null) {
+                    this.dataCenterClusterAffinityGroupVms = new DataCenterClusterAffinityGroupVms(proxy, this);
                 }
             }
         }
-        return dataCenterClusterAffinityGroupVMs;
+        return dataCenterClusterAffinityGroupVms;
     }
 
 

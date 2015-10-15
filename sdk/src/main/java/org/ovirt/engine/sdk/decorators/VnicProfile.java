@@ -226,9 +226,9 @@ public class VnicProfile extends
      *    [vnicprofile.custom_properties.custom_property]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      * @return
      *     {@link VnicProfile }
@@ -240,17 +240,18 @@ public class VnicProfile extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VnicProfile update(String correlationId) throws ClientProtocolException,
+    public VnicProfile update(Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -271,13 +272,13 @@ public class VnicProfile extends
      *    [vnicprofile.custom_properties.custom_property]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @return
      *     {@link VnicProfile }
@@ -289,7 +290,7 @@ public class VnicProfile extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VnicProfile update(String correlationId, Boolean async) throws ClientProtocolException,
+    public VnicProfile update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -324,13 +325,13 @@ public class VnicProfile extends
      *    [vnicprofile.custom_properties.custom_property]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @param expect
      *    <pre>
@@ -346,7 +347,7 @@ public class VnicProfile extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public VnicProfile update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
+    public VnicProfile update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

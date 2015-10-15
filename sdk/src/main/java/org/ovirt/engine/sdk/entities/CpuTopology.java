@@ -22,7 +22,6 @@ package org.ovirt.engine.sdk.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -35,9 +34,11 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="CpuTopology">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="sockets" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="cores" type="{http://www.w3.org/2001/XMLSchema}int" />
- *       &lt;attribute name="threads" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *       &lt;sequence>
+ *         &lt;element name="sockets" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="cores" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="threads" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -46,14 +47,15 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CpuTopology")
+@XmlType(name = "CpuTopology", propOrder = {
+    "sockets",
+    "cores",
+    "threads"
+})
 public class CpuTopology {
 
-    @XmlAttribute(name = "sockets")
     protected Integer sockets;
-    @XmlAttribute(name = "cores")
     protected Integer cores;
-    @XmlAttribute(name = "threads")
     protected Integer threads;
 
     /**
@@ -80,6 +82,10 @@ public class CpuTopology {
         this.sockets = value;
     }
 
+    public boolean isSetSockets() {
+        return (this.sockets!= null);
+    }
+
     /**
      * Gets the value of the cores property.
      *
@@ -104,6 +110,10 @@ public class CpuTopology {
         this.cores = value;
     }
 
+    public boolean isSetCores() {
+        return (this.cores!= null);
+    }
+
     /**
      * Gets the value of the threads property.
      *
@@ -126,6 +136,10 @@ public class CpuTopology {
      */
     public void setThreads(Integer value) {
         this.threads = value;
+    }
+
+    public boolean isSetThreads() {
+        return (this.threads!= null);
     }
 
 }

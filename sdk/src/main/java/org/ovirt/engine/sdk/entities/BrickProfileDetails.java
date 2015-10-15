@@ -49,26 +49,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BrickProfileDetails", propOrder = {
-    "brickProfileDetail"
+    "brickProfileDetails"
 })
 public class BrickProfileDetails {
 
     @XmlElement(name = "brick_profile_detail")
-    protected List<BrickProfileDetail> brickProfileDetail;
+    protected List<BrickProfileDetail> brickProfileDetails;
 
     /**
-     * Gets the value of the brickProfileDetail property.
+     * Gets the value of the brickProfileDetails property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the brickProfileDetail property.
+     * This is why there is not a <CODE>set</CODE> method for the brickProfileDetails property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getBrickProfileDetail().add(newItem);
+     *    getBrickProfileDetails().add(newItem);
      * </pre>
      *
      *
@@ -78,19 +78,19 @@ public class BrickProfileDetails {
      *
      *
      */
-    public List<BrickProfileDetail> getBrickProfileDetail() {
-        if (brickProfileDetail == null) {
-            brickProfileDetail = new ArrayList<BrickProfileDetail>();
+    public List<BrickProfileDetail> getBrickProfileDetails() {
+        if (brickProfileDetails == null) {
+            brickProfileDetails = new ArrayList<BrickProfileDetail>();
         }
-        return this.brickProfileDetail;
+        return this.brickProfileDetails;
     }
 
-    public boolean isSetBrickProfileDetail() {
-        return ((this.brickProfileDetail!= null)&&(!this.brickProfileDetail.isEmpty()));
+    public boolean isSetBrickProfileDetails() {
+        return ((this.brickProfileDetails!= null)&&(!this.brickProfileDetails.isEmpty()));
     }
 
-    public void unsetBrickProfileDetail() {
-        this.brickProfileDetail = null;
+    public void unsetBrickProfileDetails() {
+        this.brickProfileDetails = null;
     }
 
 }

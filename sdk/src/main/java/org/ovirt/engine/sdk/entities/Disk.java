@@ -41,8 +41,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="image_id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain" minOccurs="0"/>
  *         &lt;element ref="{}storage_domains" minOccurs="0"/>
- *         &lt;element name="size" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="provisioned_size" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="actual_size" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element ref="{}status" minOccurs="0"/>
@@ -57,7 +55,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="read_only" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}quota" minOccurs="0"/>
- *         &lt;element name="lun_storage" type="{}Storage" minOccurs="0"/>
+ *         &lt;element name="lun_storage" type="{}HostStorage" minOccurs="0"/>
  *         &lt;element name="sgio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="uses_scsi_reservation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}snapshot" minOccurs="0"/>
@@ -79,8 +77,6 @@ import javax.xml.bind.annotation.XmlType;
     "imageId",
     "storageDomain",
     "storageDomains",
-    "size",
-    "type",
     "provisionedSize",
     "actualSize",
     "status",
@@ -118,8 +114,6 @@ public class Disk
     protected StorageDomain storageDomain;
     @XmlElement(name = "storage_domains")
     protected StorageDomains storageDomains;
-    protected Long size;
-    protected String type;
     @XmlElement(name = "provisioned_size")
     protected Long provisionedSize;
     @XmlElement(name = "actual_size")
@@ -141,7 +135,7 @@ public class Disk
     protected Boolean readOnly;
     protected Quota quota;
     @XmlElement(name = "lun_storage")
-    protected Storage lunStorage;
+    protected HostStorage lunStorage;
     protected String sgio;
     @XmlElement(name = "uses_scsi_reservation")
     protected Boolean usesScsiReservation;
@@ -265,62 +259,6 @@ public class Disk
 
     public boolean isSetStorageDomains() {
         return (this.storageDomains!= null);
-    }
-
-    /**
-     * Gets the value of the size property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *
-     */
-    public Long getSize() {
-        return size;
-    }
-
-    /**
-     * Sets the value of the size property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *
-     */
-    public void setSize(Long value) {
-        this.size = value;
-    }
-
-    public boolean isSetSize() {
-        return (this.size!= null);
-    }
-
-    /**
-     * Gets the value of the type property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
     /**
@@ -720,10 +658,10 @@ public class Disk
      *
      * @return
      *     possible object is
-     *     {@link Storage }
+     *     {@link HostStorage }
      *
      */
-    public Storage getLunStorage() {
+    public HostStorage getLunStorage() {
         return lunStorage;
     }
 
@@ -732,10 +670,10 @@ public class Disk
      *
      * @param value
      *     allowed object is
-     *     {@link Storage }
+     *     {@link HostStorage }
      *
      */
-    public void setLunStorage(Storage value) {
+    public void setLunStorage(HostStorage value) {
         this.lunStorage = value;
     }
 

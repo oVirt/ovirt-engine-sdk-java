@@ -61,9 +61,9 @@ public class Session
     extends BaseResource
 {
 
-    protected VM vm;
+    protected Vm vm;
     protected String protocol;
-    protected IP ip;
+    protected Ip ip;
     protected User user;
     @XmlElement(name = "console_user")
     protected Boolean consoleUser;
@@ -73,10 +73,10 @@ public class Session
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -85,10 +85,10 @@ public class Session
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 
@@ -129,10 +129,10 @@ public class Session
      *
      * @return
      *     possible object is
-     *     {@link IP }
+     *     {@link Ip }
      *
      */
-    public IP getIp() {
+    public Ip getIp() {
         return ip;
     }
 
@@ -141,10 +141,10 @@ public class Session
      *
      * @param value
      *     allowed object is
-     *     {@link IP }
+     *     {@link Ip }
      *
      */
-    public void setIp(IP value) {
+    public void setIp(Ip value) {
         this.ip = value;
     }
 

@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}hosts" minOccurs="0"/>
- *         &lt;element name="host" type="{}Host" minOccurs="0"/>
  *         &lt;element name="affinity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -49,13 +48,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VmPlacementPolicy", propOrder = {
     "hosts",
-    "host",
     "affinity"
 })
 public class VmPlacementPolicy {
 
     protected Hosts hosts;
-    protected Host host;
     protected String affinity;
 
     /**
@@ -84,34 +81,6 @@ public class VmPlacementPolicy {
 
     public boolean isSetHosts() {
         return (this.hosts!= null);
-    }
-
-    /**
-     * Gets the value of the host property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Host }
-     *
-     */
-    public Host getHost() {
-        return host;
-    }
-
-    /**
-     * Sets the value of the host property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Host }
-     *
-     */
-    public void setHost(Host value) {
-        this.host = value;
-    }
-
-    public boolean isSetHost() {
-        return (this.host!= null);
     }
 
     /**

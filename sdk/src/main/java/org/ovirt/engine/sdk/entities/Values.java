@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -41,7 +40,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element ref="{}value" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *       &lt;attribute name="type" type="{}ValueType" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -57,8 +55,6 @@ public class Values {
 
     @XmlElement(name = "value", required = true)
     protected List<Value> values;
-    @XmlAttribute(name = "type")
-    protected ValueType type;
 
     /**
      * Gets the value of the values property.
@@ -95,34 +91,6 @@ public class Values {
 
     public void unsetValues() {
         this.values = null;
-    }
-
-    /**
-     * Gets the value of the type property.
-     *
-     * @return
-     *     possible object is
-     *     {@link ValueType }
-     *
-     */
-    public ValueType getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link ValueType }
-     *
-     */
-    public void setType(ValueType value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
 }

@@ -20,8 +20,6 @@
 
 package org.ovirt.engine.sdk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -37,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}statistic" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}statistics" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -48,47 +46,38 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BlockStatistic", propOrder = {
-    "statistic"
+    "statistics"
 })
 public class BlockStatistic {
 
-    protected List<Statistic> statistic;
+    protected Statistics statistics;
 
     /**
-     * Gets the value of the statistic property.
+     * Gets the value of the statistics property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the statistic property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getStatistic().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Statistic }
-     *
+     * @return
+     *     possible object is
+     *     {@link Statistics }
      *
      */
-    public List<Statistic> getStatistic() {
-        if (statistic == null) {
-            statistic = new ArrayList<Statistic>();
-        }
-        return this.statistic;
+    public Statistics getStatistics() {
+        return statistics;
     }
 
-    public boolean isSetStatistic() {
-        return ((this.statistic!= null)&&(!this.statistic.isEmpty()));
+    /**
+     * Sets the value of the statistics property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Statistics }
+     *
+     */
+    public void setStatistics(Statistics value) {
+        this.statistics = value;
     }
 
-    public void unsetStatistic() {
-        this.statistic = null;
+    public boolean isSetStatistics() {
+        return (this.statistics!= null);
     }
 
 }

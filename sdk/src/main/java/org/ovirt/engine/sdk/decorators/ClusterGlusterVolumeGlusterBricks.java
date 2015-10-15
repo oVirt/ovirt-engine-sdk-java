@@ -163,50 +163,6 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action activate(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName() +
-                     SLASH +  "activate";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs activate action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.bricks
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
@@ -221,7 +177,52 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action activate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
+    public Action activate(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() +
+                     SLASH +  "activate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs activate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.bricks
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action activate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "activate";
@@ -247,8 +248,6 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
      *    <pre>
      *    brick
-     *    [replica_count]
-     *    [stripe_count]
      *    </pre>
      *
      *
@@ -282,109 +281,8 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
      *    <pre>
      *    brick
-     *    [replica_count]
-     *    [stripe_count]
      *    </pre>
      *
-     * @param force
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @return
-     *     {@link ClusterGlusterVolumeGlusterBrick }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, Boolean force) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (force != null) {
-            urlBuilder.add("force", force, UrlParameterType.MATRIX);
-        }
-
-        url = urlBuilder.build();
-
-        return getProxy().add(url, glusterbrick,
-                org.ovirt.engine.sdk.entities.GlusterBrick.class,
-                ClusterGlusterVolumeGlusterBrick.class, headers);
-    }
-    /**
-     * Adds GlusterBrick object.
-     *
-     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
-     *    <pre>
-     *    brick
-     *    [replica_count]
-     *    [stripe_count]
-     *    </pre>
-     *
-     * @param force
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
-     * @return
-     *     {@link ClusterGlusterVolumeGlusterBrick }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, Boolean force, String expect) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        if (force != null) {
-            urlBuilder.add("force", force, UrlParameterType.MATRIX);
-        }
-
-        url = urlBuilder.build();
-
-        return getProxy().add(url, glusterbrick,
-                org.ovirt.engine.sdk.entities.GlusterBrick.class,
-                ClusterGlusterVolumeGlusterBrick.class, headers);
-    }
-    /**
-     * Adds GlusterBrick object.
-     *
-     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
-     *    <pre>
-     *    brick
-     *    [replica_count]
-     *    [stripe_count]
-     *    </pre>
-     *
-     * @param force
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
@@ -399,16 +297,109 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, Boolean force, String expect, String correlationId) throws
+    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
+     * Adds GlusterBrick object.
+     *
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     *    <pre>
+     *    brick
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
         if (expect != null) {
             headersBuilder.add("Expect", expect);
         }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
+     * Adds GlusterBrick object.
+     *
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     *    <pre>
+     *    brick
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, String correlationId, String expect, Boolean force) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -424,14 +415,31 @@ public class ClusterGlusterVolumeGlusterBricks extends
                 ClusterGlusterVolumeGlusterBrick.class, headers);
     }
     /**
-     * Lists ClusterGlusterVolumeGlusterBrick objects.
+     * Adds GlusterBrick object.
      *
-     * @param max
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
      *    <pre>
-     *    [max results]
+     *    brick
      *    </pre>
      *
-     * @return List of {@link ClusterGlusterVolumeGlusterBrick }
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param replicaCount
+     *    <pre>
+     *    [null]
+     *    </pre>
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -440,29 +448,107 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<ClusterGlusterVolumeGlusterBrick> list(Integer max) throws ClientProtocolException,
-            ServerException, IOException {
+    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, String correlationId, String expect, Boolean force, Integer replicaCount) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
         List<Header> headers = headersBuilder.build();
 
-        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (force != null) {
+            urlBuilder.add("force", force, UrlParameterType.MATRIX);
         }
 
-        String url = urlBuilder.build();
+        if (replicaCount != null) {
+            urlBuilder.add("replica_count", replicaCount, UrlParameterType.MATRIX);
+        }
 
-        return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class,
+        url = urlBuilder.build();
+
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
+     * Adds GlusterBrick object.
+     *
+     * @param glusterbricks {@link org.ovirt.engine.sdk.entities.GlusterBricks}
+     *    <pre>
+     *    brick
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param replicaCount
+     *    <pre>
+     *    [null]
+     *    </pre>
+     * @param stripeCount
+     *    <pre>
+     *    [null]
+     *    </pre>
+     * @return
+     *     {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public ClusterGlusterVolumeGlusterBrick add(org.ovirt.engine.sdk.entities.GlusterBrick glusterbrick, String correlationId, String expect, Boolean force, Integer replicaCount, Integer stripeCount) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (force != null) {
+            urlBuilder.add("force", force, UrlParameterType.MATRIX);
+        }
+
+        if (replicaCount != null) {
+            urlBuilder.add("replica_count", replicaCount, UrlParameterType.MATRIX);
+        }
+
+        if (stripeCount != null) {
+            urlBuilder.add("stripe_count", stripeCount, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().add(url, glusterbrick,
+                org.ovirt.engine.sdk.entities.GlusterBrick.class,
                 ClusterGlusterVolumeGlusterBrick.class, headers);
     }
     /**
      * Lists ClusterGlusterVolumeGlusterBrick objects.
      *
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
      * @param allContent
      *    <pre>
      *    [true|false]
@@ -477,7 +563,43 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<ClusterGlusterVolumeGlusterBrick> list(Integer max, String allContent) throws ClientProtocolException,
+    public List<ClusterGlusterVolumeGlusterBrick> list(String allContent) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(this.parent.getHref() + SLASH + getName());
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.GlusterBricks.class,
+                ClusterGlusterVolumeGlusterBrick.class, headers);
+    }
+    /**
+     * Lists ClusterGlusterVolumeGlusterBrick objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     * @return List of {@link ClusterGlusterVolumeGlusterBrick }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<ClusterGlusterVolumeGlusterBrick> list(String allContent, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -540,50 +662,6 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action migrate(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName() +
-                     SLASH +  "migrate";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs migrate action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.bricks
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
@@ -598,7 +676,52 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action migrate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
+    public Action migrate(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() +
+                     SLASH +  "migrate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs migrate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.bricks
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action migrate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "migrate";
@@ -662,50 +785,6 @@ public class ClusterGlusterVolumeGlusterBricks extends
      *    [action.grace_period.expiry]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
-     * @return
-     *     {@link Action }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public Action stopmigrate(Action action, String correlationId) throws ClientProtocolException,
-            ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName() +
-                     SLASH +  "stopmigrate";
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().action(url, action, Action.class, Action.class, headers);
-    }
-    /**
-     * Performs stopmigrate action.
-     *
-     * @param action {@link org.ovirt.engine.sdk.entities.Action}
-     *    <pre>
-     *    action.bricks
-     *    [action.async]
-     *    [action.grace_period.expiry]
-     *    </pre>
-     *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
@@ -720,7 +799,52 @@ public class ClusterGlusterVolumeGlusterBricks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Action stopmigrate(Action action, String correlationId, Boolean async) throws ClientProtocolException,
+    public Action stopmigrate(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName() +
+                     SLASH +  "stopmigrate";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs stopmigrate action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    action.bricks
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action stopmigrate(Action action, Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() +
                      SLASH +  "stopmigrate";

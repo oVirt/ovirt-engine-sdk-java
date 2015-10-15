@@ -20,11 +20,8 @@
 
 package org.ovirt.engine.sdk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -38,13 +35,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="boot" type="{}Boot" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="boot" type="{}Boot" minOccurs="0"/>
  *         &lt;element name="kernel" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="initrd" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="cmdline" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -54,6 +51,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OperatingSystem", propOrder = {
+    "type",
     "boot",
     "kernel",
     "initrd",
@@ -62,49 +60,67 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class OperatingSystem {
 
-    protected List<Boot> boot;
+    protected String type;
+    protected Boot boot;
     protected String kernel;
     protected String initrd;
     protected String cmdline;
     protected Version version;
-    @XmlAttribute(name = "type")
-    protected String type;
+
+    /**
+     * Gets the value of the type property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setType(String value) {
+        this.type = value;
+    }
+
+    public boolean isSetType() {
+        return (this.type!= null);
+    }
 
     /**
      * Gets the value of the boot property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the boot property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBoot().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Boot }
-     *
+     * @return
+     *     possible object is
+     *     {@link Boot }
      *
      */
-    public List<Boot> getBoot() {
-        if (boot == null) {
-            boot = new ArrayList<Boot>();
-        }
-        return this.boot;
+    public Boot getBoot() {
+        return boot;
+    }
+
+    /**
+     * Sets the value of the boot property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boot }
+     *
+     */
+    public void setBoot(Boot value) {
+        this.boot = value;
     }
 
     public boolean isSetBoot() {
-        return ((this.boot!= null)&&(!this.boot.isEmpty()));
-    }
-
-    public void unsetBoot() {
-        this.boot = null;
+        return (this.boot!= null);
     }
 
     /**
@@ -217,34 +233,6 @@ public class OperatingSystem {
 
     public boolean isSetVersion() {
         return (this.version!= null);
-    }
-
-    /**
-     * Gets the value of the type property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
-
-    public boolean isSetType() {
-        return (this.type!= null);
     }
 
 }

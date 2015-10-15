@@ -20,6 +20,8 @@
 
 package org.ovirt.engine.sdk.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -44,10 +46,21 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}status" minOccurs="0"/>
  *         &lt;element name="display" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="mtu" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element ref="{}usages" minOccurs="0"/>
+ *         &lt;element name="usages" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="usage" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element name="required" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="profile_required" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}labels" minOccurs="0"/>
+ *         &lt;element ref="{}qos" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -69,7 +82,8 @@ import javax.xml.bind.annotation.XmlType;
     "usages",
     "required",
     "profileRequired",
-    "labels"
+    "labels",
+    "qos"
 })
 public class Network
     extends BaseResource
@@ -78,17 +92,18 @@ public class Network
     @XmlElement(name = "data_center")
     protected DataCenter dataCenter;
     protected Cluster cluster;
-    protected IP ip;
-    protected VLAN vlan;
+    protected Ip ip;
+    protected Vlan vlan;
     protected Boolean stp;
     protected Status status;
     protected Boolean display;
     protected Integer mtu;
-    protected Usages usages;
+    protected Network.UsagesList usages;
     protected Boolean required;
     @XmlElement(name = "profile_required")
     protected Boolean profileRequired;
     protected Labels labels;
+    protected Qos qos;
 
     /**
      * Gets the value of the dataCenter property.
@@ -151,10 +166,10 @@ public class Network
      *
      * @return
      *     possible object is
-     *     {@link IP }
+     *     {@link Ip }
      *
      */
-    public IP getIp() {
+    public Ip getIp() {
         return ip;
     }
 
@@ -163,10 +178,10 @@ public class Network
      *
      * @param value
      *     allowed object is
-     *     {@link IP }
+     *     {@link Ip }
      *
      */
-    public void setIp(IP value) {
+    public void setIp(Ip value) {
         this.ip = value;
     }
 
@@ -179,10 +194,10 @@ public class Network
      *
      * @return
      *     possible object is
-     *     {@link VLAN }
+     *     {@link Vlan }
      *
      */
-    public VLAN getVlan() {
+    public Vlan getVlan() {
         return vlan;
     }
 
@@ -191,10 +206,10 @@ public class Network
      *
      * @param value
      *     allowed object is
-     *     {@link VLAN }
+     *     {@link Vlan }
      *
      */
-    public void setVlan(VLAN value) {
+    public void setVlan(Vlan value) {
         this.vlan = value;
     }
 
@@ -319,10 +334,10 @@ public class Network
      *
      * @return
      *     possible object is
-     *     {@link Usages }
+     *     {@link Network.UsagesList }
      *
      */
-    public Usages getUsages() {
+    public Network.UsagesList getUsages() {
         return usages;
     }
 
@@ -331,10 +346,10 @@ public class Network
      *
      * @param value
      *     allowed object is
-     *     {@link Usages }
+     *     {@link Network.UsagesList }
      *
      */
-    public void setUsages(Usages value) {
+    public void setUsages(Network.UsagesList value) {
         this.usages = value;
     }
 
@@ -424,6 +439,102 @@ public class Network
 
     public boolean isSetLabels() {
         return (this.labels!= null);
+    }
+
+    /**
+     * Gets the value of the qos property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Qos }
+     *
+     */
+    public Qos getQos() {
+        return qos;
+    }
+
+    /**
+     * Sets the value of the qos property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Qos }
+     *
+     */
+    public void setQos(Qos value) {
+        this.qos = value;
+    }
+
+    public boolean isSetQos() {
+        return (this.qos!= null);
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="usage" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "usages"
+    })
+    public static class UsagesList {
+
+        @XmlElement(name = "usage")
+        protected List<String> usages;
+
+        /**
+         * Gets the value of the usages property.
+         *
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the usages property.
+         *
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getUsages().add(newItem);
+         * </pre>
+         *
+         *
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link String }
+         *
+         *
+         */
+        public List<String> getUsages() {
+            if (usages == null) {
+                usages = new ArrayList<String>();
+            }
+            return this.usages;
+        }
+
+        public boolean isSetUsages() {
+            return ((this.usages!= null)&&(!this.usages.isEmpty()));
+        }
+
+        public void unsetUsages() {
+            this.usages = null;
+        }
+
     }
 
 }

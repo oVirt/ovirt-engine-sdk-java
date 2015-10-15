@@ -57,7 +57,7 @@ public class Label
 
     protected Network network;
     @XmlElement(name = "host_nic")
-    protected HostNIC hostNic;
+    protected HostNic hostNic;
 
     /**
      * Gets the value of the network property.
@@ -92,10 +92,10 @@ public class Label
      *
      * @return
      *     possible object is
-     *     {@link HostNIC }
+     *     {@link HostNic }
      *
      */
-    public HostNIC getHostNic() {
+    public HostNic getHostNic() {
         return hostNic;
     }
 
@@ -104,10 +104,10 @@ public class Label
      *
      * @param value
      *     allowed object is
-     *     {@link HostNIC }
+     *     {@link HostNic }
      *
      */
-    public void setHostNic(HostNIC value) {
+    public void setHostNic(HostNic value) {
         this.hostNic = value;
     }
 

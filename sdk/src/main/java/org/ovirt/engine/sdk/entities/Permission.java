@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}host" minOccurs="0"/>
  *         &lt;element ref="{}storage_domain" minOccurs="0"/>
  *         &lt;element ref="{}vm" minOccurs="0"/>
- *         &lt;element ref="{}vmpool" minOccurs="0"/>
+ *         &lt;element ref="{}vm_pool" minOccurs="0"/>
  *         &lt;element ref="{}template" minOccurs="0"/>
  *         &lt;element ref="{}disk" minOccurs="0"/>
  *       &lt;/sequence>
@@ -65,7 +65,7 @@ import javax.xml.bind.annotation.XmlType;
     "host",
     "storageDomain",
     "vm",
-    "vmpool",
+    "vmPool",
     "template",
     "disk"
 })
@@ -82,8 +82,9 @@ public class Permission
     protected Host host;
     @XmlElement(name = "storage_domain")
     protected StorageDomain storageDomain;
-    protected VM vm;
-    protected VmPool vmpool;
+    protected Vm vm;
+    @XmlElement(name = "vm_pool")
+    protected VmPool vmPool;
     protected Template template;
     protected Disk disk;
 
@@ -288,10 +289,10 @@ public class Permission
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -300,10 +301,10 @@ public class Permission
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 
@@ -312,31 +313,31 @@ public class Permission
     }
 
     /**
-     * Gets the value of the vmpool property.
+     * Gets the value of the vmPool property.
      *
      * @return
      *     possible object is
      *     {@link VmPool }
      *
      */
-    public VmPool getVmpool() {
-        return vmpool;
+    public VmPool getVmPool() {
+        return vmPool;
     }
 
     /**
-     * Sets the value of the vmpool property.
+     * Sets the value of the vmPool property.
      *
      * @param value
      *     allowed object is
      *     {@link VmPool }
      *
      */
-    public void setVmpool(VmPool value) {
-        this.vmpool = value;
+    public void setVmPool(VmPool value) {
+        this.vmPool = value;
     }
 
-    public boolean isSetVmpool() {
-        return (this.vmpool!= null);
+    public boolean isSetVmPool() {
+        return (this.vmPool!= null);
     }
 
     /**

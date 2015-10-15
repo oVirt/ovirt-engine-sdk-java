@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element ref="{}snapshot" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="collapse_snapshots" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -50,8 +49,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Snapshots", propOrder = {
-    "snapshots",
-    "collapseSnapshots"
+    "snapshots"
 })
 public class Snapshots
     extends BaseResources
@@ -59,8 +57,6 @@ public class Snapshots
 
     @XmlElement(name = "snapshot")
     protected List<Snapshot> snapshots;
-    @XmlElement(name = "collapse_snapshots")
-    protected Boolean collapseSnapshots;
 
     /**
      * Gets the value of the snapshots property.
@@ -97,34 +93,6 @@ public class Snapshots
 
     public void unsetSnapshots() {
         this.snapshots = null;
-    }
-
-    /**
-     * Gets the value of the collapseSnapshots property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getCollapseSnapshots() {
-        return collapseSnapshots;
-    }
-
-    /**
-     * Sets the value of the collapseSnapshots property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setCollapseSnapshots(Boolean value) {
-        this.collapseSnapshots = value;
-    }
-
-    public boolean isSetCollapseSnapshots() {
-        return (this.collapseSnapshots!= null);
     }
 
 }

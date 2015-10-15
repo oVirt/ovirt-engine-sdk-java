@@ -45,8 +45,9 @@ public class InstanceType extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
-    private volatile InstanceTypeNICs instanceTypeNICs;
-    private volatile InstanceTypeWatchDogs instanceTypeWatchDogs;
+    private volatile InstanceTypeGraphicsConsoles instanceTypeGraphicsConsoles;
+    private volatile InstanceTypeNics instanceTypeNics;
+    private volatile InstanceTypeWatchdogs instanceTypeWatchdogs;
 
 
     /**
@@ -64,36 +65,52 @@ public class InstanceType extends
     }
 
     /**
-     * Gets the value of the InstanceTypeNICs property.
+     * Gets the value of the InstanceTypeGraphicsConsoles property.
      *
      * @return
-     *     {@link InstanceTypeNICs }
+     *     {@link InstanceTypeGraphicsConsoles }
      */
-    public InstanceTypeNICs getNics() {
-        if (this.instanceTypeNICs == null) {
+    public InstanceTypeGraphicsConsoles getGraphicsConsoles() {
+        if (this.instanceTypeGraphicsConsoles == null) {
             synchronized (this.LOCK) {
-                if (this.instanceTypeNICs == null) {
-                    this.instanceTypeNICs = new InstanceTypeNICs(proxy, this);
+                if (this.instanceTypeGraphicsConsoles == null) {
+                    this.instanceTypeGraphicsConsoles = new InstanceTypeGraphicsConsoles(proxy, this);
                 }
             }
         }
-        return instanceTypeNICs;
+        return instanceTypeGraphicsConsoles;
     }
     /**
-     * Gets the value of the InstanceTypeWatchDogs property.
+     * Gets the value of the InstanceTypeNics property.
      *
      * @return
-     *     {@link InstanceTypeWatchDogs }
+     *     {@link InstanceTypeNics }
      */
-    public InstanceTypeWatchDogs getWatchDogs() {
-        if (this.instanceTypeWatchDogs == null) {
+    public InstanceTypeNics getNics() {
+        if (this.instanceTypeNics == null) {
             synchronized (this.LOCK) {
-                if (this.instanceTypeWatchDogs == null) {
-                    this.instanceTypeWatchDogs = new InstanceTypeWatchDogs(proxy, this);
+                if (this.instanceTypeNics == null) {
+                    this.instanceTypeNics = new InstanceTypeNics(proxy, this);
                 }
             }
         }
-        return instanceTypeWatchDogs;
+        return instanceTypeNics;
+    }
+    /**
+     * Gets the value of the InstanceTypeWatchdogs property.
+     *
+     * @return
+     *     {@link InstanceTypeWatchdogs }
+     */
+    public InstanceTypeWatchdogs getWatchdogs() {
+        if (this.instanceTypeWatchdogs == null) {
+            synchronized (this.LOCK) {
+                if (this.instanceTypeWatchdogs == null) {
+                    this.instanceTypeWatchdogs = new InstanceTypeWatchdogs(proxy, this);
+                }
+            }
+        }
+        return instanceTypeWatchdogs;
     }
 
 

@@ -39,6 +39,8 @@ public class TypeUtils {
             return Integer.class.getSimpleName();
         } else if (desieredType.equals("long")) {
             return Long.class.getSimpleName();
+        } else if (desieredType.equals("unsignedShort")) {
+            return Integer.class.getSimpleName();
         }
         throw new RuntimeException("Unsupported parameter type \"" + type + "\".");
     }

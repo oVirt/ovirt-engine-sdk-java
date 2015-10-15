@@ -20,8 +20,6 @@
 
 package org.ovirt.engine.sdk.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -39,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}profile_detail" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}profile_details" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -50,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EntityProfileDetail", propOrder = {
-    "profileDetail"
+    "profileDetails"
 })
 @XmlSeeAlso({
     NfsProfileDetail.class,
@@ -58,44 +56,35 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class EntityProfileDetail {
 
-    @XmlElement(name = "profile_detail")
-    protected List<ProfileDetail> profileDetail;
+    @XmlElement(name = "profile_details")
+    protected ProfileDetails profileDetails;
 
     /**
-     * Gets the value of the profileDetail property.
+     * Gets the value of the profileDetails property.
      *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the profileDetail property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getProfileDetail().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ProfileDetail }
-     *
+     * @return
+     *     possible object is
+     *     {@link ProfileDetails }
      *
      */
-    public List<ProfileDetail> getProfileDetail() {
-        if (profileDetail == null) {
-            profileDetail = new ArrayList<ProfileDetail>();
-        }
-        return this.profileDetail;
+    public ProfileDetails getProfileDetails() {
+        return profileDetails;
     }
 
-    public boolean isSetProfileDetail() {
-        return ((this.profileDetail!= null)&&(!this.profileDetail.isEmpty()));
+    /**
+     * Sets the value of the profileDetails property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link ProfileDetails }
+     *
+     */
+    public void setProfileDetails(ProfileDetails value) {
+        this.profileDetails = value;
     }
 
-    public void unsetProfileDetail() {
-        this.profileDetail = null;
+    public boolean isSetProfileDetails() {
+        return (this.profileDetails!= null);
     }
 
 }

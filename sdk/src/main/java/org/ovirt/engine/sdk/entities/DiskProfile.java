@@ -55,7 +55,7 @@ public class DiskProfile
     extends BaseResource
 {
 
-    protected QoS qos;
+    protected Qos qos;
     @XmlElement(name = "storage_domain")
     protected StorageDomain storageDomain;
 
@@ -64,10 +64,10 @@ public class DiskProfile
      *
      * @return
      *     possible object is
-     *     {@link QoS }
+     *     {@link Qos }
      *
      */
-    public QoS getQos() {
+    public Qos getQos() {
         return qos;
     }
 
@@ -76,10 +76,10 @@ public class DiskProfile
      *
      * @param value
      *     allowed object is
-     *     {@link QoS }
+     *     {@link Qos }
      *
      */
-    public void setQos(QoS value) {
+    public void setQos(Qos value) {
         this.qos = value;
     }
 

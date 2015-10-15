@@ -56,7 +56,7 @@ public class HostNics
 {
 
     @XmlElement(name = "host_nic")
-    protected List<HostNIC> hostNics;
+    protected List<HostNic> hostNics;
 
     /**
      * Gets the value of the hostNics property.
@@ -76,13 +76,13 @@ public class HostNics
      *
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link HostNIC }
+     * {@link HostNic }
      *
      *
      */
-    public List<HostNIC> getHostNics() {
+    public List<HostNic> getHostNics() {
         if (hostNics == null) {
-            hostNics = new ArrayList<HostNIC>();
+            hostNics = new ArrayList<HostNic>();
         }
         return this.hostNics;
     }

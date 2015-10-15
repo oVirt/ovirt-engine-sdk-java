@@ -122,12 +122,13 @@ public class Templates extends
      *    template.name
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
-     *    [template.timezone]
      *    [template.time_zone.name]
      *    [template.storage_domain.id]
      *    [template.domain.name]
@@ -144,7 +145,7 @@ public class Templates extends
      *    [template.comment]
      *    [template.custom_properties.custom_property]
      *    [template.os.type]
-     *    [template.os.boot]
+     *    [template.os.boot.devices.device]
      *    [template.cpu.topology.sockets]
      *    [template.cpu_shares]
      *    [template.cpu.architecture]
@@ -168,10 +169,9 @@ public class Templates extends
      *    [template.custom_emulated_machine]
      *    [template.custom_cpu_model]
      *    [template.vm.disks.disk]
-     *    [template.permissions.clone]
      *    [template.version.version_name]
      *    [template.version.base_template.id]
-     *    [template.cpu.cpu_tune.vcpu_pin]
+     *    [template.cpu.cpu_tune.vcpu_pins.vcpu_pin]
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
@@ -185,6 +185,8 @@ public class Templates extends
      *    [template.large_icon.id]
      *    [template.large_icon.media_type]
      *    [template.large_icon.data]
+     *    [template.initialization.configuration.type]
+     *    [template.initialization.configuration.data]
      *    </pre>
      *
      *
@@ -221,12 +223,13 @@ public class Templates extends
      *    template.name
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
-     *    [template.timezone]
      *    [template.time_zone.name]
      *    [template.storage_domain.id]
      *    [template.domain.name]
@@ -243,7 +246,7 @@ public class Templates extends
      *    [template.comment]
      *    [template.custom_properties.custom_property]
      *    [template.os.type]
-     *    [template.os.boot]
+     *    [template.os.boot.devices.device]
      *    [template.cpu.topology.sockets]
      *    [template.cpu_shares]
      *    [template.cpu.architecture]
@@ -267,10 +270,9 @@ public class Templates extends
      *    [template.custom_emulated_machine]
      *    [template.custom_cpu_model]
      *    [template.vm.disks.disk]
-     *    [template.permissions.clone]
      *    [template.version.version_name]
      *    [template.version.base_template.id]
-     *    [template.cpu.cpu_tune.vcpu_pin]
+     *    [template.cpu.cpu_tune.vcpu_pins.vcpu_pin]
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
@@ -284,11 +286,13 @@ public class Templates extends
      *    [template.large_icon.id]
      *    [template.large_icon.media_type]
      *    [template.large_icon.data]
+     *    [template.initialization.configuration.type]
+     *    [template.initialization.configuration.data]
      *    </pre>
      *
-     * @param expect
+     * @param clonePermissions
      *    <pre>
-     *    [201-created]
+     *    [true|false]
      *    </pre>
      * @return
      *     {@link Template }
@@ -300,17 +304,18 @@ public class Templates extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Template add(org.ovirt.engine.sdk.entities.Template template, String expect) throws
+    public Template add(org.ovirt.engine.sdk.entities.Template template, Boolean clonePermissions) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (clonePermissions != null) {
+            urlBuilder.add("clone_permissions", clonePermissions, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().add(url, template,
@@ -326,12 +331,13 @@ public class Templates extends
      *    template.name
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
      *    [template.origin]
      *    [template.high_availability.priority]
-     *    [template.timezone]
      *    [template.time_zone.name]
      *    [template.storage_domain.id]
      *    [template.domain.name]
@@ -348,7 +354,7 @@ public class Templates extends
      *    [template.comment]
      *    [template.custom_properties.custom_property]
      *    [template.os.type]
-     *    [template.os.boot]
+     *    [template.os.boot.devices.device]
      *    [template.cpu.topology.sockets]
      *    [template.cpu_shares]
      *    [template.cpu.architecture]
@@ -372,10 +378,9 @@ public class Templates extends
      *    [template.custom_emulated_machine]
      *    [template.custom_cpu_model]
      *    [template.vm.disks.disk]
-     *    [template.permissions.clone]
      *    [template.version.version_name]
      *    [template.version.base_template.id]
-     *    [template.cpu.cpu_tune.vcpu_pin]
+     *    [template.cpu.cpu_tune.vcpu_pins.vcpu_pin]
      *    [template.serial_number.policy]
      *    [template.serial_number.value]
      *    [template.bios.boot_menu.enabled]
@@ -389,11 +394,13 @@ public class Templates extends
      *    [template.large_icon.id]
      *    [template.large_icon.media_type]
      *    [template.large_icon.data]
+     *    [template.initialization.configuration.type]
+     *    [template.initialization.configuration.data]
      *    </pre>
      *
-     * @param expect
+     * @param clonePermissions
      *    <pre>
-     *    [201-created]
+     *    [true|false]
      *    </pre>
      * @param correlationId
      *    <pre>
@@ -409,20 +416,143 @@ public class Templates extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Template add(org.ovirt.engine.sdk.entities.Template template, String expect, String correlationId) throws
+    public Template add(org.ovirt.engine.sdk.entities.Template template, Boolean clonePermissions, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (clonePermissions != null) {
+            urlBuilder.add("clone_permissions", clonePermissions, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().add(url, template,
+                org.ovirt.engine.sdk.entities.Template.class,
+                Template.class, headers);
+    }
+    /**
+     * Adds Template object.
+     *
+     * @param template {@link org.ovirt.engine.sdk.entities.Template}
+     *    <pre>
+     *    template.vm.id|name
+     *    template.name
+     *    [template.memory]
+     *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
+     *    [template.cpu.topology.cores]
+     *    [template.high_availability.enabled]
+     *    [template.os.cmdline]
+     *    [template.origin]
+     *    [template.high_availability.priority]
+     *    [template.time_zone.name]
+     *    [template.storage_domain.id]
+     *    [template.domain.name]
+     *    [template.type]
+     *    [template.stateless]
+     *    [template.delete_protected]
+     *    [template.sso.methods.method]
+     *    [vm.rng_device.rate.bytes]
+     *    [vm.rng_device.rate.period]
+     *    [vm.rng_device.source]
+     *    [template.console.enabled]
+     *    [template.placement_policy.affinity]
+     *    [template.description]
+     *    [template.comment]
+     *    [template.custom_properties.custom_property]
+     *    [template.os.type]
+     *    [template.os.boot.devices.device]
+     *    [template.cpu.topology.sockets]
+     *    [template.cpu_shares]
+     *    [template.cpu.architecture]
+     *    [template.os.kernel]
+     *    [template.display.type]
+     *    [template.display.monitors]
+     *    [vm.display.single_qxl_pci]
+     *    [template.display.allow_override]
+     *    [template.display.smartcard_enabled]
+     *    [template.display.file_transfer_enabled]
+     *    [template.display.copy_paste_enabled]
+     *    [template.display.keyboard_layout]
+     *    [template.display.disconnect_action]
+     *    [template.os.initRd]
+     *    [template.usb.enabled]
+     *    [template.usb.type]
+     *    [template.tunnel_migration]
+     *    [template.migration_downtime]
+     *    [template.virtio_scsi.enabled]
+     *    [template.soundcard_enabled]
+     *    [template.custom_emulated_machine]
+     *    [template.custom_cpu_model]
+     *    [template.vm.disks.disk]
+     *    [template.version.version_name]
+     *    [template.version.base_template.id]
+     *    [template.cpu.cpu_tune.vcpu_pins.vcpu_pin]
+     *    [template.serial_number.policy]
+     *    [template.serial_number.value]
+     *    [template.bios.boot_menu.enabled]
+     *    [template.cluster.id]
+     *    [template.cluster.name]
+     *    [template.start_paused]
+     *    [template.cpu_profile.id]
+     *    [template.migration.auto_converge]
+     *    [template.migration.compressed]
+     *    [template.small_icon.id]
+     *    [template.large_icon.id]
+     *    [template.large_icon.media_type]
+     *    [template.large_icon.data]
+     *    [template.initialization.configuration.type]
+     *    [template.initialization.configuration.data]
+     *    </pre>
+     *
+     * @param clonePermissions
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @return
+     *     {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Template add(org.ovirt.engine.sdk.entities.Template template, Boolean clonePermissions, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (clonePermissions != null) {
+            urlBuilder.add("clone_permissions", clonePermissions, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().add(url, template,
@@ -432,141 +562,6 @@ public class Templates extends
     /**
      * Lists Template objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     *
-     * @return List of {@link Template }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Template> list(String query) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Templates.class,
-                Template.class, headers);
-    }
-    /**
-     * Lists Template objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     *
-     * @return List of {@link Template }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Template> list(String query, Boolean caseSensitive) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Templates.class,
-                Template.class, headers);
-    }
-    /**
-     * Lists Template objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
-     *
-     * @return List of {@link Template }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Template> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        if (caseSensitive != null) {
-            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
-        }
-
-        if (max != null) {
-            urlBuilder.add("max", max, UrlParameterType.MATRIX);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Templates.class,
-                Template.class, headers);
-    }
-    /**
-     * Lists Template objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     * @param caseSensitive
-     *    <pre>
-     *    [true|false]
-     *    </pre>
-     * @param max
-     *    <pre>
-     *    [max results]
-     *    </pre>
      * @param allContent
      *    <pre>
      *    [true|false]
@@ -581,7 +576,7 @@ public class Templates extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Template> list(String query, Boolean caseSensitive, Integer max, String allContent) throws ClientProtocolException,
+    public List<Template> list(String allContent) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -591,16 +586,148 @@ public class Templates extends
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Templates.class,
+                Template.class, headers);
+    }
+    /**
+     * Lists Template objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     *
+     * @return List of {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Template> list(String allContent, Boolean caseSensitive) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Templates.class,
+                Template.class, headers);
+    }
+    /**
+     * Lists Template objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     * @return List of {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Template> list(String allContent, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Templates.class,
+                Template.class, headers);
+    }
+    /**
+     * Lists Template objects.
+     *
+     * @param allContent
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     *
+     * @return List of {@link Template }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Template> list(String allContent, Boolean caseSensitive, Integer max, String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (allContent != null) {
+            headersBuilder.add("All-Content", allContent);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
 
         String url = urlBuilder.build();

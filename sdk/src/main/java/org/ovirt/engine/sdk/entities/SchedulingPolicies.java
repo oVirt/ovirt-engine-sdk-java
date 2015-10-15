@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element name="scheduling_policy" type="{}SchedulingPolicy" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="policy" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -50,30 +49,28 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SchedulingPolicies", propOrder = {
-    "schedulingPolicy",
-    "policy"
+    "schedulingPolicies"
 })
 public class SchedulingPolicies
     extends BaseResources
 {
 
     @XmlElement(name = "scheduling_policy")
-    protected List<SchedulingPolicy> schedulingPolicy;
-    protected List<String> policy;
+    protected List<SchedulingPolicy> schedulingPolicies;
 
     /**
-     * Gets the value of the schedulingPolicy property.
+     * Gets the value of the schedulingPolicies property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the schedulingPolicy property.
+     * This is why there is not a <CODE>set</CODE> method for the schedulingPolicies property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSchedulingPolicy().add(newItem);
+     *    getSchedulingPolicies().add(newItem);
      * </pre>
      *
      *
@@ -83,56 +80,19 @@ public class SchedulingPolicies
      *
      *
      */
-    public List<SchedulingPolicy> getSchedulingPolicy() {
-        if (schedulingPolicy == null) {
-            schedulingPolicy = new ArrayList<SchedulingPolicy>();
+    public List<SchedulingPolicy> getSchedulingPolicies() {
+        if (schedulingPolicies == null) {
+            schedulingPolicies = new ArrayList<SchedulingPolicy>();
         }
-        return this.schedulingPolicy;
+        return this.schedulingPolicies;
     }
 
-    public boolean isSetSchedulingPolicy() {
-        return ((this.schedulingPolicy!= null)&&(!this.schedulingPolicy.isEmpty()));
+    public boolean isSetSchedulingPolicies() {
+        return ((this.schedulingPolicies!= null)&&(!this.schedulingPolicies.isEmpty()));
     }
 
-    public void unsetSchedulingPolicy() {
-        this.schedulingPolicy = null;
-    }
-
-    /**
-     * Gets the value of the policy property.
-     *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the policy property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPolicy().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     *
-     *
-     */
-    public List<String> getPolicy() {
-        if (policy == null) {
-            policy = new ArrayList<String>();
-        }
-        return this.policy;
-    }
-
-    public boolean isSetPolicy() {
-        return ((this.policy!= null)&&(!this.policy.isEmpty()));
-    }
-
-    public void unsetPolicy() {
-        this.policy = null;
+    public void unsetSchedulingPolicies() {
+        this.schedulingPolicies = null;
     }
 
 }

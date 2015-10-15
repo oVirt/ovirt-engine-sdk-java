@@ -150,8 +150,8 @@ public class Disks extends
      *      lun connection details
      *
      *      disk.interface
+     *      disk.lun_storage.logical_units.logical-unit
      *      disk.lun_storage.type
-     *      disk.lun_storage.logical_unit
      *      [disk.alias]
      *      [disk.sparse]
      *      [disk.description]
@@ -226,8 +226,8 @@ public class Disks extends
      *      lun connection details
      *
      *      disk.interface
+     *      disk.lun_storage.logical_units.logical-unit
      *      disk.lun_storage.type
-     *      disk.lun_storage.logical_unit
      *      [disk.alias]
      *      [disk.sparse]
      *      [disk.description]
@@ -240,9 +240,9 @@ public class Disks extends
      *      [disk.lun_storage.host]
      *    </pre>
      *
-     * @param expect
+     * @param correlationId
      *    <pre>
-     *    [201-created]
+     *    [any string]
      *    </pre>
      * @return
      *     {@link Disk }
@@ -254,13 +254,13 @@ public class Disks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Disk add(org.ovirt.engine.sdk.entities.Disk disk, String expect) throws
+    public Disk add(org.ovirt.engine.sdk.entities.Disk disk, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -308,8 +308,8 @@ public class Disks extends
      *      lun connection details
      *
      *      disk.interface
+     *      disk.lun_storage.logical_units.logical-unit
      *      disk.lun_storage.type
-     *      disk.lun_storage.logical_unit
      *      [disk.alias]
      *      [disk.sparse]
      *      [disk.description]
@@ -322,13 +322,13 @@ public class Disks extends
      *      [disk.lun_storage.host]
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
      *    </pre>
      * @return
      *     {@link Disk }
@@ -340,16 +340,16 @@ public class Disks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public Disk add(org.ovirt.engine.sdk.entities.Disk disk, String expect, String correlationId) throws
+    public Disk add(org.ovirt.engine.sdk.entities.Disk disk, String correlationId, String expect) throws
             ClientProtocolException, ServerException, IOException {
         String url = SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
         }
         List<Header> headers = headersBuilder.build();
 
@@ -363,43 +363,6 @@ public class Disks extends
     /**
      * Lists Disk objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
-     *
-     * @return List of {@link Disk }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public List<Disk> list(String query) throws ClientProtocolException,
-            ServerException, IOException {
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
-        String url = urlBuilder.build();
-
-        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
-                Disk.class, headers);
-    }
-    /**
-     * Lists Disk objects.
-     *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -414,17 +377,13 @@ public class Disks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Disk> list(String query, Boolean caseSensitive) throws ClientProtocolException,
+    public List<Disk> list(Boolean caseSensitive) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
@@ -437,10 +396,6 @@ public class Disks extends
     /**
      * Lists Disk objects.
      *
-     * @param query
-     *    <pre>
-     *    [search query]
-     *    </pre>
      * @param caseSensitive
      *    <pre>
      *    [true|false]
@@ -459,23 +414,68 @@ public class Disks extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<Disk> list(String query, Boolean caseSensitive, Integer max) throws ClientProtocolException,
+    public List<Disk> list(Boolean caseSensitive, Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
-        if (query != null) {
-            urlBuilder.add("search", query, UrlParameterType.QUERY);
-        }
-
         if (caseSensitive != null) {
             urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
         }
 
         if (max != null) {
             urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        String url = urlBuilder.build();
+
+        return list(url, org.ovirt.engine.sdk.entities.Disks.class,
+                Disk.class, headers);
+    }
+    /**
+     * Lists Disk objects.
+     *
+     * @param caseSensitive
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     * @param query
+     *    <pre>
+     *    [search query]
+     *    </pre>
+     *
+     * @return List of {@link Disk }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<Disk> list(Boolean caseSensitive, Integer max, String query) throws ClientProtocolException,
+            ServerException, IOException {
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(SLASH + getName());
+        if (caseSensitive != null) {
+            urlBuilder.add("case_sensitive", caseSensitive, UrlParameterType.MATRIX);
+        }
+
+        if (max != null) {
+            urlBuilder.add("max", max, UrlParameterType.MATRIX);
+        }
+
+        if (query != null) {
+            urlBuilder.add("search", query, UrlParameterType.QUERY);
         }
 
         String url = urlBuilder.build();

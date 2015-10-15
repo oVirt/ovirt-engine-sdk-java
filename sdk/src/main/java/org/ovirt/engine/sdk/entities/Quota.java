@@ -69,7 +69,7 @@ public class Quota
 
     @XmlElement(name = "data_center")
     protected DataCenter dataCenter;
-    protected VMs vms;
+    protected Vms vms;
     protected Disks disks;
     protected Users users;
     @XmlElement(name = "cluster_soft_limit_pct")
@@ -114,10 +114,10 @@ public class Quota
      *
      * @return
      *     possible object is
-     *     {@link VMs }
+     *     {@link Vms }
      *
      */
-    public VMs getVms() {
+    public Vms getVms() {
         return vms;
     }
 
@@ -126,10 +126,10 @@ public class Quota
      *
      * @param value
      *     allowed object is
-     *     {@link VMs }
+     *     {@link Vms }
      *
      */
-    public void setVms(VMs value) {
+    public void setVms(Vms value) {
         this.vms = value;
     }
 

@@ -79,7 +79,7 @@ public class KatelloErratum
     protected String summary;
     protected Packages packages;
     protected Host host;
-    protected VM vm;
+    protected Vm vm;
 
     /**
      * Gets the value of the title property.
@@ -310,10 +310,10 @@ public class KatelloErratum
      *
      * @return
      *     possible object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public VM getVm() {
+    public Vm getVm() {
         return vm;
     }
 
@@ -322,10 +322,10 @@ public class KatelloErratum
      *
      * @param value
      *     allowed object is
-     *     {@link VM }
+     *     {@link Vm }
      *
      */
-    public void setVm(VM value) {
+    public void setVm(Vm value) {
         this.vm = value;
     }
 

@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="Nics">
  *   &lt;complexContent>
- *     &lt;extension base="{}BaseDevices">
+ *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
  *         &lt;element ref="{}nic" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -52,11 +52,11 @@ import javax.xml.bind.annotation.XmlType;
     "nics"
 })
 public class Nics
-    extends BaseDevices
+    extends BaseResources
 {
 
     @XmlElement(name = "nic")
-    protected List<NIC> nics;
+    protected List<Nic> nics;
 
     /**
      * Gets the value of the nics property.
@@ -76,13 +76,13 @@ public class Nics
      *
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link NIC }
+     * {@link Nic }
      *
      *
      */
-    public List<NIC> getNics() {
+    public List<Nic> getNics() {
         if (nics == null) {
-            nics = new ArrayList<NIC>();
+            nics = new ArrayList<Nic>();
         }
         return this.nics;
     }

@@ -53,7 +53,7 @@ import javax.xml.bind.annotation.XmlType;
 public class NetworkConfiguration {
 
     protected Nics nics;
-    protected DNS dns;
+    protected Dns dns;
 
     /**
      * Gets the value of the nics property.
@@ -88,10 +88,10 @@ public class NetworkConfiguration {
      *
      * @return
      *     possible object is
-     *     {@link DNS }
+     *     {@link Dns }
      *
      */
-    public DNS getDns() {
+    public Dns getDns() {
         return dns;
     }
 
@@ -100,10 +100,10 @@ public class NetworkConfiguration {
      *
      * @param value
      *     allowed object is
-     *     {@link DNS }
+     *     {@link Dns }
      *
      */
-    public void setDns(DNS value) {
+    public void setDns(Dns value) {
         this.dns = value;
     }
 

@@ -49,7 +49,7 @@ public class DataCenter extends
     private volatile DataCenterIscsiBonds dataCenterIscsiBonds;
     private volatile DataCenterNetworks dataCenterNetworks;
     private volatile DataCenterPermissions dataCenterPermissions;
-    private volatile DataCenterQoSs dataCenterQoSs;
+    private volatile DataCenterQoss dataCenterQoss;
     private volatile DataCenterQuotas dataCenterQuotas;
     private volatile DataCenterStorageDomains dataCenterStorageDomains;
 
@@ -133,20 +133,20 @@ public class DataCenter extends
         return dataCenterPermissions;
     }
     /**
-     * Gets the value of the DataCenterQoSs property.
+     * Gets the value of the DataCenterQoss property.
      *
      * @return
-     *     {@link DataCenterQoSs }
+     *     {@link DataCenterQoss }
      */
-    public DataCenterQoSs getQoSs() {
-        if (this.dataCenterQoSs == null) {
+    public DataCenterQoss getQoss() {
+        if (this.dataCenterQoss == null) {
             synchronized (this.LOCK) {
-                if (this.dataCenterQoSs == null) {
-                    this.dataCenterQoSs = new DataCenterQoSs(proxy, this);
+                if (this.dataCenterQoss == null) {
+                    this.dataCenterQoss = new DataCenterQoss(proxy, this);
                 }
             }
         }
-        return dataCenterQoSs;
+        return dataCenterQoss;
     }
     /**
      * Gets the value of the DataCenterQuotas property.
@@ -409,7 +409,6 @@ public class DataCenter extends
      *    [datacenter.name]
      *    [datacenter.description]
      *    [datacenter.comment]
-     *    [datacenter.storage_type]
      *    [datacenter.local]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
@@ -453,7 +452,6 @@ public class DataCenter extends
      *    [datacenter.name]
      *    [datacenter.description]
      *    [datacenter.comment]
-     *    [datacenter.storage_type]
      *    [datacenter.local]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
@@ -461,9 +459,9 @@ public class DataCenter extends
      *    [datacenter.mac_pool.id]
      *    </pre>
      *
-     * @param correlationId
+     * @param async
      *    <pre>
-     *    [any string]
+     *    [true|false]
      *    </pre>
      * @return
      *     {@link DataCenter }
@@ -475,17 +473,18 @@ public class DataCenter extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenter update(String correlationId) throws ClientProtocolException,
+    public DataCenter update(Boolean async) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (correlationId != null) {
-            headersBuilder.add("Correlation-Id", correlationId);
-        }
         List<Header> headers = headersBuilder.build();
 
         UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
         url = urlBuilder.build();
 
         return getProxy().update(
@@ -503,7 +502,6 @@ public class DataCenter extends
      *    [datacenter.name]
      *    [datacenter.description]
      *    [datacenter.comment]
-     *    [datacenter.storage_type]
      *    [datacenter.local]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
@@ -511,13 +509,13 @@ public class DataCenter extends
      *    [datacenter.mac_pool.id]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @return
      *     {@link DataCenter }
@@ -529,7 +527,7 @@ public class DataCenter extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenter update(String correlationId, Boolean async) throws ClientProtocolException,
+    public DataCenter update(Boolean async, String correlationId) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 
@@ -561,7 +559,6 @@ public class DataCenter extends
      *    [datacenter.name]
      *    [datacenter.description]
      *    [datacenter.comment]
-     *    [datacenter.storage_type]
      *    [datacenter.local]
      *    [datacenter.version.major]
      *    [datacenter.version.minor]
@@ -569,13 +566,13 @@ public class DataCenter extends
      *    [datacenter.mac_pool.id]
      *    </pre>
      *
-     * @param correlationId
-     *    <pre>
-     *    [any string]
-     *    </pre>
      * @param async
      *    <pre>
      *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
      *    </pre>
      * @param expect
      *    <pre>
@@ -591,7 +588,7 @@ public class DataCenter extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public DataCenter update(String correlationId, Boolean async, String expect) throws ClientProtocolException,
+    public DataCenter update(Boolean async, String correlationId, String expect) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.getHref();
 

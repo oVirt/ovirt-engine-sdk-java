@@ -44,8 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="cluster" type="{}Cluster" minOccurs="0"/>
  *         &lt;element name="port" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="storage_manager" type="{}StorageManager" minOccurs="0"/>
- *         &lt;element name="spm" type="{}SPM" minOccurs="0"/>
+ *         &lt;element name="spm" type="{}Spm" minOccurs="0"/>
  *         &lt;element name="version" type="{}Version" minOccurs="0"/>
  *         &lt;element ref="{}hardware_information" minOccurs="0"/>
  *         &lt;element ref="{}power_management" minOccurs="0"/>
@@ -61,7 +60,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="summary" type="{}VmSummary" minOccurs="0"/>
  *         &lt;element name="override_iptables" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="protocol" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="reboot_after_installation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="os" type="{}OperatingSystem" minOccurs="0"/>
  *         &lt;element ref="{}hooks" minOccurs="0"/>
  *         &lt;element name="libvirt_version" type="{}Version" minOccurs="0"/>
@@ -76,6 +74,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}external_host_provider" minOccurs="0"/>
  *         &lt;element name="update_available" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}device_passthrough" minOccurs="0"/>
+ *         &lt;element ref="{}storage_connection_extensions" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -93,7 +92,6 @@ import javax.xml.bind.annotation.XmlType;
     "cluster",
     "port",
     "type",
-    "storageManager",
     "spm",
     "version",
     "hardwareInformation",
@@ -110,7 +108,6 @@ import javax.xml.bind.annotation.XmlType;
     "summary",
     "overrideIptables",
     "protocol",
-    "rebootAfterInstallation",
     "os",
     "hooks",
     "libvirtVersion",
@@ -124,7 +121,8 @@ import javax.xml.bind.annotation.XmlType;
     "katelloErrata",
     "externalHostProvider",
     "updateAvailable",
-    "devicePassthrough"
+    "devicePassthrough",
+    "storageConnectionExtensions"
 })
 public class Host
     extends BaseResource
@@ -139,23 +137,21 @@ public class Host
     @XmlSchemaType(name = "unsignedShort")
     protected Integer port;
     protected String type;
-    @XmlElement(name = "storage_manager")
-    protected StorageManager storageManager;
-    protected SPM spm;
+    protected Spm spm;
     protected Version version;
     @XmlElement(name = "hardware_information")
     protected HardwareInformation hardwareInformation;
     @XmlElement(name = "power_management")
     protected PowerManagement powerManagement;
-    protected KSM ksm;
+    protected Ksm ksm;
     @XmlElement(name = "transparent_hugepages")
     protected TransparentHugePages transparentHugepages;
     protected IscsiDetails iscsi;
     @XmlElement(name = "root_password")
     protected String rootPassword;
-    protected SSH ssh;
+    protected Ssh ssh;
     protected Statistics statistics;
-    protected CPU cpu;
+    protected Cpu cpu;
     protected Long memory;
     @XmlElement(name = "max_scheduling_memory")
     protected Long maxSchedulingMemory;
@@ -163,8 +159,6 @@ public class Host
     @XmlElement(name = "override_iptables")
     protected Boolean overrideIptables;
     protected String protocol;
-    @XmlElement(name = "reboot_after_installation")
-    protected Boolean rebootAfterInstallation;
     protected OperatingSystem os;
     protected Hooks hooks;
     @XmlElement(name = "libvirt_version")
@@ -189,6 +183,8 @@ public class Host
     protected Boolean updateAvailable;
     @XmlElement(name = "device_passthrough")
     protected HostDevicePassthrough devicePassthrough;
+    @XmlElement(name = "storage_connection_extensions")
+    protected StorageConnectionExtensions storageConnectionExtensions;
 
     /**
      * Gets the value of the address property.
@@ -387,42 +383,14 @@ public class Host
     }
 
     /**
-     * Gets the value of the storageManager property.
-     *
-     * @return
-     *     possible object is
-     *     {@link StorageManager }
-     *
-     */
-    public StorageManager getStorageManager() {
-        return storageManager;
-    }
-
-    /**
-     * Sets the value of the storageManager property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link StorageManager }
-     *
-     */
-    public void setStorageManager(StorageManager value) {
-        this.storageManager = value;
-    }
-
-    public boolean isSetStorageManager() {
-        return (this.storageManager!= null);
-    }
-
-    /**
      * Gets the value of the spm property.
      *
      * @return
      *     possible object is
-     *     {@link SPM }
+     *     {@link Spm }
      *
      */
-    public SPM getSpm() {
+    public Spm getSpm() {
         return spm;
     }
 
@@ -431,10 +399,10 @@ public class Host
      *
      * @param value
      *     allowed object is
-     *     {@link SPM }
+     *     {@link Spm }
      *
      */
-    public void setSpm(SPM value) {
+    public void setSpm(Spm value) {
         this.spm = value;
     }
 
@@ -531,10 +499,10 @@ public class Host
      *
      * @return
      *     possible object is
-     *     {@link KSM }
+     *     {@link Ksm }
      *
      */
-    public KSM getKsm() {
+    public Ksm getKsm() {
         return ksm;
     }
 
@@ -543,10 +511,10 @@ public class Host
      *
      * @param value
      *     allowed object is
-     *     {@link KSM }
+     *     {@link Ksm }
      *
      */
-    public void setKsm(KSM value) {
+    public void setKsm(Ksm value) {
         this.ksm = value;
     }
 
@@ -643,10 +611,10 @@ public class Host
      *
      * @return
      *     possible object is
-     *     {@link SSH }
+     *     {@link Ssh }
      *
      */
-    public SSH getSsh() {
+    public Ssh getSsh() {
         return ssh;
     }
 
@@ -655,10 +623,10 @@ public class Host
      *
      * @param value
      *     allowed object is
-     *     {@link SSH }
+     *     {@link Ssh }
      *
      */
-    public void setSsh(SSH value) {
+    public void setSsh(Ssh value) {
         this.ssh = value;
     }
 
@@ -699,10 +667,10 @@ public class Host
      *
      * @return
      *     possible object is
-     *     {@link CPU }
+     *     {@link Cpu }
      *
      */
-    public CPU getCpu() {
+    public Cpu getCpu() {
         return cpu;
     }
 
@@ -711,10 +679,10 @@ public class Host
      *
      * @param value
      *     allowed object is
-     *     {@link CPU }
+     *     {@link Cpu }
      *
      */
-    public void setCpu(CPU value) {
+    public void setCpu(Cpu value) {
         this.cpu = value;
     }
 
@@ -860,34 +828,6 @@ public class Host
 
     public boolean isSetProtocol() {
         return (this.protocol!= null);
-    }
-
-    /**
-     * Gets the value of the rebootAfterInstallation property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *
-     */
-    public Boolean getRebootAfterInstallation() {
-        return rebootAfterInstallation;
-    }
-
-    /**
-     * Sets the value of the rebootAfterInstallation property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *
-     */
-    public void setRebootAfterInstallation(Boolean value) {
-        this.rebootAfterInstallation = value;
-    }
-
-    public boolean isSetRebootAfterInstallation() {
-        return (this.rebootAfterInstallation!= null);
     }
 
     /**
@@ -1280,6 +1220,34 @@ public class Host
 
     public boolean isSetDevicePassthrough() {
         return (this.devicePassthrough!= null);
+    }
+
+    /**
+     * Gets the value of the storageConnectionExtensions property.
+     *
+     * @return
+     *     possible object is
+     *     {@link StorageConnectionExtensions }
+     *
+     */
+    public Object getStorageConnectionExtensions() {
+        return storageConnectionExtensions;
+    }
+
+    /**
+     * Sets the value of the storageConnectionExtensions property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link StorageConnectionExtensions }
+     *
+     */
+    public void setStorageConnectionExtensions(StorageConnectionExtensions value) {
+        this.storageConnectionExtensions = value;
+    }
+
+    public boolean isSetStorageConnectionExtensions() {
+        return (this.storageConnectionExtensions!= null);
     }
 
 }

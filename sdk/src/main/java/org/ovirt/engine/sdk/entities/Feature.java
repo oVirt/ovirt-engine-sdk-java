@@ -81,8 +81,8 @@ public class Feature
     protected StorageTypes storageTypes;
     @XmlElement(name = "storage_domain")
     protected StorageDomain storageDomain;
-    protected NIC nic;
-    protected API api;
+    protected Nic nic;
+    protected Api api;
     protected Host host;
     protected Url url;
     protected Headers headers;
@@ -232,10 +232,10 @@ public class Feature
      *
      * @return
      *     possible object is
-     *     {@link NIC }
+     *     {@link Nic }
      *
      */
-    public NIC getNic() {
+    public Nic getNic() {
         return nic;
     }
 
@@ -244,10 +244,10 @@ public class Feature
      *
      * @param value
      *     allowed object is
-     *     {@link NIC }
+     *     {@link Nic }
      *
      */
-    public void setNic(NIC value) {
+    public void setNic(Nic value) {
         this.nic = value;
     }
 
@@ -260,10 +260,10 @@ public class Feature
      *
      * @return
      *     possible object is
-     *     {@link API }
+     *     {@link Api }
      *
      */
-    public API getApi() {
+    public Api getApi() {
         return api;
     }
 
@@ -272,10 +272,10 @@ public class Feature
      *
      * @param value
      *     allowed object is
-     *     {@link API }
+     *     {@link Api }
      *
      */
-    public void setApi(API value) {
+    public void setApi(Api value) {
         this.api = value;
     }
 

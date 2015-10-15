@@ -49,26 +49,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NumaNodePins", propOrder = {
-    "numaNodePin"
+    "numaNodePins"
 })
 public class NumaNodePins {
 
     @XmlElement(name = "numa_node_pin")
-    protected List<NumaNodePin> numaNodePin;
+    protected List<NumaNodePin> numaNodePins;
 
     /**
-     * Gets the value of the numaNodePin property.
+     * Gets the value of the numaNodePins property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the numaNodePin property.
+     * This is why there is not a <CODE>set</CODE> method for the numaNodePins property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getNumaNodePin().add(newItem);
+     *    getNumaNodePins().add(newItem);
      * </pre>
      *
      *
@@ -78,19 +78,19 @@ public class NumaNodePins {
      *
      *
      */
-    public List<NumaNodePin> getNumaNodePin() {
-        if (numaNodePin == null) {
-            numaNodePin = new ArrayList<NumaNodePin>();
+    public List<NumaNodePin> getNumaNodePins() {
+        if (numaNodePins == null) {
+            numaNodePins = new ArrayList<NumaNodePin>();
         }
-        return this.numaNodePin;
+        return this.numaNodePins;
     }
 
-    public boolean isSetNumaNodePin() {
-        return ((this.numaNodePin!= null)&&(!this.numaNodePin.isEmpty()));
+    public boolean isSetNumaNodePins() {
+        return ((this.numaNodePins!= null)&&(!this.numaNodePins.isEmpty()));
     }
 
-    public void unsetNumaNodePin() {
-        this.numaNodePin = null;
+    public void unsetNumaNodePins() {
+        this.numaNodePins = null;
     }
 
 }

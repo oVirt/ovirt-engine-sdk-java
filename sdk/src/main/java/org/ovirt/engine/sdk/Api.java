@@ -33,7 +33,6 @@ import org.ovirt.engine.sdk.web.HttpProxy;
 import org.ovirt.engine.sdk.web.HttpProxyBroker;
 import org.ovirt.engine.sdk.web.HttpProxyBuilder;
 import org.ovirt.engine.sdk.decorators.*;
-import org.ovirt.engine.sdk.entities.API;
 import org.ovirt.engine.sdk.exceptions.ServerException;
 import org.ovirt.engine.sdk.exceptions.UnsecuredConnectionAttemptError;
 import org.ovirt.engine.sdk.utils.SerializationHelper;
@@ -44,7 +43,7 @@ import org.ovirt.engine.sdk.utils.SerializationHelper;
 public class Api implements AutoCloseable {
 
     private volatile HttpProxyBroker proxy = null;
-    private volatile API entryPoint = null;
+    private volatile org.ovirt.engine.sdk.entities.Api entryPoint = null;
     private final Object LOCK = new Object();
 
     private volatile Bookmarks bookmarks;
@@ -78,8 +77,8 @@ public class Api implements AutoCloseable {
     private volatile Tags tags;
     private volatile Templates templates;
     private volatile Users users;
-    private volatile VMs vMs;
     private volatile VmPools vmPools;
+    private volatile Vms vms;
     private volatile VnicProfiles vnicProfiles;
 
 
@@ -648,11 +647,11 @@ public class Api implements AutoCloseable {
      *
      * @return API object instance
      */
-    private API getEntryPoint() throws ClientProtocolException, ServerException, IOException,
+    private org.ovirt.engine.sdk.entities.Api getEntryPoint() throws ClientProtocolException, ServerException, IOException,
             UnsecuredConnectionAttemptError {
         String entryPointXML = this.proxy.get(this.proxy.getRoot());
         if (entryPointXML != null && !entryPointXML.equals("")) {
-            return SerializationHelper.unmarshall(API.class, entryPointXML);
+            return SerializationHelper.unmarshall(org.ovirt.engine.sdk.entities.Api.class, entryPointXML);
         }
         throw new UnsecuredConnectionAttemptError();
     }
@@ -1285,21 +1284,21 @@ public class Api implements AutoCloseable {
         return vmPools;
     }
     /**
-     * Gets the value of the VMs property.
+     * Gets the value of the Vms property.
      *
      * @return
-     *     {@link VMs }
+     *     {@link Vms }
      *
      */
-    public VMs getVMs() {
-        if (this.vMs == null) {
+    public Vms getVms() {
+        if (this.vms == null) {
             synchronized (this.LOCK) {
-                if (this.vMs == null) {
-                    this.vMs = new VMs(proxy);
+                if (this.vms == null) {
+                    this.vms = new Vms(proxy);
                 }
             }
         }
-        return vMs;
+        return vms;
     }
     /**
      * Gets the value of the VnicProfiles property.

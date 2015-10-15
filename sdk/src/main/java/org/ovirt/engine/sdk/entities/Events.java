@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -48,27 +49,28 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Events", propOrder = {
-    "event"
+    "events"
 })
 public class Events
     extends BaseResources
 {
 
-    protected List<Event> event;
+    @XmlElement(name = "event")
+    protected List<Event> events;
 
     /**
-     * Gets the value of the event property.
+     * Gets the value of the events property.
      *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the event property.
+     * This is why there is not a <CODE>set</CODE> method for the events property.
      *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getEvent().add(newItem);
+     *    getEvents().add(newItem);
      * </pre>
      *
      *
@@ -78,19 +80,19 @@ public class Events
      *
      *
      */
-    public List<Event> getEvent() {
-        if (event == null) {
-            event = new ArrayList<Event>();
+    public List<Event> getEvents() {
+        if (events == null) {
+            events = new ArrayList<Event>();
         }
-        return this.event;
+        return this.events;
     }
 
-    public boolean isSetEvent() {
-        return ((this.event!= null)&&(!this.event.isEmpty()));
+    public boolean isSetEvents() {
+        return ((this.events!= null)&&(!this.events.isEmpty()));
     }
 
-    public void unsetEvent() {
-        this.event = null;
+    public void unsetEvents() {
+        this.events = null;
     }
 
 }

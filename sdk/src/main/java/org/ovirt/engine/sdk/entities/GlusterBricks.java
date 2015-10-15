@@ -25,7 +25,6 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -39,8 +38,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{}BaseResources">
  *       &lt;sequence>
- *         &lt;element name="replica_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
- *         &lt;element name="stripe_count" type="{http://www.w3.org/2001/XMLSchema}unsignedShort" minOccurs="0"/>
  *         &lt;element ref="{}brick" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -52,78 +49,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GlusterBricks", propOrder = {
-    "replicaCount",
-    "stripeCount",
     "glusterBricks"
 })
 public class GlusterBricks
     extends BaseResources
 {
 
-    @XmlElement(name = "replica_count")
-    @XmlSchemaType(name = "unsignedShort")
-    protected Integer replicaCount;
-    @XmlElement(name = "stripe_count")
-    @XmlSchemaType(name = "unsignedShort")
-    protected Integer stripeCount;
     @XmlElement(name = "brick")
     protected List<GlusterBrick> glusterBricks;
-
-    /**
-     * Gets the value of the replicaCount property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *
-     */
-    public Integer getReplicaCount() {
-        return replicaCount;
-    }
-
-    /**
-     * Sets the value of the replicaCount property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *
-     */
-    public void setReplicaCount(Integer value) {
-        this.replicaCount = value;
-    }
-
-    public boolean isSetReplicaCount() {
-        return (this.replicaCount!= null);
-    }
-
-    /**
-     * Gets the value of the stripeCount property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *
-     */
-    public Integer getStripeCount() {
-        return stripeCount;
-    }
-
-    /**
-     * Sets the value of the stripeCount property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *
-     */
-    public void setStripeCount(Integer value) {
-        this.stripeCount = value;
-    }
-
-    public boolean isSetStripeCount() {
-        return (this.stripeCount!= null);
-    }
 
     /**
      * Gets the value of the glusterBricks property.
