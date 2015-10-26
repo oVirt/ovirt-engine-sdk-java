@@ -57,6 +57,7 @@ public class ObjectFactory {
     private final static QName _Rsdl_QNAME = new QName("", "rsdl");
     private final static QName _ReportedDevices_QNAME = new QName("", "reported_devices");
     private final static QName _Event_QNAME = new QName("", "event");
+    private final static QName _VmPoolTypes_QNAME = new QName("", "vm_pool_types");
     private final static QName _Features_QNAME = new QName("", "features");
     private final static QName _Role_QNAME = new QName("", "role");
     private final static QName _Feature_QNAME = new QName("", "feature");
@@ -435,6 +436,14 @@ public class ObjectFactory {
      */
     public Event createEvent() {
         return new Event();
+    }
+
+    /**
+     * Create an instance of {@link VmPoolTypes }
+     *
+     */
+    public VmPoolTypes createVmPoolTypes() {
+        return new VmPoolTypes();
     }
 
     /**
@@ -2888,6 +2897,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "event")
     public JAXBElement<Event> createEvent(Event value) {
         return new JAXBElement<Event>(_Event_QNAME, Event.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VmPoolTypes }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vm_pool_types")
+    public JAXBElement<VmPoolTypes> createVmPoolTypes(VmPoolTypes value) {
+        return new JAXBElement<VmPoolTypes>(_VmPoolTypes_QNAME, VmPoolTypes.class, null, value);
     }
 
     /**
