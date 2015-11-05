@@ -110,6 +110,7 @@
           <bottom>Copyright © 2010 Red Hat, Inc - released under the Apache License Version 2.0</bottom>
           <javadocVersion>1.7</javadocVersion>
           <encoding>UTF-8</encoding>
+          <additionalparam>-Xdoclint:none</additionalparam>
         </configuration>
         <executions>
           <execution>
