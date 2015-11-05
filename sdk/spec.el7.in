@@ -26,7 +26,13 @@ Group: Documentation
 This package contains the API documentation for %{name}.
 
 %prep
+
+# Extract the source:
 %setup -q -n %{name}
+
+# Remove the Javadoc "-Xdoclint:none" option, as that isn't available in
+# the version of the Javadoc tool available in EL7:
+sed -i '/-Xdoclint:/d' pom.xml
 
 %build
 %mvn_build
