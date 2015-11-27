@@ -63,6 +63,9 @@ cp target/%{name}-%{pom_version}-javadoc.jar %{buildroot}%{_javadocdir}/%{name}/
 %doc LICENSE.txt
 
 %changelog
+* Fri Nov 27 2015 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.1.0-1
+- Add support for SR-IOV #1231507.
+
 * Wed Oct 14 2015 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.0.3-1
 - Add support for VM pool type #1244841.
 
