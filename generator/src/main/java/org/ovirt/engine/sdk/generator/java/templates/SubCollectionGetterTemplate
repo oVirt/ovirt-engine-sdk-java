@@ -4,7 +4,7 @@
      * @return
      *     {@link $broker_type$ }
      */
-    public $broker_type$ get$collection_type$() {
+    public $broker_type$ get$getter_name$() {
         if (this.$field_name$ == null) {
             synchronized (this.LOCK) {
                 if (this.$field_name$ == null) {
