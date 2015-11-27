@@ -45,7 +45,9 @@ public class HostNIC extends
     private HttpProxyBroker proxy;
     private final Object LOCK = new Object();
 
+    private volatile HostHostNICLabels hostHostNICLabels;
     private volatile HostHostNICNetworkAttachments hostHostNICNetworkAttachments;
+    private volatile HostHostNICNetworks hostHostNICNetworks;
     private volatile HostNICLabels hostNICLabels;
     private volatile HostNICStatistics hostNICStatistics;
 
@@ -111,6 +113,38 @@ public class HostNIC extends
             }
         }
         return hostNICStatistics;
+    }
+    /**
+     * Gets the value of the HostHostNICLabels property.
+     *
+     * @return
+     *     {@link HostHostNICLabels }
+     */
+    public HostHostNICLabels getVirtualFunctionAllowedLabels() {
+        if (this.hostHostNICLabels == null) {
+            synchronized (this.LOCK) {
+                if (this.hostHostNICLabels == null) {
+                    this.hostHostNICLabels = new HostHostNICLabels(proxy, this);
+                }
+            }
+        }
+        return hostHostNICLabels;
+    }
+    /**
+     * Gets the value of the HostHostNICNetworks property.
+     *
+     * @return
+     *     {@link HostHostNICNetworks }
+     */
+    public HostHostNICNetworks getNetworks() {
+        if (this.hostHostNICNetworks == null) {
+            synchronized (this.LOCK) {
+                if (this.hostHostNICNetworks == null) {
+                    this.hostHostNICNetworks = new HostHostNICNetworks(proxy, this);
+                }
+            }
+        }
+        return hostHostNICNetworks;
     }
 
 
@@ -662,6 +696,129 @@ public class HostNIC extends
                 org.ovirt.engine.sdk.entities.HostNIC.class,
                 HostNIC.class,
                 headers);
+    }
+    /**
+     * Performs updatevirtualfunctionsconfiguration action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.virtual_functions_configuration.number_of_virtual_functions]
+     *    [action.virtual_functions_configuration.all_networks_allowed]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     *
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action updatevirtualfunctionsconfiguration(Action action) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/updatevirtualfunctionsconfiguration";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs updatevirtualfunctionsconfiguration action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.virtual_functions_configuration.number_of_virtual_functions]
+     *    [action.virtual_functions_configuration.all_networks_allowed]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action updatevirtualfunctionsconfiguration(Action action, Boolean async) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/updatevirtualfunctionsconfiguration";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
+    }
+    /**
+     * Performs updatevirtualfunctionsconfiguration action.
+     *
+     * @param action {@link org.ovirt.engine.sdk.entities.Action}
+     *    <pre>
+     *    [action.virtual_functions_configuration.number_of_virtual_functions]
+     *    [action.virtual_functions_configuration.all_networks_allowed]
+     *    [action.async]
+     *    [action.grace_period.expiry]
+     *    </pre>
+     *
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @return
+     *     {@link Action }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public Action updatevirtualfunctionsconfiguration(Action action, Boolean async, String correlationId) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref() + "/updatevirtualfunctionsconfiguration";
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().action(url, action, Action.class, Action.class, headers);
     }
 
 }

@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}network" minOccurs="0"/>
  *         &lt;element name="port_mirroring" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}custom_properties" minOccurs="0"/>
+ *         &lt;element name="pass_through" type="{}VnicPassThrough" minOccurs="0"/>
  *         &lt;element ref="{}qos" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -53,6 +54,7 @@ import javax.xml.bind.annotation.XmlType;
     "network",
     "portMirroring",
     "customProperties",
+    "passThrough",
     "qos"
 })
 public class VnicProfile
@@ -64,6 +66,8 @@ public class VnicProfile
     protected Boolean portMirroring;
     @XmlElement(name = "custom_properties")
     protected CustomProperties customProperties;
+    @XmlElement(name = "pass_through")
+    protected VnicPassThrough passThrough;
     protected QoS qos;
 
     /**
@@ -148,6 +152,34 @@ public class VnicProfile
 
     public boolean isSetCustomProperties() {
         return (this.customProperties!= null);
+    }
+
+    /**
+     * Gets the value of the passThrough property.
+     *
+     * @return
+     *     possible object is
+     *     {@link VnicPassThrough }
+     *
+     */
+    public VnicPassThrough getPassThrough() {
+        return passThrough;
+    }
+
+    /**
+     * Sets the value of the passThrough property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link VnicPassThrough }
+     *
+     */
+    public void setPassThrough(VnicPassThrough value) {
+        this.passThrough = value;
+    }
+
+    public boolean isSetPassThrough() {
+        return (this.passThrough!= null);
     }
 
     /**

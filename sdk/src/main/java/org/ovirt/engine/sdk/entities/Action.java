@@ -81,6 +81,7 @@ import javax.xml.bind.annotation.XmlType;
     "removedLabels",
     "checkConnectivity",
     "connectivityTimeout",
+    "virtualFunctionsConfiguration",
     "pause",
     "force",
     "option",
@@ -157,6 +158,8 @@ public class Action
     protected Boolean checkConnectivity;
     @XmlElement(name = "connectivity_timeout")
     protected Integer connectivityTimeout;
+    @XmlElement(name = "virtual_functions_configuration")
+    protected HostNicVirtualFunctionsConfiguration virtualFunctionsConfiguration;
     protected Boolean pause;
     protected Boolean force;
     protected Option option;
@@ -979,6 +982,34 @@ public class Action
 
     public boolean isSetConnectivityTimeout() {
         return (this.connectivityTimeout!= null);
+    }
+
+    /**
+     * Gets the value of the virtualFunctionsConfiguration property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostNicVirtualFunctionsConfiguration }
+     *
+     */
+    public HostNicVirtualFunctionsConfiguration getVirtualFunctionsConfiguration() {
+        return virtualFunctionsConfiguration;
+    }
+
+    /**
+     * Sets the value of the virtualFunctionsConfiguration property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostNicVirtualFunctionsConfiguration }
+     *
+     */
+    public void setVirtualFunctionsConfiguration(HostNicVirtualFunctionsConfiguration value) {
+        this.virtualFunctionsConfiguration = value;
+    }
+
+    public boolean isSetVirtualFunctionsConfiguration() {
+        return (this.virtualFunctionsConfiguration!= null);
     }
 
     /**

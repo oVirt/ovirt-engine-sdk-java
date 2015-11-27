@@ -123,6 +123,7 @@ public class VnicProfiles extends
      *    [vnicprofile.description]
      *    [vnicprofile.port_mirroring]
      *    [vnicprofile.custom_properties.custom_property]
+     *    [vnicprofile.pass_through.mode]
      *    </pre>
      *
      *
@@ -160,6 +161,7 @@ public class VnicProfiles extends
      *    [vnicprofile.description]
      *    [vnicprofile.port_mirroring]
      *    [vnicprofile.custom_properties.custom_property]
+     *    [vnicprofile.pass_through.mode]
      *    </pre>
      *
      * @param expect
@@ -203,6 +205,7 @@ public class VnicProfiles extends
      *    [vnicprofile.description]
      *    [vnicprofile.port_mirroring]
      *    [vnicprofile.custom_properties.custom_property]
+     *    [vnicprofile.pass_through.mode]
      *    </pre>
      *
      * @param expect

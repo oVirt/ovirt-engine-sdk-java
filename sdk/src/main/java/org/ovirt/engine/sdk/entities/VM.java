@@ -54,7 +54,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="tags" type="{}Tags" minOccurs="0"/>
  *         &lt;element name="snapshots" type="{}Snapshots" minOccurs="0"/>
  *         &lt;element name="placement_policy" type="{}VmPlacementPolicy" minOccurs="0"/>
- *         &lt;element name="memory_policy" type="{}MemoryPolicy" minOccurs="0"/>
  *         &lt;element name="guest_info" type="{}GuestInfo" minOccurs="0"/>
  *         &lt;element ref="{}quota" minOccurs="0"/>
  *         &lt;element ref="{}vmpool" minOccurs="0"/>
@@ -95,7 +94,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "tags",
     "snapshots",
     "placementPolicy",
-    "memoryPolicy",
     "guestInfo",
     "quota",
     "vmPool",
@@ -142,8 +140,6 @@ public class VM
     protected Snapshots snapshots;
     @XmlElement(name = "placement_policy")
     protected VmPlacementPolicy placementPolicy;
-    @XmlElement(name = "memory_policy")
-    protected MemoryPolicy memoryPolicy;
     @XmlElement(name = "guest_info")
     protected GuestInfo guestInfo;
     protected Quota quota;
@@ -588,34 +584,6 @@ public class VM
 
     public boolean isSetPlacementPolicy() {
         return (this.placementPolicy!= null);
-    }
-
-    /**
-     * Gets the value of the memoryPolicy property.
-     *
-     * @return
-     *     possible object is
-     *     {@link MemoryPolicy }
-     *
-     */
-    public MemoryPolicy getMemoryPolicy() {
-        return memoryPolicy;
-    }
-
-    /**
-     * Sets the value of the memoryPolicy property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link MemoryPolicy }
-     *
-     */
-    public void setMemoryPolicy(MemoryPolicy value) {
-        this.memoryPolicy = value;
-    }
-
-    public boolean isSetMemoryPolicy() {
-        return (this.memoryPolicy!= null);
     }
 
     /**

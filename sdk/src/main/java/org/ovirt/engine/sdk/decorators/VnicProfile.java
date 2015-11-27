@@ -185,6 +185,7 @@ public class VnicProfile extends
      *    [vnicprofile.description]
      *    [vnicprofile.port_mirroring]
      *    [vnicprofile.custom_properties.custom_property]
+     *    [vnicprofile.pass_through.mode]
      *    </pre>
      *
      *
@@ -224,6 +225,7 @@ public class VnicProfile extends
      *    [vnicprofile.description]
      *    [vnicprofile.port_mirroring]
      *    [vnicprofile.custom_properties.custom_property]
+     *    [vnicprofile.pass_through.mode]
      *    </pre>
      *
      * @param correlationId
@@ -269,6 +271,7 @@ public class VnicProfile extends
      *    [vnicprofile.description]
      *    [vnicprofile.port_mirroring]
      *    [vnicprofile.custom_properties.custom_property]
+     *    [vnicprofile.pass_through.mode]
      *    </pre>
      *
      * @param correlationId
@@ -322,6 +325,7 @@ public class VnicProfile extends
      *    [vnicprofile.description]
      *    [vnicprofile.port_mirroring]
      *    [vnicprofile.custom_properties.custom_property]
+     *    [vnicprofile.pass_through.mode]
      *    </pre>
      *
      * @param correlationId

@@ -54,7 +54,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="override_configuration" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element ref="{}labels" minOccurs="0"/>
  *         &lt;element ref="{}properties" minOccurs="0"/>
+ *         &lt;element name="virtual_functions_configuration" type="{}HostNicVirtualFunctionsConfiguration" minOccurs="0"/>
  *         &lt;element ref="{}qos" minOccurs="0"/>
+ *         &lt;element name="physical_function" type="{}HostNIC" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -83,7 +85,9 @@ import javax.xml.bind.annotation.XmlType;
     "overrideConfiguration",
     "labels",
     "properties",
-    "qos"
+    "virtualFunctionsConfiguration",
+    "qos",
+    "physicalFunction"
 })
 public class HostNIC
     extends BaseResource
@@ -112,7 +116,11 @@ public class HostNIC
     protected Boolean overrideConfiguration;
     protected Labels labels;
     protected Properties properties;
+    @XmlElement(name = "virtual_functions_configuration")
+    protected HostNicVirtualFunctionsConfiguration virtualFunctionsConfiguration;
     protected QoS qos;
+    @XmlElement(name = "physical_function")
+    protected HostNIC physicalFunction;
 
     /**
      * Gets the value of the host property.
@@ -619,6 +627,34 @@ public class HostNIC
     }
 
     /**
+     * Gets the value of the virtualFunctionsConfiguration property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostNicVirtualFunctionsConfiguration }
+     *
+     */
+    public HostNicVirtualFunctionsConfiguration getVirtualFunctionsConfiguration() {
+        return virtualFunctionsConfiguration;
+    }
+
+    /**
+     * Sets the value of the virtualFunctionsConfiguration property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostNicVirtualFunctionsConfiguration }
+     *
+     */
+    public void setVirtualFunctionsConfiguration(HostNicVirtualFunctionsConfiguration value) {
+        this.virtualFunctionsConfiguration = value;
+    }
+
+    public boolean isSetVirtualFunctionsConfiguration() {
+        return (this.virtualFunctionsConfiguration!= null);
+    }
+
+    /**
      * Gets the value of the qos property.
      *
      * @return
@@ -644,6 +680,34 @@ public class HostNIC
 
     public boolean isSetQos() {
         return (this.qos!= null);
+    }
+
+    /**
+     * Gets the value of the physicalFunction property.
+     *
+     * @return
+     *     possible object is
+     *     {@link HostNIC }
+     *
+     */
+    public HostNIC getPhysicalFunction() {
+        return physicalFunction;
+    }
+
+    /**
+     * Sets the value of the physicalFunction property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link HostNIC }
+     *
+     */
+    public void setPhysicalFunction(HostNIC value) {
+        this.physicalFunction = value;
+    }
+
+    public boolean isSetPhysicalFunction() {
+        return (this.physicalFunction!= null);
     }
 
 }

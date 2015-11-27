@@ -122,6 +122,8 @@ public class Templates extends
      *    template.name
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
@@ -221,6 +223,8 @@ public class Templates extends
      *    template.name
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]
@@ -326,6 +330,8 @@ public class Templates extends
      *    template.name
      *    [template.memory]
      *    [template.io.threads]
+     *    [template.memory_policy.guaranteed]
+     *    [template.memory_policy.ballooning]
      *    [template.cpu.topology.cores]
      *    [template.high_availability.enabled]
      *    [template.os.cmdline]

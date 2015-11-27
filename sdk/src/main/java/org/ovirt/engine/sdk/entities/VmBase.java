@@ -75,6 +75,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="time_zone" type="{}TimeZone" minOccurs="0"/>
  *         &lt;element name="small_icon" type="{}Icon" minOccurs="0"/>
  *         &lt;element name="large_icon" type="{}Icon" minOccurs="0"/>
+ *         &lt;element name="memory_policy" type="{}MemoryPolicy" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -120,7 +121,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "customCpuModel",
     "timeZone",
     "smallIcon",
-    "largeIcon"
+    "largeIcon",
+    "memoryPolicy"
 })
 @XmlSeeAlso({
     VM.class,
@@ -186,6 +188,8 @@ public class VmBase
     protected Icon smallIcon;
     @XmlElement(name = "large_icon")
     protected Icon largeIcon;
+    @XmlElement(name = "memory_policy")
+    protected MemoryPolicy memoryPolicy;
 
     /**
      * Gets the value of the type property.
@@ -1193,6 +1197,34 @@ public class VmBase
 
     public boolean isSetLargeIcon() {
         return (this.largeIcon!= null);
+    }
+
+    /**
+     * Gets the value of the memoryPolicy property.
+     *
+     * @return
+     *     possible object is
+     *     {@link MemoryPolicy }
+     *
+     */
+    public MemoryPolicy getMemoryPolicy() {
+        return memoryPolicy;
+    }
+
+    /**
+     * Sets the value of the memoryPolicy property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link MemoryPolicy }
+     *
+     */
+    public void setMemoryPolicy(MemoryPolicy value) {
+        this.memoryPolicy = value;
+    }
+
+    public boolean isSetMemoryPolicy() {
+        return (this.memoryPolicy!= null);
     }
 
 }

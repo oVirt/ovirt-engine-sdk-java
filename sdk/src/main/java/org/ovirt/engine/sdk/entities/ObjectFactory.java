@@ -324,6 +324,7 @@ public class ObjectFactory {
     private final static QName _SshPublicKeys_QNAME = new QName("", "ssh_public_keys");
     private final static QName _Cpu_QNAME = new QName("", "cpu");
     private final static QName _Domains_QNAME = new QName("", "domains");
+    private final static QName _VnicPassThrough_QNAME = new QName("", "vnic_pass_through");
     private final static QName _Weights_QNAME = new QName("", "weights");
     private final static QName _HostDevice_QNAME = new QName("", "host_device");
     private final static QName _Steps_QNAME = new QName("", "steps");
@@ -352,6 +353,7 @@ public class ObjectFactory {
     private final static QName _Configuration_QNAME = new QName("", "configuration");
     private final static QName _Values_QNAME = new QName("", "values");
     private final static QName _VcpuPin_QNAME = new QName("", "vcpu_pin");
+    private final static QName _HostNicVirtualFunctionsConfiguration_QNAME = new QName("", "host_nic_virtual_functions_configuration");
     private final static QName _Link_QNAME = new QName("", "link");
     private final static QName _Certificate_QNAME = new QName("", "certificate");
     private final static QName _CpuTune_QNAME = new QName("", "cpu_tune");
@@ -2630,6 +2632,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link VnicPassThrough }
+     *
+     */
+    public VnicPassThrough createVnicPassThrough() {
+        return new VnicPassThrough();
+    }
+
+    /**
      * Create an instance of {@link Weights }
      *
      */
@@ -2851,6 +2861,14 @@ public class ObjectFactory {
      */
     public VCpuPin createVCpuPin() {
         return new VCpuPin();
+    }
+
+    /**
+     * Create an instance of {@link HostNicVirtualFunctionsConfiguration }
+     *
+     */
+    public HostNicVirtualFunctionsConfiguration createHostNicVirtualFunctionsConfiguration() {
+        return new HostNicVirtualFunctionsConfiguration();
     }
 
     /**
@@ -6039,6 +6057,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VnicPassThrough }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "vnic_pass_through")
+    public JAXBElement<VnicPassThrough> createVnicPassThrough(VnicPassThrough value) {
+        return new JAXBElement<VnicPassThrough>(_VnicPassThrough_QNAME, VnicPassThrough.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Weights }{@code >}}
      *
      */
@@ -6288,6 +6315,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "vcpu_pin")
     public JAXBElement<VCpuPin> createVcpuPin(VCpuPin value) {
         return new JAXBElement<VCpuPin>(_VcpuPin_QNAME, VCpuPin.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HostNicVirtualFunctionsConfiguration }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "", name = "host_nic_virtual_functions_configuration")
+    public JAXBElement<HostNicVirtualFunctionsConfiguration> createHostNicVirtualFunctionsConfiguration(HostNicVirtualFunctionsConfiguration value) {
+        return new JAXBElement<HostNicVirtualFunctionsConfiguration>(_HostNicVirtualFunctionsConfiguration_QNAME, HostNicVirtualFunctionsConfiguration.class, null, value);
     }
 
     /**

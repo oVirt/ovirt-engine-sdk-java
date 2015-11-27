@@ -39,31 +39,31 @@ import org.ovirt.engine.sdk.web.UrlParameterType;
 import org.ovirt.engine.sdk.entities.Action;
 
 /**
- * <p>NetworkVnicProfiles providing relation and functional services
- * <p>to {@link org.ovirt.engine.sdk.entities.VnicProfiles }.
+ * <p>HostHostNICNetworks providing relation and functional services
+ * <p>to {@link org.ovirt.engine.sdk.entities.Networks }.
  */
 @SuppressWarnings("unused")
-public class NetworkVnicProfiles extends
-        CollectionDecorator<org.ovirt.engine.sdk.entities.VnicProfile,
-                            org.ovirt.engine.sdk.entities.VnicProfiles,
-                            NetworkVnicProfile> {
+public class HostHostNICNetworks extends
+        CollectionDecorator<org.ovirt.engine.sdk.entities.Network,
+                            org.ovirt.engine.sdk.entities.Networks,
+                            HostHostNICNetwork> {
 
-    private Network parent;
+    private HostNIC parent;
 
     /**
      * @param proxy HttpProxyBroker
-     * @param parent Network
+     * @param parent HostNIC
      */
-    public NetworkVnicProfiles(HttpProxyBroker proxy, Network parent) {
-        super(proxy, "vnicprofiles");
+    public HostHostNICNetworks(HttpProxyBroker proxy, HostNIC parent) {
+        super(proxy, "virtualfunctionallowednetworks");
         this.parent = parent;
     }
 
     /**
-     * Lists NetworkVnicProfile objects.
+     * Lists HostHostNICNetwork objects.
      *
      * @return
-     *     List of {@link NetworkVnicProfile }
+     *     List of {@link HostHostNICNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -73,17 +73,17 @@ public class NetworkVnicProfiles extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public List<NetworkVnicProfile> list() throws ClientProtocolException,
+    public List<HostHostNICNetwork> list() throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
-        return list(url, org.ovirt.engine.sdk.entities.VnicProfiles.class, NetworkVnicProfile.class);
+        return list(url, org.ovirt.engine.sdk.entities.Networks.class, HostHostNICNetwork.class);
     }
 
     /**
-     * Fetches NetworkVnicProfile object by id.
+     * Fetches HostHostNICNetwork object by id.
      *
      * @return
-     *     {@link NetworkVnicProfile }
+     *     {@link HostHostNICNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -93,17 +93,17 @@ public class NetworkVnicProfiles extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public NetworkVnicProfile get(UUID id) throws ClientProtocolException,
+    public HostHostNICNetwork get(UUID id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id.toString();
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.VnicProfile.class, NetworkVnicProfile.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, HostHostNICNetwork.class);
     }
 
     /**
-     * Fetches NetworkVnicProfile object by id.
+     * Fetches HostHostNICNetwork object by id.
      *
      * @return
-     *     {@link NetworkVnicProfile }
+     *     {@link HostHostNICNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -113,27 +113,23 @@ public class NetworkVnicProfiles extends
      *             Signals that an I/O exception of some sort has occurred.
      */
     @Override
-    public NetworkVnicProfile getById(String id) throws ClientProtocolException,
+    public HostHostNICNetwork getById(String id) throws ClientProtocolException,
             ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName() + SLASH + id;
-        return getProxy().get(url, org.ovirt.engine.sdk.entities.VnicProfile.class, NetworkVnicProfile.class);
+        return getProxy().get(url, org.ovirt.engine.sdk.entities.Network.class, HostHostNICNetwork.class);
     }
 
     /**
-     * Adds VnicProfile object.
+     * Adds Network object.
      *
-     * @param vnicprofile {@link org.ovirt.engine.sdk.entities.VnicProfile}
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
-     *    vnicprofile.name
-     *    [vnicprofile.description]
-     *    [vnicprofile.port_mirroring]
-     *    [vnicprofile.custom_properties.custom_property]
-     *    [vnicprofile.pass_through.mode]
+     *    network.id|name
      *    </pre>
      *
      *
      * @return
-     *     {@link NetworkVnicProfile }
+     *     {@link HostHostNICNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -142,7 +138,7 @@ public class NetworkVnicProfiles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public NetworkVnicProfile add(org.ovirt.engine.sdk.entities.VnicProfile vnicprofile) throws
+    public HostHostNICNetwork add(org.ovirt.engine.sdk.entities.Network network) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
@@ -152,75 +148,24 @@ public class NetworkVnicProfiles extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().add(url, vnicprofile,
-                org.ovirt.engine.sdk.entities.VnicProfile.class,
-                NetworkVnicProfile.class, headers);
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                HostHostNICNetwork.class, headers);
     }
     /**
-     * Adds VnicProfile object.
+     * Adds Network object.
      *
-     * @param vnicprofile {@link org.ovirt.engine.sdk.entities.VnicProfile}
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
-     *    vnicprofile.name
-     *    [vnicprofile.description]
-     *    [vnicprofile.port_mirroring]
-     *    [vnicprofile.custom_properties.custom_property]
-     *    [vnicprofile.pass_through.mode]
+     *    network.id|name
      *    </pre>
      *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
-     * @return
-     *     {@link NetworkVnicProfile }
-     *
-     * @throws ClientProtocolException
-     *             Signals that HTTP/S protocol error has occurred.
-     * @throws ServerException
-     *             Signals that an oVirt api error has occurred.
-     * @throws IOException
-     *             Signals that an I/O exception of some sort has occurred.
-     */
-    public NetworkVnicProfile add(org.ovirt.engine.sdk.entities.VnicProfile vnicprofile, String expect) throws
-            ClientProtocolException, ServerException, IOException {
-        String url = this.parent.getHref() + SLASH + getName();
-
-        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
-        List<Header> headers = headersBuilder.build();
-
-        UrlBuilder urlBuilder = new UrlBuilder(url);
-        url = urlBuilder.build();
-
-        return getProxy().add(url, vnicprofile,
-                org.ovirt.engine.sdk.entities.VnicProfile.class,
-                NetworkVnicProfile.class, headers);
-    }
-    /**
-     * Adds VnicProfile object.
-     *
-     * @param vnicprofile {@link org.ovirt.engine.sdk.entities.VnicProfile}
-     *    <pre>
-     *    vnicprofile.name
-     *    [vnicprofile.description]
-     *    [vnicprofile.port_mirroring]
-     *    [vnicprofile.custom_properties.custom_property]
-     *    [vnicprofile.pass_through.mode]
-     *    </pre>
-     *
-     * @param expect
-     *    <pre>
-     *    [201-created]
-     *    </pre>
      * @param correlationId
      *    <pre>
      *    [any string]
      *    </pre>
      * @return
-     *     {@link NetworkVnicProfile }
+     *     {@link HostHostNICNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -229,14 +174,11 @@ public class NetworkVnicProfiles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public NetworkVnicProfile add(org.ovirt.engine.sdk.entities.VnicProfile vnicprofile, String expect, String correlationId) throws
+    public HostHostNICNetwork add(org.ovirt.engine.sdk.entities.Network network, String correlationId) throws
             ClientProtocolException, ServerException, IOException {
         String url = this.parent.getHref() + SLASH + getName();
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
-        if (expect != null) {
-            headersBuilder.add("Expect", expect);
-        }
         if (correlationId != null) {
             headersBuilder.add("Correlation-Id", correlationId);
         }
@@ -245,19 +187,28 @@ public class NetworkVnicProfiles extends
         UrlBuilder urlBuilder = new UrlBuilder(url);
         url = urlBuilder.build();
 
-        return getProxy().add(url, vnicprofile,
-                org.ovirt.engine.sdk.entities.VnicProfile.class,
-                NetworkVnicProfile.class, headers);
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                HostHostNICNetwork.class, headers);
     }
     /**
-     * Lists NetworkVnicProfile objects.
+     * Adds Network object.
      *
-     * @param max
+     * @param network {@link org.ovirt.engine.sdk.entities.Network}
      *    <pre>
-     *    [max results]
+     *    network.id|name
      *    </pre>
      *
-     * @return List of {@link NetworkVnicProfile }
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [201-created]
+     *    </pre>
+     * @return
+     *     {@link HostHostNICNetwork }
      *
      * @throws ClientProtocolException
      *             Signals that HTTP/S protocol error has occurred.
@@ -266,7 +217,44 @@ public class NetworkVnicProfiles extends
      * @throws IOException
      *             Signals that an I/O exception of some sort has occurred.
      */
-    public List<NetworkVnicProfile> list(Integer max) throws ClientProtocolException,
+    public HostHostNICNetwork add(org.ovirt.engine.sdk.entities.Network network, String correlationId, String expect) throws
+            ClientProtocolException, ServerException, IOException {
+        String url = this.parent.getHref() + SLASH + getName();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        url = urlBuilder.build();
+
+        return getProxy().add(url, network,
+                org.ovirt.engine.sdk.entities.Network.class,
+                HostHostNICNetwork.class, headers);
+    }
+    /**
+     * Lists HostHostNICNetwork objects.
+     *
+     * @param max
+     *    <pre>
+     *    [max results]
+     *    </pre>
+     *
+     * @return List of {@link HostHostNICNetwork }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public List<HostHostNICNetwork> list(Integer max) throws ClientProtocolException,
             ServerException, IOException {
 
         HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
@@ -279,8 +267,8 @@ public class NetworkVnicProfiles extends
 
         String url = urlBuilder.build();
 
-        return list(url, org.ovirt.engine.sdk.entities.VnicProfiles.class,
-                NetworkVnicProfile.class, headers);
+        return list(url, org.ovirt.engine.sdk.entities.Networks.class,
+                HostHostNICNetwork.class, headers);
     }
 
 }
