@@ -18,6 +18,7 @@ package org.ovirt.engine.sdk.generator.java.templates;
 
 import org.ovirt.engine.sdk.generator.BrokerRules;
 import org.ovirt.engine.sdk.generator.Location;
+import org.ovirt.engine.sdk.generator.LocationRules;
 import org.ovirt.engine.sdk.generator.SchemaRules;
 import org.ovirt.engine.sdk.generator.templates.AbstractTemplate;
 import org.ovirt.engine.sdk.generator.utils.Tree;
@@ -25,11 +26,20 @@ import org.ovirt.engine.sdk.generator.utils.Tree;
 public class SubCollectionGetterTemplate extends AbstractTemplate {
     public String evaluate(Tree<Location> collectionTree) {
         String brokerType = BrokerRules.getBrokerType(collectionTree);
-        String collectionType = SchemaRules.getSchemaType(collectionTree);
         String fieldName = Character.toLowerCase(brokerType.charAt(0)) + brokerType.substring(1);
 
+        // Some resource have multiple subcollections with different names but the same type. For example, the host
+        // NIC resource has two collections named "labels" and "virtualfunctionallowedlabels", and both of type
+        // "Labels". This results in duplicated getter names, as the name of the getter is derived from the type, not
+        // from the name of the collection. To avoid that issue we need to explicitly handle the exceptions here.
+        String getterName = SchemaRules.getSchemaType(collectionTree);
+        String collectionName = LocationRules.getName(collectionTree);
+        if (collectionName.equals("virtualfunctionallowedlabels")) {
+            getterName = "VirtualFunctionAllowedLabels";
+        }
+
         set("broker_type", brokerType);
-        set("collection_type", collectionType);
+        set("getter_name", getterName);
         set("field_name", fieldName);
 
         return evaluate();
