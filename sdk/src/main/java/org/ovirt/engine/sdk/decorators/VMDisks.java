@@ -130,9 +130,9 @@ public class VMDisks extends
      *      machine allocating space from
      *      the storage domain
      *
-     *      provisioned_size
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      disk.provisioned_size
      *      [disk.alias]
      *      [disk.name]
      *      [disk.size]
@@ -224,9 +224,9 @@ public class VMDisks extends
      *      machine allocating space from
      *      the storage domain
      *
-     *      provisioned_size
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      disk.provisioned_size
      *      [disk.alias]
      *      [disk.name]
      *      [disk.size]
@@ -324,9 +324,9 @@ public class VMDisks extends
      *      machine allocating space from
      *      the storage domain
      *
-     *      provisioned_size
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      disk.provisioned_size
      *      [disk.alias]
      *      [disk.name]
      *      [disk.size]

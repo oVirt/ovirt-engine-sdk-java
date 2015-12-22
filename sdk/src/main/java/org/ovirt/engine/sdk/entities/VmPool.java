@@ -46,6 +46,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}rng_device" minOccurs="0"/>
  *         &lt;element ref="{}soundcard_enabled" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="use_latest_template_version" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -65,7 +66,8 @@ import javax.xml.bind.annotation.XmlType;
     "display",
     "rngDevice",
     "soundcardEnabled",
-    "type"
+    "type",
+    "useLatestTemplateVersion"
 })
 public class VmPool
     extends BaseResource
@@ -85,6 +87,8 @@ public class VmPool
     @XmlElement(name = "soundcard_enabled")
     protected Boolean soundcardEnabled;
     protected String type;
+    @XmlElement(name = "use_latest_template_version")
+    protected Boolean useLatestTemplateVersion;
 
     /**
      * Gets the value of the size property.
@@ -364,6 +368,34 @@ public class VmPool
 
     public boolean isSetType() {
         return (this.type!= null);
+    }
+
+    /**
+     * Gets the value of the useLatestTemplateVersion property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *
+     */
+    public Boolean getUseLatestTemplateVersion() {
+        return useLatestTemplateVersion;
+    }
+
+    /**
+     * Sets the value of the useLatestTemplateVersion property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *
+     */
+    public void setUseLatestTemplateVersion(Boolean value) {
+        this.useLatestTemplateVersion = value;
+    }
+
+    public boolean isSetUseLatestTemplateVersion() {
+        return (this.useLatestTemplateVersion!= null);
     }
 
 }

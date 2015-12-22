@@ -305,6 +305,7 @@ public class VmPool extends
      *    [vmpool.max_user_vms]
      *    [vmpool.display.proxy]
      *    [vmpool.description]
+     *    [vm_pool.use_latest_template_version]
      *    </pre>
      *
      *
@@ -348,6 +349,7 @@ public class VmPool extends
      *    [vmpool.max_user_vms]
      *    [vmpool.display.proxy]
      *    [vmpool.description]
+     *    [vm_pool.use_latest_template_version]
      *    </pre>
      *
      * @param correlationId
@@ -397,6 +399,7 @@ public class VmPool extends
      *    [vmpool.max_user_vms]
      *    [vmpool.display.proxy]
      *    [vmpool.description]
+     *    [vm_pool.use_latest_template_version]
      *    </pre>
      *
      * @param correlationId
@@ -454,6 +457,7 @@ public class VmPool extends
      *    [vmpool.max_user_vms]
      *    [vmpool.display.proxy]
      *    [vmpool.description]
+     *    [vm_pool.use_latest_template_version]
      *    </pre>
      *
      * @param correlationId

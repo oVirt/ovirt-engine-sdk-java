@@ -125,9 +125,9 @@ public class Disks extends
      *      will be allocated from the
      *      storage domain for the disk
      *
-     *      provisioned_size
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      disk.provisioned_size
      *      [disk.alias]
      *      [disk.name]
      *      [disk.size]
@@ -201,9 +201,9 @@ public class Disks extends
      *      will be allocated from the
      *      storage domain for the disk
      *
-     *      provisioned_size
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      disk.provisioned_size
      *      [disk.alias]
      *      [disk.name]
      *      [disk.size]
@@ -283,9 +283,9 @@ public class Disks extends
      *      will be allocated from the
      *      storage domain for the disk
      *
-     *      provisioned_size
-     *      disk.interface
      *      disk.format
+     *      disk.interface
+     *      disk.provisioned_size
      *      [disk.alias]
      *      [disk.name]
      *      [disk.size]

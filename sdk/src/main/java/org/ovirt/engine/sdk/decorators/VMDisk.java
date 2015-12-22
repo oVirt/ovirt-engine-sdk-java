@@ -791,8 +791,8 @@ public class VMDisk extends
      *
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
-     *    [size]
-     *    [provisioned_size]
+     *    [disk.size]
+     *    [disk.provisioned_size]
      *    [disk.name]
      *    [disk.alias]
      *    [disk.interface]
@@ -808,7 +808,6 @@ public class VMDisk extends
      *    [disk.sgio]
      *    [disk.uses_scsi_reservation]
      *    [disk.read_only]
-     *    [description]
      *    </pre>
      *
      *
@@ -844,8 +843,8 @@ public class VMDisk extends
      *
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
-     *    [size]
-     *    [provisioned_size]
+     *    [disk.size]
+     *    [disk.provisioned_size]
      *    [disk.name]
      *    [disk.alias]
      *    [disk.interface]
@@ -861,7 +860,6 @@ public class VMDisk extends
      *    [disk.sgio]
      *    [disk.uses_scsi_reservation]
      *    [disk.read_only]
-     *    [description]
      *    </pre>
      *
      * @param correlationId
@@ -903,8 +901,8 @@ public class VMDisk extends
      *
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
-     *    [size]
-     *    [provisioned_size]
+     *    [disk.size]
+     *    [disk.provisioned_size]
      *    [disk.name]
      *    [disk.alias]
      *    [disk.interface]
@@ -920,7 +918,6 @@ public class VMDisk extends
      *    [disk.sgio]
      *    [disk.uses_scsi_reservation]
      *    [disk.read_only]
-     *    [description]
      *    </pre>
      *
      * @param correlationId
@@ -970,8 +967,8 @@ public class VMDisk extends
      *
      * @param disk {@link org.ovirt.engine.sdk.entities.Disk}
      *    <pre>
-     *    [size]
-     *    [provisioned_size]
+     *    [disk.size]
+     *    [disk.provisioned_size]
      *    [disk.name]
      *    [disk.alias]
      *    [disk.interface]
@@ -987,7 +984,6 @@ public class VMDisk extends
      *    [disk.sgio]
      *    [disk.uses_scsi_reservation]
      *    [disk.read_only]
-     *    [description]
      *    </pre>
      *
      * @param correlationId

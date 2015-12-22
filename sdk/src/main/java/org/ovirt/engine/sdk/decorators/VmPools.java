@@ -128,6 +128,7 @@ public class VmPools extends
      *    [vmpool.description]
      *    [vmpool.soundcard_enabled]
      *    [vmpool.type]
+     *    [vm_pool.use_latest_template_version]
      *    </pre>
      *
      *
@@ -170,6 +171,7 @@ public class VmPools extends
      *    [vmpool.description]
      *    [vmpool.soundcard_enabled]
      *    [vmpool.type]
+     *    [vm_pool.use_latest_template_version]
      *    </pre>
      *
      * @param expect
@@ -218,6 +220,7 @@ public class VmPools extends
      *    [vmpool.description]
      *    [vmpool.soundcard_enabled]
      *    [vmpool.type]
+     *    [vm_pool.use_latest_template_version]
      *    </pre>
      *
      * @param expect
