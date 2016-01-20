@@ -47,7 +47,10 @@ public class HttpProxy {
     private static final String FILTER_HEADER = "Filter";
     private static final String EXPECT_HEADER = "Expect";
     private static final String ALTERNATIVE_EXPECT_HEADER = "X-Ovirt-Expect";
-    private static final String STATIC_HEADERS[] = new String[] { "Content-type:application/xml" };
+    private static final String STATIC_HEADERS[] = new String[] {
+      "Version: 3",
+      "Content-type: application/xml",
+    };
     private static final int BAD_REQUEST = 400;
 
     private ConnectionsPool pool;
