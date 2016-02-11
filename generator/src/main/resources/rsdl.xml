@@ -200,7 +200,7 @@ or less indicates that the session should never timeout</description>
                             <deprecated>true</deprecated>
                         </parameter>
                         <parameter required="false" type="xs:string">
-                            <name>cluster.scheduling_policy.id</name>
+                            <name>cluster.scheduling_policy.id|name</name>
                         </parameter>
                         <parameter required="false" type="collection">
                             <name>cluster.scheduling_policy.properties.property</name>
@@ -16052,6 +16052,12 @@ or less indicates that the session should never timeout</description>
                             <parameters_set>
 <parameter required="false" type="xs:string">
     <name>disk.id</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>disk.format</name>
+</parameter>
+<parameter required="false" type="xs:string">
+    <name>disk.sparse</name>
 </parameter>
                             </parameters_set>
                         </parameter>

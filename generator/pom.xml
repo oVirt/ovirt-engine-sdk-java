@@ -28,7 +28,7 @@
 
     <!-- Default values used when retrieving the XML schema and the RSDL from
          the engine artifacts: -->
-    <engine.version>3.6.2</engine.version>
+    <engine.version>3.6.3.2-SNAPSHOT</engine.version>
 
     <!-- The version of the JAXB XJC compiler to use: -->
     <jaxb.version>2.2.4-1</jaxb.version>
