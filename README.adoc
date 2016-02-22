@@ -1,0 +1,36 @@
+= oVirt Java SDK
+
+== Introduction
+
+The oVirt Java SDK is a Java package that simplifies access to the
+oVirt Engine API.
+
+== Building
+
+Most of the source code of the Java SDK is automatically generated
+from the API model.
+
+The code generator is a Java program that resides in the `generator`
+directory. This Java program will get the API model and the metamodel
+artifacts from the available Maven repositories. To build and run it use
+the following commands:
+
+  $ git clone git://gerrit.ovirt.org/ovirt-engine-sdk-java
+  $ mvn package
+
+This will build the code generator, run it to generate the SDK for the
+version of the API that corresponds to the branch of the SDK that you
+are using, and build the `.jar` files.
+
+If you need to generate it for a different version of the API then you
+can use the `model.version` property. For example, if you need to
+generate the SDK for version `4.1.0` of the SDK you can use this
+command:
+
+  $ mvn package -Dmodel.version=4.1.0
+
+The generated `.jar` files will be located in the `sdk/target`
+directory:
+
+  $ find sdk/target -name '*.jar'
+  sdk/target/ovirt-engine-sdk-4.0.0-SNAPSHOT.jar
