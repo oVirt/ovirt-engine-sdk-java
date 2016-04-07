@@ -30,6 +30,43 @@ limitations under the License.
 
   <name>oVirt Java SDK</name>
 
+  <description>
+    Java SDK for version 4 of the oVirt Engine API.
+  </description>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Michael Pasternak</name>
+      <email>mishka8520@yahoo.com</email>
+    </developer>
+    <developer>
+      <name>Ondra Machacek</name>
+      <email>omachace@redhat.com</email>
+      <organization>oVirt</organization>
+      <organizationUrl>http://www.ovirt.org</organizationUrl>
+    </developer>
+    <developer>
+      <name>Juan Hernandez</name>
+      <email>juan.hernandez@redhat.com</email>
+      <organization>oVirt</organization>
+      <organizationUrl>http://www.ovirt.org</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</connection>
+    <developerConnection>scm:git:git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</developerConnection>
+    <url>git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <properties>
 
     <!-- Make sure that we always compile with UTF-8 encoding: -->
@@ -77,10 +114,102 @@ limitations under the License.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>2.2.1</version>
+        <version>2.4</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Configure release: -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.2</version>
+        <configuration>
+          <tagNameFormat>@{version}</tagNameFormat>
+          <pushChanges>false</pushChanges>
+        </configuration>
       </plugin>
 
     </plugins>
   </build>
+
+  <profiles>
+
+    <!-- This profile is used to sign the artifacts when performing
+         releases. -->
+    <profile>
+      <id>sign</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- This profile is used to generate the documentation: -->
+    <profile>
+      <id>document</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.10.3</version>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <doclet>org.asciidoctor.Asciidoclet</doclet>
+              <docletArtifact>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoclet</artifactId>
+                <version>1.5.4</version>
+              </docletArtifact>
+              <additionalparam>
+                -Xdoclint:none
+                --base-dir ${project.basedir}
+              </additionalparam>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+    </repository>
+  </distributionManagement>
 
 </project>
