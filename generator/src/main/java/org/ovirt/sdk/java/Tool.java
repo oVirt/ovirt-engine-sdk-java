@@ -110,6 +110,9 @@ public class Tool {
         modelAnalyzer.setModel(model);
         modelAnalyzer.analyzeSource(modelFile);
 
+        // Generate href attribute to Identified type:
+        addHrefAttributeToIdentifiedType(model);
+
         // Add the built-in types:
         addBuiltinTypes(model);
 
@@ -195,5 +198,14 @@ public class Tool {
 
         // Add the type to the model:
         model.addType(actionType);
+    }
+
+    private void addHrefAttributeToIdentifiedType(Model model) {
+        StructType identified = (StructType)model.getType(NameParser.parseUsingCase("Identified"));
+        Attribute href = new Attribute();
+        href.setType(model.getStringType());
+        href.setName(NameParser.parseUsingCase("Href"));
+        href.setDeclaringType(identified);
+        identified.addAttribute(href);
     }
 }

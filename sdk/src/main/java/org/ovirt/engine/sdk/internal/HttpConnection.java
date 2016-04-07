@@ -21,11 +21,11 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.ovirt.engine.sdk.Connection;
 import org.ovirt.engine.sdk.Service;
 import org.ovirt.engine.sdk.services.SystemService;
 import org.ovirt.engine.sdk.services.internal.SystemServiceImpl;
+import org.ovirt.engine.sdk.types.Identified;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -125,11 +125,8 @@ public class HttpConnection implements Connection {
 
     @Override
     public boolean isLink(Object object) {
-        for (Method m : object.getClass().getMethods()) {
-            System.out.println(m.getName());
-            if (m.getName().contains("href")) {
-                return true;
-            }
+        if (object instanceof Identified) {
+            return ((Identified) object).href() != null;
         }
         return false;
     }
@@ -140,8 +137,7 @@ public class HttpConnection implements Connection {
             throw new RuntimeException("Can't follow link because object don't have any.");
         }
         try {
-            Method m = object.getClass().getMethod("href");
-            String href = (String)m.invoke(object);
+            String href = ((Identified) object).href();
             if (href == null) {
                 throw new RuntimeException("Can't follow link because the 'href' attribute does't have a value");
             }
@@ -155,11 +151,19 @@ public class HttpConnection implements Connection {
                 throw new RuntimeException("The URL '" + href + "' isn't compatible with the base URL of the connection");
             }
 
+            // Get service based on path
             String path = href.substring(prefix.length());
             Service service = systemService().service(path);
-            Object getRequest = service.getClass().getMethod("get").invoke(service);
-            Object getReponse = getRequest.getClass().getMethod("send").invoke(getRequest);
-            return (TYPE)getReponse.getClass().getDeclaredMethods()[0].invoke(getReponse);
+
+            // Obtain method which provides result object and invoke it:
+            Method get = service.getClass().getMethod("get");
+            Object getRequest = get.invoke(service);
+            Method send = getRequest.getClass().getMethod("send");
+            send.setAccessible(true);
+            Object getResponse = send.invoke(getRequest);
+            Method obtainObject = getResponse.getClass().getDeclaredMethods()[0];
+            obtainObject.setAccessible(true);
+            return (TYPE) obtainObject.invoke(getResponse);
         } catch (NoSuchMethodException ex) {
             throw new RuntimeException(ex);
         } catch (IllegalAccessException ex) {
