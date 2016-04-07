@@ -23,30 +23,21 @@ limitations under the License.
 
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.ovirt.engine.api</groupId>
-    <artifactId>java-sdk-parent</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
-  </parent>
-
-  <artifactId>java-sdk</artifactId>
+  <groupId>org.ovirt.engine.sdk</groupId>
+  <artifactId>sdk</artifactId>
+  <version>4.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>oVirt Java SDK</name>
 
+  <properties>
+
+    <!-- Make sure that we always compile with UTF-8 encoding: -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+  </properties>
+
   <dependencies>
-
-    <dependency>
-      <groupId>org.ovirt.engine.api</groupId>
-      <artifactId>metamodel-runtime</artifactId>
-      <version>${metamodel.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.5</version>
-    </dependency>
 
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
@@ -54,100 +45,39 @@ limitations under the License.
       <version>4.3.6</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.sun.xml.txw2</groupId>
+      <artifactId>txw2</artifactId>
+      <version>20110809</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.7</version>
+    </dependency>
+
   </dependencies>
 
   <build>
     <plugins>
 
-      <!-- Copy model.jar to the target directory, so that it can be
-           later loaded by the generator: -->
+      <!-- Make sure to always use Java 8: -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>copy-model</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>org.ovirt.engine.api</groupId>
-                  <artifactId>model</artifactId>
-                  <version>${model.version}</version>
-                  <type>jar</type>
-                  <classifier>sources</classifier>
-                  <outputDirectory>${project.basedir}/target</outputDirectory>
-                  <destFileName>model.jar</destFileName>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- Run the code generator: -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
-        <executions>
-          <execution>
-            <id>generate-code</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <mainClass>org.ovirt.api.metamodel.tool.Main</mainClass>
-              <arguments>
-                <argument>org.ovirt.sdk.java.Tool</argument>
-                <argument>--model</argument>
-                <argument>${project.basedir}/target/model.jar</argument>
-                <argument>--out</argument>
-                <argument>${project.basedir}/target/generated-sources</argument>
-              </arguments>
-              <includePluginDependencies>true</includePluginDependencies>
-              <includeProjectDependencies>false</includeProjectDependencies>
-            </configuration>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>java-sdk-generator</artifactId>
-            <version>${project.version}</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-
-      <!-- Add the generated Java code directory to the source path: -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.10</version>
-        <executions>
-          <execution>
-            <id>add-generated-sources</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${project.basedir}/target/generated-sources</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
       </plugin>
 
       <!-- Attach the sources: -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
       </plugin>
 
     </plugins>

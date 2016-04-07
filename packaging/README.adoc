@@ -1,0 +1,11 @@
+= oVirt Java SDK Packaging
+
+== Introduction
+
+This directory contains the files required to package the SDK for
+packaging systems other than the Java standard packaging system.
+
+== RPM
+
+To build the RPM put the `.tar.gz` file containing the source of the
+SDK in this directory and run the `build.sh` script.

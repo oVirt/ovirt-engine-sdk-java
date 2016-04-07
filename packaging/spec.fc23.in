@@ -1,0 +1,46 @@
+Name: java-ovirt-engine-sdk4
+Version: @RPM_VERSION@
+Release: @RPM_RELEASE@
+Summary: Java SDK for version 4 of the oVirt Engine API
+Group: Development/Languages
+License: ASL 2.0
+URL: http://ovirt.org/wiki/SDK
+Source: @TAR_URL@
+
+BuildArch: noarch
+
+BuildRequires: maven-local
+BuildRequires: mvn(com.sun.xml.txw2:txw2)
+BuildRequires: mvn(org.apache.httpcomponents:httpclient)
+BuildRequires: mvn(org.slf4j:slf4j-api)
+
+%description
+This package contains the Python SDK for version 4 of the oVirt Engine
+API.
+
+%package javadoc
+Summary: Javadoc for %{name}
+
+%description javadoc
+This package contains the API documentation for %{name}.
+
+%prep
+%setup -q -n ovirt-engine-sdk-java-%{version}
+
+%build
+%mvn_build
+
+%install
+%mvn_install
+
+%files -f .mfiles
+%doc README.adoc
+%license LICENSE.txt
+%{_javadir}/%{name}
+
+%files javadoc -f .mfiles-javadoc
+%license LICENSE.txt
+
+%changelog
+* Thu Apr 7 2016 Juan Hernandez <juan.hernandez@redhat.com> - 4.0.0
+- Initial packaging.
