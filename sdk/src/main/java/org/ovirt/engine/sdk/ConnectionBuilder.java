@@ -31,35 +31,29 @@ import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.LayeredConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.conn.ssl.DefaultHostnameVerifier;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+import org.apache.http.ssl.SSLContexts;
 import org.ovirt.engine.sdk.internal.HttpConnection;
 import org.ovirt.engine.sdk.internal.NoCaTrustManager;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.security.KeyManagementException;
-import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.security.cert.CertificateException;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 /**
  * This class is used to build connections to the API server.
@@ -80,17 +74,9 @@ public class ConnectionBuilder {
     private String user;
     private String password;
     private boolean insecure = false;
-    private boolean debug = false;
     private boolean kerberos = false;
-    private String log;
     private int timeout = 0;
     private boolean compress = false;
-    private String ssoUrl;
-    private boolean ssoInsecure;
-    private boolean ssoDebug;
-    private String ssoLog;
-    private int ssoTimeout;
-    private String ssoTokenName;
 
     private String keyStorePath;
     private URL urlobj;
@@ -246,7 +232,6 @@ public class ConnectionBuilder {
             connection.setUser(user);
             connection.setPassword(password);
             connection.setInsecure(insecure);
-            connection.setDebug(debug);
             connection.setKerberos(kerberos);
             return connection;
         } catch (Exception e) {
@@ -291,7 +276,7 @@ public class ConnectionBuilder {
         }
 
         RequestConfig globalConfig = RequestConfig.custom()
-            .setCookieSpec(CookieSpecs.BEST_MATCH)
+            .setCookieSpec(CookieSpecs.DEFAULT)
             .setConnectionRequestTimeout(timeout)
             .build();
         CloseableHttpClient client = HttpClientBuilder.create()
@@ -299,7 +284,6 @@ public class ConnectionBuilder {
             .setDefaultRequestConfig(globalConfig)
             .setDefaultCredentialsProvider(credsProvider)
             .setDefaultAuthSchemeRegistry(authSchemeProvider)
-            // TODO: set Keep Alive Strategy?
             .build();
 
         return client;
@@ -326,33 +310,15 @@ public class ConnectionBuilder {
                 if (this.insecure) {
                     SSLContext sslcontext = SSLContext.getInstance("TLS");
                     sslcontext.init(null, new TrustManager[]{noCaTrustManager}, null);
-                    sslsf = new SSLConnectionSocketFactory(
-                        sslcontext,
-                        SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER
-                    );
+                    sslsf = new SSLConnectionSocketFactory(sslcontext, NoopHostnameVerifier.INSTANCE);
                 } else {
-                    InputStream in = null;
-                    KeyStore truststore = KeyStore.getInstance(KeyStore.getDefaultType());
-                    try {
-                        in = new FileInputStream(this.keyStorePath);
-                        truststore.load(
-                            in,
-                            this.keyStorePassword != null ? this.keyStorePassword.toCharArray() : null
-                        );
-                    } finally {
-                        if (in != null) {
-                            in.close();
-                        }
-                    }
-
                     SSLContext sslContext = SSLContexts.custom()
-                        .loadTrustMaterial(truststore)
-                        .useTLS()
+                        .loadTrustMaterial(
+                            new File(keyStorePath),
+                            this.keyStorePassword != null ? this.keyStorePassword.toCharArray() : null
+                        )
                         .build();
-                    sslsf = new SSLConnectionSocketFactory(
-                        sslContext,
-                        SSLConnectionSocketFactory.STRICT_HOSTNAME_VERIFIER
-                    );
+                    sslsf = new SSLConnectionSocketFactory(sslContext, new DefaultHostnameVerifier());
                 }
                 registry = RegistryBuilder.<ConnectionSocketFactory>create()
                     .register(HTTPS_PROTOCOL, sslsf)

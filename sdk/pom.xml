@@ -77,12 +77,6 @@ limitations under the License.
   <dependencies>
 
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.3.6</version>
-    </dependency>
-
-    <dependency>
       <groupId>com.sun.xml.txw2</groupId>
       <artifactId>txw2</artifactId>
       <version>20110809</version>
@@ -92,6 +86,12 @@ limitations under the License.
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.7.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5</version>
     </dependency>
 
   </dependencies>

@@ -33,8 +33,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Handler;
-import java.util.logging.Logger;
 
 /**
  * This class is the HTTP implementation of the connection contract. Refrain from using it directly, as backwards
@@ -47,9 +45,7 @@ public class HttpConnection implements Connection {
     private String user;
     private String password;
     private boolean insecure = false;
-    private boolean debug = false;
     private boolean kerberos = false;
-    private String log;
     private int timeout = 0;
     private boolean compress = false;
 
@@ -82,24 +78,12 @@ public class HttpConnection implements Connection {
         this.insecure = insecure;
     }
 
-    public void setDebug(boolean debug) {
-        this.debug = debug;
-    }
-
     public boolean isKerberos() {
         return kerberos;
     }
 
     public void setKerberos(boolean kerberos) {
         this.kerberos = kerberos;
-    }
-
-    public String getLog() {
-        return log;
-    }
-
-    public void setLog(String log) {
-        this.log = log;
     }
 
     public int getTimeout() {
@@ -180,13 +164,6 @@ public class HttpConnection implements Connection {
         // Send the last request to indicate the server that the session should be closed:
         HttpGet request = new HttpGet(url);
         this.send(request, true);
-
-        // close log
-        for (Handler handler : Logger.getLogger("org.apache.http").getHandlers()) {
-            if(handler != null) {
-                handler.close();
-            }
-        }
 
         // Close HttpClient connection:
         if(client != null) {
