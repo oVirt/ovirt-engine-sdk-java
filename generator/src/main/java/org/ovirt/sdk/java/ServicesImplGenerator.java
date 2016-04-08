@@ -46,7 +46,6 @@ import org.ovirt.api.metamodel.tool.JavaTypes;
 import org.ovirt.api.metamodel.tool.SchemaNames;
 
 import javax.inject.Inject;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -358,14 +357,18 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private void generateActionRequestImplementation(Method method) {
-        buffer.addImport(HttpPost.class);
-        buffer.addImport(XmlWriter.class);
-        buffer.addImport(IOException.class);
+        buffer.addImport(BASE_PACKAGE + ".types.Action");
         buffer.addImport(ByteArrayEntity.class);
         buffer.addImport(ByteArrayOutputStream.class);
+        buffer.addImport(EntityUtils.class);
+        buffer.addImport(HttpPost.class);
+        buffer.addImport(HttpResponse.class);
+        buffer.addImport(IOException.class);
+        buffer.addImport(XmlReader.class);
+        buffer.addImport(XmlWriter.class);
 
-        buffer.addLine("HttpPost request = new HttpPost(getConnection().getUrl() + getPath());");
-
+        buffer.addLine("HttpPost request = new HttpPost(getConnection().getUrl() + getPath() + \"/%1$s\");",
+            getPath(method.getName()));
         buffer.addLine("try (");
         buffer.addLine("  ByteArrayOutputStream output = new ByteArrayOutputStream();");
         buffer.addLine("  XmlWriter xmlWriter = new XmlWriter(output, true)");
@@ -383,8 +386,25 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("catch (IOException ex) {");
         buffer.addLine(  "throw new RuntimeException(ex);");
         buffer.addLine("}");
-
-        generateCommonRequestImplementation(method, new String[]{"200"});
+        buffer.addLine();
+        buffer.addLine("HttpResponse response = getConnection().send(request);");
+        buffer.addLine("if (response.getStatusLine().getStatusCode() == 200) {");
+        buffer.addLine(  "Action action = checkAction(response);");
+        buffer.addLine(  "EntityUtils.consumeQuietly(response.getEntity());");
+        // Generate the methods and appropriate constructors to get the output parameters:
+        List<Parameter> parameters = method.parameters().filter(Parameter::isOut).collect(Collectors.toList());
+        if (parameters.isEmpty()) {
+            buffer.addLine("return new %1$s();", getResponseImplName(method));
+        }
+        else {
+            buffer.addLine("return new %1$s(action.%2$s());",
+                getResponseImplName(method), javaNames.getJavaMemberStyleName(parameters.get(0).getName()));
+        }
+        buffer.addLine("}");
+        buffer.addLine("else {");
+        buffer.addLine(  "checkFault(response);");
+        buffer.addLine(  "return null;");
+        buffer.addLine("}");
     }
 
     private void generateActionParamsWriters(Parameter parameter) {
@@ -434,7 +454,8 @@ public class ServicesImplGenerator extends JavaGenerator {
         List<Parameter> parameters = method.parameters().filter(Parameter::isOut).collect(Collectors.toList());
         if (parameters.isEmpty()) {
             buffer.addLine("return new %1$s();", getResponseImplName(method));
-        } else {
+        }
+        else {
             parameters.stream()
                 .sorted()
                 .forEach(this::generateRequestReaderImplementation);
@@ -470,14 +491,9 @@ public class ServicesImplGenerator extends JavaGenerator {
         else if (type instanceof ListType) {
             ListType listType = (ListType) type;
             Type elementType = listType.getElementType();
-            if (elementType instanceof PrimitiveType) {
-                // TODO: once added support to readMany in XmlReader fix this
-                buffer.addLine("return new %1$s(null);", responseImplName);
-            } else {
-                JavaClassName xmlReaderName = javaTypes.getXmlReaderName(elementType);
-                buffer.addImport(xmlReaderName);
-                buffer.addLine("return new %1$s(%2$s.readMany(reader));", responseImplName, xmlReaderName.getSimpleName());
-            }
+            JavaClassName xmlReaderName = javaTypes.getXmlReaderName(elementType);
+            buffer.addImport(xmlReaderName);
+            buffer.addLine("return new %1$s(%2$s.readMany(reader));", responseImplName, xmlReaderName.getSimpleName());
         }
     }
 

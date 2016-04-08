@@ -4,7 +4,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.ovirt.api.metamodel.runtime.xml.XmlReader;
 import org.ovirt.engine.sdk.internal.HttpConnection;
+import org.ovirt.engine.sdk.internal.xml.XmlActionReader;
 import org.ovirt.engine.sdk.internal.xml.XmlFaultReader;
+import org.ovirt.engine.sdk.types.Action;
 import org.ovirt.engine.sdk.types.Fault;
 
 import java.io.IOException;
@@ -31,6 +33,20 @@ public class ServiceImpl {
             if (fault != null) {
                 this.throwError(response, fault);
             }
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        } finally {
+            EntityUtils.consumeQuietly(response.getEntity());
+        }
+    }
+
+    public Action checkAction(HttpResponse response) {
+        try (XmlReader reader = new XmlReader(response.getEntity().getContent())) {
+            Action action = XmlActionReader.readOne(reader);
+            if (action != null && action.faultPresent()) {
+                this.throwError(response, action.fault());
+            }
+            return action;
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         } finally {
@@ -83,7 +99,6 @@ public class ServiceImpl {
         }
         throw new RuntimeException(buffer.toString());
     }
-
 
     public HttpConnection getConnection() {
         return connection;

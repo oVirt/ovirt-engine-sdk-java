@@ -35,6 +35,7 @@ import org.ovirt.api.metamodel.concepts.Attribute;
 import org.ovirt.api.metamodel.concepts.Model;
 import org.ovirt.api.metamodel.concepts.NameParser;
 import org.ovirt.api.metamodel.concepts.StructType;
+import org.ovirt.api.metamodel.tool.BuiltinTypes;
 import org.ovirt.api.metamodel.tool.EnumGenerator;
 import org.ovirt.api.metamodel.tool.JavaGenerator;
 import org.ovirt.api.metamodel.tool.JavaPackages;
@@ -60,6 +61,7 @@ public class Tool {
     @Inject private ServicesGenerator servicesGenerator;
     @Inject private ServicesImplGenerator servicesImplGenerator;
     @Inject private EnumGenerator enumGenerator;
+    @Inject private BuiltinTypes builtinTypes;
 
     public void run(String[] args) throws Exception {
         // Create the command line options:
@@ -114,7 +116,7 @@ public class Tool {
         addHrefAttributeToIdentifiedType(model);
 
         // Add the built-in types:
-        addBuiltinTypes(model);
+        builtinTypes.addBuiltinTypes(model);
 
         // Set the names of the packages:
         javaPackages.setTypesPackageName(BASE_PACKAGE + ".types");
@@ -136,68 +138,6 @@ public class Tool {
                 generator.generate(model);
             }
         }
-    }
-
-    /**
-     * Adds built-in types to the model.
-     */
-    private void addBuiltinTypes(Model model) {
-        // Note that the order is important. For example, the "Fault" type must be added before the "Action" type
-        // because actions have elements whose type is "Fault".
-        addFaultType(model);
-        addActionType(model);
-    }
-
-    /**
-     * Adds the {@code Fault} type to the model.
-     */
-    private void addFaultType(Model model) {
-        // Create the tyep:
-        StructType faultType = new StructType();
-        faultType.setName(NameParser.parseUsingCase("Fault"));
-
-        // Add the "reason" attribute:
-        Attribute reasonAttribute = new Attribute();
-        reasonAttribute.setName(NameParser.parseUsingCase("Reason"));
-        reasonAttribute.setType(model.getStringType());
-        reasonAttribute.setDeclaringType(faultType);
-        faultType.addAttribute(reasonAttribute);
-
-        // Add the "detail" attribute:
-        Attribute detailAttribute = new Attribute();
-        detailAttribute.setName(NameParser.parseUsingCase("Detail"));
-        detailAttribute.setType(model.getStringType());
-        detailAttribute.setDeclaringType(faultType);
-        faultType.addAttribute(detailAttribute);
-
-        // Add the type to the model:
-        model.addType(faultType);
-    }
-
-    /**
-     * Adds the {@code Action} type to the model.
-     */
-    private void addActionType(Model model) {
-        // Create the type:
-        StructType actionType = new StructType();
-        actionType.setName(NameParser.parseUsingCase("Action"));
-
-        // Add the "status" attribute:
-        Attribute statusAttribute = new Attribute();
-        statusAttribute.setName(NameParser.parseUsingCase("Status"));
-        statusAttribute.setType(model.getType(NameParser.parseUsingCase("Status")));
-        statusAttribute.setDeclaringType(actionType);
-        actionType.addAttribute(statusAttribute);
-
-        // Add the "fault" attribute:
-        Attribute faultAttribute = new Attribute();
-        faultAttribute.setName(NameParser.parseUsingCase("Fault"));
-        faultAttribute.setType(model.getType(NameParser.parseUsingCase("Fault")));
-        faultAttribute.setDeclaringType(actionType);
-        actionType.addAttribute(faultAttribute);
-
-        // Add the type to the model:
-        model.addType(actionType);
     }
 
     private void addHrefAttributeToIdentifiedType(Model model) {
