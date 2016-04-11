@@ -15,7 +15,7 @@ BuildRequires: mvn(org.apache.httpcomponents:httpclient)
 BuildRequires: mvn(org.slf4j:slf4j-api)
 
 %description
-This package contains the Python SDK for version 4 of the oVirt Engine
+This package contains the Java SDK for version 4 of the oVirt Engine
 API.
 
 %package javadoc

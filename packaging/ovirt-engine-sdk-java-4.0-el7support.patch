@@ -1,0 +1,319 @@
+--- sdk/src/main/java/org/ovirt/engine/sdk/internal/HttpConnection.java.orig	2016-04-11 14:57:24.857220085 +0200
++++ sdk/src/main/java/org/ovirt/engine/sdk/internal/HttpConnection.java	2016-04-11 14:56:48.953884908 +0200
+@@ -16,31 +16,31 @@
+ 
+ package org.ovirt.engine.sdk.internal;
+ 
++import java.lang.reflect.InvocationTargetException;
++import java.lang.reflect.Method;
++import java.net.MalformedURLException;
++import java.net.URL;
++import java.util.ArrayList;
++import java.util.List;
++
+ import org.apache.http.Header;
+ import org.apache.http.HttpResponse;
++import org.apache.http.client.HttpClient;
+ import org.apache.http.client.methods.HttpGet;
+ import org.apache.http.client.methods.HttpUriRequest;
+-import org.apache.http.impl.client.CloseableHttpClient;
+ import org.ovirt.engine.sdk.Connection;
+ import org.ovirt.engine.sdk.Service;
+ import org.ovirt.engine.sdk.services.SystemService;
+ import org.ovirt.engine.sdk.services.internal.SystemServiceImpl;
+ import org.ovirt.engine.sdk.types.Identified;
+ 
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+-import java.net.MalformedURLException;
+-import java.net.URL;
+-import java.util.ArrayList;
+-import java.util.List;
+-
+ /**
+  * This class is the HTTP implementation of the connection contract. Refrain from using it directly, as backwards
+  * compatibility isn't guaranteed, use the {@link org.ovirt.engine.sdk.ConnectionBuilder} class instead.
+  */
+ public class HttpConnection implements Connection {
+ 
+-    private CloseableHttpClient client;
++    private HttpClient client;
+     private String url;
+     private String user;
+     private String password;
+@@ -50,11 +50,11 @@
+     private boolean compress = false;
+ 
+ 
+-    public CloseableHttpClient getClient() {
++    public HttpClient getClient() {
+         return client;
+     }
+ 
+-    public void setClient(CloseableHttpClient client) {
++    public void setClient(HttpClient client) {
+         this.client = client;
+     }
+ 
+@@ -167,7 +167,7 @@
+ 
+         // Close HttpClient connection:
+         if(client != null) {
+-            client.close();
++            client.getConnectionManager().shutdown();
+         }
+     }
+ 
+--- sdk/src/main/java/org/ovirt/engine/sdk/ConnectionBuilder.java.orig	2016-04-11 14:57:18.050553069 +0200
++++ sdk/src/main/java/org/ovirt/engine/sdk/ConnectionBuilder.java	2016-04-11 14:56:58.987218757 +0200
+@@ -16,43 +16,44 @@
+ 
+ package org.ovirt.engine.sdk;
+ 
++import org.apache.http.HttpHost;
+ import org.apache.http.ProtocolException;
+-import org.apache.http.auth.AuthSchemeProvider;
++import org.apache.http.auth.AuthSchemeRegistry;
+ import org.apache.http.auth.AuthScope;
+ import org.apache.http.auth.Credentials;
+ import org.apache.http.auth.UsernamePasswordCredentials;
+-import org.apache.http.client.CredentialsProvider;
+-import org.apache.http.client.config.AuthSchemes;
+-import org.apache.http.client.config.CookieSpecs;
+-import org.apache.http.client.config.RequestConfig;
+-import org.apache.http.config.Lookup;
+-import org.apache.http.config.Registry;
+-import org.apache.http.config.RegistryBuilder;
+-import org.apache.http.conn.socket.ConnectionSocketFactory;
+-import org.apache.http.conn.socket.LayeredConnectionSocketFactory;
+-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+-import org.apache.http.conn.ssl.DefaultHostnameVerifier;
+-import org.apache.http.conn.ssl.NoopHostnameVerifier;
+-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
++import org.apache.http.client.HttpClient;
++import org.apache.http.client.params.AuthPolicy;
++import org.apache.http.client.params.ClientPNames;
++import org.apache.http.client.params.CookiePolicy;
++import org.apache.http.conn.scheme.PlainSocketFactory;
++import org.apache.http.conn.scheme.Scheme;
++import org.apache.http.conn.scheme.SchemeRegistry;
++import org.apache.http.conn.ssl.SSLSocketFactory;
++import org.apache.http.impl.auth.BasicSchemeFactory;
+ import org.apache.http.impl.auth.SPNegoSchemeFactory;
+-import org.apache.http.impl.client.BasicCredentialsProvider;
+-import org.apache.http.impl.client.CloseableHttpClient;
+-import org.apache.http.impl.client.HttpClientBuilder;
+-import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+-import org.apache.http.ssl.SSLContexts;
++import org.apache.http.impl.client.DefaultHttpClient;
++import org.apache.http.impl.conn.BasicClientConnectionManager;
++import org.apache.http.params.BasicHttpParams;
++import org.apache.http.params.HttpConnectionParams;
++import org.apache.http.params.HttpParams;
+ import org.ovirt.engine.sdk.internal.HttpConnection;
+ import org.ovirt.engine.sdk.internal.NoCaTrustManager;
+ 
+ import javax.net.ssl.SSLContext;
+ import javax.net.ssl.TrustManager;
+ import java.io.File;
++import java.io.FileInputStream;
+ import java.io.FileNotFoundException;
+ import java.io.IOException;
++import java.io.InputStream;
+ import java.net.URL;
+ import java.security.KeyManagementException;
++import java.security.KeyStore;
+ import java.security.KeyStoreException;
+ import java.security.NoSuchAlgorithmException;
+ import java.security.Principal;
++import java.security.UnrecoverableKeyException;
+ import java.security.cert.CertificateException;
+ 
+ /**
+@@ -66,6 +67,7 @@
+     private static final String KEY_STORE_FILE_NOT_FOUND_ERROR = "CA certificate keystore was not found.";
+     private static final String CERTIFICATE_ERROR = "CA certificate error.";
+     private static final String IO_ERROR = "I/O error occurred, is your keystore password correct?";
++    private static final String UNRECOVERABLE_KEY_ERROR = "Unrecoverable key error has occured.";
+ 
+     private static String HTTP_PROTOCOL = "http";
+     private static String HTTPS_PROTOCOL = "https";
+@@ -242,49 +244,47 @@
+     /**
+      * Creates CloseableHttpClient
+      *
+-     * @return {@link CloseableHttpClient}
++     * @return {@link HttpClient}
+      */
+-    private CloseableHttpClient createDefaultHttpClient() throws ProtocolException, SocketFactoryException {
++    private HttpClient createDefaultHttpClient() throws ProtocolException, SocketFactoryException {
+         int port = getPort();
+-        Lookup<AuthSchemeProvider> authSchemeProvider = null;
+-        CredentialsProvider credsProvider = new BasicCredentialsProvider();
++        Credentials credentials = null;
++        AuthSchemeRegistry schemeRegistry = new AuthSchemeRegistry();
+         AuthScope authScope = new AuthScope(getHost(), port, AuthScope.ANY_REALM, AuthScope.ANY_SCHEME);
+ 
++        // Set request timeout:
++        if (timeout != -1) {
++            HttpParams httpParams = new BasicHttpParams();
++            HttpConnectionParams.setConnectionTimeout(httpParams, timeout);
++            DefaultHttpClient.setDefaultHttpParams(httpParams);
++        }
++
++        // Create credentials:
+         if (user != null && user.length() > 0) {
+-            credsProvider.setCredentials(
+-                authScope,
+-                new UsernamePasswordCredentials(user, password)
+-            );
++            schemeRegistry.register(AuthPolicy.BASIC, new BasicSchemeFactory());
++            credentials = new UsernamePasswordCredentials(user, password);
+         } else if (kerberos) {
+-            authSchemeProvider = RegistryBuilder.<AuthSchemeProvider>create()
+-                .register(AuthSchemes.SPNEGO, new SPNegoSchemeFactory(true))
+-                .build();
+-            credsProvider.setCredentials(
+-                authScope,
+-                new Credentials() {
+-                    @Override
+-                    public Principal getUserPrincipal() {
+-                        return null;
+-                    }
++            schemeRegistry.register(AuthPolicy.SPNEGO, new SPNegoSchemeFactory(true));
++            credentials = new Credentials() {
++                @Override
++                public Principal getUserPrincipal() {
++                    return null;
++                }
+ 
+-                    @Override
+-                    public String getPassword() {
+-                        return null;
+-                    }
++                @Override
++                public String getPassword() {
++                    return null;
+                 }
+-            );
++            };
+         }
+ 
+-        RequestConfig globalConfig = RequestConfig.custom()
+-            .setCookieSpec(CookieSpecs.DEFAULT)
+-            .setConnectionRequestTimeout(timeout)
+-            .build();
+-        CloseableHttpClient client = HttpClientBuilder.create()
+-            .setConnectionManager(new BasicHttpClientConnectionManager(createConnectionSocketFactoryRegistry()))
+-            .setDefaultRequestConfig(globalConfig)
+-            .setDefaultCredentialsProvider(credsProvider)
+-            .setDefaultAuthSchemeRegistry(authSchemeProvider)
+-            .build();
++        // Create http client:
++        DefaultHttpClient client = new DefaultHttpClient(
++            new BasicClientConnectionManager(createConnectionSocketFactoryRegistry())
++        );
++        client.setAuthSchemes(schemeRegistry);
++        client.getCredentialsProvider().setCredentials(authScope, credentials);
++        client.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.BEST_MATCH);
+ 
+         return client;
+     }
+@@ -292,37 +292,59 @@
+     /**
+      * Creates ConnectionSocketFactory Registry
+      *
+-     * @return {@link Registry}
++     * @return {@link SchemeRegistry}
+      */
+-    private Registry createConnectionSocketFactoryRegistry() throws ProtocolException, SocketFactoryException {
++    private SchemeRegistry createConnectionSocketFactoryRegistry() throws ProtocolException, SocketFactoryException {
++        SchemeRegistry schemeRegistry = new SchemeRegistry();
+         String protocol = getProtocol();
+-        Registry registry = null;
++        SSLSocketFactory sf;
+ 
+-        // Create SSL/TLS or plain connection:
+         if (HTTP_PROTOCOL.equals(protocol)) {
+-            ConnectionSocketFactory plainsf = PlainConnectionSocketFactory.getSocketFactory();
+-            registry = RegistryBuilder.<ConnectionSocketFactory>create()
+-                .register(HTTP_PROTOCOL, plainsf)
+-                .build();
++            schemeRegistry.register(
++                new Scheme(HTTP_PROTOCOL,
++                    getPort(),
++                    PlainSocketFactory.getSocketFactory()));
+         } else if (HTTPS_PROTOCOL.equals(protocol)) {
+             try {
+-                LayeredConnectionSocketFactory sslsf = null;
+                 if (this.insecure) {
+                     SSLContext sslcontext = SSLContext.getInstance("TLS");
+-                    sslcontext.init(null, new TrustManager[]{noCaTrustManager}, null);
+-                    sslsf = new SSLConnectionSocketFactory(sslcontext, NoopHostnameVerifier.INSTANCE);
++                    sslcontext.init(null, new TrustManager[] { noCaTrustManager }, null);
++                    sf = new SSLSocketFactory(
++                        sslcontext,
++                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+                 } else {
+-                    SSLContext sslContext = SSLContexts.custom()
+-                        .loadTrustMaterial(
+-                            new File(keyStorePath),
+-                            this.keyStorePassword != null ? this.keyStorePassword.toCharArray() : null
+-                        )
+-                        .build();
+-                    sslsf = new SSLConnectionSocketFactory(sslContext, new DefaultHostnameVerifier());
++                    KeyStore truststore = null;
++                    InputStream in = null;
++
++                    if (this.keyStorePath != null) {
++                        truststore = KeyStore.getInstance(KeyStore.getDefaultType());
++                        try {
++                            in = new FileInputStream(this.keyStorePath);
++                            truststore.load(
++                                in,
++                                this.keyStorePassword != null ?
++                                    this.keyStorePassword.toCharArray()
++                                    :
++                                    null);
++
++                        } finally {
++                            if (in != null) {
++                                in.close();
++                            }
++                        }
++                    }
++                    sf = new SSLSocketFactory(SSLSocketFactory.TLS,
++                        null,
++                        null,
++                        truststore,
++                        null,
++                        null,
++                        SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+                 }
+-                registry = RegistryBuilder.<ConnectionSocketFactory>create()
+-                    .register(HTTPS_PROTOCOL, sslsf)
+-                    .build();
++
++                schemeRegistry.register(
++                    new Scheme(HTTPS_PROTOCOL, getPort(), sf));
++
+             } catch (NoSuchAlgorithmException e) {
+                 throw new SocketFactoryException(NO_TLS_ERROR, e);
+             } catch (KeyManagementException e) {
+@@ -335,13 +357,14 @@
+                 throw new SocketFactoryException(CERTIFICATE_ERROR, e);
+             } catch (IOException e) {
+                 throw new SocketFactoryException(IO_ERROR, e);
++            } catch (UnrecoverableKeyException e) {
++                throw new SocketFactoryException(UNRECOVERABLE_KEY_ERROR, e);
+             }
+-
+         } else {
+             throw new ProtocolException(BAD_PROTOCOL_ERROR + protocol);
+         }
+ 
+-        return registry;
++        return schemeRegistry;
+     }
+ 
+     private String getHost() {
