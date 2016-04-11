@@ -16,6 +16,20 @@ limitations under the License.
 
 package org.ovirt.sdk.java;
 
+import static java.util.stream.Collectors.joining;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import javax.inject.Inject;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
@@ -44,20 +58,6 @@ import org.ovirt.api.metamodel.tool.JavaNames;
 import org.ovirt.api.metamodel.tool.JavaTypeReference;
 import org.ovirt.api.metamodel.tool.JavaTypes;
 import org.ovirt.api.metamodel.tool.SchemaNames;
-
-import javax.inject.Inject;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.joining;
 
 /**
  * This class is responsible for generating the classes that represent the implementation of services of the model.
@@ -149,7 +149,6 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine();
     }
 
-
     private void generateMethodImplementation(Method method) {
         Name name = method.getName();
 
@@ -184,16 +183,16 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("public %1$s send() {", getResponseName(method));
         // Generate method code based on response type:
         if(ADD.equals(name)) {
-            generateAddRequestImplementaion(method);
+            generateAddRequestImplementation(method);
         }
         else if(GET.equals(name) || LIST.equals(name)) {
-            generateListRequestImplementaion(method);
+            generateListRequestImplementation(method);
         }
         else if(REMOVE.equals(name)) {
-            generateRemoveRequestImplementaion(method);
+            generateRemoveRequestImplementation(method);
         }
         else if(UPDATE.equals(name)) {
-            generateUpdateRequestImplementaion(method);
+            generateUpdateRequestImplementation(method);
         }
         else {
             generateActionRequestImplementation(method);
@@ -208,7 +207,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine();
     }
 
-    private void generateListRequestImplementaion(Method method) {
+    private void generateListRequestImplementation(Method method) {
         buffer.addImport(URIBuilder.class);
         buffer.addImport(URISyntaxException.class);
         buffer.addImport(HttpGet.class);
@@ -219,6 +218,7 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         method.parameters()
             .filter(Parameter::isIn)
+            .filter(p -> p.getType() instanceof PrimitiveType)
             .sorted()
             .forEach(this::generateRequestParameterQueryBuilder);
 
@@ -231,14 +231,17 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private void generateRequestParameterQueryBuilder(Parameter parameter) {
-        buffer.addLine("if(%1$s != null) {", javaNames.getJavaMemberStyleName(parameter.getName()));
+        String tag = schemaNames.getSchemaTagName(parameter.getName());
+        String value = javaNames.getJavaMemberStyleName(parameter.getName());
+        String type = javaNames.getJavaClassStyleName(parameter.getType().getName());
 
-        buffer.addLine(  "uriBuilder.addParameter(\"%1$s\", String.valueOf(%2$s));", // FIXME: don't use String.valueOf
-            parameter.getName().toString().replaceAll("-", "_"), javaNames.getJavaMemberStyleName(parameter.getName()));
+        buffer.addImport(XmlWriter.class);
+        buffer.addLine("if(%1$s != null) {", value);
+        buffer.addLine(  "uriBuilder.addParameter(\"%1$s\", XmlWriter.render%2$s(%3$s));", tag, type, value);
         buffer.addLine("}");
     }
 
-    private void generateAddRequestImplementaion(Method method) {
+    private void generateAddRequestImplementation(Method method) {
         buffer.addImport(HttpPost.class);
         buffer.addImport(XmlWriter.class);
         buffer.addImport(IOException.class);
@@ -286,7 +289,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         generateCommonRequestImplementation(method, new String[]{"200", "201"});
     }
 
-    public void generateRemoveRequestImplementaion(Method method) {
+    public void generateRemoveRequestImplementation(Method method) {
         buffer.addImport(HttpDelete.class);
         buffer.addImport(URIBuilder.class);
         buffer.addImport(URISyntaxException.class);
@@ -297,6 +300,7 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         method.parameters()
             .filter(Parameter::isIn)
+            .filter(p -> p.getType() instanceof PrimitiveType)
             .sorted()
             .forEach(this::generateRequestParameterQueryBuilder);
 
@@ -308,7 +312,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         generateCommonRequestImplementation(method, new String[]{"200"});
     }
 
-    public void generateUpdateRequestImplementaion(Method method) {
+    public void generateUpdateRequestImplementation(Method method) {
         buffer.addImport(HttpPut.class);
         buffer.addImport(XmlWriter.class);
         buffer.addImport(IOException.class);
@@ -413,8 +417,9 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         buffer.addLine("if (%1$s != null) {", name);
         if (type instanceof PrimitiveType) {
-            buffer.addLine("xmlWriter.writeElement(\"%1$s\", String.valueOf(%2$s));", // FIXME: don't use String.valueOf
-                schemaNames.getSchemaTagName(parameter.getName()), name);
+            String tag = schemaNames.getSchemaTagName(parameter.getName());
+            String tagType = javaNames.getJavaClassStyleName(type.getName());
+            buffer.addLine("xmlWriter.write%1$s(\"%2$s\", %3$s);", tagType, tag, name);
         }
         else if (type instanceof StructType) {
             JavaClassName xmlWriterName = javaTypes.getXmlWriterName(type);
@@ -444,30 +449,27 @@ public class ServicesImplGenerator extends JavaGenerator {
         for (int i = 1; i < codes.length; i++) {
             buffer.addLine("  || response.getStatusLine().getStatusCode() == %1$s", codes[i]);
         }
-
         buffer.addLine(") {");
-        buffer.addLine(  "try (");
-        buffer.addLine(  "  XmlReader reader = new XmlReader(response.getEntity().getContent())");
-        buffer.addLine(  ") {");
-
-        // Generate the methods and appropriate constructors to get the output parameters:
         List<Parameter> parameters = method.parameters().filter(Parameter::isOut).collect(Collectors.toList());
         if (parameters.isEmpty()) {
+            buffer.addLine(  "EntityUtils.consumeQuietly(response.getEntity());");
             buffer.addLine("return new %1$s();", getResponseImplName(method));
         }
         else {
+            buffer.addLine("try (");
+            buffer.addLine("  XmlReader reader = new XmlReader(response.getEntity().getContent())");
+            buffer.addLine(") {");
             parameters.stream()
                 .sorted()
                 .forEach(this::generateRequestReaderImplementation);
+            buffer.addLine("}");
+            buffer.addLine("catch (IOException ex) {");
+            buffer.addLine(  "throw new RuntimeException(ex);");
+            buffer.addLine("}");
+            buffer.addLine("finally {");
+            buffer.addLine(  "EntityUtils.consumeQuietly(response.getEntity());");
+            buffer.addLine("}");
         }
-
-        buffer.addLine(  "}");
-        buffer.addLine(  "catch (IOException ex) {");
-        buffer.addLine(    "throw new RuntimeException(ex);");
-        buffer.addLine(  "}");
-        buffer.addLine(  "finally {");
-        buffer.addLine(    "EntityUtils.consumeQuietly(response.getEntity());");
-        buffer.addLine(  "}");
         buffer.addLine("}");
         buffer.addLine("else {");
         buffer.addLine(  "checkFault(response);");
