@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -552,13 +553,12 @@ public class ServicesImplGenerator extends JavaGenerator {
             // Method taking an array of objects:
             buffer.addImport(elementName);
             buffer.addImport(Arrays.class);
-            generateRequestParameterArgsMethodImplementation("public %1s %2$s(%3$s %2$s) {", request, member, elementName.getSimpleName() + "...");
+            generateRequestParameterArgsMethodImplementation("public %1s %2$s(%3$s... %2$s) {", request, member, elementName.getSimpleName());
 
             // Method taking an array of builders:
             JavaClassName builderName = javaTypes.getBuilderName(elementType);
             buffer.addImport(builderName);
-            buffer.addImport(Collectors.class);
-            generateRequestParameterArgsBuilderMethodImplementation("public %1s %2$s(%3$s %2$s) {", request, member, builderName.getSimpleName() + "...");
+            generateRequestParameterArgsBuilderMethodImplementation("public %1s %2$s(%3$s... %2$s) {", request, member, builderName.getSimpleName());
         }
     }
 
@@ -571,8 +571,13 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private void generateRequestParameterArgsBuilderMethodImplementation(String format, String request, String member, String type) {
+        buffer.addImport(ArrayList.class);
+
         buffer.addLine(format, request, member, type);
-        buffer.addLine(  "this.%1$s = Arrays.stream(%1$s).map(e -> e.build()).collect(Collectors.toList());", member);
+        buffer.addLine(  "this.%1$s = new ArrayList<>(%1$s.length);", member);
+        buffer.addLine(  "for (%1$s element : %2$s) {", type, member);
+        buffer.addLine(    "this.%1$s.add(element.build());", member);
+        buffer.addLine(  "}");
         buffer.addLine(  "return this;");
         buffer.addLine("}");
         buffer.addLine();
