@@ -79,7 +79,7 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
         }
 
         RequestConfig globalConfig = RequestConfig.custom()
-            .setCookieSpec(CookieSpecs.DEFAULT)
+            .setCookieSpec(CookieSpecs.IGNORE_COOKIES)
             .setConnectionRequestTimeout(timeout)
             .build();
         CloseableHttpClient client = HttpClientBuilder.create()

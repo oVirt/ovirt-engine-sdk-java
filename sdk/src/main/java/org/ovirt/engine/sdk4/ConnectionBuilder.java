@@ -19,7 +19,6 @@ package org.ovirt.engine.sdk4;
 import java.io.File;
 import java.net.URL;
 
-import org.apache.http.HttpHost;
 import org.apache.http.ProtocolException;
 import org.ovirt.engine.sdk4.internal.HttpConnection;
 import org.ovirt.engine.sdk4.internal.NoCaTrustManager;
@@ -51,6 +50,11 @@ public abstract class ConnectionBuilder {
     protected URL urlobj;
     protected String keyStorePassword;
 
+    // SSO attributes:
+    private String ssoUrl;
+    private String ssoRevokeUrl;
+    private String ssoTokenName = "access_token";
+
     protected NoCaTrustManager noCaTrustManager = new NoCaTrustManager();
 
 
@@ -62,7 +66,6 @@ public abstract class ConnectionBuilder {
      *
      * @param url A string containing the base URL of the server, usually something like
      *            'https://server.example.com/ovirt-engine/api'
-     * @return ConnectionBuilder
      */
     public ConnectionBuilder url(String url) {
         this.url = url;
@@ -73,7 +76,6 @@ public abstract class ConnectionBuilder {
      * Set user
      *
      * @param user
-     * @return ConnectionBuilder
      */
     public ConnectionBuilder user(String user) {
         this.user = user;
@@ -84,7 +86,6 @@ public abstract class ConnectionBuilder {
      * Set password
      *
      * @param password The password of the user
-     * @return ConnectionBuilder
      */
     public ConnectionBuilder password(String password) {
         this.password = password;
@@ -96,7 +97,6 @@ public abstract class ConnectionBuilder {
      *
      * @param insecure A boolean flag that indicates if the server TLS certificate and host
      *                 name should be checked.
-     * @return ConnectionBuilder
      */
     public ConnectionBuilder insecure(boolean insecure) {
         this.insecure = insecure;
@@ -108,7 +108,6 @@ public abstract class ConnectionBuilder {
      *
      * @param kerberos A boolean flag indicating if Kerberos authentication should be used
      *                 instead of the default basic authentication. Default is false.
-     * @return ConnectionBuilder
      */
     public ConnectionBuilder kerberos(boolean kerberos) {
         this.kerberos = kerberos;
@@ -122,7 +121,6 @@ public abstract class ConnectionBuilder {
      *                seconds. A value of zero (the default) means wait for ever. If
      *                the timeout expires before the response is received an exception
      *                will be raised.
-     * @return
      */
     public ConnectionBuilder timeout(int timeout) {
         this.timeout = timeout;
@@ -136,7 +134,6 @@ public abstract class ConnectionBuilder {
      *                 the server to send compressed responses. The default is `false`.
      *                 Note that this is a hint for the server, and that it may return
      *                 uncompressed data even when this parameter is set to `true`.
-     * @return
      */
     public ConnectionBuilder compress(boolean compress) {
         this.compress = compress;
@@ -146,8 +143,7 @@ public abstract class ConnectionBuilder {
     /**
      * Set keystore password
      *
-     * @param keyStorePassword
-     * @return
+     * @param keyStorePassword The password to keystore file, which stores CA certificates.
      */
     public ConnectionBuilder keyStorePassword(String keyStorePassword) {
         this.keyStorePassword = keyStorePassword;
@@ -157,14 +153,52 @@ public abstract class ConnectionBuilder {
     /**
      * Set keystore path
      *
-     * @param keyStorePath
-     * @return
+     * @param keyStorePath The path to a keystore file containing the trusted CA certificates. The certificate
+     *  presented by the server will be verified using these CA certificates.
      */
     public ConnectionBuilder keyStorePath(String keyStorePath) {
         this.keyStorePath = keyStorePath;
         return this;
     }
 
+    /**
+     * Set SSO url
+     *
+     * @param ssoUrl A string containing the base SSO URL of the server, usually something like
+     *  `\https://server.example.com/ovirt-engine/sso/oauth/token?`
+     *  `\grant_type=password&scope=ovirt-app-api` for password authentication or
+     *  `\https://server.example.com/ovirt-engine/sso/oauth/token-http-auth?`
+     *  `\grant_type=urn:ovirt:params:oauth:grant-type:http&scope=ovirt-app-api` for kerberos authentication
+     *  Default SSO url is computed from the `url` if no `sso_url` is provided.
+     */
+    public ConnectionBuilder ssoUrl(String ssoUrl) {
+        this.ssoUrl = ssoUrl;
+        return this;
+    }
+
+    /**
+     * Set SSO revoke url
+     *
+     * @param ssoRevokeUrl A string containing the base URL of the SSO revoke service. This needs to be specified only
+     *  when using an external authentication service. By default this URL is automatically
+     *  calculated from the value of the `url` parameter, so that SSO token revoke will be performed
+     *  using the SSO service that is part of the engine.
+     */
+    public ConnectionBuilder ssoRevokeUrl(String ssoRevokeUrl) {
+        this.ssoRevokeUrl = ssoRevokeUrl;
+        return this;
+    }
+
+    /**
+     * Set SSO token name
+     *
+     * @param ssoTokenName The token name in the JSON SSO response returned from the SSO
+     *  server. Default value is `access_token`.
+     */
+    public ConnectionBuilder ssoTokenName(String ssoTokenName) {
+        this.ssoTokenName = ssoTokenName;
+        return this;
+    }
 
     /**
      * Checks the values of the parameters given so far, checks that they are valid, and builds a connection using
@@ -194,8 +228,10 @@ public abstract class ConnectionBuilder {
             connection.setUrl(url);
             connection.setUser(user);
             connection.setPassword(password);
-            connection.setInsecure(insecure);
             connection.setKerberos(kerberos);
+            connection.setSsoUrl(ssoUrl);
+            connection.setSsoTokenName(ssoTokenName);
+            connection.setSsoRevokeUrl(ssoRevokeUrl);
             return connection;
         } catch (Exception e) {
             throw new RuntimeException(e);

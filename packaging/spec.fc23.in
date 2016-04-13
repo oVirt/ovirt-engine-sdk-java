@@ -12,6 +12,7 @@ BuildArch: noarch
 BuildRequires: maven-local
 BuildRequires: mvn(com.sun.xml.txw2:txw2)
 BuildRequires: mvn(org.apache.httpcomponents:httpclient)
+BuildRequires: mvn(org.codehaus.jackson:jackson-mapper-asl)
 BuildRequires: mvn(org.slf4j:slf4j-api)
 
 %description

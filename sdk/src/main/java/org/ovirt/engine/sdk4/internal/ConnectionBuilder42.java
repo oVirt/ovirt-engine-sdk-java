@@ -85,7 +85,7 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
         );
         client.setAuthSchemes(schemeRegistry);
         client.getCredentialsProvider().setCredentials(authScope, credentials);
-        client.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.BEST_MATCH);
+        client.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.IGNORE_COOKIES);
 
         return new HttpClient42(client);
     }

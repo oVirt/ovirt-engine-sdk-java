@@ -16,9 +16,11 @@ limitations under the License.
 
 package org.ovirt.engine.sdk4.internal;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,9 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.util.EntityUtils;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.HttpClient;
 import org.ovirt.engine.sdk4.Service;
@@ -44,10 +49,11 @@ public class HttpConnection implements Connection {
     private String url;
     private String user;
     private String password;
-    private boolean insecure = false;
-    private boolean kerberos = false;
-    private int timeout = 0;
-    private boolean compress = false;
+    private boolean kerberos;
+    private String ssoToken = null;
+    private String ssoTokenName = null;
+    private String ssoUrl = null;
+    private String ssoRevokeUrl = null;
 
 
     public HttpClient getClient() {
@@ -74,32 +80,32 @@ public class HttpConnection implements Connection {
         this.password = password;
     }
 
-    public void setInsecure(boolean insecure) {
-        this.insecure = insecure;
+    public String getSsoUrl() {
+        return ssoUrl;
     }
 
-    public boolean isKerberos() {
-        return kerberos;
+    public void setSsoUrl(String ssoUrl) {
+        this.ssoUrl = ssoUrl;
+    }
+
+    public String getSsoTokenName() {
+        return ssoTokenName;
+    }
+
+    public void setSsoTokenName(String ssoTokenName) {
+        this.ssoTokenName = ssoTokenName;
     }
 
     public void setKerberos(boolean kerberos) {
         this.kerberos = kerberos;
     }
 
-    public int getTimeout() {
-        return timeout;
+    public void setSsoRevokeUrl(String ssoRevokeUrl) {
+        this.ssoRevokeUrl = ssoRevokeUrl;
     }
 
-    public void setTimeout(int timeout) {
-        this.timeout = timeout;
-    }
-
-    public boolean isCompress() {
-        return compress;
-    }
-
-    public void setCompress(boolean compress) {
-        this.compress = compress;
+    public String getSsoRevokeUrl() {
+        return ssoRevokeUrl;
     }
 
     @Override
@@ -161,9 +167,8 @@ public class HttpConnection implements Connection {
 
     @Override
     public void close() throws Exception {
-        // Send the last request to indicate the server that the session should be closed:
-        HttpGet request = new HttpGet(url);
-        this.send(request, true);
+        // revoke access token:
+        revokeAccessToken();
 
         // Close HttpClient connection:
         if(client != null) {
@@ -172,12 +177,8 @@ public class HttpConnection implements Connection {
     }
 
     public HttpResponse send(HttpUriRequest request) {
-        return send(request, false);
-    }
-
-    private HttpResponse send(HttpUriRequest request, boolean last) {
         try {
-            injectHeaders(request, last);
+            injectHeaders(request);
             return client.execute(request);
         }
         catch(Exception e) {
@@ -190,7 +191,7 @@ public class HttpConnection implements Connection {
      *
      * @param request
      */
-    private void injectHeaders(HttpUriRequest request, boolean last) {
+    private void injectHeaders(HttpUriRequest request) {
         List<Header> updated = excludeNullHeaders(request.getAllHeaders());
         if (updated != null && !updated.isEmpty()) {
             request.setHeaders(updated.toArray(new Header[updated.size()]));
@@ -200,11 +201,7 @@ public class HttpConnection implements Connection {
         request.addHeader("Content-type", "application/xml");
         request.addHeader("User-Agent", "JavaSDK");
         request.addHeader("Accept", "application/xml");
-
-        if (!last) {
-            // inject PERSISTENT_AUTH_HEADER
-            request.addHeader("Prefer", "persistent-auth");
-        }
+        request.addHeader("Authorization", "Bearer " + getAccessToken());
     }
 
     private List<Header> excludeNullHeaders(Header[] headers) {
@@ -219,5 +216,72 @@ public class HttpConnection implements Connection {
         }
 
         return null;
+    }
+
+    private String getAccessToken() {
+        if (ssoToken == null) {
+            // Build SSO URL if necessary:
+            URI ssoURI = ssoUrl != null ? SsoUtils.buildUrl(ssoUrl) :
+                kerberos ? SsoUtils.buildSsoUrlKerberos(url) : SsoUtils.buildSsoUrlBasic(url, user, password);
+
+            JsonNode node = getSsoResponse(ssoURI);
+            if (node.isArray()) {
+                node = node.get(0);
+            }
+
+            if (node.get("error") != null) {
+                throw new RuntimeException(
+                    String.format(
+                        "Error during SSO authentication %1$s : %2$s", node.get("error_code"), node.get("error")
+                    )
+                );
+            }
+
+            ssoToken = node.get(ssoTokenName).getTextValue();
+        }
+
+        return ssoToken;
+    }
+
+    private void revokeAccessToken() {
+        // Build SSO revoke URL:
+        URI ssoRevokeURI = ssoRevokeUrl != null ? SsoUtils.buildUrl(ssoRevokeUrl) :
+            ssoToken != null ? SsoUtils.buildSsoRevokeUrl(url, ssoToken) : null;
+
+        if (ssoRevokeURI != null) {
+            JsonNode node = getSsoResponse(ssoRevokeURI);
+            if (node.isArray()) {
+                node = node.get(0);
+            }
+
+            if (node.get("error") != null) {
+                throw new RuntimeException(
+                    String.format(
+                        "Error during SSO token revoke %1$s : %2$s", node.get("error_code"), node.get("error")
+                    )
+                );
+            }
+        }
+    }
+
+    private JsonNode getSsoResponse(URI uri) {
+        HttpResponse response = null;
+        try {
+            // Send request and parse token:
+            HttpGet requestToken = new HttpGet(uri);
+            requestToken.addHeader("User-Agent", "JavaSDK");
+            requestToken.addHeader("Accept", "application/json");
+            response = client.execute(requestToken);
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readTree(response.getEntity().getContent());
+        }
+        catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        finally {
+            if (response != null) {
+                EntityUtils.consumeQuietly(response.getEntity());
+            }
+        }
     }
 }
