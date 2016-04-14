@@ -1,0 +1,38 @@
+= PKI Resources
+
+This directory contains private key files and certificates used by the
+tests:
+
+ca.crt:: The certificate of the CA that is used to sign all the other
+certificates.
+
+ca.jks:: A JKS keystore file containing the CA certificate.
+
+localhost.key:: The private key of the `localhost` certificate.
+
+localhost.crt:: The certificate for `localhost`.
+
+localhost.jks:: A key store in JKS format containing the private key and
+the certificate for `localhost`.
+
+localhost.p12:: A key store in PKCS12 format containing the private key and
+the certificate for `localhost`.
+
+ugly.key:: The private key of the `ugly` certificate.
+
+ugly.crt:: The certificate for `ugly`.
+
+ugly.jks:: A key store in JKS format containing the private key and
+the certificate for `ugly`.
+
+ugly.p12:: A key store in PKCS12 format containing the private key and
+the certificate for `ugly`.
+
+The `ugly` private key and certificate are intended for tests that
+check that connections to servers whose host name doesn't match the
+certifcate common name fail.
+
+All these certificates expire in 100 years, hopefully they will live
+longer than the SDK.
+
+The passwords of the JKS and PKCS12 key stores are `mypass`.
