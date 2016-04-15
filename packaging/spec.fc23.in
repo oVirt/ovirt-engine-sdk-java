@@ -25,10 +25,17 @@ Summary: Javadoc for %{name}
 This package contains the API documentation for %{name}.
 
 %prep
+
+# Extract the source:
 %setup -q -n ovirt-engine-sdk-java-%{version}
 
+# Remove the test dependencies:
+%pom_remove_dep io.undertow:undertow-core
+%pom_remove_dep junit:junit
+%pom_remove_dep org.slf4j:slf4j-log4j12
+
 %build
-%mvn_build
+%mvn_build -- -Dmaven.test.skip=true
 
 %install
 %mvn_install
