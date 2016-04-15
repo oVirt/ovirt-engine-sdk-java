@@ -18,12 +18,6 @@ BuildRequires: mvn(org.slf4j:slf4j-api)
 This package contains the Java SDK for version 4 of the oVirt Engine
 API.
 
-%package javadoc
-Summary: Javadoc for %{name}
-
-%description javadoc
-This package contains the API documentation for %{name}.
-
 %prep
 
 # Extract the source:
@@ -35,7 +29,7 @@ This package contains the API documentation for %{name}.
 %pom_remove_dep org.slf4j:slf4j-log4j12
 
 %build
-%mvn_build -- -Dmaven.test.skip=true
+%mvn_build -- -Dmaven.javadoc.skip=true -Dmaven.test.skip=true
 
 %install
 %mvn_install
@@ -44,9 +38,6 @@ This package contains the API documentation for %{name}.
 %doc README.adoc
 %license LICENSE.txt
 %{_javadir}/%{name}
-
-%files javadoc -f .mfiles-javadoc
-%license LICENSE.txt
 
 %changelog
 * Thu Apr 7 2016 Juan Hernandez <juan.hernandez@redhat.com> - 4.0.0
