@@ -13,15 +13,15 @@ instructions in the `README.adoc` file of the parent directory.
 
 == Usage
 
-To use the SDK import the `org.ovirt.engine.sdk` package. That will give you
+To use the SDK import the `org.ovirt.engine.sdk4` package. That will give you
 `Connection` class. This is the entry point of the SDK, access to all the
 classes of th SDK, and in particular to the and gives you access to the
 root of the tree of services of the API:
 
 [source,java]
 ----
-import org.ovirt.engine.sdk.Connection;
-import static org.ovirt.engine.sdk.ConnectionBuilder.connection;
+import org.ovirt.engine.sdk4.Connection;
+import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 
 // Create a connection to the server:
 Connection connection = connection()

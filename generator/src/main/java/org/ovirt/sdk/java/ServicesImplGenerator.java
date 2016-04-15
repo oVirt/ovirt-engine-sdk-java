@@ -65,7 +65,7 @@ import org.ovirt.api.metamodel.tool.SchemaNames;
  */
 public class ServicesImplGenerator extends JavaGenerator {
     // The base package:
-    private String BASE_PACKAGE = "org.ovirt.engine.sdk";
+    private String BASE_PACKAGE = "org.ovirt.engine.sdk4";
 
     // Service implementation suffix
     private String IMPL_SUFFIX = "Impl";

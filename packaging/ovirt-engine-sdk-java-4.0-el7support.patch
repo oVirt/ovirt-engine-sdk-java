@@ -1,8 +1,8 @@
---- sdk/src/main/java/org/ovirt/engine/sdk/internal/HttpConnection.java.orig	2016-04-11 14:57:24.857220085 +0200
-+++ sdk/src/main/java/org/ovirt/engine/sdk/internal/HttpConnection.java	2016-04-11 14:56:48.953884908 +0200
+--- sdk/src/main/java/org/ovirt/engine/sdk4/internal/HttpConnection.java.orig	2016-04-11 14:57:24.857220085 +0200
++++ sdk/src/main/java/org/ovirt/engine/sdk4/internal/HttpConnection.java	2016-04-11 14:56:48.953884908 +0200
 @@ -16,31 +16,31 @@
  
- package org.ovirt.engine.sdk.internal;
+ package org.ovirt.engine.sdk4.internal;
  
 +import java.lang.reflect.InvocationTargetException;
 +import java.lang.reflect.Method;
@@ -17,11 +17,11 @@
  import org.apache.http.client.methods.HttpGet;
  import org.apache.http.client.methods.HttpUriRequest;
 -import org.apache.http.impl.client.CloseableHttpClient;
- import org.ovirt.engine.sdk.Connection;
- import org.ovirt.engine.sdk.Service;
- import org.ovirt.engine.sdk.internal.services.SystemServiceImpl;
- import org.ovirt.engine.sdk.services.SystemService;
- import org.ovirt.engine.sdk.types.Identified;
+ import org.ovirt.engine.sdk4.Connection;
+ import org.ovirt.engine.sdk4.Service;
+ import org.ovirt.engine.sdk4.internal.services.SystemServiceImpl;
+ import org.ovirt.engine.sdk4.services.SystemService;
+ import org.ovirt.engine.sdk4.types.Identified;
  
 -import java.lang.reflect.InvocationTargetException;
 -import java.lang.reflect.Method;
@@ -32,7 +32,7 @@
 -
  /**
   * This class is the HTTP implementation of the connection contract. Refrain from using it directly, as backwards
-  * compatibility isn't guaranteed, use the {@link org.ovirt.engine.sdk.ConnectionBuilder} class instead.
+  * compatibility isn't guaranteed, use the {@link org.ovirt.engine.sdk4.ConnectionBuilder} class instead.
   */
  public class HttpConnection implements Connection {
  
@@ -64,11 +64,11 @@
          }
      }
  
---- sdk/src/main/java/org/ovirt/engine/sdk/ConnectionBuilder.java.orig	2016-04-11 14:57:18.050553069 +0200
-+++ sdk/src/main/java/org/ovirt/engine/sdk/ConnectionBuilder.java	2016-04-11 14:56:58.987218757 +0200
+--- sdk/src/main/java/org/ovirt/engine/sdk4/ConnectionBuilder.java.orig	2016-04-11 14:57:18.050553069 +0200
++++ sdk/src/main/java/org/ovirt/engine/sdk4/ConnectionBuilder.java	2016-04-11 14:56:58.987218757 +0200
 @@ -16,43 +16,44 @@
  
- package org.ovirt.engine.sdk;
+ package org.ovirt.engine.sdk4;
  
 +import org.apache.http.HttpHost;
  import org.apache.http.ProtocolException;
@@ -110,8 +110,8 @@
 +import org.apache.http.params.BasicHttpParams;
 +import org.apache.http.params.HttpConnectionParams;
 +import org.apache.http.params.HttpParams;
- import org.ovirt.engine.sdk.internal.HttpConnection;
- import org.ovirt.engine.sdk.internal.NoCaTrustManager;
+ import org.ovirt.engine.sdk4.internal.HttpConnection;
+ import org.ovirt.engine.sdk4.internal.NoCaTrustManager;
  
  import javax.net.ssl.SSLContext;
  import javax.net.ssl.TrustManager;

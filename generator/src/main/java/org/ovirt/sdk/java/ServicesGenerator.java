@@ -45,7 +45,7 @@ import org.ovirt.api.metamodel.tool.JavaTypes;
  */
 public class ServicesGenerator extends JavaGenerator {
     // The base package:
-    private String BASE_PACKAGE = "org.ovirt.engine.sdk";
+    private String BASE_PACKAGE = "org.ovirt.engine.sdk4";
 
     // Reference to the objects used to generate the code:
     @Inject private JavaNames javaNames;

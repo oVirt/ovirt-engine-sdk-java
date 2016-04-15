@@ -46,7 +46,7 @@ import org.ovirt.api.metamodel.tool.XmlSupportGenerator;
 @ApplicationScoped
 public class Tool {
     // The name of the base package:
-    private static final String BASE_PACKAGE = "org.ovirt.engine.sdk";
+    private static final String BASE_PACKAGE = "org.ovirt.engine.sdk4";
 
     // The names of the command line options:
     private static final String MODEL_OPTION = "model";
