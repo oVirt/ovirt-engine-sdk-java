@@ -1,4 +1,4 @@
-package org.ovirt.engine.sdk.services.internal;
+package org.ovirt.engine.sdk.internal.services;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;

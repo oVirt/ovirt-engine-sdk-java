@@ -728,7 +728,7 @@ public class ServicesImplGenerator extends JavaGenerator {
 
     private JavaClassName getServiceImplName(Service service) {
         JavaClassName serviceName = new JavaClassName();
-        serviceName.setPackageName(BASE_PACKAGE + ".services.internal");
+        serviceName.setPackageName(BASE_PACKAGE + ".internal.services");
         serviceName.setSimpleName(javaNames.getJavaClassStyleName(service.getName()) + "ServiceImpl");
         return serviceName;
     }

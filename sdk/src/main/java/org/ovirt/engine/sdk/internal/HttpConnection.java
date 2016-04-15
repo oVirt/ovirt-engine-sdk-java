@@ -23,8 +23,8 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.ovirt.engine.sdk.Connection;
 import org.ovirt.engine.sdk.Service;
+import org.ovirt.engine.sdk.internal.services.SystemServiceImpl;
 import org.ovirt.engine.sdk.services.SystemService;
-import org.ovirt.engine.sdk.services.internal.SystemServiceImpl;
 import org.ovirt.engine.sdk.types.Identified;
 
 import java.lang.reflect.InvocationTargetException;
