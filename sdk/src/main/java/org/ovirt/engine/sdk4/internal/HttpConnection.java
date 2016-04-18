@@ -16,17 +16,6 @@ limitations under the License.
 
 package org.ovirt.engine.sdk4.internal;
 
-import org.apache.http.Header;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.ovirt.engine.sdk4.Connection;
-import org.ovirt.engine.sdk4.Service;
-import org.ovirt.engine.sdk4.internal.services.SystemServiceImpl;
-import org.ovirt.engine.sdk4.services.SystemService;
-import org.ovirt.engine.sdk4.types.Identified;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
@@ -34,13 +23,24 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.ovirt.engine.sdk4.Connection;
+import org.ovirt.engine.sdk4.HttpClient;
+import org.ovirt.engine.sdk4.Service;
+import org.ovirt.engine.sdk4.internal.services.SystemServiceImpl;
+import org.ovirt.engine.sdk4.services.SystemService;
+import org.ovirt.engine.sdk4.types.Identified;
+
 /**
  * This class is the HTTP implementation of the connection contract. Refrain from using it directly, as backwards
  * compatibility isn't guaranteed, use the {@link org.ovirt.engine.sdk4.ConnectionBuilder} class instead.
  */
 public class HttpConnection implements Connection {
 
-    private CloseableHttpClient client;
+    private HttpClient client;
     private String url;
     private String user;
     private String password;
@@ -50,11 +50,11 @@ public class HttpConnection implements Connection {
     private boolean compress = false;
 
 
-    public CloseableHttpClient getClient() {
+    public HttpClient getClient() {
         return client;
     }
 
-    public void setClient(CloseableHttpClient client) {
+    public void setClient(HttpClient client) {
         this.client = client;
     }
 
@@ -179,7 +179,8 @@ public class HttpConnection implements Connection {
         try {
             injectHeaders(request, last);
             return client.execute(request);
-        } catch(Exception e) {
+        }
+        catch(Exception e) {
             throw new RuntimeException(e);
         }
     }

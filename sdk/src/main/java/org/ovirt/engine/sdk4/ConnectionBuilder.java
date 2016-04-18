@@ -16,82 +16,45 @@ limitations under the License.
 
 package org.ovirt.engine.sdk4;
 
+import java.io.File;
+import java.net.URL;
+
+import org.apache.http.HttpHost;
 import org.apache.http.ProtocolException;
-import org.apache.http.auth.AuthSchemeProvider;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.Credentials;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.config.AuthSchemes;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.config.Lookup;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.LayeredConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.conn.ssl.DefaultHostnameVerifier;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.auth.SPNegoSchemeFactory;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
-import org.apache.http.ssl.SSLContexts;
 import org.ovirt.engine.sdk4.internal.HttpConnection;
 import org.ovirt.engine.sdk4.internal.NoCaTrustManager;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.Principal;
-import java.security.cert.CertificateException;
 
 /**
  * This class is used to build connections to the API server.
  */
-public class ConnectionBuilder {
-    private static final String BAD_PROTOCOL_ERROR = "Unsupported protocol ";
-    private static final String BAD_KEY_ERROR = "SSL context initiation has failed because of key error.";
-    private static final String NO_TLS_ERROR = "SSL context initiation has failed locating TLS slgorithm.";
-    private static final String KEY_STORE_ERROR = "CA certeficate keystore initiation has failed.";
-    private static final String KEY_STORE_FILE_NOT_FOUND_ERROR = "CA certificate keystore was not found.";
-    private static final String CERTIFICATE_ERROR = "CA certificate error.";
-    private static final String IO_ERROR = "I/O error occurred, is your keystore password correct?";
+public abstract class ConnectionBuilder {
+    protected static final String BAD_PROTOCOL_ERROR = "Unsupported protocol ";
+    protected static final String BAD_KEY_ERROR = "SSL context initiation has failed because of key error.";
+    protected static final String NO_TLS_ERROR = "SSL context initiation has failed locating TLS slgorithm.";
+    protected static final String KEY_STORE_ERROR = "CA certeficate keystore initiation has failed.";
+    protected static final String KEY_STORE_FILE_NOT_FOUND_ERROR = "CA certificate keystore was not found.";
+    protected static final String CERTIFICATE_ERROR = "CA certificate error.";
+    protected static final String IO_ERROR = "I/O error occurred, is your keystore password correct?";
 
-    private static String HTTP_PROTOCOL = "http";
-    private static String HTTPS_PROTOCOL = "https";
+    protected static String HTTP_PROTOCOL = "http";
+    protected static String HTTPS_PROTOCOL = "https";
 
-    private String url;
-    private String user;
-    private String password;
-    private boolean insecure = false;
-    private boolean kerberos = false;
-    private int timeout = 0;
-    private boolean compress = false;
+    protected String url;
+    protected String user;
+    protected String password;
+    protected boolean insecure = false;
+    protected boolean kerberos = false;
+    protected int timeout = 0;
+    protected boolean compress = false;
 
-    private String keyStorePath;
-    private URL urlobj;
-    private String keyStorePassword;
+    protected String keyStorePath;
+    protected URL urlobj;
+    protected String keyStorePassword;
 
-    NoCaTrustManager noCaTrustManager = new NoCaTrustManager();
+    protected NoCaTrustManager noCaTrustManager = new NoCaTrustManager();
 
 
-    class SocketFactoryException extends Exception {
-        public SocketFactoryException(String msg, Exception e) {
-            super(msg, e);
-        }
-    }
-
-    private ConnectionBuilder() {
+    public ConnectionBuilder() {
     }
 
     /**
@@ -227,7 +190,7 @@ public class ConnectionBuilder {
 
             // If all the checks pass, then create the connection:
             HttpConnection connection = new HttpConnection();
-            connection.setClient(createDefaultHttpClient());
+            connection.setClient(createHttpClient());
             connection.setUrl(url);
             connection.setUser(user);
             connection.setPassword(password);
@@ -239,120 +202,17 @@ public class ConnectionBuilder {
         }
     }
 
-    /**
-     * Creates CloseableHttpClient
-     *
-     * @return {@link CloseableHttpClient}
-     */
-    private CloseableHttpClient createDefaultHttpClient() throws ProtocolException, SocketFactoryException {
-        int port = getPort();
-        Lookup<AuthSchemeProvider> authSchemeProvider = null;
-        CredentialsProvider credsProvider = new BasicCredentialsProvider();
-        AuthScope authScope = new AuthScope(getHost(), port, AuthScope.ANY_REALM, AuthScope.ANY_SCHEME);
+    protected abstract HttpClient createHttpClient() throws ProtocolException;
 
-        if (user != null && user.length() > 0) {
-            credsProvider.setCredentials(
-                authScope,
-                new UsernamePasswordCredentials(user, password)
-            );
-        } else if (kerberos) {
-            authSchemeProvider = RegistryBuilder.<AuthSchemeProvider>create()
-                .register(AuthSchemes.SPNEGO, new SPNegoSchemeFactory(true))
-                .build();
-            credsProvider.setCredentials(
-                authScope,
-                new Credentials() {
-                    @Override
-                    public Principal getUserPrincipal() {
-                        return null;
-                    }
-
-                    @Override
-                    public String getPassword() {
-                        return null;
-                    }
-                }
-            );
-        }
-
-        RequestConfig globalConfig = RequestConfig.custom()
-            .setCookieSpec(CookieSpecs.DEFAULT)
-            .setConnectionRequestTimeout(timeout)
-            .build();
-        CloseableHttpClient client = HttpClientBuilder.create()
-            .setConnectionManager(new BasicHttpClientConnectionManager(createConnectionSocketFactoryRegistry()))
-            .setDefaultRequestConfig(globalConfig)
-            .setDefaultCredentialsProvider(credsProvider)
-            .setDefaultAuthSchemeRegistry(authSchemeProvider)
-            .build();
-
-        return client;
-    }
-
-    /**
-     * Creates ConnectionSocketFactory Registry
-     *
-     * @return {@link Registry}
-     */
-    private Registry createConnectionSocketFactoryRegistry() throws ProtocolException, SocketFactoryException {
-        String protocol = getProtocol();
-        Registry registry = null;
-
-        // Create SSL/TLS or plain connection:
-        if (HTTP_PROTOCOL.equals(protocol)) {
-            ConnectionSocketFactory plainsf = PlainConnectionSocketFactory.getSocketFactory();
-            registry = RegistryBuilder.<ConnectionSocketFactory>create()
-                .register(HTTP_PROTOCOL, plainsf)
-                .build();
-        } else if (HTTPS_PROTOCOL.equals(protocol)) {
-            try {
-                LayeredConnectionSocketFactory sslsf = null;
-                if (this.insecure) {
-                    SSLContext sslcontext = SSLContext.getInstance("TLS");
-                    sslcontext.init(null, new TrustManager[]{noCaTrustManager}, null);
-                    sslsf = new SSLConnectionSocketFactory(sslcontext, NoopHostnameVerifier.INSTANCE);
-                } else {
-                    SSLContext sslContext = SSLContexts.custom()
-                        .loadTrustMaterial(
-                            new File(keyStorePath),
-                            this.keyStorePassword != null ? this.keyStorePassword.toCharArray() : null
-                        )
-                        .build();
-                    sslsf = new SSLConnectionSocketFactory(sslContext, new DefaultHostnameVerifier());
-                }
-                registry = RegistryBuilder.<ConnectionSocketFactory>create()
-                    .register(HTTPS_PROTOCOL, sslsf)
-                    .build();
-            } catch (NoSuchAlgorithmException e) {
-                throw new SocketFactoryException(NO_TLS_ERROR, e);
-            } catch (KeyManagementException e) {
-                throw new SocketFactoryException(BAD_KEY_ERROR, e);
-            } catch (KeyStoreException e) {
-                throw new SocketFactoryException(KEY_STORE_ERROR, e);
-            } catch (FileNotFoundException e) {
-                throw new SocketFactoryException(KEY_STORE_FILE_NOT_FOUND_ERROR, e);
-            } catch (CertificateException e) {
-                throw new SocketFactoryException(CERTIFICATE_ERROR, e);
-            } catch (IOException e) {
-                throw new SocketFactoryException(IO_ERROR, e);
-            }
-
-        } else {
-            throw new ProtocolException(BAD_PROTOCOL_ERROR + protocol);
-        }
-
-        return registry;
-    }
-
-    private String getHost() {
+    protected String getHost() {
         return urlobj.getHost();
     }
 
-    private String getProtocol() {
+    protected String getProtocol() {
         return urlobj.getProtocol();
     }
 
-    private int getPort() {
+    protected int getPort() {
         return urlobj.getPort();
     }
 
@@ -367,6 +227,22 @@ public class ConnectionBuilder {
      * Creates a new connection builder.
      */
     public static ConnectionBuilder connection() {
-        return new ConnectionBuilder();
+        Class<? extends ConnectionBuilder> clazz = null;
+        try {
+            clazz = (Class<ConnectionBuilder>) Class.forName("org.ovirt.engine.sdk4.internal.ConnectionBuilder45");
+        }
+        catch (ClassNotFoundException ex) {
+            try {
+                clazz = (Class<ConnectionBuilder>) Class.forName("org.ovirt.engine.sdk4.internal.ConnectionBuilder42");
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(ex);
+            }
+        }
+
+        try {
+            return clazz.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

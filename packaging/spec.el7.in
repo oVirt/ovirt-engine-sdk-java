@@ -6,7 +6,6 @@ Group: Development/Languages
 License: ASL 2.0
 URL: http://ovirt.org/wiki/SDK
 Source: @TAR_URL@
-Patch0: ovirt-engine-sdk-java-4.0-el7support.patch
 
 BuildArch: noarch
 
@@ -24,16 +23,13 @@ API.
 # Extract the source:
 %setup -q -n ovirt-engine-sdk-java-%{version}
 
-# Apply the patches:
-%patch0 -p1
-
 # Remove the test dependencies:
 %pom_remove_dep io.undertow:undertow-core
 %pom_remove_dep junit:junit
 %pom_remove_dep org.slf4j:slf4j-log4j12
 
 %build
-%mvn_build -- -Dmaven.javadoc.skip=true -Dmaven.test.skip=true
+%mvn_build -- -Dmaven.javadoc.skip=true -Dmaven.test.skip=true -Phttpclient42
 
 %install
 %mvn_install
