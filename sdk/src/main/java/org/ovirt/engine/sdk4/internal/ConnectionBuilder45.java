@@ -80,7 +80,7 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
 
         RequestConfig globalConfig = RequestConfig.custom()
             .setCookieSpec(CookieSpecs.IGNORE_COOKIES)
-            .setConnectionRequestTimeout(timeout)
+            .setConnectTimeout(timeout)
             .build();
         CloseableHttpClient client = HttpClientBuilder.create()
             .setConnectionManager(new BasicHttpClientConnectionManager(createConnectionSocketFactoryRegistry()))
