@@ -37,6 +37,7 @@ import javax.net.ssl.TrustManagerFactory;
 import io.undertow.Undertow;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
+import io.undertow.server.handlers.PathHandler;
 import io.undertow.util.Headers;
 
 /**
@@ -56,6 +57,9 @@ public abstract class ServerTest {
     // The range of ports used by the tests:
     private static final int PORT_FIRST = 60000;
     private static final int PORT_LAST = 61000;
+
+    // Testing path handler:
+    private static final PathHandler PATH_HANDLER = path();
 
     // The port used for the tests:
     private int port;
@@ -139,6 +143,10 @@ public abstract class ServerTest {
             .trustStoreFile(testTrustStoreFile())
             .trustStorePassword(testTrustStorePassword())
             .build();
+    }
+
+    protected PathHandler testHandler() {
+        return PATH_HANDLER;
     }
 
     protected void startServer() {
@@ -231,13 +239,33 @@ public abstract class ServerTest {
         return sslContext;
     }
 
-    private void addHandler(String prefix, HttpHandler handler) {
-        builder.setHandler(path().addPrefixPath(prefix, handler));
+    protected void setXmlResponse(String path, final int code, final String body) {
+        setXmlResponse(path, code, body, 0);
+    }
+
+    protected void setXmlResponse(String path, final int code, final String body, final int delay) {
+        HttpHandler xmlResponseHandler = new HttpHandler() {
+            @Override
+            public void handleRequest(HttpServerExchange exchange) throws Exception {
+                if (!exchange.getRequestHeaders().getFirst("Authorization").equals("Bearer " + TOKEN)) {
+                    exchange.setStatusCode(401);
+                    exchange.getResponseSender().send("");
+                }
+                else {
+                    Thread.sleep(delay);
+                    exchange.setStatusCode(code);
+                    exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "application/xml");
+                    exchange.getResponseSender().send(body);
+                }
+            }
+        };
+
+        testHandler().addPrefixPath(testPrefix() + "/api/" + path, xmlResponseHandler);
     }
 
     protected void startServer(String host) {
         // Create the handler that returns a valid authentication token:
-        HttpHandler ssoHandler = new HttpHandler() {
+        HttpHandler ssoLoginHandler = new HttpHandler() {
             @Override
             public void handleRequest(HttpServerExchange exchange) throws Exception {
                 exchange.setStatusCode(200);
@@ -245,10 +273,20 @@ public abstract class ServerTest {
                 exchange.getResponseSender().send(String.format("{\"access_token\":\"%s\"}", TOKEN));
             }
         };
+        HttpHandler ssoLogoutHandler = new HttpHandler() {
+            @Override
+            public void handleRequest(HttpServerExchange exchange) throws Exception {
+                exchange.setStatusCode(200);
+                exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "application/json");
+                exchange.getResponseSender().send("{}");
+            }
+        };
 
         // Configure the handlers for password and Kerberos authentication:
-        addHandler(testPrefix() + "/sso/oauth/token", ssoHandler);
-        addHandler(testPrefix() + "/sso/oauth/token-http-auth", ssoHandler);
+        testHandler().addPrefixPath(testPrefix() + "/sso/oauth/token", ssoLoginHandler);
+        testHandler().addPrefixPath(testPrefix() + "/sso/oauth/token-http-auth", ssoLoginHandler);
+        testHandler().addPrefixPath(testPrefix() + "/services/sso-logout", ssoLogoutHandler);
+        builder.setHandler(testHandler());
 
         // Create and start the web server:
         SSLContext context = createSslContext(host);
