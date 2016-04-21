@@ -37,7 +37,7 @@ public class AddVmNic {
             .url("https://engine40.example.com/ovirt-engine/api")
             .user("admin@internal")
             .password("redhat123")
-            .keyStorePath("keystore.jks")
+            .trustStoreFile("truststore.jks")
             .build();
 
         // Locate the virtual machines service and use it to find the virtual machine:

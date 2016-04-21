@@ -117,14 +117,14 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
                     KeyStore truststore = null;
                     InputStream in = null;
 
-                    if (this.keyStorePath != null) {
+                    if (this.trustStoreFile != null) {
                         truststore = KeyStore.getInstance(KeyStore.getDefaultType());
                         try {
-                            in = new FileInputStream(this.keyStorePath);
+                            in = new FileInputStream(this.trustStoreFile);
                             truststore.load(
                                 in,
-                                this.keyStorePassword != null ?
-                                this.keyStorePassword.toCharArray()
+                                this.trustStorePassword != null ?
+                                this.trustStorePassword.toCharArray()
                                 :
                                 null);
 

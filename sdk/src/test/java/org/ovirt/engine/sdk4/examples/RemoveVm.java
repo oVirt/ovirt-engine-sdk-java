@@ -31,7 +31,7 @@ public class RemoveVm {
             .url("https://engine40.example.com/ovirt-engine/api")
             .user("admin@internal")
             .password("redhat123")
-            .keyStorePath("keystore.jks")
+            .trustStoreFile("truststore.jks")
             .build();
 
         // Find the service that manages VMs:

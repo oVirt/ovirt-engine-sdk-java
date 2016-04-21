@@ -112,8 +112,8 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
                 } else {
                     SSLContext sslContext = SSLContexts.custom()
                         .loadTrustMaterial(
-                            new File(keyStorePath),
-                            this.keyStorePassword != null ? this.keyStorePassword.toCharArray() : null
+                            new File(trustStoreFile),
+                            this.trustStorePassword != null ? this.trustStorePassword.toCharArray() : null
                         )
                         .build();
                     sslsf = new SSLConnectionSocketFactory(sslContext, new DefaultHostnameVerifier());

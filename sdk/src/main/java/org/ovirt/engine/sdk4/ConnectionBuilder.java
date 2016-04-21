@@ -46,9 +46,9 @@ public abstract class ConnectionBuilder {
     protected int timeout = 0;
     protected boolean compress = false;
 
-    protected String keyStorePath;
+    protected String trustStoreFile;
     protected URL urlobj;
-    protected String keyStorePassword;
+    protected String trustStorePassword;
 
     // SSO attributes:
     private String ssoUrl;
@@ -141,23 +141,20 @@ public abstract class ConnectionBuilder {
     }
 
     /**
-     * Set keystore password
-     *
-     * @param keyStorePassword The password to keystore file, which stores CA certificates.
+     * Set the password that is required to open the file containing the CA certificates. Note that for Java key store
+     * files the password is used only to check the integrity of the file, so it is optional.
      */
-    public ConnectionBuilder keyStorePassword(String keyStorePassword) {
-        this.keyStorePassword = keyStorePassword;
+    public ConnectionBuilder trustStorePassword(String trustStorePassword) {
+        this.trustStorePassword = trustStorePassword;
         return this;
     }
 
     /**
-     * Set keystore path
-     *
-     * @param keyStorePath The path to a keystore file containing the trusted CA certificates. The certificate
-     *  presented by the server will be verified using these CA certificates.
+     * Set the path of the file containing the trusted CA certificates. This file must be a valid Java key store,
+     * using the Java `JKS` format, usually contained within files ending with the `.jks` extension.
      */
-    public ConnectionBuilder keyStorePath(String keyStorePath) {
-        this.keyStorePath = keyStorePath;
+    public ConnectionBuilder trustStoreFile(String trustStoreFile) {
+        this.trustStoreFile = trustStoreFile;
         return this;
     }
 
@@ -212,12 +209,12 @@ public abstract class ConnectionBuilder {
             if (url == null) {
                 throw new RuntimeException("The 'url' parameter is mandatory");
             }
-            if (!insecure && keyStorePath == null) {
-                throw new RuntimeException("The 'keyStorePath' is mandatory in secure mode");
+            if (!insecure && trustStoreFile == null) {
+                throw new RuntimeException("The 'trustStoreFile' is mandatory in secure mode");
             }
-            if (keyStorePath != null && !new File(keyStorePath).exists()) {
+            if (trustStoreFile != null && !new File(trustStoreFile).exists()) {
                 throw new RuntimeException(
-                    String.format("The keystore file '%s' doesn't exist'", keyStorePath)
+                    String.format("The truststore file '%s' doesn't exist'", trustStoreFile)
                 );
             }
             urlobj = new URL(url);

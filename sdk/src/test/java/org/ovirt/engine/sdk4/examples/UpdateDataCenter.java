@@ -32,7 +32,7 @@ public class UpdateDataCenter {
             .url("https://engine40.example.com/ovirt-engine/api")
             .user("admin@internal")
             .password("redhat123")
-            .keyStorePath("keystore.jks")
+            .trustStoreFile("truststore.jks")
             .build();
 
         // Get the reference to the data centers service:

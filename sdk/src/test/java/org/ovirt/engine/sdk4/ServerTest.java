@@ -123,11 +123,11 @@ public abstract class ServerTest {
         return String.format("https://%s:%d%s/api", testHost(), testPort(), testPrefix());
     }
 
-    protected String testKeyStorePath() {
+    protected String testTrustStoreFile() {
         return "src/test/resources/pki/ca.jks";
     }
 
-    protected String testKeyStorePassword() {
+    protected String testTrustStorePassword() {
         return "mypass";
     }
 
@@ -136,8 +136,8 @@ public abstract class ServerTest {
             .url(testUrl())
             .user(testUser())
             .password(testPassword())
-            .keyStorePath(testKeyStorePath())
-            .keyStorePassword(testKeyStorePassword())
+            .trustStoreFile(testTrustStoreFile())
+            .trustStorePassword(testTrustStorePassword())
             .build();
     }
 
