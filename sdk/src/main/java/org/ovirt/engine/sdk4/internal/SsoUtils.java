@@ -22,9 +22,7 @@ import java.net.URISyntaxException;
 import org.apache.http.client.utils.URIBuilder;
 
 /**
- *
  * Helper class, which provides methods to work with SSO.
- *
  */
 public class SsoUtils {
 

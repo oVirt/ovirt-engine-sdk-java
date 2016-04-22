@@ -21,6 +21,6 @@ public interface HttpClient {
      *
      * @throws Exception
      */
-     void close() throws Exception;
+    void close() throws Exception;
 
 }

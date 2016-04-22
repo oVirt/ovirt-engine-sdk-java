@@ -64,12 +64,12 @@ public class HttpConnection implements Connection {
         this.client = client;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public String getUrl() {
         return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setUser(String user) {
@@ -100,12 +100,12 @@ public class HttpConnection implements Connection {
         this.kerberos = kerberos;
     }
 
-    public void setSsoRevokeUrl(String ssoRevokeUrl) {
-        this.ssoRevokeUrl = ssoRevokeUrl;
-    }
-
     public String getSsoRevokeUrl() {
         return ssoRevokeUrl;
+    }
+
+    public void setSsoRevokeUrl(String ssoRevokeUrl) {
+        this.ssoRevokeUrl = ssoRevokeUrl;
     }
 
     @Override
@@ -154,13 +154,17 @@ public class HttpConnection implements Connection {
             Method obtainObject = getResponse.getClass().getDeclaredMethods()[0];
             obtainObject.setAccessible(true);
             return (TYPE) obtainObject.invoke(getResponse);
-        } catch (NoSuchMethodException ex) {
+        }
+        catch (NoSuchMethodException ex) {
             throw new RuntimeException(ex);
-        } catch (IllegalAccessException ex) {
+        }
+        catch (IllegalAccessException ex) {
             throw new RuntimeException(ex);
-        } catch (InvocationTargetException ex) {
+        }
+        catch (InvocationTargetException ex) {
             throw new RuntimeException(ex);
-        } catch (MalformedURLException ex) {
+        }
+        catch (MalformedURLException ex) {
             throw new RuntimeException(ex);
         }
     }
@@ -171,7 +175,7 @@ public class HttpConnection implements Connection {
         revokeAccessToken();
 
         // Close HttpClient connection:
-        if(client != null) {
+        if (client != null) {
             client.close();
         }
     }
@@ -181,7 +185,7 @@ public class HttpConnection implements Connection {
             injectHeaders(request);
             return client.execute(request);
         }
-        catch(Exception e) {
+        catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

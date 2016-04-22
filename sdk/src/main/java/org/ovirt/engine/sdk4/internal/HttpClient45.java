@@ -21,7 +21,7 @@ public class HttpClient45 implements HttpClient {
         try {
             return client.execute(request);
         }
-        catch(Exception e) {
+        catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

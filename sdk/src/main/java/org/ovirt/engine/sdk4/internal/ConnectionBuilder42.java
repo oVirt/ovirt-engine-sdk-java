@@ -65,7 +65,8 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
         if (user != null && user.length() > 0) {
             schemeRegistry.register(AuthPolicy.BASIC, new BasicSchemeFactory());
             credentials = new UsernamePasswordCredentials(user, password);
-        } else if (kerberos) {
+        }
+        else if (kerberos) {
             schemeRegistry.register(AuthPolicy.SPNEGO, new SPNegoSchemeFactory(true));
             credentials = new Credentials() {
                 @Override
@@ -103,7 +104,8 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
                     PlainSocketFactory.getSocketFactory()
                 )
             );
-        } else if (HTTPS_PROTOCOL.equals(getProtocol())) {
+        }
+        else if (HTTPS_PROTOCOL.equals(getProtocol())) {
             try {
                 if (this.insecure) {
                     SSLContext sslcontext = SSLContext.getInstance("TLS");
@@ -124,11 +126,12 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
                             truststore.load(
                                 in,
                                 this.trustStorePassword != null ?
-                                this.trustStorePassword.toCharArray()
-                                :
-                                null);
+                                    this.trustStorePassword.toCharArray()
+                                    :
+                                    null);
 
-                        } finally {
+                        }
+                        finally {
                             if (in != null) {
                                 in.close();
                             }
@@ -143,19 +146,26 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
                         SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
                 }
                 schemeRegistry.register(new Scheme(HTTPS_PROTOCOL, getPort(), sf));
-            } catch (NoSuchAlgorithmException e) {
+            }
+            catch (NoSuchAlgorithmException e) {
                 throw new RuntimeException(NO_TLS_ERROR, e);
-            } catch (KeyManagementException e) {
+            }
+            catch (KeyManagementException e) {
                 throw new RuntimeException(BAD_KEY_ERROR, e);
-            } catch (KeyStoreException e) {
+            }
+            catch (KeyStoreException e) {
                 throw new RuntimeException(KEY_STORE_ERROR, e);
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e) {
                 throw new RuntimeException(KEY_STORE_FILE_NOT_FOUND_ERROR, e);
-            } catch (CertificateException e) {
+            }
+            catch (CertificateException e) {
                 throw new RuntimeException(CERTIFICATE_ERROR, e);
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 throw new RuntimeException(IO_ERROR, e);
-            } catch (UnrecoverableKeyException e) {
+            }
+            catch (UnrecoverableKeyException e) {
                 throw new RuntimeException(UNRECOVERABLE_KEY_ERROR, e);
             }
         }

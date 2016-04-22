@@ -27,13 +27,13 @@ public class NoCaTrustManager implements X509TrustManager {
 
     @Override
     public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
-            throws java.security.cert.CertificateException {
+        throws java.security.cert.CertificateException {
         // do nothing
     }
 
     @Override
     public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
-            throws java.security.cert.CertificateException {
+        throws java.security.cert.CertificateException {
         // do nothing
 
     }

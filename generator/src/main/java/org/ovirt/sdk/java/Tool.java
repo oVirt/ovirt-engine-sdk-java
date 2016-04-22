@@ -141,7 +141,7 @@ public class Tool {
     }
 
     private void addHrefAttributeToIdentifiedType(Model model) {
-        StructType identified = (StructType)model.getType(NameParser.parseUsingCase("Identified"));
+        StructType identified = (StructType) model.getType(NameParser.parseUsingCase("Identified"));
         Attribute href = new Attribute();
         href.setType(model.getStringType());
         href.setName(NameParser.parseUsingCase("Href"));

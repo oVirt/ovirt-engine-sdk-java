@@ -64,6 +64,12 @@ import org.ovirt.api.metamodel.tool.SchemaNames;
  * This class is responsible for generating the classes that represent the implementation of services of the model.
  */
 public class ServicesImplGenerator extends JavaGenerator {
+    private static final Name ADD = NameParser.parseUsingCase("Add");
+    private static final Name GET = NameParser.parseUsingCase("Get");
+    private static final Name LIST = NameParser.parseUsingCase("List");
+    private static final Name REMOVE = NameParser.parseUsingCase("Remove");
+    private static final Name UPDATE = NameParser.parseUsingCase("Update");
+
     // The base package:
     private String BASE_PACKAGE = "org.ovirt.engine.sdk4";
 
@@ -79,13 +85,6 @@ public class ServicesImplGenerator extends JavaGenerator {
 
     // The buffer used to generate the code:
     private JavaClassBuffer buffer;
-
-    private static final Name ADD = NameParser.parseUsingCase("Add");
-    private static final Name GET = NameParser.parseUsingCase("Get");
-    private static final Name LIST = NameParser.parseUsingCase("List");
-    private static final Name REMOVE = NameParser.parseUsingCase("Remove");
-    private static final Name UPDATE = NameParser.parseUsingCase("Update");
-
 
     public void generate(Model model) {
         model.services().forEach(this::generateServicesImplementation);
@@ -124,13 +123,13 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         // Generate the code for the methods:
         service.declaredMethods()
-                .sorted()
-                .forEach(this::generateMethodImplementation);
+            .sorted()
+            .forEach(this::generateMethodImplementation);
 
         // Generate the code for the locators:
         service.locators()
-                .sorted()
-                .forEach(this::generateLocator);
+            .sorted()
+            .forEach(this::generateLocator);
         generatePathLocator(service);
 
         // Generate toString
@@ -183,16 +182,16 @@ public class ServicesImplGenerator extends JavaGenerator {
         // Generate send method:
         buffer.addLine("public %1$s send() {", getResponseName(method));
         // Generate method code based on response type:
-        if(ADD.equals(name)) {
+        if (ADD.equals(name)) {
             generateAddRequestImplementation(method);
         }
-        else if(GET.equals(name) || LIST.equals(name)) {
+        else if (GET.equals(name) || LIST.equals(name)) {
             generateListRequestImplementation(method);
         }
-        else if(REMOVE.equals(name)) {
+        else if (REMOVE.equals(name)) {
             generateRemoveRequestImplementation(method);
         }
-        else if(UPDATE.equals(name)) {
+        else if (UPDATE.equals(name)) {
             generateUpdateRequestImplementation(method);
         }
         else {
@@ -237,7 +236,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         String type = javaNames.getJavaClassStyleName(parameter.getType().getName());
 
         buffer.addImport(XmlWriter.class);
-        buffer.addLine("if(%1$s != null) {", value);
+        buffer.addLine("if (%1$s != null) {", value);
         buffer.addLine(  "uriBuilder.addParameter(\"%1$s\", XmlWriter.render%2$s(%3$s));", tag, type, value);
         buffer.addLine("}");
     }
@@ -453,7 +452,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(") {");
         List<Parameter> parameters = method.parameters().filter(Parameter::isOut).collect(Collectors.toList());
         if (parameters.isEmpty()) {
-            buffer.addLine(  "EntityUtils.consumeQuietly(response.getEntity());");
+            buffer.addLine("EntityUtils.consumeQuietly(response.getEntity());");
             buffer.addLine("return new %1$s();", getResponseImplName(method));
         }
         else {
@@ -591,7 +590,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine();
     }
 
-    private void generateRequestParameterMultiMethodImplementation(String format, String request, String member, String type, String ... otherTypes) {
+    private void generateRequestParameterMultiMethodImplementation(String format, String request, String member, String type, String... otherTypes) {
         for (String _type : otherTypes) {
             buffer.addLine(format, request, member, _type);
             buffer.addLine(  "this.%1$s = %2$s.valueOf(%1$s);", member, type);
@@ -605,7 +604,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("private %1$s %2$s;", type, member);
         buffer.addLine(format, request, member, type);
         buffer.addLine(  "this.%1$s = %1$s;", member);
-        buffer.addLine("return this;");
+        buffer.addLine(  "return this;");
         buffer.addLine("}");
         buffer.addLine();
     }
@@ -618,9 +617,9 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         // Generate the methods and appropriate constructors to get the output parameters:
         method.parameters()
-                .filter(Parameter::isOut)
-                .sorted()
-                .forEach(this::generateResponseParameterImplementation);
+            .filter(Parameter::isOut)
+            .sorted()
+            .forEach(this::generateResponseParameterImplementation);
 
         // End interface implementation:
         buffer.addLine("}");
@@ -666,7 +665,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         }
         else {
             buffer.addLine("public %1$s %2$sService(String id) {", serviceName.getSimpleName(), locatorName);
-            buffer.addLine("return new %1$s(getConnection(), getPath() + \"/\" + id);", serviceImplName.getSimpleName());
+            buffer.addLine(  "return new %1$s(getConnection(), getPath() + \"/\" + id);", serviceImplName.getSimpleName());
         }
         buffer.addLine("}");
         buffer.addLine();
@@ -704,7 +703,7 @@ public class ServicesImplGenerator extends JavaGenerator {
             Name name = locator.getName();
             buffer.addLine("int index = path.indexOf('/');");
             buffer.addLine("if (index == -1) {");
-            buffer.addLine("return %1$sService(path);", javaNames.getJavaMemberStyleName(name));
+            buffer.addLine(  "return %1$sService(path);", javaNames.getJavaMemberStyleName(name));
             buffer.addLine("}");
             buffer.addLine(
                 "return %1$sService(path.substring(0, index - 1)).service(path.substring(index + 1));",

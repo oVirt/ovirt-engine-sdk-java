@@ -58,7 +58,8 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
                 authScope,
                 new UsernamePasswordCredentials(user, password)
             );
-        } else if (kerberos) {
+        }
+        else if (kerberos) {
             authSchemeProvider = RegistryBuilder.<AuthSchemeProvider>create()
                 .register(AuthSchemes.SPNEGO, new SPNegoSchemeFactory(true))
                 .build();
@@ -102,14 +103,16 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
             registry = RegistryBuilder.<ConnectionSocketFactory>create()
                 .register(HTTP_PROTOCOL, plainsf)
                 .build();
-        } else if (HTTPS_PROTOCOL.equals(protocol)) {
+        }
+        else if (HTTPS_PROTOCOL.equals(protocol)) {
             try {
                 LayeredConnectionSocketFactory sslsf = null;
                 if (this.insecure) {
                     SSLContext sslcontext = SSLContext.getInstance("TLS");
                     sslcontext.init(null, new TrustManager[]{noCaTrustManager}, null);
                     sslsf = new SSLConnectionSocketFactory(sslcontext, NoopHostnameVerifier.INSTANCE);
-                } else {
+                }
+                else {
                     SSLContext sslContext = SSLContexts.custom()
                         .loadTrustMaterial(
                             new File(trustStoreFile),
@@ -121,21 +124,28 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
                 registry = RegistryBuilder.<ConnectionSocketFactory>create()
                     .register(HTTPS_PROTOCOL, sslsf)
                     .build();
-            } catch (NoSuchAlgorithmException e) {
+            }
+            catch (NoSuchAlgorithmException e) {
                 throw new RuntimeException(NO_TLS_ERROR, e);
-            } catch (KeyManagementException e) {
+            }
+            catch (KeyManagementException e) {
                 throw new RuntimeException(BAD_KEY_ERROR, e);
-            } catch (KeyStoreException e) {
+            }
+            catch (KeyStoreException e) {
                 throw new RuntimeException(KEY_STORE_ERROR, e);
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e) {
                 throw new RuntimeException(KEY_STORE_FILE_NOT_FOUND_ERROR, e);
-            } catch (CertificateException e) {
+            }
+            catch (CertificateException e) {
                 throw new RuntimeException(CERTIFICATE_ERROR, e);
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 throw new RuntimeException(IO_ERROR, e);
             }
 
-        } else {
+        }
+        else {
             throw new ProtocolException(BAD_PROTOCOL_ERROR + protocol);
         }
 
