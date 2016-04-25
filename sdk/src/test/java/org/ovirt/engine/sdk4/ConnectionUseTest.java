@@ -20,15 +20,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.ovirt.engine.sdk4.internal.HttpConnection;
 import org.ovirt.engine.sdk4.services.ClustersService;
-import org.ovirt.engine.sdk4.services.SystemService;
 import org.ovirt.engine.sdk4.services.VmDisksService;
 import org.ovirt.engine.sdk4.services.VmService;
 import org.ovirt.engine.sdk4.services.VmsService;

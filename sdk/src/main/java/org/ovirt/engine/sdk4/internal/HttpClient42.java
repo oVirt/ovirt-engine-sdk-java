@@ -1,18 +1,23 @@
 package org.ovirt.engine.sdk4.internal;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.DecompressingHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.ovirt.engine.sdk4.HttpClient;
 
 /**
  * * This class implements methods to work with httpclient version 4.2
  */
-public class HttpClient42 implements HttpClient {
+public class HttpClient42 implements org.ovirt.engine.sdk4.HttpClient {
 
-    private DefaultHttpClient client;
+    private HttpClient client;
 
     public HttpClient42(DefaultHttpClient client) {
+        this.client = client;
+    }
+
+    public HttpClient42(DecompressingHttpClient client) {
         this.client = client;
     }
 

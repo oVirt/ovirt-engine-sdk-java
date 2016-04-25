@@ -28,6 +28,7 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.auth.BasicSchemeFactory;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
+import org.apache.http.impl.client.DecompressingHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.BasicClientConnectionManager;
 import org.apache.http.params.BasicHttpParams;
@@ -88,6 +89,9 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
         client.getCredentialsProvider().setCredentials(authScope, credentials);
         client.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.IGNORE_COOKIES);
 
+        if (compress) {
+            return new HttpClient42(new DecompressingHttpClient(client));
+        }
         return new HttpClient42(client);
     }
 

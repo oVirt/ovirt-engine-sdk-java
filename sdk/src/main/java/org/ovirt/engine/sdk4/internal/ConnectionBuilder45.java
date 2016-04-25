@@ -83,14 +83,17 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
             .setCookieSpec(CookieSpecs.IGNORE_COOKIES)
             .setConnectTimeout(timeout)
             .build();
-        CloseableHttpClient client = HttpClientBuilder.create()
+        HttpClientBuilder clientBuilder = HttpClientBuilder.create()
             .setConnectionManager(new BasicHttpClientConnectionManager(createConnectionSocketFactoryRegistry()))
             .setDefaultRequestConfig(globalConfig)
             .setDefaultCredentialsProvider(credsProvider)
-            .setDefaultAuthSchemeRegistry(authSchemeProvider)
-            .build();
+            .setDefaultAuthSchemeRegistry(authSchemeProvider);
 
-        return new HttpClient45(client);
+        if (!compress) {
+            clientBuilder.disableContentCompression();
+        }
+
+        return new HttpClient45(clientBuilder.build());
     }
 
     private Registry createConnectionSocketFactoryRegistry() throws ProtocolException {

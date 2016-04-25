@@ -72,7 +72,7 @@ public abstract class ConnectionBuilder {
                 clazz = (Class<ConnectionBuilder>) Class.forName("org.ovirt.engine.sdk4.internal.ConnectionBuilder42");
             }
             catch (ClassNotFoundException e) {
-                throw new RuntimeException(ex);
+                throw new RuntimeException(e);
             }
         }
 
