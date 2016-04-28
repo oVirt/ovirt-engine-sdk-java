@@ -63,9 +63,7 @@ public class StorageDomainsServiceTest extends ServerTest {
      */
     @Test
     public void testEmptyListResponse() {
-        // TODO: when using model version 4.0.15 change to:
-        // List<StorageDomain> storageDomains = storageDomainsService.list().send().storageDomains();
-        List<StorageDomain> storageDomains = storageDomainsService.list().send().storageDomain();
+        List<StorageDomain> storageDomains = storageDomainsService.list().send().storageDomains();
         assertNotNull(storageDomains);
         assertEquals(new ArrayList<StorageDomain>(), storageDomains);
     }
@@ -75,7 +73,7 @@ public class StorageDomainsServiceTest extends ServerTest {
      */
     @Test
     public void testEmptyListResponseWithQuery() {
-        List<StorageDomain> storageDomains = storageDomainsService.list().search("name=ugly").send().storageDomain();
+        List<StorageDomain> storageDomains = storageDomainsService.list().search("name=ugly").send().storageDomains();
         assertNotNull(storageDomains);
         assertEquals(new ArrayList<StorageDomain>(), storageDomains);
     }

@@ -41,7 +41,7 @@ public class AttachNfsIsoStorageDomain {
 
         // Locate the service that manages the storage domains, and use it to search for the storage domain:
         StorageDomainsService sdsService = connection.systemService().storageDomainsService();
-        StorageDomain sd = sdsService.list().search("name=myiso").send().storageDomain().get(0);
+        StorageDomain sd = sdsService.list().search("name=myiso").send().storageDomains().get(0);
 
         // Locate the servcie that manages the data centers and use it to search for the data center:
         DataCentersService dcsService = connection.systemService().dataCentersService();
