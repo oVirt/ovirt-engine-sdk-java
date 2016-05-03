@@ -12,9 +12,9 @@ public interface HttpClient {
      * This method will send http request
      *
      * @param request request which should be send to host
-     * @return response returned by hos
+     * @return response returned by host
      */
-    HttpResponse execute(HttpUriRequest request);
+    HttpResponse execute(HttpUriRequest request) throws Exception;
 
     /**
      * Close http connection

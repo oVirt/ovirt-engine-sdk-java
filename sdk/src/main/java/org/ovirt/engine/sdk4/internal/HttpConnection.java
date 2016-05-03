@@ -33,6 +33,7 @@ import org.apache.http.util.EntityUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.ovirt.engine.sdk4.Connection;
+import org.ovirt.engine.sdk4.Error;
 import org.ovirt.engine.sdk4.HttpClient;
 import org.ovirt.engine.sdk4.Service;
 import org.ovirt.engine.sdk4.internal.services.SystemServiceImpl;
@@ -124,21 +125,21 @@ public class HttpConnection implements Connection {
     @Override
     public <TYPE> TYPE followLink(TYPE object) {
         if (!isLink(object)) {
-            throw new RuntimeException("Can't follow link because object don't have any.");
+            throw new Error("Can't follow link because object don't have any");
+        }
+
+        String href = ((Identified) object).href();
+        if (href == null) {
+            throw new Error("Can't follow link because the 'href' attribute does't have a value");
         }
         try {
-            String href = ((Identified) object).href();
-            if (href == null) {
-                throw new RuntimeException("Can't follow link because the 'href' attribute does't have a value");
-            }
-
             URL url = new URL(getUrl());
             String prefix = url.getPath();
             if (!prefix.endsWith("/")) {
                 prefix += "/";
             }
             if (!href.startsWith(prefix)) {
-                throw new RuntimeException("The URL '" + href + "' isn't compatible with the base URL of the connection");
+                throw new Error("The URL '" + href + "' isn't compatible with the base URL of the connection");
             }
 
             // Get service based on path
@@ -156,16 +157,16 @@ public class HttpConnection implements Connection {
             return (TYPE) obtainObject.invoke(getResponse);
         }
         catch (NoSuchMethodException ex) {
-            throw new RuntimeException(ex);
+            throw new Error(String.format("Unexpected error while following link \"%1$s\"", href), ex);
         }
         catch (IllegalAccessException ex) {
-            throw new RuntimeException(ex);
+            throw new Error(String.format("Unexpected error while following link \"%1$s\"", href), ex);
         }
         catch (InvocationTargetException ex) {
-            throw new RuntimeException(ex);
+            throw new Error(String.format("Unexpected error while following link \"%1$s\"", href), ex);
         }
         catch (MalformedURLException ex) {
-            throw new RuntimeException(ex);
+            throw new Error(String.format("Error while creating URL \"%1$s\"", getUrl()), ex);
         }
     }
 
@@ -186,7 +187,7 @@ public class HttpConnection implements Connection {
             return client.execute(request);
         }
         catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new Error("Failed to send request", e);
         }
     }
 
@@ -234,7 +235,7 @@ public class HttpConnection implements Connection {
             }
 
             if (node.get("error") != null) {
-                throw new RuntimeException(
+                throw new Error(
                     String.format(
                         "Error during SSO authentication %1$s : %2$s", node.get("error_code"), node.get("error")
                     )
@@ -259,7 +260,7 @@ public class HttpConnection implements Connection {
             }
 
             if (node.get("error") != null) {
-                throw new RuntimeException(
+                throw new Error(
                     String.format(
                         "Error during SSO token revoke %1$s : %2$s", node.get("error_code"), node.get("error")
                     )
@@ -280,7 +281,10 @@ public class HttpConnection implements Connection {
             return mapper.readTree(response.getEntity().getContent());
         }
         catch (IOException ex) {
-            throw new RuntimeException(ex);
+            throw new Error("Failed to parse JSON response", ex);
+        }
+        catch (Exception ex) {
+            throw new Error("Failed to send SSO request", ex);
         }
         finally {
             if (response != null) {

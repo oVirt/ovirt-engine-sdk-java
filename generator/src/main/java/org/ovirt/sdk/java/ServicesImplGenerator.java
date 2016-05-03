@@ -113,6 +113,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         JavaClassName serviceName = getServiceName(service);
         JavaClassName serviceImplName = getServiceImplName(service);
 
+        buffer.addImport(BASE_PACKAGE + ".Error");
         buffer.addImport(serviceName);
         buffer.addLine("public class %1$s extends ServiceImpl implements %2$s {",
             serviceImplName.getSimpleName(), serviceName.getSimpleName());
@@ -225,7 +226,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(  "request = new HttpGet(uriBuilder.build());");
         buffer.addLine("}");
         buffer.addLine("catch (URISyntaxException ex) {");
-        buffer.addLine(  "throw new RuntimeException(ex);");
+        buffer.addLine(  "throw new Error(\"Failed to build URL\", ex);");
         buffer.addLine("}");
         generateCommonRequestImplementation(method, new String[]{"200"});
     }
@@ -261,7 +262,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(  "request = new HttpPost(uriBuilder.build());");
         buffer.addLine("}");
         buffer.addLine("catch (URISyntaxException ex) {");
-        buffer.addLine(  "throw new RuntimeException(ex);");
+        buffer.addLine(  "throw new Error(\"Failed to build URL\", ex);");
         buffer.addLine("}");
 
         Parameter param = method.parameters()
@@ -282,7 +283,7 @@ public class ServicesImplGenerator extends JavaGenerator {
             buffer.addLine(  "request.setEntity(new ByteArrayEntity(output.toByteArray()));");
             buffer.addLine("}");
             buffer.addLine("catch (IOException ex) {");
-            buffer.addLine(  "throw new RuntimeException(ex);");
+            buffer.addLine(  "throw new Error(\"Failed to parse response\", ex);");
             buffer.addLine("}");
         }
 
@@ -307,7 +308,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(  "request = new HttpDelete(uriBuilder.build());");
         buffer.addLine("}");
         buffer.addLine("catch (URISyntaxException ex) {");
-        buffer.addLine(  "throw new RuntimeException(ex);");
+        buffer.addLine(  "throw new Error(\"Failed to build URL\", ex);");
         buffer.addLine("}");
         generateCommonRequestImplementation(method, new String[]{"200"});
     }
@@ -332,7 +333,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(  "request = new HttpPut(uriBuilder.build());");
         buffer.addLine("}");
         buffer.addLine("catch (URISyntaxException ex) {");
-        buffer.addLine(  "throw new RuntimeException(ex);");
+        buffer.addLine(  "throw new Error(\"Failed to build URL\", ex);");
         buffer.addLine("}");
 
         Parameter param = method.parameters()
@@ -353,7 +354,7 @@ public class ServicesImplGenerator extends JavaGenerator {
             buffer.addLine(  "request.setEntity(new ByteArrayEntity(output.toByteArray()));");
             buffer.addLine("}");
             buffer.addLine("catch (IOException ex) {");
-            buffer.addLine(  "throw new RuntimeException(ex);");
+            buffer.addLine(  "throw new Error(\"Failed to write request\", ex);");
             buffer.addLine("}");
         }
 
@@ -388,7 +389,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(  "request.setEntity(new ByteArrayEntity(output.toByteArray()));");
         buffer.addLine("}");
         buffer.addLine("catch (IOException ex) {");
-        buffer.addLine(  "throw new RuntimeException(ex);");
+        buffer.addLine(  "throw new Error(\"Failed to write request\", ex);");
         buffer.addLine("}");
         buffer.addLine();
         buffer.addLine("HttpResponse response = getConnection().send(request);");
@@ -464,7 +465,7 @@ public class ServicesImplGenerator extends JavaGenerator {
                 .forEach(this::generateRequestReaderImplementation);
             buffer.addLine("}");
             buffer.addLine("catch (IOException ex) {");
-            buffer.addLine(  "throw new RuntimeException(ex);");
+            buffer.addLine(  "throw new Error(\"Failed to read response\", ex);");
             buffer.addLine("}");
             buffer.addLine("finally {");
             buffer.addLine(  "EntityUtils.consumeQuietly(response.getEntity());");
@@ -711,7 +712,7 @@ public class ServicesImplGenerator extends JavaGenerator {
             );
         }
         else {
-            buffer.addLine("throw new RuntimeException(\"The path \" + path + \" doesn't correspond to any service\");");
+            buffer.addLine("throw new Error(\"The path \" + path + \" doesn't correspond to any service\");");
         }
         buffer.addLine("}");
         buffer.addLine();

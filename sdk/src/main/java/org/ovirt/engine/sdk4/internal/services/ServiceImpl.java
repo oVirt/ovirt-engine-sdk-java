@@ -3,6 +3,7 @@ package org.ovirt.engine.sdk4.internal.services;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.ovirt.api.metamodel.runtime.xml.XmlReader;
+import org.ovirt.engine.sdk4.Error;
 import org.ovirt.engine.sdk4.internal.HttpConnection;
 import org.ovirt.engine.sdk4.internal.xml.XmlActionReader;
 import org.ovirt.engine.sdk4.internal.xml.XmlFaultReader;
@@ -34,7 +35,7 @@ public class ServiceImpl {
                 this.throwError(response, fault);
             }
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            throw new Error("Failed to read response", ex);
         } finally {
             EntityUtils.consumeQuietly(response.getEntity());
         }
@@ -48,7 +49,7 @@ public class ServiceImpl {
             }
             return action;
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            throw new Error("Failed to read response", ex);
         } finally {
             EntityUtils.consumeQuietly(response.getEntity());
         }
@@ -97,7 +98,7 @@ public class ServiceImpl {
                 )
             );
         }
-        throw new RuntimeException(buffer.toString());
+        throw new Error(buffer.toString());
     }
 
     public HttpConnection getConnection() {

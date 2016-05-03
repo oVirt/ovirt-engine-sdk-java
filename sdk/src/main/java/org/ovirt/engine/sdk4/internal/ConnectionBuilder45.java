@@ -11,7 +11,6 @@ import java.security.cert.CertificateException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
-import org.apache.http.ProtocolException;
 import org.apache.http.auth.AuthSchemeProvider;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
@@ -31,11 +30,11 @@ import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContexts;
 import org.ovirt.engine.sdk4.ConnectionBuilder;
+import org.ovirt.engine.sdk4.Error;
 import org.ovirt.engine.sdk4.HttpClient;
 
 public class ConnectionBuilder45 extends ConnectionBuilder {
@@ -47,7 +46,7 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
      * Creates HttpClient
      */
     @Override
-    protected HttpClient createHttpClient() throws ProtocolException {
+    protected HttpClient createHttpClient() {
         int port = getPort();
         Lookup<AuthSchemeProvider> authSchemeProvider = null;
         CredentialsProvider credsProvider = new BasicCredentialsProvider();
@@ -96,7 +95,7 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
         return new HttpClient45(clientBuilder.build());
     }
 
-    private Registry createConnectionSocketFactoryRegistry() throws ProtocolException {
+    private Registry createConnectionSocketFactoryRegistry() {
         String protocol = getProtocol();
         Registry registry = null;
 
@@ -129,27 +128,27 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
                     .build();
             }
             catch (NoSuchAlgorithmException e) {
-                throw new RuntimeException(NO_TLS_ERROR, e);
+                throw new Error(NO_TLS_ERROR, e);
             }
             catch (KeyManagementException e) {
-                throw new RuntimeException(BAD_KEY_ERROR, e);
+                throw new Error(BAD_KEY_ERROR, e);
             }
             catch (KeyStoreException e) {
-                throw new RuntimeException(KEY_STORE_ERROR, e);
+                throw new Error(KEY_STORE_ERROR, e);
             }
             catch (FileNotFoundException e) {
-                throw new RuntimeException(KEY_STORE_FILE_NOT_FOUND_ERROR, e);
+                throw new Error(KEY_STORE_FILE_NOT_FOUND_ERROR, e);
             }
             catch (CertificateException e) {
-                throw new RuntimeException(CERTIFICATE_ERROR, e);
+                throw new Error(CERTIFICATE_ERROR, e);
             }
             catch (IOException e) {
-                throw new RuntimeException(IO_ERROR, e);
+                throw new Error(IO_ERROR, e);
             }
 
         }
         else {
-            throw new ProtocolException(BAD_PROTOCOL_ERROR + protocol);
+            throw new Error(BAD_PROTOCOL_ERROR + protocol);
         }
 
         return registry;

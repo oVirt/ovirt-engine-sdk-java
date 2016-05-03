@@ -20,6 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.ovirt.engine.sdk4.Error;
 
 /**
  * Helper class, which provides methods to work with SSO.
@@ -56,7 +57,7 @@ public class SsoUtils {
             return uriBuilder.build();
         }
         catch (URISyntaxException ex) {
-            throw new RuntimeException(ex);
+            throw new Error("Failed to build SSO authentication URL", ex);
         }
     }
 
@@ -80,7 +81,7 @@ public class SsoUtils {
             return uriBuilder.build();
         }
         catch (URISyntaxException ex) {
-            throw new RuntimeException(ex);
+            throw new Error("Failed to build SSO authentication URL", ex);
         }
     }
 
@@ -104,7 +105,7 @@ public class SsoUtils {
             return uriBuilder.build();
         }
         catch (URISyntaxException ex) {
-            throw new RuntimeException(ex);
+            throw new Error("Failed to build SSO revoke URL", ex);
         }
     }
 
@@ -119,7 +120,7 @@ public class SsoUtils {
             return new URI(url);
         }
         catch (URISyntaxException ex) {
-            throw new RuntimeException(ex);
+            throw new Error("Failed to build URL", ex);
         }
     }
 }

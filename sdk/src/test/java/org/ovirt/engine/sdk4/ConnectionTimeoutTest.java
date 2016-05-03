@@ -51,7 +51,7 @@ public class ConnectionTimeoutTest extends ServerTest {
     /**
      * Test when timeout is set, request fail with timeout error
      */
-    @Test(expected = RuntimeException.class)
+    @Test(expected = Error.class)
     public void testConnectionTimeout() {
         vmsService.list().send().vms();
     }

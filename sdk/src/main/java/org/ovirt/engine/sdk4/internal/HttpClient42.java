@@ -22,13 +22,8 @@ public class HttpClient42 implements org.ovirt.engine.sdk4.HttpClient {
     }
 
     @Override
-    public HttpResponse execute(HttpUriRequest request) {
-        try {
-            return client.execute(request);
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public HttpResponse execute(HttpUriRequest request) throws Exception {
+        return client.execute(request);
     }
 
     @Override

@@ -14,7 +14,6 @@ import java.security.cert.CertificateException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
-import org.apache.http.ProtocolException;
 import org.apache.http.auth.AuthSchemeRegistry;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
@@ -35,6 +34,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.ovirt.engine.sdk4.ConnectionBuilder;
+import org.ovirt.engine.sdk4.Error;
 import org.ovirt.engine.sdk4.HttpClient;
 
 public class ConnectionBuilder42 extends ConnectionBuilder {
@@ -49,7 +49,7 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
      * Creates HttpClient
      */
     @Override
-    protected HttpClient createHttpClient() throws ProtocolException {
+    protected HttpClient createHttpClient() {
         int port = getPort();
         Credentials credentials = null;
         AuthSchemeRegistry schemeRegistry = new AuthSchemeRegistry();
@@ -95,7 +95,7 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
         return new HttpClient42(client);
     }
 
-    private SchemeRegistry createConnectionSocketFactoryRegistry() throws ProtocolException {
+    private SchemeRegistry createConnectionSocketFactoryRegistry() {
         SchemeRegistry schemeRegistry = new SchemeRegistry();
         SSLSocketFactory sf;
 
@@ -152,25 +152,25 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
                 schemeRegistry.register(new Scheme(HTTPS_PROTOCOL, getPort(), sf));
             }
             catch (NoSuchAlgorithmException e) {
-                throw new RuntimeException(NO_TLS_ERROR, e);
+                throw new Error(NO_TLS_ERROR, e);
             }
             catch (KeyManagementException e) {
-                throw new RuntimeException(BAD_KEY_ERROR, e);
+                throw new Error(BAD_KEY_ERROR, e);
             }
             catch (KeyStoreException e) {
-                throw new RuntimeException(KEY_STORE_ERROR, e);
+                throw new Error(KEY_STORE_ERROR, e);
             }
             catch (FileNotFoundException e) {
-                throw new RuntimeException(KEY_STORE_FILE_NOT_FOUND_ERROR, e);
+                throw new Error(KEY_STORE_FILE_NOT_FOUND_ERROR, e);
             }
             catch (CertificateException e) {
-                throw new RuntimeException(CERTIFICATE_ERROR, e);
+                throw new Error(CERTIFICATE_ERROR, e);
             }
             catch (IOException e) {
-                throw new RuntimeException(IO_ERROR, e);
+                throw new Error(IO_ERROR, e);
             }
             catch (UnrecoverableKeyException e) {
-                throw new RuntimeException(UNRECOVERABLE_KEY_ERROR, e);
+                throw new Error(UNRECOVERABLE_KEY_ERROR, e);
             }
         }
 

@@ -19,7 +19,6 @@ package org.ovirt.engine.sdk4;
 import java.io.File;
 import java.net.URL;
 
-import org.apache.http.ProtocolException;
 import org.ovirt.engine.sdk4.internal.HttpConnection;
 import org.ovirt.engine.sdk4.internal.NoCaTrustManager;
 
@@ -29,8 +28,8 @@ import org.ovirt.engine.sdk4.internal.NoCaTrustManager;
 public abstract class ConnectionBuilder {
     protected static final String BAD_PROTOCOL_ERROR = "Unsupported protocol ";
     protected static final String BAD_KEY_ERROR = "SSL context initiation has failed because of key error.";
-    protected static final String NO_TLS_ERROR = "SSL context initiation has failed locating TLS slgorithm.";
-    protected static final String KEY_STORE_ERROR = "CA certeficate keystore initiation has failed.";
+    protected static final String NO_TLS_ERROR = "SSL context initiation has failed locating TLS algorithm.";
+    protected static final String KEY_STORE_ERROR = "CA certificate keystore initiation has failed.";
     protected static final String KEY_STORE_FILE_NOT_FOUND_ERROR = "CA certificate keystore was not found.";
     protected static final String CERTIFICATE_ERROR = "CA certificate error.";
     protected static final String IO_ERROR = "I/O error occurred, is your keystore password correct?";
@@ -72,7 +71,7 @@ public abstract class ConnectionBuilder {
                 clazz = (Class<ConnectionBuilder>) Class.forName("org.ovirt.engine.sdk4.internal.ConnectionBuilder42");
             }
             catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                throw new Error("No connection implementation found", e);
             }
         }
 
@@ -80,7 +79,7 @@ public abstract class ConnectionBuilder {
             return clazz.newInstance();
         }
         catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new Error("Failed to initialize connection implementation", e);
         }
     }
 
@@ -230,13 +229,13 @@ public abstract class ConnectionBuilder {
         try {
             // Check the parameters:
             if (url == null) {
-                throw new RuntimeException("The 'url' parameter is mandatory");
+                throw new IllegalArgumentException("The 'url' parameter is mandatory");
             }
             if (!insecure && trustStoreFile == null) {
-                throw new RuntimeException("The 'trustStoreFile' is mandatory in secure mode");
+                throw new IllegalArgumentException("The 'trustStoreFile' is mandatory in secure mode");
             }
             if (trustStoreFile != null && !new File(trustStoreFile).exists()) {
-                throw new RuntimeException(
+                throw new IllegalArgumentException(
                     String.format("The truststore file '%s' doesn't exist'", trustStoreFile)
                 );
             }
@@ -255,11 +254,11 @@ public abstract class ConnectionBuilder {
             return connection;
         }
         catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new Error("Failed to build connection", e);
         }
     }
 
-    protected abstract HttpClient createHttpClient() throws ProtocolException;
+    protected abstract HttpClient createHttpClient();
 
     protected String getHost() {
         return urlobj.getHost();
