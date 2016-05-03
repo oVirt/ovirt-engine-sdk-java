@@ -51,25 +51,23 @@ public class ServicesGenerator extends JavaGenerator {
     @Inject private JavaNames javaNames;
     @Inject private JavaTypes javaTypes;
 
-    // The buffer used to generate the code:
-    private JavaClassBuffer buffer;
 
     public void generate(Model model) {
         model.services().forEach(this::generateServiceInterface);
     }
 
     private void generateServiceInterface(Service service) {
-        // Prepare the buffer:
-        buffer = new JavaClassBuffer();
+        // Prepare the javaBuffer:
+        javaBuffer = new JavaClassBuffer();
         JavaClassName serviceName = getServiceName(service);
-        buffer.setClassName(serviceName);
+        javaBuffer.setClassName(serviceName);
 
         // Generate the code:
         generateServiceInterfaceSource(service);
 
         // Write the file:
         try {
-            buffer.write(outDir);
+            javaBuffer.write(outDir);
         }
         catch (IOException exception) {
             throw new IllegalStateException("Error writing service interface", exception);
@@ -78,14 +76,17 @@ public class ServicesGenerator extends JavaGenerator {
 
     private void generateServiceInterfaceSource(Service service) {
         // Generate imports for the base classes:
-        buffer.addImport(BASE_PACKAGE, "Request");
-        buffer.addImport(BASE_PACKAGE, "Response");
-        buffer.addImport(BASE_PACKAGE, "Service");
-        buffer.addImport(IOException.class);
+        javaBuffer.addImport(BASE_PACKAGE, "Request");
+        javaBuffer.addImport(BASE_PACKAGE, "Response");
+        javaBuffer.addImport(BASE_PACKAGE, "Service");
+        javaBuffer.addImport(IOException.class);
+
+        // Add service documentation:
+        generateDoc(service);
 
         // Begin class:
         JavaClassName serviceName = getServiceName(service);
-        buffer.addLine("public interface %1$s extends Service {", serviceName.getSimpleName());
+        javaBuffer.addLine("public interface %1$s extends Service {", serviceName.getSimpleName());
 
         // Generate the code for the methods:
         service.declaredMethods()
@@ -99,8 +100,8 @@ public class ServicesGenerator extends JavaGenerator {
         generatePathLocator();
 
         // End class:
-        buffer.addLine("}");
-        buffer.addLine();
+        javaBuffer.addLine("}");
+        javaBuffer.addLine();
     }
 
     private void generateMethodInterface(Method method) {
@@ -110,18 +111,24 @@ public class ServicesGenerator extends JavaGenerator {
         generateRequestInterface(method);
         generateResponseInterface(method);
 
+        // Add method documentation:
+        generateDoc(method);
+
         // Generate the method:
         String request = getRequestName(method);
         String member = javaNames.getJavaMemberStyleName(name);
-        buffer.addLine("%1$s %2$s();", request, member);
-        buffer.addLine();
+        javaBuffer.addLine("%1$s %2$s();", request, member);
+        javaBuffer.addLine();
     }
 
     private void generateRequestInterface(Method method) {
+        // Add method documentation:
+        generateDoc(method);
+
         // Begin interface:
         String request = getRequestName(method);
         String response = getResponseName(method);
-        buffer.addLine("public interface %1$s extends Request<%1$s, %2$s> {", request, response);
+        javaBuffer.addLine("public interface %1$s extends Request<%1$s, %2$s> {", request, response);
 
         // Generate the methods to set input parameters:
         method.parameters()
@@ -130,51 +137,58 @@ public class ServicesGenerator extends JavaGenerator {
             .forEach(this::generateRequestParameterInterface);
 
         // End interface:
-        buffer.addLine("}");
-        buffer.addLine();
+        javaBuffer.addLine("}");
+        javaBuffer.addLine();
     }
 
     private void generateRequestParameterInterface(Parameter parameter) {
+        // Add parameter declaration:
         Method method = parameter.getDeclaringMethod();
         Type type = parameter.getType();
         Name name = parameter.getName();
         String member = javaNames.getJavaMemberStyleName(name);
         String request = getRequestName(method);
         if (type instanceof PrimitiveType) {
+            generateDoc(parameter);
             Model model = type.getModel();
             if (type == model.getBooleanType()) {
-                buffer.addLine("%1s %2$s(Boolean %2$s);", request, member);
+                javaBuffer.addLine("%1s %2$s(Boolean %2$s);", request, member);
             }
             else if (type == model.getStringType()) {
-                buffer.addLine("%1s %2$s(String %2$s);", request, member);
+                javaBuffer.addLine("%1s %2$s(String %2$s);", request, member);
             }
             else if (type == model.getIntegerType()) {
-                buffer.addImport(BigInteger.class);
-                buffer.addLine("%1s %2$s(Integer %2$s);", request, member);
-                buffer.addLine("%1s %2$s(Long %2$s);", request, member);
-                buffer.addLine("%1s %2$s(BigInteger %2$s);", request, member);
+                javaBuffer.addImport(BigInteger.class);
+                javaBuffer.addLine("%1s %2$s(Integer %2$s);", request, member);
+                generateDoc(parameter);
+                javaBuffer.addLine("%1s %2$s(Long %2$s);", request, member);
+                generateDoc(parameter);
+                javaBuffer.addLine("%1s %2$s(BigInteger %2$s);", request, member);
             }
             else if (type == model.getDecimalType()) {
-                buffer.addImport(BigDecimal.class);
-                buffer.addLine("%1s %2$s(Float %2$s);", request, member);
-                buffer.addLine("%1s %2$s(Double %2$s);", request, member);
-                buffer.addLine("%1s %2$s(BigDecimal %2$s);", request, member);
+                javaBuffer.addImport(BigDecimal.class);
+                javaBuffer.addLine("%1s %2$s(Float %2$s);", request, member);
+                generateDoc(parameter);
+                javaBuffer.addLine("%1s %2$s(Double %2$s);", request, member);
+                generateDoc(parameter);
+                javaBuffer.addLine("%1s %2$s(BigDecimal %2$s);", request, member);
             }
             else if (type == model.getDateType()) {
-                buffer.addImport(Date.class);
-                buffer.addLine("%1s %2$s(Date %2$s);", request, member);
+                javaBuffer.addImport(Date.class);
+                javaBuffer.addLine("%1s %2$s(Date %2$s);", request, member);
             }
         }
         else if (type instanceof StructType) {
             // Method taking an object:
             JavaClassName typeName = javaTypes.getInterfaceName(type);
-            buffer.addImport(typeName);
-            buffer.addLine("%1s %2$s(%3$s %2$s);", request, member, typeName.getSimpleName());
+            javaBuffer.addImport(typeName);
+            javaBuffer.addLine("%1s %2$s(%3$s %2$s);", request, member, typeName.getSimpleName());
 
             // Method taking a builder:
+            generateDoc(parameter);
             JavaClassName builderName = javaTypes.getBuilderName(type);
-            buffer.addImport(builderName);
-            buffer.addLine("%1s %2$s(%3$s %2$s);", request, member, builderName.getSimpleName());
+            javaBuffer.addImport(builderName);
+            javaBuffer.addLine("%1s %2$s(%3$s %2$s);", request, member, builderName.getSimpleName());
         }
         else if (type instanceof ListType) {
             ListType listType = (ListType) type;
@@ -182,25 +196,30 @@ public class ServicesGenerator extends JavaGenerator {
 
             // Method taking a list of objects:
             JavaClassName elementName = javaTypes.getInterfaceName(elementType);
-            buffer.addImport(elementName);
-            buffer.addImport(List.class);
-            buffer.addLine("%1s %2$s(List<%3$s> %2$s);", request, member, elementName.getSimpleName());
+            javaBuffer.addImport(elementName);
+            javaBuffer.addImport(List.class);
+            javaBuffer.addLine("%1s %2$s(List<%3$s> %2$s);", request, member, elementName.getSimpleName());
 
             // Method taking an array of objects:
-            buffer.addImport(elementName);
-            buffer.addLine("%1s %2$s(%3$s... %2$s);", request, member, elementName.getSimpleName());
+            generateDoc(parameter);
+            javaBuffer.addImport(elementName);
+            javaBuffer.addLine("%1s %2$s(%3$s... %2$s);", request, member, elementName.getSimpleName());
 
             // Method taking an array of builders:
+            generateDoc(parameter);
             JavaClassName builderName = javaTypes.getBuilderName(elementType);
-            buffer.addImport(builderName);
-            buffer.addLine("%1s %2$s(%3$s... %2$s);", request, member, builderName.getSimpleName());
+            javaBuffer.addImport(builderName);
+            javaBuffer.addLine("%1s %2$s(%3$s... %2$s);", request, member, builderName.getSimpleName());
         }
     }
 
     private void generateResponseInterface(Method method) {
+        // Add method documentation:
+        generateDoc(method);
+
         // Begin interface:
         String response = getResponseName(method);
-        buffer.addLine("public interface %1$s extends Response {", response);
+        javaBuffer.addLine("public interface %1$s extends Response {", response);
 
         // Generate the methods to get the output parameters:
         method.parameters()
@@ -209,38 +228,46 @@ public class ServicesGenerator extends JavaGenerator {
             .forEach(this::generateResponseParameterInterface);
 
         // End interface:
-        buffer.addLine("}");
-        buffer.addLine();
+        javaBuffer.addLine("}");
+        javaBuffer.addLine();
     }
 
     private void generateResponseParameterInterface(Parameter parameter) {
+        // Add parameter documentation:
+        generateDoc(parameter);
+
+        // Add parameter declaration:
         Type type = parameter.getType();
         Name name = parameter.getName();
         String property = javaNames.getJavaMemberStyleName(name);
         JavaTypeReference reference = javaTypes.getTypeReference(type, true);
-        buffer.addImports(reference.getImports());
-        buffer.addLine("%1$s %2$s();", reference.getText(), property);
+        javaBuffer.addImports(reference.getImports());
+        javaBuffer.addLine("%1$s %2$s();", reference.getText(), property);
     }
 
     private void generateLocator(Locator locator) {
+        // Add locator documentation:
+        generateDoc(locator);
+
+        // Add locator declaration:
         Name name = locator.getName();
         Service service = locator.getService();
 
         JavaClassName serviceName = getServiceName(service);
-        buffer.addImport(serviceName);
+        javaBuffer.addImport(serviceName);
         String locatorName = javaNames.getJavaMemberStyleName(name);
         if (locator.getParameters().isEmpty()) {
-            buffer.addLine("%1$s %2$sService();", serviceName.getSimpleName(), locatorName);
+            javaBuffer.addLine("%1$s %2$sService();", serviceName.getSimpleName(), locatorName);
         }
         else {
-            buffer.addLine("%1$s %2$sService(String id);", serviceName.getSimpleName(), locatorName);
+            javaBuffer.addLine("%1$s %2$sService(String id);", serviceName.getSimpleName(), locatorName);
         }
     }
 
     private void generatePathLocator() {
-        buffer.addImport(BASE_PACKAGE + ".Service");
-
-        buffer.addLine("Service service(String path);");
+        javaBuffer.addImport(BASE_PACKAGE + ".Service");
+        javaBuffer.addDocComment("Service locator method, returns individual service on which the URI is dispatched.");
+        javaBuffer.addLine("Service service(String path);");
     }
 
     private JavaClassName getServiceName(Service service) {
