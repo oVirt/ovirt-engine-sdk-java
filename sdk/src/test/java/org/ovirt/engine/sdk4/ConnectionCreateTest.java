@@ -23,9 +23,8 @@ import org.junit.Test;
 public class ConnectionCreateTest extends ServerTest {
 
     /**
-     * Test exception is thrown when no CA is provided to connection
+     * Test exception is not thrown when no CA is provided to connection
      */
-    @Test(expected = Error.class)
     public void testSecureModeWithoutCA() {
         connection()
             .url(testUrl())

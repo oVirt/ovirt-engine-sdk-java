@@ -41,7 +41,9 @@ connection.close();
 The `truststore.jks` file is required when connecting to a server protected
 with TLS. In an usual oVirt installation it will be in
 `/etc/pki/ovirt-engine/.truststore`. The default password for keystore
-is `mypass`.
+is `mypass`. If you don't specify `trustStoreFile`, then
+default Java trust store location is used, which is defined by
+`javax.net.ssl.trustStore` system property.
 
 Once you have the reference to the system service you can use it to get
 references to other services, and call their methods. For example, to

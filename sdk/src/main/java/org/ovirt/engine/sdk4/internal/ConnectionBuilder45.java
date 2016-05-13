@@ -32,6 +32,7 @@ import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.ssl.SSLContexts;
 import org.ovirt.engine.sdk4.ConnectionBuilder;
 import org.ovirt.engine.sdk4.Error;
@@ -115,12 +116,14 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
                     sslsf = new SSLConnectionSocketFactory(sslcontext, NoopHostnameVerifier.INSTANCE);
                 }
                 else {
-                    SSLContext sslContext = SSLContexts.custom()
-                        .loadTrustMaterial(
+                    SSLContextBuilder sslContextBuilder = SSLContexts.custom();
+                    if (trustStoreFile != null) {
+                        sslContextBuilder.loadTrustMaterial(
                             new File(trustStoreFile),
                             this.trustStorePassword != null ? this.trustStorePassword.toCharArray() : null
-                        )
-                        .build();
+                        );
+                    }
+                    SSLContext sslContext = sslContextBuilder.build();
                     sslsf = new SSLConnectionSocketFactory(sslContext, new DefaultHostnameVerifier());
                 }
                 registry = RegistryBuilder.<ConnectionSocketFactory>create()

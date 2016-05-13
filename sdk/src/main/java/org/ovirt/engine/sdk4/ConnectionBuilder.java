@@ -174,6 +174,8 @@ public abstract class ConnectionBuilder {
     /**
      * Set the path of the file containing the trusted CA certificates. This file must be a valid Java key store,
      * using the Java `JKS` format, usually contained within files ending with the `.jks` extension.
+     * If `trustStoreFile` parameter is not set, then default Java trust store location is used, which is defined by
+     * `javax.net.ssl.trustStore` system property.
      */
     public ConnectionBuilder trustStoreFile(String trustStoreFile) {
         this.trustStoreFile = trustStoreFile;
@@ -230,9 +232,6 @@ public abstract class ConnectionBuilder {
             // Check the parameters:
             if (url == null) {
                 throw new IllegalArgumentException("The 'url' parameter is mandatory");
-            }
-            if (!insecure && trustStoreFile == null) {
-                throw new IllegalArgumentException("The 'trustStoreFile' is mandatory in secure mode");
             }
             if (trustStoreFile != null && !new File(trustStoreFile).exists()) {
                 throw new IllegalArgumentException(
