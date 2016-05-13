@@ -43,7 +43,7 @@ public class ListVms {
 
         // Print the virtual machine names and identifiers:
         for (Vm vm : vms) {
-            System.out.printf("%s: %s", vm.name(), vm.id());
+            System.out.printf("%s: %s\n", vm.name(), vm.id());
         }
 
         // Close the connection to the server:

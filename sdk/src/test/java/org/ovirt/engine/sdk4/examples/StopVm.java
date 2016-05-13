@@ -22,6 +22,7 @@ import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.services.VmService;
 import org.ovirt.engine.sdk4.services.VmsService;
 import org.ovirt.engine.sdk4.types.Vm;
+import org.ovirt.engine.sdk4.types.VmStatus;
 
 // This example will connect to the server and stop a virtual machine:
 public class StopVm {
@@ -46,12 +47,11 @@ public class StopVm {
         // Call the "stop" method of the service to stop it:
         vmService.stop().send();
 
-        // What till the virtual machine is up:
+        // What till the virtual machine is down:
         for (;;) {
             Thread.sleep(5 * 1000);
             vm = vmService.get().send().vm();
-            String state = vm.status().state();
-            if ("down".equals(state)) {
+            if (vm.status() == VmStatus.DOWN) {
                 break;
             }
         }

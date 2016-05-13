@@ -20,13 +20,14 @@ import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 import static org.ovirt.engine.sdk4.builders.Builders.storageDomain;
 
 import org.ovirt.engine.sdk4.Connection;
+import org.ovirt.engine.sdk4.services.AttachedStorageDomainService;
 import org.ovirt.engine.sdk4.services.AttachedStorageDomainsService;
 import org.ovirt.engine.sdk4.services.DataCenterService;
 import org.ovirt.engine.sdk4.services.DataCentersService;
-import org.ovirt.engine.sdk4.services.StorageDomainService;
 import org.ovirt.engine.sdk4.services.StorageDomainsService;
 import org.ovirt.engine.sdk4.types.DataCenter;
 import org.ovirt.engine.sdk4.types.StorageDomain;
+import org.ovirt.engine.sdk4.types.StorageDomainStatus;
 
 // This example will connect to the server and attach an existing NFS ISO storage domain to a data center:
 public class AttachNfsIsoStorageDomain {
@@ -43,7 +44,7 @@ public class AttachNfsIsoStorageDomain {
         StorageDomainsService sdsService = connection.systemService().storageDomainsService();
         StorageDomain sd = sdsService.list().search("name=myiso").send().storageDomains().get(0);
 
-        // Locate the servcie that manages the data centers and use it to search for the data center:
+        // Locate the service that manages the data centers and use it to search for the data center:
         DataCentersService dcsService = connection.systemService().dataCentersService();
         DataCenter dc = dcsService.list().search("name=mydc").send().dataCenters().get(0);
 
@@ -62,12 +63,11 @@ public class AttachNfsIsoStorageDomain {
             .send();
 
         // Wait till the storage domain is active:
-        StorageDomainService sdService = sdsService.storageDomainService(sd.id());
+        AttachedStorageDomainService attachedSdService = attachedSdsService.storageDomainService(sd.id());
         for (;;) {
             Thread.sleep(5 * 1000);
-            sd = sdService.get().send().storageDomain();
-            String state = sd.status().state();
-            if ("active".equals(state)) {
+            sd = attachedSdService.get().send().storageDomain();
+            if (sd.status() == StorageDomainStatus.ACTIVE) {
                 break;
             }
         }

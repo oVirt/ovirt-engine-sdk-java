@@ -58,8 +58,8 @@ public class FollowVmLinks {
         Template template = connection.followLink(vm.template());
 
         // Now we can use the details of the cluster and the template:
-        System.out.printf("cluster: %s", cluster.name());
-        System.out.printf("template: %s", template.name());
+        System.out.printf("cluster: %s\n", cluster.name());
+        System.out.printf("template: %s\n", template.name());
 
         // Close the connection to the server:
         connection.close();

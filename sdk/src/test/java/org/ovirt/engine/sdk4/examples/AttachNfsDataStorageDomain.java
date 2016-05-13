@@ -20,13 +20,14 @@ import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 import static org.ovirt.engine.sdk4.builders.Builders.storageDomain;
 
 import org.ovirt.engine.sdk4.Connection;
+import org.ovirt.engine.sdk4.services.AttachedStorageDomainService;
 import org.ovirt.engine.sdk4.services.AttachedStorageDomainsService;
 import org.ovirt.engine.sdk4.services.DataCenterService;
 import org.ovirt.engine.sdk4.services.DataCentersService;
-import org.ovirt.engine.sdk4.services.StorageDomainService;
 import org.ovirt.engine.sdk4.services.StorageDomainsService;
 import org.ovirt.engine.sdk4.types.DataCenter;
 import org.ovirt.engine.sdk4.types.StorageDomain;
+import org.ovirt.engine.sdk4.types.StorageDomainStatus;
 
 // This example will connect to the server and attach an existing NFS data storage domain to a data center:
 public class AttachNfsDataStorageDomain {
@@ -62,12 +63,11 @@ public class AttachNfsDataStorageDomain {
             .send();
 
         // Wait till the storage domain is active:
-        StorageDomainService sdService = sdsService.storageDomainService(sd.id());
+        AttachedStorageDomainService attachedSdService = attachedSdsService.storageDomainService(sd.id());
         for (;;) {
             Thread.sleep(5 * 1000);
-            sd = sdService.get().send().storageDomain();
-            String state = sd.status().state();
-            if ("active".equals(state)) {
+            sd = attachedSdService.get().send().storageDomain();
+            if (sd.status() == StorageDomainStatus.ACTIVE) {
                 break;
             }
         }

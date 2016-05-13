@@ -24,6 +24,7 @@ import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.services.HostService;
 import org.ovirt.engine.sdk4.services.HostsService;
 import org.ovirt.engine.sdk4.types.Host;
+import org.ovirt.engine.sdk4.types.HostStatus;
 
 // This example will connect to the server and add a new host:
 public class AddHost {
@@ -46,7 +47,7 @@ public class AddHost {
                 .name("myhost")
                 .description("My host")
                 .address("node40.example.com")
-                .rootPassword("readhat123")
+                .rootPassword("redhat123")
                 .cluster(
                     cluster()
                     .name("mycluster")
@@ -60,8 +61,7 @@ public class AddHost {
         for (;;) {
             Thread.sleep(5 * 1000);
             host = hostService.get().send().host();
-            String state = host.status().state();
-            if ("up".equals(state)) {
+            if (host.status() == HostStatus.UP) {
                 break;
             }
         }

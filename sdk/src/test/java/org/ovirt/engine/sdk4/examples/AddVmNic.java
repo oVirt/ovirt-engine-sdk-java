@@ -17,19 +17,20 @@ limitations under the License.
 package org.ovirt.engine.sdk4.examples;
 
 import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
-import static org.ovirt.engine.sdk4.builders.Builders.disk;
-import static org.ovirt.engine.sdk4.builders.Builders.storageDomain;
+import static org.ovirt.engine.sdk4.builders.Builders.nic;
+import static org.ovirt.engine.sdk4.builders.Builders.vnicProfile;
+
+import java.util.List;
+import java.util.Objects;
 
 import org.ovirt.engine.sdk4.Connection;
-import org.ovirt.engine.sdk4.services.VmDiskService;
-import org.ovirt.engine.sdk4.services.VmDisksService;
+import org.ovirt.engine.sdk4.services.VmNicsService;
 import org.ovirt.engine.sdk4.services.VmsService;
-import org.ovirt.engine.sdk4.types.Disk;
-import org.ovirt.engine.sdk4.types.DiskFormat;
-import org.ovirt.engine.sdk4.types.DiskInterface;
+import org.ovirt.engine.sdk4.services.VnicProfilesService;
 import org.ovirt.engine.sdk4.types.Vm;
+import org.ovirt.engine.sdk4.types.VnicProfile;
 
-// This example will connect to the server and add a disk to an existing virtual machine:
+// This example will connect to the server and add a network interface card to an existing virtual machine:
 public class AddVmNic {
     public static void main(String[] args) throws Exception {
         // Create the connection to the server:
@@ -44,36 +45,33 @@ public class AddVmNic {
         VmsService vmsService = connection.systemService().vmsService();
         Vm vm = vmsService.list().search("name=myvm").send().vms().get(0);
 
-        // Locate the service that manages the disks of the virtual machine:
-        VmDisksService disksService = vmsService.vmService(vm.id()).disksService();
-
-        // Use the "add" method of the disks service to add the disk:
-        Disk disk = disksService.add()
-            .disk(
-                disk()
-                .name("mydisk")
-                .description("My disk")
-                .interface_(DiskInterface.VIRTIO)
-                .format(DiskFormat.COW)
-                .provisionedSize(1 * (int) Math.pow(2, 20))
-                .storageDomains(
-                    storageDomain()
-                    .name("myadata")
-                )
-            )
-            .send()
-            .disk();
-
-        // Wait till the disk is OK:
-        VmDiskService diskService = disksService.diskService(disk.id());
-        for (;;) {
-            Thread.sleep(5 * 1000);
-            disk = diskService.get().send().disk();
-            String state = disk.status().state();
-            if ("unattached".equals(state)) {
+        // In order to specify the network that the new interface will be connected to, we need to specify the
+        // identifier of the virtual network interface profile, so we need to find it:
+        VnicProfilesService profilesService = connection.systemService().vnicProfilesService();
+        String profileId = null;
+        List<VnicProfile> profiles = profilesService.list().send().profiles();
+        for (VnicProfile profile : profiles) {
+            if (Objects.equals(profile.name(), "mynetwork")) {
+                profileId = profile.id();
                 break;
             }
         }
+
+        // Locate the service that manages the NICs of the virtual machine:
+        VmNicsService nicsService = vmsService.vmService(vm.id()).nicsService();
+
+        // Use the "add" method of the disks service to add the disk:
+        nicsService.add()
+            .nic(
+                nic()
+                .name("mynic")
+                .description("My network interface card")
+                .vnicProfile(
+                    vnicProfile()
+                    .id(profileId)
+                )
+            )
+            .send();
 
         // Close the connection to the server:
         connection.close();

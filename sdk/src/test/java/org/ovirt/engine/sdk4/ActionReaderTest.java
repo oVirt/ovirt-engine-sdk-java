@@ -54,15 +54,14 @@ public class ActionReaderTest {
      */
     @Test
     public void testActionWithState() throws Exception {
-        String response = "<action><status><state>mystate</state></status></action>";
+        String response = "<action><status>mystatus</status></action>";
         try (
             InputStream stream = new ByteArrayInputStream(response.getBytes(StandardCharsets.UTF_8));
             XmlReader reader = new XmlReader(stream)
         ) {
             Action action = XmlActionReader.readOne(reader);
             assertTrue(action.statusPresent());
-            assertTrue(action.status().statePresent());
-            assertEquals("mystate", action.status().state());
+            assertEquals("mystatus", action.status());
         }
     }
 
@@ -91,7 +90,7 @@ public class ActionReaderTest {
     @Test
     public void testFaultAndStatusActionW() throws Exception {
         String response =
-            "<action><status><state>mystate</state></status><fault><reason>myreason</reason></fault></action>";
+            "<action><status>mystatus</status><fault><reason>myreason</reason></fault></action>";
         try (
             InputStream stream = new ByteArrayInputStream(response.getBytes(StandardCharsets.UTF_8));
             XmlReader reader = new XmlReader(stream)
@@ -99,8 +98,7 @@ public class ActionReaderTest {
             Action action = XmlActionReader.readOne(reader);
             // Check state:
             assertTrue(action.statusPresent());
-            assertTrue(action.status().statePresent());
-            assertEquals("mystate", action.status().state());
+            assertEquals("mystatus", action.status());
             // Check reason:
             assertTrue(action.faultPresent());
             assertTrue(action.fault().reasonPresent());

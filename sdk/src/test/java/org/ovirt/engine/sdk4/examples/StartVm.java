@@ -22,6 +22,7 @@ import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.services.VmService;
 import org.ovirt.engine.sdk4.services.VmsService;
 import org.ovirt.engine.sdk4.types.Vm;
+import org.ovirt.engine.sdk4.types.VmStatus;
 
 // This example will connect to the server and start a virtual machine:
 public class StartVm {
@@ -50,8 +51,7 @@ public class StartVm {
         for (;;) {
             Thread.sleep(5 * 1000);
             vm = vmService.get().send().vm();
-            String state = vm.status().state();
-            if ("up".equals(state)) {
+            if (vm.status() == VmStatus.UP) {
                 break;
             }
         }

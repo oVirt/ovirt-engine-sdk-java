@@ -22,6 +22,7 @@ import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.services.HostService;
 import org.ovirt.engine.sdk4.services.HostsService;
 import org.ovirt.engine.sdk4.types.Host;
+import org.ovirt.engine.sdk4.types.HostStatus;
 
 // This example will connect to the server, search for a host by name and remove it:
 public class RemoveHost {
@@ -48,7 +49,7 @@ public class RemoveHost {
         HostService hostService = hostsService.hostService(host.id());
 
         // If the host isn't down or in maintenance then move it to maintenance:
-        if (!host.status().state().equals("maitenance")) {
+        if (host.status() != HostStatus.MAINTENANCE) {
             hostService.deactivate().send();
         }
 

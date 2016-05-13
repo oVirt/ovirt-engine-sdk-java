@@ -25,6 +25,7 @@ import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.services.StorageDomainService;
 import org.ovirt.engine.sdk4.services.StorageDomainsService;
 import org.ovirt.engine.sdk4.types.StorageDomain;
+import org.ovirt.engine.sdk4.types.StorageDomainStatus;
 import org.ovirt.engine.sdk4.types.StorageDomainType;
 import org.ovirt.engine.sdk4.types.StorageType;
 
@@ -68,8 +69,7 @@ public class AddNfsDataStorageDomain {
         for (;;) {
             Thread.sleep(5 * 1000);
             sd = sdService.get().send().storageDomain();
-            String state = sd.status().state();
-            if ("unattached".equals(state)) {
+            if (sd.status() == StorageDomainStatus.UNATTACHED) {
                 break;
             }
         }
