@@ -1,3 +1,5 @@
+%global tar_version @TAR_VERSION@
+
 Name: java-ovirt-engine-sdk4
 Version: @RPM_VERSION@
 Release: @RPM_RELEASE@
@@ -22,7 +24,7 @@ API.
 %prep
 
 # Extract the source:
-%setup -q -n ovirt-engine-sdk-java-%{version}
+%setup -q -n ovirt-engine-sdk-java-%{tar_version}
 
 # Remove the test dependencies:
 %pom_remove_dep io.undertow:undertow-core
