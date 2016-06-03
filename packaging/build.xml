@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="java-ovirt-engine-sdk4" default="build">
+
+  <!-- Target for compiling sources for http apache client library version 4.2.
+    This library is used for el7 -->
+  <target name="compile42">
+    <mkdir dir="target/classes"/>
+    <javac srcdir="src/main/java" destdir="target/classes" includeantruntime="false" encoding="UTF-8" target="1.7" source="1.7">
+      <exclude name="**/HttpClient42.java"/>
+      <exclude name="**/ConnectionBuilder42.java"/>
+      <classpath>
+        <fileset dir="lib"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar42" depends="compile42">
+    <mkdir dir="target"/>
+    <jar jarfile="target/${ant.project.name}.jar">
+      <fileset dir="src/main/java">
+        <exclude name="**/*.java*"/>
+      </fileset>
+      <fileset dir="target/classes"/>
+    </jar>
+  </target>
+
+  <target name="build42" depends="jar42"/>
+
+  <!-- Target for compiling sources for http apache client library version 4.5.
+    This library is used for fedora23 and later -->
+  <target name="compile">
+    <mkdir dir="target/classes"/>
+    <javac srcdir="src/main/java" destdir="target/classes" includeantruntime="false" encoding="UTF-8" target="1.7" source="1.7">
+      <exclude name="**/HttpClient45.java"/>
+      <exclude name="**/ConnectionBuilder45.java"/>
+      <classpath>
+        <fileset dir="lib"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <mkdir dir="target"/>
+    <jar jarfile="target/${ant.project.name}.jar">
+      <fileset dir="src/main/java">
+        <exclude name="**/*.java*"/>
+      </fileset>
+      <fileset dir="target/classes"/>
+    </jar>
+  </target>
+
+  <target name="build" depends="jar"/>
+
+</project>

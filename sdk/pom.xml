@@ -16,60 +16,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.ovirt.engine.sdk</groupId>
+  <parent>
+    <groupId>org.ovirt.engine.api</groupId>
+    <artifactId>java-sdk-parent</artifactId>
+    <version>4.1.0.alpha1-SNAPSHOT</version>
+  </parent>
+
   <artifactId>sdk</artifactId>
-  <version>4.0.0.Alpha10</version>
   <packaging>jar</packaging>
 
   <name>oVirt Java SDK</name>
-
-  <description>
-    Java SDK for version 4 of the oVirt Engine API.
-  </description>
-
-  <licenses>
-    <license>
-      <name>The Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-
-  <developers>
-    <developer>
-      <name>Michael Pasternak</name>
-      <email>mishka8520@yahoo.com</email>
-    </developer>
-    <developer>
-      <name>Ondra Machacek</name>
-      <email>omachace@redhat.com</email>
-      <organization>oVirt</organization>
-      <organizationUrl>http://www.ovirt.org</organizationUrl>
-    </developer>
-    <developer>
-      <name>Juan Hernandez</name>
-      <email>juan.hernandez@redhat.com</email>
-      <organization>oVirt</organization>
-      <organizationUrl>http://www.ovirt.org</organizationUrl>
-    </developer>
-  </developers>
-
-  <scm>
-    <connection>scm:git:git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</connection>
-    <developerConnection>scm:git:git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</developerConnection>
-    <url>git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</url>
-    <tag>4.0.0.Alpha10</tag>
-  </scm>
-
-  <properties>
-
-    <!-- Make sure that we always compile with UTF-8 encoding: -->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-  </properties>
 
   <dependencies>
 
@@ -86,6 +49,12 @@ limitations under the License.
     </dependency>
 
     <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.4</version>
+    </dependency>
+
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
@@ -99,112 +68,129 @@ limitations under the License.
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.7</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-      <version>1.9.4</version>
-    </dependency>
-
   </dependencies>
 
   <build>
     <plugins>
 
-      <!-- Attach the sources: -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.4</version>
+        <artifactId>maven-dependency-plugin</artifactId>
         <executions>
+          <!-- Copy model.jar to the target directory, so that it can be
+          later loaded by the generator: -->
           <execution>
-            <id>attach-sources</id>
+            <id>copy-model</id>
+            <phase>generate-sources</phase>
             <goals>
-              <goal>jar</goal>
+              <goal>copy</goal>
             </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.ovirt.engine.api</groupId>
+                  <artifactId>model</artifactId>
+                  <version>${model.version}</version>
+                  <type>jar</type>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${project.basedir}/target</outputDirectory>
+                  <destFileName>model.jar</destFileName>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+
+          <!-- Copy needed metamodel sources, so that the SDK won't
+            depend on the metamodel: -->
+          <execution>
+            <id>copy-metamodel</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.ovirt.engine.api</groupId>
+                  <artifactId>metamodel-runtime</artifactId>
+                  <version>${metamodel.version}</version>
+                  <type>jar</type>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${project.basedir}/target/generated-sources</outputDirectory>
+                  <includes>**/xml/*.java,**/util/*.java</includes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
           </execution>
         </executions>
       </plugin>
 
-      <!-- Configure release: -->
+      <!-- Run the code generator: -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+            <id>generate-code</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>org.ovirt.api.metamodel.tool.Main</mainClass>
+              <arguments>
+                <argument>org.ovirt.sdk.java.Tool</argument>
+                <argument>--model</argument>
+                <argument>${project.basedir}/target/model.jar</argument>
+                <argument>--out</argument>
+                <argument>${project.basedir}/target/generated-sources</argument>
+              </arguments>
+              <includePluginDependencies>true</includePluginDependencies>
+              <includeProjectDependencies>false</includeProjectDependencies>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>java-sdk-generator</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <!-- Add the generated Java code directory to the source path: -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.10</version>
+        <executions>
+          <execution>
+            <id>add-generated-sources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${project.basedir}/target/generated-sources</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Attach the sources: -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.2</version>
-        <configuration>
-          <tagNameFormat>@{version}</tagNameFormat>
-          <pushChanges>false</pushChanges>
-        </configuration>
+        <artifactId>maven-source-plugin</artifactId>
       </plugin>
 
     </plugins>
   </build>
 
   <profiles>
-
-    <!-- This profile is used to sign the artifacts when performing
-         releases. -->
-    <profile>
-      <id>sign</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <!-- This profile is used to generate the documentation: -->
-    <profile>
-      <id>document</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>2.10.3</version>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <doclet>org.asciidoctor.Asciidoclet</doclet>
-              <docletArtifact>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoclet</artifactId>
-                <version>1.5.4</version>
-              </docletArtifact>
-              <additionalparam>
-                -Xdoclint:none
-                --base-dir ${project.basedir}
-              </additionalparam>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
 
     <!-- Profile for http client 4.5 -->
     <profile>
@@ -273,15 +259,5 @@ limitations under the License.
 
   </profiles>
 
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-    </repository>
-  </distributionManagement>
 
 </project>

@@ -7,11 +7,12 @@ Summary: Java SDK for version 4 of the oVirt Engine API
 Group: Development/Languages
 License: ASL 2.0
 URL: http://ovirt.org/wiki/SDK
-Source: @TAR_URL@
+Source0: @TAR_URL@
+Source1: build.xml
 
 BuildArch: noarch
 
-BuildRequires: maven-local
+BuildRequires: ant
 BuildRequires: mvn(com.sun.xml.txw2:txw2)
 BuildRequires: mvn(org.apache.httpcomponents:httpclient)
 BuildRequires: mvn(org.codehaus.jackson:jackson-mapper-asl)
@@ -26,18 +27,35 @@ API.
 # Extract the source:
 %setup -q -n ovirt-engine-sdk-java-%{tar_version}
 
-# Remove the test dependencies:
-%pom_remove_dep io.undertow:undertow-core
-%pom_remove_dep junit:junit
-%pom_remove_dep org.slf4j:slf4j-log4j12
-
 %build
-%mvn_build -- -Dmaven.javadoc.skip=true -Dmaven.test.skip=true -Phttpclient42
+# Copy Ant build file to the extracted SDK directory and modify
+# apache java classes to appropriate supported version:
+cp %{SOURCE1} build.xml
+
+# Populate the lib directory with symlinks to the required dependencies that
+# will be used to create the compiler classpath:
+mkdir lib
+while read jar
+do
+  ln -s %{_javadir}/${jar}.jar lib
+done << __EOF__
+httpcomponents/httpclient
+httpcomponents/httpcore
+jackson/jackson-core-asl
+jackson/jackson-mapper-asl
+slf4j/api
+txw2
+__EOF__
+
+# Perform build using Ant:
+java -jar %{_javadir}/ant-launcher.jar -f build.xml build42
 
 %install
-%mvn_install
+# Install the files:
+install -d -m 755 %{buildroot}%{_javadir}/%{name}
+install -pm 644 target/%{name}.jar %{buildroot}%{_javadir}/%{name}/sdk.jar
 
-%files -f .mfiles
+%files
 %doc README.adoc
 %license LICENSE.txt
 %{_javadir}/%{name}

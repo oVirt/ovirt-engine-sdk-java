@@ -1,7 +1,7 @@
+ant
 jackson
 java-1.8.0-openjdk-devel
 maven
-maven-local
 python
 python-lxml
 rpm-build
