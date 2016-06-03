@@ -35,13 +35,8 @@ export JAVA_HOME="$(dirname $(rpm -ql java-1.8.0-openjdk-devel | grep '/bin$'))"
 # Calculate the version number:
 version="$(python automation/version.py)"
 
-# Build the code generator and run it:
-mvn package -s "${settings}"
-
 # Build the SDK:
-pushd sdk
-  mvn package -s "${settings}"
-popd
+mvn package -s "${settings}"
 
 # Generate the .tar.gz file containing the generated SDK:
 tar_name="ovirt-engine-sdk-java"

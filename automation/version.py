@@ -8,7 +8,7 @@ import sys
 
 def main():
     # Check that the POM file exists:
-    pom_path = "sdk/pom.xml"
+    pom_path = "pom.xml"
     if not os.path.exists(pom_path):
         print("The POM file \"%s\" doesn't exist." % pom_path)
         sys.exit(1)
