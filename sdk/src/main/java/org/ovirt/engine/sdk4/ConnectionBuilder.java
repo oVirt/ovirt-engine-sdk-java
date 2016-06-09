@@ -268,7 +268,7 @@ public abstract class ConnectionBuilder {
     }
 
     protected int getPort() {
-        return urlobj.getPort();
+        return urlobj.getPort() == -1 ? urlobj.getDefaultPort() : urlobj.getPort();
     }
 
     /**
