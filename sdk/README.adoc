@@ -25,7 +25,7 @@ import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 
 // Create a connection to the server:
 Connection connection = connection()
-  .url("https://engine.example.com/ovirt-engine/api')
+  .url("https://engine.example.com/ovirt-engine/api")
   .user("admin@internal")
   .password("...")
   .trustStoreFile("truststore.jks")
@@ -64,7 +64,7 @@ that returns an array of virtual machines, which are instances of the
 [source,java]
 ----
 # Retrieve the virtual machines:
-List<Vms> vms = vmsService.list()
+List<Vm> vms = vmsService.list().send().vms();
 
 # Print the names and identifiers of the virtual machines:
 for (Vm vm : vms) {
