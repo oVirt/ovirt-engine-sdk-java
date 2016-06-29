@@ -32,6 +32,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.util.EntityUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.ovirt.api.metamodel.runtime.util.ListWithHref;
 import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.Error;
 import org.ovirt.engine.sdk4.HttpClient;
@@ -114,12 +115,19 @@ public class HttpConnection implements Connection {
         return new SystemServiceImpl(this, "");
     }
 
+    private String getHref(Object object) {
+        if (object instanceof Identified) {
+            return ((Identified) object).href();
+        }
+        else if (object instanceof ListWithHref) {
+            return ((ListWithHref) object).href();
+        }
+        return null;
+    }
+
     @Override
     public boolean isLink(Object object) {
-        if (object instanceof Identified) {
-            return ((Identified) object).href() != null;
-        }
-        return false;
+        return getHref(object) != null;
     }
 
     @Override
@@ -128,7 +136,7 @@ public class HttpConnection implements Connection {
             throw new Error("Can't follow link because object don't have any");
         }
 
-        String href = ((Identified) object).href();
+        String href = getHref(object);
         if (href == null) {
             throw new Error("Can't follow link because the 'href' attribute does't have a value");
         }
@@ -147,7 +155,12 @@ public class HttpConnection implements Connection {
             Service service = systemService().service(path);
 
             // Obtain method which provides result object and invoke it:
-            Method get = service.getClass().getMethod("get");
+            Method get;
+            if (object instanceof ListWithHref) {
+                get = service.getClass().getMethod("list");
+            } else {
+                get = service.getClass().getMethod("get");
+            }
             Object getRequest = get.invoke(service);
             Method send = getRequest.getClass().getMethod("send");
             send.setAccessible(true);

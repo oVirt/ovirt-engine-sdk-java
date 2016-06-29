@@ -18,9 +18,12 @@ package org.ovirt.engine.sdk4.examples;
 
 import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 
+import java.util.List;
+
 import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.services.VmsService;
 import org.ovirt.engine.sdk4.types.Cluster;
+import org.ovirt.engine.sdk4.types.Permission;
 import org.ovirt.engine.sdk4.types.Template;
 import org.ovirt.engine.sdk4.types.Vm;
 
@@ -46,9 +49,11 @@ public class FollowVmLinks {
             .vms()
             .get(0);
 
-        // When the server returns a virtual machine it will return links to related objects, like the cluster and the
-        // template, something like this:
+        // When the server returns a virtual machine it will return links to related objects, like the cluster,
+        // template and permissions something like this:
         //
+        // <link href="/api/vms/123/permissions" rel="permissions"/>
+        // ...
         // <cluster id="123" href="/api/clusters/123"/>
         // <template id="456" href="/api/templates/456"/>
         //
@@ -56,10 +61,14 @@ public class FollowVmLinks {
         // objects.
         Cluster cluster = connection.followLink(vm.cluster());
         Template template = connection.followLink(vm.template());
+        List<Permission> permissions = connection.followLink(vm.permissions());
 
-        // Now we can use the details of the cluster and the template:
+        // Now we can use the details of the cluster, template and permissions:
         System.out.printf("cluster: %s\n", cluster.name());
         System.out.printf("template: %s\n", template.name());
+        for (Permission permission : permissions) {
+            System.out.printf("role: %s\n", permission.role().id());
+        }
 
         // Close the connection to the server:
         connection.close();
