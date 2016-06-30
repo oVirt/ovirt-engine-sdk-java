@@ -146,7 +146,7 @@ limitations under the License.
                   <type>jar</type>
                   <classifier>sources</classifier>
                   <outputDirectory>${project.basedir}/../sdk/src/main/java</outputDirectory>
-                  <includes>**/xml/*.java</includes>
+                  <includes>**/xml/*.java,**/util/*.java</includes>
                 </artifactItem>
               </artifactItems>
             </configuration>
