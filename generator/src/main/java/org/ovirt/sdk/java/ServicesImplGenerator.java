@@ -707,7 +707,7 @@ public class ServicesImplGenerator extends JavaGenerator {
             buffer.addLine(  "return %1$sService(path);", javaNames.getJavaMemberStyleName(name));
             buffer.addLine("}");
             buffer.addLine(
-                "return %1$sService(path.substring(0, index - 1)).service(path.substring(index + 1));",
+                "return %1$sService(path.substring(0, index)).service(path.substring(index + 1));",
                 javaNames.getJavaMemberStyleName(name)
             );
         }
