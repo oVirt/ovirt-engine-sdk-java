@@ -22,7 +22,7 @@ limitations under the License.
 
   <groupId>org.ovirt.engine.sdk</groupId>
   <artifactId>sdk</artifactId>
-  <version>4.0.0.Alpha10</version>
+  <version>4.0.0.Alpha11</version>
   <packaging>jar</packaging>
 
   <name>oVirt Java SDK</name>
@@ -61,7 +61,7 @@ limitations under the License.
     <connection>scm:git:git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</connection>
     <developerConnection>scm:git:git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</developerConnection>
     <url>git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</url>
-    <tag>4.0.0.Alpha10</tag>
+    <tag>4.0.0.Alpha11</tag>
   </scm>
 
   <properties>
