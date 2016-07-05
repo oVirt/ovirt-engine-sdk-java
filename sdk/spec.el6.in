@@ -63,6 +63,9 @@ cp target/%{name}-%{pom_version}-javadoc.jar %{buildroot}%{_javadocdir}/%{name}/
 %doc LICENSE.txt
 
 %changelog
+* Tue Jul 5 2016 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.8.0-1
+- Document VM pool update options #1318703.
+
 * Tue May 31 2016 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.7.0-1
 - Add support for deleting template NICs #1331068.
 
