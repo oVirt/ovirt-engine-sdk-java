@@ -118,17 +118,18 @@ public class VmPools extends
      *
      * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
      *    <pre>
-     *    vmpool.cluster.id|name
-     *    vmpool.template.id|name
-     *    vmpool.name
-     *    [vmpool.comment]
-     *    [vmpool.size]
-     *    [vmpool.max_user_vms]
-     *    [vmpool.display.proxy]
-     *    [vmpool.description]
-     *    [vmpool.soundcard_enabled]
-     *    [vmpool.type]
+     *    vm_pool.cluster.id|name
+     *    vm_pool.name
+     *    vm_pool.template.id|name
+     *    [vm_pool.comment]
+     *    [vm_pool.description]
+     *    [vm_pool.display.proxy]
+     *    [vm_pool.max_user_vms]
+     *    [vm_pool.size]
+     *    [vm_pool.soundcard_enabled]
+     *    [vm_pool.type]
      *    [vm_pool.use_latest_template_version]
+     *    [vm_pool.prestarted_vms]
      *    </pre>
      *
      *
@@ -161,17 +162,18 @@ public class VmPools extends
      *
      * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
      *    <pre>
-     *    vmpool.cluster.id|name
-     *    vmpool.template.id|name
-     *    vmpool.name
-     *    [vmpool.comment]
-     *    [vmpool.size]
-     *    [vmpool.max_user_vms]
-     *    [vmpool.display.proxy]
-     *    [vmpool.description]
-     *    [vmpool.soundcard_enabled]
-     *    [vmpool.type]
+     *    vm_pool.cluster.id|name
+     *    vm_pool.name
+     *    vm_pool.template.id|name
+     *    [vm_pool.comment]
+     *    [vm_pool.description]
+     *    [vm_pool.display.proxy]
+     *    [vm_pool.max_user_vms]
+     *    [vm_pool.size]
+     *    [vm_pool.soundcard_enabled]
+     *    [vm_pool.type]
      *    [vm_pool.use_latest_template_version]
+     *    [vm_pool.prestarted_vms]
      *    </pre>
      *
      * @param expect
@@ -210,17 +212,18 @@ public class VmPools extends
      *
      * @param vmpool {@link org.ovirt.engine.sdk.entities.VmPool}
      *    <pre>
-     *    vmpool.cluster.id|name
-     *    vmpool.template.id|name
-     *    vmpool.name
-     *    [vmpool.comment]
-     *    [vmpool.size]
-     *    [vmpool.max_user_vms]
-     *    [vmpool.display.proxy]
-     *    [vmpool.description]
-     *    [vmpool.soundcard_enabled]
-     *    [vmpool.type]
+     *    vm_pool.cluster.id|name
+     *    vm_pool.name
+     *    vm_pool.template.id|name
+     *    [vm_pool.comment]
+     *    [vm_pool.description]
+     *    [vm_pool.display.proxy]
+     *    [vm_pool.max_user_vms]
+     *    [vm_pool.size]
+     *    [vm_pool.soundcard_enabled]
+     *    [vm_pool.type]
      *    [vm_pool.use_latest_template_version]
+     *    [vm_pool.prestarted_vms]
      *    </pre>
      *
      * @param expect
