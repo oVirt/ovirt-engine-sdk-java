@@ -25,7 +25,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.ovirt.engine.sdk4.internal.HttpConnection;
 import org.ovirt.engine.sdk4.services.ClustersService;
-import org.ovirt.engine.sdk4.services.VmDisksService;
+import org.ovirt.engine.sdk4.services.DiskAttachmentsService;
 import org.ovirt.engine.sdk4.services.VmService;
 import org.ovirt.engine.sdk4.services.VmsService;
 
@@ -81,10 +81,10 @@ public class ConnectionUseTest extends ServerTest {
     }
 
     /**
-     * Test given 'vms/123/disks' returns a reference to the virtual machine disks service
+     * Test given 'vms/123/diskattachments' returns a reference to the virtual machine disk attachments service
      */
     @Test
     public void testReturnVmDisksService() {
-        assertTrue(connection.systemService().service("vms/123/disks") instanceof VmDisksService);
+        assertTrue(connection.systemService().service("vms/123/diskattachments") instanceof DiskAttachmentsService);
     }
 }

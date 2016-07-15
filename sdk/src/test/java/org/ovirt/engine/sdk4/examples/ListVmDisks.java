@@ -21,10 +21,10 @@ import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 import java.util.List;
 
 import org.ovirt.engine.sdk4.Connection;
-import org.ovirt.engine.sdk4.services.VmDisksService;
+import org.ovirt.engine.sdk4.services.DiskAttachmentsService;
 import org.ovirt.engine.sdk4.services.VmService;
 import org.ovirt.engine.sdk4.services.VmsService;
-import org.ovirt.engine.sdk4.types.Disk;
+import org.ovirt.engine.sdk4.types.DiskAttachment;
 import org.ovirt.engine.sdk4.types.Vm;
 
 // This example will connect to the server and list the disks attached to a virtual machine:
@@ -35,7 +35,7 @@ public class ListVmDisks {
             .url("https://engine40.example.com/ovirt-engine/api")
             .user("admin@internal")
             .password("redhat123")
-            .insecure(true)
+            .trustStoreFile("truststore.jks")
             .build();
 
         // Get the reference to the "vms" service:
@@ -47,13 +47,13 @@ public class ListVmDisks {
         // Locate the service that manages the virtual machine:
         VmService vmService = vmsService.vmService(vm.id());
 
-        // Locate the service that manages the disks of the virtual machine:
-        VmDisksService disksService = vmService.disksService();
+        // Locate the service that manages the disk attachments of the virtual machine:
+        DiskAttachmentsService diskAttachmentsService = vmService.diskAttachmentsService();
 
-        // Retrieve the list of disks, and print them:
-        List<Disk> disks = disksService.list().send().disks();
-        for (Disk disk : disks) {
-            System.out.println(disk.id());
+        // Retrieve the list of disks attachments, and print them:
+        List<DiskAttachment> diskAttachments = diskAttachmentsService.list().send().attachments();
+        for (DiskAttachment diskAttachment : diskAttachments) {
+            System.out.println(diskAttachment.disk().id());
         }
 
         // Close the connection to the server:
