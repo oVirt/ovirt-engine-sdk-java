@@ -26,7 +26,7 @@ limitations under the License.
   <version>4.0.0.alpha12-SNAPSHOT</version>
 
   <name>oVirt Java SDK Parent</name>
-
+  <description>This package contains the Java SDK for version 4 of the oVirt Engine API.</description>
   <url>http://www.ovirt.org</url>
 
   <licenses>
