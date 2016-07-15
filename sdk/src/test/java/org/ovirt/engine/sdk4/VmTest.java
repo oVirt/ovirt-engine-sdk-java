@@ -22,9 +22,9 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.ovirt.engine.sdk4.internal.containers.DiskContainer;
+import org.ovirt.engine.sdk4.internal.containers.DiskAttachmentContainer;
 import org.ovirt.engine.sdk4.internal.containers.VmContainer;
-import org.ovirt.engine.sdk4.types.Disk;
+import org.ovirt.engine.sdk4.types.DiskAttachment;
 
 public class VmTest {
 
@@ -34,9 +34,9 @@ public class VmTest {
     @Test
     public void testVmDiskIsEmpty() {
         VmContainer vm = new VmContainer();
-        vm.disks(null);
-        assertNotNull(vm.disks());
-        assertEquals(0, vm.disks().size());
+        vm.diskAttachments(null);
+        assertNotNull(vm.diskAttachments());
+        assertEquals(0, vm.diskAttachments().size());
     }
 
     /**
@@ -45,9 +45,9 @@ public class VmTest {
     @Test
     public void testVmDiskWithValues() {
         VmContainer vm = new VmContainer();
-        vm.disks(Arrays.asList((Disk) new DiskContainer()));
-        assertNotNull(vm.disks());
-        assertEquals(1, vm.disks().size());
-        assertNotNull(vm.disks().get(0));
+        vm.diskAttachments(Arrays.asList((DiskAttachment) new DiskAttachmentContainer()));
+        assertNotNull(vm.diskAttachments());
+        assertEquals(1, vm.diskAttachments().size());
+        assertNotNull(vm.diskAttachments().get(0));
     }
 }

@@ -18,19 +18,22 @@ package org.ovirt.engine.sdk4.examples;
 
 import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 import static org.ovirt.engine.sdk4.builders.Builders.disk;
+import static org.ovirt.engine.sdk4.builders.Builders.diskAttachment;
 import static org.ovirt.engine.sdk4.builders.Builders.storageDomain;
 
 import org.ovirt.engine.sdk4.Connection;
-import org.ovirt.engine.sdk4.services.VmDiskService;
-import org.ovirt.engine.sdk4.services.VmDisksService;
+import org.ovirt.engine.sdk4.services.DiskAttachmentsService;
+import org.ovirt.engine.sdk4.services.DiskService;
+import org.ovirt.engine.sdk4.services.DisksService;
 import org.ovirt.engine.sdk4.services.VmsService;
 import org.ovirt.engine.sdk4.types.Disk;
+import org.ovirt.engine.sdk4.types.DiskAttachment;
 import org.ovirt.engine.sdk4.types.DiskFormat;
 import org.ovirt.engine.sdk4.types.DiskInterface;
 import org.ovirt.engine.sdk4.types.DiskStatus;
 import org.ovirt.engine.sdk4.types.Vm;
 
-// This example will connect to the server and add a disk to an existing virtual machine:
+// This example will connect to the server and attach a disk to an existing virtual machine:
 public class AddVmDisk {
     public static void main(String[] args) throws Exception {
         // Create the connection to the server:
@@ -45,31 +48,36 @@ public class AddVmDisk {
         VmsService vmsService = connection.systemService().vmsService();
         Vm vm = vmsService.list().search("name=myvm").send().vms().get(0);
 
-        // Locate the service that manages the disks of the virtual machine:
-        VmDisksService disksService = vmsService.vmService(vm.id()).disksService();
+        // Locate the service that manages the disk attachments of the virtual machine:
+        DiskAttachmentsService diskAttachmentsService = vmsService.vmService(vm.id()).diskAttachmentsService();
 
-        // Use the "add" method of the disks service to add the disk:
-        Disk disk = disksService.add()
-            .disk(
-                disk()
-                .name("mydisk")
-                .description("My disk")
-                .interface_(DiskInterface.VIRTIO)
-                .format(DiskFormat.COW)
-                .provisionedSize(1 * (int) Math.pow(2, 20))
-                .storageDomains(
-                    storageDomain()
-                    .name("mydata")
-                )
+        // Use the "add" method of the disk attachments service to add the disk:
+        DiskAttachment diskAttachment = diskAttachmentsService.add()
+            .attachment(
+                diskAttachment()
+                    .disk(
+                        disk()
+                        .name("mydisk")
+                        .description("My disk")
+                        .format(DiskFormat.COW)
+                        .provisionedSize(1 * (int) Math.pow(2, 20))
+                        .storageDomains(
+                            storageDomain()
+                            .name("mydata")
+                        )
+                    )
+                    .interface_(DiskInterface.VIRTIO)
+                    .bootable(false)
             )
             .send()
-            .disk();
+            .attachment();
 
         // Wait till the disk is OK:
-        VmDiskService diskService = disksService.diskService(disk.id());
+        DisksService disksService = connection.systemService().disksService();
+        DiskService diskService = disksService.diskService(diskAttachment.disk().id());
         for (;;) {
             Thread.sleep(5 * 1000);
-            disk = diskService.get().send().disk();
+            Disk disk = diskService.get().send().disk();
             if (disk.status() == DiskStatus.OK) {
                 break;
             }

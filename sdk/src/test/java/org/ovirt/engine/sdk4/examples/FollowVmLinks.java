@@ -27,8 +27,8 @@ import org.ovirt.engine.sdk4.types.Permission;
 import org.ovirt.engine.sdk4.types.Template;
 import org.ovirt.engine.sdk4.types.Vm;
 
-// This example will connect to the server, retrieve the detail of a virtual machine and then it will follow the link to
-// the disks of the virtual machine:
+// This example will connect to the server, retrieve the detail of a virtual machine and then it will follow the links
+// to the permissions of the virtual machine:
 public class FollowVmLinks {
     public static void main(String[] args) throws Exception {
         // Create the connection to the server:
