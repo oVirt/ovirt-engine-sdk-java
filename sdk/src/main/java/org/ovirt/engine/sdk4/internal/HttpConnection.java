@@ -169,13 +169,7 @@ public class HttpConnection implements Connection {
             obtainObject.setAccessible(true);
             return (TYPE) obtainObject.invoke(getResponse);
         }
-        catch (NoSuchMethodException ex) {
-            throw new Error(String.format("Unexpected error while following link \"%1$s\"", href), ex);
-        }
-        catch (IllegalAccessException ex) {
-            throw new Error(String.format("Unexpected error while following link \"%1$s\"", href), ex);
-        }
-        catch (InvocationTargetException ex) {
+        catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
             throw new Error(String.format("Unexpected error while following link \"%1$s\"", href), ex);
         }
         catch (MalformedURLException ex) {
