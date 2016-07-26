@@ -5,7 +5,7 @@ tar_version="${tar_version:=4.0.0}"
 tar_url="${tar_url:=ovirt-engine-sdk-java-${tar_version}.tar.gz}"
 rpm_version="${rpm_version:=4.0.0}"
 rpm_dist="${rpm_dist:=$(rpm --eval '%dist')}"
-rpm_release="${rpm_release:=0.0.Alpha11${rpm_dist}}"
+rpm_release="${rpm_release:=0.14.alpha14${rpm_dist}}"
 
 # Generate the .spec file from the template for the distribution where the
 # build process is running:

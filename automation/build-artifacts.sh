@@ -51,7 +51,7 @@ pushd packaging
   export tar_url="$(basename ${tar_file})"
   export rpm_dist="$(rpm --eval '%dist')"
   #export rpm_release="0.0${rpm_dist}"
-  export rpm_release="0.11.Alpha11${rpm_dist}"
+  export rpm_release="0.14.alpha14${rpm_dist}"
   ./build.sh
 popd
 
