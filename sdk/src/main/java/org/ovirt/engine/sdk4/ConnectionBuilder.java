@@ -67,11 +67,11 @@ public abstract class ConnectionBuilder {
         try {
             clazz = (Class<ConnectionBuilder>) Class.forName("org.ovirt.engine.sdk4.internal.ConnectionBuilder45");
         }
-        catch (ClassNotFoundException ex) {
+        catch (Throwable ex) {
             try {
                 clazz = (Class<ConnectionBuilder>) Class.forName("org.ovirt.engine.sdk4.internal.ConnectionBuilder42");
             }
-            catch (ClassNotFoundException e) {
+            catch (Throwable e) {
                 throw new Error("No connection implementation found", e);
             }
         }

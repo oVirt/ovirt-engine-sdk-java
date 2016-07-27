@@ -215,11 +215,6 @@ limitations under the License.
             <configuration>
               <source>1.7</source>
               <target>1.7</target>
-              <!-- Exclude classes for http client version 4.2: -->
-              <excludes>
-                <exclude>**/HttpClient42.java</exclude>
-                <exclude>**/ConnectionBuilder42.java</exclude>
-              </excludes>
             </configuration>
           </plugin>
         </plugins>
