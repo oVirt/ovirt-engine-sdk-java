@@ -45,13 +45,16 @@ tar_file="${PWD}/${tar_prefix}.tar.gz"
 tar -czf "${tar_file}" --transform="s|^\.|${tar_prefix}|" -C sdk .
 
 # Build the RPM:
+date="$(date --utc +%Y%m%d)"
+commit="$(git log -1 --pretty=format:%h)"
+suffix=".${date}git${commit}"
+#suffix=".alpha1"
 cp "${tar_file}" packaging/.
 pushd packaging
   export tar_version="${version}"
   export tar_url="$(basename ${tar_file})"
   export rpm_dist="$(rpm --eval '%dist')"
-  #export rpm_release="0.0${rpm_dist}"
-  export rpm_release="0.10.Alpha10${rpm_dist}"
+  export rpm_release="0.1${suffix}${rpm_dist}"
   ./build.sh
 popd
 
