@@ -55,13 +55,6 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
         AuthSchemeRegistry schemeRegistry = new AuthSchemeRegistry();
         AuthScope authScope = new AuthScope(getHost(), port, AuthScope.ANY_REALM, AuthScope.ANY_SCHEME);
 
-        // Set request timeout:
-        if (timeout != -1) {
-            HttpParams httpParams = new BasicHttpParams();
-            HttpConnectionParams.setConnectionTimeout(httpParams, timeout);
-            DefaultHttpClient.setDefaultHttpParams(httpParams);
-        }
-
         // Create credentials:
         if (user != null && user.length() > 0) {
             schemeRegistry.register(AuthPolicy.BASIC, new BasicSchemeFactory());
@@ -89,6 +82,11 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
         client.getCredentialsProvider().setCredentials(authScope, credentials);
         client.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.IGNORE_COOKIES);
 
+        // Set request timeout:
+        if (timeout != -1) {
+            HttpConnectionParams.setSoTimeout(client.getParams(), timeout);
+        }
+        // Compress/decompress entities if compressing enabled:
         if (compress) {
             return new HttpClient42(new DecompressingHttpClient(client));
         }
