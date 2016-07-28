@@ -161,6 +161,19 @@ def main():
     with open(settings_path, "w") as settings_file:
         settings_file.write(SETTINGS)
 
+    # Run tests:
+    for test_profile in ['httpclient42', 'httpclient45']:
+        result = run_command([
+            "mvn",
+            "test",
+            "--activate-profiles=%s" % test_profile,
+            "--settings=%s" % settings_path,
+        ])
+        if result != 0:
+            print("Maven tests failed with exit code %d." % result)
+            sys.exit(1)
+
+    # Run maven build:
     result = run_command([
         "mvn",
         "package",
