@@ -43,10 +43,12 @@ public class SsoUtils {
      */
     public static URI buildSsoUrlBasic(String url, String username, String password) {
         try {
+            URI uri = new URI(url);
             URIBuilder uriBuilder = new URIBuilder(
                 String.format(
-                    "%1$s/sso/oauth/%2$s",
-                    url.substring(0, url.lastIndexOf("/")),
+                    "%1$s://%2$s/ovirt-engine/sso/oauth/%3$s",
+                    uri.getScheme(),
+                    uri.getAuthority(),
                     ENTRY_POINT_TOKEN
                 )
             );
@@ -69,10 +71,12 @@ public class SsoUtils {
      */
     public static URI buildSsoUrlKerberos(String url) {
         try {
+            URI uri = new URI(url);
             URIBuilder uriBuilder = new URIBuilder(
                 String.format(
-                    "%1$s/sso/oauth/%2$s",
-                    url.substring(0, url.lastIndexOf("/")),
+                    "%1$s://%2$s/ovirt-engine/sso/oauth/%3$s",
+                    uri.getScheme(),
+                    uri.getAuthority(),
                     ENTRY_POINT_HTTP
                 )
             );
@@ -94,10 +98,12 @@ public class SsoUtils {
      */
     public static URI buildSsoRevokeUrl(String url, String ssoToken) {
         try {
+            URI uri = new URI(url);
             URIBuilder uriBuilder = new URIBuilder(
                 String.format(
-                    "%1$s/services/sso-logout",
-                    url.substring(0, url.lastIndexOf("/"))
+                    "%1$s://%2$s/ovirt-engine/services/sso-logout",
+                    uri.getScheme(),
+                    uri.getAuthority()
                 )
             );
             uriBuilder.addParameter("scope", SCOPE);
