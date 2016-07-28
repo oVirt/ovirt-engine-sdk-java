@@ -110,6 +110,10 @@ public class HttpConnection implements Connection {
         this.ssoRevokeUrl = ssoRevokeUrl;
     }
 
+    public void setSsoToken(String ssoToken) {
+        this.ssoToken = ssoToken;
+    }
+
     @Override
     public SystemService systemService() {
         return new SystemServiceImpl(this, "");
@@ -196,6 +200,13 @@ public class HttpConnection implements Connection {
         catch (Exception e) {
             throw new Error("Failed to send request", e);
         }
+    }
+
+    public String authenticate() {
+        if (ssoToken == null) {
+            ssoToken = getAccessToken();
+        }
+        return ssoToken;
     }
 
     /**

@@ -40,6 +40,7 @@ public abstract class ConnectionBuilder {
     protected String url;
     protected String user;
     protected String password;
+    protected String token;
     protected boolean insecure = false;
     protected boolean kerberos = false;
     protected int timeout = 0;
@@ -111,6 +112,16 @@ public abstract class ConnectionBuilder {
      */
     public ConnectionBuilder password(String password) {
         this.password = password;
+        return this;
+    }
+
+    /**
+     * The token to be used to access API. Optionally, user can
+     * use token, instead of username and password to access API. If user
+     * don't specify `token` parameter, SDK will automatically create one.
+     */
+    public ConnectionBuilder token(String token) {
+        this.token = token;
         return this;
     }
 
@@ -246,6 +257,7 @@ public abstract class ConnectionBuilder {
             connection.setUrl(url);
             connection.setUser(user);
             connection.setPassword(password);
+            connection.setSsoToken(token);
             connection.setKerberos(kerberos);
             connection.setSsoUrl(ssoUrl);
             connection.setSsoTokenName(ssoTokenName);
