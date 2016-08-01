@@ -43,4 +43,20 @@ public interface Connection extends AutoCloseable {
      * @return the object retrieved from the `href`
      */
     <TYPE> TYPE followLink(TYPE object);
+
+    /**
+     * Return token which can be used for authentication instead of credentials.
+     * It will be created, if it not exists, yet. By default the token will be
+     * revoked when the connection is closed, unless the `logout` parameter of
+     * the `close` method is `false`.
+     */
+    String authenticate();
+
+    /**
+     * Releases the resources used by this connection.
+     *
+     * @param logout A boolean, which specify if token should be revoked,
+     * and so user should be logged out.
+     */
+    void close(boolean logout) throws Exception;
 }

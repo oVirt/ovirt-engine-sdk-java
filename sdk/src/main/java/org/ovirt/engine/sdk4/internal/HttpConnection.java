@@ -183,8 +183,15 @@ public class HttpConnection implements Connection {
 
     @Override
     public void close() throws Exception {
+        close(true);
+    }
+
+    @Override
+    public void close(boolean logout) throws Exception {
         // revoke access token:
-        revokeAccessToken();
+        if (logout) {
+            revokeAccessToken();
+        }
 
         // Close HttpClient connection:
         if (client != null) {
@@ -202,6 +209,7 @@ public class HttpConnection implements Connection {
         }
     }
 
+    @Override
     public String authenticate() {
         if (ssoToken == null) {
             ssoToken = getAccessToken();
