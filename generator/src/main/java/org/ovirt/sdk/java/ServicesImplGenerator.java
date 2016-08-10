@@ -426,7 +426,13 @@ public class ServicesImplGenerator extends JavaGenerator {
             Type elementType = listType.getElementType();
             JavaClassName xmlWriterName = javaTypes.getXmlWriterName(elementType);
             buffer.addImport(xmlWriterName);
-            buffer.addLine("%1$s.writeMany(%2$s.iterator(), xmlWriter);", xmlWriterName.getSimpleName(), name);
+            buffer.addLine(
+                "%1$s.writeMany(%2$s.iterator(), \"%3$s\", \"%4$s\", xmlWriter);",
+                xmlWriterName.getSimpleName(),
+                name,
+                schemaNames.getSchemaTagName(elementType.getName()),
+                schemaNames.getSchemaTagName(parameter.getName())
+            );
         }
         buffer.addLine("}");
     }
