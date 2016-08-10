@@ -24,12 +24,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.net.URL;
 import java.net.UnknownHostException;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
-import java.util.Map;
 import java.util.Scanner;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -40,6 +38,7 @@ import javax.net.ssl.TrustManagerFactory;
 import io.undertow.Undertow;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
+import io.undertow.server.handlers.BlockingHandler;
 import io.undertow.server.handlers.PathHandler;
 import io.undertow.util.Headers;
 
@@ -73,9 +72,14 @@ public abstract class ServerTest {
 
     // Helper attributes for unit tests:
     private String lastRequestQuery;
+    private String lastRequestContent;
 
     public String getLastRequestQuery() {
         return lastRequestQuery;
+    }
+
+    public String getLastRequestContent() {
+        return lastRequestContent;
     }
 
     protected String testUser() {
@@ -253,24 +257,35 @@ public abstract class ServerTest {
         setXmlResponse(path, code, body, 0);
     }
 
-    protected void setXmlResponse(String path, final int code, final String body, final int delay) {
-        HttpHandler xmlResponseHandler = new HttpHandler() {
-            @Override
-            public void handleRequest(HttpServerExchange exchange) throws Exception {
-                lastRequestQuery = exchange.getQueryString();
+    private String getRequestContent(HttpServerExchange exchange) {
+        exchange.startBlocking();
+        Scanner scanner = new Scanner(exchange.getInputStream()).useDelimiter("\\A");
+        String requestBody = scanner.hasNext() ? scanner.next() : "";
+        requestBody = requestBody.replaceAll(">\\s+<", "><");
+        return requestBody;
+    }
 
-                if (!exchange.getRequestHeaders().getFirst("Authorization").equals("Bearer " + TOKEN)) {
-                    exchange.setStatusCode(401);
-                    exchange.getResponseSender().send("");
-                }
-                else {
-                    Thread.sleep(delay);
-                    exchange.setStatusCode(code);
-                    exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "application/xml");
-                    exchange.getResponseSender().send(body);
+    protected void setXmlResponse(String path, final int code, final String body, final int delay) {
+        HttpHandler xmlResponseHandler = new BlockingHandler(
+            new HttpHandler() {
+                @Override
+                public void handleRequest(HttpServerExchange exchange) throws Exception {
+                    lastRequestQuery = exchange.getQueryString();
+                    lastRequestContent = getRequestContent(exchange);
+
+                    if (!exchange.getRequestHeaders().getFirst("Authorization").equals("Bearer " + TOKEN)) {
+                        exchange.setStatusCode(401);
+                        exchange.getResponseSender().send("");
+                    }
+                    else {
+                        Thread.sleep(delay);
+                        exchange.setStatusCode(code);
+                        exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "application/xml");
+                        exchange.getResponseSender().send(body);
+                    }
                 }
             }
-        };
+        );
 
         testHandler().addPrefixPath(testPrefix() + "/api/" + path, xmlResponseHandler);
     }
