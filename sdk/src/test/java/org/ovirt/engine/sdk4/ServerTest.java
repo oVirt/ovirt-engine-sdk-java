@@ -24,10 +24,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
+import java.util.Scanner;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -67,6 +70,13 @@ public abstract class ServerTest {
     // The embedded web server:
     private Undertow.Builder builder = Undertow.builder();
     private Undertow server;
+
+    // Helper attributes for unit tests:
+    private String lastRequestQuery;
+
+    public String getLastRequestQuery() {
+        return lastRequestQuery;
+    }
 
     protected String testUser() {
         return USER;
@@ -247,6 +257,8 @@ public abstract class ServerTest {
         HttpHandler xmlResponseHandler = new HttpHandler() {
             @Override
             public void handleRequest(HttpServerExchange exchange) throws Exception {
+                lastRequestQuery = exchange.getQueryString();
+
                 if (!exchange.getRequestHeaders().getFirst("Authorization").equals("Bearer " + TOKEN)) {
                     exchange.setStatusCode(401);
                     exchange.getResponseSender().send("");
