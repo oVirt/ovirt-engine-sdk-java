@@ -29,6 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.inject.Inject;
 
 import org.apache.http.HttpResponse;
@@ -242,6 +243,45 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("}");
     }
 
+    private void generateWriteRequestBody(Parameter parameter) {
+        if (parameter != null) {
+            Type type = parameter.getType();
+            buffer.addLine("try (");
+            buffer.addLine("  ByteArrayOutputStream output = new ByteArrayOutputStream();");
+            buffer.addLine("  XmlWriter xmlWriter = new XmlWriter(output, true)");
+            buffer.addLine(") {");
+
+            if (type instanceof StructType) {
+                JavaClassName writerName = javaTypes.getXmlWriterName(type);
+                buffer.addImport(writerName);
+                buffer.addLine(
+                    "%1$s.writeOne(%2$s, xmlWriter);",
+                    writerName.getSimpleName(),
+                    javaNames.getJavaMemberStyleName(parameter.getName())
+                );
+            }
+            else if (type instanceof ListType) {
+                ListType listType = (ListType) type;
+                Type elementType = listType.getElementType();
+                JavaClassName writerName = javaTypes.getXmlWriterName(elementType);
+
+                buffer.addImport(writerName);
+                buffer.addLine(
+                    "%1$s.writeMany(%2$s.iterator(), xmlWriter);",
+                    writerName.getSimpleName(),
+                    javaNames.getJavaMemberStyleName(parameter.getName())
+                );
+            }
+
+            buffer.addLine(  "xmlWriter.flush();");
+            buffer.addLine(  "request.setEntity(new ByteArrayEntity(output.toByteArray()));");
+            buffer.addLine("}");
+            buffer.addLine("catch (IOException ex) {");
+            buffer.addLine(  "throw new Error(\"Failed to parse response\", ex);");
+            buffer.addLine("}");
+        }
+    }
+
     private void generateAddRequestImplementation(Method method) {
         buffer.addImport(URIBuilder.class);
         buffer.addImport(URISyntaxException.class);
@@ -255,10 +295,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("try {");
         buffer.addLine(  "URIBuilder uriBuilder = new URIBuilder(getConnection().getUrl() + getPath());");
 
-        method.parameters()
-            .filter(Parameter::isIn)
-            .filter(p -> p.getType() instanceof PrimitiveType)
-            .sorted()
+        getSecondaryParameters(method)
             .forEach(this::generateRequestParameterQueryBuilder);
 
         buffer.addLine(  "request = new HttpPost(uriBuilder.build());");
@@ -267,28 +304,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(  "throw new Error(\"Failed to build URL\", ex);");
         buffer.addLine("}");
 
-        Parameter param = method.parameters()
-            .filter(Parameter::isIn)
-            .filter(p -> p.getType() instanceof StructType)
-            .findFirst().orElse(null);
-
-        if (param != null) {
-            JavaClassName writerName = javaTypes.getXmlWriterName(param.getType());
-            buffer.addImport(writerName);
-            buffer.addLine("try (");
-            buffer.addLine("  ByteArrayOutputStream output = new ByteArrayOutputStream();");
-            buffer.addLine("  XmlWriter xmlWriter = new XmlWriter(output, true)");
-            buffer.addLine(") {");
-            buffer.addLine(  "%1$s.writeOne(%2$s, xmlWriter);",
-                writerName.getSimpleName(), javaNames.getJavaMemberStyleName(param.getName()));
-            buffer.addLine(  "xmlWriter.flush();");
-            buffer.addLine(  "request.setEntity(new ByteArrayEntity(output.toByteArray()));");
-            buffer.addLine("}");
-            buffer.addLine("catch (IOException ex) {");
-            buffer.addLine(  "throw new Error(\"Failed to parse response\", ex);");
-            buffer.addLine("}");
-        }
-
+        generateWriteRequestBody(getFirstParameter(method));
         generateCommonRequestImplementation(method, new String[]{"200", "201"});
     }
 
@@ -326,10 +342,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("try {");
         buffer.addLine(  "URIBuilder uriBuilder = new URIBuilder(getConnection().getUrl() + getPath());");
 
-        method.parameters()
-            .filter(Parameter::isIn)
-            .filter(p -> p.getType() instanceof PrimitiveType)
-            .sorted()
+        getSecondaryParameters(method)
             .forEach(this::generateRequestParameterQueryBuilder);
 
         buffer.addLine(  "request = new HttpPut(uriBuilder.build());");
@@ -338,28 +351,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(  "throw new Error(\"Failed to build URL\", ex);");
         buffer.addLine("}");
 
-        Parameter param = method.parameters()
-            .filter(Parameter::isIn)
-            .filter(p -> p.getType() instanceof StructType)
-            .findFirst().orElse(null);
-
-        if (param != null) {
-            JavaClassName writerName = javaTypes.getXmlWriterName(param.getType());
-            buffer.addImport(writerName);
-            buffer.addLine("try (");
-            buffer.addLine("  ByteArrayOutputStream output = new ByteArrayOutputStream();");
-            buffer.addLine("  XmlWriter xmlWriter = new XmlWriter(output, true)");
-            buffer.addLine(") {");
-            buffer.addLine(  "%1$s.writeOne(%2$s, xmlWriter);",
-                writerName.getSimpleName(), javaNames.getJavaMemberStyleName(param.getName()));
-            buffer.addLine(  "xmlWriter.flush();");
-            buffer.addLine(  "request.setEntity(new ByteArrayEntity(output.toByteArray()));");
-            buffer.addLine("}");
-            buffer.addLine("catch (IOException ex) {");
-            buffer.addLine(  "throw new Error(\"Failed to write request\", ex);");
-            buffer.addLine("}");
-        }
-
+        generateWriteRequestBody(getFirstParameter(method));
         generateCommonRequestImplementation(method, new String[]{"200"});
     }
 
@@ -760,5 +752,18 @@ public class ServicesImplGenerator extends JavaGenerator {
 
     private String getPath(Name name) {
         return name.words().map(String::toLowerCase).collect(joining());
+    }
+
+    private Parameter getFirstParameter(Method method) {
+        return method.parameters()
+            .filter(x -> x.isIn() && x.isOut())
+            .findFirst()
+            .orElse(null);
+    }
+
+    private Stream<Parameter> getSecondaryParameters(Method method) {
+        return method.parameters()
+            .filter(x -> x.isIn() && !x.isOut())
+            .sorted();
     }
 }

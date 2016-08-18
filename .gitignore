@@ -4,6 +4,5 @@
 .idea/
 exported-artifacts/
 packaging/*.spec
-sdk/**/*.java
 settings.xml
 target/
