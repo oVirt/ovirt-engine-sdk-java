@@ -243,6 +243,8 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private void generateAddRequestImplementation(Method method) {
+        buffer.addImport(URIBuilder.class);
+        buffer.addImport(URISyntaxException.class);
         buffer.addImport(HttpPost.class);
         buffer.addImport(XmlWriter.class);
         buffer.addImport(IOException.class);
