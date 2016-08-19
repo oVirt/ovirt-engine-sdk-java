@@ -27,9 +27,6 @@ import org.ovirt.engine.sdk4.Error;
  */
 public class SsoUtils {
 
-    private static final String SCOPE = "ovirt-app-api";
-    private static final String GRANT_TYPE_PASSWORD = "password";
-    private static final String GRANT_TYPE_HTTP = "urn:ovirt:params:oauth:grant-type:http";
     private static final String ENTRY_POINT_HTTP = "token-http-auth";
     private static final String ENTRY_POINT_TOKEN = "token";
 
@@ -37,11 +34,9 @@ public class SsoUtils {
      * Construct SSO URL to obtain token from username and password.
      *
      * @param url oVirt engine URL
-     * @param username username to obtain ticket for
-     * @param password password of user
      * @return URI to be used to obtain token
      */
-    public static URI buildSsoUrlBasic(String url, String username, String password) {
+    public static URI buildSsoUrlBasic(String url) {
         try {
             URI uri = new URI(url);
             URIBuilder uriBuilder = new URIBuilder(
@@ -52,10 +47,6 @@ public class SsoUtils {
                     ENTRY_POINT_TOKEN
                 )
             );
-            uriBuilder.addParameter("grant_type", GRANT_TYPE_PASSWORD);
-            uriBuilder.addParameter("scope", SCOPE);
-            uriBuilder.addParameter("username", username);
-            uriBuilder.addParameter("password", password);
             return uriBuilder.build();
         }
         catch (URISyntaxException ex) {
@@ -80,8 +71,6 @@ public class SsoUtils {
                     ENTRY_POINT_HTTP
                 )
             );
-            uriBuilder.addParameter("grant_type", GRANT_TYPE_HTTP);
-            uriBuilder.addParameter("scope", SCOPE);
             return uriBuilder.build();
         }
         catch (URISyntaxException ex) {
@@ -93,10 +82,9 @@ public class SsoUtils {
      * Construct SSO URL to revoke SSO token
      *
      * @param url oVirt engine URL
-     * @param ssoToken SSO token to revoke
-     * @return URI to be used to obtain token
+     * @return URI to be used to revoke token
      */
-    public static URI buildSsoRevokeUrl(String url, String ssoToken) {
+    public static URI buildSsoRevokeUrl(String url) {
         try {
             URI uri = new URI(url);
             URIBuilder uriBuilder = new URIBuilder(
@@ -106,8 +94,6 @@ public class SsoUtils {
                     uri.getAuthority()
                 )
             );
-            uriBuilder.addParameter("scope", SCOPE);
-            uriBuilder.addParameter("token", ssoToken);
             return uriBuilder.build();
         }
         catch (URISyntaxException ex) {

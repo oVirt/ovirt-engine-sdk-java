@@ -27,8 +27,12 @@ import java.util.List;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -253,9 +257,22 @@ public class HttpConnection implements Connection {
         if (ssoToken == null) {
             // Build SSO URL if necessary:
             URI ssoURI = ssoUrl != null ? SsoUtils.buildUrl(ssoUrl) :
-                kerberos ? SsoUtils.buildSsoUrlKerberos(url) : SsoUtils.buildSsoUrlBasic(url, user, password);
+                kerberos ? SsoUtils.buildSsoUrlKerberos(url) : SsoUtils.buildSsoUrlBasic(url);
 
-            JsonNode node = getSsoResponse(ssoURI);
+            // Construct POST body:
+            List<NameValuePair> params = new ArrayList<>(4);
+            params.add(new BasicNameValuePair("scope", "ovirt-app-api"));
+            if (kerberos) {
+                params.add(new BasicNameValuePair("grant_type", "urn:ovirt:params:oauth:grant-type:http"));
+            }
+            else {
+                params.add(new BasicNameValuePair("username", user));
+                params.add(new BasicNameValuePair("password", password));
+                params.add(new BasicNameValuePair("grant_type", "password"));
+            }
+
+            // Send request to obtain SSO token:
+            JsonNode node = getSsoResponse(ssoURI, params);
             if (node.isArray()) {
                 node = node.get(0);
             }
@@ -277,10 +294,16 @@ public class HttpConnection implements Connection {
     private void revokeAccessToken() {
         // Build SSO revoke URL:
         URI ssoRevokeURI = ssoRevokeUrl != null ? SsoUtils.buildUrl(ssoRevokeUrl) :
-            ssoToken != null ? SsoUtils.buildSsoRevokeUrl(url, ssoToken) : null;
+            ssoToken != null ? SsoUtils.buildSsoRevokeUrl(url) : null;
 
+        // Construct POST body:
+        List<NameValuePair> params = new ArrayList<>(2);
+        params.add(new BasicNameValuePair("scope", "ovirt-app-api"));
+        params.add(new BasicNameValuePair("token", ssoToken));
+
+        // Send request to revoke SSO token:
         if (ssoRevokeURI != null) {
-            JsonNode node = getSsoResponse(ssoRevokeURI);
+            JsonNode node = getSsoResponse(ssoRevokeURI, params);
             if (node.isArray()) {
                 node = node.get(0);
             }
@@ -295,13 +318,14 @@ public class HttpConnection implements Connection {
         }
     }
 
-    private JsonNode getSsoResponse(URI uri) {
+    private JsonNode getSsoResponse(URI uri, List<NameValuePair> params) {
         HttpResponse response = null;
         try {
             // Send request and parse token:
-            HttpGet requestToken = new HttpGet(uri);
+            HttpPost requestToken = new HttpPost(uri);
             requestToken.addHeader("User-Agent", "JavaSDK");
             requestToken.addHeader("Accept", "application/json");
+            requestToken.setEntity(new UrlEncodedFormEntity(params));
             response = client.execute(requestToken);
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readTree(response.getEntity().getContent());
