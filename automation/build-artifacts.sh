@@ -47,8 +47,8 @@ tar -czf "${tar_file}" --transform="s|^\.|${tar_prefix}|" -C sdk .
 # Build the RPM:
 date="$(date --utc +%Y%m%d)"
 commit="$(git log -1 --pretty=format:%h)"
-suffix=".${date}git${commit}"
-#suffix=".alpha15"
+#suffix=".${date}git${commit}"
+suffix=".alpha15"
 
 cp "${tar_file}" packaging/.
 pushd packaging
