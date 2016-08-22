@@ -15,8 +15,17 @@ BuildArch: noarch
 BuildRequires: ant
 BuildRequires: mvn(com.sun.xml.txw2:txw2)
 BuildRequires: mvn(org.apache.httpcomponents:httpclient)
+BuildRequires: mvn(org.apache.httpcomponents:httpcore)
+BuildRequires: mvn(org.codehaus.jackson:jackson-core-asl)
 BuildRequires: mvn(org.codehaus.jackson:jackson-mapper-asl)
 BuildRequires: mvn(org.slf4j:slf4j-api)
+
+Requires: mvn(com.sun.xml.txw2:txw2)
+Requires: mvn(org.apache.httpcomponents:httpclient)
+Requires: mvn(org.apache.httpcomponents:httpcore)
+Requires: mvn(org.codehaus.jackson:jackson-core-asl)
+Requires: mvn(org.codehaus.jackson:jackson-mapper-asl)
+Requires: mvn(org.slf4j:slf4j-api)
 
 %description
 This package contains the Java SDK for version 4 of the oVirt Engine

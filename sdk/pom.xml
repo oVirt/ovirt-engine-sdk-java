@@ -50,8 +50,26 @@ limitations under the License.
 
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+      <version>1.9.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
       <artifactId>jackson-mapper-asl</artifactId>
       <version>1.9.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.4.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5</version>
     </dependency>
 
     <dependency>
@@ -72,6 +90,17 @@ limitations under the License.
 
   <build>
     <plugins>
+
+      <!-- Make sure to always use Java 7: -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -189,70 +218,5 @@ limitations under the License.
 
     </plugins>
   </build>
-
-  <profiles>
-
-    <!-- Profile for http client 4.5 -->
-    <profile>
-      <id>httpclient45</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>org.apache.httpcomponents</groupId>
-          <artifactId>httpclient</artifactId>
-          <version>4.5</version>
-        </dependency>
-      </dependencies>
-      <build>
-        <plugins>
-          <!-- Make sure to always use Java 7: -->
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>2.3.2</version>
-            <configuration>
-              <source>1.7</source>
-              <target>1.7</target>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <!-- Profile for http client 4.2 -->
-    <profile>
-      <id>httpclient42</id>
-      <dependencies>
-        <dependency>
-          <groupId>org.apache.httpcomponents</groupId>
-          <artifactId>httpclient</artifactId>
-          <version>4.2.5</version>
-        </dependency>
-      </dependencies>
-      <build>
-        <plugins>
-          <!-- Make sure to always use Java 7: -->
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>2.3.2</version>
-            <configuration>
-              <source>1.7</source>
-              <target>1.7</target>
-              <!-- Exclude classes for http client version 4.5: -->
-              <excludes>
-                <exclude>**/HttpClient45.java</exclude>
-                <exclude>**/ConnectionBuilder45.java</exclude>
-              </excludes>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-  </profiles>
-
 
 </project>
