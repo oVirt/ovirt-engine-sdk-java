@@ -50,6 +50,13 @@
     </jar>
   </target>
 
-  <target name="build" depends="jar"/>
+  <!-- Transform the POM file of the SDK so that it doesn't depend on
+       the generator and it doesn't have test dependencies, as most of
+       them aren't available in CentOS, RHEL or Fedora: -->
+  <target name="transform-pom">
+    <xslt style="transform-pom.xsl" in="pom.xml" out="pom-nodeps.xml"/>
+  </target>
+
+  <target name="build" depends="jar,transform-pom"/>
 
 </project>
