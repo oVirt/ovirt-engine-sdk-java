@@ -7,25 +7,32 @@ Summary: Java SDK for version 4 of the oVirt Engine API
 Group: Development/Languages
 License: ASL 2.0
 URL: http://ovirt.org/wiki/SDK
+
+# This should be a tar file containing the generated source code of the
+# SDK, as we can't build and run the generator with the packages
+# available in the distribution:
 Source0: @TAR_URL@
+
+# This file is used to perform the build using Ant, because the upstream
+# project has build dependencies that make it impossible to build it
+# with the packages available in the distribution:
 Source1: build.xml
+
+# This file is used to transform the upstream 'pom.xml' file into a
+# 'pom-nodeps.xml' file that doesn't have the dependencies of the
+# code generator, as those aren't available in the distribution:
+Source2: transform-pom.xsl
 
 BuildArch: noarch
 
 BuildRequires: ant
+BuildRequires: javapackages-local
 BuildRequires: mvn(com.sun.xml.txw2:txw2)
 BuildRequires: mvn(org.apache.httpcomponents:httpclient)
 BuildRequires: mvn(org.apache.httpcomponents:httpcore)
 BuildRequires: mvn(org.codehaus.jackson:jackson-core-asl)
 BuildRequires: mvn(org.codehaus.jackson:jackson-mapper-asl)
 BuildRequires: mvn(org.slf4j:slf4j-api)
-
-Requires: mvn(com.sun.xml.txw2:txw2)
-Requires: mvn(org.apache.httpcomponents:httpclient)
-Requires: mvn(org.apache.httpcomponents:httpcore)
-Requires: mvn(org.codehaus.jackson:jackson-core-asl)
-Requires: mvn(org.codehaus.jackson:jackson-mapper-asl)
-Requires: mvn(org.slf4j:slf4j-api)
 
 %description
 This package contains the Java SDK for version 4 of the oVirt Engine
@@ -37,8 +44,10 @@ API.
 %setup -q -n ovirt-engine-sdk-java-%{tar_version}
 
 %build
-# Copy Ant build file to the extracted SDK directory:
-cp %{SOURCE1} build.xml
+
+# Copy the files required for the Ant build to the extracted SDK
+# directory:
+cp %{SOURCE1} %{SOURCE2} .
 
 # Populate the lib directory with symlinks to the required dependencies that
 # will be used to create the compiler classpath:
@@ -59,14 +68,16 @@ __EOF__
 java -jar %{_javadir}/ant-launcher.jar -f build.xml
 
 %install
-# Install the files:
-install -d -m 755 %{buildroot}%{_javadir}/%{name}
-install -pm 644 target/%{name}.jar %{buildroot}%{_javadir}/%{name}/sdk.jar
 
-%files
+# Install the POM without dependencies created during the build process
+# and the .jar file:
+%mvn_artifact pom-nodeps.xml target/%{name}.jar
+%mvn_install
+
+%files -f .mfiles
+%dir %{_javadir}/%{name}
 %doc README.adoc
 %license LICENSE.txt
-%{_javadir}/%{name}
 
 %changelog
 * Thu Apr 7 2016 Juan Hernandez <juan.hernandez@redhat.com> - 4.0.0
