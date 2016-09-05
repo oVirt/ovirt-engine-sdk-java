@@ -1,0 +1,14 @@
+ant
+git
+httpcomponents-client
+jackson
+java-1.8.0-openjdk-devel
+javapackages-local
+maven
+maven-local
+python
+python-lxml
+rpm-build
+rpmdevtools
+slf4j
+txw2
