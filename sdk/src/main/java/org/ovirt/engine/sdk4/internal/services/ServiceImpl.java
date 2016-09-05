@@ -28,11 +28,12 @@ public class ServiceImpl {
     }
 
     public void checkFault(HttpResponse response) {
-        Fault fault = null;
         try (XmlReader reader = new XmlReader(response.getEntity().getContent())) {
-            fault = XmlFaultReader.readOne(reader);
-            if (fault != null) {
-                this.throwError(response, fault);
+            if (response.getEntity().getContentLength() > 0) {
+                Fault fault = XmlFaultReader.readOne(reader);
+                if (fault != null) {
+                    this.throwError(response, fault);
+                }
             }
         } catch (IOException ex) {
             throw new Error("Failed to read response", ex);
