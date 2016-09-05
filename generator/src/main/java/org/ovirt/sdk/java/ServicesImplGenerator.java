@@ -357,6 +357,8 @@ public class ServicesImplGenerator extends JavaGenerator {
 
     private void generateActionRequestImplementation(Method method) {
         buffer.addImport(BASE_PACKAGE + ".types.Action");
+        buffer.addImport(BASE_PACKAGE + ".builders.ActionBuilder");
+        buffer.addImport(BASE_PACKAGE + ".internal.xml.XmlActionWriter");
         buffer.addImport(ByteArrayEntity.class);
         buffer.addImport(ByteArrayOutputStream.class);
         buffer.addImport(EntityUtils.class);
@@ -372,13 +374,17 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("  ByteArrayOutputStream output = new ByteArrayOutputStream();");
         buffer.addLine("  XmlWriter xmlWriter = new XmlWriter(output, true)");
         buffer.addLine(") {");
-        buffer.addLine(  "xmlWriter.writeStartElement(\"action\");");
 
+        buffer.addLine("ActionBuilder action = new ActionBuilder();");
         method.parameters()
             .filter(Parameter::isIn)
-            .forEach(this::generateActionParamsWriters);
+            .sorted()
+            .forEach(parameter -> {
+                String arg = javaNames.getJavaMemberStyleName(parameter.getName());
+                buffer.addLine("action.%1$s(%1$s);", arg);
+            });
 
-        buffer.addLine(  "xmlWriter.writeEndElement();");
+        buffer.addLine(  "XmlActionWriter.writeOne(action.build(), xmlWriter);");
         buffer.addLine(  "xmlWriter.flush();");
         buffer.addLine(  "request.setEntity(new ByteArrayEntity(output.toByteArray()));");
         buffer.addLine("}");
@@ -403,37 +409,6 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("else {");
         buffer.addLine(  "checkFault(response);");
         buffer.addLine(  "return null;");
-        buffer.addLine("}");
-    }
-
-    private void generateActionParamsWriters(Parameter parameter) {
-        Type type = parameter.getType();
-        String name = javaNames.getJavaMemberStyleName(parameter.getName());
-
-        buffer.addLine("if (%1$s != null) {", name);
-        if (type instanceof PrimitiveType) {
-            String tag = schemaNames.getSchemaTagName(parameter.getName());
-            String tagType = javaNames.getJavaClassStyleName(type.getName());
-            buffer.addLine("xmlWriter.write%1$s(\"%2$s\", %3$s);", tagType, tag, name);
-        }
-        else if (type instanceof StructType) {
-            JavaClassName xmlWriterName = javaTypes.getXmlWriterName(type);
-            buffer.addImport(xmlWriterName);
-            buffer.addLine("%1$s.writeOne(%2$s, xmlWriter);", xmlWriterName.getSimpleName(), name);
-        }
-        else if (type instanceof ListType) {
-            ListType listType = (ListType) type;
-            Type elementType = listType.getElementType();
-            JavaClassName xmlWriterName = javaTypes.getXmlWriterName(elementType);
-            buffer.addImport(xmlWriterName);
-            buffer.addLine(
-                "%1$s.writeMany(%2$s.iterator(), \"%3$s\", \"%4$s\", xmlWriter);",
-                xmlWriterName.getSimpleName(),
-                name,
-                schemaNames.getSchemaTagName(elementType.getName()),
-                schemaNames.getSchemaTagName(parameter.getName())
-            );
-        }
         buffer.addLine("}");
     }
 
