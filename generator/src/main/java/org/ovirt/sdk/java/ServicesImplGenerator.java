@@ -474,7 +474,12 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("}");
         buffer.addLine("else {");
         buffer.addLine(  "checkFault(response);");
-        buffer.addLine(  "return null;");
+        if (parameters.isEmpty()) {
+            buffer.addLine("return new %1$s();", getResponseImplName(method));
+        }
+        else {
+            buffer.addLine("return new %1$s(null);", getResponseImplName(method));
+        }
         buffer.addLine("}");
     }
 
