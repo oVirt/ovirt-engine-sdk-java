@@ -393,9 +393,8 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("}");
         buffer.addLine();
         buffer.addLine("HttpResponse response = getConnection().send(request);");
-        buffer.addLine("if (response.getStatusLine().getStatusCode() == 200) {");
-        buffer.addLine(  "Action action = checkAction(response);");
-        buffer.addLine(  "EntityUtils.consumeQuietly(response.getEntity());");
+        buffer.addLine("Action action = checkAction(response);");
+        buffer.addLine("EntityUtils.consumeQuietly(response.getEntity());");
         // Generate the methods and appropriate constructors to get the output parameters:
         List<Parameter> parameters = method.parameters().filter(Parameter::isOut).collect(Collectors.toList());
         if (parameters.isEmpty()) {
@@ -405,11 +404,6 @@ public class ServicesImplGenerator extends JavaGenerator {
             buffer.addLine("return new %1$s(action.%2$s());",
                 getResponseImplName(method), javaNames.getJavaMemberStyleName(parameters.get(0).getName()));
         }
-        buffer.addLine("}");
-        buffer.addLine("else {");
-        buffer.addLine(  "checkFault(response);");
-        buffer.addLine(  "return null;");
-        buffer.addLine("}");
     }
 
     private void generateCommonRequestImplementation(Method method, String[] codes) {

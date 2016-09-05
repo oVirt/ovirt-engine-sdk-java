@@ -51,6 +51,7 @@ public class Tool {
     // The names of the command line options:
     private static final String MODEL_OPTION = "model";
     private static final String OUT_OPTION = "out";
+    private static final String RESOURCES_OPTION = "resources";
 
     // Reference to the objects used to calculate Python names:
     @Inject private JavaPackages javaPackages;
@@ -89,6 +90,17 @@ public class Tool {
             .build()
         );
 
+        // Options for the location of the generated sources:
+        options.addOption(Option.builder()
+            .longOpt(RESOURCES_OPTION)
+            .desc("The directory where the resources files will be created.")
+            .type(File.class)
+            .required(false)
+            .hasArg(true)
+            .argName("DIRECTORY")
+            .build()
+        );
+
         // Parse the command line:
         CommandLineParser parser = new DefaultParser();
         CommandLine line = null;
@@ -105,6 +117,7 @@ public class Tool {
         // Extract the locations of files and directories from the command line:
         File modelFile = (File) line.getParsedOptionValue(MODEL_OPTION);
         File outDir = (File) line.getParsedOptionValue(OUT_OPTION);
+        File resourcesDir = (File) line.getParsedOptionValue(RESOURCES_OPTION);
 
         // Analyze the model files:
         Model model = new Model();
@@ -135,6 +148,7 @@ public class Tool {
             FileUtils.forceMkdir(outDir);
             for (JavaGenerator generator : generators) {
                 generator.setOutDir(outDir);
+                generator.setResourcesDir(resourcesDir);
                 generator.generate(model);
             }
         }

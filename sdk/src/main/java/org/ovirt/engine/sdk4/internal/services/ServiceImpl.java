@@ -44,11 +44,16 @@ public class ServiceImpl {
 
     public Action checkAction(HttpResponse response) {
         try (XmlReader reader = new XmlReader(response.getEntity().getContent())) {
-            Action action = XmlActionReader.readOne(reader);
-            if (action != null && action.faultPresent()) {
-                this.throwError(response, action.fault());
+            Object result = reader.read();
+            if (result != null ) {
+                if (result instanceof Fault) {
+                    this.throwError(response, (Fault) result);
+                }
+                else if (result instanceof Action && ((Action) result).faultPresent()) {
+                    this.throwError(response, ((Action) result).fault());
+                }
             }
-            return action;
+            return (Action) result;
         } catch (IOException ex) {
             throw new Error("Failed to read response", ex);
         } finally {

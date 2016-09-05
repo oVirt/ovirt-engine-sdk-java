@@ -6,3 +6,4 @@ exported-artifacts/
 packaging/*.spec
 settings.xml
 target/
+**/methods.properties

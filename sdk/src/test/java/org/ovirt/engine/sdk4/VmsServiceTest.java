@@ -19,6 +19,7 @@ package org.ovirt.engine.sdk4;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.ovirt.engine.sdk4.services.VmService;
 import org.ovirt.engine.sdk4.services.VmsService;
 import org.ovirt.engine.sdk4.types.Vm;
@@ -40,6 +42,22 @@ public class VmsServiceTest extends ServerTest {
         setXmlResponse("vms", 200, "<vms/>");
         setXmlResponse("vms/123", 200, "<vm id=\"123\"><name>testvm</name></vm>");
         setXmlResponse("vms/456", 404, "");
+        setXmlResponse(
+            "vms/123/start",
+            400,
+            "<fault>" +
+              "<reason>myreason</reason>" +
+            "</fault>"
+        );
+        setXmlResponse(
+            "vms/456/start",
+            400,
+            "<action>" +
+              "<fault>" +
+                "<reason>myreason</reason>" +
+              "</fault>" +
+            "</action>"
+        );
         startServer();
         connection = testConnection();
         vmsService = connection.systemService().vmsService();
@@ -123,5 +141,39 @@ public class VmsServiceTest extends ServerTest {
         for (int i = 0; i < numberOfThreads; i++) {
             threads[i].join();
         }
+    }
+
+    /**
+     * When the server returns an action containing a fault
+     * raises an error containing the information of the fault.
+     */
+    @Test
+    public void testFaultReaderWithoutAction() {
+        boolean raised = false;
+        VmService vmService = vmsService.vmService("123");
+        try {
+            vmService.start().send();
+        } catch (Error e) {
+            assertTrue(e.getMessage().contains("myreason"));
+            raised = true;
+        }
+        assertTrue(raised);
+    }
+
+    /**
+     * When the server returns an fault instead of an action it
+     * raises an error containing the information of the fault.
+     */
+    @Test
+    public void testFaultReaderWithAction() {
+        boolean raised = false;
+        VmService vmService = vmsService.vmService("456");
+        try {
+            vmService.start().send();
+        } catch (Error e) {
+            assertTrue(e.getMessage().contains("myreason"));
+            raised = true;
+        }
+        assertTrue(raised);
     }
 }
