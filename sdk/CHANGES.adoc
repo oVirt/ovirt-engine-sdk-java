@@ -2,6 +2,20 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.0.1 / Sep 5 2016
+
+Bug fixes:
+
+* Update jackson dependencies versions to latest version
+
+* Generate RPM Maven dependencies
+
+* Avoid of reading fault response in case response body is empty
+
+* Don't return null from send method in case of failure
+
+* Fix tag names of action parameters
+
 == 4.0.0 / Aug 29 2016
 
 Bug fixes:
