@@ -39,6 +39,7 @@ public class VmsServiceTest extends ServerTest {
     public void setUp() {
         setXmlResponse("vms", 200, "<vms/>");
         setXmlResponse("vms/123", 200, "<vm id=\"123\"><name>testvm</name></vm>");
+        setXmlResponse("vms/456", 404, "");
         startServer();
         connection = testConnection();
         vmsService = connection.systemService().vmsService();
@@ -88,5 +89,15 @@ public class VmsServiceTest extends ServerTest {
         assertEquals("123", vm.id());
         assertEquals("testvm", vm.name());
         assertNull(vm.description());
+    }
+
+    /**
+     * Test we don get null VM object for non-existing VM id.
+     */
+    @Test
+    public void testNullObjectForNonExistingID() {
+        VmService vmService = vmsService.vmService("456");
+        Vm vm = vmService.get().send().vm();
+        assertNull(vm);
     }
 }
