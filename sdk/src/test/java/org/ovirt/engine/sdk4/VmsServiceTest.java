@@ -100,4 +100,28 @@ public class VmsServiceTest extends ServerTest {
         Vm vm = vmService.get().send().vm();
         assertNull(vm);
     }
+
+    /**
+     * Test SDK won't crash if there are multiple threads using to VmsService
+     */
+    @Test
+    public void testConnectionFromMultipleThreads() throws Exception {
+        int numberOfThreads = 3;
+        Thread[] threads = new Thread[numberOfThreads];
+        for (int i = 0; i < numberOfThreads; i++) {
+            threads[i] = new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        vmsService.list().send().vms();
+                    }
+                }
+            );
+            threads[i].start();
+        }
+
+        for (int i = 0; i < numberOfThreads; i++) {
+            threads[i].join();
+        }
+    }
 }
