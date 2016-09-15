@@ -29,10 +29,8 @@ import org.apache.http.impl.auth.BasicSchemeFactory;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.DecompressingHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.BasicClientConnectionManager;
-import org.apache.http.params.BasicHttpParams;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 import org.ovirt.engine.sdk4.ConnectionBuilder;
 import org.ovirt.engine.sdk4.Error;
 import org.ovirt.engine.sdk4.HttpClient;
@@ -76,7 +74,7 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
         }
         // Create http client:
         DefaultHttpClient client = new DefaultHttpClient(
-            new BasicClientConnectionManager(createConnectionSocketFactoryRegistry())
+            new PoolingClientConnectionManager(createConnectionSocketFactoryRegistry())
         );
         client.setAuthSchemes(schemeRegistry);
         client.getCredentialsProvider().setCredentials(authScope, credentials);

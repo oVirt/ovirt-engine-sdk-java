@@ -31,7 +31,7 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.ssl.SSLContexts;
 import org.ovirt.engine.sdk4.ConnectionBuilder;
@@ -84,7 +84,7 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
             .setConnectTimeout(timeout)
             .build();
         HttpClientBuilder clientBuilder = HttpClientBuilder.create()
-            .setConnectionManager(new BasicHttpClientConnectionManager(createConnectionSocketFactoryRegistry()))
+            .setConnectionManager(new PoolingHttpClientConnectionManager(createConnectionSocketFactoryRegistry()))
             .setDefaultRequestConfig(globalConfig)
             .setDefaultCredentialsProvider(credsProvider)
             .setDefaultAuthSchemeRegistry(authSchemeProvider);
