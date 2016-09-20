@@ -2,6 +2,26 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.0.2 / Sep 20 2016
+
+New features:
+
+* Add the `custom_scheduling_policy_properties` attribute to the
+  `Cluster` type.
+
+* Add services and types to support transfer of images.
+
+Bug fixes:
+
+* Remove the `add` and `remove` operations of virtual machine
+  CDROMs.
+
+* Fix the type of the `usages` attribute of the `Network` type, it
+  should be a list of values of the `NetworkUsage` enum, not a list
+  of strings.
+
+* Use pooling http client
+
 == 4.0.1 / Sep 5 2016
 
 Bug fixes:
