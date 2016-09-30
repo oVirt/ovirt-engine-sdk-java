@@ -1,12 +1,1 @@
-ant
-jackson
-java-1.8.0-openjdk-devel
-javapackages-tools
-maven
-maven-local
-python
-python-lxml
-rpm-build
-rpmdevtools
-slf4j
-txw2
+build.packages

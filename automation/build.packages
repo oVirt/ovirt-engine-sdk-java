@@ -4,7 +4,9 @@ httpcomponents-client
 jackson
 java-1.8.0-openjdk-devel
 javapackages-local
+libxslt
 maven
+maven-local
 python
 python-lxml
 rpm-build

@@ -1,8 +1,8 @@
-%global tar_version @TAR_VERSION@
+%global tar_version 4.1.0
 
 Name: java-ovirt-engine-sdk4
-Version: @RPM_VERSION@
-Release: @RPM_RELEASE@
+Version: 4.1.0
+Release: 0.1%{?dist}
 Summary: Java SDK for version 4 of the oVirt Engine API
 Group: Development/Languages
 License: ASL 2.0
@@ -11,7 +11,7 @@ URL: http://ovirt.org/wiki/SDK
 # This should be a tar file containing the generated source code of the
 # SDK, as we can't build and run the generator with the packages
 # available in the distribution:
-Source0: @TAR_URL@
+Source0: ovirt-engine-sdk-java-%{tar_version}.tar.gz
 
 # This file is used to perform the build using Ant, because the upstream
 # project has build dependencies that make it impossible to build it
