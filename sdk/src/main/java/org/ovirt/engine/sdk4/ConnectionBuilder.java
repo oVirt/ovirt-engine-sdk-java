@@ -44,7 +44,7 @@ public abstract class ConnectionBuilder {
     protected boolean insecure = false;
     protected boolean kerberos = false;
     protected int timeout = 0;
-    protected boolean compress = false;
+    protected boolean compress = true;
 
     protected String trustStoreFile;
     protected URL urlobj;
@@ -164,7 +164,7 @@ public abstract class ConnectionBuilder {
      * Set a compress flag
      *
      * @param compress A flag indicating if the SDK should ask
-     * the server to send compressed responses. The default is `false`.
+     * the server to send compressed responses. The default is `true`.
      * Note that this is a hint for the server, and that it may return
      * uncompressed data even when this parameter is set to `true`.
      */
