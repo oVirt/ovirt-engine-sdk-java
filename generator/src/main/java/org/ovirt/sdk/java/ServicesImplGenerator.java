@@ -305,7 +305,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("}");
 
         generateWriteRequestBody(getFirstParameter(method));
-        generateCommonRequestImplementation(method, new String[]{"200", "201"});
+        generateCommonRequestImplementation(method, new String[]{"200", "201", "202"});
     }
 
     public void generateRemoveRequestImplementation(Method method) {

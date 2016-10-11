@@ -27,7 +27,6 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.ovirt.engine.sdk4.services.VmService;
 import org.ovirt.engine.sdk4.services.VmsService;
 import org.ovirt.engine.sdk4.types.Vm;
