@@ -17,6 +17,7 @@ limitations under the License.
 package org.ovirt.engine.sdk4;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -174,5 +175,25 @@ public class VmsServiceTest extends ServerTest {
             raised = true;
         }
         assertTrue(raised);
+    }
+
+    /**
+     * Test when user send all-content query with value true,
+     * also All-content header is sent with value set to `true`.
+     */
+    @Test
+    public void testAllContentTrue() {
+        vmsService.list().allContent(true).send();
+        assertTrue(Boolean.valueOf(getLastRequestHeaders().get("All-Content").getFirst()));
+    }
+
+    /**
+     * Test when user send all-content query with value false,
+     * also All-content header is sent with value set to `false`.
+     */
+    @Test
+    public void testAllContentFalse() {
+        vmsService.list().allContent(false).send();
+        assertFalse(Boolean.valueOf(getLastRequestHeaders().get("All-Content").getFirst()));
     }
 }

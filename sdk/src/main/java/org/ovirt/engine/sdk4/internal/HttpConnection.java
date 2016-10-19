@@ -29,10 +29,11 @@ import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -230,6 +231,12 @@ public class HttpConnection implements Connection {
         List<Header> updated = excludeNullHeaders(request.getAllHeaders());
         if (updated != null && !updated.isEmpty()) {
             request.setHeaders(updated.toArray(new Header[updated.size()]));
+        }
+
+        for (NameValuePair nameValuePair : URLEncodedUtils.parse(request.getURI(), HTTP.UTF_8)) {
+            if (nameValuePair.getName().equalsIgnoreCase("all_content")) {
+                request.addHeader("All-Content", nameValuePair.getValue());
+            }
         }
 
         request.addHeader("Version", "4");
