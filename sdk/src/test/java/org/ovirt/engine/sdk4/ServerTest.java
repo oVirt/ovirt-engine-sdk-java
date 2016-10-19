@@ -40,6 +40,7 @@ import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.server.handlers.BlockingHandler;
 import io.undertow.server.handlers.PathHandler;
+import io.undertow.util.HeaderMap;
 import io.undertow.util.Headers;
 
 /**
@@ -72,7 +73,12 @@ public abstract class ServerTest {
 
     // Helper attributes for unit tests:
     private String lastRequestQuery;
+    private HeaderMap lastRequestHeaders;
     private String lastRequestContent;
+
+    public HeaderMap getLastRequestHeaders() {
+        return lastRequestHeaders;
+    }
 
     public String getLastRequestQuery() {
         return lastRequestQuery;
@@ -271,6 +277,7 @@ public abstract class ServerTest {
                 @Override
                 public void handleRequest(HttpServerExchange exchange) throws Exception {
                     lastRequestQuery = exchange.getQueryString();
+                    lastRequestHeaders = exchange.getRequestHeaders();
                     lastRequestContent = getRequestContent(exchange);
 
                     if (!exchange.getRequestHeaders().getFirst("Authorization").equals("Bearer " + TOKEN)) {
