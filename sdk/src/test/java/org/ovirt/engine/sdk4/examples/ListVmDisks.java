@@ -24,6 +24,7 @@ import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.services.DiskAttachmentsService;
 import org.ovirt.engine.sdk4.services.VmService;
 import org.ovirt.engine.sdk4.services.VmsService;
+import org.ovirt.engine.sdk4.types.Disk;
 import org.ovirt.engine.sdk4.types.DiskAttachment;
 import org.ovirt.engine.sdk4.types.Vm;
 
@@ -50,10 +51,16 @@ public class ListVmDisks {
         // Locate the service that manages the disk attachments of the virtual machine:
         DiskAttachmentsService diskAttachmentsService = vmService.diskAttachmentsService();
 
-        // Retrieve the list of disks attachments, and print them:
+        // Retrieve the list of disks attachments, and print the disk details. Note that each attachment contains a link
+        // to the corresponding disk, but not the actual disk data. In order to retrieve the actual disk data we use the
+        // `follow_link` method.
         List<DiskAttachment> diskAttachments = diskAttachmentsService.list().send().attachments();
         for (DiskAttachment diskAttachment : diskAttachments) {
-            System.out.println(diskAttachment.disk().id());
+            Disk disk = connection.followLink(diskAttachment.disk());
+            System.out.printf("name: %s\n", disk.name());
+            System.out.printf("id: %s\n", disk.id());
+            System.out.printf("status: %s\n", disk.status());
+            System.out.printf("provisioned_size: %s\n", disk.provisionedSize());
         }
 
         // Close the connection to the server:
