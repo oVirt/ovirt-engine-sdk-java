@@ -42,14 +42,15 @@ public class AddFloatingDisk {
         // Get the reference to the disks service:
         DisksService disksService = connection.systemService().disksService();
 
-        // Add the disk:
+        // Add the disk. Note that the size of the disk, the `provisionedSize` attribute, is specified in bytes,
+        // so to create a disk of 10 GiB the value should be 10 * 2^30.
         Disk disk = disksService.add()
             .disk(
                 disk()
                 .name("mydisk")
                 .description("My disk")
                 .format(DiskFormat.COW)
-                .provisionedSize(1 * (int) Math.pow(2, 20))
+                .provisionedSize(10 * (int) Math.pow(2, 30))
                 .storageDomains(
                     storageDomain()
                     .name("mydata")

@@ -51,23 +51,25 @@ public class AddVmDisk {
         // Locate the service that manages the disk attachments of the virtual machine:
         DiskAttachmentsService diskAttachmentsService = vmsService.vmService(vm.id()).diskAttachmentsService();
 
-        // Use the "add" method of the disk attachments service to add the disk:
+        // Use the `add` method of the disk attachments service to add the disk. Note that the size of the disk,
+        // the `provionedSize` attribute, is specified in bytes, so to create a disk of 10 GiB the value should
+        // be 10 * 2^30.
         DiskAttachment diskAttachment = diskAttachmentsService.add()
             .attachment(
                 diskAttachment()
-                    .disk(
-                        disk()
-                        .name("mydisk")
-                        .description("My disk")
-                        .format(DiskFormat.COW)
-                        .provisionedSize(1 * (int) Math.pow(2, 20))
-                        .storageDomains(
-                            storageDomain()
-                            .name("mydata")
-                        )
+                .disk(
+                    disk()
+                    .name("mydisk")
+                    .description("My disk")
+                    .format(DiskFormat.COW)
+                    .provisionedSize(10 * (int) Math.pow(2, 30))
+                    .storageDomains(
+                        storageDomain()
+                        .name("mydata")
                     )
-                    .interface_(DiskInterface.VIRTIO)
-                    .bootable(false)
+                )
+                .interface_(DiskInterface.VIRTIO)
+                .bootable(false)
             )
             .send()
             .attachment();
