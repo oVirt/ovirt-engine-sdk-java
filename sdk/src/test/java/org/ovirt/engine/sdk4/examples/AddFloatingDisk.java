@@ -20,6 +20,8 @@ import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 import static org.ovirt.engine.sdk4.builders.Builders.disk;
 import static org.ovirt.engine.sdk4.builders.Builders.storageDomain;
 
+import java.math.BigInteger;
+
 import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.services.DiskService;
 import org.ovirt.engine.sdk4.services.DisksService;
@@ -50,7 +52,7 @@ public class AddFloatingDisk {
                 .name("mydisk")
                 .description("My disk")
                 .format(DiskFormat.COW)
-                .provisionedSize(10 * (int) Math.pow(2, 30))
+                .provisionedSize(BigInteger.valueOf(10).multiply(BigInteger.valueOf(2).pow(30)))
                 .storageDomains(
                     storageDomain()
                     .name("mydata")
