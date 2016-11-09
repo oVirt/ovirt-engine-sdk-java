@@ -45,6 +45,9 @@ This package contains the API documentation for %{name}.
 %license LICENSE.txt
 
 %changelog
+* Wed Nov 9 2016 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.10.0-1
+- Add 'force' flag for updating a storage server connection #1379771.
+
 * Tue Jul 5 2016 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.8.0-1
 - Document VM pool update options #1318703.
 
