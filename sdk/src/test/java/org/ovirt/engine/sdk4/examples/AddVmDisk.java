@@ -72,6 +72,7 @@ public class AddVmDisk {
                 )
                 .interface_(DiskInterface.VIRTIO)
                 .bootable(false)
+                .active(true)
             )
             .send()
             .attachment();
