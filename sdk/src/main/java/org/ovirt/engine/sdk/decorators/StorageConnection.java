@@ -627,5 +627,110 @@ public class StorageConnection extends
                 StorageConnection.class,
                 headers);
     }
+    /**
+     * Updates StorageConnection object.
+     *
+     * @param storageconnection {@link org.ovirt.engine.sdk.entities.StorageConnection}
+     *    <pre>
+     *    Overload 1:
+     *
+     *      update the specified iSCSI
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.password]
+     *      [storage_connection.port]
+     *      [storage_connection.target]
+     *      [storage_connection.username]
+     *
+     *    Overload 2:
+     *
+     *      update the specified nfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.address]
+     *      [storage_connection.nfs_retrans]
+     *      [storage_connection.nfs_timeo]
+     *      [storage_connection.nfs_version]
+     *      [storage_connection.path]
+     *
+     *    Overload 3:
+     *
+     *      update the specified vfs
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.address]
+     *      [storage_connection.mount_options]
+     *      [storage_connection.path]
+     *      [storage_connection.vfs_type]
+     *
+     *    Overload 4:
+     *
+     *      update the specified local
+     *      storage connection in the
+     *      system
+     *
+     *      [storage_connection.path]
+     *    </pre>
+     *
+     * @param correlationId
+     *    <pre>
+     *    [any string]
+     *    </pre>
+     * @param async
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @param expect
+     *    <pre>
+     *    [202-accepted]
+     *    </pre>
+     * @param force
+     *    <pre>
+     *    [true|false]
+     *    </pre>
+     * @return
+     *     {@link StorageConnection }
+     *
+     * @throws ClientProtocolException
+     *             Signals that HTTP/S protocol error has occurred.
+     * @throws ServerException
+     *             Signals that an oVirt api error has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception of some sort has occurred.
+     */
+    public StorageConnection update(String correlationId, Boolean async, String expect, Boolean force) throws ClientProtocolException,
+            ServerException, IOException {
+        String url = this.getHref();
+
+        HttpHeaderBuilder headersBuilder = new HttpHeaderBuilder();
+        if (correlationId != null) {
+            headersBuilder.add("Correlation-Id", correlationId);
+        }
+        if (expect != null) {
+            headersBuilder.add("Expect", expect);
+        }
+        List<Header> headers = headersBuilder.build();
+
+        UrlBuilder urlBuilder = new UrlBuilder(url);
+        if (async != null) {
+            urlBuilder.add("async", async, UrlParameterType.MATRIX);
+        }
+
+        if (force != null) {
+            urlBuilder.add("force", force, UrlParameterType.MATRIX);
+        }
+
+        url = urlBuilder.build();
+
+        return getProxy().update(
+                url,
+                this,
+                org.ovirt.engine.sdk.entities.StorageConnection.class,
+                StorageConnection.class,
+                headers);
+    }
 
 }
