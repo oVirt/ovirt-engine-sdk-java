@@ -2,6 +2,25 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.0.3 / Nov 15 2016
+
+Update to model 4.0.37 and metamodel 1.0.21
+
+Bug fixes:
+
+* Accept 202 code for 'Add' methods.
+
+* Convert 'all_content' parameter to 'All-Content' header
+
+* Add missing `template` and `storage_domain` parameters to the
+  operation that imports an image.
+
+* Add the `next_run` parameter to the operation that updates a virtual
+  machine.
+
+* Add the `all_content` parameters to the operations that list and
+  retrieve virtual machines.
+
 == 4.0.2 / Sep 20 2016
 
 New features:

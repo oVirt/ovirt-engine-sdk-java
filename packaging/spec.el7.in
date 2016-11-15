@@ -91,5 +91,52 @@ java -jar %{_javadir}/ant-launcher.jar -f build.xml
 %license LICENSE.txt
 
 %changelog
+* Tue Nov 15 2016 Ondra Machacek <omachace@redhat.com> - 4.0.3-1
+- Update to model 4.0.37 and metamodel 1.0.21.
+- Accept 202 code for 'Add' methods.
+- Convert 'all_content' parameter to 'All-Content' header
+- Add missing `template` and `storage_domain` parameters to the
+  operation that imports an image.
+- Add the `next_run` parameter to the operation that updates a virtual
+  machine.
+- Add the `all_content` parameters to the operations that list and
+  retrieve virtual machines.
+
+* Tue Sep 20 2016 Ondra Machacek <omachace@redhat.com> - 4.0.2-1
+- Update to model 4.0.33 and metamodel 4.0.18
+- Add the `custom_scheduling_policy_properties` attribute to the `Cluster` type
+- Add services and types to support transfer of images
+- Remove the `add` and `remove` operations of virtual machine CDROMs
+- Use pooling http client
+- Fix the type of the `usages` attribute of the `Network` type
+
+* Mon Sep 05 2016 Ondra Machacek <omachace@redhat.com> - 4.0.1-1
+- Update jackson dependencies versions to latest version
+- Generate RPM Maven dependencies
+- Avoid of reading fault response in case response body is empty
+- Don't return null from send method in case of failure
+- Fix tag names of action parameters
+
+* Mon Aug 29 2016 Ondra Machacek <omachace@redhat.com> - 4.0.0-1
+- Add missing required packages to spec files
+
+* Mon Aug 22 2016 Ondra Machacek <omachace@redhat.com> - 4.0.0-0.15.alpha15
+- Use POST method
+- Name plular element tag same as the member
+- Send query parameters with Add/Update actions
+- Update to model 4.0.32 and metamodel 1.0.17
+- Add option to not revoke token when closing connection
+- Support both httpclient versions in built jar
+- Add support to pass SSO token to SDK connection
+- Support /v4 suffix in API URL
+
+* Tue Jul 19 2016 Ondra Machacek <omachace@redhat.com> - 4.0.0-0.13.alpha13
+- Update to model 4.0.28.
+- Added `switch_type` attribute to `Host` type.
+- Add `permits` to the cluster level type.
+- Add the `current` parameter to the virtual machine graphics consoles service.
+- Fix the name of the output parameter of the method to list affinity
+  groups, should be `groups` instead of `list`.
+
 * Thu Apr 7 2016 Juan Hernandez <juan.hernandez@redhat.com> - 4.0.0
 - Initial packaging.

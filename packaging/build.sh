@@ -1,9 +1,9 @@
 #!/bin/bash -ex
 
 # Name and version of the package:
-tar_version="${tar_version:=4.0.2}"
+tar_version="${tar_version:=4.0.3}"
 tar_url="${tar_url:=ovirt-engine-sdk-java-${tar_version}.tar.gz}"
-rpm_version="${rpm_version:=4.0.2}"
+rpm_version="${rpm_version:=4.0.3}"
 rpm_dist="${rpm_dist:=$(rpm --eval '%dist')}"
 rpm_release="${rpm_release:=1${rpm_dist}}"
 
