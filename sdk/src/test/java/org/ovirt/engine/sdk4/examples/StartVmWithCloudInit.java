@@ -52,6 +52,15 @@ public class StartVmWithCloudInit {
         // Find the service that manages the virtual machine:
         VmService vmService = vmsService.vmService(vm.id());
 
+        // Create cloud-init script, which you want to execute in deployed virtual machine, please note that
+        // the script must be properly formatted and indented as it's using YAML.
+        String myScript =
+            "write_files:\n" +
+            "  - content: |\n" +
+            "      Hello, world!\n" +
+            "    path: /tmp/greeting.txt\n" +
+            "    permissions: '0644'\n";
+
         // Start the virtual machine enabling cloud-init and providing the password for the `root` user and the network
         // configuration:
         vmService.start()
@@ -78,6 +87,7 @@ public class StartVmWithCloudInit {
                     )
                     .dnsServers("192.168.0.1 192.168.0.2 192.168.0.3")
                     .dnsSearch("example.com")
+                    .customScript(myScript)
                 )
             )
             .send();
