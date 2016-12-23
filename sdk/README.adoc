@@ -6,10 +6,29 @@ This project contains the Java SDK for the oVirt Engine API.
 
 == Important
 
-Note that most of the code of this SDK is automatically generated. If you
-just installed the rpm then you will have everything already, but if you
-downloaded the source then you will need to generate it, follow the
-instructions in the `README.adoc` file of the parent directory.
+If you plan to use the SDK with Maven, then you don't need to build it from source,
+as it is distributed via http://central.maven.org/maven2/org/ovirt/engine/api/sdk[Maven Central]
+in binary form, already built. All you need to do is include the correct dependency
+in your `pom.xml` file:
+
+[source,xml]
+----
+<dependency>
+  <groupId>org.ovirt.engine.api</groupId>
+  <artifactId>sdk</artifactId>
+  <version>4.0.3</version>
+</dependency>
+----
+
+If you want to build the SDK from source, you must take into account
+that most of the code of this SDK is automatically generated. Follow the
+instructions in the `README.adoc` file of the parent directory to
+generate and build it.
+
+NOTE: This example uses version `4.0.3`, but there may be newer versions available.
+Check http://search.maven.org/#search|gav|1|g:%22org.ovirt.engine.api%22%20AND%20a:%22sdk%22[here]
+to see the complete list of available versions, as well as information
+on how to use it with other build tools.
 
 == Usage
 
