@@ -1,29 +1,22 @@
-# ovirt-engine global ignore list
-###########################
-
-# mvn folders
-###########################
-target
-
-# build-time files
-###########################
-.metadata
 *.class
-*.swp
+*.iml
+*.ipr
 *.iws
-
-# generated files
-###########################
+*.prefs
 *.spec
-
-# IDE files
-###########################
-.settings
-.project
+*.swp
+*.tar.gz
+.bash_history
 .classpath
 .factorypath
-.pmd
-*.ipr
-*.iml
 .idea
-*.prefs
+.metadata
+.pmd
+.project
+.settings
+exported-artifacts
+logs
+mocker-*.cfg
+rpmbuild
+sdk/settings.xml
+target

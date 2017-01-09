@@ -1,11 +1,13 @@
+%global tar_version 3.6.10.0
+
 Name: ovirt-engine-sdk-java
-Version: @RPM_VERSION@
-Release: @RPM_RELEASE@
+Version: 3.6.10.0
+Release: 1%{?dist}
 Summary: oVirt Engine Software Development Kit (Java)
 Group: Development/Libraries
 License: ASL 2.0
 URL: http://ovirt.org
-Source: http://resources.ovirt.org/pub/ovirt-3.6/src/ovirt-engine-sdk-java/@TARBALL@
+Source0: ovirt-engine-sdk-java-%{tar_version}.tar.gz
 
 BuildArch: noarch
 
@@ -26,7 +28,7 @@ Group: Documentation
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n ovirt-engine-sdk-java-%{tar_version}
 
 %build
 %mvn_build
@@ -38,11 +40,11 @@ This package contains the API documentation for %{name}.
 %{_javadir}/%{name}
 %doc AUTHORS.md
 %doc README.md
-%doc LICENSE.txt
+%license LICENSE.txt
 
 %files javadoc -f .mfiles-javadoc
 %{_javadocdir}/%{name}
-%doc LICENSE.txt
+%license LICENSE.txt
 
 %changelog
 * Wed Nov 9 2016 Juan Hernandez <juan.hernandez@redhat.com> - 3.6.10.0-1
