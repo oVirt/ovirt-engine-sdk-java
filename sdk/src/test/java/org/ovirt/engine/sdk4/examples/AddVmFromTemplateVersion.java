@@ -18,6 +18,9 @@ package org.ovirt.engine.sdk4.examples;
 
 import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 import static org.ovirt.engine.sdk4.builders.Builders.cluster;
+import static org.ovirt.engine.sdk4.builders.Builders.disk;
+import static org.ovirt.engine.sdk4.builders.Builders.diskAttachment;
+import static org.ovirt.engine.sdk4.builders.Builders.storageDomain;
 import static org.ovirt.engine.sdk4.builders.Builders.template;
 import static org.ovirt.engine.sdk4.builders.Builders.vm;
 
@@ -25,12 +28,20 @@ import java.math.BigInteger;
 import java.util.List;
 
 import org.ovirt.engine.sdk4.Connection;
+import org.ovirt.engine.sdk4.services.StorageDomainsService;
 import org.ovirt.engine.sdk4.services.SystemService;
+import org.ovirt.engine.sdk4.services.TemplateService;
 import org.ovirt.engine.sdk4.services.TemplatesService;
 import org.ovirt.engine.sdk4.services.VmsService;
+import org.ovirt.engine.sdk4.types.Disk;
+import org.ovirt.engine.sdk4.types.DiskAttachment;
+import org.ovirt.engine.sdk4.types.DiskFormat;
+import org.ovirt.engine.sdk4.types.StorageDomain;
 import org.ovirt.engine.sdk4.types.Template;
 
-// This example will connect to the server, and create a virtual machine from a specific version of a template.
+// This example will connect to the server, and create a virtual machine
+// from a specific version of a template and specify storage domain where
+// virtual machine disk should be created.
 public class AddVmFromTemplateVersion {
     public static void main(String[] args) throws Exception {
         // Create the connection to the server:
@@ -43,6 +54,16 @@ public class AddVmFromTemplateVersion {
 
         // Get the reference to the root of the tree of services:
         SystemService systemService = connection.systemService();
+
+        // Get the reference to the service that manages the storage domains:
+        StorageDomainsService storageDomainsService = systemService.storageDomainsService();
+
+        // Find the storage domain we want to be used for virtual machine disks:
+        StorageDomain storageDomain = storageDomainsService.list()
+            .search("name=mydata")
+            .send()
+            .storageDomains()
+            .get(0);
 
         // Get the reference to the service that manages the templates:
         TemplatesService templatesService = systemService.templatesService();
@@ -62,6 +83,14 @@ public class AddVmFromTemplateVersion {
             }
         }
 
+        // Find the template disk we want be created on specific storage domain
+        // for our virtual machine:
+        TemplateService templateService = templatesService.templateService(templateId);
+        List<DiskAttachment> diskAttachments = connection.followLink(
+            templateService.get().send().template().diskAttachments()
+        );
+        Disk disk = diskAttachments.get(0).disk();
+
         // Get the reference to the service that manages the virtual machines:
         VmsService vmsService = connection.systemService().vmsService();
 
@@ -77,6 +106,18 @@ public class AddVmFromTemplateVersion {
                 .template(
                     template()
                     .id(templateId)
+                )
+                .diskAttachments(
+                    diskAttachment()
+                    .disk(
+                        disk()
+                        .id(disk.id())
+                        .format(DiskFormat.COW)
+                        .storageDomains(
+                            storageDomain()
+                            .id(storageDomain.id())
+                        )
+                    )
                 )
             )
             .send();
