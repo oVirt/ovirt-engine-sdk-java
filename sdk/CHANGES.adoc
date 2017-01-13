@@ -1,0 +1,62 @@
+= Changes
+
+This document describes the relevant changes between releases of the SDK.
+
+== 4.0.3 / Nov 15 2016
+
+Update to model 4.0.37 and metamodel 1.0.21
+
+Bug fixes:
+
+* Accept 202 code for 'Add' methods.
+
+* Convert 'all_content' parameter to 'All-Content' header
+
+* Add missing `template` and `storage_domain` parameters to the
+  operation that imports an image.
+
+* Add the `next_run` parameter to the operation that updates a virtual
+  machine.
+
+* Add the `all_content` parameters to the operations that list and
+  retrieve virtual machines.
+
+== 4.0.2 / Sep 20 2016
+
+New features:
+
+* Add the `custom_scheduling_policy_properties` attribute to the
+  `Cluster` type.
+
+* Add services and types to support transfer of images.
+
+Bug fixes:
+
+* Remove the `add` and `remove` operations of virtual machine
+  CDROMs.
+
+* Fix the type of the `usages` attribute of the `Network` type, it
+  should be a list of values of the `NetworkUsage` enum, not a list
+  of strings.
+
+* Use pooling http client
+
+== 4.0.1 / Sep 5 2016
+
+Bug fixes:
+
+* Update jackson dependencies versions to latest version
+
+* Generate RPM Maven dependencies
+
+* Avoid of reading fault response in case response body is empty
+
+* Don't return null from send method in case of failure
+
+* Fix tag names of action parameters
+
+== 4.0.0 / Aug 29 2016
+
+Bug fixes:
+
+* Add missing required packages to spec files
