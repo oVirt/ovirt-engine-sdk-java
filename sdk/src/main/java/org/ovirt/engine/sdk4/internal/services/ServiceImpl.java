@@ -29,11 +29,15 @@ public class ServiceImpl {
 
     public void checkFault(HttpResponse response) {
         try (XmlReader reader = new XmlReader(response.getEntity().getContent())) {
+            Fault fault = null;
             if (response.getEntity().getContentLength() > 0) {
-                Fault fault = XmlFaultReader.readOne(reader);
-                if (fault != null) {
-                    this.throwError(response, fault);
-                }
+                fault = XmlFaultReader.readOne(reader);
+            }
+            if (
+                fault != null ||
+                (response.getStatusLine() != null && response.getStatusLine().getStatusCode() >= 400)
+            ) {
+                this.throwError(response, fault);
             }
         } catch (IOException ex) {
             throw new Error("Failed to read response", ex);
@@ -63,27 +67,29 @@ public class ServiceImpl {
 
     public void throwError(HttpResponse response, Fault fault) {
         StringBuilder buffer = new StringBuilder();
-        if (fault.reasonPresent()) {
-            if (buffer.length() > 0) {
-                buffer.append(" ");
+        if (fault != null) {
+            if (fault.reasonPresent()) {
+                if (buffer.length() > 0) {
+                    buffer.append(" ");
+                }
+                buffer.append(
+                    String.format(
+                        "Fault reason is \"%s\".",
+                        fault.reason()
+                    )
+                );
             }
-            buffer.append(
-                String.format(
-                    "Fault reason is \"%s\".",
-                    fault.reason()
-                )
-            );
-        }
 
-        if (fault.detailPresent()) {
-            if (buffer.length() > 0) {
-                buffer.append(" ");
+            if (fault.detailPresent()) {
+                if (buffer.length() > 0) {
+                    buffer.append(" ");
+                }
+                buffer.append(
+                    String.format(
+                        "Fault detail is \"%s\".",
+                        fault.detail())
+                );
             }
-            buffer.append(
-                String.format(
-                    "Fault detail is \"%s\".",
-                    fault.detail())
-            );
         }
 
         if (response != null && response.getStatusLine() != null) {

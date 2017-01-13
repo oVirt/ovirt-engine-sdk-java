@@ -114,9 +114,15 @@ public class VmsServiceTest extends ServerTest {
      */
     @Test
     public void testNullObjectForNonExistingID() {
+        boolean raised = false;
         VmService vmService = vmsService.vmService("456");
-        Vm vm = vmService.get().send().vm();
-        assertNull(vm);
+        try {
+            vmService.get().send().vm();
+        } catch (Error e) {
+            assertTrue(e.getMessage().contains("404"));
+            raised = true;
+        }
+        assertTrue(raised);
     }
 
     /**
