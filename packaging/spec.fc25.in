@@ -2,7 +2,7 @@
 
 Name: java-ovirt-engine-sdk4
 Version: 4.1.0
-Release: 0.1%{?dist}
+Release: 1%{?dist}
 Summary: Java SDK for version 4 of the oVirt Engine API
 Group: Development/Languages
 License: ASL 2.0
@@ -80,6 +80,11 @@ java -jar %{_javadir}/ant-launcher.jar -f build.xml
 %license LICENSE.txt
 
 %changelog
+* Tue Jan 31 2017 Ondra Machacek <omachace@redhat.com> - 4.1.0-1
+- Update to model 4.1.29.
+- Improved documentation.
+- Add new lease attribute to virtual machines and templates.
+
 * Fri Jan 13 2017 Ondra Machacek <omachace@redhat.com> - 4.1.0-0.1.alpha1
 - Update to model 4.1.27 and metamodel 1.1.10.
 - Fix reading of XML attributes of enum types #1408839.
