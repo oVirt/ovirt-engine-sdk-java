@@ -2,6 +2,14 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.1.0 / Jan 31 2016
+
+Update to model 4.1.29:
+
+* Documentation improvements.
+
+* Add new `lease` attribute to virtual machines and templates.
+
 == 4.1.0.alpha1 / Jan 13 2016
 
 Update to metamodel 1.1.10:
