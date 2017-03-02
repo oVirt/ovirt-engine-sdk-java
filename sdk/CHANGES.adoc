@@ -2,7 +2,33 @@
 
 This document describes the relevant changes between releases of the SDK.
 
-== 4.1.0 / Jan 31 2016
+== 4.1.1 / Mar 02 2016
+
+Update to model 4.1.31:
+
+New features:
+
+  * Add `auto_storage_select` attribute to the `VmPool` type.
+
+  * Add IPv6 details to the `NicConfiguration` type.
+
+  * Add NFS 4.2 support.
+
+  * Add new `lease` attribute to virtual machines and templates.
+
+  * Add `execution_host` link to the `Step` type.
+
+  * Add `initial_size` attribute to the `Disk` type.
+
+  * Add `succeeded` parameter to the operation that end an external job.
+
+Bug fixes:
+
+* Move `vnic_profile_mappings` and `reassign_bad_macs` from
+  the `import` operation to the `register` operation
+  https://bugzilla.redhat.com/1425731[#1425731].
+
+== 4.1.0 / Jan 31 2017
 
 Update to model 4.1.29:
 
@@ -10,7 +36,7 @@ Update to model 4.1.29:
 
 * Add new `lease` attribute to virtual machines and templates.
 
-== 4.1.0.alpha1 / Jan 13 2016
+== 4.1.0.alpha1 / Jan 13 2017
 
 Update to metamodel 1.1.10:
 
