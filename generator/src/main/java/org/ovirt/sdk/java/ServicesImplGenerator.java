@@ -169,11 +169,14 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private void generateRequestImplementation(Method method) {
+        buffer.addImport(BASE_PACKAGE + ".BaseRequest");
+
         // Begin class:
         Name name = method.getName();
         String request = getRequestName(method);
+        String response = getResponseName(method);
         String requestImpl = getRequestImplName(method);
-        buffer.addLine("private class %1$s implements %2$s {", requestImpl, request);
+        buffer.addLine("private class %1$s extends BaseRequest<%2$s, %3$s> implements %2$s {", requestImpl, request, response);
 
         // Generate the methods to set input parameters:
         method.parameters()

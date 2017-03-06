@@ -18,6 +18,8 @@ package org.ovirt.engine.sdk4;
 
 import java.io.File;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.ovirt.engine.sdk4.internal.HttpConnection;
 import org.ovirt.engine.sdk4.internal.NoCaTrustManager;
@@ -45,7 +47,7 @@ public abstract class ConnectionBuilder {
     protected boolean kerberos = false;
     protected int timeout = 0;
     protected boolean compress = true;
-
+    protected Map<String, String> headers = new HashMap<>();
     protected String trustStoreFile;
     protected URL urlobj;
     protected String trustStorePassword;
@@ -233,6 +235,17 @@ public abstract class ConnectionBuilder {
     }
 
     /**
+     * Custom HTTP headers to send with all requests. The keys of the map can be strings of symbols, and they will be
+     * used as the names of the headers. The values of the map will be used as the names of the headers. If the same
+     * header is provided here and in the `headers` parameter of a specific method call, then the `headers` parameter
+     * of the specific method call will have precedence.
+     */
+    public ConnectionBuilder header(String name, String value) {
+        headers.put(name, value);
+        return this;
+    }
+
+    /**
      * Checks the values of the parameters given so far, checks that they are valid, and builds a connection using
      * them.
      *
@@ -262,6 +275,7 @@ public abstract class ConnectionBuilder {
             connection.setSsoUrl(ssoUrl);
             connection.setSsoTokenName(ssoTokenName);
             connection.setSsoRevokeUrl(ssoRevokeUrl);
+            connection.setHeaders(headers);
             return connection;
         }
         catch (Exception e) {
