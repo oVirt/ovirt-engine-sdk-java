@@ -30,4 +30,18 @@ public interface Request <REQUEST extends Request, RESPONSE extends Response> {
      * @return the response received from the server
      */
     RESPONSE send();
+
+    /**
+     * Add additional HTTP header.
+     *
+     * @return the request
+     */
+    REQUEST header(String name, String value);
+
+    /**
+     * Add additional URL query parameter.
+     *
+     * @return the request
+     */
+    REQUEST query(String name, String value);
 }

@@ -24,6 +24,7 @@ import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -61,6 +62,7 @@ public class HttpConnection implements Connection {
     private String ssoTokenName = null;
     private String ssoUrl = null;
     private String ssoRevokeUrl = null;
+    private Map<String, String> headers = null;
 
 
     public HttpClient getClient() {
@@ -117,6 +119,14 @@ public class HttpConnection implements Connection {
 
     public void setSsoToken(String ssoToken) {
         this.ssoToken = ssoToken;
+    }
+
+    public Map<String, String> getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
     }
 
     @Override
@@ -228,6 +238,14 @@ public class HttpConnection implements Connection {
      * @param request
      */
     private void injectHeaders(HttpUriRequest request) {
+        // Set global headers:
+        if (headers != null) {
+            for (Map.Entry<String, String> header : headers.entrySet()) {
+                request.addHeader(header.getKey(), header.getValue());
+            }
+        }
+
+        // Set per-request headers:
         List<Header> updated = excludeNullHeaders(request.getAllHeaders());
         if (updated != null && !updated.isEmpty()) {
             request.setHeaders(updated.toArray(new Header[updated.size()]));

@@ -155,6 +155,15 @@ public abstract class ServerTest {
         return "mypass";
     }
 
+    protected ConnectionBuilder testConnectionBuilder() {
+        return connection()
+            .url(testUrl())
+            .user(testUser())
+            .password(testPassword())
+            .trustStoreFile(testTrustStoreFile())
+            .trustStorePassword(testTrustStorePassword());
+    }
+
     protected Connection testConnection() {
         return connection()
             .url(testUrl())
