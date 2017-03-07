@@ -202,4 +202,27 @@ public class VmsServiceTest extends ServerTest {
         vmsService.list().allContent(false).send();
         assertFalse(Boolean.valueOf(getLastRequestHeaders().get("All-Content").getFirst()));
     }
+
+    /**
+     * Test when user send custom query parameter, it is send.
+     */
+    @Test
+    public void testListWithCustomQueryParam() {
+        vmsService.list()
+            .query("my", "value")
+            .send();
+        assertEquals("my=value", getLastRequestQuery());
+    }
+
+    /**
+     * Test when user send two custom query parameters, both are send.
+     */
+    @Test
+    public void testListWithTwoCustomQueryParam() {
+        vmsService.list()
+            .query("first", "value1")
+            .query("second", "value2")
+            .send();
+        assertEquals("first=value1&second=value2", getLastRequestQuery());
+    }
 }

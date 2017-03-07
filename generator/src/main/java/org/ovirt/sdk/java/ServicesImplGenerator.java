@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -226,6 +227,7 @@ public class ServicesImplGenerator extends JavaGenerator {
             .filter(p -> p.getType() instanceof PrimitiveType)
             .sorted()
             .forEach(this::generateRequestParameterQueryBuilder);
+        generateAdditionalQueryParameters();
 
         buffer.addLine(  "request = new HttpGet(uriBuilder.build());");
         buffer.addLine("}");
@@ -233,6 +235,15 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine(  "throw new Error(\"Failed to build URL\", ex);");
         buffer.addLine("}");
         generateCommonRequestImplementation(method, new String[]{"200"});
+    }
+
+    private void generateAdditionalQueryParameters() {
+        buffer.addImport(Map.class);
+        buffer.addLine("if (query != null) {");
+        buffer.addLine(  "for (Map.Entry<String, String> queryParam : query.entrySet()) {");
+        buffer.addLine(    "uriBuilder.addParameter(queryParam.getKey(), queryParam.getValue());");
+        buffer.addLine(  "}");
+        buffer.addLine("}");
     }
 
     private void generateRequestParameterQueryBuilder(Parameter parameter) {
@@ -300,6 +311,7 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         getSecondaryParameters(method)
             .forEach(this::generateRequestParameterQueryBuilder);
+        generateAdditionalQueryParameters();
 
         buffer.addLine(  "request = new HttpPost(uriBuilder.build());");
         buffer.addLine("}");
@@ -325,6 +337,7 @@ public class ServicesImplGenerator extends JavaGenerator {
             .filter(p -> p.getType() instanceof PrimitiveType)
             .sorted()
             .forEach(this::generateRequestParameterQueryBuilder);
+        generateAdditionalQueryParameters();
 
         buffer.addLine(  "request = new HttpDelete(uriBuilder.build());");
         buffer.addLine("}");
@@ -347,6 +360,7 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         getSecondaryParameters(method)
             .forEach(this::generateRequestParameterQueryBuilder);
+        generateAdditionalQueryParameters();
 
         buffer.addLine(  "request = new HttpPut(uriBuilder.build());");
         buffer.addLine("}");
@@ -394,7 +408,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("catch (IOException ex) {");
         buffer.addLine(  "throw new Error(\"Failed to write request\", ex);");
         buffer.addLine("}");
-        buffer.addLine();
+        generateAdditionalHeadersParameters();
         buffer.addLine("HttpResponse response = getConnection().send(request);");
         buffer.addLine("Action action = checkAction(response);");
         buffer.addLine("EntityUtils.consumeQuietly(response.getEntity());");
@@ -409,13 +423,24 @@ public class ServicesImplGenerator extends JavaGenerator {
         }
     }
 
+    private void generateAdditionalHeadersParameters() {
+        buffer.addImport(Map.class);
+        buffer.addLine();
+        buffer.addLine("if (headers != null) {");
+        buffer.addLine(  "for (Map.Entry<String, String> header : headers.entrySet()) {");
+        buffer.addLine(    "request.setHeader(header.getKey(), header.getValue());");
+        buffer.addLine(  "}");
+        buffer.addLine("}");
+        buffer.addLine();
+    }
+
     private void generateCommonRequestImplementation(Method method, String[] codes) {
         buffer.addImport(IOException.class);
         buffer.addImport(EntityUtils.class);
         buffer.addImport(HttpResponse.class);
         buffer.addImport(XmlReader.class);
 
-        buffer.addLine();
+        generateAdditionalHeadersParameters();
         buffer.addLine("HttpResponse response = getConnection().send(request);");
         buffer.addLine("if (");
         buffer.addLine("  response.getStatusLine().getStatusCode() == %1$s", codes[0]);

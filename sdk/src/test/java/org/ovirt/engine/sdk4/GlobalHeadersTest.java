@@ -61,12 +61,34 @@ public class GlobalHeadersTest extends ServerTest {
     }
 
     /**
+     * Test overriding the custom global header with custom header listing the clusters.
+     */
+    @Test
+    public void testListWithCustomGlobalHeaderOverridden() {
+        clustersService.list()
+            .header("my", "local")
+            .send();
+        assertEquals("local", getLastRequestHeaders().get("my").getFirst());
+    }
+
+    /**
      * Test sending the custom global header with getting the clusters.
      */
     @Test
     public void testLGetWithCustomGlobalHeader() {
         clusterService.get().send();
         assertEquals("value", getLastRequestHeaders().get("my").getFirst());
+    }
+
+    /**
+     * Test overriding the custom global header with custom header getting the cluster.
+     */
+    @Test
+    public void testGetWithCustomGlobalHeaderOverridden() {
+        clusterService.get()
+            .header("my", "local")
+            .send();
+        assertEquals("local", getLastRequestHeaders().get("my").getFirst());
     }
 
     /**
@@ -79,11 +101,34 @@ public class GlobalHeadersTest extends ServerTest {
     }
 
     /**
+     * Test overriding the custom global header with custom header adding the cluster.
+     */
+    @Test
+    public void testAddWithCustomGlobalHeaderOverridden() {
+        clustersService.add()
+            .cluster(cluster())
+            .header("my", "local")
+            .send();
+        assertEquals("local", getLastRequestHeaders().get("my").getFirst());
+    }
+
+    /**
      * Test sending the custom global header when removing a cluster.
      */
     @Test
     public void testRemoveWithCustomGlobalHeader() {
         clusterService.remove().send();
         assertEquals("value", getLastRequestHeaders().get("my").getFirst());
+    }
+
+    /**
+     * Test overriding the custom global header with custom header removing the cluster.
+     */
+    @Test
+    public void testRemoveWithCustomGlobalHeaderOverridden() {
+        clusterService.remove()
+            .header("my", "local")
+            .send();
+        assertEquals("local", getLastRequestHeaders().get("my").getFirst());
     }
 }
