@@ -36,10 +36,9 @@ import org.ovirt.api.metamodel.concepts.Model;
 import org.ovirt.api.metamodel.concepts.NameParser;
 import org.ovirt.api.metamodel.concepts.StructType;
 import org.ovirt.api.metamodel.tool.BuiltinTypes;
-import org.ovirt.api.metamodel.tool.EnumGenerator;
+import org.ovirt.api.metamodel.tool.TypesGenerator;
 import org.ovirt.api.metamodel.tool.JavaGenerator;
 import org.ovirt.api.metamodel.tool.JavaPackages;
-import org.ovirt.api.metamodel.tool.StructsGenerator;
 import org.ovirt.api.metamodel.tool.XmlSupportGenerator;
 
 
@@ -57,11 +56,10 @@ public class Tool {
     @Inject private JavaPackages javaPackages;
 
     // References to the generators:
-    @Inject private StructsGenerator structsGenerator;
+    @Inject private TypesGenerator typesGenerator;
     @Inject private XmlSupportGenerator xmlSupportGenerator;
     @Inject private ServicesGenerator servicesGenerator;
     @Inject private ServicesImplGenerator servicesImplGenerator;
-    @Inject private EnumGenerator enumGenerator;
     @Inject private BuiltinTypes builtinTypes;
 
     public void run(String[] args) throws Exception {
@@ -140,9 +138,8 @@ public class Tool {
         // Run the generators:
         if (outDir != null) {
             List<JavaGenerator> generators = new ArrayList<>();
-            generators.add(structsGenerator);
+            generators.add(typesGenerator);
             generators.add(xmlSupportGenerator);
-            generators.add(enumGenerator);
             generators.add(servicesGenerator);
             generators.add(servicesImplGenerator);
             FileUtils.forceMkdir(outDir);

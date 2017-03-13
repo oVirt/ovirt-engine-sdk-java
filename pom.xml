@@ -26,7 +26,7 @@ limitations under the License.
   <groupId>org.ovirt.engine.api</groupId>
   <artifactId>java-sdk-parent</artifactId>
   <packaging>pom</packaging>
-  <version>4.1.0-SNAPSHOT</version>
+  <version>4.2.0-SNAPSHOT</version>
 
   <name>oVirt Java SDK Parent</name>
   <description>This package contains the Java SDK for version 4 of the oVirt Engine API.</description>
@@ -72,8 +72,8 @@ limitations under the License.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- Version of the metamodel and model used to generate the SDK: -->
-    <metamodel.version>1.2.0</metamodel.version>
-    <model.version>4.2.6</model.version>
+    <metamodel.version>1.2.3</metamodel.version>
+    <model.version>4.2.7</model.version>
 
   </properties>
 
