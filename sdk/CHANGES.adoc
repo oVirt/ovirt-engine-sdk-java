@@ -2,6 +2,31 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.1.2 / Mar 15 2017
+
+Update to model 4.1.33:
+
+  * Replace the `Seal` operation of the service that manages a template
+    with a new `seal` parameter in the operation that adds a template
+    https://bugzilla.redhat.com/1335642[#1335642].
+
+  * Add `unregistered` parameter for the operations to list disks,
+    virtual machines, and templates in storage domains
+    https://bugzilla.redhat.com/1428159[#1428159].
+
+Bug fixes:
+
+  * Fix the direction of the `statistic` parameter of the `Statistic`
+    service, must be out only.
+
+  * Revert the addition of the operation to update disks.
+
+  * Fix list variable declaration in XML support code generator.
+
+  * Read also unsupported enums in lists.
+
+  * Merge link with element if it has same name.
+
 == 4.1.1 / Mar 02 2016
 
 Update to model 4.1.31:
