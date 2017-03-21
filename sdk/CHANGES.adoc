@@ -2,6 +2,14 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.1.3 / Mar 21 2017
+
+Update to metamodel 1.1.14.
+
+Bug fixes:
+
+  * Read links correctly https://bugzilla.redhat.com/1434334[#1434334].
+
 == 4.1.2 / Mar 15 2017
 
 Update to model 4.1.33:
