@@ -41,6 +41,7 @@ root of the tree of services of the API:
 ----
 import org.ovirt.engine.sdk4.Connection;
 import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
+import org.ovirt.engine.sdk4.services.SystemService;
 
 // Create a connection to the server:
 Connection connection = connection()
@@ -72,6 +73,8 @@ manages the virtual machines:
 
 [source,java]
 ----
+import org.ovirt.engine.sdk4.services.VmsService;
+
 // Get the reference to the "vms" service:
 VmsService vmsService = systemService.vmsService()
 ----
@@ -82,12 +85,15 @@ that returns an array of virtual machines, which are instances of the
 
 [source,java]
 ----
-# Retrieve the virtual machines:
+import java.util.List;
+import org.ovirt.engine.sdk4.types.Vm;
+
+// Retrieve the virtual machines:
 List<Vm> vms = vmsService.list().send().vms();
 
-# Print the names and identifiers of the virtual machines:
+// Print the names and identifiers of the virtual machines:
 for (Vm vm : vms) {
-    System.out.printf("%s: %s", vm.id(), vm.name());
+    System.out.printf("%s: %s%n", vm.id(), vm.name());
 }
 ----
 
