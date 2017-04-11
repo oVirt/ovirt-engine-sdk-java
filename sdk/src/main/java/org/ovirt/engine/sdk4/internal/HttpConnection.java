@@ -25,6 +25,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -52,6 +54,15 @@ import org.ovirt.engine.sdk4.types.Identified;
  * compatibility isn't guaranteed, use the {@link org.ovirt.engine.sdk4.ConnectionBuilder} class instead.
  */
 public class HttpConnection implements Connection {
+
+    // Regular expression used to check XML content type.
+    private static final Pattern XML_CONTENT_TYPE_RE = Pattern.compile("^\\s*(application|text)/xml\\s*(;.*)?$");
+
+    // Regular expression used to check JSON content type.
+    private static final Pattern JSON_CONTENT_TYPE_RE = Pattern.compile("^\\s*(application|text)/json\\s*(;.*)?$");
+
+    // The typical URL path, used just to generate informative error messages.
+    private static final String TYPICAL_PATH = "/ovirt-engine/api";
 
     private HttpClient client;
     private String url;
@@ -217,10 +228,44 @@ public class HttpConnection implements Connection {
     public HttpResponse send(HttpUriRequest request) {
         try {
             injectHeaders(request);
-            return client.execute(request);
+            HttpResponse response = client.execute(request);
+            checkContentType(XML_CONTENT_TYPE_RE, "XML", response.getFirstHeader("content-type").getValue());
+            return response;
         }
         catch (Exception e) {
             throw new Error("Failed to send request", e);
+        }
+    }
+
+    /**
+     * Checks the given content type and raises an exception if it isn't the
+     * expected one.
+     *
+     * @param pattern The regular expression used to check the expected content type.
+     * @param expectedName The name of the expected content type.
+     * @param actual The actual value of the `Content-Type` header.
+     * @throws MalformedURLException When URL isn't correct.
+     */
+    private void checkContentType(Pattern pattern, String expectedName, String actual) throws MalformedURLException {
+        if (!pattern.matcher(actual).matches()) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(
+                String.format(
+                    "The response content type '%1$s' isn't the expected %2$s",
+                    actual,
+                    expectedName
+                )
+            );
+            URL url = new URL(getUrl());
+            if (!url.getPath().equals(TYPICAL_PATH)) {
+                sb.append(
+                    String.format(". Is the path '%1$s' included in the 'url' parameter correct?", url.getPath())
+                );
+                sb.append(
+                    String.format(" The typical one is '%1$s'", TYPICAL_PATH)
+                );
+            }
+            throw new Error(sb.toString());
         }
     }
 
@@ -352,6 +397,7 @@ public class HttpConnection implements Connection {
             requestToken.addHeader("Accept", "application/json");
             requestToken.setEntity(new UrlEncodedFormEntity(params));
             response = client.execute(requestToken);
+            checkContentType(JSON_CONTENT_TYPE_RE, "JSON", response.getFirstHeader("content-type").getValue());
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readTree(response.getEntity().getContent());
         }
