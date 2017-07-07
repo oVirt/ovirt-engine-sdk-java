@@ -2,6 +2,49 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.1.4 / Jul 7 2017
+
+Update to model 4.1.37.
+
+New features:
+
+* Fix the documentation of the method that lists events
+  https://bugzilla.redhat.com/1447622[#1447622].
+
+* Fix the direction of the main parameter of the method that adds a
+  CDROM to a virtual machine. It should be input and output.
+
+* Improve the documentation explaining that in general the order of the
+  results of _list_ methods isn't guaranteed.
+
+* Add the `index` attribute to the `Event` type
+  https://bugzilla.redhat.com/1448511[#1448511].
+
+* Add `readOnly` attribute to the `DiskAttachment` type.
+
+* Replace generic assigned networks services with services specific to
+  the type of object that they are assigned to, in particular data
+  centers and clusters.
+
+* Add `driver` attribute to `HostDevice` type.
+
+* Add common concepts document.
+
+* Add appendix containing changes from version 3 to version 4 of
+  the API.
+
+* Improve error message for wrong content type.
+
+Bug fixes:
+
+* Add the `all_content` parameter to `Host.Get` and `Hosts.List`
+  https://bugzilla.redhat.com/1444081[#1444081].
+
+* Fix the type of the `Host.nics` link. It should be of type
+  `HostNic[]`, not `Nic[]`.
+
+* Avoid duplicate dependencies.
+
 == 4.1.3 / Mar 21 2017
 
 Update to metamodel 1.1.14.
