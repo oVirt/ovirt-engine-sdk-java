@@ -20,7 +20,7 @@ import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 import static org.ovirt.engine.sdk4.builders.Builders.network;
 
 import org.ovirt.engine.sdk4.Connection;
-import org.ovirt.engine.sdk4.services.AssignedNetworksService;
+import org.ovirt.engine.sdk4.services.ClusterNetworksService;
 import org.ovirt.engine.sdk4.services.ClusterService;
 import org.ovirt.engine.sdk4.services.ClustersService;
 import org.ovirt.engine.sdk4.services.NetworksService;
@@ -50,7 +50,7 @@ public class AssignNetworkToCluster {
 
         // Locate the service that manages the networks of the cluster:
         ClusterService clusterService = clustersService.clusterService(cluster.id());
-        AssignedNetworksService assignedNetworksService = clusterService.networksService();
+        ClusterNetworksService assignedNetworksService = clusterService.networksService();
 
         // Use the "add" method to assign network to cluster:
         assignedNetworksService.add()
