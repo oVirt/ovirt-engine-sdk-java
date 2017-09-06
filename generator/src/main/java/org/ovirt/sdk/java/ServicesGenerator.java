@@ -105,6 +105,11 @@ public class ServicesGenerator extends JavaGenerator {
     }
 
     private void generateMethodInterface(Method method) {
+        // FIXME: Ignore methods with different signatures
+        if (method.getBase() != null) {
+            return;
+        }
+
         Name name = method.getName();
 
         // Generate the request and response interfaces:

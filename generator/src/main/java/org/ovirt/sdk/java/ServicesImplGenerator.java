@@ -153,6 +153,11 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private void generateMethodImplementation(Method method) {
+        // FIXME: Ignore methods with different signatures
+        if (method.getBase() != null) {
+            return;
+        }
+
         Name name = method.getName();
 
         // Generate the request and response implementation of interfaces:
