@@ -1,0 +1,246 @@
+= Changes
+
+This document describes the relevant changes between releases of the SDK.
+
+== 4.1.4 / Jul 7 2017
+
+Update to model 4.1.37.
+
+New features:
+
+* Fix the documentation of the method that lists events
+  https://bugzilla.redhat.com/1447622[#1447622].
+
+* Fix the direction of the main parameter of the method that adds a
+  CDROM to a virtual machine. It should be input and output.
+
+* Improve the documentation explaining that in general the order of the
+  results of _list_ methods isn't guaranteed.
+
+* Add the `index` attribute to the `Event` type
+  https://bugzilla.redhat.com/1448511[#1448511].
+
+* Add `readOnly` attribute to the `DiskAttachment` type.
+
+* Replace generic assigned networks services with services specific to
+  the type of object that they are assigned to, in particular data
+  centers and clusters.
+
+* Add `driver` attribute to `HostDevice` type.
+
+* Add common concepts document.
+
+* Add appendix containing changes from version 3 to version 4 of
+  the API.
+
+* Improve error message for wrong content type.
+
+Bug fixes:
+
+* Add the `all_content` parameter to `Host.Get` and `Hosts.List`
+  https://bugzilla.redhat.com/1444081[#1444081].
+
+* Fix the type of the `Host.nics` link. It should be of type
+  `HostNic[]`, not `Nic[]`.
+
+* Avoid duplicate dependencies.
+
+== 4.1.3 / Mar 21 2017
+
+Update to metamodel 1.1.14.
+
+Bug fixes:
+
+  * Read links correctly https://bugzilla.redhat.com/1434334[#1434334].
+
+== 4.1.2 / Mar 15 2017
+
+Update to model 4.1.33:
+
+  * Replace the `Seal` operation of the service that manages a template
+    with a new `seal` parameter in the operation that adds a template
+    https://bugzilla.redhat.com/1335642[#1335642].
+
+  * Add `unregistered` parameter for the operations to list disks,
+    virtual machines, and templates in storage domains
+    https://bugzilla.redhat.com/1428159[#1428159].
+
+Bug fixes:
+
+  * Fix the direction of the `statistic` parameter of the `Statistic`
+    service, must be out only.
+
+  * Revert the addition of the operation to update disks.
+
+  * Fix list variable declaration in XML support code generator.
+
+  * Read also unsupported enums in lists.
+
+  * Merge link with element if it has same name.
+
+== 4.1.1 / Mar 02 2016
+
+Update to model 4.1.31:
+
+New features:
+
+  * Add `auto_storage_select` attribute to the `VmPool` type.
+
+  * Add IPv6 details to the `NicConfiguration` type.
+
+  * Add NFS 4.2 support.
+
+  * Add new `lease` attribute to virtual machines and templates.
+
+  * Add `execution_host` link to the `Step` type.
+
+  * Add `initial_size` attribute to the `Disk` type.
+
+  * Add `succeeded` parameter to the operation that end an external job.
+
+Bug fixes:
+
+* Move `vnic_profile_mappings` and `reassign_bad_macs` from
+  the `import` operation to the `register` operation
+  https://bugzilla.redhat.com/1425731[#1425731].
+
+== 4.1.0 / Jan 31 2017
+
+Update to model 4.1.29:
+
+* Documentation improvements.
+
+* Add new `lease` attribute to virtual machines and templates.
+
+== 4.1.0.alpha1 / Jan 13 2017
+
+Update to metamodel 1.1.10:
+
+* Fix reading of XML attributes of enum types.
+  https://bugzilla.redhat.com/1408839[#1408839]
+
+Update to model 4.1.27:
+
+* Add `execution_host` link to the `Disk` type.
+
+* Add `succeeded` parameter to the operation that end an external job.
+
+* Add `initial_size` attribute to the `Disk` type.
+
+* Added new `v4` value to the `StorageFormat` enum.
+
+* Add `seal` operation to the service that manages templates.
+
+* Add `progress` attribute to the `Disk` and `Step` types.
+
+* Add `allow_partial_import` parameter to the operations that import
+  virtual machines and templates.
+
+* Add `ticket` operation to the service that manages the graphics
+  console of a virtual machine.
+
+* Added `urandom` to the `RngSource` enumerated type.
+
+* Added `migratable` flag to the `VnicProfile` type.
+
+* Add `gluster_tuned_profile` to the `Cluster` type.
+
+* Add `skip_if_gluster_bricks_up` and `skip_if_gluster_quorum_not_met`
+  attributes to the `FencingPolicy` type.
+
+* Add the `ImageTransferDirection` enumerated type and the `direction`
+  attribute to the `ImageTransfer` type.
+
+* Replace the generic `GraphicsConsole` and `GraphicsConsoles` with
+  specific services for virtual machines, templates and instance
+  types.
+
+* Deprecate the `legacy` USB type.
+
+* Add `remoteviewerconnectionfile` action to the `GraphicsConsole`
+  service.
+
+* Add `max` attribute to the `MemoryPolicy` type.
+
+* Make `Ip.version` optional.
+
+* Add the `active_slave` link to the `Bonding` type.
+
+* Add DNS configuration support to `Network` and `NetworkAttachment`.
+
+* Add the `uses_scsi_reservation` attribute to the `DiskAttachment`
+  type.
+
+* Add the `sparsify` method to `DiskService`.
+
+* Add the `discard_max_size` and `discard_zeroes_data` to the `LogicalUnit`
+  type.
+
+* Add `logical_name` attribute to the disk attachment type.
+
+* Add the `upgradecheck` action to the host service.
+
+* Add the `original_template` link to the virtual machine type.
+
+New features:
+
+* Enable compression by default https://bugzilla.redhat.com/1370485[#1370485].
+
+== 4.0.3 / Nov 15 2016
+
+Update to model 4.0.37 and metamodel 1.0.21
+
+Bug fixes:
+
+* Accept 202 code for 'Add' methods.
+
+* Convert 'all_content' parameter to 'All-Content' header
+
+* Add missing `template` and `storage_domain` parameters to the
+  operation that imports an image.
+
+* Add the `next_run` parameter to the operation that updates a virtual
+  machine.
+
+* Add the `all_content` parameters to the operations that list and
+  retrieve virtual machines.
+
+== 4.0.2 / Sep 20 2016
+
+New features:
+
+* Add the `custom_scheduling_policy_properties` attribute to the
+  `Cluster` type.
+
+* Add services and types to support transfer of images.
+
+Bug fixes:
+
+* Remove the `add` and `remove` operations of virtual machine
+  CDROMs.
+
+* Fix the type of the `usages` attribute of the `Network` type, it
+  should be a list of values of the `NetworkUsage` enum, not a list
+  of strings.
+
+* Use pooling http client
+
+== 4.0.1 / Sep 5 2016
+
+Bug fixes:
+
+* Update jackson dependencies versions to latest version
+
+* Generate RPM Maven dependencies
+
+* Avoid of reading fault response in case response body is empty
+
+* Don't return null from send method in case of failure
+
+* Fix tag names of action parameters
+
+== 4.0.0 / Aug 29 2016
+
+Bug fixes:
+
+* Add missing required packages to spec files
