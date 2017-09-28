@@ -117,8 +117,18 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         buffer.addImport(BASE_PACKAGE + ".Error");
         buffer.addImport(serviceName);
-        buffer.addLine("public class %1$s extends ServiceImpl implements %2$s {",
-            serviceImplName.getSimpleName(), serviceName.getSimpleName());
+
+        Service base = service.getBase();
+        String baseName = "Service";
+        if (base != null) {
+            baseName = getServiceName(base).getSimpleName();
+        }
+        buffer.addLine(
+            "public class %1$s extends %2$sImpl implements %3$s {",
+            serviceImplName.getSimpleName(),
+            baseName,
+            serviceName.getSimpleName()
+        );
         buffer.addLine();
 
         // Generate constructors
