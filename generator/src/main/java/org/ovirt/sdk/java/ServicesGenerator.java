@@ -86,7 +86,12 @@ public class ServicesGenerator extends JavaGenerator {
 
         // Begin class:
         JavaClassName serviceName = getServiceName(service);
-        javaBuffer.addLine("public interface %1$s extends Service {", serviceName.getSimpleName());
+        Service base = service.getBase();
+        String baseName = "Service";
+        if (base != null) {
+            baseName = getServiceName(base).getSimpleName();
+        }
+        javaBuffer.addLine("public interface %1$s extends %2$s {", serviceName.getSimpleName(), baseName);
 
         // Generate the code for the methods:
         service.declaredMethods()
