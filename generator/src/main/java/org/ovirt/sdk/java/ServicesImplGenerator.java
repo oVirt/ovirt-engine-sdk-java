@@ -60,6 +60,7 @@ import org.ovirt.api.metamodel.tool.JavaGenerator;
 import org.ovirt.api.metamodel.tool.JavaNames;
 import org.ovirt.api.metamodel.tool.JavaTypeReference;
 import org.ovirt.api.metamodel.tool.JavaTypes;
+import org.ovirt.api.metamodel.tool.Names;
 import org.ovirt.api.metamodel.tool.SchemaNames;
 
 /**
@@ -79,6 +80,7 @@ public class ServicesImplGenerator extends JavaGenerator {
     private String IMPL_SUFFIX = "Impl";
 
     // Reference to the objects used to generate the code:
+    @Inject private Names names;
     @Inject private JavaNames javaNames;
     @Inject private JavaTypes javaTypes;
 
@@ -163,12 +165,7 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private void generateMethodImplementation(Method method) {
-        // FIXME: Ignore methods with different signatures
-        if (method.getBase() != null) {
-            return;
-        }
-
-        Name name = method.getName();
+        Name name = getFullName(method);
 
         // Generate the request and response implementation of interfaces:
         generateRequestImplementation(method);
@@ -188,7 +185,6 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addImport(BASE_PACKAGE + ".BaseRequest");
 
         // Begin class:
-        Name name = method.getName();
         String request = getRequestName(method);
         String response = getResponseName(method);
         String requestImpl = getRequestImplName(method);
@@ -202,7 +198,10 @@ public class ServicesImplGenerator extends JavaGenerator {
 
         // Generate send method:
         buffer.addLine("public %1$s send() {", getResponseName(method));
+
         // Generate method code based on response type:
+        Method base = getDeepestBase(method);
+        Name name = base.getName();
         if (ADD.equals(name)) {
             generateAddRequestImplementation(method);
         }
@@ -400,8 +399,10 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addImport(XmlReader.class);
         buffer.addImport(XmlWriter.class);
 
-        buffer.addLine("HttpPost request = new HttpPost(getConnection().getUrl() + getPath() + \"/%1$s\");",
-            getPath(method.getName()));
+        Method deepestBase = getDeepestBase(method);
+        Name deepestBaseName = deepestBase.getName();
+        String path = getPath(deepestBaseName);
+        buffer.addLine("HttpPost request = new HttpPost(getConnection().getUrl() + getPath() + \"/%1$s\");", path);
         buffer.addLine("try (");
         buffer.addLine("  ByteArrayOutputStream output = new ByteArrayOutputStream();");
         buffer.addLine("  XmlWriter xmlWriter = new XmlWriter(output, true)");
@@ -758,7 +759,7 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private String getRequestName(Method method) {
-        return javaNames.getJavaClassStyleName(method.getName()) + "Request";
+        return javaNames.getJavaClassStyleName(getFullName(method)) + "Request";
     }
 
     private String getRequestImplName(Method method) {
@@ -766,7 +767,7 @@ public class ServicesImplGenerator extends JavaGenerator {
     }
 
     private String getResponseName(Method method) {
-        return javaNames.getJavaClassStyleName(method.getName()) + "Response";
+        return javaNames.getJavaClassStyleName(getFullName(method)) + "Response";
     }
 
     private String getResponseImplName(Method method) {
@@ -788,5 +789,30 @@ public class ServicesImplGenerator extends JavaGenerator {
         return method.parameters()
             .filter(x -> x.isIn() && !x.isOut())
             .sorted();
+    }
+
+    /**
+     * Returns the deepest base of the given method, the one that doesn't have a base itself.
+     */
+    private Method getDeepestBase(Method method) {
+        Method base = method.getBase();
+        if (base == null) {
+            return method;
+        }
+        return getDeepestBase(base);
+    }
+
+    /**
+     * Calculates the full name of a method, taking into account that the method may extend other method. For this kind
+     * of methods the full name wil be the name of the base, followed by the name of the method. For example, if the
+     * name of the base is {@code Add} and the name of the method is {@code FromSnapsot} then the full method name will
+     * be {@code AddFromSnapshot}.
+     */
+    private Name getFullName(Method method) {
+        Method base = method.getBase();
+        if (base == null) {
+            return method.getName();
+        }
+        return names.concatenate(getFullName(base), method.getName());
     }
 }

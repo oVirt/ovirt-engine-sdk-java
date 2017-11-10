@@ -39,6 +39,7 @@ import org.ovirt.api.metamodel.tool.JavaGenerator;
 import org.ovirt.api.metamodel.tool.JavaNames;
 import org.ovirt.api.metamodel.tool.JavaTypeReference;
 import org.ovirt.api.metamodel.tool.JavaTypes;
+import org.ovirt.api.metamodel.tool.Names;
 
 /**
  * This class is responsible for generating the classes that represent the services of the model.
@@ -48,9 +49,9 @@ public class ServicesGenerator extends JavaGenerator {
     private String BASE_PACKAGE = "org.ovirt.engine.sdk4";
 
     // Reference to the objects used to generate the code:
+    @Inject private Names names;
     @Inject private JavaNames javaNames;
     @Inject private JavaTypes javaTypes;
-
 
     public void generate(Model model) {
         model.services().forEach(this::generateServiceInterface);
@@ -110,12 +111,7 @@ public class ServicesGenerator extends JavaGenerator {
     }
 
     private void generateMethodInterface(Method method) {
-        // FIXME: Ignore methods with different signatures
-        if (method.getBase() != null) {
-            return;
-        }
-
-        Name name = method.getName();
+        Name name = getFullName(method);
 
         // Generate the request and response interfaces:
         generateRequestInterface(method);
@@ -288,10 +284,24 @@ public class ServicesGenerator extends JavaGenerator {
     }
 
     private String getRequestName(Method method) {
-        return javaNames.getJavaClassStyleName(method.getName()) + "Request";
+        return javaNames.getJavaClassStyleName(getFullName(method)) + "Request";
     }
 
     private String getResponseName(Method method) {
-        return javaNames.getJavaClassStyleName(method.getName()) + "Response";
+        return javaNames.getJavaClassStyleName(getFullName(method)) + "Response";
+    }
+
+    /**
+     * Calculates the full name of a method, taking into account that the method may extend other method. For this kind
+     * of methods the full name wil be the name of the base, followed by the name of the method. For example, if the
+     * name of the base is {@code Add} and the name of the method is {@code FromSnapsot} then the full method name will
+     * be {@code AddFromSnapshot}.
+     */
+    private Name getFullName(Method method) {
+        Method base = method.getBase();
+        if (base == null) {
+            return method.getName();
+        }
+        return names.concatenate(getFullName(base), method.getName());
     }
 }
