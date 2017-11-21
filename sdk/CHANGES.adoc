@@ -2,6 +2,13 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.1.6 / Nov 21 2017
+Update to metamodel 1.1.16.
+
+Bug fixes:
+* Fix XML tag for list of enum
+  https://bugzilla.redhat.com/1512850[#1512850].
+
 == 4.1.5 / Oct 2 2017
 Update to model 4.1.39.
 
