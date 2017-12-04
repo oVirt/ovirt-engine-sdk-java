@@ -2,7 +2,7 @@
 
 Name: java-ovirt-engine-sdk4
 Version: 4.1.0
-Release: 0.1%{?dist}
+Release: 1%{?dist}
 Summary: Java SDK for version 4 of the oVirt Engine API
 Group: Development/Languages
 License: ASL 2.0
