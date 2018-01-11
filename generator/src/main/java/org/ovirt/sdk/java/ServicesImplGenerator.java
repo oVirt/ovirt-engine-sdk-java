@@ -434,8 +434,15 @@ public class ServicesImplGenerator extends JavaGenerator {
             buffer.addLine("return new %1$s();", getResponseImplName(method));
         }
         else {
-            buffer.addLine("return new %1$s(action.%2$s());",
-                getResponseImplName(method), javaNames.getJavaMemberStyleName(parameters.get(0).getName()));
+            buffer.addLine("%1$s actionResponse = new %1$s();", getResponseImplName(method));
+            parameters.stream()
+                .forEach(p -> {
+                    buffer.addLine(
+                        "actionResponse.%1$s(action.%1$s());",
+                        javaNames.getJavaMemberStyleName(p.getName())
+                    );
+                });
+            buffer.addLine("return actionResponse;");
         }
     }
 
@@ -487,35 +494,33 @@ public class ServicesImplGenerator extends JavaGenerator {
         buffer.addLine("}");
         buffer.addLine("else {");
         buffer.addLine(  "checkFault(response);");
-        if (parameters.isEmpty()) {
-            buffer.addLine("return new %1$s();", getResponseImplName(method));
-        }
-        else {
-            buffer.addLine("return new %1$s(null);", getResponseImplName(method));
-        }
+        buffer.addLine(  "return new %1$s();", getResponseImplName(method));
         buffer.addLine("}");
     }
 
     private void generateRequestReaderImplementation(Parameter parameter) {
         Type type = parameter.getType();
+        String parameterName = javaNames.getJavaMemberStyleName(parameter.getName());
         String responseImplName = getResponseImplName(parameter.getDeclaringMethod());
 
+        buffer.addLine("%1$s actionResponse = new %1$s();", responseImplName);
         if (type instanceof PrimitiveType) {
-            buffer.addLine("return new %1$s(reader.read%2$s());",
-                responseImplName, javaNames.getJavaClassStyleName(type.getName()));
+            buffer.addLine("actionResponse.%1$s(reader.read%2$s());",
+                parameterName, javaNames.getJavaClassStyleName(type.getName()));
         }
         else if (type instanceof StructType) {
             JavaClassName xmlReaderName = javaTypes.getXmlReaderName(type);
             buffer.addImport(xmlReaderName);
-            buffer.addLine("return new %1$s(%2$s.readOne(reader));", responseImplName, xmlReaderName.getSimpleName());
+            buffer.addLine("actionResponse.%1$s(%2$s.readOne(reader));", parameterName, xmlReaderName.getSimpleName());
         }
         else if (type instanceof ListType) {
             ListType listType = (ListType) type;
             Type elementType = listType.getElementType();
             JavaClassName xmlReaderName = javaTypes.getXmlReaderName(elementType);
             buffer.addImport(xmlReaderName);
-            buffer.addLine("return new %1$s(%2$s.readMany(reader));", responseImplName, xmlReaderName.getSimpleName());
+            buffer.addLine("actionResponse.%1$s(%2$s.readMany(reader));", parameterName, xmlReaderName.getSimpleName());
         }
+        buffer.addLine("return actionResponse;");
     }
 
     private void generateRequestParameterImplementation(Parameter parameter) {
@@ -657,8 +662,7 @@ public class ServicesImplGenerator extends JavaGenerator {
         // Add appropriate constructor to type reference
         buffer.addLine("private %1$s %2$s;", reference.getText(), property);
         buffer.addLine();
-        buffer.addLine("public %1$s(%2$s %3$s) {",
-            getResponseImplName(parameter.getDeclaringMethod()), reference.getText(), property);
+        buffer.addLine("public void %1$s(%2$s %1$s) {", property, reference.getText());
         buffer.addLine(  "this.%1$s = %1$s;", property);
         buffer.addLine("}");
         buffer.addLine();
