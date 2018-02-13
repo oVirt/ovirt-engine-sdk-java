@@ -15,6 +15,7 @@ BuildRequires: apache-commons-beanutils
 BuildRequires: httpcomponents-client
 BuildRequires: log4j12
 BuildRequires: maven-local
+BuildRequires: maven-source-plugin
 
 %description
 This package contains The oVirt-Engine Java Software Development Kit.
@@ -29,6 +30,12 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n ovirt-engine-sdk-java-%{tar_version}
+
+# The version of the HTTP client in Fedora 25 doesn't include the
+# 'NotThreadSafe' annotation, so we need to remove it from the code:
+sed \
+  -i '/NotThreadSafe/d' \
+  src/main/java/org/ovirt/engine/sdk/web/HttpDelete.java
 
 %build
 %mvn_build
