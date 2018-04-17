@@ -2,7 +2,42 @@
 
 This document describes the relevant changes between releases of the SDK.
 
-== 4.2.0 / Dec 4 2017
+== 4.2.2 / Apr 17 2017
+Update to model 4.2.32.
+
+New features:
+
+* ImageTransfer - adding 'clientInactivityTimeout' property
+  https://bugzilla.redhat.com/1563278[#1563278].
+
+* Add architecture to OperatingSystemInfo
+  https://bugzilla.redhat.com/1552026[#1552026].
+
+* Add import template from configuration
+  https://bugzilla.redhat.com/1526032[#1526032].
+
+* Add `cancel` action to transfer image session.
+
+* Add `export` template as OVA to a given path on a host 
+  https://bugzilla.redhat.com/1526033[#1526033].
+
+* Add service to list user groups
+  https://bugzilla.redhat.com/1545716[1545716].
+
+* Expose `syncAllNetworks` command for `HostService`.
+
+* Move `VmPlacementPolicy` attribute from Vm to `VmBase`
+  https://bugzilla.redhat.com/1375678[#1375678].
+
+* Add `lease` parameter to preview snapshot
+  https://bugzilla.redhat.com/1532577[#1532577].
+
+Bug fixes:
+
+* Deprecate `OsType`
+  https://bugzilla.redhat.com/1537679[#1537679].
+
+== 4.2.1 / Dec 4 2017
 Update to model 4.2.29 and metamodel 1.2.17.
 
 New features:
