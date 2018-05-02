@@ -2,6 +2,7 @@ package org.ovirt.engine.sdk4.internal.services;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.ovirt.api.metamodel.runtime.xml.XmlException;
 import org.ovirt.api.metamodel.runtime.xml.XmlReader;
 import org.ovirt.engine.sdk4.Error;
 import org.ovirt.engine.sdk4.internal.HttpConnection;
@@ -30,8 +31,10 @@ public class ServiceImpl {
     public void checkFault(HttpResponse response) {
         try (XmlReader reader = new XmlReader(response.getEntity().getContent())) {
             Fault fault = null;
-            if (response.getEntity().getContentLength() > 0) {
+            try {
                 fault = XmlFaultReader.readOne(reader);
+            } catch (XmlException e) {
+                // Ignore
             }
             if (
                 fault != null ||
