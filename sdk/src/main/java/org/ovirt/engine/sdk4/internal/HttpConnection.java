@@ -226,9 +226,28 @@ public class HttpConnection implements Connection {
     }
 
     public HttpResponse send(HttpUriRequest request) {
+        return send(request, false);
+    }
+
+    private HttpResponse send(HttpUriRequest request, boolean failedAuth) {
         try {
             injectHeaders(request);
             HttpResponse response = client.execute(request);
+
+            /**
+             * If the request failed because of authentication, and it
+             * wasn't a request to the SSO service, then the most likely
+             * cause is an expired SSO token. In this case we need to
+             * request a new token, and try the original request again, but
+             * only once. It if fails again, we just return the failed
+             * response.
+             */
+            if (response.getStatusLine().getStatusCode() == 401 && !failedAuth) {
+                ssoToken = null;
+                authenticate();
+                response = send(request, true);
+            }
+
             checkContentType(XML_CONTENT_TYPE_RE, "XML", response.getFirstHeader("content-type").getValue());
             return response;
         }
@@ -298,15 +317,15 @@ public class HttpConnection implements Connection {
 
         for (NameValuePair nameValuePair : URLEncodedUtils.parse(request.getURI(), HTTP.UTF_8)) {
             if (nameValuePair.getName().equalsIgnoreCase("all_content")) {
-                request.addHeader("All-Content", nameValuePair.getValue());
+                request.setHeader("All-Content", nameValuePair.getValue());
             }
         }
 
-        request.addHeader("Version", "4");
-        request.addHeader("Content-type", "application/xml");
-        request.addHeader("User-Agent", "JavaSDK");
-        request.addHeader("Accept", "application/xml");
-        request.addHeader("Authorization", "Bearer " + getAccessToken());
+        request.setHeader("Version", "4");
+        request.setHeader("Content-type", "application/xml");
+        request.setHeader("User-Agent", "JavaSDK");
+        request.setHeader("Accept", "application/xml");
+        request.setHeader("Authorization", "Bearer " + getAccessToken());
     }
 
     private List<Header> excludeNullHeaders(Header[] headers) {
