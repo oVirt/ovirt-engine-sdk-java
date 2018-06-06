@@ -2,7 +2,24 @@
 
 This document describes the relevant changes between releases of the SDK.
 
-== 4.2.2 / Apr 17 2017
+== 4.2.4 / Jun 6 2018
+Update to model 4.2.33.
+
+New feautres:
+
+* Add search parameter to providers
+  https://bugzilla.redhat.com/1572071[#1572071].
+
+== 4.2.3 / May 23 2018
+Bug fixes:
+
+* Automatically replace bad tokens
+  https://bugzilla.redhat.com/1434834[#1434834].
+
+* DecompressingEntity can't calculate content-length
+  https://bugzilla.redhat.com/1571648[#1571648].
+
+== 4.2.2 / Apr 17 2018
 Update to model 4.2.32.
 
 New features:
