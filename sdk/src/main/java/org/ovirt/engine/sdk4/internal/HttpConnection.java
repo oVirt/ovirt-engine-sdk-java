@@ -195,9 +195,13 @@ public class HttpConnection implements Connection {
             Method send = getRequest.getClass().getMethod("send");
             send.setAccessible(true);
             Object getResponse = send.invoke(getRequest);
-            Method obtainObject = getResponse.getClass().getDeclaredMethods()[0];
-            obtainObject.setAccessible(true);
-            return (TYPE) obtainObject.invoke(getResponse);
+            for (Method obtainObject : getResponse.getClass().getDeclaredMethods()) {
+                if (obtainObject.getParameterCount() == 0) {
+                    obtainObject.setAccessible(true);
+                    return (TYPE) obtainObject.invoke(getResponse);
+                }
+            }
+            throw new NoSuchMethodException("No obtain method found");
         }
         catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
             throw new Error(String.format("Unexpected error while following link \"%1$s\"", href), ex);
