@@ -2,6 +2,132 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.2.5 / Sep 18 2018
+Update to model 4.2.37.
+
+New features:
+
+* Add support for OpenStack Identity API v3
+  https://bugzilla.redhat.com/1598391[1598391].
+
+* Added linkedGlusterVolume to the StorageServerConnection
+  type and services
+  https://bugzilla.redhat.com/1563257[1563257].
+
+* Add sync all networks in cluster
+  https://bugzilla.redhat.com/1558847[1558847].
+
+* Add note to upgrade host
+  https://bugzilla.redhat.com/1603020[1603020].
+
+* Indicate network operation in progress
+  https://bugzilla.redhat.com/1477599[1477599].
+
+* Poly dhcpv6 and autoconf iface config
+  https://bugzilla.redhat.com/1360839[1360839].
+
+* Add 'Multi Queues Enabled' to VmBase
+  https://bugzilla.redhat.com/1574771[1574771].
+
+* Added Reduce action to Disk services
+  https://bugzilla.redhat.com/1443963[#1443963].
+
+* Add documentation to DiskService
+  https://bugzilla.redhat.com/1585572[1585572].
+
+Bug fixes:
+
+* Fix failed to obtain object by connection.link.
+
+== 4.2.4 / Jun 6 2018
+Update to model 4.2.33.
+
+New feautres:
+
+* Add search parameter to providers
+  https://bugzilla.redhat.com/1572071[#1572071].
+
+== 4.2.3 / May 23 2018
+Bug fixes:
+
+* Automatically replace bad tokens
+  https://bugzilla.redhat.com/1434834[#1434834].
+
+* DecompressingEntity can't calculate content-length
+  https://bugzilla.redhat.com/1571648[#1571648].
+
+== 4.2.2 / Apr 17 2018
+Update to model 4.2.32.
+
+New features:
+
+* ImageTransfer - adding 'clientInactivityTimeout' property
+  https://bugzilla.redhat.com/1563278[#1563278].
+
+* Add architecture to OperatingSystemInfo
+  https://bugzilla.redhat.com/1552026[#1552026].
+
+* Add import template from configuration
+  https://bugzilla.redhat.com/1526032[#1526032].
+
+* Add `cancel` action to transfer image session.
+
+* Add `export` template as OVA to a given path on a host 
+  https://bugzilla.redhat.com/1526033[#1526033].
+
+* Add service to list user groups
+  https://bugzilla.redhat.com/1545716[1545716].
+
+* Expose `syncAllNetworks` command for `HostService`.
+
+* Move `VmPlacementPolicy` attribute from Vm to `VmBase`
+  https://bugzilla.redhat.com/1375678[#1375678].
+
+* Add `lease` parameter to preview snapshot
+  https://bugzilla.redhat.com/1532577[#1532577].
+
+Bug fixes:
+
+* Deprecate `OsType`
+  https://bugzilla.redhat.com/1537679[#1537679].
+
+== 4.2.1 / Dec 4 2017
+Update to model 4.2.29 and metamodel 1.2.17.
+
+New features:
+
+* Support multiple output parameters.
+
+* Expose `syncAllNetworks` command for `HostService`.
+
+* Move `VmPlacementPolicy` attribute from Vm to `VmBase`
+  https://bugzilla.redhat.com/1375678[#1375678].
+
+* Document `JobsService` as a searchable entity.
+
+* Add `lease` parameter to preview snapshot
+  https://bugzilla.redhat.com/1532577[#1532577].
+
+* Deprecate the `discard_zeroes_data` attribute of the `LogicalUnit`
+  type and the `supports_discard_zeroes_data` of the `StorageDomain`
+  type, as they have been removed from the kernel.
+
+* Add new `content_type` attribute to the `Disk` type
+  https://bugzilla.redhat.com/1511420[#1511420].
+
+* Add support for setting external network providers by name when adding
+  or updating a cluster https://bugzilla.redhat.com/1511369[#1511369].
+
+* Add new `unmanaged` attribute to the `OpenStackNetworkProvider` type.
+
+* Move virtual NIC profile mappings insde registration configuration
+   https://bugzilla.redhat.com/1522799[#1522799].
+
+Bug fixes:
+
+* Make CPU type optional when adding a cluster
+  https://bugzilla.redhat.com/1525912[#1525912].
+
 == 4.2.0 / Dec 4 2017
 Update to model 4.2.25 and metamodel 1.2.13.
 
