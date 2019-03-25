@@ -252,7 +252,9 @@ public class HttpConnection implements Connection {
                 response = send(request, true);
             }
 
-            checkContentType(XML_CONTENT_TYPE_RE, "XML", response.getFirstHeader("content-type").getValue());
+            if (response.getFirstHeader("content-type") != null) {
+                checkContentType(XML_CONTENT_TYPE_RE, "XML", response.getFirstHeader("content-type").getValue());
+            }
             return response;
         }
         catch (Exception e) {
