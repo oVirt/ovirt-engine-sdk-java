@@ -21,13 +21,6 @@ BuildRequires: maven-source-plugin
 This package contains The oVirt-Engine Java Software Development Kit.
 With this package, custom java software can be built for oVirt-Engine.
 
-%package javadoc
-Summary: Javadocs for %{name}
-Group: Documentation
-
-%description javadoc
-This package contains the API documentation for %{name}.
-
 %prep
 %setup -q -n ovirt-engine-sdk-java-%{tar_version}
 
@@ -38,7 +31,7 @@ sed \
   src/main/java/org/ovirt/engine/sdk/web/HttpDelete.java
 
 %build
-%mvn_build
+%mvn_build -- -Dmaven.javadoc.skip=true
 
 %install
 %mvn_install
@@ -47,10 +40,6 @@ sed \
 %{_javadir}/%{name}
 %doc AUTHORS.md
 %doc README.md
-%license LICENSE.txt
-
-%files javadoc -f .mfiles-javadoc
-%{_javadocdir}/%{name}
 %license LICENSE.txt
 
 %changelog
