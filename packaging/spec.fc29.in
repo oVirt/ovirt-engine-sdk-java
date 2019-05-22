@@ -1,7 +1,7 @@
-%global tar_version 4.1.0
+%global tar_version 4.3.0
 
 Name: java-ovirt-engine-sdk4
-Version: 4.1.0
+Version: 4.3.0
 Release: 1%{?dist}
 Summary: Java SDK for version 4 of the oVirt Engine API
 Group: Development/Languages
@@ -80,5 +80,8 @@ java -jar %{_javadir}/ant-launcher.jar -f build.xml
 %license LICENSE.txt
 
 %changelog
+* Wed May 22 2019 Sandro Bonazzola <sbonazzo@redhat.com> - 4.3.0
+- Rebase on 4.3.0 for fc29 support
+
 * Thu Apr 7 2016 Juan Hernandez <juan.hernandez@redhat.com> - 4.0.0
 - Initial packaging.
