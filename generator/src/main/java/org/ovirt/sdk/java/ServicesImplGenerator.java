@@ -41,6 +41,7 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.util.EntityUtils;
+import org.ovirt.api.metamodel.concepts.EnumType;
 import org.ovirt.api.metamodel.concepts.ListType;
 import org.ovirt.api.metamodel.concepts.Locator;
 import org.ovirt.api.metamodel.concepts.Method;
@@ -557,11 +558,15 @@ public class ServicesImplGenerator extends JavaGenerator {
             JavaClassName typeName = javaTypes.getInterfaceName(type);
             buffer.addImport(typeName);
             generateRequestParameterMethodImplementation("public %1s %2$s(%3$s %2$s) {", request, member, typeName.getSimpleName());
-
             // Method taking a builder:
             JavaClassName builderName = javaTypes.getBuilderName(type);
             buffer.addImport(builderName);
             generateRequestParameterBuilderMethodImplementation("public %1s %2$s(%3$s %2$s) {", request, member, builderName.getSimpleName());
+        }
+        else if (type instanceof EnumType) {
+            JavaClassName typeName = javaTypes.getInterfaceName(type);
+            buffer.addImport(typeName);
+            generateRequestParameterMethodImplementation("public %1s %2$s(%3$s %2$s) {", request, member, typeName.getSimpleName());
         }
         else if (type instanceof ListType) {
             ListType listType = (ListType) type;
