@@ -54,6 +54,12 @@ limitations under the License.
       <organization>oVirt</organization>
       <organizationUrl>http://www.ovirt.org</organizationUrl>
     </developer>
+    <developer>
+      <name>Ori Liel</name>
+      <email>oliel@redhat.com</email>
+      <organization>oVirt</organization>
+      <organizationUrl>http://www.ovirt.org</organizationUrl>
+    </developer>
   </developers>
 
   <scm>
