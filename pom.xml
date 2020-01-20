@@ -138,7 +138,11 @@ limitations under the License.
       </build>
     </profile>
 
-    <!-- This profile is used to generate the documentation: -->
+    <!-- This profile is used to generate the documentation.
+         Note: this profile is currently functional only when
+         running maven with java 1.8, because asciidoclet does
+         not have a version compatible with Java 11, see:
+         https://github.com/asciidoctor/asciidoclet/pull/96 -->
     <profile>
       <id>document</id>
       <build>

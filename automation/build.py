@@ -34,8 +34,9 @@ SETTINGS = """
 
 
 def run_command(args):
+    env={"JAVA_HOME": "/usr/lib/jvm/java-11"}
     print("Running command %s ..." % args)
-    proc = subprocess.Popen(args)
+    proc = subprocess.Popen(args=args, env=env)
     return proc.wait()
 
 
