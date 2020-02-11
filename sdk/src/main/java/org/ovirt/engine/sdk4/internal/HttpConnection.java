@@ -38,8 +38,8 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.ovirt.api.metamodel.runtime.util.ListWithHref;
 import org.ovirt.engine.sdk4.Connection;
 import org.ovirt.engine.sdk4.Error;
@@ -380,7 +380,7 @@ public class HttpConnection implements Connection {
                 );
             }
 
-            ssoToken = node.get(ssoTokenName).getTextValue();
+            ssoToken = node.get(ssoTokenName).textValue();
         }
 
         return ssoToken;

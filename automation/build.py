@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import datetime
 import glob
@@ -111,7 +111,7 @@ def main():
         print("Extraction of commit info failed with exit code %d." % result)
         sys.exit(1)
     commit_re = re.compile(r"^(?P<id>[0-9a-f]{7}) (?P<title>.*)")
-    commit_match = commit_re.match(commit_info)
+    commit_match = commit_re.match(commit_info.decode('utf-8'))
     if commit_match is None:
         print("Commit info \"%s\" doesn't match format \"%s\"." % (commit_info, commit_re.pattern))
         sys.exit(1)
@@ -213,7 +213,7 @@ def main():
     if result != 0:
         print("Finding the RPM \"dist\" tag failed with exit code %d." % result)
         sys.exit(1)
-    rpm_dist = rpm_dist.strip()
+    rpm_dist = rpm_dist.decode('utf-8').strip()
     print("RPM \"dist\" is \"%s\"." % rpm_dist)
 
     # Locate the RPM spec template:
@@ -319,9 +319,10 @@ def main():
     if result != 0:
         print("Finding the RPM files failed with exit code %d." % result)
         sys.exit(1)
-    rpm_paths = rpm_paths.split()
+    rpm_paths = rpm_paths.decode('utf-8').split()
     artifacts_list.extend(rpm_paths)
     print("Generated RPM files are \"%s\"." % rpm_paths)
+
 
     # Move all the relevant files to the output directory:
     print("Moving files to the output directory ...")

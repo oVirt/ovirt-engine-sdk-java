@@ -27,11 +27,11 @@ BuildArch: noarch
 
 BuildRequires: ant
 BuildRequires: javapackages-local
-BuildRequires: mvn(com.sun.xml.txw2:txw2)
 BuildRequires: mvn(org.apache.httpcomponents:httpclient)
 BuildRequires: mvn(org.apache.httpcomponents:httpcore)
-BuildRequires: mvn(org.codehaus.jackson:jackson-core-asl)
-BuildRequires: mvn(org.codehaus.jackson:jackson-mapper-asl)
+BuildRequires: mvn(com.fasterxml.jackson.core:jackson-databind)
+BuildRequires: mvn(com.fasterxml.jackson.core:jackson-core)
+BuildRequires: mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires: mvn(org.slf4j:slf4j-api)
 
 %description
@@ -58,10 +58,11 @@ do
 done << __EOF__
 httpcomponents/httpclient
 httpcomponents/httpcore
-jackson/jackson-core-asl
-jackson/jackson-mapper-asl
+jackson/jackson-databind
+jackson/jackson-core
+jackson/jackson-annotations
+
 slf4j/api
-txw2
 __EOF__
 
 # Perform build using Ant:
