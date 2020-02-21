@@ -1,0 +1,4 @@
+distros:
+  - fc30
+release_branches:
+  master: ovirt-master

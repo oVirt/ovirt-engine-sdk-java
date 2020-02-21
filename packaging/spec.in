@@ -1,7 +1,7 @@
-%global tar_version 4.1.0
+%global tar_version 4.4.0
 
 Name: java-ovirt-engine-sdk4
-Version: 4.1.0
+Version: 4.4.0
 Release: 1%{?dist}
 Summary: Java SDK for version 4 of the oVirt Engine API
 Group: Development/Languages
@@ -26,24 +26,13 @@ Source2: transform-pom.xsl
 BuildArch: noarch
 
 BuildRequires: ant
-BuildRequires: javapackages-tools
-BuildRequires: maven-local
+BuildRequires: javapackages-local
 BuildRequires: mvn(com.sun.xml.txw2:txw2)
 BuildRequires: mvn(org.apache.httpcomponents:httpclient)
 BuildRequires: mvn(org.apache.httpcomponents:httpcore)
 BuildRequires: mvn(org.codehaus.jackson:jackson-core-asl)
 BuildRequires: mvn(org.codehaus.jackson:jackson-mapper-asl)
 BuildRequires: mvn(org.slf4j:slf4j-api)
-
-# The Java packaging tools available in EL7 don't generate the list of
-# required Maven dependencies automatically, so we need to include them
-# explicitly here:
-Requires: mvn(com.sun.xml.txw2:txw2)
-Requires: mvn(org.apache.httpcomponents:httpclient)
-Requires: mvn(org.apache.httpcomponents:httpcore)
-Requires: mvn(org.codehaus.jackson:jackson-core-asl)
-Requires: mvn(org.codehaus.jackson:jackson-mapper-asl)
-Requires: mvn(org.slf4j:slf4j-api)
 
 %description
 This package contains the Java SDK for version 4 of the oVirt Engine
@@ -91,5 +80,8 @@ java -jar %{_javadir}/ant-launcher.jar -f build.xml
 %license LICENSE.txt
 
 %changelog
+* Wed May 22 2019 Sandro Bonazzola <sbonazzo@redhat.com> - 4.3.0
+- Rebase on 4.3.0 for fc29 support
+
 * Thu Apr 7 2016 Juan Hernandez <juan.hernandez@redhat.com> - 4.0.0
 - Initial packaging.
