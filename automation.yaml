@@ -1,0 +1,4 @@
+idistros:
+  - el7
+release_branches:
+  sdk_4.3: ovirt-4.3
