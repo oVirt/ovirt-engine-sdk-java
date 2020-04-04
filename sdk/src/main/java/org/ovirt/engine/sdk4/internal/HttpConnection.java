@@ -229,6 +229,11 @@ public class HttpConnection implements Connection {
         }
     }
 
+    @Override
+    public boolean validate() {
+        return this.systemService().get().send() != null;
+    }
+
     public HttpResponse send(HttpUriRequest request) {
         return send(request, false);
     }

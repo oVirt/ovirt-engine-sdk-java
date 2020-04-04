@@ -59,4 +59,12 @@ public interface Connection extends AutoCloseable {
      * and so user should be logged out.
      */
     void close(boolean logout) throws Exception;
+
+    /**
+     * Validate the connection by making a trivial request and checking that
+     * the result is not null
+     *
+     * @return true if the connection is valid, false otherwise
+     */
+     boolean validate();
 }
