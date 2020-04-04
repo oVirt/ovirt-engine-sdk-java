@@ -160,15 +160,10 @@ limitations under the License.
               </execution>
             </executions>
             <configuration>
-              <doclet>org.asciidoctor.Asciidoclet</doclet>
-              <docletArtifact>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoclet</artifactId>
-                <version>1.5.4</version>
-              </docletArtifact>
+              <source>8</source>
+              <target>8</target>
               <additionalparam>
                 -Xdoclint:none
-                --base-dir ${project.basedir}
               </additionalparam>
             </configuration>
           </plugin>
