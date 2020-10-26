@@ -266,6 +266,10 @@ public class ServicesImplGenerator extends JavaGenerator {
         String value = javaNames.getJavaMemberStyleName(parameter.getName());
         String type = javaNames.getJavaClassStyleName(parameter.getType().getName());
 
+        //if type is not String / Boolean / Integer / Decimal / Date, default to
+        //.toString() for rendering. It is probably an enum
+        type = Arrays.stream(new String[]{"String","Boolean","Integer","Decimal", "Date"}).anyMatch(type::equals) ? type : "Other";
+
         buffer.addImport(XmlWriter.class);
         buffer.addLine("if (%1$s != null) {", value);
         buffer.addLine(  "uriBuilder.addParameter(\"%1$s\", XmlWriter.render%2$s(%3$s));", tag, type, value);

@@ -71,14 +71,14 @@ limitations under the License.
   <build>
     <plugins>
 
-      <!-- Make sure to always use Java 7: -->
+      <!-- Make sure to always use Java 11: -->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.8.0</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>11</source>
+          <target>11</target>
+          <release>11</release>
         </configuration>
       </plugin>
 
