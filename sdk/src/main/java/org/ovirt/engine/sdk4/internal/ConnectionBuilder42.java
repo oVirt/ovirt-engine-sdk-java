@@ -82,7 +82,7 @@ public class ConnectionBuilder42 extends ConnectionBuilder {
 
         // Set request timeout:
         if (timeout != -1) {
-            HttpConnectionParams.setSoTimeout(client.getParams(), timeout);
+            HttpConnectionParams.setSoTimeout(client.getParams(), timeout*1000);
         }
         // Compress/decompress entities if compressing enabled:
         if (compress) {

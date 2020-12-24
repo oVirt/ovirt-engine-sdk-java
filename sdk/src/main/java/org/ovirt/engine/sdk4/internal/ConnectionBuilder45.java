@@ -81,7 +81,7 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
 
         RequestConfig globalConfig = RequestConfig.custom()
             .setCookieSpec(CookieSpecs.IGNORE_COOKIES)
-            .setConnectTimeout(timeout)
+            .setConnectTimeout(timeout==-1 ? -1 : timeout*1000)
             .build();
         HttpClientBuilder clientBuilder = HttpClientBuilder.create()
             .setConnectionManager(new PoolingHttpClientConnectionManager(createConnectionSocketFactoryRegistry()))
