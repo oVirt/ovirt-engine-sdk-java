@@ -27,7 +27,7 @@ import org.ovirt.engine.sdk4.types.IscsiDetails;
 
 // This example will connect to the server and call iscsiDiscover method of host,
 // to discover iSCSI targets of the host.
-public class IscsiDiscover {
+public class DiscoverIscsi {
     public static void main(String[] args) throws Exception {
         // Create the connection to the server:
         Connection connection = connection()
@@ -47,17 +47,13 @@ public class IscsiDiscover {
         HostService hostService = hostsService.hostService(host.id());
 
         // Call the "iscsiDiscover" method of the service to start it:
-        HostService.IscsiDiscoverResponse response = hostService.iscsiDiscover()
+        HostService.DiscoverIscsiResponse response = hostService.discoverIscsi()
             .iscsi(
                 iscsiDetails()
                 .address("myaddress")
             )
             .send();
 
-        // Print only targets:
-        for (String target : response.iscsiTargets()) {
-            System.out.println(target);
-        }
 
         // Print only address corresponding to target:
         for (IscsiDetails detail : response.discoveredTargets()) {

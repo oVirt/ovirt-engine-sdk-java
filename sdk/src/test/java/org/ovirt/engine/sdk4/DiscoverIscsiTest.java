@@ -26,37 +26,32 @@ import org.junit.Before;
 import org.junit.Test;
 import org.ovirt.engine.sdk4.services.HostService;
 import org.ovirt.engine.sdk4.services.HostsService;
-import org.ovirt.engine.sdk4.services.VmsService;
 
-public class IscsiDiscoverTest extends ServerTest {
+public class DiscoverIscsiTest extends ServerTest {
 
     private Connection connection;
-    private VmsService vmsService;
 
     @Before
     public void setUp() {
         setXmlResponse(
-            "hosts/123/iscsidiscover",
+            "hosts/123/discoveriscsi",
             200,
             "<action>" +
                   "<iscsi>" +
                     "<address>iscsi.example.com</address>" +
                     "<port>3260</port>" +
                   "</iscsi>" +
-                  "<iscsi_targets>" +
-                    "<iscsi_target>myiqn</iscsi_target>" +
-                  "</iscsi_targets>" +
                   "<discovered_targets>" +
                     "<iscsi_details>" +
                       "<address>192.168.121.102</address>" +
                       "<port>3260</port>" +
+                      "<target>myiqn</target>" +
                     "</iscsi_details>" +
                   "</discovered_targets>" +
                 "</action>"
         );
         startServer();
         connection = testConnection();
-        vmsService = connection.systemService().vmsService();
     }
 
     @After
@@ -72,7 +67,7 @@ public class IscsiDiscoverTest extends ServerTest {
     public void testActionParameters() {
         HostsService hostsService = connection.systemService().hostsService();
         HostService hostService = hostsService.hostService("123");
-        HostService.IscsiDiscoverResponse response = hostService.iscsiDiscover()
+        HostService.DiscoverIscsiResponse response = hostService.discoverIscsi()
             .iscsi(
                 iscsiDetails()
                     .address("iscsi.example.com")
@@ -91,6 +86,6 @@ public class IscsiDiscoverTest extends ServerTest {
 
         assertEquals("192.168.121.102", response.discoveredTargets().get(0).address());
         assertEquals(BigInteger.valueOf(3260), response.discoveredTargets().get(0).port());
-        assertEquals("myiqn", response.iscsiTargets().get(0));
+        assertEquals("myiqn", response.discoveredTargets().get(0).target());
     }
 }
