@@ -24,7 +24,7 @@ SETTINGS = """
 
     <mirror>
       <id>maven-central</id>
-      <url>http://repo.maven.apache.org/maven2</url>
+      <url>https://repo.maven.apache.org/maven2</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
 
