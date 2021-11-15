@@ -259,52 +259,6 @@ limitations under the License.
         </dependency>
       </dependencies>
     </profile>
-
-    <profile>
-      <id>httpclient42</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.0</version>
-            <configuration>
-              <!-- Exclude classes for http client version 4.5: -->
-              <excludes>
-                <exclude>**/HttpClient45.java</exclude>
-                <exclude>**/ConnectionBuilder45.java</exclude>
-              </excludes>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.22.1</version>
-            <executions>
-              <execution>
-                <id>execute-tests</id>
-                <phase>test</phase>
-                <goals>
-                  <goal>test</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-      <dependencies>
-        <dependency>
-          <groupId>org.apache.httpcomponents</groupId>
-          <artifactId>httpclient</artifactId>
-          <version>4.2.5</version>
-        </dependency>
-        <dependency>
-          <groupId>org.apache.httpcomponents</groupId>
-          <artifactId>httpcore</artifactId>
-          <version>4.2.4</version>
-        </dependency>
-      </dependencies>
-    </profile>
   </profiles>
 
 </project>

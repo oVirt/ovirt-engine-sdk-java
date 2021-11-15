@@ -163,7 +163,7 @@ def main():
         settings_file.write(SETTINGS)
 
     # Run tests:
-    for test_profile in ['httpclient42', 'httpclient45']:
+    for test_profile in ['httpclient45']:
         result = run_command([
             "mvn",
             "test",
