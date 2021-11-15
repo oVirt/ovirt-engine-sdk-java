@@ -78,7 +78,105 @@ limitations under the License.
     <metamodel.version>1.3.4</metamodel.version>
     <model.version>4.4.35</model.version>
 
+    <!-- Dependencies -->
+    <commons-cli.version>1.3</commons-cli.version>
+    <commons-io.version>2.7</commons-io.version>
+    <httpclient.version>4.5.13</httpclient.version>
+    <httpcore.version>4.4.14</httpcore.version>
+    <jackson.version>2.10.0</jackson.version>
+    <junit.version>4.13.1</junit.version>
+    <slf4j.version>1.7.7</slf4j.version>
+    <undertow.version>2.0.23.Final</undertow.version>
+    <weld-se.version>2.3.0.Final</weld-se.version>
+
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.ovirt.engine.api</groupId>
+        <artifactId>metamodel-concepts</artifactId>
+        <version>${metamodel.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.ovirt.engine.api</groupId>
+        <artifactId>metamodel-analyzer</artifactId>
+        <version>${metamodel.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.ovirt.engine.api</groupId>
+        <artifactId>metamodel-tool</artifactId>
+        <version>${metamodel.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-cli</groupId>
+        <artifactId>commons-cli</artifactId>
+        <version>${commons-cli.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.undertow</groupId>
+        <artifactId>undertow-core</artifactId>
+        <version>${undertow.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>${httpclient.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpcore</artifactId>
+        <version>${httpcore.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.weld.se</groupId>
+        <artifactId>weld-se</artifactId>
+        <version>${weld-se.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <plugins>
