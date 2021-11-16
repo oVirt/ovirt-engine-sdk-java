@@ -157,12 +157,6 @@ limitations under the License.
         <groupId>org.jboss.weld.se</groupId>
         <artifactId>weld-se</artifactId>
         <version>${weld-se.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>*</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
 
       <dependency>
