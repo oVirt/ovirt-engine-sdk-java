@@ -2,6 +2,9 @@
 
 image:https://copr.fedorainfracloud.org/coprs/ovirt/ovirt-master-snapshot/package/java-ovirt-engine-sdk4/status_image/last_build.png[link="https://copr.fedorainfracloud.org/coprs/ovirt/ovirt-master-snapshot/package/java-ovirt-engine-sdk4/"]
 
+== TODO
+Update the project so it can be built in a standard way using xmvn
+
 == Introduction
 
 The oVirt Java SDK is a Java package that simplifies access to the
