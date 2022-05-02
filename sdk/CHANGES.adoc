@@ -2,6 +2,27 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.5.0 / May 2 2022
+
+General Maintenance:
+
+* copr: add required fc35 spec
+
+* Bump undertow to 2.2.12.Final
+
+* Remove dependencyConvergence validation
+
+* Use dependencyManagement in the root pom.xml
+
+* Use httpclient 4.5 in the tests by default
+
+* Remove support for httpclient 4.2 which is no longer used on EL8
+
+* bump commons-io, httpclient versions in generator
+
+* copr: enable copr builds
+
+
 == 4.4.5 / Feb 11 2020
 Update to model 4.4.25
 
