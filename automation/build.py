@@ -15,13 +15,6 @@ import sys
 SETTINGS = """
 <settings>
   <mirrors>
-
-    <mirror>
-      <id>ovirt-artifactory</id>
-      <url>http://artifactory.ovirt.org/artifactory/ovirt-mirror</url>
-      <mirrorOf>*</mirrorOf>
-    </mirror>
-
     <mirror>
       <id>maven-central</id>
       <url>https://repo.maven.apache.org/maven2</url>
