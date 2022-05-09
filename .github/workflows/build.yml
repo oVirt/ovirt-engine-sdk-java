@@ -1,0 +1,25 @@
+name: build
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: centos-stream-8
+            shortcut: cs8
+            container-name: stream8
+
+    name: ${{ matrix.name }}
+
+    steps:
+      - name: Sanity Check
+        run: echo Hello world
