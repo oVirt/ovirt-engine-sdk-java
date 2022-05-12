@@ -1,0 +1,51 @@
+name: build
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: centos-stream-8
+            shortcut: cs8
+            container-name: el8stream
+
+    name: ${{ matrix.name }}
+
+    env:
+      ARTIFACTS_DIR: exported-artifacts
+
+    container:
+      image: quay.io/ovirt/buildcontainer:${{ matrix.container-name }}
+
+    steps:
+
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Use cache for maven
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Perform build
+        run: |
+          python3 automation/build.py $ARTIFACTS_DIR
+
+      - name: Upload RPM artifacts
+        uses: ovirt/upload-rpms-action@v2
+        with:
+          directory: ${{ env.ARTIFACTS_DIR}}
+
+
+
