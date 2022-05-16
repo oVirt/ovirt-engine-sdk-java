@@ -63,9 +63,9 @@ limitations under the License.
   </developers>
 
   <scm>
-    <connection>scm:git:git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</connection>
-    <developerConnection>scm:git:git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</developerConnection>
-    <url>git://gerrit.ovirt.org/ovirt-engine-sdk-java.git</url>
+    <connection>scm:git:git://github.com/oVirt/ovirt-engine-sdk-java.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/oVirt/ovirt-engine-sdk-java.git</developerConnection>
+    <url>https://github.com/oVirt/ovirt-engine-sdk-java.git</url>
     <tag>HEAD</tag>
   </scm>
 
