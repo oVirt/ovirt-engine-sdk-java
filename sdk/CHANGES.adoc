@@ -2,6 +2,12 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.5.1 / May 16 2022
+
+General Maintenance:
+
+* Update SCM values in pom.xml
+
 == 4.5.0 / May 2 2022
 
 General Maintenance:
