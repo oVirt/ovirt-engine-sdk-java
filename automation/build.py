@@ -103,7 +103,7 @@ def main():
     if result != 0:
         print("Extraction of commit info failed with exit code %d." % result)
         sys.exit(1)
-    commit_re = re.compile(r"^(?P<id>[0-9a-f]{7}) (?P<title>.*)")
+    commit_re = re.compile(r"^(?P<id>[0-9a-f]+) (?P<title>.*)")
     commit_match = commit_re.match(str(commit_info.decode('utf-8')))
     if commit_match is None:
         print("Commit info \"%s\" doesn't match format \"%s\"." % (
