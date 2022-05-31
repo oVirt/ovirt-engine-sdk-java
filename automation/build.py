@@ -27,7 +27,7 @@ SETTINGS = """
 
 
 def run_command(args):
-    env={"JAVA_HOME": "/usr/lib/jvm/java-11"}
+    env = {"JAVA_HOME": "/usr/lib/jvm/java-11"}
     print("Running command %s ..." % args)
     proc = subprocess.Popen(args=args, env=env)
     return proc.wait()
@@ -106,7 +106,10 @@ def main():
     commit_re = re.compile(r"^(?P<id>[0-9a-f]{7}) (?P<title>.*)")
     commit_match = commit_re.match(commit_info.decode('utf-8'))
     if commit_match is None:
-        print("Commit info \"%s\" doesn't match format \"%s\"." % (commit_info, commit_re.pattern))
+        print("Commit info \"%s\" doesn't match format \"%s\"." % (
+            commit_info,
+            commit_re.pattern)
+        )
         sys.exit(1)
     commit_id = commit_match.group("id")
     commit_title = commit_match.group("title")
@@ -135,7 +138,10 @@ def main():
     version_re = re.compile(r"^(?P<xyz>\d+\.\d+.\d+)(\.(?P<q>.*))?$")
     version_match = version_re.match(full_version)
     if version_match is None:
-        print("SDK version \"%s\" doesn't match format \"%s\"." % (version, version_re.pattern))
+        print("SDK version \"%s\" doesn't match format \"%s\"." % (
+            full_version,
+            version_re.pattern)
+        )
         sys.exit(1)
     version_xyz = version_match.group("xyz")
     version_qualifier = version_match.group("q")
@@ -183,7 +189,7 @@ def main():
         "tar",
         "-czf",
         tar_path,
-        "--transform=s|^\.|%s|" % tar_prefix,
+        r"--transform=s|^\.|%s|" % tar_prefix,
         '--directory=sdk',
         '.',
     ])
@@ -202,7 +208,9 @@ def main():
         "%dist"
     ])
     if result != 0:
-        print("Finding the RPM \"dist\" tag failed with exit code %d." % result)
+        print(
+            "Finding the RPM \"dist\" tag failed with exit code %d." % result
+        )
         sys.exit(1)
     rpm_dist = rpm_dist.decode('utf-8').strip()
     print("RPM \"dist\" is \"%s\"." % rpm_dist)
@@ -228,7 +236,9 @@ def main():
     spec_tags = {}
     spec_globals = {}
     tag_re = re.compile(r"^(?P<name>[a-zA-Z0-9_]+)\s*:\s*(?P<value>.*)$")
-    global_re = re.compile(r"^%global\s+(?P<name>[a-zA-Z0-9_]+)\s+(?P<value>.*)$")
+    global_re = re.compile(
+        r"^%global\s+(?P<name>[a-zA-Z0-9_]+)\s+(?P<value>.*)$"
+    )
     for line_index in range(0, len(spec_lines)):
         spec_line = spec_lines[line_index]
         tag_match = tag_re.match(spec_line)
@@ -284,7 +294,8 @@ def main():
     print("Generating RPM spec file ...")
     spec_lines[version_tag[1]] = "Version: %s\n" % rpm_version
     spec_lines[release_tag[1]] = "Release: %s%%{?dist}\n" % rpm_release
-    spec_lines[tar_version_global[1]] = "%%global tar_version %s\n" % full_version
+    spec_lines[tar_version_global[1]] = \
+        "%%global tar_version %s\n" % full_version
     spec_path = "packaging/java-ovirt-engine-sdk4.spec"
     with open(spec_path, "w") as spec_fd:
         spec_fd.writelines(spec_lines)
@@ -314,11 +325,11 @@ def main():
     artifacts_list.extend(rpm_paths)
     print("Generated RPM files are \"%s\"." % rpm_paths)
 
-
     # Move all the relevant files to the output directory:
     print("Moving files to the output directory ...")
     for artifact_path in artifacts_list:
         shutil.move(artifact_path, artifacts_path)
+
 
 if __name__ == "__main__":
     main()
