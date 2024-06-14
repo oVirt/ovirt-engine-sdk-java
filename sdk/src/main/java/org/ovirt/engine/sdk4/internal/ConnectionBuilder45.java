@@ -3,6 +3,8 @@ package org.ovirt.engine.sdk4.internal;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -10,11 +12,9 @@ import java.security.Principal;
 import java.security.cert.CertificateException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
-
-import org.apache.http.auth.AuthSchemeProvider;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.Credentials;
-import org.apache.http.auth.UsernamePasswordCredentials;
+import java.net.Proxy;
+import org.apache.http.HttpHost;
+import org.apache.http.auth.*;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.config.CookieSpecs;
@@ -31,12 +31,15 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.ProxyAuthenticationStrategy;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.protocol.HttpContext;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.ssl.SSLContexts;
 import org.ovirt.engine.sdk4.ConnectionBuilder;
 import org.ovirt.engine.sdk4.Error;
 import org.ovirt.engine.sdk4.HttpClient;
+import org.ovirt.engine.sdk4.ProxyInfo;
 
 public class ConnectionBuilder45 extends ConnectionBuilder {
 
@@ -93,6 +96,22 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
             clientBuilder.disableContentCompression();
         }
 
+        if(proxyInfo != null) {
+            if(proxyInfo.getProxyType() == ProxyInfo.ProxyType.HTTP) {
+                if(proxyInfo.getHost() != null && proxyInfo.getProxyPort() != null) {
+                    clientBuilder.setProxy(new HttpHost(proxyInfo.getHost(), proxyInfo.getProxyPort()));
+                    if(proxyInfo.getUser() != null) { //authenticated proxy
+                        NTCredentials ntCreds = new NTCredentials(proxyInfo.getUser(), proxyInfo.getPassword(), proxyInfo.getProxyWorkstation(), proxyInfo.getProxyDomain());
+                        credsProvider.setCredentials(new AuthScope(proxyInfo.getHost(), proxyInfo.getProxyPort()), ntCreds);
+                        clientBuilder.setDefaultCredentialsProvider(credsProvider);
+                        clientBuilder.setProxyAuthenticationStrategy(new ProxyAuthenticationStrategy());
+                    }
+                }
+            } else if(proxyInfo.getProxyType() == ProxyInfo.ProxyType.SOCKS) {
+                //this has to be handled in the Connection Factory createSocket
+            }
+        }
+
         return new HttpClient45(clientBuilder.build());
     }
 
@@ -102,7 +121,20 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
 
         // Create SSL/TLS or plain connection:
         if (HTTP_PROTOCOL.equals(protocol)) {
-            ConnectionSocketFactory plainsf = PlainConnectionSocketFactory.getSocketFactory();
+            ConnectionSocketFactory plainsf = new PlainConnectionSocketFactory() {
+                @Override
+                public Socket createSocket(final HttpContext context) throws IOException {
+                    if (proxyInfo != null && proxyInfo.getProxyType() == ProxyInfo.ProxyType.SOCKS) {
+                        if (proxyInfo.getHost() != null && proxyInfo.getProxyPort() != null) {
+                            InetSocketAddress socksaddr = new InetSocketAddress(proxyInfo.getHost(), proxyInfo.getProxyPort());
+                            Proxy proxy = new Proxy(Proxy.Type.SOCKS, socksaddr);
+                            return new Socket(proxy);
+                        }
+                    }
+                    return super.createSocket(context);
+                }
+            };
+
             registry = RegistryBuilder.<ConnectionSocketFactory>create()
                 .register(HTTP_PROTOCOL, plainsf)
                 .build();
@@ -113,7 +145,19 @@ public class ConnectionBuilder45 extends ConnectionBuilder {
                 if (this.insecure) {
                     SSLContext sslcontext = SSLContext.getInstance("TLS");
                     sslcontext.init(null, new TrustManager[]{noCaTrustManager}, null);
-                    sslsf = new SSLConnectionSocketFactory(sslcontext, NoopHostnameVerifier.INSTANCE);
+                    sslsf = new SSLConnectionSocketFactory(sslcontext, NoopHostnameVerifier.INSTANCE) {
+                        @Override
+                        public Socket createSocket(final HttpContext context) throws IOException {
+                            if(proxyInfo != null && proxyInfo.getProxyType() == ProxyInfo.ProxyType.SOCKS) {
+                                if(proxyInfo.getHost() != null && proxyInfo.getProxyPort() != null) {
+                                    InetSocketAddress socksaddr = new InetSocketAddress(proxyInfo.getHost(), proxyInfo.getProxyPort());
+                                    Proxy proxy = new Proxy(Proxy.Type.SOCKS, socksaddr);
+                                    return new Socket(proxy);
+                                }
+                            }
+                            return super.createSocket(context);
+                        }
+                    };
                 }
                 else {
                     SSLContextBuilder sslContextBuilder = SSLContexts.custom();
