@@ -73,6 +73,7 @@ public class HttpConnection implements Connection {
     private String ssoTokenName = null;
     private String ssoUrl = null;
     private String ssoRevokeUrl = null;
+
     private Map<String, String> headers = null;
 
 
