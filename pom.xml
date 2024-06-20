@@ -86,7 +86,7 @@ limitations under the License.
     <jackson.version>2.13.4.2</jackson.version>
     <junit.version>4.13.1</junit.version>
     <slf4j.version>1.7.7</slf4j.version>
-    <undertow.version>2.2.25.Final</undertow.version>
+    <undertow.version>2.3.14.Final</undertow.version>
     <weld-se.version>2.3.0.Final</weld-se.version>
 
   </properties>
