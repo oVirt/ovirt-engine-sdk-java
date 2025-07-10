@@ -27,7 +27,7 @@ SETTINGS = """
 
 
 def run_command(args):
-    env = {"JAVA_HOME": "/usr/lib/jvm/java-11"}
+    env = {"JAVA_HOME": "/usr/lib/jvm/java-21"}
     print("Running command %s ..." % args)
     proc = subprocess.Popen(args=args, env=env)
     return proc.wait()
@@ -217,7 +217,7 @@ def main():
 
     # Locate the RPM spec template:
     print("Locating RPM spec template ...")
-    spec_template_path = "packaging/spec%s.in" % rpm_dist
+    spec_template_path = "packaging/spec.in"
     if not os.path.exists(spec_template_path):
         print("RPM spec template \"%s\" doesn't exist." % spec_template_path)
         sys.exit(1)

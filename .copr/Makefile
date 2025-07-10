@@ -1,8 +1,21 @@
 .PHONY: installdeps git_cfg_safe srpm
 
 installdeps:
-	dnf -y install ant git httpcomponents-client jackson-annotations jackson-core jackson-databind java-11-openjdk-devel javapackages-local \
-		libxslt maven maven-local python3 python3-lxml rpm-build rpmdevtools slf4j
+	dnf -y install \
+		ant \
+		git \
+		httpcomponents-client \
+		jackson-annotations \
+		jackson-core \
+		jackson-databind \
+		maven-local-openjdk21 \
+		libxslt \
+		maven \
+		python3 \
+		python3-lxml \
+		rpm-build \
+		rpmdevtools \
+		slf4j
 
 git_cfg_safe:
 	# From git 2.35.2 we need to mark temporary directory, where the project is cloned to, as safe, otherwise

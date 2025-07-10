@@ -26,7 +26,10 @@ Source2: transform-pom.xsl
 BuildArch: noarch
 
 BuildRequires: ant
-BuildRequires: javapackages-local
+BuildRequires: maven
+BuildRequires: maven-local-openjdk21
+BuildRequires: python3
+BuildRequires: python3-lxml
 BuildRequires: mvn(org.apache.httpcomponents:httpclient)
 BuildRequires: mvn(org.apache.httpcomponents:httpcore)
 BuildRequires: mvn(com.fasterxml.jackson.core:jackson-databind)

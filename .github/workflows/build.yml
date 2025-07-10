@@ -13,9 +13,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: centos-stream-8
-            shortcut: cs8
-            container-name: el8stream
+          - name: centos-stream-9
+            shortcut: cs9
+            container-name: el9stream
+          - name: centos-stream-10
+            shortcut: cs10
+            container-name: el10stream
 
     name: ${{ matrix.name }}
 
@@ -27,23 +30,21 @@ jobs:
 
     steps:
 
-      - name: Checkout sources
-        uses: actions/checkout@v2
+      - name: Mark repository as safe
+        run: git config --global --add safe.directory "$(pwd)"
 
-      - name: Use cache for maven
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+      - name: Install dependencies
+        run: dnf install -y ant maven-local-openjdk21 jackson-databind jackson-core jackson-annotations
+
+      - name: Checkout sources
+        uses: ovirt/checkout-action@main
 
       - name: Perform build
         run: |
           python3 automation/build.py $ARTIFACTS_DIR
 
       - name: Upload RPM artifacts
-        uses: ovirt/upload-rpms-action@v2
+        uses: ovirt/upload-rpms-action@main
         with:
           directory: ${{ env.ARTIFACTS_DIR}}
 
