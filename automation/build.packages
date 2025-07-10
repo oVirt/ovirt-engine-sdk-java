@@ -4,11 +4,10 @@ httpcomponents-client
 jackson-annotations
 jackson-core
 jackson-databind
-java-11-openjdk-devel
 javapackages-local
 libxslt
 maven
-maven-local
+maven-local-openjdk21
 python3
 python3-lxml
 rpm-build
