@@ -87,7 +87,13 @@ limitations under the License.
     <junit.version>4.13.1</junit.version>
     <slf4j.version>1.7.7</slf4j.version>
     <undertow.version>2.2.25.Final</undertow.version>
-    <weld-se.version>2.3.0.Final</weld-se.version>
+    <weld-se.version>3.1.9.Final</weld-se.version>
+    <maven-release-plugin.version>2.5.2</maven-release-plugin.version>
+    <maven-source-plugin.version>2.4</maven-source-plugin.version>
+    <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
+    <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+    <central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
+    <jakarta-enterprise.version>4.0.1</jakarta-enterprise.version>
 
   </properties>
 
@@ -97,6 +103,13 @@ limitations under the License.
         <groupId>org.ovirt.engine.api</groupId>
         <artifactId>metamodel-concepts</artifactId>
         <version>${metamodel.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>jakarta.enterprise</groupId>
+        <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        <version>${jakarta-enterprise.version}</version>
+        <scope>provided</scope>
       </dependency>
 
       <dependency>
@@ -155,7 +168,7 @@ limitations under the License.
 
       <dependency>
         <groupId>org.jboss.weld.se</groupId>
-        <artifactId>weld-se</artifactId>
+        <artifactId>weld-se-shaded</artifactId>
         <version>${weld-se.version}</version>
       </dependency>
 
@@ -179,7 +192,7 @@ limitations under the License.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>2.4</version>
+        <version>${maven-source-plugin.version}</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -194,13 +207,40 @@ limitations under the License.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.2</version>
+        <version>${maven-release-plugin.version}</version>
         <configuration>
           <tagNameFormat>@{version}</tagNameFormat>
           <pushChanges>false</pushChanges>
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>${central-publishing-maven-plugin.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central</publishingServerId>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${maven-javadoc-plugin.version}</version>
+        <configuration>
+          <doclint>none</doclint>
+          <release>11</release>
+        </configuration>
+          <executions>
+           <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -215,7 +255,7 @@ limitations under the License.
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>${maven-gpg-plugin.version}</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -230,51 +270,7 @@ limitations under the License.
       </build>
     </profile>
 
-    <!-- This profile is used to generate the documentation.
-         Note: this profile is currently functional only when
-         running maven with java 1.8, because asciidoclet does
-         not have a version compatible with Java 11, see:
-         https://github.com/asciidoctor/asciidoclet/pull/96 -->
-    <profile>
-      <id>document</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>2.10.3</version>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <source>8</source>
-              <target>8</target>
-              <additionalparam>
-                -Xdoclint:none
-              </additionalparam>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
   </profiles>
-
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-    </repository>
-  </distributionManagement>
 
   <modules>
     <module>generator</module>
