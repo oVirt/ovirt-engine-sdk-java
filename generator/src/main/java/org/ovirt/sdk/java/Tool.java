@@ -19,7 +19,7 @@ package org.ovirt.sdk.java;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.apache.commons.cli.CommandLine;
