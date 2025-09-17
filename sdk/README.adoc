@@ -7,7 +7,8 @@ This project contains the Java SDK for the oVirt Engine API.
 == Important
 
 If you plan to use the SDK with Maven, then you don't need to build it from source,
-as it is distributed via http://central.maven.org/maven2/org/ovirt/engine/api/sdk[Maven Central]
+as it is distributed via
+https://central.sonatype.com/artifact/org.ovirt.engine.api/sdk[Maven Central]
 in binary form, already built. All you need to do is include the correct dependency
 in your `pom.xml` file:
 
@@ -26,7 +27,7 @@ instructions in the `README.adoc` file of the parent directory to
 generate and build it.
 
 NOTE: This example uses version `4.0.3`, but there may be newer versions available.
-Check http://search.maven.org/#search|gav|1|g:%22org.ovirt.engine.api%22%20AND%20a:%22sdk%22[here]
+Check https://central.sonatype.com/artifact/org.ovirt.engine.api/sdk/versions[here]
 to see the complete list of available versions, as well as information
 on how to use it with other build tools.
 
@@ -101,8 +102,8 @@ You will find more usuage examples in the `examples` directory.
 
 == Releasing
 
-The project is released to Maven Central via the Sonatype OSSRH
-repository.
+The project is released to Maven Central using the Central Publishing Maven
+Plugin.
 
 To perform a release you will need to do the following actions, most of
 them automated by the Maven release plugin:
@@ -125,38 +126,31 @@ the remote repository, so you need to do it manually, first the patches:
 
   $ git push origin HEAD:refs/for/master
 
-This will send the patches for review to https://gerrit.ovirt.org[gerrit].
+This will send the patches for review to https://github.com/oVirt[github].
 Go there, review and merge them. Once the patches are merged the tag can
 be pushed:
 
   $ git push origin 4.0.5
 
+This tag is important so that the release tools notice that a new version has
+been released.
+
 === Perform the release
 
 This is also automated using the Maven release plugin. But in this case
-it is necessary to sign the artifacts, as both Sonatype OSSRH and Maven
-Central require signed artifacts. To sign artifacts and generate the
-documentation the the `sign` and `document` profiles need to be
-activated:
+it is necessary to sign the artifacts, as Maven Central requires signed
+artifacts. To sign artifacts and generate the documentation the `sign`
+and `document` profiles need to be activated:
 
   $ mvn release:perform -Psign,document
 
 NOTE: The artifacts will be signed using your default GPG key, so make
 sure you have a valid GPG key available.
 
-This will use the tag to checkout the code from the remote repository,
-it will build it, run the tests and, finally, if everything succeeds, it
-will upload the signed artifacts to the OSSRH repository.
+This will build the code from the repository where it is triggered,
+run the tests and, finally, if everything succeeds, it will upload
+the signed artifacts to the Maven Central repository.
 
-The rest of the process is manual, using the OSSRH web interface
-available https://oss.sonatype.org[here]. Log in with your user name and
-password and select the _Staging Repositories_ option. Then use the
-search bar in the top right corner to search for `ovirt`. In the result
-list you should see you repository, and in the panel below you should
-see the details, including the contents of the repository. Inspect
-those contents, and when you are satisfied click the _Close_ button.
-Wait a bit, maybe clicking the _Refresh_ button a few times, till the
-_Release_ button is enabled. Click the _Release_ button, it will ask for
-a message, write something like _Release 4.0.5_ and then _OK_. The
-release is now ready, and it will be propagated to Maven Central later,
-it usually takes around 30 minutes.
+The rest of the process is manual, using the Central Sonatype web interface
+available https://central.sonatype.com[here]. Information about this publishing
+can be found https://central.sonatype.org/publish/publish-portal-guide/[here].
