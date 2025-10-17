@@ -2,6 +2,22 @@
 
 This document describes the relevant changes between releases of the SDK.
 
+== 4.6.0 / Oct 17 2025
+Update to model 4.6.1
+Update to metamodel 1.3.11
+
+General Maintenance:
+
+* pom: update developers to point to devel@ovirt.org
+
+* Upgrade undertow to 2.2.25.Final
+
+* Upgrade jackson to 2.13.4.2
+
+* Build for CentOS 9 and 10
+
+* docs: remove mention of ossrh due to deprecation
+
 == 4.5.1 / May 16 2022
 
 General Maintenance:
