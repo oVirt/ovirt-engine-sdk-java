@@ -23,7 +23,7 @@ limitations under the License.
   <groupId>org.ovirt.engine.api</groupId>
   <artifactId>java-sdk-parent</artifactId>
   <packaging>pom</packaging>
-  <version>4.6.0</version>
+  <version>4.6.1-SNAPSHOT</version>
 
   <name>oVirt Java SDK Parent</name>
   <description>This package contains the Java SDK for version 4 of the oVirt Engine API.</description>
@@ -50,7 +50,7 @@ limitations under the License.
     <connection>scm:git:git://github.com/oVirt/ovirt-engine-sdk-java.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/oVirt/ovirt-engine-sdk-java.git</developerConnection>
     <url>https://github.com/oVirt/ovirt-engine-sdk-java.git</url>
-    <tag>4.6.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
