@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import datetime
-import glob
 import lxml.etree
 import os
 import re
@@ -103,7 +101,7 @@ def main():
     if result != 0:
         print("Extraction of commit info failed with exit code %d." % result)
         sys.exit(1)
-    commit_re = re.compile(r"^(?P<id>[0-9a-f]+) (?P<title>.*)")
+    commit_re = re.compile(r"^[0-9a-f]+ (?P<title>.*)")
     commit_match = commit_re.match(str(commit_info.decode('utf-8')))
     if commit_match is None:
         print("Commit info \"%s\" doesn't match format \"%s\"." % (
@@ -111,14 +109,21 @@ def main():
             commit_re.pattern)
         )
         sys.exit(1)
-    commit_id = commit_match.group("id")
     commit_title = commit_match.group("title")
-    print("Commit identifier is \"%s\"." % commit_id)
     print("Commit title is \"%s\"." % commit_title)
 
-    # Check if this is a release commit:
+    # Read build environment set by CI:
+    release_suffix = os.environ.get("RELEASE_SUFFIX", "")
+
+    # Check if this is a release commit. A tagged build
+    # (PACKAGE_RPM_RELEASE set explicitly by CI) is always treated as a
+    # release, only if the POM version in a non-SNAPSHOT version.
+    # For local/non-tagged builds we fall back to the SNAPSHOT check.
     print("Checking if this is a release commit ...")
-    is_release = not pom_version.endswith("-SNAPSHOT")
+    is_release = (
+        not pom_version.endswith("-SNAPSHOT")
+        and "PACKAGE_RPM_RELEASE" in os.environ
+    )
     if is_release:
         print("This is a release commit.")
     else:
@@ -144,15 +149,9 @@ def main():
         )
         sys.exit(1)
     version_xyz = version_match.group("xyz")
-    version_qualifier = version_match.group("q")
-    version_suffix = "%sgit%s" % (
-        datetime.datetime.now().strftime("%Y%m%d"),
-        commit_id,
-    )
     if not is_release:
-        full_version += ".%s" % version_suffix
+        full_version += ".master" + release_suffix
     print("SDK version XYZ is \"%s\"." % version_xyz)
-    print("SDK version qualifier is \"%s\"." % version_qualifier)
     print("SDK full version is \"%s\"." % full_version)
 
     # Build the SDK code generator, run it, and build the tar:
@@ -274,26 +273,35 @@ def main():
     print("RPM \"tar_version\" global is \"%s\"." % tar_version_global[0])
 
     # Extract the current value of the RPM release tag, discarding the
-    # "dist" suffix if it is present:
+    # release_suffix and dist suffixes if present:
     print("Extracting current RPM release ...")
-    rpm_release = re.sub(r"%\{\?dist\}$", "", release_tag[0])
-    print("Current RPM release number is \"%s\"." % rpm_release)
+    rpm_release = re.sub(
+        r"(%\{\?release_suffix\})?%\{\?dist\}$", "", release_tag[0]
+    ).strip()
+    print("Current RPM release is \"%s\"." % rpm_release)
 
     # Calculate the RPM version and release numbers:
+    # For tagged CI builds PACKAGE_RPM_RELEASE is set explicitly (e.g. "1"
+    # from the tag); otherwise the value parsed from the spec is used
+    # (e.g. "0.master"). The release_suffix is appended via rpmbuild
+    # --define.
+    package_rpm_release = os.environ.get(
+        "PACKAGE_RPM_RELEASE", rpm_release
+    )
     print("Calculating RPM version and release numbers ...")
     rpm_version = version_xyz
-    if version_qualifier is not None:
-        rpm_release += ".%s" % version_qualifier
-    if not is_release:
-        rpm_release += ".%s" % version_suffix
     print("RPM version is \"%s\"." % rpm_version)
-    print("RPM release is \"%s\"." % rpm_release)
+    print("RPM release is \"%s\"." % package_rpm_release)
+    print("RPM release suffix is \"%s\"." % release_suffix)
 
     # Update the RPM spec lines with the new version and release and
     # write the resulting spec file:
     print("Generating RPM spec file ...")
     spec_lines[version_tag[1]] = "Version: %s\n" % rpm_version
-    spec_lines[release_tag[1]] = "Release: %s%%{?dist}\n" % rpm_release
+    spec_lines[release_tag[1]] = (
+        "Release: %s%%{?release_suffix}%%{?dist}\n"
+        % package_rpm_release
+    )
     spec_lines[tar_version_global[1]] = \
         "%%global tar_version %s\n" % full_version
     spec_path = "packaging/java-ovirt-engine-sdk4.spec"
@@ -302,15 +310,17 @@ def main():
 
     # Build the RPMs:
     cwd = '%s/packaging' % os.getcwd()
-    result = run_command([
-            "rpmbuild",
-            "-ba",
-            "--define=_sourcedir %s" % cwd,
-            "--define=_srcrpmdir %s" % cwd,
-            "--define=_rpmdir %s" % cwd,
-            spec_path,
-        ],
-    )
+    rpmbuild_cmd = [
+        "rpmbuild",
+        "-ba",
+        "--define=_sourcedir %s" % cwd,
+        "--define=_srcrpmdir %s" % cwd,
+        "--define=_rpmdir %s" % cwd,
+    ]
+    if release_suffix:
+        rpmbuild_cmd.append("--define=release_suffix %s" % release_suffix)
+    rpmbuild_cmd.append(spec_path)
+    result = run_command(rpmbuild_cmd)
     if result != 0:
         print("RPM build failed with exit code %d." % result)
         sys.exit(1)
