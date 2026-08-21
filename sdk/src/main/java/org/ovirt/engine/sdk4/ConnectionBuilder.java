@@ -43,6 +43,8 @@ public abstract class ConnectionBuilder {
     protected String user;
     protected String password;
     protected String token;
+
+    protected ProxyInfo proxyInfo;
     protected boolean insecure = false;
     protected boolean kerberos = false;
     protected int timeout = 0;
@@ -207,6 +209,16 @@ public abstract class ConnectionBuilder {
      */
     public ConnectionBuilder ssoUrl(String ssoUrl) {
         this.ssoUrl = ssoUrl;
+        return this;
+    }
+
+    /**
+     * Set proxy information if using a Proxy
+     * @param proxyInfo
+     * @return
+     */
+    public ConnectionBuilder proxy(ProxyInfo proxyInfo) {
+        this.proxyInfo = proxyInfo;
         return this;
     }
 
